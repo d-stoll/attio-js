@@ -10,7 +10,7 @@ permissions:
     branches:
       - main
     paths:
-      - .speakeasy\gen.lock
+      - .speakeasy/gen.lock
   workflow_dispatch: {}
 jobs:
   publish:

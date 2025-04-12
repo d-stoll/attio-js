@@ -1,0 +1,19 @@
+# DefaultValue1
+
+## Example Usage
+
+```typescript
+import { DefaultValue1 } from "attio-js/models/operations";
+
+let value: DefaultValue1 = {
+  type: "dynamic",
+  template: "current-user",
+};
+```
+
+## Fields
+
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `type`                                                                     | [operations.DefaultValueType](../../models/operations/defaultvaluetype.md) | :heavy_check_mark:                                                         | N/A                                                                        | dynamic                                                                    |
+| `template`                                                                 | *any*                                                                      | :heavy_check_mark:                                                         | N/A                                                                        |                                                                            |

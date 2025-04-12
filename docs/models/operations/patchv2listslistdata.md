@@ -1,0 +1,28 @@
+# PatchV2ListsListData
+
+## Example Usage
+
+```typescript
+import { PatchV2ListsListData } from "attio-js/models/operations";
+
+let value: PatchV2ListsListData = {
+  name: "Enterprise Sales",
+  apiSlug: "enterprise_sales",
+  workspaceAccess: "read-and-write",
+  workspaceMemberAccess: [
+    {
+      workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+      level: "read-and-write",
+    },
+  ],
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                | Type                                                                                                                                                                 | Required                                                                                                                                                             | Description                                                                                                                                                          | Example                                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                                                                                                                                                               | *string*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | The human-readable name of the list.                                                                                                                                 | Enterprise Sales                                                                                                                                                     |
+| `apiSlug`                                                                                                                                                            | *string*                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                   | A unique, human-readable slug to access the list through API calls. Should be formatted in snake case.                                                               | enterprise_sales                                                                                                                                                     |
+| `workspaceAccess`                                                                                                                                                    | [operations.PatchV2ListsListWorkspaceAccess](../../models/operations/patchv2listslistworkspaceaccess.md)                                                             | :heavy_minus_sign:                                                                                                                                                   | The level of access granted to all members of the workspace for this list. Pass `null` to keep the list private and only grant access to specific workspace members. | read-and-write                                                                                                                                                       |
+| `workspaceMemberAccess`                                                                                                                                              | [operations.PatchV2ListsListWorkspaceMemberAccess](../../models/operations/patchv2listslistworkspacememberaccess.md)[]                                               | :heavy_minus_sign:                                                                                                                                                   | The level of access granted to specific workspace members for this list. Pass an empty array to grant access to no workspace members.                                |                                                                                                                                                                      |

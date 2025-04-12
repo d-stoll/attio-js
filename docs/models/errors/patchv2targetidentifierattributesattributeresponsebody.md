@@ -1,0 +1,20 @@
+# PatchV2TargetIdentifierAttributesAttributeResponseBody
+
+Bad Request
+
+## Example Usage
+
+```typescript
+import { PatchV2TargetIdentifierAttributesAttributeResponseBody } from "attio-js/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `statusCode`                                                                                                                   | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `type`                                                                                                                         | [errors.PatchV2TargetIdentifierAttributesAttributeType](../../models/errors/patchv2targetidentifierattributesattributetype.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `code`                                                                                                                         | [errors.PatchV2TargetIdentifierAttributesAttributeCode](../../models/errors/patchv2targetidentifierattributesattributecode.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `message`                                                                                                                      | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            | Cannot update a System attribute.                                                                                              |

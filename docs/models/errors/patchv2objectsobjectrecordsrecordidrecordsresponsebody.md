@@ -1,0 +1,20 @@
+# PatchV2ObjectsObjectRecordsRecordIdRecordsResponseBody
+
+Not Found
+
+## Example Usage
+
+```typescript
+import { PatchV2ObjectsObjectRecordsRecordIdRecordsResponseBody } from "attio-js/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `statusCode`                                                                                                                   | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `type`                                                                                                                         | [errors.PatchV2ObjectsObjectRecordsRecordIdRecordsType](../../models/errors/patchv2objectsobjectrecordsrecordidrecordstype.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `code`                                                                                                                         | [errors.PatchV2ObjectsObjectRecordsRecordIdRecordsCode](../../models/errors/patchv2objectsobjectrecordsrecordidrecordscode.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `message`                                                                                                                      | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            | Object with slug/ID "people" not found.                                                                                        |

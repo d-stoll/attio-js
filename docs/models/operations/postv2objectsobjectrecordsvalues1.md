@@ -1,0 +1,30 @@
+# PostV2ObjectsObjectRecordsValues1
+
+## Example Usage
+
+```typescript
+import { PostV2ObjectsObjectRecordsValues1 } from "attio-js/models/operations";
+
+let value: PostV2ObjectsObjectRecordsValues1 = {
+  activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
+  activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
+  createdByActor: {
+    id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+    type: "workspace-member",
+  },
+  referencedActorType: "workspace-member",
+  referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+  attributeType: "actor-reference",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            | Example                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeFrom`                                                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                          | :heavy_check_mark:                                                                                                                     | The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.            | 2023-01-01T15:00:00.000000000Z                                                                                                         |
+| `activeUntil`                                                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                          | :heavy_check_mark:                                                                                                                     | The point in time at which this value was deactivated. If `null`, the value is active.                                                 | 2023-01-01T15:00:00.000000000Z                                                                                                         |
+| `createdByActor`                                                                                                                       | [operations.PostV2ObjectsObjectRecordsValuesCreatedByActor](../../models/operations/postv2objectsobjectrecordsvaluescreatedbyactor.md) | :heavy_check_mark:                                                                                                                     | The actor that created this value.                                                                                                     | {<br/>"type": "workspace-member",<br/>"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"<br/>}                                               |
+| `referencedActorType`                                                                                                                  | [operations.ValuesReferencedActorType](../../models/operations/valuesreferencedactortype.md)                                           | :heavy_check_mark:                                                                                                                     | The type of the referenced actor. [Read more information on actor types here](/docs/actors).                                           | workspace-member                                                                                                                       |
+| `referencedActorId`                                                                                                                    | *string*                                                                                                                               | :heavy_check_mark:                                                                                                                     | The ID of the referenced actor.                                                                                                        | 50cf242c-7fa3-4cad-87d0-75b1af71c57b                                                                                                   |
+| `attributeType`                                                                                                                        | [operations.PostV2ObjectsObjectRecordsValuesAttributeType](../../models/operations/postv2objectsobjectrecordsvaluesattributetype.md)   | :heavy_check_mark:                                                                                                                     | The attribute type of the value.                                                                                                       | actor-reference                                                                                                                        |

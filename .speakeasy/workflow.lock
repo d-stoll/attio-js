@@ -1,0 +1,36 @@
+speakeasyVersion: 1.531.4
+sources:
+    Attio API:
+        sourceNamespace: attio-api
+        sourceRevisionDigest: sha256:50cc795241c8ff8f405448f803b1163b0e53668a8fca3a9102058b1e2ab3f78c
+        sourceBlobDigest: sha256:d55ff24a371eb5986d5836313cc916d4227d4a33e35025d4a14c0f27e1f49c88
+        tags:
+            - latest
+            - 2.0.0
+targets:
+    attio:
+        source: Attio API
+        sourceNamespace: attio-api
+        sourceRevisionDigest: sha256:50cc795241c8ff8f405448f803b1163b0e53668a8fca3a9102058b1e2ab3f78c
+        sourceBlobDigest: sha256:d55ff24a371eb5986d5836313cc916d4227d4a33e35025d4a14c0f27e1f49c88
+        codeSamplesNamespace: attio-api-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:2e7e4ae1070d42cf0b0e21db51658acd22b9678e1af32e5f1dbe2fb74aa9de34
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Attio API:
+            inputs:
+                - location: https://developers.attio.com/openapi/655e2ce3ace07f065aa1dd14
+            registry:
+                location: registry.speakeasyapi.dev/d-stoll/attio-js/attio-api
+    targets:
+        attio:
+            target: typescript
+            source: Attio API
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/d-stoll/attio-js/attio-api-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

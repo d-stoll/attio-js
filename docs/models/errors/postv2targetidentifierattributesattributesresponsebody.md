@@ -1,0 +1,20 @@
+# PostV2TargetIdentifierAttributesAttributesResponseBody
+
+Not Found
+
+## Example Usage
+
+```typescript
+import { PostV2TargetIdentifierAttributesAttributesResponseBody } from "attio-js/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    | Example                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `statusCode`                                                                                                                   | *number*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `type`                                                                                                                         | [errors.PostV2TargetIdentifierAttributesAttributesType](../../models/errors/postv2targetidentifierattributesattributestype.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `code`                                                                                                                         | [errors.PostV2TargetIdentifierAttributesAttributesCode](../../models/errors/postv2targetidentifierattributesattributescode.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |                                                                                                                                |
+| `message`                                                                                                                      | *string*                                                                                                                       | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            | List with slug/ID "33ebdbe9-e529-47c9-b894-0ba25e9c15c0" not found.                                                            |

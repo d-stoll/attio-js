@@ -1,0 +1,20 @@
+# PostV2ObjectsObjectRecordsQueryRecordsResponseBody
+
+Not Found
+
+## Example Usage
+
+```typescript
+import { PostV2ObjectsObjectRecordsQueryRecordsResponseBody } from "attio-js/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            | Example                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `statusCode`                                                                                                           | *number*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
+| `type`                                                                                                                 | [errors.PostV2ObjectsObjectRecordsQueryRecordsType](../../models/errors/postv2objectsobjectrecordsqueryrecordstype.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
+| `code`                                                                                                                 | [errors.PostV2ObjectsObjectRecordsQueryRecordsCode](../../models/errors/postv2objectsobjectrecordsqueryrecordscode.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |                                                                                                                        |
+| `message`                                                                                                              | *string*                                                                                                               | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    | The referenced object was not found.                                                                                   |

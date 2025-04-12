@@ -1,0 +1,19 @@
+# InputValue1
+
+## Example Usage
+
+```typescript
+import { InputValue1 } from "attio-js/models/components";
+
+let value: InputValue1 = {
+  referencedActorType: "workspace-member",
+  referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                          | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `referencedActorType`                                                                                                                                                          | [components.InputValueReferencedActorType](../../models/components/inputvaluereferencedactortype.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The type of the referenced actor. Currently, only workspace members can be written into actor reference attributes. [Read more information on actor types here](/docs/actors). | workspace-member                                                                                                                                                               |
+| `referencedActorId`                                                                                                                                                            | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The ID of the referenced Actor.                                                                                                                                                | 50cf242c-7fa3-4cad-87d0-75b1af71c57b                                                                                                                                           |

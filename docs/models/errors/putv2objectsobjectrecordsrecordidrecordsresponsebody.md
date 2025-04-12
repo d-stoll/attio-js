@@ -1,0 +1,20 @@
+# PutV2ObjectsObjectRecordsRecordIdRecordsResponseBody
+
+Not Found
+
+## Example Usage
+
+```typescript
+import { PutV2ObjectsObjectRecordsRecordIdRecordsResponseBody } from "attio-js/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                | Example                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `statusCode`                                                                                                               | *number*                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
+| `type`                                                                                                                     | [errors.PutV2ObjectsObjectRecordsRecordIdRecordsType](../../models/errors/putv2objectsobjectrecordsrecordidrecordstype.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
+| `code`                                                                                                                     | [errors.PutV2ObjectsObjectRecordsRecordIdRecordsCode](../../models/errors/putv2objectsobjectrecordsrecordidrecordscode.md) | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |                                                                                                                            |
+| `message`                                                                                                                  | *string*                                                                                                                   | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        | Object with slug/ID "people" not found.                                                                                    |

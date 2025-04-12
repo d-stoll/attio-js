@@ -40,25 +40,25 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add attio-js
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add attio-js
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add attio-js
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add attio-js zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -125,12 +125,9 @@ You can also run MCP servers as a standalone binary with no additional dependenc
 
 ```bash
 curl -L -o mcp-server \
-    https://github.com/{org}/{repo}/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
+    https://github.com/d-stoll/attio-js/releases/download/v0.0.1/mcp-server-bun-darwin-arm64 && \
 chmod +x mcp-server
 ```
-
-If the repo is a private repo you must add your Github PAT to download a release `-H "Authorization: Bearer {GITHUB_PAT}"`.
-
 
 ```json
 {

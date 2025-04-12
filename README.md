@@ -14,10 +14,10 @@ Unfortunately, an official JavaScript or TypeScript SDK has not been released ye
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [attio-js](#attio-js)
-  * [Installation](#sdk-installation)
+* [Javascript & Typescript SDK for Attio](#javascript-typescript-sdk-for-attio)
+  * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
-  * [Example Usage](#sdk-example-usage)
+  * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
@@ -34,6 +34,10 @@ Unfortunately, an official JavaScript or TypeScript SDK has not been released ye
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+> [!TIP]
+> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
+
 
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
@@ -125,7 +129,7 @@ You can also run MCP servers as a standalone binary with no additional dependenc
 
 ```bash
 curl -L -o mcp-server \
-    https://github.com/d-stoll/attio-js/releases/download/v0.0.1/mcp-server-bun-darwin-arm64 && \
+    https://github.com/d-stoll/attio-js/releases/download/v0.0.2/mcp-server-bun-darwin-arm64 && \
 chmod +x mcp-server
 ```
 

@@ -5,19 +5,16 @@ Developer-friendly & type-safe JS/TS SDK based on the [official OpenAPI spec](ht
 <!-- Start Summary [summary] -->
 ## Summary
 
-Attio is a CRM platform which is highly customisable, incredibly powerful and data-driven. The public API allows you to manipulate records, lists, notes, tasks and more. You can find more information about the Attio API in the [official docs](https://developers.attio.com/docs/getting-started).
-
-Unfortunately, an official JavaScript or TypeScript SDK has not been released yet. In the meantime, we maintain this unofficial SDK to bridge the gap until an official SDK becomes available.
 
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [attio-js](#attio-js)
-  * [Installation](#sdk-installation)
+* [Javascript & Typescript SDK for Attio](#javascript-typescript-sdk-for-attio)
+  * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
-  * [Example Usage](#sdk-example-usage)
+  * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
@@ -35,30 +32,34 @@ Unfortunately, an official JavaScript or TypeScript SDK has not been released ye
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+> [!TIP]
+> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
+
+
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add https://github.com/d-stoll/attio-js
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add https://github.com/d-stoll/attio-js
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add https://github.com/d-stoll/attio-js
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
+yarn add https://github.com/d-stoll/attio-js zod
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.

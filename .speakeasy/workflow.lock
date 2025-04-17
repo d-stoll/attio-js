@@ -6,6 +6,7 @@ sources:
         sourceBlobDigest: sha256:c0c0ba0b761fd3d5d8289ae1001103f96970005a9ca14bd3be9e462d6c5156e1
         tags:
             - latest
+            - speakeasy-sdk-regen-1744452365
             - 2.0.0
 targets:
     attio:

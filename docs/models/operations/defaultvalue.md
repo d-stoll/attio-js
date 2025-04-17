@@ -5,10 +5,10 @@ The default value for this attribute. Static values are used to directly populat
 
 ## Supported Types
 
-### `operations.DefaultValue1`
+### `operations.One`
 
 ```typescript
-const value: operations.DefaultValue1 = {
+const value: operations.One = {
   type: "dynamic",
   template: "P1M",
 };

@@ -7,10 +7,10 @@ Threads are groups of [comments](/reference/get_v2-comments-comment-id) on eithe
 
 ### Available Operations
 
-* [getV2Threads](#getv2threads) - List threads
-* [getV2ThreadsThreadId](#getv2threadsthreadid) - Get a thread
+* [list](#list) - List threads
+* [get](#get) - Get a thread
 
-## getV2Threads
+## list
 
 List threads of comments on a record or list entry.
 
@@ -30,7 +30,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.threads.getV2Threads({
+  const result = await attio.threads.list({
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     object: "people",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
@@ -52,7 +52,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { threadsGetV2Threads } from "attio-js/funcs/threadsGetV2Threads.js";
+import { threadsList } from "attio-js/funcs/threadsList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -61,7 +61,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await threadsGetV2Threads(attio, {
+  const res = await threadsList(attio, {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     object: "people",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
@@ -81,6 +81,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useThreadsList,
+  useThreadsListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchThreadsList,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateThreadsList,
+  invalidateAllThreadsList,
+} from "attio-js/react-query/threadsList.js";
 ```
 
 ### Parameters
@@ -102,7 +130,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## getV2ThreadsThreadId
+## get
 
 Get all comments in a thread.
 
@@ -122,7 +150,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.threads.getV2ThreadsThreadId({
+  const result = await attio.threads.get({
     threadId: "a649e4d9-435c-43fb-83ba-847b4876f27a",
   });
 
@@ -139,7 +167,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { threadsGetV2ThreadsThreadId } from "attio-js/funcs/threadsGetV2ThreadsThreadId.js";
+import { threadsGet } from "attio-js/funcs/threadsGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -148,7 +176,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await threadsGetV2ThreadsThreadId(attio, {
+  const res = await threadsGet(attio, {
     threadId: "a649e4d9-435c-43fb-83ba-847b4876f27a",
   });
 
@@ -163,6 +191,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useThreadsGet,
+  useThreadsGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchThreadsGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateThreadsGet,
+  invalidateAllThreadsGet,
+} from "attio-js/react-query/threadsGet.js";
 ```
 
 ### Parameters

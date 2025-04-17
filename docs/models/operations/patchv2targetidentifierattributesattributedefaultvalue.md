@@ -5,14 +5,13 @@ The default value for this attribute. Static values are used to directly populat
 
 ## Supported Types
 
-### `operations.PatchV2TargetIdentifierAttributesAttributeDefaultValue1`
+### `operations.DefaultValue1`
 
 ```typescript
-const value:
-  operations.PatchV2TargetIdentifierAttributesAttributeDefaultValue1 = {
-    type: "dynamic",
-    template: "current-user",
-  };
+const value: operations.DefaultValue1 = {
+  type: "dynamic",
+  template: "P1M",
+};
 ```
 
 ### `operations.DefaultValue2`

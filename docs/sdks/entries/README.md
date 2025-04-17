@@ -7,16 +7,15 @@ Entries are elements in a list that reference a single parent record. Entries co
 
 ### Available Operations
 
-* [postV2ListsListEntriesQuery](#postv2listslistentriesquery) - List entries
-* [postV2ListsListEntries](#postv2listslistentries) - Create an entry (add record to list)
-* [putV2ListsListEntries](#putv2listslistentries) - Assert a list entry by parent
-* [getV2ListsListEntriesEntryId](#getv2listslistentriesentryid) - Get a list entry
-* [patchV2ListsListEntriesEntryId](#patchv2listslistentriesentryid) - Update a list entry (append multiselect values)
-* [putV2ListsListEntriesEntryId](#putv2listslistentriesentryid) - Update a list entry (overwrite multiselect values)
-* [deleteV2ListsListEntriesEntryId](#deletev2listslistentriesentryid) - Delete a list entry
-* [getV2ListsListEntriesEntryIdAttributesAttributeValues](#getv2listslistentriesentryidattributesattributevalues) - List attribute values for a list entry
+* [query](#query) - List entries
+* [create](#create) - Create an entry (add record to list)
+* [assert](#assert) - Assert a list entry by parent
+* [getEntry](#getentry) - Get a list entry
+* [update](#update) - Update a list entry (append multiselect values)
+* [overwrite](#overwrite) - Update a list entry (overwrite multiselect values)
+* [delete](#delete) - Delete a list entry
 
-## postV2ListsListEntriesQuery
+## query
 
 Lists entries in a given list, with the option to filter and sort results.
 
@@ -32,7 +31,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.postV2ListsListEntriesQuery({
+  const result = await attio.entries.query({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       filter: {
@@ -63,7 +62,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesPostV2ListsListEntriesQuery } from "attio-js/funcs/entriesPostV2ListsListEntriesQuery.js";
+import { entriesQuery } from "attio-js/funcs/entriesQuery.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -72,7 +71,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesPostV2ListsListEntriesQuery(attio, {
+  const res = await entriesQuery(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       filter: {
@@ -101,6 +100,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesQueryMutation
+} from "attio-js/react-query/entriesQuery.js";
 ```
 
 ### Parameters
@@ -118,12 +134,12 @@ run();
 
 ### Errors
 
-| Error Type                                     | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| errors.PostV2ListsListEntriesQueryResponseBody | 404                                            | application/json                               |
-| errors.APIError                                | 4XX, 5XX                                       | \*/\*                                          |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## postV2ListsListEntries
+## create
 
 Adds a record to a list as a new list entry. This endpoint will throw on conflicts of unique attributes. Multiple list entries are allowed for the same parent record
 
@@ -139,7 +155,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.postV2ListsListEntries({
+  const result = await attio.entries.create({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -171,7 +187,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesPostV2ListsListEntries } from "attio-js/funcs/entriesPostV2ListsListEntries.js";
+import { entriesCreate } from "attio-js/funcs/entriesCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -180,7 +196,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesPostV2ListsListEntries(attio, {
+  const res = await entriesCreate(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -210,6 +226,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesCreateMutation
+} from "attio-js/react-query/entriesCreate.js";
 ```
 
 ### Parameters
@@ -233,7 +266,7 @@ run();
 | errors.PostV2ListsListEntriesEntriesResponseBody | 404                                              | application/json                                 |
 | errors.APIError                                  | 4XX, 5XX                                         | \*/\*                                            |
 
-## putV2ListsListEntries
+## assert
 
 Use this endpoint to create or update a list entry for a given parent record. If an entry with the specified parent record is found, that entry will be updated. If no such entry is found, a new entry will be created instead. If there are multiple entries with the same parent record, this endpoint with return the "MULTIPLE_MATCH_RESULTS" error. When writing to multi-select attributes, all values will be either created or deleted as necessary to match the list of values supplied in the request body.
 
@@ -249,7 +282,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.putV2ListsListEntries({
+  const result = await attio.entries.assert({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -281,7 +314,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesPutV2ListsListEntries } from "attio-js/funcs/entriesPutV2ListsListEntries.js";
+import { entriesAssert } from "attio-js/funcs/entriesAssert.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -290,7 +323,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesPutV2ListsListEntries(attio, {
+  const res = await entriesAssert(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -320,6 +353,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesAssertMutation
+} from "attio-js/react-query/entriesAssert.js";
 ```
 
 ### Parameters
@@ -343,7 +393,7 @@ run();
 | errors.PutV2ListsListEntriesEntriesResponseBody | 404                                             | application/json                                |
 | errors.APIError                                 | 4XX, 5XX                                        | \*/\*                                           |
 
-## getV2ListsListEntriesEntryId
+## getEntry
 
 Gets a single list entry by its `entry_id`.
 
@@ -359,7 +409,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.getV2ListsListEntriesEntryId({
+  const result = await attio.entries.getEntry({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
@@ -377,7 +427,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesGetV2ListsListEntriesEntryId } from "attio-js/funcs/entriesGetV2ListsListEntriesEntryId.js";
+import { entriesGetEntry } from "attio-js/funcs/entriesGetEntry.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -386,7 +436,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesGetV2ListsListEntriesEntryId(attio, {
+  const res = await entriesGetEntry(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
@@ -402,6 +452,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useEntriesGetEntry,
+  useEntriesGetEntrySuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchEntriesGetEntry,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateEntriesGetEntry,
+  invalidateAllEntriesGetEntry,
+} from "attio-js/react-query/entriesGetEntry.js";
 ```
 
 ### Parameters
@@ -419,12 +497,12 @@ run();
 
 ### Errors
 
-| Error Type                                      | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| errors.GetV2ListsListEntriesEntryIdResponseBody | 404                                             | application/json                                |
-| errors.APIError                                 | 4XX, 5XX                                        | \*/\*                                           |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## patchV2ListsListEntriesEntryId
+## update
 
 Use this endpoint to update list entries by `entry_id`. If the update payload includes multiselect attributes, the values supplied will be created and prepended to the list of values that already exist (if any). Use the `PUT` endpoint to overwrite or remove multiselect attribute values.
 
@@ -440,7 +518,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.patchV2ListsListEntriesEntryId({
+  const result = await attio.entries.update({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     requestBody: {
@@ -471,7 +549,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesPatchV2ListsListEntriesEntryId } from "attio-js/funcs/entriesPatchV2ListsListEntriesEntryId.js";
+import { entriesUpdate } from "attio-js/funcs/entriesUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -480,7 +558,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesPatchV2ListsListEntriesEntryId(attio, {
+  const res = await entriesUpdate(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     requestBody: {
@@ -509,6 +587,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesUpdateMutation
+} from "attio-js/react-query/entriesUpdate.js";
 ```
 
 ### Parameters
@@ -526,13 +621,13 @@ run();
 
 ### Errors
 
-| Error Type                                               | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| errors.PatchV2ListsListEntriesEntryIdResponseBody        | 400                                                      | application/json                                         |
-| errors.PatchV2ListsListEntriesEntryIdEntriesResponseBody | 404                                                      | application/json                                         |
-| errors.APIError                                          | 4XX, 5XX                                                 | \*/\*                                                    |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.EntriesResponseBody     | 400                            | application/json               |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## putV2ListsListEntriesEntryId
+## overwrite
 
 Use this endpoint to update list entries by `entry_id`. If the update payload includes multiselect attributes, the values supplied will overwrite/remove the list of values that already exist (if any). Use the `PATCH` endpoint to add multiselect attribute values without removing those value that already exist.
 
@@ -548,7 +643,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.putV2ListsListEntriesEntryId({
+  const result = await attio.entries.overwrite({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     requestBody: {
@@ -579,7 +674,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesPutV2ListsListEntriesEntryId } from "attio-js/funcs/entriesPutV2ListsListEntriesEntryId.js";
+import { entriesOverwrite } from "attio-js/funcs/entriesOverwrite.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -588,7 +683,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesPutV2ListsListEntriesEntryId(attio, {
+  const res = await entriesOverwrite(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     requestBody: {
@@ -617,6 +712,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesOverwriteMutation
+} from "attio-js/react-query/entriesOverwrite.js";
 ```
 
 ### Parameters
@@ -634,13 +746,13 @@ run();
 
 ### Errors
 
-| Error Type                                             | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| errors.PutV2ListsListEntriesEntryIdResponseBody        | 400                                                    | application/json                                       |
-| errors.PutV2ListsListEntriesEntryIdEntriesResponseBody | 404                                                    | application/json                                       |
-| errors.APIError                                        | 4XX, 5XX                                               | \*/\*                                                  |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.EntriesResponseBody     | 400                            | application/json               |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## deleteV2ListsListEntriesEntryId
+## delete
 
 Deletes a single list entry by its `entry_id`.
 
@@ -656,7 +768,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.entries.deleteV2ListsListEntriesEntryId({
+  const result = await attio.entries.delete({
     list: "enterprise_sales",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
@@ -674,7 +786,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { entriesDeleteV2ListsListEntriesEntryId } from "attio-js/funcs/entriesDeleteV2ListsListEntriesEntryId.js";
+import { entriesDelete } from "attio-js/funcs/entriesDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -683,7 +795,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await entriesDeleteV2ListsListEntriesEntryId(attio, {
+  const res = await entriesDelete(attio, {
     list: "enterprise_sales",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
@@ -699,6 +811,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useEntriesDeleteMutation
+} from "attio-js/react-query/entriesDelete.js";
 ```
 
 ### Parameters
@@ -716,95 +845,7 @@ run();
 
 ### Errors
 
-| Error Type                                         | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| errors.DeleteV2ListsListEntriesEntryIdResponseBody | 404                                                | application/json                                   |
-| errors.APIError                                    | 4XX, 5XX                                           | \*/\*                                              |
-
-## getV2ListsListEntriesEntryIdAttributesAttributeValues
-
-Gets all values for a given attribute on a list entry. If the attribute is historic, this endpoint has the ability to return all historic values using the `show_historic` query param.
-
-Required scopes: `list_entry:read`, `list_configuration:read`.
-
-### Example Usage
-
-```typescript
-import { Attio } from "attio-js";
-
-const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const result = await attio.entries.getV2ListsListEntriesEntryIdAttributesAttributeValues({
-    list: "enterprise_sales",
-    entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    limit: 10,
-    offset: 5,
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AttioCore } from "attio-js/core.js";
-import { entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues } from "attio-js/funcs/entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues.js";
-
-// Use `AttioCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const res = await entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues(attio, {
-    list: "enterprise_sales",
-    entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    limit: 10,
-    offset: 5,
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest](../../models/operations/getv2listslistentriesentryidattributesattributevaluesrequest.md)             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody](../../models/operations/getv2listslistentriesentryidattributesattributevaluesresponsebody.md)\>**
-
-### Errors
-
-| Error Type                                                                      | Status Code                                                                     | Content Type                                                                    |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| errors.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody        | 400                                                                             | application/json                                                                |
-| errors.GetV2ListsListEntriesEntryIdAttributesAttributeValuesEntriesResponseBody | 404                                                                             | application/json                                                                |
-| errors.APIError                                                                 | 4XX, 5XX                                                                        | \*/\*                                                                           |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |

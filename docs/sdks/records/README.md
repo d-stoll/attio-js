@@ -7,17 +7,17 @@ Records are individual instances of objects e.g. a specific [person](/docs/stand
 
 ### Available Operations
 
-* [postV2ObjectsObjectRecordsQuery](#postv2objectsobjectrecordsquery) - List records
-* [postV2ObjectsObjectRecords](#postv2objectsobjectrecords) - Create a record
-* [putV2ObjectsObjectRecords](#putv2objectsobjectrecords) - Assert a record
-* [getV2ObjectsObjectRecordsRecordId](#getv2objectsobjectrecordsrecordid) - Get a record
-* [patchV2ObjectsObjectRecordsRecordId](#patchv2objectsobjectrecordsrecordid) - Update a record (append multiselect values)
-* [putV2ObjectsObjectRecordsRecordId](#putv2objectsobjectrecordsrecordid) - Update a record (overwrite multiselect values)
-* [deleteV2ObjectsObjectRecordsRecordId](#deletev2objectsobjectrecordsrecordid) - Delete a record
-* [getV2ObjectsObjectRecordsRecordIdAttributesAttributeValues](#getv2objectsobjectrecordsrecordidattributesattributevalues) - List record attribute values
-* [getV2ObjectsObjectRecordsRecordIdEntries](#getv2objectsobjectrecordsrecordidentries) - List record entries
+* [query](#query) - List records
+* [create](#create) - Create a record
+* [assert](#assert) - Assert a record
+* [get](#get) - Get a record
+* [partialUpdate](#partialupdate) - Update a record (append multiselect values)
+* [update](#update) - Update a record (overwrite multiselect values)
+* [delete](#delete) - Delete a record
+* [listAttributeValues](#listattributevalues) - List record attribute values
+* [listEntries](#listentries) - List record entries
 
-## postV2ObjectsObjectRecordsQuery
+## query
 
 Lists people, company or other records, with the option to filter and sort results.
 
@@ -33,7 +33,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.postV2ObjectsObjectRecordsQuery({
+  const result = await attio.records.query({
     object: "people",
     requestBody: {
       filter: {
@@ -64,7 +64,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsPostV2ObjectsObjectRecordsQuery } from "attio-js/funcs/recordsPostV2ObjectsObjectRecordsQuery.js";
+import { recordsQuery } from "attio-js/funcs/recordsQuery.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -73,7 +73,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsPostV2ObjectsObjectRecordsQuery(attio, {
+  const res = await recordsQuery(attio, {
     object: "people",
     requestBody: {
       filter: {
@@ -102,6 +102,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsQueryMutation
+} from "attio-js/react-query/recordsQuery.js";
 ```
 
 ### Parameters
@@ -125,7 +142,7 @@ run();
 | errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody | 404                                                       | application/json                                          |
 | errors.APIError                                           | 4XX, 5XX                                                  | \*/\*                                                     |
 
-## postV2ObjectsObjectRecords
+## create
 
 Creates a new person, company or other record. This endpoint will throw on conflicts of unique attributes. If you would prefer to update records on conflicts, please use the [Assert record endpoint](/reference/put_v2-objects-object-records) instead.
 
@@ -141,7 +158,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.postV2ObjectsObjectRecords({
+  const result = await attio.records.create({
     object: "people",
     requestBody: {
       data: {
@@ -171,7 +188,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsPostV2ObjectsObjectRecords } from "attio-js/funcs/recordsPostV2ObjectsObjectRecords.js";
+import { recordsCreate } from "attio-js/funcs/recordsCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -180,7 +197,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsPostV2ObjectsObjectRecords(attio, {
+  const res = await recordsCreate(attio, {
     object: "people",
     requestBody: {
       data: {
@@ -208,6 +225,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsCreateMutation
+} from "attio-js/react-query/recordsCreate.js";
 ```
 
 ### Parameters
@@ -225,13 +259,13 @@ run();
 
 ### Errors
 
-| Error Type                                           | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| errors.PostV2ObjectsObjectRecordsResponseBody        | 400                                                  | application/json                                     |
-| errors.PostV2ObjectsObjectRecordsRecordsResponseBody | 404                                                  | application/json                                     |
-| errors.APIError                                      | 4XX, 5XX                                             | \*/\*                                                |
+| Error Type                                    | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| errors.PostV2ObjectsObjectRecordsResponseBody | 400                                           | application/json                              |
+| errors.ResponseBody                           | 404                                           | application/json                              |
+| errors.APIError                               | 4XX, 5XX                                      | \*/\*                                         |
 
-## putV2ObjectsObjectRecords
+## assert
 
 Use this endpoint to create or update people, companies and other records. A matching attribute is used to search for existing records. If a record is found with the same value for the matching attribute, that record will be updated. If no record with the same value for the matching attribute is found, a new record will be created instead. If you would like to avoid matching, please use the [Create record endpoint](/reference/post_v2-objects-object-records).
 
@@ -249,7 +283,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.putV2ObjectsObjectRecords({
+  const result = await attio.records.assert({
     object: "people",
     matchingAttribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
     requestBody: {
@@ -280,7 +314,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsPutV2ObjectsObjectRecords } from "attio-js/funcs/recordsPutV2ObjectsObjectRecords.js";
+import { recordsAssert } from "attio-js/funcs/recordsAssert.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -289,7 +323,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsPutV2ObjectsObjectRecords(attio, {
+  const res = await recordsAssert(attio, {
     object: "people",
     matchingAttribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
     requestBody: {
@@ -318,6 +352,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsAssertMutation
+} from "attio-js/react-query/recordsAssert.js";
 ```
 
 ### Parameters
@@ -335,13 +386,13 @@ run();
 
 ### Errors
 
-| Error Type                                          | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| errors.PutV2ObjectsObjectRecordsResponseBody        | 400                                                 | application/json                                    |
-| errors.PutV2ObjectsObjectRecordsRecordsResponseBody | 404                                                 | application/json                                    |
-| errors.APIError                                     | 4XX, 5XX                                            | \*/\*                                               |
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| errors.PutV2ObjectsObjectRecordsResponseBody | 400                                          | application/json                             |
+| errors.ResponseBody                          | 404                                          | application/json                             |
+| errors.APIError                              | 4XX, 5XX                                     | \*/\*                                        |
 
-## getV2ObjectsObjectRecordsRecordId
+## get
 
 Gets a single person, company or other record by its `record_id`.
 
@@ -357,7 +408,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.getV2ObjectsObjectRecordsRecordId({
+  const result = await attio.records.get({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
@@ -375,7 +426,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsGetV2ObjectsObjectRecordsRecordId } from "attio-js/funcs/recordsGetV2ObjectsObjectRecordsRecordId.js";
+import { recordsGet } from "attio-js/funcs/recordsGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -384,7 +435,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsGetV2ObjectsObjectRecordsRecordId(attio, {
+  const res = await recordsGet(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
@@ -400,6 +451,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useRecordsGet,
+  useRecordsGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchRecordsGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateRecordsGet,
+  invalidateAllRecordsGet,
+} from "attio-js/react-query/recordsGet.js";
 ```
 
 ### Parameters
@@ -417,12 +496,12 @@ run();
 
 ### Errors
 
-| Error Type                                           | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| errors.GetV2ObjectsObjectRecordsRecordIdResponseBody | 404                                                  | application/json                                     |
-| errors.APIError                                      | 4XX, 5XX                                             | \*/\*                                                |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.RecordsResponseBody | 404                        | application/json           |
+| errors.APIError            | 4XX, 5XX                   | \*/\*                      |
 
-## patchV2ObjectsObjectRecordsRecordId
+## partialUpdate
 
 Use this endpoint to update people, companies, and other records by `record_id`. If the update payload includes multiselect attributes, the values supplied will be created and prepended to the list of values that already exist (if any). Use the `PUT` endpoint to overwrite or remove multiselect attribute values.
 
@@ -438,7 +517,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.patchV2ObjectsObjectRecordsRecordId({
+  const result = await attio.records.partialUpdate({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
@@ -469,7 +548,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsPatchV2ObjectsObjectRecordsRecordId } from "attio-js/funcs/recordsPatchV2ObjectsObjectRecordsRecordId.js";
+import { recordsPartialUpdate } from "attio-js/funcs/recordsPartialUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -478,7 +557,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsPatchV2ObjectsObjectRecordsRecordId(attio, {
+  const res = await recordsPartialUpdate(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
@@ -507,6 +586,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsPartialUpdateMutation
+} from "attio-js/react-query/recordsPartialUpdate.js";
 ```
 
 ### Parameters
@@ -524,13 +620,13 @@ run();
 
 ### Errors
 
-| Error Type                                                    | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| errors.PatchV2ObjectsObjectRecordsRecordIdResponseBody        | 400                                                           | application/json                                              |
-| errors.PatchV2ObjectsObjectRecordsRecordIdRecordsResponseBody | 404                                                           | application/json                                              |
-| errors.APIError                                               | 4XX, 5XX                                                      | \*/\*                                                         |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.RecordsResponseResponseBody | 400                                | application/json                   |
+| errors.ResponseBody                | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
-## putV2ObjectsObjectRecordsRecordId
+## update
 
 Use this endpoint to update people, companies, and other records by `record_id`. If the update payload includes multiselect attributes, the values supplied will overwrite/remove the list of values that already exist (if any). Use the `PATCH` endpoint to append multiselect values without removing those that already exist.
 
@@ -546,7 +642,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.putV2ObjectsObjectRecordsRecordId({
+  const result = await attio.records.update({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
@@ -577,7 +673,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsPutV2ObjectsObjectRecordsRecordId } from "attio-js/funcs/recordsPutV2ObjectsObjectRecordsRecordId.js";
+import { recordsUpdate } from "attio-js/funcs/recordsUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -586,7 +682,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsPutV2ObjectsObjectRecordsRecordId(attio, {
+  const res = await recordsUpdate(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
@@ -615,6 +711,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsUpdateMutation
+} from "attio-js/react-query/recordsUpdate.js";
 ```
 
 ### Parameters
@@ -632,13 +745,13 @@ run();
 
 ### Errors
 
-| Error Type                                                  | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| errors.PutV2ObjectsObjectRecordsRecordIdResponseBody        | 400                                                         | application/json                                            |
-| errors.PutV2ObjectsObjectRecordsRecordIdRecordsResponseBody | 404                                                         | application/json                                            |
-| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.RecordsResponseResponseBody | 400                                | application/json                   |
+| errors.ResponseBody                | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
-## deleteV2ObjectsObjectRecordsRecordId
+## delete
 
 Deletes a single record (e.g. a company or person) by ID.
 
@@ -654,7 +767,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.deleteV2ObjectsObjectRecordsRecordId({
+  const result = await attio.records.delete({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
@@ -672,7 +785,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsDeleteV2ObjectsObjectRecordsRecordId } from "attio-js/funcs/recordsDeleteV2ObjectsObjectRecordsRecordId.js";
+import { recordsDelete } from "attio-js/funcs/recordsDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -681,7 +794,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsDeleteV2ObjectsObjectRecordsRecordId(attio, {
+  const res = await recordsDelete(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
@@ -697,6 +810,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useRecordsDeleteMutation
+} from "attio-js/react-query/recordsDelete.js";
 ```
 
 ### Parameters
@@ -714,12 +844,12 @@ run();
 
 ### Errors
 
-| Error Type                                              | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| errors.DeleteV2ObjectsObjectRecordsRecordIdResponseBody | 404                                                     | application/json                                        |
-| errors.APIError                                         | 4XX, 5XX                                                | \*/\*                                                   |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.RecordsResponseBody | 404                        | application/json           |
+| errors.APIError            | 4XX, 5XX                   | \*/\*                      |
 
-## getV2ObjectsObjectRecordsRecordIdAttributesAttributeValues
+## listAttributeValues
 
 Gets all values for a given attribute on a record. If the attribute is historic, this endpoint has the ability to return all historic values using the `show_historic` query param.
 
@@ -735,7 +865,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.getV2ObjectsObjectRecordsRecordIdAttributesAttributeValues({
+  const result = await attio.records.listAttributeValues({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -756,7 +886,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues } from "attio-js/funcs/recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues.js";
+import { recordsListAttributeValues } from "attio-js/funcs/recordsListAttributeValues.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -765,7 +895,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues(attio, {
+  const res = await recordsListAttributeValues(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -784,6 +914,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useRecordsListAttributeValues,
+  useRecordsListAttributeValuesSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchRecordsListAttributeValues,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateRecordsListAttributeValues,
+  invalidateAllRecordsListAttributeValues,
+} from "attio-js/react-query/recordsListAttributeValues.js";
 ```
 
 ### Parameters
@@ -801,13 +959,13 @@ run();
 
 ### Errors
 
-| Error Type                                                                           | Status Code                                                                          | Content Type                                                                         |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| errors.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody        | 400                                                                                  | application/json                                                                     |
-| errors.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRecordsResponseBody | 404                                                                                  | application/json                                                                     |
-| errors.APIError                                                                      | 4XX, 5XX                                                                             | \*/\*                                                                                |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Response400ResponseBody | 400                            | application/json               |
+| errors.ResponseResponseBody    | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## getV2ObjectsObjectRecordsRecordIdEntries
+## listEntries
 
 List all entries, across all lists, for which this record is the parent.
 
@@ -823,7 +981,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.records.getV2ObjectsObjectRecordsRecordIdEntries({
+  const result = await attio.records.listEntries({
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     limit: 10,
@@ -843,7 +1001,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { recordsGetV2ObjectsObjectRecordsRecordIdEntries } from "attio-js/funcs/recordsGetV2ObjectsObjectRecordsRecordIdEntries.js";
+import { recordsListEntries } from "attio-js/funcs/recordsListEntries.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -852,7 +1010,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await recordsGetV2ObjectsObjectRecordsRecordIdEntries(attio, {
+  const res = await recordsListEntries(attio, {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     limit: 10,
@@ -870,6 +1028,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useRecordsListEntries,
+  useRecordsListEntriesSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchRecordsListEntries,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateRecordsListEntries,
+  invalidateAllRecordsListEntries,
+} from "attio-js/react-query/recordsListEntries.js";
 ```
 
 ### Parameters

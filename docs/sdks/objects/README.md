@@ -7,12 +7,12 @@ Objects are the core data models inside of Attio. They contain standard objects,
 
 ### Available Operations
 
-* [getV2Objects](#getv2objects) - List objects
-* [postV2Objects](#postv2objects) - Create an object
-* [getV2ObjectsObject](#getv2objectsobject) - Get an object
-* [patchV2ObjectsObject](#patchv2objectsobject) - Update an object
+* [list](#list) - List objects
+* [create](#create) - Create an object
+* [get](#get) - Get an object
+* [partialUpdate](#partialupdate) - Update an object
 
-## getV2Objects
+## list
 
 Lists all system-defined and user-defined objects in your workspace.
 
@@ -28,7 +28,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);
@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { objectsGetV2Objects } from "attio-js/funcs/objectsGetV2Objects.js";
+import { objectsList } from "attio-js/funcs/objectsList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -52,7 +52,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await objectsGetV2Objects(attio);
+  const res = await objectsList(attio);
 
   if (!res.ok) {
     throw res.error;
@@ -65,6 +65,33 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useObjectsList,
+  useObjectsListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchObjectsList,
+  
+  // Utility to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAllObjectsList,
+} from "attio-js/react-query/objectsList.js";
 ```
 
 ### Parameters
@@ -85,7 +112,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## postV2Objects
+## create
 
 Creates a new custom object in your workspace.
 
@@ -101,7 +128,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.postV2Objects({
+  const result = await attio.objects.create({
     data: {
       apiSlug: "people",
       singularNoun: "Person",
@@ -122,7 +149,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { objectsPostV2Objects } from "attio-js/funcs/objectsPostV2Objects.js";
+import { objectsCreate } from "attio-js/funcs/objectsCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -131,7 +158,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await objectsPostV2Objects(attio, {
+  const res = await objectsCreate(attio, {
     data: {
       apiSlug: "people",
       singularNoun: "Person",
@@ -150,6 +177,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useObjectsCreateMutation
+} from "attio-js/react-query/objectsCreate.js";
 ```
 
 ### Parameters
@@ -172,7 +216,7 @@ run();
 | errors.PostV2ObjectsResponseBody | 409                              | application/json                 |
 | errors.APIError                  | 4XX, 5XX                         | \*/\*                            |
 
-## getV2ObjectsObject
+## get
 
 Gets a single object by its `object_id` or slug.
 
@@ -188,7 +232,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2ObjectsObject({
+  const result = await attio.objects.get({
     object: "people",
   });
 
@@ -205,7 +249,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { objectsGetV2ObjectsObject } from "attio-js/funcs/objectsGetV2ObjectsObject.js";
+import { objectsGet } from "attio-js/funcs/objectsGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -214,7 +258,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await objectsGetV2ObjectsObject(attio, {
+  const res = await objectsGet(attio, {
     object: "people",
   });
 
@@ -229,6 +273,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useObjectsGet,
+  useObjectsGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchObjectsGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateObjectsGet,
+  invalidateAllObjectsGet,
+} from "attio-js/react-query/objectsGet.js";
 ```
 
 ### Parameters
@@ -246,12 +318,12 @@ run();
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| errors.GetV2ObjectsObjectResponseBody | 404                                   | application/json                      |
-| errors.APIError                       | 4XX, 5XX                              | \*/\*                                 |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ResponseBody | 404                 | application/json    |
+| errors.APIError     | 4XX, 5XX            | \*/\*               |
 
-## patchV2ObjectsObject
+## partialUpdate
 
 Updates a single object. The object to be updated is identified by its `object_id`.
 
@@ -267,7 +339,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.patchV2ObjectsObject({
+  const result = await attio.objects.partialUpdate({
     object: "people",
     requestBody: {
       data: {
@@ -291,7 +363,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { objectsPatchV2ObjectsObject } from "attio-js/funcs/objectsPatchV2ObjectsObject.js";
+import { objectsPartialUpdate } from "attio-js/funcs/objectsPartialUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -300,7 +372,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await objectsPatchV2ObjectsObject(attio, {
+  const res = await objectsPartialUpdate(attio, {
     object: "people",
     requestBody: {
       data: {
@@ -324,6 +396,23 @@ async function run() {
 run();
 ```
 
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useObjectsPartialUpdateMutation
+} from "attio-js/react-query/objectsPartialUpdate.js";
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -339,9 +428,9 @@ run();
 
 ### Errors
 
-| Error Type                                             | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| errors.PatchV2ObjectsObjectResponseBody                | 400                                                    | application/json                                       |
-| errors.PatchV2ObjectsObjectObjectsResponseBody         | 404                                                    | application/json                                       |
-| errors.PatchV2ObjectsObjectObjectsResponseResponseBody | 409                                                    | application/json                                       |
-| errors.APIError                                        | 4XX, 5XX                                               | \*/\*                                                  |
+| Error Type                                     | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| errors.PatchV2ObjectsObjectResponseBody        | 400                                            | application/json                               |
+| errors.ResponseBody                            | 404                                            | application/json                               |
+| errors.PatchV2ObjectsObjectObjectsResponseBody | 409                                            | application/json                               |
+| errors.APIError                                | 4XX, 5XX                                       | \*/\*                                          |

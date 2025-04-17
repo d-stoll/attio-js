@@ -7,11 +7,11 @@ Comments are messages on a [thread](/reference/get_v2-threads).
 
 ### Available Operations
 
-* [postV2Comments](#postv2comments) - Create a comment
-* [getV2CommentsCommentId](#getv2commentscommentid) - Get a comment
-* [deleteV2CommentsCommentId](#deletev2commentscommentid) - Delete a comment
+* [create](#create) - Create a comment
+* [get](#get) - Get a comment
+* [delete](#delete) - Delete a comment
 
-## postV2Comments
+## create
 
 Creates a new comment related to an existing thread, record or entry.
 
@@ -31,7 +31,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.comments.postV2Comments({
+  const result = await attio.comments.create({
     data: {
       format: "plaintext",
       content: "If I put the email address of my colleague on Attio in here, e.g. alice@attio.com, they will be notified. Other emails (e.g. person@example.com) will be turned into clickable links.",
@@ -60,7 +60,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { commentsPostV2Comments } from "attio-js/funcs/commentsPostV2Comments.js";
+import { commentsCreate } from "attio-js/funcs/commentsCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -69,7 +69,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await commentsPostV2Comments(attio, {
+  const res = await commentsCreate(attio, {
     data: {
       format: "plaintext",
       content: "If I put the email address of my colleague on Attio in here, e.g. alice@attio.com, they will be notified. Other emails (e.g. person@example.com) will be turned into clickable links.",
@@ -96,6 +96,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useCommentsCreateMutation
+} from "attio-js/react-query/commentsCreate.js";
 ```
 
 ### Parameters
@@ -118,7 +135,7 @@ run();
 | errors.PostV2CommentsResponseBody | 400                               | application/json                  |
 | errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
 
-## getV2CommentsCommentId
+## get
 
 Get a single comment by ID.
 
@@ -138,7 +155,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.comments.getV2CommentsCommentId({
+  const result = await attio.comments.get({
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
@@ -155,7 +172,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { commentsGetV2CommentsCommentId } from "attio-js/funcs/commentsGetV2CommentsCommentId.js";
+import { commentsGet } from "attio-js/funcs/commentsGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -164,7 +181,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await commentsGetV2CommentsCommentId(attio, {
+  const res = await commentsGet(attio, {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
@@ -179,6 +196,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useCommentsGet,
+  useCommentsGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchCommentsGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateCommentsGet,
+  invalidateAllCommentsGet,
+} from "attio-js/react-query/commentsGet.js";
 ```
 
 ### Parameters
@@ -201,7 +246,7 @@ run();
 | errors.GetV2CommentsCommentIdResponseBody | 404                                       | application/json                          |
 | errors.APIError                           | 4XX, 5XX                                  | \*/\*                                     |
 
-## deleteV2CommentsCommentId
+## delete
 
 Deletes a comment by ID. If deleting a comment at the head of a thread, all messages in the thread are also deleted.
 
@@ -217,7 +262,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.comments.deleteV2CommentsCommentId({
+  const result = await attio.comments.delete({
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
@@ -234,7 +279,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { commentsDeleteV2CommentsCommentId } from "attio-js/funcs/commentsDeleteV2CommentsCommentId.js";
+import { commentsDelete } from "attio-js/funcs/commentsDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -243,7 +288,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await commentsDeleteV2CommentsCommentId(attio, {
+  const res = await commentsDelete(attio, {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
@@ -258,6 +303,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useCommentsDeleteMutation
+} from "attio-js/react-query/commentsDelete.js";
 ```
 
 ### Parameters

@@ -7,13 +7,13 @@ Webhooks allow you to listen for changes to data in Attio, for example when a re
 
 ### Available Operations
 
-* [getV2Webhooks](#getv2webhooks) - List webhooks
-* [postV2Webhooks](#postv2webhooks) - Create a webhook
-* [getV2WebhooksWebhookId](#getv2webhookswebhookid) - Get a webhook
-* [patchV2WebhooksWebhookId](#patchv2webhookswebhookid) - Update a webhook
-* [deleteV2WebhooksWebhookId](#deletev2webhookswebhookid) - Delete a webhook
+* [list](#list) - List webhooks
+* [create](#create) - Create a webhook
+* [get](#get) - Get a webhook
+* [partialUpdate](#partialupdate) - Update a webhook
+* [delete](#delete) - Delete a webhook
 
-## getV2Webhooks
+## list
 
 Get all of the webhooks in your workspace.
 
@@ -29,7 +29,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.webhooks.getV2Webhooks({
+  const result = await attio.webhooks.list({
     limit: 10,
     offset: 5,
   });
@@ -47,7 +47,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { webhooksGetV2Webhooks } from "attio-js/funcs/webhooksGetV2Webhooks.js";
+import { webhooksList } from "attio-js/funcs/webhooksList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -56,7 +56,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await webhooksGetV2Webhooks(attio, {
+  const res = await webhooksList(attio, {
     limit: 10,
     offset: 5,
   });
@@ -72,6 +72,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useWebhooksList,
+  useWebhooksListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchWebhooksList,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateWebhooksList,
+  invalidateAllWebhooksList,
+} from "attio-js/react-query/webhooksList.js";
 ```
 
 ### Parameters
@@ -93,7 +121,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## postV2Webhooks
+## create
 
 Create a webhook and associated subscriptions.
 
@@ -109,12 +137,10 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.webhooks.postV2Webhooks({
+  const result = await attio.webhooks.create({
     data: {
       targetUrl: "https://example.com/webhook",
-      subscriptions: [
-
-      ],
+      subscriptions: [],
     },
   });
 
@@ -131,7 +157,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { webhooksPostV2Webhooks } from "attio-js/funcs/webhooksPostV2Webhooks.js";
+import { webhooksCreate } from "attio-js/funcs/webhooksCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -140,12 +166,10 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await webhooksPostV2Webhooks(attio, {
+  const res = await webhooksCreate(attio, {
     data: {
       targetUrl: "https://example.com/webhook",
-      subscriptions: [
-  
-      ],
+      subscriptions: [],
     },
   });
 
@@ -160,6 +184,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useWebhooksCreateMutation
+} from "attio-js/react-query/webhooksCreate.js";
 ```
 
 ### Parameters
@@ -182,7 +223,7 @@ run();
 | errors.PostV2WebhooksResponseBody | 400                               | application/json                  |
 | errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
 
-## getV2WebhooksWebhookId
+## get
 
 Get a single webhook.
 
@@ -198,7 +239,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.webhooks.getV2WebhooksWebhookId({
+  const result = await attio.webhooks.get({
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
@@ -215,7 +256,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { webhooksGetV2WebhooksWebhookId } from "attio-js/funcs/webhooksGetV2WebhooksWebhookId.js";
+import { webhooksGet } from "attio-js/funcs/webhooksGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -224,7 +265,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await webhooksGetV2WebhooksWebhookId(attio, {
+  const res = await webhooksGet(attio, {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
@@ -239,6 +280,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useWebhooksGet,
+  useWebhooksGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchWebhooksGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateWebhooksGet,
+  invalidateAllWebhooksGet,
+} from "attio-js/react-query/webhooksGet.js";
 ```
 
 ### Parameters
@@ -256,12 +325,12 @@ run();
 
 ### Errors
 
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| errors.GetV2WebhooksWebhookIdResponseBody | 404                                       | application/json                          |
-| errors.APIError                           | 4XX, 5XX                                  | \*/\*                                     |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.WebhooksResponseBody | 404                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchV2WebhooksWebhookId
+## partialUpdate
 
 Update a webhook and associated subscriptions.
 
@@ -277,7 +346,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.webhooks.patchV2WebhooksWebhookId({
+  const result = await attio.webhooks.partialUpdate({
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
     requestBody: {
       data: {
@@ -325,7 +394,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { webhooksPatchV2WebhooksWebhookId } from "attio-js/funcs/webhooksPatchV2WebhooksWebhookId.js";
+import { webhooksPartialUpdate } from "attio-js/funcs/webhooksPartialUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -334,7 +403,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await webhooksPatchV2WebhooksWebhookId(attio, {
+  const res = await webhooksPartialUpdate(attio, {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
     requestBody: {
       data: {
@@ -380,6 +449,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useWebhooksPartialUpdateMutation
+} from "attio-js/react-query/webhooksPartialUpdate.js";
 ```
 
 ### Parameters
@@ -397,12 +483,12 @@ run();
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.PatchV2WebhooksWebhookIdResponseBody | 404                                         | application/json                            |
-| errors.APIError                             | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.WebhooksResponseBody | 404                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## deleteV2WebhooksWebhookId
+## delete
 
 Delete a webhook by ID.
 
@@ -418,7 +504,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.webhooks.deleteV2WebhooksWebhookId({
+  const result = await attio.webhooks.delete({
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
@@ -435,7 +521,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { webhooksDeleteV2WebhooksWebhookId } from "attio-js/funcs/webhooksDeleteV2WebhooksWebhookId.js";
+import { webhooksDelete } from "attio-js/funcs/webhooksDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -444,7 +530,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await webhooksDeleteV2WebhooksWebhookId(attio, {
+  const res = await webhooksDelete(attio, {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
@@ -459,6 +545,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useWebhooksDeleteMutation
+} from "attio-js/react-query/webhooksDelete.js";
 ```
 
 ### Parameters

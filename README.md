@@ -14,13 +14,14 @@ Unfortunately, an official JavaScript or TypeScript SDK has not been released ye
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [attio-js](#attio-js)
-  * [Installation](#sdk-installation)
+* [Javascript & Typescript SDK for Attio](#javascript-typescript-sdk-for-attio)
+  * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
-  * [Example Usage](#sdk-example-usage)
+  * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
+  * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -41,24 +42,32 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 
 ```bash
 npm add attio-js
+# Install optional peer dependencies if you plan to use React hooks
+npm add @tanstack/react-query react react-dom
 ```
 
 ### PNPM
 
 ```bash
 pnpm add attio-js
+# Install optional peer dependencies if you plan to use React hooks
+pnpm add @tanstack/react-query react react-dom
 ```
 
 ### Bun
 
 ```bash
 bun add attio-js
+# Install optional peer dependencies if you plan to use React hooks
+bun add @tanstack/react-query react react-dom
 ```
 
 ### Yarn
 
 ```bash
 yarn add attio-js zod
+# Install optional peer dependencies if you plan to use React hooks
+yarn add @tanstack/react-query react react-dom
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -66,87 +75,6 @@ yarn add attio-js zod
 
 > [!NOTE]
 > This package is published with CommonJS and ES Modules (ESM) support.
-
-
-### Model Context Protocol (MCP) Server
-
-This SDK is also an installable MCP server where the various SDK methods are
-exposed as tools that can be invoked by AI applications.
-
-> Node.js v20 or greater is required to run the MCP server from npm.
-
-<details>
-<summary>Claude installation steps</summary>
-
-Add the following server definition to your `claude_desktop_config.json` file:
-
-```json
-{
-  "mcpServers": {
-    "Attio": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "attio-js",
-        "--",
-        "mcp", "start",
-        "--oauth2", "..."
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-<summary>Cursor installation steps</summary>
-
-Create a `.cursor/mcp.json` file in your project root with the following content:
-
-```json
-{
-  "mcpServers": {
-    "Attio": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "attio-js",
-        "--",
-        "mcp", "start",
-        "--oauth2", "..."
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-You can also run MCP servers as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases:
-
-```bash
-curl -L -o mcp-server \
-    https://github.com/d-stoll/attio-js/releases/download/v0.0.1/mcp-server-bun-darwin-arm64 && \
-chmod +x mcp-server
-```
-
-```json
-{
-  "mcpServers": {
-    "Todos": {
-      "command": "./DOWNLOAD/PATH/mcp-server",
-      "args": [
-        "start"
-      ]
-    }
-  }
-}
-```
-
-For a full list of server arguments, run:
-
-```sh
-npx -y --package attio-js -- mcp start --help
-```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -168,7 +96,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);
@@ -199,7 +127,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);
@@ -219,96 +147,105 @@ run();
 
 ### [attributes](docs/sdks/attributes/README.md)
 
-* [getV2TargetIdentifierAttributes](docs/sdks/attributes/README.md#getv2targetidentifierattributes) - List attributes
-* [postV2TargetIdentifierAttributes](docs/sdks/attributes/README.md#postv2targetidentifierattributes) - Create an attribute
-* [getV2TargetIdentifierAttributesAttribute](docs/sdks/attributes/README.md#getv2targetidentifierattributesattribute) - Get an attribute
-* [patchV2TargetIdentifierAttributesAttribute](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattribute) - Update an attribute
-* [getV2TargetIdentifierAttributesAttributeOptions](docs/sdks/attributes/README.md#getv2targetidentifierattributesattributeoptions) - List select options
-* [postV2TargetIdentifierAttributesAttributeOptions](docs/sdks/attributes/README.md#postv2targetidentifierattributesattributeoptions) - Create a select option
-* [patchV2TargetIdentifierAttributesAttributeOptionsOption](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattributeoptionsoption) - Update a select option
-* [getV2TargetIdentifierAttributesAttributeStatuses](docs/sdks/attributes/README.md#getv2targetidentifierattributesattributestatuses) - List statuses
-* [postV2TargetIdentifierAttributesAttributeStatuses](docs/sdks/attributes/README.md#postv2targetidentifierattributesattributestatuses) - Create a status
-* [patchV2TargetIdentifierAttributesAttributeStatusesStatus](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattributestatusesstatus) - Update a status
+* [list](docs/sdks/attributes/README.md#list) - List attributes
+* [create](docs/sdks/attributes/README.md#create) - Create an attribute
+* [get](docs/sdks/attributes/README.md#get) - Get an attribute
+* [update](docs/sdks/attributes/README.md#update) - Update an attribute
+* [listSelectOptions](docs/sdks/attributes/README.md#listselectoptions) - List select options
+* [createSelectOption](docs/sdks/attributes/README.md#createselectoption) - Create a select option
+* [updateOption](docs/sdks/attributes/README.md#updateoption) - Update a select option
+* [listStatuses](docs/sdks/attributes/README.md#liststatuses) - List statuses
+
+#### [attributes.statuses](docs/sdks/statuses/README.md)
+
+* [create](docs/sdks/statuses/README.md#create) - Create a status
+* [update](docs/sdks/statuses/README.md#update) - Update a status
 
 ### [comments](docs/sdks/comments/README.md)
 
-* [postV2Comments](docs/sdks/comments/README.md#postv2comments) - Create a comment
-* [getV2CommentsCommentId](docs/sdks/comments/README.md#getv2commentscommentid) - Get a comment
-* [deleteV2CommentsCommentId](docs/sdks/comments/README.md#deletev2commentscommentid) - Delete a comment
+* [create](docs/sdks/comments/README.md#create) - Create a comment
+* [get](docs/sdks/comments/README.md#get) - Get a comment
+* [delete](docs/sdks/comments/README.md#delete) - Delete a comment
 
 ### [entries](docs/sdks/entries/README.md)
 
-* [postV2ListsListEntriesQuery](docs/sdks/entries/README.md#postv2listslistentriesquery) - List entries
-* [postV2ListsListEntries](docs/sdks/entries/README.md#postv2listslistentries) - Create an entry (add record to list)
-* [putV2ListsListEntries](docs/sdks/entries/README.md#putv2listslistentries) - Assert a list entry by parent
-* [getV2ListsListEntriesEntryId](docs/sdks/entries/README.md#getv2listslistentriesentryid) - Get a list entry
-* [patchV2ListsListEntriesEntryId](docs/sdks/entries/README.md#patchv2listslistentriesentryid) - Update a list entry (append multiselect values)
-* [putV2ListsListEntriesEntryId](docs/sdks/entries/README.md#putv2listslistentriesentryid) - Update a list entry (overwrite multiselect values)
-* [deleteV2ListsListEntriesEntryId](docs/sdks/entries/README.md#deletev2listslistentriesentryid) - Delete a list entry
-* [getV2ListsListEntriesEntryIdAttributesAttributeValues](docs/sdks/entries/README.md#getv2listslistentriesentryidattributesattributevalues) - List attribute values for a list entry
+* [query](docs/sdks/entries/README.md#query) - List entries
+* [create](docs/sdks/entries/README.md#create) - Create an entry (add record to list)
+* [assert](docs/sdks/entries/README.md#assert) - Assert a list entry by parent
+* [getEntry](docs/sdks/entries/README.md#getentry) - Get a list entry
+* [update](docs/sdks/entries/README.md#update) - Update a list entry (append multiselect values)
+* [overwrite](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
+* [delete](docs/sdks/entries/README.md#delete) - Delete a list entry
+
+#### [entries.attributes](docs/sdks/attioentriesattributes/README.md)
+
+
+#### [entries.attributes.values](docs/sdks/values/README.md)
+
+* [list](docs/sdks/values/README.md#list) - List attribute values for a list entry
 
 ### [lists](docs/sdks/lists/README.md)
 
-* [getV2Lists](docs/sdks/lists/README.md#getv2lists) - List all lists
-* [postV2Lists](docs/sdks/lists/README.md#postv2lists) - Create a list
-* [getV2ListsList](docs/sdks/lists/README.md#getv2listslist) - Get a list
-* [patchV2ListsList](docs/sdks/lists/README.md#patchv2listslist) - Update a list
+* [listAll](docs/sdks/lists/README.md#listall) - List all lists
+* [create](docs/sdks/lists/README.md#create) - Create a list
+* [get](docs/sdks/lists/README.md#get) - Get a list
+* [update](docs/sdks/lists/README.md#update) - Update a list
 
 ### [meta](docs/sdks/meta/README.md)
 
-* [getV2Self](docs/sdks/meta/README.md#getv2self) - Identify
+* [identify](docs/sdks/meta/README.md#identify) - Identify
 
 ### [notes](docs/sdks/notes/README.md)
 
-* [getV2Notes](docs/sdks/notes/README.md#getv2notes) - List notes
-* [postV2Notes](docs/sdks/notes/README.md#postv2notes) - Create a note
-* [getV2NotesNoteId](docs/sdks/notes/README.md#getv2notesnoteid) - Get a note
-* [deleteV2NotesNoteId](docs/sdks/notes/README.md#deletev2notesnoteid) - Delete a note
+* [list](docs/sdks/notes/README.md#list) - List notes
+* [create](docs/sdks/notes/README.md#create) - Create a note
+* [get](docs/sdks/notes/README.md#get) - Get a note
+* [delete](docs/sdks/notes/README.md#delete) - Delete a note
 
 ### [objects](docs/sdks/objects/README.md)
 
-* [getV2Objects](docs/sdks/objects/README.md#getv2objects) - List objects
-* [postV2Objects](docs/sdks/objects/README.md#postv2objects) - Create an object
-* [getV2ObjectsObject](docs/sdks/objects/README.md#getv2objectsobject) - Get an object
-* [patchV2ObjectsObject](docs/sdks/objects/README.md#patchv2objectsobject) - Update an object
+* [list](docs/sdks/objects/README.md#list) - List objects
+* [create](docs/sdks/objects/README.md#create) - Create an object
+* [get](docs/sdks/objects/README.md#get) - Get an object
+* [partialUpdate](docs/sdks/objects/README.md#partialupdate) - Update an object
 
 ### [records](docs/sdks/records/README.md)
 
-* [postV2ObjectsObjectRecordsQuery](docs/sdks/records/README.md#postv2objectsobjectrecordsquery) - List records
-* [postV2ObjectsObjectRecords](docs/sdks/records/README.md#postv2objectsobjectrecords) - Create a record
-* [putV2ObjectsObjectRecords](docs/sdks/records/README.md#putv2objectsobjectrecords) - Assert a record
-* [getV2ObjectsObjectRecordsRecordId](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordid) - Get a record
-* [patchV2ObjectsObjectRecordsRecordId](docs/sdks/records/README.md#patchv2objectsobjectrecordsrecordid) - Update a record (append multiselect values)
-* [putV2ObjectsObjectRecordsRecordId](docs/sdks/records/README.md#putv2objectsobjectrecordsrecordid) - Update a record (overwrite multiselect values)
-* [deleteV2ObjectsObjectRecordsRecordId](docs/sdks/records/README.md#deletev2objectsobjectrecordsrecordid) - Delete a record
-* [getV2ObjectsObjectRecordsRecordIdAttributesAttributeValues](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordidattributesattributevalues) - List record attribute values
-* [getV2ObjectsObjectRecordsRecordIdEntries](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordidentries) - List record entries
+* [query](docs/sdks/records/README.md#query) - List records
+* [create](docs/sdks/records/README.md#create) - Create a record
+* [assert](docs/sdks/records/README.md#assert) - Assert a record
+* [get](docs/sdks/records/README.md#get) - Get a record
+* [partialUpdate](docs/sdks/records/README.md#partialupdate) - Update a record (append multiselect values)
+* [update](docs/sdks/records/README.md#update) - Update a record (overwrite multiselect values)
+* [delete](docs/sdks/records/README.md#delete) - Delete a record
+* [listAttributeValues](docs/sdks/records/README.md#listattributevalues) - List record attribute values
+* [listEntries](docs/sdks/records/README.md#listentries) - List record entries
 
 ### [tasks](docs/sdks/tasks/README.md)
 
-* [getV2Tasks](docs/sdks/tasks/README.md#getv2tasks) - List tasks
-* [postV2Tasks](docs/sdks/tasks/README.md#postv2tasks) - Create a task
-* [getV2TasksTaskId](docs/sdks/tasks/README.md#getv2taskstaskid) - Get a task
-* [patchV2TasksTaskId](docs/sdks/tasks/README.md#patchv2taskstaskid) - Update a task
-* [deleteV2TasksTaskId](docs/sdks/tasks/README.md#deletev2taskstaskid) - Delete a task
+* [list](docs/sdks/tasks/README.md#list) - List tasks
+* [create](docs/sdks/tasks/README.md#create) - Create a task
+* [get](docs/sdks/tasks/README.md#get) - Get a task
+* [update](docs/sdks/tasks/README.md#update) - Update a task
+* [delete](docs/sdks/tasks/README.md#delete) - Delete a task
 
 ### [threads](docs/sdks/threads/README.md)
 
-* [getV2Threads](docs/sdks/threads/README.md#getv2threads) - List threads
-* [getV2ThreadsThreadId](docs/sdks/threads/README.md#getv2threadsthreadid) - Get a thread
+* [list](docs/sdks/threads/README.md#list) - List threads
+* [get](docs/sdks/threads/README.md#get) - Get a thread
 
 ### [webhooks](docs/sdks/webhooks/README.md)
 
-* [getV2Webhooks](docs/sdks/webhooks/README.md#getv2webhooks) - List webhooks
-* [postV2Webhooks](docs/sdks/webhooks/README.md#postv2webhooks) - Create a webhook
-* [getV2WebhooksWebhookId](docs/sdks/webhooks/README.md#getv2webhookswebhookid) - Get a webhook
-* [patchV2WebhooksWebhookId](docs/sdks/webhooks/README.md#patchv2webhookswebhookid) - Update a webhook
-* [deleteV2WebhooksWebhookId](docs/sdks/webhooks/README.md#deletev2webhookswebhookid) - Delete a webhook
+* [list](docs/sdks/webhooks/README.md#list) - List webhooks
+* [create](docs/sdks/webhooks/README.md#create) - Create a webhook
+* [get](docs/sdks/webhooks/README.md#get) - Get a webhook
+* [partialUpdate](docs/sdks/webhooks/README.md#partialupdate) - Update a webhook
+* [delete](docs/sdks/webhooks/README.md#delete) - Delete a webhook
 
 ### [workspaceMembers](docs/sdks/workspacemembers/README.md)
 
-* [getV2WorkspaceMembers](docs/sdks/workspacemembers/README.md#getv2workspacemembers) - List workspace members
-* [getV2WorkspaceMembersWorkspaceMemberId](docs/sdks/workspacemembers/README.md#getv2workspacemembersworkspacememberid) - Get a workspace member
+* [list](docs/sdks/workspacemembers/README.md#list) - List workspace members
+* [get](docs/sdks/workspacemembers/README.md#get) - Get a workspace member
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -328,66 +265,149 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`attributesGetV2TargetIdentifierAttributes`](docs/sdks/attributes/README.md#getv2targetidentifierattributes) - List attributes
-- [`attributesGetV2TargetIdentifierAttributesAttribute`](docs/sdks/attributes/README.md#getv2targetidentifierattributesattribute) - Get an attribute
-- [`attributesGetV2TargetIdentifierAttributesAttributeOptions`](docs/sdks/attributes/README.md#getv2targetidentifierattributesattributeoptions) - List select options
-- [`attributesGetV2TargetIdentifierAttributesAttributeStatuses`](docs/sdks/attributes/README.md#getv2targetidentifierattributesattributestatuses) - List statuses
-- [`attributesPatchV2TargetIdentifierAttributesAttribute`](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattribute) - Update an attribute
-- [`attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption`](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattributeoptionsoption) - Update a select option
-- [`attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus`](docs/sdks/attributes/README.md#patchv2targetidentifierattributesattributestatusesstatus) - Update a status
-- [`attributesPostV2TargetIdentifierAttributes`](docs/sdks/attributes/README.md#postv2targetidentifierattributes) - Create an attribute
-- [`attributesPostV2TargetIdentifierAttributesAttributeOptions`](docs/sdks/attributes/README.md#postv2targetidentifierattributesattributeoptions) - Create a select option
-- [`attributesPostV2TargetIdentifierAttributesAttributeStatuses`](docs/sdks/attributes/README.md#postv2targetidentifierattributesattributestatuses) - Create a status
-- [`commentsDeleteV2CommentsCommentId`](docs/sdks/comments/README.md#deletev2commentscommentid) - Delete a comment
-- [`commentsGetV2CommentsCommentId`](docs/sdks/comments/README.md#getv2commentscommentid) - Get a comment
-- [`commentsPostV2Comments`](docs/sdks/comments/README.md#postv2comments) - Create a comment
-- [`entriesDeleteV2ListsListEntriesEntryId`](docs/sdks/entries/README.md#deletev2listslistentriesentryid) - Delete a list entry
-- [`entriesGetV2ListsListEntriesEntryId`](docs/sdks/entries/README.md#getv2listslistentriesentryid) - Get a list entry
-- [`entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues`](docs/sdks/entries/README.md#getv2listslistentriesentryidattributesattributevalues) - List attribute values for a list entry
-- [`entriesPatchV2ListsListEntriesEntryId`](docs/sdks/entries/README.md#patchv2listslistentriesentryid) - Update a list entry (append multiselect values)
-- [`entriesPostV2ListsListEntries`](docs/sdks/entries/README.md#postv2listslistentries) - Create an entry (add record to list)
-- [`entriesPostV2ListsListEntriesQuery`](docs/sdks/entries/README.md#postv2listslistentriesquery) - List entries
-- [`entriesPutV2ListsListEntries`](docs/sdks/entries/README.md#putv2listslistentries) - Assert a list entry by parent
-- [`entriesPutV2ListsListEntriesEntryId`](docs/sdks/entries/README.md#putv2listslistentriesentryid) - Update a list entry (overwrite multiselect values)
-- [`listsGetV2Lists`](docs/sdks/lists/README.md#getv2lists) - List all lists
-- [`listsGetV2ListsList`](docs/sdks/lists/README.md#getv2listslist) - Get a list
-- [`listsPatchV2ListsList`](docs/sdks/lists/README.md#patchv2listslist) - Update a list
-- [`listsPostV2Lists`](docs/sdks/lists/README.md#postv2lists) - Create a list
-- [`metaGetV2Self`](docs/sdks/meta/README.md#getv2self) - Identify
-- [`notesDeleteV2NotesNoteId`](docs/sdks/notes/README.md#deletev2notesnoteid) - Delete a note
-- [`notesGetV2Notes`](docs/sdks/notes/README.md#getv2notes) - List notes
-- [`notesGetV2NotesNoteId`](docs/sdks/notes/README.md#getv2notesnoteid) - Get a note
-- [`notesPostV2Notes`](docs/sdks/notes/README.md#postv2notes) - Create a note
-- [`objectsGetV2Objects`](docs/sdks/objects/README.md#getv2objects) - List objects
-- [`objectsGetV2ObjectsObject`](docs/sdks/objects/README.md#getv2objectsobject) - Get an object
-- [`objectsPatchV2ObjectsObject`](docs/sdks/objects/README.md#patchv2objectsobject) - Update an object
-- [`objectsPostV2Objects`](docs/sdks/objects/README.md#postv2objects) - Create an object
-- [`recordsDeleteV2ObjectsObjectRecordsRecordId`](docs/sdks/records/README.md#deletev2objectsobjectrecordsrecordid) - Delete a record
-- [`recordsGetV2ObjectsObjectRecordsRecordId`](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordid) - Get a record
-- [`recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues`](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordidattributesattributevalues) - List record attribute values
-- [`recordsGetV2ObjectsObjectRecordsRecordIdEntries`](docs/sdks/records/README.md#getv2objectsobjectrecordsrecordidentries) - List record entries
-- [`recordsPatchV2ObjectsObjectRecordsRecordId`](docs/sdks/records/README.md#patchv2objectsobjectrecordsrecordid) - Update a record (append multiselect values)
-- [`recordsPostV2ObjectsObjectRecords`](docs/sdks/records/README.md#postv2objectsobjectrecords) - Create a record
-- [`recordsPostV2ObjectsObjectRecordsQuery`](docs/sdks/records/README.md#postv2objectsobjectrecordsquery) - List records
-- [`recordsPutV2ObjectsObjectRecords`](docs/sdks/records/README.md#putv2objectsobjectrecords) - Assert a record
-- [`recordsPutV2ObjectsObjectRecordsRecordId`](docs/sdks/records/README.md#putv2objectsobjectrecordsrecordid) - Update a record (overwrite multiselect values)
-- [`tasksDeleteV2TasksTaskId`](docs/sdks/tasks/README.md#deletev2taskstaskid) - Delete a task
-- [`tasksGetV2Tasks`](docs/sdks/tasks/README.md#getv2tasks) - List tasks
-- [`tasksGetV2TasksTaskId`](docs/sdks/tasks/README.md#getv2taskstaskid) - Get a task
-- [`tasksPatchV2TasksTaskId`](docs/sdks/tasks/README.md#patchv2taskstaskid) - Update a task
-- [`tasksPostV2Tasks`](docs/sdks/tasks/README.md#postv2tasks) - Create a task
-- [`threadsGetV2Threads`](docs/sdks/threads/README.md#getv2threads) - List threads
-- [`threadsGetV2ThreadsThreadId`](docs/sdks/threads/README.md#getv2threadsthreadid) - Get a thread
-- [`webhooksDeleteV2WebhooksWebhookId`](docs/sdks/webhooks/README.md#deletev2webhookswebhookid) - Delete a webhook
-- [`webhooksGetV2Webhooks`](docs/sdks/webhooks/README.md#getv2webhooks) - List webhooks
-- [`webhooksGetV2WebhooksWebhookId`](docs/sdks/webhooks/README.md#getv2webhookswebhookid) - Get a webhook
-- [`webhooksPatchV2WebhooksWebhookId`](docs/sdks/webhooks/README.md#patchv2webhookswebhookid) - Update a webhook
-- [`webhooksPostV2Webhooks`](docs/sdks/webhooks/README.md#postv2webhooks) - Create a webhook
-- [`workspaceMembersGetV2WorkspaceMembers`](docs/sdks/workspacemembers/README.md#getv2workspacemembers) - List workspace members
-- [`workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId`](docs/sdks/workspacemembers/README.md#getv2workspacemembersworkspacememberid) - Get a workspace member
+- [`attributesCreate`](docs/sdks/attributes/README.md#create) - Create an attribute
+- [`attributesCreateSelectOption`](docs/sdks/attributes/README.md#createselectoption) - Create a select option
+- [`attributesGet`](docs/sdks/attributes/README.md#get) - Get an attribute
+- [`attributesList`](docs/sdks/attributes/README.md#list) - List attributes
+- [`attributesListSelectOptions`](docs/sdks/attributes/README.md#listselectoptions) - List select options
+- [`attributesListStatuses`](docs/sdks/attributes/README.md#liststatuses) - List statuses
+- [`attributesStatusesCreate`](docs/sdks/statuses/README.md#create) - Create a status
+- [`attributesStatusesUpdate`](docs/sdks/statuses/README.md#update) - Update a status
+- [`attributesUpdate`](docs/sdks/attributes/README.md#update) - Update an attribute
+- [`attributesUpdateOption`](docs/sdks/attributes/README.md#updateoption) - Update a select option
+- [`commentsCreate`](docs/sdks/comments/README.md#create) - Create a comment
+- [`commentsDelete`](docs/sdks/comments/README.md#delete) - Delete a comment
+- [`commentsGet`](docs/sdks/comments/README.md#get) - Get a comment
+- [`entriesAssert`](docs/sdks/entries/README.md#assert) - Assert a list entry by parent
+- [`entriesAttributesValuesList`](docs/sdks/values/README.md#list) - List attribute values for a list entry
+- [`entriesCreate`](docs/sdks/entries/README.md#create) - Create an entry (add record to list)
+- [`entriesDelete`](docs/sdks/entries/README.md#delete) - Delete a list entry
+- [`entriesGetEntry`](docs/sdks/entries/README.md#getentry) - Get a list entry
+- [`entriesOverwrite`](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
+- [`entriesQuery`](docs/sdks/entries/README.md#query) - List entries
+- [`entriesUpdate`](docs/sdks/entries/README.md#update) - Update a list entry (append multiselect values)
+- [`listsCreate`](docs/sdks/lists/README.md#create) - Create a list
+- [`listsGet`](docs/sdks/lists/README.md#get) - Get a list
+- [`listsListAll`](docs/sdks/lists/README.md#listall) - List all lists
+- [`listsUpdate`](docs/sdks/lists/README.md#update) - Update a list
+- [`metaIdentify`](docs/sdks/meta/README.md#identify) - Identify
+- [`notesCreate`](docs/sdks/notes/README.md#create) - Create a note
+- [`notesDelete`](docs/sdks/notes/README.md#delete) - Delete a note
+- [`notesGet`](docs/sdks/notes/README.md#get) - Get a note
+- [`notesList`](docs/sdks/notes/README.md#list) - List notes
+- [`objectsCreate`](docs/sdks/objects/README.md#create) - Create an object
+- [`objectsGet`](docs/sdks/objects/README.md#get) - Get an object
+- [`objectsList`](docs/sdks/objects/README.md#list) - List objects
+- [`objectsPartialUpdate`](docs/sdks/objects/README.md#partialupdate) - Update an object
+- [`recordsAssert`](docs/sdks/records/README.md#assert) - Assert a record
+- [`recordsCreate`](docs/sdks/records/README.md#create) - Create a record
+- [`recordsDelete`](docs/sdks/records/README.md#delete) - Delete a record
+- [`recordsGet`](docs/sdks/records/README.md#get) - Get a record
+- [`recordsListAttributeValues`](docs/sdks/records/README.md#listattributevalues) - List record attribute values
+- [`recordsListEntries`](docs/sdks/records/README.md#listentries) - List record entries
+- [`recordsPartialUpdate`](docs/sdks/records/README.md#partialupdate) - Update a record (append multiselect values)
+- [`recordsQuery`](docs/sdks/records/README.md#query) - List records
+- [`recordsUpdate`](docs/sdks/records/README.md#update) - Update a record (overwrite multiselect values)
+- [`tasksCreate`](docs/sdks/tasks/README.md#create) - Create a task
+- [`tasksDelete`](docs/sdks/tasks/README.md#delete) - Delete a task
+- [`tasksGet`](docs/sdks/tasks/README.md#get) - Get a task
+- [`tasksList`](docs/sdks/tasks/README.md#list) - List tasks
+- [`tasksUpdate`](docs/sdks/tasks/README.md#update) - Update a task
+- [`threadsGet`](docs/sdks/threads/README.md#get) - Get a thread
+- [`threadsList`](docs/sdks/threads/README.md#list) - List threads
+- [`webhooksCreate`](docs/sdks/webhooks/README.md#create) - Create a webhook
+- [`webhooksDelete`](docs/sdks/webhooks/README.md#delete) - Delete a webhook
+- [`webhooksGet`](docs/sdks/webhooks/README.md#get) - Get a webhook
+- [`webhooksList`](docs/sdks/webhooks/README.md#list) - List webhooks
+- [`webhooksPartialUpdate`](docs/sdks/webhooks/README.md#partialupdate) - Update a webhook
+- [`workspaceMembersGet`](docs/sdks/workspacemembers/README.md#get) - Get a workspace member
+- [`workspaceMembersList`](docs/sdks/workspacemembers/README.md#list) - List workspace members
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start React hooks with TanStack Query [react-query] -->
+## React hooks with TanStack Query
+
+React hooks built on [TanStack Query][tanstack-query] are included in this SDK.
+These hooks and the utility functions provided alongside them can be used to
+build rich applications that pull data from the API using one of the most
+popular asynchronous state management library.
+
+[tanstack-query]: https://tanstack.com/query/v5/docs/framework/react/overview
+
+To learn about this feature and how to get started, check
+[REACT_QUERY.md](./REACT_QUERY.md).
+
+> [!WARNING]
+>
+> This feature is currently in **preview** and is subject to breaking changes
+> within the current major version of the SDK as we gather user feedback on it.
+
+<details>
+
+<summary>Available React hooks</summary>
+
+- [`useAttributesCreateMutation`](docs/sdks/attributes/README.md#create) - Create an attribute
+- [`useAttributesCreateSelectOptionMutation`](docs/sdks/attributes/README.md#createselectoption) - Create a select option
+- [`useAttributesGet`](docs/sdks/attributes/README.md#get) - Get an attribute
+- [`useAttributesList`](docs/sdks/attributes/README.md#list) - List attributes
+- [`useAttributesListSelectOptions`](docs/sdks/attributes/README.md#listselectoptions) - List select options
+- [`useAttributesListStatuses`](docs/sdks/attributes/README.md#liststatuses) - List statuses
+- [`useAttributesStatusesCreateMutation`](docs/sdks/statuses/README.md#create) - Create a status
+- [`useAttributesStatusesUpdateMutation`](docs/sdks/statuses/README.md#update) - Update a status
+- [`useAttributesUpdateMutation`](docs/sdks/attributes/README.md#update) - Update an attribute
+- [`useAttributesUpdateOptionMutation`](docs/sdks/attributes/README.md#updateoption) - Update a select option
+- [`useCommentsCreateMutation`](docs/sdks/comments/README.md#create) - Create a comment
+- [`useCommentsDeleteMutation`](docs/sdks/comments/README.md#delete) - Delete a comment
+- [`useCommentsGet`](docs/sdks/comments/README.md#get) - Get a comment
+- [`useEntriesAssertMutation`](docs/sdks/entries/README.md#assert) - Assert a list entry by parent
+- [`useEntriesAttributesValuesList`](docs/sdks/values/README.md#list) - List attribute values for a list entry
+- [`useEntriesCreateMutation`](docs/sdks/entries/README.md#create) - Create an entry (add record to list)
+- [`useEntriesDeleteMutation`](docs/sdks/entries/README.md#delete) - Delete a list entry
+- [`useEntriesGetEntry`](docs/sdks/entries/README.md#getentry) - Get a list entry
+- [`useEntriesOverwriteMutation`](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
+- [`useEntriesQueryMutation`](docs/sdks/entries/README.md#query) - List entries
+- [`useEntriesUpdateMutation`](docs/sdks/entries/README.md#update) - Update a list entry (append multiselect values)
+- [`useListsCreateMutation`](docs/sdks/lists/README.md#create) - Create a list
+- [`useListsGet`](docs/sdks/lists/README.md#get) - Get a list
+- [`useListsListAll`](docs/sdks/lists/README.md#listall) - List all lists
+- [`useListsUpdateMutation`](docs/sdks/lists/README.md#update) - Update a list
+- [`useMetaIdentify`](docs/sdks/meta/README.md#identify) - Identify
+- [`useNotesCreateMutation`](docs/sdks/notes/README.md#create) - Create a note
+- [`useNotesDeleteMutation`](docs/sdks/notes/README.md#delete) - Delete a note
+- [`useNotesGet`](docs/sdks/notes/README.md#get) - Get a note
+- [`useNotesList`](docs/sdks/notes/README.md#list) - List notes
+- [`useObjectsCreateMutation`](docs/sdks/objects/README.md#create) - Create an object
+- [`useObjectsGet`](docs/sdks/objects/README.md#get) - Get an object
+- [`useObjectsList`](docs/sdks/objects/README.md#list) - List objects
+- [`useObjectsPartialUpdateMutation`](docs/sdks/objects/README.md#partialupdate) - Update an object
+- [`useRecordsAssertMutation`](docs/sdks/records/README.md#assert) - Assert a record
+- [`useRecordsCreateMutation`](docs/sdks/records/README.md#create) - Create a record
+- [`useRecordsDeleteMutation`](docs/sdks/records/README.md#delete) - Delete a record
+- [`useRecordsGet`](docs/sdks/records/README.md#get) - Get a record
+- [`useRecordsListAttributeValues`](docs/sdks/records/README.md#listattributevalues) - List record attribute values
+- [`useRecordsListEntries`](docs/sdks/records/README.md#listentries) - List record entries
+- [`useRecordsPartialUpdateMutation`](docs/sdks/records/README.md#partialupdate) - Update a record (append multiselect values)
+- [`useRecordsQueryMutation`](docs/sdks/records/README.md#query) - List records
+- [`useRecordsUpdateMutation`](docs/sdks/records/README.md#update) - Update a record (overwrite multiselect values)
+- [`useTasksCreateMutation`](docs/sdks/tasks/README.md#create) - Create a task
+- [`useTasksDeleteMutation`](docs/sdks/tasks/README.md#delete) - Delete a task
+- [`useTasksGet`](docs/sdks/tasks/README.md#get) - Get a task
+- [`useTasksList`](docs/sdks/tasks/README.md#list) - List tasks
+- [`useTasksUpdateMutation`](docs/sdks/tasks/README.md#update) - Update a task
+- [`useThreadsGet`](docs/sdks/threads/README.md#get) - Get a thread
+- [`useThreadsList`](docs/sdks/threads/README.md#list) - List threads
+- [`useWebhooksCreateMutation`](docs/sdks/webhooks/README.md#create) - Create a webhook
+- [`useWebhooksDeleteMutation`](docs/sdks/webhooks/README.md#delete) - Delete a webhook
+- [`useWebhooksGet`](docs/sdks/webhooks/README.md#get) - Get a webhook
+- [`useWebhooksList`](docs/sdks/webhooks/README.md#list) - List webhooks
+- [`useWebhooksPartialUpdateMutation`](docs/sdks/webhooks/README.md#partialupdate) - Update a webhook
+- [`useWorkspaceMembersGet`](docs/sdks/workspacemembers/README.md#get) - Get a workspace member
+- [`useWorkspaceMembersList`](docs/sdks/workspacemembers/README.md#list) - List workspace members
+
+</details>
+<!-- End React hooks with TanStack Query [react-query] -->
 
 <!-- Start Retries [retries] -->
 ## Retries
@@ -403,7 +423,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects({
+  const result = await attio.objects.list({
     retries: {
       strategy: "backoff",
       backoff: {
@@ -443,7 +463,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);
@@ -457,7 +477,7 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `postV2Objects` method may throw the following errors:
+Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `create` method may throw the following errors:
 
 | Error Type                       | Status Code | Content Type     |
 | -------------------------------- | ----------- | ---------------- |
@@ -480,7 +500,7 @@ const attio = new Attio({
 async function run() {
   let result;
   try {
-    result = await attio.objects.postV2Objects({
+    result = await attio.objects.create({
       data: {
         apiSlug: "people",
         singularNoun: "Person",
@@ -545,7 +565,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);

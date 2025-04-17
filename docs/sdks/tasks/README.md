@@ -7,13 +7,13 @@ A task is a defined, actionable item with references to linked records and assig
 
 ### Available Operations
 
-* [getV2Tasks](#getv2tasks) - List tasks
-* [postV2Tasks](#postv2tasks) - Create a task
-* [getV2TasksTaskId](#getv2taskstaskid) - Get a task
-* [patchV2TasksTaskId](#patchv2taskstaskid) - Update a task
-* [deleteV2TasksTaskId](#deletev2taskstaskid) - Delete a task
+* [list](#list) - List tasks
+* [create](#create) - Create a task
+* [get](#get) - Get a task
+* [update](#update) - Update a task
+* [delete](#delete) - Delete a task
 
-## getV2Tasks
+## list
 
 List all tasks. Results are sorted by creation date, from oldest to newest.
 
@@ -29,13 +29,13 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.tasks.getV2Tasks({
+  const result = await attio.tasks.list({
     limit: 10,
     offset: 5,
     sort: "created_at:desc",
     linkedObject: "people",
     linkedRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-    assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+    assignee: "alice@attio.com",
     isCompleted: true,
   });
 
@@ -52,7 +52,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { tasksGetV2Tasks } from "attio-js/funcs/tasksGetV2Tasks.js";
+import { tasksList } from "attio-js/funcs/tasksList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -61,13 +61,13 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await tasksGetV2Tasks(attio, {
+  const res = await tasksList(attio, {
     limit: 10,
     offset: 5,
     sort: "created_at:desc",
     linkedObject: "people",
     linkedRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-    assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+    assignee: "alice@attio.com",
     isCompleted: true,
   });
 
@@ -82,6 +82,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useTasksList,
+  useTasksListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchTasksList,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateTasksList,
+  invalidateAllTasksList,
+} from "attio-js/react-query/tasksList.js";
 ```
 
 ### Parameters
@@ -103,7 +131,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## postV2Tasks
+## create
 
 Creates a new task.
 
@@ -121,7 +149,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.tasks.postV2Tasks({
+  const result = await attio.tasks.create({
     data: {
       content: "Follow up on current software solutions",
       format: "plaintext",
@@ -137,9 +165,7 @@ async function run() {
           ],
         },
       ],
-      assignees: [
-
-      ],
+      assignees: [],
     },
   });
 
@@ -156,7 +182,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { tasksPostV2Tasks } from "attio-js/funcs/tasksPostV2Tasks.js";
+import { tasksCreate } from "attio-js/funcs/tasksCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -165,7 +191,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await tasksPostV2Tasks(attio, {
+  const res = await tasksCreate(attio, {
     data: {
       content: "Follow up on current software solutions",
       format: "plaintext",
@@ -181,9 +207,7 @@ async function run() {
           ],
         },
       ],
-      assignees: [
-  
-      ],
+      assignees: [],
     },
   });
 
@@ -198,6 +222,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useTasksCreateMutation
+} from "attio-js/react-query/tasksCreate.js";
 ```
 
 ### Parameters
@@ -215,13 +256,13 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.PostV2TasksResponseBody      | 400                                 | application/json                    |
-| errors.PostV2TasksTasksResponseBody | 404                                 | application/json                    |
-| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.TasksResponseBody | 400                      | application/json         |
+| errors.ResponseBody      | 404                      | application/json         |
+| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
 
-## getV2TasksTaskId
+## get
 
 Get a single task by ID.
 
@@ -237,7 +278,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.tasks.getV2TasksTaskId({
+  const result = await attio.tasks.get({
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
@@ -254,7 +295,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { tasksGetV2TasksTaskId } from "attio-js/funcs/tasksGetV2TasksTaskId.js";
+import { tasksGet } from "attio-js/funcs/tasksGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -263,7 +304,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await tasksGetV2TasksTaskId(attio, {
+  const res = await tasksGet(attio, {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
@@ -278,6 +319,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useTasksGet,
+  useTasksGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchTasksGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateTasksGet,
+  invalidateAllTasksGet,
+} from "attio-js/react-query/tasksGet.js";
 ```
 
 ### Parameters
@@ -295,12 +364,12 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.GetV2TasksTaskIdResponseBody | 404                                 | application/json                    |
-| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
+| Error Type                       | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.TasksResponseResponseBody | 404                              | application/json                 |
+| errors.APIError                  | 4XX, 5XX                         | \*/\*                            |
 
-## patchV2TasksTaskId
+## update
 
 Updates an existing task by `task_id`. At present, only the `deadline_at`, `is_completed`, `linked_records`, and `assignees` fields can be updated.
 
@@ -316,7 +385,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.tasks.patchV2TasksTaskId({
+  const result = await attio.tasks.update({
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
     requestBody: {
       data: {
@@ -372,7 +441,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { tasksPatchV2TasksTaskId } from "attio-js/funcs/tasksPatchV2TasksTaskId.js";
+import { tasksUpdate } from "attio-js/funcs/tasksUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -381,7 +450,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await tasksPatchV2TasksTaskId(attio, {
+  const res = await tasksUpdate(attio, {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
     requestBody: {
       data: {
@@ -435,6 +504,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useTasksUpdateMutation
+} from "attio-js/react-query/tasksUpdate.js";
 ```
 
 ### Parameters
@@ -452,13 +538,13 @@ run();
 
 ### Errors
 
-| Error Type                                 | Status Code                                | Content Type                               |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| errors.PatchV2TasksTaskIdResponseBody      | 400                                        | application/json                           |
-| errors.PatchV2TasksTaskIdTasksResponseBody | 404                                        | application/json                           |
-| errors.APIError                            | 4XX, 5XX                                   | \*/\*                                      |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.TasksResponseBody              | 400                                   | application/json                      |
+| errors.PatchV2TasksTaskIdResponseBody | 404                                   | application/json                      |
+| errors.APIError                       | 4XX, 5XX                              | \*/\*                                 |
 
-## deleteV2TasksTaskId
+## delete
 
 Delete a task by ID.
 
@@ -474,7 +560,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.tasks.deleteV2TasksTaskId({
+  const result = await attio.tasks.delete({
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
@@ -491,7 +577,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { tasksDeleteV2TasksTaskId } from "attio-js/funcs/tasksDeleteV2TasksTaskId.js";
+import { tasksDelete } from "attio-js/funcs/tasksDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -500,7 +586,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await tasksDeleteV2TasksTaskId(attio, {
+  const res = await tasksDelete(attio, {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
@@ -515,6 +601,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useTasksDeleteMutation
+} from "attio-js/react-query/tasksDelete.js";
 ```
 
 ### Parameters
@@ -532,7 +635,7 @@ run();
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.DeleteV2TasksTaskIdResponseBody | 404                                    | application/json                       |
-| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type                       | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| errors.TasksResponseResponseBody | 404                              | application/json                 |
+| errors.APIError                  | 4XX, 5XX                         | \*/\*                            |

@@ -7,7 +7,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.objects.getV2Objects();
+  const result = await attio.objects.list();
 
   // Handle the result
   console.log(result);

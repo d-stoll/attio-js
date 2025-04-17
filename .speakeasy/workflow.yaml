@@ -4,6 +4,8 @@ sources:
     Attio API:
         inputs:
             - location: https://developers.attio.com/openapi/655e2ce3ace07f065aa1dd14
+        overlays:
+            - location: .speakeasy\speakeasy-modifications-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/d-stoll/attio-js/attio-api
 targets:

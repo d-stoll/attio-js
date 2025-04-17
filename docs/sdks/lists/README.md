@@ -7,12 +7,12 @@ Lists are used to model a particular process. A list contains many records of a 
 
 ### Available Operations
 
-* [getV2Lists](#getv2lists) - List all lists
-* [postV2Lists](#postv2lists) - Create a list
-* [getV2ListsList](#getv2listslist) - Get a list
-* [patchV2ListsList](#patchv2listslist) - Update a list
+* [listAll](#listall) - List all lists
+* [create](#create) - Create a list
+* [get](#get) - Get a list
+* [update](#update) - Update a list
 
-## getV2Lists
+## listAll
 
 List all lists that your access token has access to. lists are returned in the order that they are sorted in the sidebar.
 
@@ -28,7 +28,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.lists.getV2Lists();
+  const result = await attio.lists.listAll();
 
   // Handle the result
   console.log(result);
@@ -43,7 +43,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { listsGetV2Lists } from "attio-js/funcs/listsGetV2Lists.js";
+import { listsListAll } from "attio-js/funcs/listsListAll.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -52,7 +52,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await listsGetV2Lists(attio);
+  const res = await listsListAll(attio);
 
   if (!res.ok) {
     throw res.error;
@@ -65,6 +65,33 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useListsListAll,
+  useListsListAllSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchListsListAll,
+  
+  // Utility to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAllListsListAll,
+} from "attio-js/react-query/listsListAll.js";
 ```
 
 ### Parameters
@@ -85,7 +112,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## postV2Lists
+## create
 
 Creates a new list.
 
@@ -107,7 +134,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.lists.postV2Lists({
+  const result = await attio.lists.create({
     data: {
       name: "Enterprise Sales",
       apiSlug: "enterprise_sales",
@@ -143,7 +170,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { listsPostV2Lists } from "attio-js/funcs/listsPostV2Lists.js";
+import { listsCreate } from "attio-js/funcs/listsCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -152,7 +179,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await listsPostV2Lists(attio, {
+  const res = await listsCreate(attio, {
     data: {
       name: "Enterprise Sales",
       apiSlug: "enterprise_sales",
@@ -186,6 +213,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useListsCreateMutation
+} from "attio-js/react-query/listsCreate.js";
 ```
 
 ### Parameters
@@ -203,14 +247,14 @@ run();
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| errors.PostV2ListsResponseBody              | 400                                         | application/json                            |
-| errors.PostV2ListsListsResponseBody         | 403                                         | application/json                            |
-| errors.PostV2ListsListsResponseResponseBody | 404                                         | application/json                            |
-| errors.APIError                             | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                          | Status Code                         | Content Type                        |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| errors.ListsResponseBody            | 400                                 | application/json                    |
+| errors.PostV2ListsResponseBody      | 403                                 | application/json                    |
+| errors.PostV2ListsListsResponseBody | 404                                 | application/json                    |
+| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
 
-## getV2ListsList
+## get
 
 Gets a single list in your workspace that your access token has access to.
 
@@ -226,7 +270,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.lists.getV2ListsList({
+  const result = await attio.lists.get({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
   });
 
@@ -243,7 +287,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { listsGetV2ListsList } from "attio-js/funcs/listsGetV2ListsList.js";
+import { listsGet } from "attio-js/funcs/listsGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -252,7 +296,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await listsGetV2ListsList(attio, {
+  const res = await listsGet(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
   });
 
@@ -267,6 +311,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useListsGet,
+  useListsGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchListsGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateListsGet,
+  invalidateAllListsGet,
+} from "attio-js/react-query/listsGet.js";
 ```
 
 ### Parameters
@@ -284,12 +356,12 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.GetV2ListsListResponseBody | 404                               | application/json                  |
-| errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
 
-## patchV2ListsList
+## update
 
 Updates an existing list. Permissions for the list are controlled with the `workspace_access` and `workspace_member_access` parameters. Please note that lists must have either `workspace_access` set to `"full-access"` or one or more element of `workspace_member_access` with a `"full-access"` level. It is also possible to receive a `403` billing error if your workspace is not on a plan that supports either advanced workspace or workspace member level access for lists. Changing the parent object of a list is not possible through the API as it can have unintended side-effects that should be considered carefully. If you wish to carry out a parent object change you should do so through the UI.
 
@@ -305,7 +377,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.lists.patchV2ListsList({
+  const result = await attio.lists.update({
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -335,7 +407,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { listsPatchV2ListsList } from "attio-js/funcs/listsPatchV2ListsList.js";
+import { listsUpdate } from "attio-js/funcs/listsUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -344,7 +416,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await listsPatchV2ListsList(attio, {
+  const res = await listsUpdate(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     requestBody: {
       data: {
@@ -374,6 +446,23 @@ async function run() {
 run();
 ```
 
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useListsUpdateMutation
+} from "attio-js/react-query/listsUpdate.js";
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -389,8 +478,8 @@ run();
 
 ### Errors
 
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| errors.PatchV2ListsListResponseBody      | 400                                      | application/json                         |
-| errors.PatchV2ListsListListsResponseBody | 404                                      | application/json                         |
-| errors.APIError                          | 4XX, 5XX                                 | \*/\*                                    |
+| Error Type                     | Status Code                    | Content Type                   |
+| ------------------------------ | ------------------------------ | ------------------------------ |
+| errors.ListsResponseBody       | 400                            | application/json               |
+| errors.Response404ResponseBody | 404                            | application/json               |
+| errors.APIError                | 4XX, 5XX                       | \*/\*                          |

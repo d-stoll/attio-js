@@ -67,15 +67,15 @@ export type DefaultValueType = ClosedEnum<typeof DefaultValueType>;
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export const One = {
+export const Template1 = {
   CurrentUser: "current-user",
 } as const;
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export type One = ClosedEnum<typeof One>;
+export type Template1 = ClosedEnum<typeof Template1>;
 
-export type DefaultValue1 = {
+export type One = {
   type: DefaultValueType;
   template?: any | undefined;
 };
@@ -83,7 +83,7 @@ export type DefaultValue1 = {
 /**
  * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
  */
-export type DefaultValue = DefaultValue1 | Two;
+export type DefaultValue = One | Two;
 
 /**
  * The ISO4217 code representing the currency that values for this attribute should be stored in.
@@ -209,7 +209,7 @@ export type PostV2TargetIdentifierAttributesData = {
   /**
    * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
    */
-  defaultValue?: DefaultValue1 | Two | null | undefined;
+  defaultValue?: One | Two | null | undefined;
   config: Config;
 };
 
@@ -366,11 +366,43 @@ export namespace DefaultValueType$ {
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodNativeEnum<typeof One> = z.nativeEnum(One);
+export const Template1$inboundSchema: z.ZodNativeEnum<typeof Template1> = z
+  .nativeEnum(Template1);
 
 /** @internal */
-export const One$outboundSchema: z.ZodNativeEnum<typeof One> =
-  One$inboundSchema;
+export const Template1$outboundSchema: z.ZodNativeEnum<typeof Template1> =
+  Template1$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Template1$ {
+  /** @deprecated use `Template1$inboundSchema` instead. */
+  export const inboundSchema = Template1$inboundSchema;
+  /** @deprecated use `Template1$outboundSchema` instead. */
+  export const outboundSchema = Template1$outboundSchema;
+}
+
+/** @internal */
+export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
+  .object({
+    type: DefaultValueType$inboundSchema,
+    template: z.any().optional(),
+  });
+
+/** @internal */
+export type One$Outbound = {
+  type: string;
+  template?: any | undefined;
+};
+
+/** @internal */
+export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
+  .object({
+    type: DefaultValueType$outboundSchema,
+    template: z.any().optional(),
+  });
 
 /**
  * @internal
@@ -381,58 +413,21 @@ export namespace One$ {
   export const inboundSchema = One$inboundSchema;
   /** @deprecated use `One$outboundSchema` instead. */
   export const outboundSchema = One$outboundSchema;
+  /** @deprecated use `One$Outbound` instead. */
+  export type Outbound = One$Outbound;
 }
 
-/** @internal */
-export const DefaultValue1$inboundSchema: z.ZodType<
-  DefaultValue1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: DefaultValueType$inboundSchema,
-  template: z.any().optional(),
-});
-
-/** @internal */
-export type DefaultValue1$Outbound = {
-  type: string;
-  template?: any | undefined;
-};
-
-/** @internal */
-export const DefaultValue1$outboundSchema: z.ZodType<
-  DefaultValue1$Outbound,
-  z.ZodTypeDef,
-  DefaultValue1
-> = z.object({
-  type: DefaultValueType$outboundSchema,
-  template: z.any().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultValue1$ {
-  /** @deprecated use `DefaultValue1$inboundSchema` instead. */
-  export const inboundSchema = DefaultValue1$inboundSchema;
-  /** @deprecated use `DefaultValue1$outboundSchema` instead. */
-  export const outboundSchema = DefaultValue1$outboundSchema;
-  /** @deprecated use `DefaultValue1$Outbound` instead. */
-  export type Outbound = DefaultValue1$Outbound;
+export function oneToJSON(one: One): string {
+  return JSON.stringify(One$outboundSchema.parse(one));
 }
 
-export function defaultValue1ToJSON(defaultValue1: DefaultValue1): string {
-  return JSON.stringify(DefaultValue1$outboundSchema.parse(defaultValue1));
-}
-
-export function defaultValue1FromJSON(
+export function oneFromJSON(
   jsonString: string,
-): SafeParseResult<DefaultValue1, SDKValidationError> {
+): SafeParseResult<One, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DefaultValue1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultValue1' from JSON`,
+    (x) => One$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'One' from JSON`,
   );
 }
 
@@ -441,13 +436,10 @@ export const DefaultValue$inboundSchema: z.ZodType<
   DefaultValue,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DefaultValue1$inboundSchema),
-  z.lazy(() => Two$inboundSchema),
-]);
+> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
 
 /** @internal */
-export type DefaultValue$Outbound = DefaultValue1$Outbound | Two$Outbound;
+export type DefaultValue$Outbound = One$Outbound | Two$Outbound;
 
 /** @internal */
 export const DefaultValue$outboundSchema: z.ZodType<
@@ -455,7 +447,7 @@ export const DefaultValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DefaultValue
 > = z.union([
-  z.lazy(() => DefaultValue1$outboundSchema),
+  z.lazy(() => One$outboundSchema),
   z.lazy(() => Two$outboundSchema),
 ]);
 
@@ -721,10 +713,7 @@ export const PostV2TargetIdentifierAttributesData$inboundSchema: z.ZodType<
   is_unique: z.boolean(),
   is_multiselect: z.boolean(),
   default_value: z.nullable(
-    z.union([
-      z.lazy(() => DefaultValue1$inboundSchema),
-      z.lazy(() => Two$inboundSchema),
-    ]),
+    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
   ).optional(),
   config: z.lazy(() => Config$inboundSchema),
 }).transform((v) => {
@@ -746,7 +735,7 @@ export type PostV2TargetIdentifierAttributesData$Outbound = {
   is_required: boolean;
   is_unique: boolean;
   is_multiselect: boolean;
-  default_value?: DefaultValue1$Outbound | Two$Outbound | null | undefined;
+  default_value?: One$Outbound | Two$Outbound | null | undefined;
   config: Config$Outbound;
 };
 
@@ -765,7 +754,7 @@ export const PostV2TargetIdentifierAttributesData$outboundSchema: z.ZodType<
   isMultiselect: z.boolean(),
   defaultValue: z.nullable(
     z.union([
-      z.lazy(() => DefaultValue1$outboundSchema),
+      z.lazy(() => One$outboundSchema),
       z.lazy(() => Two$outboundSchema),
     ]),
   ).optional(),

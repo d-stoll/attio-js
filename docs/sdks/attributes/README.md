@@ -7,18 +7,16 @@ Attributes model properties of objects and lists. Some attributes, such as the `
 
 ### Available Operations
 
-* [getV2TargetIdentifierAttributes](#getv2targetidentifierattributes) - List attributes
-* [postV2TargetIdentifierAttributes](#postv2targetidentifierattributes) - Create an attribute
-* [getV2TargetIdentifierAttributesAttribute](#getv2targetidentifierattributesattribute) - Get an attribute
-* [patchV2TargetIdentifierAttributesAttribute](#patchv2targetidentifierattributesattribute) - Update an attribute
-* [getV2TargetIdentifierAttributesAttributeOptions](#getv2targetidentifierattributesattributeoptions) - List select options
-* [postV2TargetIdentifierAttributesAttributeOptions](#postv2targetidentifierattributesattributeoptions) - Create a select option
-* [patchV2TargetIdentifierAttributesAttributeOptionsOption](#patchv2targetidentifierattributesattributeoptionsoption) - Update a select option
-* [getV2TargetIdentifierAttributesAttributeStatuses](#getv2targetidentifierattributesattributestatuses) - List statuses
-* [postV2TargetIdentifierAttributesAttributeStatuses](#postv2targetidentifierattributesattributestatuses) - Create a status
-* [patchV2TargetIdentifierAttributesAttributeStatusesStatus](#patchv2targetidentifierattributesattributestatusesstatus) - Update a status
+* [list](#list) - List attributes
+* [create](#create) - Create an attribute
+* [get](#get) - Get an attribute
+* [update](#update) - Update an attribute
+* [listSelectOptions](#listselectoptions) - List select options
+* [createSelectOption](#createselectoption) - Create a select option
+* [updateOption](#updateoption) - Update a select option
+* [listStatuses](#liststatuses) - List statuses
 
-## getV2TargetIdentifierAttributes
+## list
 
 Lists all attributes defined on a specific object or list. Attributes are returned in the order that they are sorted by in the UI.
 
@@ -34,7 +32,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.getV2TargetIdentifierAttributes({
+  const result = await attio.attributes.list({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     limit: 10,
@@ -55,7 +53,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesGetV2TargetIdentifierAttributes } from "attio-js/funcs/attributesGetV2TargetIdentifierAttributes.js";
+import { attributesList } from "attio-js/funcs/attributesList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -64,7 +62,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesGetV2TargetIdentifierAttributes(attio, {
+  const res = await attributesList(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     limit: 10,
@@ -83,6 +81,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useAttributesList,
+  useAttributesListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchAttributesList,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAttributesList,
+  invalidateAllAttributesList,
+} from "attio-js/react-query/attributesList.js";
 ```
 
 ### Parameters
@@ -104,7 +130,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## postV2TargetIdentifierAttributes
+## create
 
 Creates a new attribute on either an object or a list.
 
@@ -122,7 +148,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.postV2TargetIdentifierAttributes({
+  const result = await attio.attributes.create({
     target: "lists",
     identifier: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
     requestBody: {
@@ -170,7 +196,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesPostV2TargetIdentifierAttributes } from "attio-js/funcs/attributesPostV2TargetIdentifierAttributes.js";
+import { attributesCreate } from "attio-js/funcs/attributesCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -179,7 +205,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesPostV2TargetIdentifierAttributes(attio, {
+  const res = await attributesCreate(attio, {
     target: "lists",
     identifier: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
     requestBody: {
@@ -225,6 +251,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAttributesCreateMutation
+} from "attio-js/react-query/attributesCreate.js";
 ```
 
 ### Parameters
@@ -249,7 +292,7 @@ run();
 | errors.PostV2TargetIdentifierAttributesAttributesResponseResponseBody | 409                                                                   | application/json                                                      |
 | errors.APIError                                                       | 4XX, 5XX                                                              | \*/\*                                                                 |
 
-## getV2TargetIdentifierAttributesAttribute
+## get
 
 Gets information about a single attribute on either an object or a list.
 
@@ -265,7 +308,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.getV2TargetIdentifierAttributesAttribute({
+  const result = await attio.attributes.get({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -284,7 +327,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesGetV2TargetIdentifierAttributesAttribute } from "attio-js/funcs/attributesGetV2TargetIdentifierAttributesAttribute.js";
+import { attributesGet } from "attio-js/funcs/attributesGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -293,7 +336,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesGetV2TargetIdentifierAttributesAttribute(attio, {
+  const res = await attributesGet(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -310,6 +353,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useAttributesGet,
+  useAttributesGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchAttributesGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAttributesGet,
+  invalidateAllAttributesGet,
+} from "attio-js/react-query/attributesGet.js";
 ```
 
 ### Parameters
@@ -327,12 +398,12 @@ run();
 
 ### Errors
 
-| Error Type                                                  | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| errors.GetV2TargetIdentifierAttributesAttributeResponseBody | 404                                                         | application/json                                            |
-| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ResponseResponseBody | 404                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## patchV2TargetIdentifierAttributesAttribute
+## update
 
 Updates a single attribute on a given object or list.
 
@@ -348,7 +419,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.patchV2TargetIdentifierAttributesAttribute({
+  const result = await attio.attributes.update({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -396,7 +467,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesPatchV2TargetIdentifierAttributesAttribute } from "attio-js/funcs/attributesPatchV2TargetIdentifierAttributesAttribute.js";
+import { attributesUpdate } from "attio-js/funcs/attributesUpdate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -405,7 +476,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesPatchV2TargetIdentifierAttributesAttribute(attio, {
+  const res = await attributesUpdate(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -451,6 +522,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAttributesUpdateMutation
+} from "attio-js/react-query/attributesUpdate.js";
 ```
 
 ### Parameters
@@ -468,13 +556,13 @@ run();
 
 ### Errors
 
-| Error Type                                                              | Status Code                                                             | Content Type                                                            |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| errors.PatchV2TargetIdentifierAttributesAttributeResponseBody           | 400                                                                     | application/json                                                        |
-| errors.PatchV2TargetIdentifierAttributesAttributeAttributesResponseBody | 404                                                                     | application/json                                                        |
-| errors.APIError                                                         | 4XX, 5XX                                                                | \*/\*                                                                   |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| errors.PatchV2TargetIdentifierAttributesAttributeResponseBody | 400                                                           | application/json                                              |
+| errors.ResponseResponseBody                                   | 404                                                           | application/json                                              |
+| errors.APIError                                               | 4XX, 5XX                                                      | \*/\*                                                         |
 
-## getV2TargetIdentifierAttributesAttributeOptions
+## listSelectOptions
 
 Lists all select options for a particular attribute on either an object or a list.
 
@@ -490,7 +578,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.getV2TargetIdentifierAttributesAttributeOptions({
+  const result = await attio.attributes.listSelectOptions({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -510,7 +598,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesGetV2TargetIdentifierAttributesAttributeOptions } from "attio-js/funcs/attributesGetV2TargetIdentifierAttributesAttributeOptions.js";
+import { attributesListSelectOptions } from "attio-js/funcs/attributesListSelectOptions.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -519,7 +607,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesGetV2TargetIdentifierAttributesAttributeOptions(attio, {
+  const res = await attributesListSelectOptions(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -537,6 +625,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useAttributesListSelectOptions,
+  useAttributesListSelectOptionsSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchAttributesListSelectOptions,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAttributesListSelectOptions,
+  invalidateAllAttributesListSelectOptions,
+} from "attio-js/react-query/attributesListSelectOptions.js";
 ```
 
 ### Parameters
@@ -554,12 +670,12 @@ run();
 
 ### Errors
 
-| Error Type                                                         | Status Code                                                        | Content Type                                                       |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| errors.GetV2TargetIdentifierAttributesAttributeOptionsResponseBody | 404                                                                | application/json                                                   |
-| errors.APIError                                                    | 4XX, 5XX                                                           | \*/\*                                                              |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ResponseResponseBody | 404                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
 
-## postV2TargetIdentifierAttributesAttributeOptions
+## createSelectOption
 
 Adds a select option to a select attribute on an object or a list.
 
@@ -575,7 +691,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.postV2TargetIdentifierAttributesAttributeOptions({
+  const result = await attio.attributes.createSelectOption({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -599,7 +715,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesPostV2TargetIdentifierAttributesAttributeOptions } from "attio-js/funcs/attributesPostV2TargetIdentifierAttributesAttributeOptions.js";
+import { attributesCreateSelectOption } from "attio-js/funcs/attributesCreateSelectOption.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -608,7 +724,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesPostV2TargetIdentifierAttributesAttributeOptions(attio, {
+  const res = await attributesCreateSelectOption(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -630,6 +746,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAttributesCreateSelectOptionMutation
+} from "attio-js/react-query/attributesCreateSelectOption.js";
 ```
 
 ### Parameters
@@ -647,14 +780,14 @@ run();
 
 ### Errors
 
-| Error Type                                                                            | Status Code                                                                           | Content Type                                                                          |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| errors.PostV2TargetIdentifierAttributesAttributeOptionsResponseBody                   | 400                                                                                   | application/json                                                                      |
-| errors.PostV2TargetIdentifierAttributesAttributeOptionsAttributesResponseBody         | 404                                                                                   | application/json                                                                      |
-| errors.PostV2TargetIdentifierAttributesAttributeOptionsAttributesResponseResponseBody | 409                                                                                   | application/json                                                                      |
-| errors.APIError                                                                       | 4XX, 5XX                                                                              | \*/\*                                                                                 |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| errors.PostV2TargetIdentifierAttributesAttributeOptionsResponseBody | 400                                                                 | application/json                                                    |
+| errors.ResponseResponseBody                                         | 404                                                                 | application/json                                                    |
+| errors.AttributesResponseBody                                       | 409                                                                 | application/json                                                    |
+| errors.APIError                                                     | 4XX, 5XX                                                            | \*/\*                                                               |
 
-## patchV2TargetIdentifierAttributesAttributeOptionsOption
+## updateOption
 
 Updates a select option on an attribute on either an object or a list.
 
@@ -670,7 +803,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.patchV2TargetIdentifierAttributesAttributeOptionsOption({
+  const result = await attio.attributes.updateOption({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -696,7 +829,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption } from "attio-js/funcs/attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption.js";
+import { attributesUpdateOption } from "attio-js/funcs/attributesUpdateOption.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -705,7 +838,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption(attio, {
+  const res = await attributesUpdateOption(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -729,6 +862,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useAttributesUpdateOptionMutation
+} from "attio-js/react-query/attributesUpdateOption.js";
 ```
 
 ### Parameters
@@ -746,14 +896,14 @@ run();
 
 ### Errors
 
-| Error Type                                                                                   | Status Code                                                                                  | Content Type                                                                                 |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody                   | 400                                                                                          | application/json                                                                             |
-| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionAttributesResponseBody         | 404                                                                                          | application/json                                                                             |
-| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionAttributesResponseResponseBody | 409                                                                                          | application/json                                                                             |
-| errors.APIError                                                                              | 4XX, 5XX                                                                                     | \*/\*                                                                                        |
+| Error Type                                                                 | Status Code                                                                | Content Type                                                               |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody | 400                                                                        | application/json                                                           |
+| errors.ResponseResponseBody                                                | 404                                                                        | application/json                                                           |
+| errors.AttributesResponseBody                                              | 409                                                                        | application/json                                                           |
+| errors.APIError                                                            | 4XX, 5XX                                                                   | \*/\*                                                                      |
 
-## getV2TargetIdentifierAttributesAttributeStatuses
+## listStatuses
 
 Lists all statuses for a particular status attribute on either an object or a list.
 
@@ -769,7 +919,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.attributes.getV2TargetIdentifierAttributesAttributeStatuses({
+  const result = await attio.attributes.listStatuses({
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -788,7 +938,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { attributesGetV2TargetIdentifierAttributesAttributeStatuses } from "attio-js/funcs/attributesGetV2TargetIdentifierAttributesAttributeStatuses.js";
+import { attributesListStatuses } from "attio-js/funcs/attributesListStatuses.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -797,7 +947,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await attributesGetV2TargetIdentifierAttributesAttributeStatuses(attio, {
+  const res = await attributesListStatuses(attio, {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
@@ -814,6 +964,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useAttributesListStatuses,
+  useAttributesListStatusesSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchAttributesListStatuses,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAttributesListStatuses,
+  invalidateAllAttributesListStatuses,
+} from "attio-js/react-query/attributesListStatuses.js";
 ```
 
 ### Parameters
@@ -831,205 +1009,7 @@ run();
 
 ### Errors
 
-| Error Type                                                          | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| errors.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody | 404                                                                 | application/json                                                    |
-| errors.APIError                                                     | 4XX, 5XX                                                            | \*/\*                                                               |
-
-## postV2TargetIdentifierAttributesAttributeStatuses
-
-Add a new status to a status attribute on either an object or a list.
-
-Required scopes: `object_configuration:read-write`.
-
-### Example Usage
-
-```typescript
-import { Attio } from "attio-js";
-
-const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const result = await attio.attributes.postV2TargetIdentifierAttributesAttributeStatuses({
-    target: "lists",
-    identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    requestBody: {
-      data: {
-        title: "In Progress",
-        targetTimeInStatus: "P0Y0M1DT0H0M0S",
-      },
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AttioCore } from "attio-js/core.js";
-import { attributesPostV2TargetIdentifierAttributesAttributeStatuses } from "attio-js/funcs/attributesPostV2TargetIdentifierAttributesAttributeStatuses.js";
-
-// Use `AttioCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const res = await attributesPostV2TargetIdentifierAttributesAttributeStatuses(attio, {
-    target: "lists",
-    identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    requestBody: {
-      data: {
-        title: "In Progress",
-        targetTimeInStatus: "P0Y0M1DT0H0M0S",
-      },
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostV2TargetIdentifierAttributesAttributeStatusesRequest](../../models/operations/postv2targetidentifierattributesattributestatusesrequest.md)                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.PostV2TargetIdentifierAttributesAttributeStatusesResponseBody](../../models/operations/postv2targetidentifierattributesattributestatusesresponsebody.md)\>**
-
-### Errors
-
-| Error Type                                                                             | Status Code                                                                            | Content Type                                                                           |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| errors.PostV2TargetIdentifierAttributesAttributeStatusesResponseBody                   | 400                                                                                    | application/json                                                                       |
-| errors.PostV2TargetIdentifierAttributesAttributeStatusesAttributesResponseBody         | 404                                                                                    | application/json                                                                       |
-| errors.PostV2TargetIdentifierAttributesAttributeStatusesAttributesResponseResponseBody | 409                                                                                    | application/json                                                                       |
-| errors.APIError                                                                        | 4XX, 5XX                                                                               | \*/\*                                                                                  |
-
-## patchV2TargetIdentifierAttributesAttributeStatusesStatus
-
-Update a status on an status attribute on either an object or a list.
-
-Required scopes: `object_configuration:read-write`.
-
-### Example Usage
-
-```typescript
-import { Attio } from "attio-js";
-
-const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const result = await attio.attributes.patchV2TargetIdentifierAttributesAttributeStatusesStatus({
-    target: "lists",
-    identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    status: "In Progress",
-    requestBody: {
-      data: {
-        title: "In Progress",
-        targetTimeInStatus: "P0Y0M1DT0H0M0S",
-        isArchived: false,
-      },
-    },
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { AttioCore } from "attio-js/core.js";
-import { attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus } from "attio-js/funcs/attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus.js";
-
-// Use `AttioCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
-});
-
-async function run() {
-  const res = await attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus(attio, {
-    target: "lists",
-    identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
-    attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-    status: "In Progress",
-    requestBody: {
-      data: {
-        title: "In Progress",
-        targetTimeInStatus: "P0Y0M1DT0H0M0S",
-        isArchived: false,
-      },
-    },
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest](../../models/operations/patchv2targetidentifierattributesattributestatusesstatusrequest.md)       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody](../../models/operations/patchv2targetidentifierattributesattributestatusesstatusresponsebody.md)\>**
-
-### Errors
-
-| Error Type                                                                                    | Status Code                                                                                   | Content Type                                                                                  |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| errors.PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody                   | 400                                                                                           | application/json                                                                              |
-| errors.PatchV2TargetIdentifierAttributesAttributeStatusesStatusAttributesResponseBody         | 404                                                                                           | application/json                                                                              |
-| errors.PatchV2TargetIdentifierAttributesAttributeStatusesStatusAttributesResponseResponseBody | 409                                                                                           | application/json                                                                              |
-| errors.APIError                                                                               | 4XX, 5XX                                                                                      | \*/\*                                                                                         |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| errors.ResponseResponseBody | 404                         | application/json            |
+| errors.APIError             | 4XX, 5XX                    | \*/\*                       |

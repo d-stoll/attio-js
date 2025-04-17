@@ -7,12 +7,12 @@ Notes are rich text documents that reference a single parent record.
 
 ### Available Operations
 
-* [getV2Notes](#getv2notes) - List notes
-* [postV2Notes](#postv2notes) - Create a note
-* [getV2NotesNoteId](#getv2notesnoteid) - Get a note
-* [deleteV2NotesNoteId](#deletev2notesnoteid) - Delete a note
+* [list](#list) - List notes
+* [create](#create) - Create a note
+* [get](#get) - Get a note
+* [delete](#delete) - Delete a note
 
-## getV2Notes
+## list
 
 List notes for all records or for a specific record.
 
@@ -28,7 +28,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.notes.getV2Notes({
+  const result = await attio.notes.list({
     limit: 10,
     offset: 5,
     parentObject: "people",
@@ -48,7 +48,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { notesGetV2Notes } from "attio-js/funcs/notesGetV2Notes.js";
+import { notesList } from "attio-js/funcs/notesList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -57,7 +57,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await notesGetV2Notes(attio, {
+  const res = await notesList(attio, {
     limit: 10,
     offset: 5,
     parentObject: "people",
@@ -75,6 +75,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useNotesList,
+  useNotesListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchNotesList,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateNotesList,
+  invalidateAllNotesList,
+} from "attio-js/react-query/notesList.js";
 ```
 
 ### Parameters
@@ -92,12 +120,12 @@ run();
 
 ### Errors
 
-| Error Type                    | Status Code                   | Content Type                  |
-| ----------------------------- | ----------------------------- | ----------------------------- |
-| errors.GetV2NotesResponseBody | 404                           | application/json              |
-| errors.APIError               | 4XX, 5XX                      | \*/\*                         |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ResponseBody | 404                 | application/json    |
+| errors.APIError     | 4XX, 5XX            | \*/\*               |
 
-## postV2Notes
+## create
 
 Creates a new note for a given record.
 
@@ -113,20 +141,30 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.notes.postV2Notes({
+  const result = await attio.notes.create({
     data: {
       parentObject: "people",
       parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
       title: "Initial Prospecting Call Summary",
       format: "plaintext",
-      content: "Introduction\n" +
-      "Date and time of the call\n" +
-      "Participants\n" +
-      "Purpose of the call\n" +
-      "Customer Background\n" +
-      "Company overview (industry, size, location)\n" +
-      "Key business challenges\n" +
-      "Current software solutions (if any) and pain points",
+      content: "# Meeting Recap: Q4 Planning\n" +
+      "\n" +
+      "**Date:** 2023-10-26\n" +
+      "**Attendees:** Alex, Jamie, Casey\n" +
+      "\n" +
+      "## Key Discussion Points\n" +
+      "\n" +
+      "- Reviewed Q3 performance metrics.\n" +
+      "- Brainstormed key initiatives for Q4.\n" +
+      "- Discussed budget allocation for ==Project Phoenix==.\n" +
+      "\n" +
+      "## Action Items\n" +
+      "\n" +
+      "1. Alex to finalize Q4 roadmap by EOD Friday.\n" +
+      "2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing).\n" +
+      "3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).\n" +
+      "\n" +
+      "*Next steps: Review draft roadmap next week.*",
       createdAt: "2023-01-01T15:00:00.000000000Z",
     },
   });
@@ -144,7 +182,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { notesPostV2Notes } from "attio-js/funcs/notesPostV2Notes.js";
+import { notesCreate } from "attio-js/funcs/notesCreate.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -153,20 +191,30 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await notesPostV2Notes(attio, {
+  const res = await notesCreate(attio, {
     data: {
       parentObject: "people",
       parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
       title: "Initial Prospecting Call Summary",
       format: "plaintext",
-      content: "Introduction\n" +
-      "Date and time of the call\n" +
-      "Participants\n" +
-      "Purpose of the call\n" +
-      "Customer Background\n" +
-      "Company overview (industry, size, location)\n" +
-      "Key business challenges\n" +
-      "Current software solutions (if any) and pain points",
+      content: "# Meeting Recap: Q4 Planning\n" +
+      "\n" +
+      "**Date:** 2023-10-26\n" +
+      "**Attendees:** Alex, Jamie, Casey\n" +
+      "\n" +
+      "## Key Discussion Points\n" +
+      "\n" +
+      "- Reviewed Q3 performance metrics.\n" +
+      "- Brainstormed key initiatives for Q4.\n" +
+      "- Discussed budget allocation for ==Project Phoenix==.\n" +
+      "\n" +
+      "## Action Items\n" +
+      "\n" +
+      "1. Alex to finalize Q4 roadmap by EOD Friday.\n" +
+      "2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing).\n" +
+      "3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).\n" +
+      "\n" +
+      "*Next steps: Review draft roadmap next week.*",
       createdAt: "2023-01-01T15:00:00.000000000Z",
     },
   });
@@ -182,6 +230,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useNotesCreateMutation
+} from "attio-js/react-query/notesCreate.js";
 ```
 
 ### Parameters
@@ -199,12 +264,12 @@ run();
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.PostV2NotesResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| errors.ResponseBody | 404                 | application/json    |
+| errors.APIError     | 4XX, 5XX            | \*/\*               |
 
-## getV2NotesNoteId
+## get
 
 Get a single note by ID.
 
@@ -220,7 +285,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.notes.getV2NotesNoteId({
+  const result = await attio.notes.get({
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
@@ -237,7 +302,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { notesGetV2NotesNoteId } from "attio-js/funcs/notesGetV2NotesNoteId.js";
+import { notesGet } from "attio-js/funcs/notesGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -246,7 +311,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await notesGetV2NotesNoteId(attio, {
+  const res = await notesGet(attio, {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
@@ -261,6 +326,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useNotesGet,
+  useNotesGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchNotesGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateNotesGet,
+  invalidateAllNotesGet,
+} from "attio-js/react-query/notesGet.js";
 ```
 
 ### Parameters
@@ -278,12 +371,12 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.GetV2NotesNoteIdResponseBody | 404                                 | application/json                    |
-| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.NotesResponseBody | 404                      | application/json         |
+| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
 
-## deleteV2NotesNoteId
+## delete
 
 Delete a single note by ID.
 
@@ -299,7 +392,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.notes.deleteV2NotesNoteId({
+  const result = await attio.notes.delete({
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
@@ -316,7 +409,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { notesDeleteV2NotesNoteId } from "attio-js/funcs/notesDeleteV2NotesNoteId.js";
+import { notesDelete } from "attio-js/funcs/notesDelete.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -325,7 +418,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await notesDeleteV2NotesNoteId(attio, {
+  const res = await notesDelete(attio, {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
@@ -340,6 +433,23 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Mutation hook for triggering the API call.
+  useNotesDeleteMutation
+} from "attio-js/react-query/notesDelete.js";
 ```
 
 ### Parameters
@@ -357,7 +467,7 @@ run();
 
 ### Errors
 
-| Error Type                             | Status Code                            | Content Type                           |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| errors.DeleteV2NotesNoteIdResponseBody | 404                                    | application/json                       |
-| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.NotesResponseBody | 404                      | application/json         |
+| errors.APIError          | 4XX, 5XX                 | \*/\*                    |

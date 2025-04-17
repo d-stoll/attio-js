@@ -20,7 +20,7 @@ specific category of applications.
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { objectsGetV2Objects } from "attio-js/funcs/objectsGetV2Objects.js";
+import { objectsList } from "attio-js/funcs/objectsList.js";
 import { SDKValidationError } from "attio-js/models/errors/sdkvalidationerror.js";
 
 // Use `AttioCore` for best tree-shaking performance.
@@ -30,7 +30,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await objectsGetV2Objects(attio);
+  const res = await objectsList(attio);
 
   switch (true) {
     case res.ok:

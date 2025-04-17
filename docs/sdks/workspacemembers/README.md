@@ -3,14 +3,12 @@
 
 ## Overview
 
-Workspace members represent a user with access to a workspace. Workspace members are assigned roles that determine what they can do within the workspace.
-
 ### Available Operations
 
-* [getV2WorkspaceMembers](#getv2workspacemembers) - List workspace members
-* [getV2WorkspaceMembersWorkspaceMemberId](#getv2workspacemembersworkspacememberid) - Get a workspace member
+* [list](#list) - List workspace members
+* [get](#get) - Get a workspace member
 
-## getV2WorkspaceMembers
+## list
 
 Lists all workspace members in the workspace.
 
@@ -26,7 +24,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.workspaceMembers.getV2WorkspaceMembers();
+  const result = await attio.workspaceMembers.list();
 
   // Handle the result
   console.log(result);
@@ -41,7 +39,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { workspaceMembersGetV2WorkspaceMembers } from "attio-js/funcs/workspaceMembersGetV2WorkspaceMembers.js";
+import { workspaceMembersList } from "attio-js/funcs/workspaceMembersList.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -50,7 +48,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await workspaceMembersGetV2WorkspaceMembers(attio);
+  const res = await workspaceMembersList(attio);
 
   if (!res.ok) {
     throw res.error;
@@ -63,6 +61,33 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useWorkspaceMembersList,
+  useWorkspaceMembersListSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchWorkspaceMembersList,
+  
+  // Utility to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateAllWorkspaceMembersList,
+} from "attio-js/react-query/workspaceMembersList.js";
 ```
 
 ### Parameters
@@ -83,7 +108,7 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## getV2WorkspaceMembersWorkspaceMemberId
+## get
 
 Gets a single workspace member by ID.
 
@@ -99,7 +124,7 @@ const attio = new Attio({
 });
 
 async function run() {
-  const result = await attio.workspaceMembers.getV2WorkspaceMembersWorkspaceMemberId({
+  const result = await attio.workspaceMembers.get({
     workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
   });
 
@@ -116,7 +141,7 @@ The standalone function version of this method:
 
 ```typescript
 import { AttioCore } from "attio-js/core.js";
-import { workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId } from "attio-js/funcs/workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId.js";
+import { workspaceMembersGet } from "attio-js/funcs/workspaceMembersGet.js";
 
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -125,7 +150,7 @@ const attio = new AttioCore({
 });
 
 async function run() {
-  const res = await workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId(attio, {
+  const res = await workspaceMembersGet(attio, {
     workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
   });
 
@@ -140,6 +165,34 @@ async function run() {
 }
 
 run();
+```
+
+### React hooks and utilities
+
+This method can be used in React components through the following hooks and
+associated utilities.
+
+> Check out [this guide][hook-guide] for information about each of the utilities
+> below and how to get started using React hooks.
+
+[hook-guide]: ../../../REACT_QUERY.md
+
+```tsx
+import {
+  // Query hooks for fetching data.
+  useWorkspaceMembersGet,
+  useWorkspaceMembersGetSuspense,
+
+  // Utility for prefetching data during server-side rendering and in React
+  // Server Components that will be immediately available to client components
+  // using the hooks.
+  prefetchWorkspaceMembersGet,
+  
+  // Utilities to invalidate the query cache for this query in response to
+  // mutations and other user actions.
+  invalidateWorkspaceMembersGet,
+  invalidateAllWorkspaceMembersGet,
+} from "attio-js/react-query/workspaceMembersGet.js";
 ```
 
 ### Parameters

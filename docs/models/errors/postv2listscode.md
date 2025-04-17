@@ -5,11 +5,11 @@
 ```typescript
 import { PostV2ListsCode } from "attio-js/models/errors";
 
-let value: PostV2ListsCode = "value_not_found";
+let value: PostV2ListsCode = "billing_error";
 ```
 
 ## Values
 
 ```typescript
-"value_not_found"
+"billing_error"
 ```

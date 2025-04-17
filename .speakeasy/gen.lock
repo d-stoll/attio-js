@@ -1,12 +1,13 @@
 lockVersion: 2.0.0
 id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
-  docChecksum: 8270102031b7a4a90f48944f5d19e78d
+  docChecksum: ea9fa4212a802889bac721bcf0be50e5
   docVersion: 2.0.0
-  speakeasyVersion: 1.531.4
-  generationVersion: 2.570.4
-  releaseVersion: 0.0.1
-  configChecksum: 1089e26c8fd8bbf94d9cde3784374892
+  speakeasyVersion: 1.534.0
+  generationVersion: 2.585.0
+  releaseVersion: 0.2.0
+  configChecksum: 9636f27b01f0148c6abedf93ae045116
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -20,8 +21,10 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.9.1
+    groups: 2.81.2
+    nameOverrides: 2.81.2
     nullables: 0.1.1
+    reactQueryHooks: 0.2.3
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
@@ -33,6 +36,7 @@ generatedFiles:
   - .gitattributes
   - .npmignore
   - FUNCTIONS.md
+  - REACT_QUERY.md
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
@@ -169,237 +173,63 @@ generatedFiles:
   - docs/models/components/workspacemember.md
   - docs/models/components/workspacememberaccess.md
   - docs/models/components/workspacememberid.md
+  - docs/models/errors/attributesresponsebody.md
+  - docs/models/errors/attributesstatusesresponsebody.md
   - docs/models/errors/code.md
-  - docs/models/errors/deletev2commentscommentidcode.md
   - docs/models/errors/deletev2commentscommentidresponsebody.md
-  - docs/models/errors/deletev2commentscommentidtype.md
-  - docs/models/errors/deletev2listslistentriesentryidcode.md
-  - docs/models/errors/deletev2listslistentriesentryidresponsebody.md
-  - docs/models/errors/deletev2listslistentriesentryidtype.md
-  - docs/models/errors/deletev2notesnoteidcode.md
-  - docs/models/errors/deletev2notesnoteidresponsebody.md
-  - docs/models/errors/deletev2notesnoteidtype.md
-  - docs/models/errors/deletev2objectsobjectrecordsrecordidcode.md
-  - docs/models/errors/deletev2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/errors/deletev2objectsobjectrecordsrecordidtype.md
-  - docs/models/errors/deletev2taskstaskidcode.md
-  - docs/models/errors/deletev2taskstaskidresponsebody.md
-  - docs/models/errors/deletev2taskstaskidtype.md
-  - docs/models/errors/deletev2webhookswebhookidcode.md
   - docs/models/errors/deletev2webhookswebhookidresponsebody.md
-  - docs/models/errors/deletev2webhookswebhookidtype.md
-  - docs/models/errors/getv2commentscommentidcode.md
+  - docs/models/errors/entriescode.md
+  - docs/models/errors/entriesresponsebody.md
   - docs/models/errors/getv2commentscommentidresponsebody.md
-  - docs/models/errors/getv2commentscommentidtype.md
-  - docs/models/errors/getv2listslistcode.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluescode.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluesentriescode.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluesentriesresponsebody.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluesentriestype.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluesresponsebody.md
-  - docs/models/errors/getv2listslistentriesentryidattributesattributevaluestype.md
-  - docs/models/errors/getv2listslistentriesentryidcode.md
-  - docs/models/errors/getv2listslistentriesentryidresponsebody.md
-  - docs/models/errors/getv2listslistentriesentryidtype.md
-  - docs/models/errors/getv2listslistresponsebody.md
-  - docs/models/errors/getv2listslisttype.md
-  - docs/models/errors/getv2notescode.md
-  - docs/models/errors/getv2notesnoteidcode.md
-  - docs/models/errors/getv2notesnoteidresponsebody.md
-  - docs/models/errors/getv2notesnoteidtype.md
-  - docs/models/errors/getv2notesresponsebody.md
-  - docs/models/errors/getv2notestype.md
-  - docs/models/errors/getv2objectsobjectcode.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluescode.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesrecordscode.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesrecordsresponsebody.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesrecordstype.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesresponsebody.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluestype.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidcode.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidtype.md
-  - docs/models/errors/getv2objectsobjectresponsebody.md
-  - docs/models/errors/getv2objectsobjecttype.md
-  - docs/models/errors/getv2targetidentifierattributesattributecode.md
-  - docs/models/errors/getv2targetidentifierattributesattributeoptionscode.md
-  - docs/models/errors/getv2targetidentifierattributesattributeoptionsresponsebody.md
-  - docs/models/errors/getv2targetidentifierattributesattributeoptionstype.md
-  - docs/models/errors/getv2targetidentifierattributesattributeresponsebody.md
-  - docs/models/errors/getv2targetidentifierattributesattributestatusescode.md
-  - docs/models/errors/getv2targetidentifierattributesattributestatusesresponsebody.md
-  - docs/models/errors/getv2targetidentifierattributesattributestatusestype.md
-  - docs/models/errors/getv2targetidentifierattributesattributetype.md
-  - docs/models/errors/getv2taskstaskidcode.md
-  - docs/models/errors/getv2taskstaskidresponsebody.md
-  - docs/models/errors/getv2taskstaskidtype.md
-  - docs/models/errors/getv2threadsthreadidcode.md
   - docs/models/errors/getv2threadsthreadidresponsebody.md
-  - docs/models/errors/getv2threadsthreadidtype.md
-  - docs/models/errors/getv2webhookswebhookidcode.md
-  - docs/models/errors/getv2webhookswebhookidresponsebody.md
-  - docs/models/errors/getv2webhookswebhookidtype.md
-  - docs/models/errors/getv2workspacemembersworkspacememberidcode.md
   - docs/models/errors/getv2workspacemembersworkspacememberidresponsebody.md
-  - docs/models/errors/getv2workspacemembersworkspacememberidtype.md
-  - docs/models/errors/patchv2listslistcode.md
-  - docs/models/errors/patchv2listslistentriesentryidcode.md
-  - docs/models/errors/patchv2listslistentriesentryidentriescode.md
-  - docs/models/errors/patchv2listslistentriesentryidentriesresponsebody.md
-  - docs/models/errors/patchv2listslistentriesentryidentriestype.md
-  - docs/models/errors/patchv2listslistentriesentryidresponsebody.md
-  - docs/models/errors/patchv2listslistentriesentryidtype.md
-  - docs/models/errors/patchv2listslistlistscode.md
-  - docs/models/errors/patchv2listslistlistsresponsebody.md
-  - docs/models/errors/patchv2listslistliststype.md
-  - docs/models/errors/patchv2listslistresponsebody.md
-  - docs/models/errors/patchv2listslisttype.md
-  - docs/models/errors/patchv2objectsobjectcode.md
-  - docs/models/errors/patchv2objectsobjectobjectscode.md
+  - docs/models/errors/listsresponsebody.md
+  - docs/models/errors/notesresponsebody.md
   - docs/models/errors/patchv2objectsobjectobjectsresponsebody.md
-  - docs/models/errors/patchv2objectsobjectobjectsresponsecode.md
-  - docs/models/errors/patchv2objectsobjectobjectsresponseresponsebody.md
-  - docs/models/errors/patchv2objectsobjectobjectsresponsetype.md
-  - docs/models/errors/patchv2objectsobjectobjectstype.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidcode.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidrecordscode.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidrecordsresponsebody.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidrecordstype.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/errors/patchv2objectsobjectrecordsrecordidtype.md
   - docs/models/errors/patchv2objectsobjectresponsebody.md
-  - docs/models/errors/patchv2objectsobjecttype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeattributescode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeattributesresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeattributestype.md
   - docs/models/errors/patchv2targetidentifierattributesattributecode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributescode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributesresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributesresponsecode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributesresponseresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributesresponsetype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionattributestype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptioncode.md
   - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptiontype.md
   - docs/models/errors/patchv2targetidentifierattributesattributeresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributescode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributesresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributesresponsecode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributesresponseresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributesresponsetype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusattributestype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatuscode.md
   - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatustype.md
-  - docs/models/errors/patchv2targetidentifierattributesattributetype.md
-  - docs/models/errors/patchv2taskstaskidcode.md
   - docs/models/errors/patchv2taskstaskidresponsebody.md
-  - docs/models/errors/patchv2taskstaskidtaskscode.md
-  - docs/models/errors/patchv2taskstaskidtasksresponsebody.md
-  - docs/models/errors/patchv2taskstaskidtaskstype.md
-  - docs/models/errors/patchv2taskstaskidtype.md
-  - docs/models/errors/patchv2webhookswebhookidcode.md
-  - docs/models/errors/patchv2webhookswebhookidresponsebody.md
-  - docs/models/errors/patchv2webhookswebhookidtype.md
-  - docs/models/errors/postv2commentscode.md
   - docs/models/errors/postv2commentsresponsebody.md
-  - docs/models/errors/postv2commentstype.md
   - docs/models/errors/postv2listscode.md
-  - docs/models/errors/postv2listslistentriescode.md
-  - docs/models/errors/postv2listslistentriesentriescode.md
   - docs/models/errors/postv2listslistentriesentriesresponsebody.md
-  - docs/models/errors/postv2listslistentriesentriestype.md
-  - docs/models/errors/postv2listslistentriesquerycode.md
-  - docs/models/errors/postv2listslistentriesqueryresponsebody.md
-  - docs/models/errors/postv2listslistentriesquerytype.md
   - docs/models/errors/postv2listslistentriesresponsebody.md
-  - docs/models/errors/postv2listslistentriestype.md
-  - docs/models/errors/postv2listslistscode.md
   - docs/models/errors/postv2listslistsresponsebody.md
-  - docs/models/errors/postv2listslistsresponsecode.md
-  - docs/models/errors/postv2listslistsresponseresponsebody.md
-  - docs/models/errors/postv2listslistsresponsetype.md
-  - docs/models/errors/postv2listsliststype.md
   - docs/models/errors/postv2listsresponsebody.md
   - docs/models/errors/postv2liststype.md
-  - docs/models/errors/postv2notescode.md
-  - docs/models/errors/postv2notesresponsebody.md
-  - docs/models/errors/postv2notestype.md
-  - docs/models/errors/postv2objectsobjectrecordscode.md
   - docs/models/errors/postv2objectsobjectrecordsquerycode.md
-  - docs/models/errors/postv2objectsobjectrecordsqueryrecordscode.md
   - docs/models/errors/postv2objectsobjectrecordsqueryrecordsresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordsqueryrecordstype.md
   - docs/models/errors/postv2objectsobjectrecordsqueryresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordsquerytype.md
-  - docs/models/errors/postv2objectsobjectrecordsrecordscode.md
-  - docs/models/errors/postv2objectsobjectrecordsrecordsresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordsrecordstype.md
   - docs/models/errors/postv2objectsobjectrecordsresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordstype.md
   - docs/models/errors/postv2objectsresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributescode.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributesresponsecode.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributesresponseresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributesresponsetype.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsattributestype.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionscode.md
   - docs/models/errors/postv2targetidentifierattributesattributeoptionsresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionstype.md
-  - docs/models/errors/postv2targetidentifierattributesattributescode.md
   - docs/models/errors/postv2targetidentifierattributesattributesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributesresponsecode.md
   - docs/models/errors/postv2targetidentifierattributesattributesresponseresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributesresponsetype.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributescode.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributesresponsecode.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributesresponseresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributesresponsetype.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesattributestype.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusescode.md
   - docs/models/errors/postv2targetidentifierattributesattributestatusesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusestype.md
-  - docs/models/errors/postv2targetidentifierattributesattributestype.md
-  - docs/models/errors/postv2targetidentifierattributescode.md
   - docs/models/errors/postv2targetidentifierattributesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributestype.md
-  - docs/models/errors/postv2taskscode.md
-  - docs/models/errors/postv2tasksresponsebody.md
-  - docs/models/errors/postv2taskstaskscode.md
-  - docs/models/errors/postv2taskstasksresponsebody.md
-  - docs/models/errors/postv2taskstaskstype.md
-  - docs/models/errors/postv2taskstype.md
-  - docs/models/errors/postv2webhookscode.md
   - docs/models/errors/postv2webhooksresponsebody.md
-  - docs/models/errors/postv2webhookstype.md
   - docs/models/errors/putv2listslistentriescode.md
-  - docs/models/errors/putv2listslistentriesentriescode.md
   - docs/models/errors/putv2listslistentriesentriesresponsebody.md
-  - docs/models/errors/putv2listslistentriesentriestype.md
-  - docs/models/errors/putv2listslistentriesentryidcode.md
-  - docs/models/errors/putv2listslistentriesentryidentriescode.md
-  - docs/models/errors/putv2listslistentriesentryidentriesresponsebody.md
-  - docs/models/errors/putv2listslistentriesentryidentriestype.md
-  - docs/models/errors/putv2listslistentriesentryidresponsebody.md
-  - docs/models/errors/putv2listslistentriesentryidtype.md
   - docs/models/errors/putv2listslistentriesresponsebody.md
-  - docs/models/errors/putv2listslistentriestype.md
-  - docs/models/errors/putv2objectsobjectrecordscode.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidcode.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidrecordscode.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidrecordsresponsebody.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidrecordstype.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordidtype.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordscode.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordsresponsebody.md
-  - docs/models/errors/putv2objectsobjectrecordsrecordstype.md
   - docs/models/errors/putv2objectsobjectrecordsresponsebody.md
-  - docs/models/errors/putv2objectsobjectrecordstype.md
+  - docs/models/errors/recordscode.md
+  - docs/models/errors/recordsresponsebody.md
+  - docs/models/errors/recordsresponseresponsebody.md
+  - docs/models/errors/response400400code.md
+  - docs/models/errors/response400code.md
+  - docs/models/errors/response400responsebody.md
+  - docs/models/errors/response400type.md
+  - docs/models/errors/response404responsebody.md
+  - docs/models/errors/responsebody.md
+  - docs/models/errors/responsecode.md
+  - docs/models/errors/responseresponsebody.md
+  - docs/models/errors/responsetype.md
+  - docs/models/errors/tasksresponsebody.md
+  - docs/models/errors/tasksresponseresponsebody.md
   - docs/models/errors/type.md
+  - docs/models/errors/webhooksresponsebody.md
   - docs/models/operations/assignees.md
   - docs/models/operations/assignees1.md
   - docs/models/operations/assignees2.md
@@ -515,56 +345,56 @@ generatedFiles:
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataattributetype.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacountrycode.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriescountrycode.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriescreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody10attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody10createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody10type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody11attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody11createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody11type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody12attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody12createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody12type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody13attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody13createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody13type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody14attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody14createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody14type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody15attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody15createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody15type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody16attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody16createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody16type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody17attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody17createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody17type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody7attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody7createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody7type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody8attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody8createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody8owneractortype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody8type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody9attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody9createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebody9type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200applicationjsontype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponse200type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponseattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponsecreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesresponsetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriestype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesattributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluescountrycode.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluescreatedbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonattributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsoncreatedbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8owneractortype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodyattributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodycreatedbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodytype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsontype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200attributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200createdbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200type.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponseattributetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponsecreatedbyactor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponsetype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluestype.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatatype.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesrequest.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesresponsebody.md
@@ -1053,7 +883,6 @@ generatedFiles:
   - docs/models/operations/patchv2targetidentifierattributesattributedata.md
   - docs/models/operations/patchv2targetidentifierattributesattributedefaultcurrencycode.md
   - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalue.md
-  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalue1.md
   - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalueattributestype.md
   - docs/models/operations/patchv2targetidentifierattributesattributedefaultvaluetype.md
   - docs/models/operations/patchv2targetidentifierattributesattributedisplaytype.md
@@ -1072,6 +901,7 @@ generatedFiles:
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusrequest.md
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusrequestbody.md
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusresponsebody.md
+  - docs/models/operations/patchv2targetidentifierattributesattributetemplate1.md
   - docs/models/operations/patchv2taskstaskidassignees.md
   - docs/models/operations/patchv2taskstaskidassignees1.md
   - docs/models/operations/patchv2taskstaskidassignees2.md
@@ -1844,6 +1674,7 @@ generatedFiles:
   - docs/models/operations/workspaceaccess.md
   - docs/models/operations/workspacememberaccess.md
   - docs/sdks/attio/README.md
+  - docs/sdks/attioentriesattributes/README.md
   - docs/sdks/attributes/README.md
   - docs/sdks/comments/README.md
   - docs/sdks/entries/README.md
@@ -1852,8 +1683,10 @@ generatedFiles:
   - docs/sdks/notes/README.md
   - docs/sdks/objects/README.md
   - docs/sdks/records/README.md
+  - docs/sdks/statuses/README.md
   - docs/sdks/tasks/README.md
   - docs/sdks/threads/README.md
+  - docs/sdks/values/README.md
   - docs/sdks/webhooks/README.md
   - docs/sdks/workspacemembers/README.md
   - docs/types/rfcdate.md
@@ -1861,63 +1694,63 @@ generatedFiles:
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/attributesGetV2TargetIdentifierAttributes.ts
-  - src/funcs/attributesGetV2TargetIdentifierAttributesAttribute.ts
-  - src/funcs/attributesGetV2TargetIdentifierAttributesAttributeOptions.ts
-  - src/funcs/attributesGetV2TargetIdentifierAttributesAttributeStatuses.ts
-  - src/funcs/attributesPatchV2TargetIdentifierAttributesAttribute.ts
-  - src/funcs/attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption.ts
-  - src/funcs/attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus.ts
-  - src/funcs/attributesPostV2TargetIdentifierAttributes.ts
-  - src/funcs/attributesPostV2TargetIdentifierAttributesAttributeOptions.ts
-  - src/funcs/attributesPostV2TargetIdentifierAttributesAttributeStatuses.ts
-  - src/funcs/commentsDeleteV2CommentsCommentId.ts
-  - src/funcs/commentsGetV2CommentsCommentId.ts
-  - src/funcs/commentsPostV2Comments.ts
-  - src/funcs/entriesDeleteV2ListsListEntriesEntryId.ts
-  - src/funcs/entriesGetV2ListsListEntriesEntryId.ts
-  - src/funcs/entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues.ts
-  - src/funcs/entriesPatchV2ListsListEntriesEntryId.ts
-  - src/funcs/entriesPostV2ListsListEntries.ts
-  - src/funcs/entriesPostV2ListsListEntriesQuery.ts
-  - src/funcs/entriesPutV2ListsListEntries.ts
-  - src/funcs/entriesPutV2ListsListEntriesEntryId.ts
-  - src/funcs/listsGetV2Lists.ts
-  - src/funcs/listsGetV2ListsList.ts
-  - src/funcs/listsPatchV2ListsList.ts
-  - src/funcs/listsPostV2Lists.ts
-  - src/funcs/metaGetV2Self.ts
-  - src/funcs/notesDeleteV2NotesNoteId.ts
-  - src/funcs/notesGetV2Notes.ts
-  - src/funcs/notesGetV2NotesNoteId.ts
-  - src/funcs/notesPostV2Notes.ts
-  - src/funcs/objectsGetV2Objects.ts
-  - src/funcs/objectsGetV2ObjectsObject.ts
-  - src/funcs/objectsPatchV2ObjectsObject.ts
-  - src/funcs/objectsPostV2Objects.ts
-  - src/funcs/recordsDeleteV2ObjectsObjectRecordsRecordId.ts
-  - src/funcs/recordsGetV2ObjectsObjectRecordsRecordId.ts
-  - src/funcs/recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues.ts
-  - src/funcs/recordsGetV2ObjectsObjectRecordsRecordIdEntries.ts
-  - src/funcs/recordsPatchV2ObjectsObjectRecordsRecordId.ts
-  - src/funcs/recordsPostV2ObjectsObjectRecords.ts
-  - src/funcs/recordsPostV2ObjectsObjectRecordsQuery.ts
-  - src/funcs/recordsPutV2ObjectsObjectRecords.ts
-  - src/funcs/recordsPutV2ObjectsObjectRecordsRecordId.ts
-  - src/funcs/tasksDeleteV2TasksTaskId.ts
-  - src/funcs/tasksGetV2Tasks.ts
-  - src/funcs/tasksGetV2TasksTaskId.ts
-  - src/funcs/tasksPatchV2TasksTaskId.ts
-  - src/funcs/tasksPostV2Tasks.ts
-  - src/funcs/threadsGetV2Threads.ts
-  - src/funcs/threadsGetV2ThreadsThreadId.ts
-  - src/funcs/webhooksDeleteV2WebhooksWebhookId.ts
-  - src/funcs/webhooksGetV2Webhooks.ts
-  - src/funcs/webhooksGetV2WebhooksWebhookId.ts
-  - src/funcs/webhooksPatchV2WebhooksWebhookId.ts
-  - src/funcs/webhooksPostV2Webhooks.ts
-  - src/funcs/workspaceMembersGetV2WorkspaceMembers.ts
-  - src/funcs/workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId.ts
+  - src/funcs/attributesCreate.ts
+  - src/funcs/attributesCreateSelectOption.ts
+  - src/funcs/attributesGet.ts
+  - src/funcs/attributesList.ts
+  - src/funcs/attributesListSelectOptions.ts
+  - src/funcs/attributesListStatuses.ts
+  - src/funcs/attributesStatusesCreate.ts
+  - src/funcs/attributesStatusesUpdate.ts
+  - src/funcs/attributesUpdate.ts
+  - src/funcs/attributesUpdateOption.ts
+  - src/funcs/commentsCreate.ts
+  - src/funcs/commentsDelete.ts
+  - src/funcs/commentsGet.ts
+  - src/funcs/entriesAssert.ts
+  - src/funcs/entriesAttributesValuesList.ts
+  - src/funcs/entriesCreate.ts
+  - src/funcs/entriesDelete.ts
+  - src/funcs/entriesGetEntry.ts
+  - src/funcs/entriesOverwrite.ts
+  - src/funcs/entriesQuery.ts
+  - src/funcs/entriesUpdate.ts
+  - src/funcs/listsCreate.ts
+  - src/funcs/listsGet.ts
+  - src/funcs/listsListAll.ts
+  - src/funcs/listsUpdate.ts
+  - src/funcs/metaIdentify.ts
+  - src/funcs/notesCreate.ts
+  - src/funcs/notesDelete.ts
+  - src/funcs/notesGet.ts
+  - src/funcs/notesList.ts
+  - src/funcs/objectsCreate.ts
+  - src/funcs/objectsGet.ts
+  - src/funcs/objectsList.ts
+  - src/funcs/objectsPartialUpdate.ts
+  - src/funcs/recordsAssert.ts
+  - src/funcs/recordsCreate.ts
+  - src/funcs/recordsDelete.ts
+  - src/funcs/recordsGet.ts
+  - src/funcs/recordsListAttributeValues.ts
+  - src/funcs/recordsListEntries.ts
+  - src/funcs/recordsPartialUpdate.ts
+  - src/funcs/recordsQuery.ts
+  - src/funcs/recordsUpdate.ts
+  - src/funcs/tasksCreate.ts
+  - src/funcs/tasksDelete.ts
+  - src/funcs/tasksGet.ts
+  - src/funcs/tasksList.ts
+  - src/funcs/tasksUpdate.ts
+  - src/funcs/threadsGet.ts
+  - src/funcs/threadsList.ts
+  - src/funcs/webhooksCreate.ts
+  - src/funcs/webhooksDelete.ts
+  - src/funcs/webhooksGet.ts
+  - src/funcs/webhooksList.ts
+  - src/funcs/webhooksPartialUpdate.ts
+  - src/funcs/workspaceMembersGet.ts
+  - src/funcs/workspaceMembersList.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -1938,76 +1771,6 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
-  - src/mcp-server/build.mts
-  - src/mcp-server/cli.ts
-  - src/mcp-server/cli/start/command.ts
-  - src/mcp-server/cli/start/impl.ts
-  - src/mcp-server/console-logger.ts
-  - src/mcp-server/extensions.ts
-  - src/mcp-server/mcp-server.ts
-  - src/mcp-server/prompts.ts
-  - src/mcp-server/resources.ts
-  - src/mcp-server/scopes.ts
-  - src/mcp-server/server.ts
-  - src/mcp-server/shared.ts
-  - src/mcp-server/tools.ts
-  - src/mcp-server/tools/attributesGetV2TargetIdentifierAttributes.ts
-  - src/mcp-server/tools/attributesGetV2TargetIdentifierAttributesAttribute.ts
-  - src/mcp-server/tools/attributesGetV2TargetIdentifierAttributesAttributeOptions.ts
-  - src/mcp-server/tools/attributesGetV2TargetIdentifierAttributesAttributeStatuses.ts
-  - src/mcp-server/tools/attributesPatchV2TargetIdentifierAttributesAttribute.ts
-  - src/mcp-server/tools/attributesPatchV2TargetIdentifierAttributesAttributeOptionsOption.ts
-  - src/mcp-server/tools/attributesPatchV2TargetIdentifierAttributesAttributeStatusesStatus.ts
-  - src/mcp-server/tools/attributesPostV2TargetIdentifierAttributes.ts
-  - src/mcp-server/tools/attributesPostV2TargetIdentifierAttributesAttributeOptions.ts
-  - src/mcp-server/tools/attributesPostV2TargetIdentifierAttributesAttributeStatuses.ts
-  - src/mcp-server/tools/commentsDeleteV2CommentsCommentId.ts
-  - src/mcp-server/tools/commentsGetV2CommentsCommentId.ts
-  - src/mcp-server/tools/commentsPostV2Comments.ts
-  - src/mcp-server/tools/entriesDeleteV2ListsListEntriesEntryId.ts
-  - src/mcp-server/tools/entriesGetV2ListsListEntriesEntryId.ts
-  - src/mcp-server/tools/entriesGetV2ListsListEntriesEntryIdAttributesAttributeValues.ts
-  - src/mcp-server/tools/entriesPatchV2ListsListEntriesEntryId.ts
-  - src/mcp-server/tools/entriesPostV2ListsListEntries.ts
-  - src/mcp-server/tools/entriesPostV2ListsListEntriesQuery.ts
-  - src/mcp-server/tools/entriesPutV2ListsListEntries.ts
-  - src/mcp-server/tools/entriesPutV2ListsListEntriesEntryId.ts
-  - src/mcp-server/tools/listsGetV2Lists.ts
-  - src/mcp-server/tools/listsGetV2ListsList.ts
-  - src/mcp-server/tools/listsPatchV2ListsList.ts
-  - src/mcp-server/tools/listsPostV2Lists.ts
-  - src/mcp-server/tools/metaGetV2Self.ts
-  - src/mcp-server/tools/notesDeleteV2NotesNoteId.ts
-  - src/mcp-server/tools/notesGetV2Notes.ts
-  - src/mcp-server/tools/notesGetV2NotesNoteId.ts
-  - src/mcp-server/tools/notesPostV2Notes.ts
-  - src/mcp-server/tools/objectsGetV2Objects.ts
-  - src/mcp-server/tools/objectsGetV2ObjectsObject.ts
-  - src/mcp-server/tools/objectsPatchV2ObjectsObject.ts
-  - src/mcp-server/tools/objectsPostV2Objects.ts
-  - src/mcp-server/tools/recordsDeleteV2ObjectsObjectRecordsRecordId.ts
-  - src/mcp-server/tools/recordsGetV2ObjectsObjectRecordsRecordId.ts
-  - src/mcp-server/tools/recordsGetV2ObjectsObjectRecordsRecordIdAttributesAttributeValues.ts
-  - src/mcp-server/tools/recordsGetV2ObjectsObjectRecordsRecordIdEntries.ts
-  - src/mcp-server/tools/recordsPatchV2ObjectsObjectRecordsRecordId.ts
-  - src/mcp-server/tools/recordsPostV2ObjectsObjectRecords.ts
-  - src/mcp-server/tools/recordsPostV2ObjectsObjectRecordsQuery.ts
-  - src/mcp-server/tools/recordsPutV2ObjectsObjectRecords.ts
-  - src/mcp-server/tools/recordsPutV2ObjectsObjectRecordsRecordId.ts
-  - src/mcp-server/tools/tasksDeleteV2TasksTaskId.ts
-  - src/mcp-server/tools/tasksGetV2Tasks.ts
-  - src/mcp-server/tools/tasksGetV2TasksTaskId.ts
-  - src/mcp-server/tools/tasksPatchV2TasksTaskId.ts
-  - src/mcp-server/tools/tasksPostV2Tasks.ts
-  - src/mcp-server/tools/threadsGetV2Threads.ts
-  - src/mcp-server/tools/threadsGetV2ThreadsThreadId.ts
-  - src/mcp-server/tools/webhooksDeleteV2WebhooksWebhookId.ts
-  - src/mcp-server/tools/webhooksGetV2Webhooks.ts
-  - src/mcp-server/tools/webhooksGetV2WebhooksWebhookId.ts
-  - src/mcp-server/tools/webhooksPatchV2WebhooksWebhookId.ts
-  - src/mcp-server/tools/webhooksPostV2Webhooks.ts
-  - src/mcp-server/tools/workspaceMembersGetV2WorkspaceMembers.ts
-  - src/mcp-server/tools/workspaceMembersGetV2WorkspaceMembersWorkspaceMemberId.ts
   - src/models/components/attribute.ts
   - src/models/components/comment.ts
   - src/models/components/index.ts
@@ -2023,57 +1786,66 @@ generatedFiles:
   - src/models/components/thread.ts
   - src/models/components/workspacemember.ts
   - src/models/errors/apierror.ts
-  - src/models/errors/deletev2commentscommentid.ts
-  - src/models/errors/deletev2listslistentriesentryid.ts
-  - src/models/errors/deletev2notesnoteid.ts
-  - src/models/errors/deletev2objectsobjectrecordsrecordid.ts
-  - src/models/errors/deletev2taskstaskid.ts
-  - src/models/errors/deletev2webhookswebhookid.ts
-  - src/models/errors/getv2commentscommentid.ts
-  - src/models/errors/getv2listslist.ts
-  - src/models/errors/getv2listslistentriesentryid.ts
-  - src/models/errors/getv2listslistentriesentryidattributesattributevalues.ts
-  - src/models/errors/getv2notes.ts
-  - src/models/errors/getv2notesnoteid.ts
-  - src/models/errors/getv2objectsobject.ts
-  - src/models/errors/getv2objectsobjectrecordsrecordid.ts
-  - src/models/errors/getv2objectsobjectrecordsrecordidattributesattributevalues.ts
-  - src/models/errors/getv2targetidentifierattributesattribute.ts
-  - src/models/errors/getv2targetidentifierattributesattributeoptions.ts
-  - src/models/errors/getv2targetidentifierattributesattributestatuses.ts
-  - src/models/errors/getv2taskstaskid.ts
-  - src/models/errors/getv2threadsthreadid.ts
-  - src/models/errors/getv2webhookswebhookid.ts
-  - src/models/errors/getv2workspacemembersworkspacememberid.ts
+  - src/models/errors/attributesresponsebody.ts
+  - src/models/errors/attributesstatusesresponsebody.ts
+  - src/models/errors/code.ts
+  - src/models/errors/deletev2commentscommentidresponsebody.ts
+  - src/models/errors/deletev2webhookswebhookidresponsebody.ts
+  - src/models/errors/entriescode.ts
+  - src/models/errors/entriesresponsebody.ts
+  - src/models/errors/getv2commentscommentidresponsebody.ts
+  - src/models/errors/getv2threadsthreadidresponsebody.ts
+  - src/models/errors/getv2workspacemembersworkspacememberidresponsebody.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
-  - src/models/errors/patchv2listslist.ts
-  - src/models/errors/patchv2listslistentriesentryid.ts
-  - src/models/errors/patchv2objectsobject.ts
-  - src/models/errors/patchv2objectsobjectrecordsrecordid.ts
-  - src/models/errors/patchv2targetidentifierattributesattribute.ts
-  - src/models/errors/patchv2targetidentifierattributesattributeoptionsoption.ts
-  - src/models/errors/patchv2targetidentifierattributesattributestatusesstatus.ts
-  - src/models/errors/patchv2taskstaskid.ts
-  - src/models/errors/patchv2webhookswebhookid.ts
-  - src/models/errors/postv2comments.ts
-  - src/models/errors/postv2lists.ts
-  - src/models/errors/postv2listslistentries.ts
-  - src/models/errors/postv2listslistentriesquery.ts
-  - src/models/errors/postv2notes.ts
-  - src/models/errors/postv2objects.ts
-  - src/models/errors/postv2objectsobjectrecords.ts
-  - src/models/errors/postv2objectsobjectrecordsquery.ts
-  - src/models/errors/postv2targetidentifierattributes.ts
-  - src/models/errors/postv2targetidentifierattributesattributeoptions.ts
-  - src/models/errors/postv2targetidentifierattributesattributestatuses.ts
-  - src/models/errors/postv2tasks.ts
-  - src/models/errors/postv2webhooks.ts
-  - src/models/errors/putv2listslistentries.ts
-  - src/models/errors/putv2listslistentriesentryid.ts
-  - src/models/errors/putv2objectsobjectrecords.ts
-  - src/models/errors/putv2objectsobjectrecordsrecordid.ts
+  - src/models/errors/listsresponsebody.ts
+  - src/models/errors/notesresponsebody.ts
+  - src/models/errors/patchv2objectsobjectobjectsresponsebody.ts
+  - src/models/errors/patchv2objectsobjectresponsebody.ts
+  - src/models/errors/patchv2targetidentifierattributesattributecode.ts
+  - src/models/errors/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.ts
+  - src/models/errors/patchv2targetidentifierattributesattributeresponsebody.ts
+  - src/models/errors/patchv2targetidentifierattributesattributestatusesstatusresponsebody.ts
+  - src/models/errors/patchv2taskstaskidresponsebody.ts
+  - src/models/errors/postv2commentsresponsebody.ts
+  - src/models/errors/postv2listscode.ts
+  - src/models/errors/postv2listslistentriesentriesresponsebody.ts
+  - src/models/errors/postv2listslistentriesresponsebody.ts
+  - src/models/errors/postv2listslistsresponsebody.ts
+  - src/models/errors/postv2listsresponsebody.ts
+  - src/models/errors/postv2liststype.ts
+  - src/models/errors/postv2objectsobjectrecordsquerycode.ts
+  - src/models/errors/postv2objectsobjectrecordsqueryrecordsresponsebody.ts
+  - src/models/errors/postv2objectsobjectrecordsqueryresponsebody.ts
+  - src/models/errors/postv2objectsobjectrecordsresponsebody.ts
+  - src/models/errors/postv2objectsresponsebody.ts
+  - src/models/errors/postv2targetidentifierattributesattributeoptionsresponsebody.ts
+  - src/models/errors/postv2targetidentifierattributesattributesresponsebody.ts
+  - src/models/errors/postv2targetidentifierattributesattributesresponseresponsebody.ts
+  - src/models/errors/postv2targetidentifierattributesattributestatusesresponsebody.ts
+  - src/models/errors/postv2targetidentifierattributesresponsebody.ts
+  - src/models/errors/postv2webhooksresponsebody.ts
+  - src/models/errors/putv2listslistentriescode.ts
+  - src/models/errors/putv2listslistentriesentriesresponsebody.ts
+  - src/models/errors/putv2listslistentriesresponsebody.ts
+  - src/models/errors/putv2objectsobjectrecordsresponsebody.ts
+  - src/models/errors/recordscode.ts
+  - src/models/errors/recordsresponsebody.ts
+  - src/models/errors/recordsresponseresponsebody.ts
+  - src/models/errors/response400400code.ts
+  - src/models/errors/response400code.ts
+  - src/models/errors/response400responsebody.ts
+  - src/models/errors/response400type.ts
+  - src/models/errors/response404responsebody.ts
+  - src/models/errors/responsebody.ts
+  - src/models/errors/responsecode.ts
+  - src/models/errors/responseresponsebody.ts
+  - src/models/errors/responsetype.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/errors/tasksresponsebody.ts
+  - src/models/errors/tasksresponseresponsebody.ts
+  - src/models/errors/type.ts
+  - src/models/errors/webhooksresponsebody.ts
   - src/models/operations/deletev2commentscommentid.ts
   - src/models/operations/deletev2listslistentriesentryid.ts
   - src/models/operations/deletev2notesnoteid.ts
@@ -2132,6 +1904,67 @@ generatedFiles:
   - src/models/operations/putv2listslistentriesentryid.ts
   - src/models/operations/putv2objectsobjectrecords.ts
   - src/models/operations/putv2objectsobjectrecordsrecordid.ts
+  - src/react-query/_context.tsx
+  - src/react-query/_types.ts
+  - src/react-query/attributesCreate.ts
+  - src/react-query/attributesCreateSelectOption.ts
+  - src/react-query/attributesGet.ts
+  - src/react-query/attributesList.ts
+  - src/react-query/attributesListSelectOptions.ts
+  - src/react-query/attributesListStatuses.ts
+  - src/react-query/attributesStatusesCreate.ts
+  - src/react-query/attributesStatusesUpdate.ts
+  - src/react-query/attributesUpdate.ts
+  - src/react-query/attributesUpdateOption.ts
+  - src/react-query/commentsCreate.ts
+  - src/react-query/commentsDelete.ts
+  - src/react-query/commentsGet.ts
+  - src/react-query/entriesAssert.ts
+  - src/react-query/entriesAttributesValuesList.ts
+  - src/react-query/entriesCreate.ts
+  - src/react-query/entriesDelete.ts
+  - src/react-query/entriesGetEntry.ts
+  - src/react-query/entriesOverwrite.ts
+  - src/react-query/entriesQuery.ts
+  - src/react-query/entriesUpdate.ts
+  - src/react-query/index.ts
+  - src/react-query/listsCreate.ts
+  - src/react-query/listsGet.ts
+  - src/react-query/listsListAll.ts
+  - src/react-query/listsUpdate.ts
+  - src/react-query/metaIdentify.ts
+  - src/react-query/notesCreate.ts
+  - src/react-query/notesDelete.ts
+  - src/react-query/notesGet.ts
+  - src/react-query/notesList.ts
+  - src/react-query/objectsCreate.ts
+  - src/react-query/objectsGet.ts
+  - src/react-query/objectsList.ts
+  - src/react-query/objectsPartialUpdate.ts
+  - src/react-query/recordsAssert.ts
+  - src/react-query/recordsCreate.ts
+  - src/react-query/recordsDelete.ts
+  - src/react-query/recordsGet.ts
+  - src/react-query/recordsListAttributeValues.ts
+  - src/react-query/recordsListEntries.ts
+  - src/react-query/recordsPartialUpdate.ts
+  - src/react-query/recordsQuery.ts
+  - src/react-query/recordsUpdate.ts
+  - src/react-query/tasksCreate.ts
+  - src/react-query/tasksDelete.ts
+  - src/react-query/tasksGet.ts
+  - src/react-query/tasksList.ts
+  - src/react-query/tasksUpdate.ts
+  - src/react-query/threadsGet.ts
+  - src/react-query/threadsList.ts
+  - src/react-query/webhooksCreate.ts
+  - src/react-query/webhooksDelete.ts
+  - src/react-query/webhooksGet.ts
+  - src/react-query/webhooksList.ts
+  - src/react-query/webhooksPartialUpdate.ts
+  - src/react-query/workspaceMembersGet.ts
+  - src/react-query/workspaceMembersList.ts
+  - src/sdk/attioentriesattributes.ts
   - src/sdk/attributes.ts
   - src/sdk/comments.ts
   - src/sdk/entries.ts
@@ -2142,8 +1975,10 @@ generatedFiles:
   - src/sdk/objects.ts
   - src/sdk/records.ts
   - src/sdk/sdk.ts
+  - src/sdk/statuses.ts
   - src/sdk/tasks.ts
   - src/sdk/threads.ts
+  - src/sdk/values.ts
   - src/sdk/webhooks.ts
   - src/sdk/workspacemembers.ts
   - src/types/async.ts
@@ -2534,7 +2369,7 @@ examples:
         application/json: {"filter": {"name": "Ada Lovelace"}, "sorts": [{"direction": "asc", "attribute": "name", "field": "last_name"}], "limit": 500, "offset": 0}
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "interaction_type": "email", "interacted_at": "2023-01-01T15:00:00.000000000Z", "owner_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "interaction"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}]}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": 42, "attribute_type": "number"}]}}]}
+          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "status": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, "attribute_type": "status"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}]}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": 42, "attribute_type": "number"}]}}]}
         "404":
           application/json: {"status_code": 8611.36, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   post_/v2/lists/{list}/entries:
@@ -2546,7 +2381,7 @@ examples:
         application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "interaction_type": "email", "interacted_at": "2023-01-01T15:00:00.000000000Z", "owner_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "interaction"}]}}}
         "400":
           application/json: {"status_code": 88.86, "type": "invalid_request_error", "code": "value_not_found", "message": "Parent record with slug/ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
         "404":
@@ -2560,7 +2395,7 @@ examples:
         application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "date", "value": "2023-01-01"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}]}}}
         "400":
           application/json: {"status_code": 2809.08, "type": "invalid_request_error", "code": "multiple_match_results", "message": "Multiple entries were founds for the given parent record. Please remove duplicates or use the update or create entry endpoints instead."}
         "404":
@@ -2573,7 +2408,7 @@ examples:
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": 42, "attribute_type": "number"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "attribute_type": "text"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
         "404":
           application/json: {"status_code": 131.91, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   patch_/v2/lists/{list}/entries/{entry_id}:
@@ -2586,7 +2421,7 @@ examples:
         application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "status": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, "attribute_type": "status"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_email_address": "alice@app.attio.com", "email_address": "alice@app.attio.com", "email_domain": "app.attio.com", "email_root_domain": "attio.com", "email_local_specifier": "alice", "attribute_type": "email-address"}]}}}
         "400":
           application/json: {"status_code": 2136.2, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":
@@ -2601,7 +2436,7 @@ examples:
         application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "attribute_type": "text"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "currency_value": 99, "currency_code": "USD", "attribute_type": "currency"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "date", "value": "2023-01-01"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "interaction_type": "email", "interacted_at": "2023-01-01T15:00:00.000000000Z", "owner_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "interaction"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "status": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, "attribute_type": "status"}]}}}
         "400":
           application/json: {"status_code": 7486.01, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":
@@ -2666,7 +2501,7 @@ examples:
   post_/v2/notes:
     speakeasy-default-post-/v2-/notes:
       requestBody:
-        application/json: {"data": {"parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "format": "plaintext", "content": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "created_at": "2023-01-01T15:00:00.000000000Z"}}
+        application/json: {"data": {"parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "format": "plaintext", "content": "# Meeting Recap: Q4 Planning\n\n**Date:** 2023-10-26\n**Attendees:** Alex, Jamie, Casey\n\n## Key Discussion Points\n\n- Reviewed Q3 performance metrics.\n- Brainstormed key initiatives for Q4.\n- Discussed budget allocation for ==Project Phoenix==.\n\n## Action Items\n\n1. Alex to finalize Q4 roadmap by EOD Friday.\n2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing).\n3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).\n\n*Next steps: Review draft roadmap next week.*", "created_at": "2023-01-01T15:00:00.000000000Z"}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "note_id": "ff3f3bd4-40f4-4f80-8187-cd02385af424"}, "parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "content_plaintext": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "content_markdown": "# Introduction\nDate and time of the call\nParticipants\nPurpose of the call\n\n## Customer Background\n- Company overview (industry, size, location)\n- Key business challenges\n- Current software solutions (if any) and pain points", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
@@ -2701,7 +2536,7 @@ examples:
           sort: "created_at:desc"
           linked_object: "people"
           linked_record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
-          assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
+          assignee: "alice@attio.com"
           is_completed: true
       responses:
         "200":

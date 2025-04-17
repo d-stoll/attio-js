@@ -5,6 +5,7 @@ generation:
     schemaPath: https://developers.attio.com/openapi/655e2ce3ace07f065aa1dd14
   sdkClassName: Attio
   maintainOpenAPIOrder: true
+  deduplicateErrors: true
   usageSnippets:
     optionalPropertyRendering: withExample
   useClassNamesForArrayFields: true
@@ -18,7 +19,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 typescript:
-  version: 0.0.1
+  version: 0.2.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -28,8 +29,8 @@ typescript:
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIError
   enableCustomCodeRegions: false
-  enableMCPServer: true
-  enableReactQuery: false
+  enableMCPServer: false
+  enableReactQuery: true
   enumFormat: union
   envVarPrefix: ATTIO
   flattenGlobalSecurity: true

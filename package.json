@@ -1,15 +1,7 @@
 {
   "name": "attio-js",
-  "version": "0.0.2",
-  "author": "Daniel Stoll",
-  "description": "A community-maintained JavaScript/TypeScript SDK for Attio",
-  "keywords": [
-    "attio",
-    "sdk",
-    "javascript",
-    "typescript"
-  ],
-  "license": "MIT",
+  "version": "0.0.3",
+  "author": "Speakeasy",
   "type": "module",
   "bin": {
     "mcp": "bin/mcp-server.js"

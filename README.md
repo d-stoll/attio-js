@@ -5,9 +5,6 @@ Developer-friendly & type-safe JS/TS SDK based on the [official OpenAPI spec](ht
 <!-- Start Summary [summary] -->
 ## Summary
 
-Attio is a CRM platform which is highly customisable, incredibly powerful and data-driven. The public API allows you to manipulate records, lists, notes, tasks and more. You can find more information about the Attio API in the [official docs](https://developers.attio.com/docs/getting-started).
-
-Unfortunately, an official JavaScript or TypeScript SDK has not been released yet. In the meantime, we maintain this unofficial SDK to bridge the gap until an official SDK becomes available.
 
 <!-- End Summary [summary] -->
 
@@ -125,9 +122,12 @@ You can also run MCP servers as a standalone binary with no additional dependenc
 
 ```bash
 curl -L -o mcp-server \
-    https://github.com/d-stoll/attio-js/releases/download/v0.0.2/mcp-server-bun-darwin-arm64 && \
+    https://github.com/{org}/{repo}/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
 chmod +x mcp-server
 ```
+
+If the repo is a private repo you must add your Github PAT to download a release `-H "Authorization: Bearer {GITHUB_PAT}"`.
+
 
 ```json
 {

@@ -5674,7 +5674,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -6292,7 +6293,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -10590,7 +10592,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -12686,7 +12689,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -21404,7 +21408,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -21736,7 +21741,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -26094,7 +26100,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {
@@ -39368,7 +39375,8 @@
                       "code": {
                         "type": "string",
                         "enum": [
-                          "value_not_found"
+                          "value_not_found",
+                          "missing_value"
                         ]
                       },
                       "message": {

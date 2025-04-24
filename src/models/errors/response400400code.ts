@@ -7,6 +7,7 @@ import { ClosedEnum } from "../../types/enums.js";
 
 export const Response400400Code = {
   ValueNotFound: "value_not_found",
+  MissingValue: "missing_value",
 } as const;
 export type Response400400Code = ClosedEnum<typeof Response400400Code>;
 

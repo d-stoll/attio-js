@@ -11,34 +11,14 @@ import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
- * Specify the format for the note's content. Choose from:
- *
- * @remarks
- * - `plaintext`: Standard text format where `\n` signifies a new line.
- * - `markdown`: Enables rich text formatting using a subset of Markdown syntax:
- *   - **Headings**: Levels 1-3 (`#`, `##`, `###`).
- *   - **Lists**: Unordered (`-`, `*`, `+`) and ordered (`1.`, `2.`).
- *   - **Text styles**: Bold (`**bold**` or `__bold__`), italic (`*italic*` or `_italic_`), strikethrough (`~~strikethrough~~`), and highlight (`==highlighted==`).
- *   - **Links**: Standard Markdown links (`[link text](https://example.com)`).
- *
- *   *Note: While the Attio interface supports image embeds, they cannot currently be added or retrieved via the API's markdown format.*
+ * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
  */
 export const Format = {
   Plaintext: "plaintext",
   Markdown: "markdown",
 } as const;
 /**
- * Specify the format for the note's content. Choose from:
- *
- * @remarks
- * - `plaintext`: Standard text format where `\n` signifies a new line.
- * - `markdown`: Enables rich text formatting using a subset of Markdown syntax:
- *   - **Headings**: Levels 1-3 (`#`, `##`, `###`).
- *   - **Lists**: Unordered (`-`, `*`, `+`) and ordered (`1.`, `2.`).
- *   - **Text styles**: Bold (`**bold**` or `__bold__`), italic (`*italic*` or `_italic_`), strikethrough (`~~strikethrough~~`), and highlight (`==highlighted==`).
- *   - **Links**: Standard Markdown links (`[link text](https://example.com)`).
- *
- *   *Note: While the Attio interface supports image embeds, they cannot currently be added or retrieved via the API's markdown format.*
+ * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
  */
 export type Format = ClosedEnum<typeof Format>;
 
@@ -56,21 +36,11 @@ export type PostV2NotesData = {
    */
   title: string;
   /**
-   * Specify the format for the note's content. Choose from:
-   *
-   * @remarks
-   * - `plaintext`: Standard text format where `\n` signifies a new line.
-   * - `markdown`: Enables rich text formatting using a subset of Markdown syntax:
-   *   - **Headings**: Levels 1-3 (`#`, `##`, `###`).
-   *   - **Lists**: Unordered (`-`, `*`, `+`) and ordered (`1.`, `2.`).
-   *   - **Text styles**: Bold (`**bold**` or `__bold__`), italic (`*italic*` or `_italic_`), strikethrough (`~~strikethrough~~`), and highlight (`==highlighted==`).
-   *   - **Links**: Standard Markdown links (`[link text](https://example.com)`).
-   *
-   *   *Note: While the Attio interface supports image embeds, they cannot currently be added or retrieved via the API's markdown format.*
+   * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
    */
   format: Format;
   /**
-   * The main content of the note, formatted according to the value provided in the `format` field. Use `\n` for line breaks in `plaintext`. For `markdown`, utilize the supported syntax elements to structure and style your note.
+   * The representation of the note content in the specified format.
    */
   content: string;
   /**

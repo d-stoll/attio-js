@@ -6,7 +6,6 @@ Success
 
 ```typescript
 import { PostV2ListsListEntriesResponseBody } from "attio-js/models/operations";
-import { RFCDate } from "attio-js/types";
 
 let value: PostV2ListsListEntriesResponseBody = {
   data: {
@@ -28,7 +27,7 @@ let value: PostV2ListsListEntriesResponseBody = {
             type: "workspace-member",
           },
           attributeType: "timestamp",
-          value: new RFCDate("2023-01-01T15:00:00.000000000Z"),
+          value: new Date("2023-01-01T15:00:00.000000000Z"),
         },
       ],
       "created_at": [

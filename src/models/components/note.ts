@@ -67,16 +67,7 @@ export type Note = {
    */
   contentPlaintext: string;
   /**
-   * The markdown representation of the note content. Supports a subset of markdown features including:
-   *
-   * @remarks
-   * - Headings (levels 1-3 only with `#`, `##`, `###`)
-   * - Unordered lists (`-`, `*`, `+`)
-   * - Ordered lists (`1.`, `2.`, etc.)
-   * - Text styling: `**bold**`, `*italic*`, `~~strikethrough~~`, `==highlighted==`
-   * - Links: `[link text](https://example.com)`
-   *
-   * Note that note images are not returned as part of the markdown API representation.
+   * The markdown representation of the note content with formatting applied based on block types and styles.
    */
   contentMarkdown: string;
   /**

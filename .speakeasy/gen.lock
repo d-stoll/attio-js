@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
-  docChecksum: ea9fa4212a802889bac721bcf0be50e5
+  docChecksum: 6de5b759327046cb0c906514e2bfd0c4
   docVersion: 2.0.0
-  speakeasyVersion: 1.534.0
-  generationVersion: 2.585.0
-  releaseVersion: 0.0.3
-  configChecksum: 9636f27b01f0148c6abedf93ae045116
+  speakeasyVersion: 1.538.0
+  generationVersion: 2.591.1
+  releaseVersion: 0.0.4
+  configChecksum: 0966e0d197cf4466e1c4730522dd0107
   published: true
 features:
   typescript:
@@ -1689,7 +1689,6 @@ generatedFiles:
   - docs/sdks/values/README.md
   - docs/sdks/webhooks/README.md
   - docs/sdks/workspacemembers/README.md
-  - docs/types/rfcdate.md
   - eslint.config.mjs
   - jsr.json
   - package.json
@@ -2501,7 +2500,7 @@ examples:
   post_/v2/notes:
     speakeasy-default-post-/v2-/notes:
       requestBody:
-        application/json: {"data": {"parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "format": "plaintext", "content": "# Meeting Recap: Q4 Planning\n\n**Date:** 2023-10-26\n**Attendees:** Alex, Jamie, Casey\n\n## Key Discussion Points\n\n- Reviewed Q3 performance metrics.\n- Brainstormed key initiatives for Q4.\n- Discussed budget allocation for ==Project Phoenix==.\n\n## Action Items\n\n1. Alex to finalize Q4 roadmap by EOD Friday.\n2. Jamie to schedule follow-up with [Marketing Team](https://app.attio.com/teams/marketing).\n3. Casey to draft initial budget for ~~Project Chimera~~ (now deferred).\n\n*Next steps: Review draft roadmap next week.*", "created_at": "2023-01-01T15:00:00.000000000Z"}}
+        application/json: {"data": {"parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "format": "plaintext", "content": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "created_at": "2023-01-01T15:00:00.000000000Z"}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "note_id": "ff3f3bd4-40f4-4f80-8187-cd02385af424"}, "parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "content_plaintext": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "content_markdown": "# Introduction\nDate and time of the call\nParticipants\nPurpose of the call\n\n## Customer Background\n- Company overview (industry, size, location)\n- Key business challenges\n- Current software solutions (if any) and pain points", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}

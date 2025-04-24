@@ -16,10 +16,7 @@ Unfortunately, an official JavaScript or TypeScript SDK has not been released ye
 <!-- $toc-max-depth=2 -->
 * [Javascript & Typescript SDK for Attio](#javascript-typescript-sdk-for-attio)
   * [SDK Installation](#sdk-installation)
-* [Javascript & Typescript SDK for Attio](#javascript-typescript-sdk-for-attio)
-  * [SDK Installation](#sdk-installation)
   * [Requirements](#requirements)
-  * [SDK Example Usage](#sdk-example-usage)
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)

@@ -3,7 +3,7 @@ speakeasyVersion: latest
 sources:
     Attio API:
         inputs:
-            - location: https://developers.attio.com/openapi/655e2ce3ace07f065aa1dd14
+            - location: openapi.json
         overlays:
             - location: .speakeasy\speakeasy-modifications-overlay.yaml
         registry:

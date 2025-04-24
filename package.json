@@ -1,14 +1,7 @@
 {
   "name": "attio-js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Daniel Stoll",
-  "description": "A community-maintained JavaScript/TypeScript SDK for Attio",
-  "keywords": [
-    "attio",
-    "sdk",
-    "javascript",
-    "typescript"
-  ],
   "license": "MIT",
   "type": "module",
   "tshy": {
@@ -28,10 +21,6 @@
     }
   },
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/d-stoll/attio-js.git"
-  },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tshy",

@@ -178,7 +178,7 @@ const value: components.InputValue18 = {
 
 ```typescript
 const value: components.InputValue19 = {
-  value: new RFCDate("2023-01-01T15:00:00.000000000Z"),
+  value: new Date("2023-01-01T15:00:00.000000000Z"),
 };
 ```
 

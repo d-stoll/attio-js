@@ -219,7 +219,7 @@ const value: components.Eighteen = {
 ```typescript
 const value: components.Nineteen = {
   attributeType: "timestamp",
-  value: new RFCDate("2023-01-01T15:00:00.000000000Z"),
+  value: new Date("2023-01-01T15:00:00.000000000Z"),
 };
 ```
 

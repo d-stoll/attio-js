@@ -7,7 +7,6 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import { RFCDate } from "../../types/rfcdate.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
@@ -93,7 +92,7 @@ export type Data17 = {
   /**
    * A timestamp value represents a single, universal moment in time using an ISO 8601 formatted string. This means that a timestamp consists of a date, a time (with nanosecond precision), and a time zone. Attio will coerce timestamps which do not provide full nanosecond precision and UTC is assumed if no time zone is provided. For example, "2023", "2023-01", "2023-01-02", "2023-01-02T13:00", "2023-01-02T13:00:00", and "2023-01-02T13:00:00.000000000" will all be coerced to "2023-01-02T13:00:00.000000000Z". Timestamps are always returned in UTC. For example, writing a timestamp value using the string "2023-01-02T13:00:00.000000000+02:00" will result in the value "2023-01-02T11:00:00.000000000Z" being returned. The maximum date is "9999-12-31T23:59:59.999999999Z".
    */
-  value: RFCDate;
+  value: Date;
 };
 
 /**
@@ -2291,7 +2290,7 @@ export const Data17$inboundSchema: z.ZodType<Data17, z.ZodTypeDef, unknown> = z
     ),
     attribute_type:
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEntriesAttributesValuesResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema,
-    value: z.string().transform(v => new RFCDate(v)),
+    value: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -2324,7 +2323,7 @@ export const Data17$outboundSchema: z.ZodType<
   ),
   attributeType:
     GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEntriesAttributesValuesResponse200ApplicationJSONResponseBody17AttributeType$outboundSchema,
-  value: z.instanceof(RFCDate).transform(v => v.toString()),
+  value: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {
     activeFrom: "active_from",

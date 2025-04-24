@@ -301,7 +301,7 @@ const value: operations.PatchV2ListsListEntriesEntryIdEntryValues17 = {
     type: "workspace-member",
   },
   attributeType: "timestamp",
-  value: new RFCDate("2023-01-01T15:00:00.000000000Z"),
+  value: new Date("2023-01-01T15:00:00.000000000Z"),
 };
 ```
 

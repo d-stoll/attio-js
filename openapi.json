@@ -6586,7 +6586,8 @@
                             },
                             "values": {
                               "type": "object",
-                              "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                              "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                              "additionalProperties": true
                             }
                           },
                           "required": [
@@ -6735,7 +6736,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -6796,7 +6798,8 @@
                           },
                           "values": {
                             "type": "object",
-                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                            "additionalProperties": true
                           }
                         },
                         "required": [
@@ -6953,7 +6956,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -7015,7 +7019,8 @@
                           },
                           "values": {
                             "type": "object",
-                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                            "additionalProperties": true
                           }
                         },
                         "required": [
@@ -7202,7 +7207,8 @@
                           },
                           "values": {
                             "type": "object",
-                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                            "additionalProperties": true
                           }
                         },
                         "required": [
@@ -7317,7 +7323,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -7379,7 +7386,8 @@
                           },
                           "values": {
                             "type": "object",
-                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                            "additionalProperties": true
                           }
                         },
                         "required": [
@@ -7535,7 +7543,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -7597,7 +7606,8 @@
                           },
                           "values": {
                             "type": "object",
-                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values."
+                            "description": "A record type with an attribute `api_slug` as the key, and an array of value objects as the values.",
+                            "additionalProperties": true
                           }
                         },
                         "required": [
@@ -10907,7 +10917,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -11191,7 +11202,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -11681,7 +11693,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [
@@ -11962,7 +11975,8 @@
                               "Select option 1",
                               "Select option 2"
                             ]
-                          }
+                          },
+                          "additionalProperties": true
                         }
                       },
                       "required": [

@@ -110,11 +110,6 @@ export type Id = {
   recordId: string;
 };
 
-/**
- * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
- */
-export type PostV2ObjectsObjectRecordsQueryValues = {};
-
 export type PostV2ObjectsObjectRecordsQueryData = {
   id: Id;
   /**
@@ -124,7 +119,7 @@ export type PostV2ObjectsObjectRecordsQueryData = {
   /**
    * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
    */
-  values: PostV2ObjectsObjectRecordsQueryValues;
+  values: { [k: string]: any };
 };
 
 /**
@@ -547,59 +542,6 @@ export function idFromJSON(
 }
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsQueryValues$inboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsQueryValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type PostV2ObjectsObjectRecordsQueryValues$Outbound = {};
-
-/** @internal */
-export const PostV2ObjectsObjectRecordsQueryValues$outboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsQueryValues$Outbound,
-  z.ZodTypeDef,
-  PostV2ObjectsObjectRecordsQueryValues
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2ObjectsObjectRecordsQueryValues$ {
-  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV2ObjectsObjectRecordsQueryValues$inboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2ObjectsObjectRecordsQueryValues$outboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$Outbound` instead. */
-  export type Outbound = PostV2ObjectsObjectRecordsQueryValues$Outbound;
-}
-
-export function postV2ObjectsObjectRecordsQueryValuesToJSON(
-  postV2ObjectsObjectRecordsQueryValues: PostV2ObjectsObjectRecordsQueryValues,
-): string {
-  return JSON.stringify(
-    PostV2ObjectsObjectRecordsQueryValues$outboundSchema.parse(
-      postV2ObjectsObjectRecordsQueryValues,
-    ),
-  );
-}
-
-export function postV2ObjectsObjectRecordsQueryValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2ObjectsObjectRecordsQueryValues, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostV2ObjectsObjectRecordsQueryValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsObjectRecordsQueryValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostV2ObjectsObjectRecordsQueryData$inboundSchema: z.ZodType<
   PostV2ObjectsObjectRecordsQueryData,
   z.ZodTypeDef,
@@ -607,7 +549,7 @@ export const PostV2ObjectsObjectRecordsQueryData$inboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => Id$inboundSchema),
   created_at: z.string(),
-  values: z.lazy(() => PostV2ObjectsObjectRecordsQueryValues$inboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",
@@ -618,7 +560,7 @@ export const PostV2ObjectsObjectRecordsQueryData$inboundSchema: z.ZodType<
 export type PostV2ObjectsObjectRecordsQueryData$Outbound = {
   id: Id$Outbound;
   created_at: string;
-  values: PostV2ObjectsObjectRecordsQueryValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -629,7 +571,7 @@ export const PostV2ObjectsObjectRecordsQueryData$outboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => Id$outboundSchema),
   createdAt: z.string(),
-  values: z.lazy(() => PostV2ObjectsObjectRecordsQueryValues$outboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",

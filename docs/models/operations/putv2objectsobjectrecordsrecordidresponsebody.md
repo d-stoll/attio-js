@@ -15,7 +15,9 @@ let value: PutV2ObjectsObjectRecordsRecordIdResponseBody = {
       recordId: "bf071e1f-6035-429d-b874-d83ea64ea13b",
     },
     createdAt: "2022-11-21T13:22:49.061281000Z",
-    values: {},
+    values: {
+      "key": "<value>",
+    },
   },
 };
 ```

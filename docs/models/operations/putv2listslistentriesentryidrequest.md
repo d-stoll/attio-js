@@ -10,7 +10,13 @@ let value: PutV2ListsListEntriesEntryIdRequest = {
   entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   requestBody: {
     data: {
-      entryValues: {},
+      entryValues: {
+        "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+        "multiselect_attribute": [
+          "Select option 1",
+          "Select option 2",
+        ],
+      },
     },
   },
 };

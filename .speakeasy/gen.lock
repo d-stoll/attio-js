@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
-  docChecksum: 7534ea68c534c6520d3c85551d151b3f
+  docChecksum: 3a151204a8b049335a929c6301361686
   docVersion: 2.0.0
   speakeasyVersion: 1.538.0
   generationVersion: 2.591.1
-  releaseVersion: 0.0.8
-  configChecksum: 589df7388e72e9f0264f44b468efe242
+  releaseVersion: 0.0.9
+  configChecksum: 8e29275a781dd668088232e8a262c52c
   published: true
 features:
   typescript:
@@ -450,7 +450,6 @@ generatedFiles:
   - docs/models/operations/getv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues.md
   - docs/models/operations/getv2objectsobjectrequest.md
   - docs/models/operations/getv2objectsobjectresponsebody.md
   - docs/models/operations/getv2objectsresponsebody.md
@@ -531,7 +530,6 @@ generatedFiles:
   - docs/models/operations/patchv2listslistdata.md
   - docs/models/operations/patchv2listslistentriesentryiddata.md
   - docs/models/operations/patchv2listslistentriesentryidentriesdata.md
-  - docs/models/operations/patchv2listslistentriesentryidentriesentryvalues.md
   - docs/models/operations/patchv2listslistentriesentryidentryvalues.md
   - docs/models/operations/patchv2listslistentriesentryidid.md
   - docs/models/operations/patchv2listslistentriesentryidrequest.md
@@ -547,11 +545,9 @@ generatedFiles:
   - docs/models/operations/patchv2objectsobjectrecordsrecordiddata.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrecordsdata.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidrecordsvalues.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues.md
   - docs/models/operations/patchv2objectsobjectrequest.md
   - docs/models/operations/patchv2objectsobjectrequestbody.md
   - docs/models/operations/patchv2objectsobjectresponsebody.md
@@ -641,7 +637,6 @@ generatedFiles:
   - docs/models/operations/postv2listslistentriesentryvalues.md
   - docs/models/operations/postv2listslistentriesid.md
   - docs/models/operations/postv2listslistentriesquerydata.md
-  - docs/models/operations/postv2listslistentriesqueryentryvalues.md
   - docs/models/operations/postv2listslistentriesqueryid.md
   - docs/models/operations/postv2listslistentriesqueryrequest.md
   - docs/models/operations/postv2listslistentriesqueryrequestbody.md
@@ -665,12 +660,10 @@ generatedFiles:
   - docs/models/operations/postv2objectsobjectrecordsqueryrequest.md
   - docs/models/operations/postv2objectsobjectrecordsqueryrequestbody.md
   - docs/models/operations/postv2objectsobjectrecordsqueryresponsebody.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues.md
   - docs/models/operations/postv2objectsobjectrecordsrecordsdata.md
   - docs/models/operations/postv2objectsobjectrecordsrequest.md
   - docs/models/operations/postv2objectsobjectrecordsrequestbody.md
   - docs/models/operations/postv2objectsobjectrecordsresponsebody.md
-  - docs/models/operations/postv2objectsobjectrecordsvalues.md
   - docs/models/operations/postv2objectsrequestbody.md
   - docs/models/operations/postv2objectsresponsebody.md
   - docs/models/operations/postv2targetidentifierattributesattributeoptionsdata.md
@@ -716,10 +709,8 @@ generatedFiles:
   - docs/models/operations/postv2webhookswebhooksdata.md
   - docs/models/operations/putv2listslistentriesdata.md
   - docs/models/operations/putv2listslistentriesentriesdata.md
-  - docs/models/operations/putv2listslistentriesentriesentryvalues.md
   - docs/models/operations/putv2listslistentriesentryiddata.md
   - docs/models/operations/putv2listslistentriesentryidentriesdata.md
-  - docs/models/operations/putv2listslistentriesentryidentriesentryvalues.md
   - docs/models/operations/putv2listslistentriesentryidentryvalues.md
   - docs/models/operations/putv2listslistentriesentryidid.md
   - docs/models/operations/putv2listslistentriesentryidrequest.md
@@ -735,17 +726,13 @@ generatedFiles:
   - docs/models/operations/putv2objectsobjectrecordsrecordiddata.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrecordsdata.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidrecordsvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrecordsdata.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordsvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsresponsebody.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues.md
   - docs/models/operations/recordreference.md
   - docs/models/operations/recordt.md
   - docs/models/operations/referencedactortype.md
@@ -778,7 +765,6 @@ generatedFiles:
   - docs/models/operations/twelve.md
   - docs/models/operations/two.md
   - docs/models/operations/type.md
-  - docs/models/operations/values.md
   - docs/models/operations/workspaceaccess.md
   - docs/models/operations/workspacememberaccess.md
   - docs/sdks/attio/README.md
@@ -1319,7 +1305,7 @@ examples:
         path:
           object: "people"
       requestBody:
-        application/json: {"data": {"values": {}}}
+        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
@@ -1335,7 +1321,7 @@ examples:
         query:
           matching_attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
       requestBody:
-        application/json: {"data": {"values": {}}}
+        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
@@ -1361,7 +1347,7 @@ examples:
           object: "people"
           record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       requestBody:
-        application/json: {"data": {"values": {}}}
+        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
@@ -1376,7 +1362,7 @@ examples:
           object: "people"
           record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       requestBody:
-        application/json: {"data": {"values": {}}}
+        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
@@ -1485,7 +1471,7 @@ examples:
         path:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
       requestBody:
-        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {}}}
+        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
@@ -1499,7 +1485,7 @@ examples:
         path:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
       requestBody:
-        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {}}}
+        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
@@ -1525,7 +1511,7 @@ examples:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       requestBody:
-        application/json: {"data": {"entry_values": {}}}
+        application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
@@ -1540,7 +1526,7 @@ examples:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       requestBody:
-        application/json: {"data": {"entry_values": {}}}
+        application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}

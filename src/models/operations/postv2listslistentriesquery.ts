@@ -123,7 +123,7 @@ export type PostV2ListsListEntriesQueryId = {
 /**
  * A list of attribute values for the list entry (not attribute values for its parent record).
  */
-export type PostV2ListsListEntriesQueryEntryValues = {};
+export type EntryValues = {};
 
 export type PostV2ListsListEntriesQueryData = {
   id: PostV2ListsListEntriesQueryId;
@@ -142,7 +142,7 @@ export type PostV2ListsListEntriesQueryData = {
   /**
    * A list of attribute values for the list entry (not attribute values for its parent record).
    */
-  entryValues: PostV2ListsListEntriesQueryEntryValues;
+  entryValues: EntryValues;
 };
 
 /**
@@ -614,56 +614,46 @@ export function postV2ListsListEntriesQueryIdFromJSON(
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQueryEntryValues$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesQueryEntryValues,
+export const EntryValues$inboundSchema: z.ZodType<
+  EntryValues,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type PostV2ListsListEntriesQueryEntryValues$Outbound = {};
+export type EntryValues$Outbound = {};
 
 /** @internal */
-export const PostV2ListsListEntriesQueryEntryValues$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesQueryEntryValues$Outbound,
+export const EntryValues$outboundSchema: z.ZodType<
+  EntryValues$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesQueryEntryValues
+  EntryValues
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQueryEntryValues$ {
-  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV2ListsListEntriesQueryEntryValues$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2ListsListEntriesQueryEntryValues$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesQueryEntryValues$Outbound;
+export namespace EntryValues$ {
+  /** @deprecated use `EntryValues$inboundSchema` instead. */
+  export const inboundSchema = EntryValues$inboundSchema;
+  /** @deprecated use `EntryValues$outboundSchema` instead. */
+  export const outboundSchema = EntryValues$outboundSchema;
+  /** @deprecated use `EntryValues$Outbound` instead. */
+  export type Outbound = EntryValues$Outbound;
 }
 
-export function postV2ListsListEntriesQueryEntryValuesToJSON(
-  postV2ListsListEntriesQueryEntryValues:
-    PostV2ListsListEntriesQueryEntryValues,
-): string {
-  return JSON.stringify(
-    PostV2ListsListEntriesQueryEntryValues$outboundSchema.parse(
-      postV2ListsListEntriesQueryEntryValues,
-    ),
-  );
+export function entryValuesToJSON(entryValues: EntryValues): string {
+  return JSON.stringify(EntryValues$outboundSchema.parse(entryValues));
 }
 
-export function postV2ListsListEntriesQueryEntryValuesFromJSON(
+export function entryValuesFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesQueryEntryValues, SDKValidationError> {
+): SafeParseResult<EntryValues, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      PostV2ListsListEntriesQueryEntryValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesQueryEntryValues' from JSON`,
+    (x) => EntryValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EntryValues' from JSON`,
   );
 }
 
@@ -677,9 +667,7 @@ export const PostV2ListsListEntriesQueryData$inboundSchema: z.ZodType<
   parent_record_id: z.string(),
   parent_object: z.string(),
   created_at: z.string(),
-  entry_values: z.lazy(() =>
-    PostV2ListsListEntriesQueryEntryValues$inboundSchema
-  ),
+  entry_values: z.lazy(() => EntryValues$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "parent_record_id": "parentRecordId",
@@ -695,7 +683,7 @@ export type PostV2ListsListEntriesQueryData$Outbound = {
   parent_record_id: string;
   parent_object: string;
   created_at: string;
-  entry_values: PostV2ListsListEntriesQueryEntryValues$Outbound;
+  entry_values: EntryValues$Outbound;
 };
 
 /** @internal */
@@ -708,9 +696,7 @@ export const PostV2ListsListEntriesQueryData$outboundSchema: z.ZodType<
   parentRecordId: z.string(),
   parentObject: z.string(),
   createdAt: z.string(),
-  entryValues: z.lazy(() =>
-    PostV2ListsListEntriesQueryEntryValues$outboundSchema
-  ),
+  entryValues: z.lazy(() => EntryValues$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     parentRecordId: "parent_record_id",

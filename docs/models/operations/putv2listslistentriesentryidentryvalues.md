@@ -1,6 +1,6 @@
 # PutV2ListsListEntriesEntryIdEntryValues
 
-An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
+A list of attribute values for the list entry (not attribute values for its parent record).
 
 ## Example Usage
 

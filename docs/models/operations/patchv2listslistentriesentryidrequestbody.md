@@ -7,7 +7,13 @@ import { PatchV2ListsListEntriesEntryIdRequestBody } from "attio-js/models/opera
 
 let value: PatchV2ListsListEntriesEntryIdRequestBody = {
   data: {
-    entryValues: {},
+    entryValues: {
+      "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+      "multiselect_attribute": [
+        "Select option 1",
+        "Select option 2",
+      ],
+    },
   },
 };
 ```

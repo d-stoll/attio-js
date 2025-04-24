@@ -8,16 +8,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
- */
-export type PutV2ObjectsObjectRecordsValues = {};
-
 export type PutV2ObjectsObjectRecordsData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  values: PutV2ObjectsObjectRecordsValues;
+  values: { [k: string]: any };
 };
 
 export type PutV2ObjectsObjectRecordsRequestBody = {
@@ -45,11 +40,6 @@ export type PutV2ObjectsObjectRecordsId = {
   recordId: string;
 };
 
-/**
- * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
- */
-export type PutV2ObjectsObjectRecordsRecordsValues = {};
-
 export type PutV2ObjectsObjectRecordsRecordsData = {
   id: PutV2ObjectsObjectRecordsId;
   /**
@@ -59,7 +49,7 @@ export type PutV2ObjectsObjectRecordsRecordsData = {
   /**
    * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
    */
-  values: PutV2ObjectsObjectRecordsRecordsValues;
+  values: { [k: string]: any };
 };
 
 /**
@@ -70,67 +60,17 @@ export type PutV2ObjectsObjectRecordsResponseBody = {
 };
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsValues$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type PutV2ObjectsObjectRecordsValues$Outbound = {};
-
-/** @internal */
-export const PutV2ObjectsObjectRecordsValues$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsValues$Outbound,
-  z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsValues
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV2ObjectsObjectRecordsValues$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsValues$inboundSchema` instead. */
-  export const inboundSchema = PutV2ObjectsObjectRecordsValues$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsValues$outboundSchema` instead. */
-  export const outboundSchema = PutV2ObjectsObjectRecordsValues$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsValues$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsValues$Outbound;
-}
-
-export function putV2ObjectsObjectRecordsValuesToJSON(
-  putV2ObjectsObjectRecordsValues: PutV2ObjectsObjectRecordsValues,
-): string {
-  return JSON.stringify(
-    PutV2ObjectsObjectRecordsValues$outboundSchema.parse(
-      putV2ObjectsObjectRecordsValues,
-    ),
-  );
-}
-
-export function putV2ObjectsObjectRecordsValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<PutV2ObjectsObjectRecordsValues, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PutV2ObjectsObjectRecordsValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ObjectsObjectRecordsValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PutV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
   PutV2ObjectsObjectRecordsData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  values: z.lazy(() => PutV2ObjectsObjectRecordsValues$inboundSchema),
+  values: z.record(z.any()),
 });
 
 /** @internal */
 export type PutV2ObjectsObjectRecordsData$Outbound = {
-  values: PutV2ObjectsObjectRecordsValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -139,7 +79,7 @@ export const PutV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PutV2ObjectsObjectRecordsData
 > = z.object({
-  values: z.lazy(() => PutV2ObjectsObjectRecordsValues$outboundSchema),
+  values: z.record(z.any()),
 });
 
 /**
@@ -383,60 +323,6 @@ export function putV2ObjectsObjectRecordsIdFromJSON(
 }
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsRecordsValues$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordsValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type PutV2ObjectsObjectRecordsRecordsValues$Outbound = {};
-
-/** @internal */
-export const PutV2ObjectsObjectRecordsRecordsValues$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordsValues$Outbound,
-  z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsRecordsValues
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutV2ObjectsObjectRecordsRecordsValues$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV2ObjectsObjectRecordsRecordsValues$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV2ObjectsObjectRecordsRecordsValues$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsValues$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsRecordsValues$Outbound;
-}
-
-export function putV2ObjectsObjectRecordsRecordsValuesToJSON(
-  putV2ObjectsObjectRecordsRecordsValues:
-    PutV2ObjectsObjectRecordsRecordsValues,
-): string {
-  return JSON.stringify(
-    PutV2ObjectsObjectRecordsRecordsValues$outboundSchema.parse(
-      putV2ObjectsObjectRecordsRecordsValues,
-    ),
-  );
-}
-
-export function putV2ObjectsObjectRecordsRecordsValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<PutV2ObjectsObjectRecordsRecordsValues, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutV2ObjectsObjectRecordsRecordsValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ObjectsObjectRecordsRecordsValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PutV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
   PutV2ObjectsObjectRecordsRecordsData,
   z.ZodTypeDef,
@@ -444,7 +330,7 @@ export const PutV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => PutV2ObjectsObjectRecordsId$inboundSchema),
   created_at: z.string(),
-  values: z.lazy(() => PutV2ObjectsObjectRecordsRecordsValues$inboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",
@@ -455,7 +341,7 @@ export const PutV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
 export type PutV2ObjectsObjectRecordsRecordsData$Outbound = {
   id: PutV2ObjectsObjectRecordsId$Outbound;
   created_at: string;
-  values: PutV2ObjectsObjectRecordsRecordsValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -466,7 +352,7 @@ export const PutV2ObjectsObjectRecordsRecordsData$outboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => PutV2ObjectsObjectRecordsId$outboundSchema),
   createdAt: z.string(),
-  values: z.lazy(() => PutV2ObjectsObjectRecordsRecordsValues$outboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",

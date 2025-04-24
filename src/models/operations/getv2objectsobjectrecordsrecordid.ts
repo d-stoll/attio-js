@@ -28,11 +28,6 @@ export type GetV2ObjectsObjectRecordsRecordIdId = {
   recordId: string;
 };
 
-/**
- * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
- */
-export type GetV2ObjectsObjectRecordsRecordIdValues = {};
-
 export type GetV2ObjectsObjectRecordsRecordIdData = {
   id: GetV2ObjectsObjectRecordsRecordIdId;
   /**
@@ -42,7 +37,7 @@ export type GetV2ObjectsObjectRecordsRecordIdData = {
   /**
    * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
    */
-  values: GetV2ObjectsObjectRecordsRecordIdValues;
+  values: { [k: string]: any };
 };
 
 /**
@@ -206,65 +201,6 @@ export function getV2ObjectsObjectRecordsRecordIdIdFromJSON(
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdValues$inboundSchema: z.ZodType<
-  GetV2ObjectsObjectRecordsRecordIdValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdValues$Outbound = {};
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdValues$outboundSchema: z.ZodType<
-  GetV2ObjectsObjectRecordsRecordIdValues$Outbound,
-  z.ZodTypeDef,
-  GetV2ObjectsObjectRecordsRecordIdValues
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdValues$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdValues$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdValues$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdValues$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdValues$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdValues$Outbound` instead. */
-  export type Outbound = GetV2ObjectsObjectRecordsRecordIdValues$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdValuesToJSON(
-  getV2ObjectsObjectRecordsRecordIdValues:
-    GetV2ObjectsObjectRecordsRecordIdValues,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdValues$outboundSchema.parse(
-      getV2ObjectsObjectRecordsRecordIdValues,
-    ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdValues,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdValues$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetV2ObjectsObjectRecordsRecordIdData$inboundSchema: z.ZodType<
   GetV2ObjectsObjectRecordsRecordIdData,
   z.ZodTypeDef,
@@ -272,7 +208,7 @@ export const GetV2ObjectsObjectRecordsRecordIdData$inboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => GetV2ObjectsObjectRecordsRecordIdId$inboundSchema),
   created_at: z.string(),
-  values: z.lazy(() => GetV2ObjectsObjectRecordsRecordIdValues$inboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "created_at": "createdAt",
@@ -283,7 +219,7 @@ export const GetV2ObjectsObjectRecordsRecordIdData$inboundSchema: z.ZodType<
 export type GetV2ObjectsObjectRecordsRecordIdData$Outbound = {
   id: GetV2ObjectsObjectRecordsRecordIdId$Outbound;
   created_at: string;
-  values: GetV2ObjectsObjectRecordsRecordIdValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -294,7 +230,7 @@ export const GetV2ObjectsObjectRecordsRecordIdData$outboundSchema: z.ZodType<
 > = z.object({
   id: z.lazy(() => GetV2ObjectsObjectRecordsRecordIdId$outboundSchema),
   createdAt: z.string(),
-  values: z.lazy(() => GetV2ObjectsObjectRecordsRecordIdValues$outboundSchema),
+  values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     createdAt: "created_at",

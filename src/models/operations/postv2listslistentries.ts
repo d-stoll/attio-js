@@ -8,11 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
- */
-export type EntryValues = {};
-
 export type PostV2ListsListEntriesData = {
   /**
    * A UUID identifying the record you want to add to the list. The record will become the 'parent' of the created list entry.
@@ -25,7 +20,7 @@ export type PostV2ListsListEntriesData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  entryValues: EntryValues;
+  entryValues: { [k: string]: any };
 };
 
 export type PostV2ListsListEntriesRequestBody = {
@@ -85,50 +80,6 @@ export type PostV2ListsListEntriesResponseBody = {
 };
 
 /** @internal */
-export const EntryValues$inboundSchema: z.ZodType<
-  EntryValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type EntryValues$Outbound = {};
-
-/** @internal */
-export const EntryValues$outboundSchema: z.ZodType<
-  EntryValues$Outbound,
-  z.ZodTypeDef,
-  EntryValues
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EntryValues$ {
-  /** @deprecated use `EntryValues$inboundSchema` instead. */
-  export const inboundSchema = EntryValues$inboundSchema;
-  /** @deprecated use `EntryValues$outboundSchema` instead. */
-  export const outboundSchema = EntryValues$outboundSchema;
-  /** @deprecated use `EntryValues$Outbound` instead. */
-  export type Outbound = EntryValues$Outbound;
-}
-
-export function entryValuesToJSON(entryValues: EntryValues): string {
-  return JSON.stringify(EntryValues$outboundSchema.parse(entryValues));
-}
-
-export function entryValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<EntryValues, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EntryValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntryValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostV2ListsListEntriesData$inboundSchema: z.ZodType<
   PostV2ListsListEntriesData,
   z.ZodTypeDef,
@@ -136,7 +87,7 @@ export const PostV2ListsListEntriesData$inboundSchema: z.ZodType<
 > = z.object({
   parent_record_id: z.string(),
   parent_object: z.string(),
-  entry_values: z.lazy(() => EntryValues$inboundSchema),
+  entry_values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "parent_record_id": "parentRecordId",
@@ -149,7 +100,7 @@ export const PostV2ListsListEntriesData$inboundSchema: z.ZodType<
 export type PostV2ListsListEntriesData$Outbound = {
   parent_record_id: string;
   parent_object: string;
-  entry_values: EntryValues$Outbound;
+  entry_values: { [k: string]: any };
 };
 
 /** @internal */
@@ -160,7 +111,7 @@ export const PostV2ListsListEntriesData$outboundSchema: z.ZodType<
 > = z.object({
   parentRecordId: z.string(),
   parentObject: z.string(),
-  entryValues: z.lazy(() => EntryValues$outboundSchema),
+  entryValues: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     parentRecordId: "parent_record_id",

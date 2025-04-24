@@ -8,16 +8,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
- */
-export type PatchV2ObjectsObjectRecordsRecordIdValues = {};
-
 export type PatchV2ObjectsObjectRecordsRecordIdData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  values: PatchV2ObjectsObjectRecordsRecordIdValues;
+  values: { [k: string]: any };
 };
 
 export type PatchV2ObjectsObjectRecordsRecordIdRequestBody = {
@@ -45,11 +40,6 @@ export type PatchV2ObjectsObjectRecordsRecordIdId = {
   recordId: string;
 };
 
-/**
- * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
- */
-export type PatchV2ObjectsObjectRecordsRecordIdRecordsValues = {};
-
 export type PatchV2ObjectsObjectRecordsRecordIdRecordsData = {
   id: PatchV2ObjectsObjectRecordsRecordIdId;
   /**
@@ -59,7 +49,7 @@ export type PatchV2ObjectsObjectRecordsRecordIdRecordsData = {
   /**
    * A record type with an attribute `api_slug` as the key, and an array of value objects as the values.
    */
-  values: PatchV2ObjectsObjectRecordsRecordIdRecordsValues;
+  values: { [k: string]: any };
 };
 
 /**
@@ -70,77 +60,17 @@ export type PatchV2ObjectsObjectRecordsRecordIdResponseBody = {
 };
 
 /** @internal */
-export const PatchV2ObjectsObjectRecordsRecordIdValues$inboundSchema: z.ZodType<
-  PatchV2ObjectsObjectRecordsRecordIdValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type PatchV2ObjectsObjectRecordsRecordIdValues$Outbound = {};
-
-/** @internal */
-export const PatchV2ObjectsObjectRecordsRecordIdValues$outboundSchema:
-  z.ZodType<
-    PatchV2ObjectsObjectRecordsRecordIdValues$Outbound,
-    z.ZodTypeDef,
-    PatchV2ObjectsObjectRecordsRecordIdValues
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2ObjectsObjectRecordsRecordIdValues$ {
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2ObjectsObjectRecordsRecordIdValues$inboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2ObjectsObjectRecordsRecordIdValues$outboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdValues$Outbound` instead. */
-  export type Outbound = PatchV2ObjectsObjectRecordsRecordIdValues$Outbound;
-}
-
-export function patchV2ObjectsObjectRecordsRecordIdValuesToJSON(
-  patchV2ObjectsObjectRecordsRecordIdValues:
-    PatchV2ObjectsObjectRecordsRecordIdValues,
-): string {
-  return JSON.stringify(
-    PatchV2ObjectsObjectRecordsRecordIdValues$outboundSchema.parse(
-      patchV2ObjectsObjectRecordsRecordIdValues,
-    ),
-  );
-}
-
-export function patchV2ObjectsObjectRecordsRecordIdValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchV2ObjectsObjectRecordsRecordIdValues,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchV2ObjectsObjectRecordsRecordIdValues$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchV2ObjectsObjectRecordsRecordIdValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PatchV2ObjectsObjectRecordsRecordIdData$inboundSchema: z.ZodType<
   PatchV2ObjectsObjectRecordsRecordIdData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  values: z.lazy(() => PatchV2ObjectsObjectRecordsRecordIdValues$inboundSchema),
+  values: z.record(z.any()),
 });
 
 /** @internal */
 export type PatchV2ObjectsObjectRecordsRecordIdData$Outbound = {
-  values: PatchV2ObjectsObjectRecordsRecordIdValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -149,9 +79,7 @@ export const PatchV2ObjectsObjectRecordsRecordIdData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchV2ObjectsObjectRecordsRecordIdData
 > = z.object({
-  values: z.lazy(() =>
-    PatchV2ObjectsObjectRecordsRecordIdValues$outboundSchema
-  ),
+  values: z.record(z.any()),
 });
 
 /**
@@ -426,68 +354,6 @@ export function patchV2ObjectsObjectRecordsRecordIdIdFromJSON(
 }
 
 /** @internal */
-export const PatchV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema:
-  z.ZodType<
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
-
-/** @internal */
-export type PatchV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound = {};
-
-/** @internal */
-export const PatchV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema:
-  z.ZodType<
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound,
-    z.ZodTypeDef,
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2ObjectsObjectRecordsRecordIdRecordsValues$ {
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound` instead. */
-  export type Outbound =
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound;
-}
-
-export function patchV2ObjectsObjectRecordsRecordIdRecordsValuesToJSON(
-  patchV2ObjectsObjectRecordsRecordIdRecordsValues:
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues,
-): string {
-  return JSON.stringify(
-    PatchV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema.parse(
-      patchV2ObjectsObjectRecordsRecordIdRecordsValues,
-    ),
-  );
-}
-
-export function patchV2ObjectsObjectRecordsRecordIdRecordsValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchV2ObjectsObjectRecordsRecordIdRecordsValues,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchV2ObjectsObjectRecordsRecordIdRecordsValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PatchV2ObjectsObjectRecordsRecordIdRecordsData$inboundSchema:
   z.ZodType<
     PatchV2ObjectsObjectRecordsRecordIdRecordsData,
@@ -496,9 +362,7 @@ export const PatchV2ObjectsObjectRecordsRecordIdRecordsData$inboundSchema:
   > = z.object({
     id: z.lazy(() => PatchV2ObjectsObjectRecordsRecordIdId$inboundSchema),
     created_at: z.string(),
-    values: z.lazy(() =>
-      PatchV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema
-    ),
+    values: z.record(z.any()),
   }).transform((v) => {
     return remap$(v, {
       "created_at": "createdAt",
@@ -509,7 +373,7 @@ export const PatchV2ObjectsObjectRecordsRecordIdRecordsData$inboundSchema:
 export type PatchV2ObjectsObjectRecordsRecordIdRecordsData$Outbound = {
   id: PatchV2ObjectsObjectRecordsRecordIdId$Outbound;
   created_at: string;
-  values: PatchV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound;
+  values: { [k: string]: any };
 };
 
 /** @internal */
@@ -521,9 +385,7 @@ export const PatchV2ObjectsObjectRecordsRecordIdRecordsData$outboundSchema:
   > = z.object({
     id: z.lazy(() => PatchV2ObjectsObjectRecordsRecordIdId$outboundSchema),
     createdAt: z.string(),
-    values: z.lazy(() =>
-      PatchV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema
-    ),
+    values: z.record(z.any()),
   }).transform((v) => {
     return remap$(v, {
       createdAt: "created_at",

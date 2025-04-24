@@ -162,7 +162,13 @@ async function run() {
     object: "people",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -193,7 +199,13 @@ async function run() {
     object: "people",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -272,7 +284,13 @@ async function run() {
     matchingAttribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -304,7 +322,13 @@ async function run() {
     matchingAttribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -490,7 +514,13 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -522,7 +552,13 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -599,7 +635,13 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });
@@ -631,7 +673,13 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     requestBody: {
       data: {
-        values: {},
+        values: {
+          "41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value",
+          "multiselect_attribute": [
+            "Select option 1",
+            "Select option 2",
+          ],
+        },
       },
     },
   });

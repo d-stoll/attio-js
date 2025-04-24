@@ -8,16 +8,11 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-/**
- * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
- */
-export type PatchV2ListsListEntriesEntryIdEntryValues = {};
-
 export type PatchV2ListsListEntriesEntryIdData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  entryValues: PatchV2ListsListEntriesEntryIdEntryValues;
+  entryValues: { [k: string]: any };
 };
 
 export type PatchV2ListsListEntriesEntryIdRequestBody = {
@@ -48,7 +43,7 @@ export type PatchV2ListsListEntriesEntryIdId = {
 /**
  * A list of attribute values for the list entry (not attribute values for its parent record).
  */
-export type PatchV2ListsListEntriesEntryIdEntriesEntryValues = {};
+export type PatchV2ListsListEntriesEntryIdEntryValues = {};
 
 export type PatchV2ListsListEntriesEntryIdEntriesData = {
   id: PatchV2ListsListEntriesEntryIdId;
@@ -67,7 +62,7 @@ export type PatchV2ListsListEntriesEntryIdEntriesData = {
   /**
    * A list of attribute values for the list entry (not attribute values for its parent record).
    */
-  entryValues: PatchV2ListsListEntriesEntryIdEntriesEntryValues;
+  entryValues: PatchV2ListsListEntriesEntryIdEntryValues;
 };
 
 /**
@@ -78,74 +73,12 @@ export type PatchV2ListsListEntriesEntryIdResponseBody = {
 };
 
 /** @internal */
-export const PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema: z.ZodType<
-  PatchV2ListsListEntriesEntryIdEntryValues,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type PatchV2ListsListEntriesEntryIdEntryValues$Outbound = {};
-
-/** @internal */
-export const PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema:
-  z.ZodType<
-    PatchV2ListsListEntriesEntryIdEntryValues$Outbound,
-    z.ZodTypeDef,
-    PatchV2ListsListEntriesEntryIdEntryValues
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2ListsListEntriesEntryIdEntryValues$ {
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema;
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema;
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$Outbound` instead. */
-  export type Outbound = PatchV2ListsListEntriesEntryIdEntryValues$Outbound;
-}
-
-export function patchV2ListsListEntriesEntryIdEntryValuesToJSON(
-  patchV2ListsListEntriesEntryIdEntryValues:
-    PatchV2ListsListEntriesEntryIdEntryValues,
-): string {
-  return JSON.stringify(
-    PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema.parse(
-      patchV2ListsListEntriesEntryIdEntryValues,
-    ),
-  );
-}
-
-export function patchV2ListsListEntriesEntryIdEntryValuesFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchV2ListsListEntriesEntryIdEntryValues,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PatchV2ListsListEntriesEntryIdEntryValues' from JSON`,
-  );
-}
-
-/** @internal */
 export const PatchV2ListsListEntriesEntryIdData$inboundSchema: z.ZodType<
   PatchV2ListsListEntriesEntryIdData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entry_values: z.lazy(() =>
-    PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema
-  ),
+  entry_values: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     "entry_values": "entryValues",
@@ -154,7 +87,7 @@ export const PatchV2ListsListEntriesEntryIdData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PatchV2ListsListEntriesEntryIdData$Outbound = {
-  entry_values: PatchV2ListsListEntriesEntryIdEntryValues$Outbound;
+  entry_values: { [k: string]: any };
 };
 
 /** @internal */
@@ -163,9 +96,7 @@ export const PatchV2ListsListEntriesEntryIdData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchV2ListsListEntriesEntryIdData
 > = z.object({
-  entryValues: z.lazy(() =>
-    PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema
-  ),
+  entryValues: z.record(z.any()),
 }).transform((v) => {
   return remap$(v, {
     entryValues: "entry_values",
@@ -427,64 +358,62 @@ export function patchV2ListsListEntriesEntryIdIdFromJSON(
 }
 
 /** @internal */
-export const PatchV2ListsListEntriesEntryIdEntriesEntryValues$inboundSchema:
-  z.ZodType<
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
+export const PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema: z.ZodType<
+  PatchV2ListsListEntriesEntryIdEntryValues,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
 /** @internal */
-export type PatchV2ListsListEntriesEntryIdEntriesEntryValues$Outbound = {};
+export type PatchV2ListsListEntriesEntryIdEntryValues$Outbound = {};
 
 /** @internal */
-export const PatchV2ListsListEntriesEntryIdEntriesEntryValues$outboundSchema:
+export const PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema:
   z.ZodType<
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$Outbound,
+    PatchV2ListsListEntriesEntryIdEntryValues$Outbound,
     z.ZodTypeDef,
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues
+    PatchV2ListsListEntriesEntryIdEntryValues
   > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2ListsListEntriesEntryIdEntriesEntryValues$ {
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntriesEntryValues$inboundSchema` instead. */
+export namespace PatchV2ListsListEntriesEntryIdEntryValues$ {
+  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$inboundSchema;
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntriesEntryValues$outboundSchema` instead. */
+    PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema;
+  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$outboundSchema;
-  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntriesEntryValues$Outbound` instead. */
-  export type Outbound =
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$Outbound;
+    PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema;
+  /** @deprecated use `PatchV2ListsListEntriesEntryIdEntryValues$Outbound` instead. */
+  export type Outbound = PatchV2ListsListEntriesEntryIdEntryValues$Outbound;
 }
 
-export function patchV2ListsListEntriesEntryIdEntriesEntryValuesToJSON(
-  patchV2ListsListEntriesEntryIdEntriesEntryValues:
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues,
+export function patchV2ListsListEntriesEntryIdEntryValuesToJSON(
+  patchV2ListsListEntriesEntryIdEntryValues:
+    PatchV2ListsListEntriesEntryIdEntryValues,
 ): string {
   return JSON.stringify(
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$outboundSchema.parse(
-      patchV2ListsListEntriesEntryIdEntriesEntryValues,
+    PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema.parse(
+      patchV2ListsListEntriesEntryIdEntryValues,
     ),
   );
 }
 
-export function patchV2ListsListEntriesEntryIdEntriesEntryValuesFromJSON(
+export function patchV2ListsListEntriesEntryIdEntryValuesFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2ListsListEntriesEntryIdEntriesEntryValues,
+  PatchV2ListsListEntriesEntryIdEntryValues,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2ListsListEntriesEntryIdEntriesEntryValues$inboundSchema.parse(
+      PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2ListsListEntriesEntryIdEntriesEntryValues' from JSON`,
+    `Failed to parse 'PatchV2ListsListEntriesEntryIdEntryValues' from JSON`,
   );
 }
 
@@ -499,7 +428,7 @@ export const PatchV2ListsListEntriesEntryIdEntriesData$inboundSchema: z.ZodType<
   parent_object: z.string(),
   created_at: z.string(),
   entry_values: z.lazy(() =>
-    PatchV2ListsListEntriesEntryIdEntriesEntryValues$inboundSchema
+    PatchV2ListsListEntriesEntryIdEntryValues$inboundSchema
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -516,7 +445,7 @@ export type PatchV2ListsListEntriesEntryIdEntriesData$Outbound = {
   parent_record_id: string;
   parent_object: string;
   created_at: string;
-  entry_values: PatchV2ListsListEntriesEntryIdEntriesEntryValues$Outbound;
+  entry_values: PatchV2ListsListEntriesEntryIdEntryValues$Outbound;
 };
 
 /** @internal */
@@ -531,7 +460,7 @@ export const PatchV2ListsListEntriesEntryIdEntriesData$outboundSchema:
     parentObject: z.string(),
     createdAt: z.string(),
     entryValues: z.lazy(() =>
-      PatchV2ListsListEntriesEntryIdEntriesEntryValues$outboundSchema
+      PatchV2ListsListEntriesEntryIdEntryValues$outboundSchema
     ),
   }).transform((v) => {
     return remap$(v, {

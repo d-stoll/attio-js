@@ -18,56 +18,7 @@ let value: PostV2ListsListEntriesQueryResponseBody = {
       parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
       parentObject: "people",
       createdAt: "2022-11-21T13:22:49.061281000Z",
-      entryValues: {
-        "status": [
-          {
-            activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-            activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-            createdByActor: {
-              id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-              type: "workspace-member",
-            },
-            domain: "app.attio.com",
-            rootDomain: "attio.com",
-            attributeType: "domain",
-          },
-        ],
-        "created_at": [
-          {
-            activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-            activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-            createdByActor: {
-              id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-              type: "workspace-member",
-            },
-            originalPhoneNumber: "5558675309",
-            countryCode: "US",
-            phoneNumber: "+15558675309",
-            attributeType: "phone-number",
-          },
-        ],
-        "created_by": [
-          {
-            activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-            activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-            createdByActor: {
-              id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-              type: "workspace-member",
-            },
-            line1: "1 Infinite Loop",
-            line2: "Block 1",
-            line3: "Hilldrop Estate",
-            line4: "Westborough",
-            locality: "Cupertino",
-            region: "CA",
-            postcode: "95014",
-            countryCode: "US",
-            latitude: "37.331741",
-            longitude: "-122.030333",
-            attributeType: "location",
-          },
-        ],
-      },
+      entryValues: {},
     },
   ],
 };

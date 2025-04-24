@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
-  docChecksum: 3b3bc8a8b0f63a0e0431cac580be585e
+  docChecksum: 7534ea68c534c6520d3c85551d151b3f
   docVersion: 2.0.0
   speakeasyVersion: 1.538.0
   generationVersion: 2.591.1
-  releaseVersion: 0.0.7
-  configChecksum: d08910fa2c052479a7796f1ebec649f9
+  releaseVersion: 0.0.8
+  configChecksum: 589df7388e72e9f0264f44b468efe242
   published: true
 features:
   typescript:
@@ -300,31 +300,6 @@ generatedFiles:
   - docs/models/operations/eleven.md
   - docs/models/operations/entry.md
   - docs/models/operations/entryvalues.md
-  - docs/models/operations/entryvalues1.md
-  - docs/models/operations/entryvalues10.md
-  - docs/models/operations/entryvalues11.md
-  - docs/models/operations/entryvalues12.md
-  - docs/models/operations/entryvalues13.md
-  - docs/models/operations/entryvalues14.md
-  - docs/models/operations/entryvalues15.md
-  - docs/models/operations/entryvalues16.md
-  - docs/models/operations/entryvalues17.md
-  - docs/models/operations/entryvalues2.md
-  - docs/models/operations/entryvalues3.md
-  - docs/models/operations/entryvalues4.md
-  - docs/models/operations/entryvalues5.md
-  - docs/models/operations/entryvalues6.md
-  - docs/models/operations/entryvalues7.md
-  - docs/models/operations/entryvalues8.md
-  - docs/models/operations/entryvalues9.md
-  - docs/models/operations/entryvaluesattributetype.md
-  - docs/models/operations/entryvaluescountrycode.md
-  - docs/models/operations/entryvaluescreatedbyactor.md
-  - docs/models/operations/entryvaluescurrencycode.md
-  - docs/models/operations/entryvaluesinteractiontype.md
-  - docs/models/operations/entryvaluesowneractor.md
-  - docs/models/operations/entryvaluesreferencedactortype.md
-  - docs/models/operations/entryvaluestype.md
   - docs/models/operations/eventtype.md
   - docs/models/operations/fifteen.md
   - docs/models/operations/filter.md
@@ -400,81 +375,6 @@ generatedFiles:
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesresponsebody.md
   - docs/models/operations/getv2listslistentriesentryiddata.md
   - docs/models/operations/getv2listslistentriesentryidentryvalues.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues1.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues10.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues11.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues12.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues13.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues14.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues15.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues16.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues17.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues2.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues3.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues4.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues5.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues6.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues7.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues8.md
-  - docs/models/operations/getv2listslistentriesentryidentryvalues9.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluescountrycode.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluescreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluescurrencycode.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriescountrycode.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponse200type.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriesresponsetype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesentriestype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesinteractiontype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesowneractor.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluesreferencedactortype.md
-  - docs/models/operations/getv2listslistentriesentryidentryvaluestype.md
   - docs/models/operations/getv2listslistentriesentryidid.md
   - docs/models/operations/getv2listslistentriesentryidrequest.md
   - docs/models/operations/getv2listslistentriesentryidresponsebody.md
@@ -551,81 +451,6 @@ generatedFiles:
   - docs/models/operations/getv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidresponsebody.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidvalues.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues1.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues10.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues11.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues12.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues13.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues14.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues15.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues16.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues17.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues2.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues3.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues4.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues5.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues6.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues7.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues8.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvalues9.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluescountrycode.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluescreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluescurrencycode.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesinteractiontype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesowneractor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordscountrycode.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordscreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponse200type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponseattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordsresponsetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesrecordstype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluesreferencedactortype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidvaluestype.md
   - docs/models/operations/getv2objectsobjectrequest.md
   - docs/models/operations/getv2objectsobjectresponsebody.md
   - docs/models/operations/getv2objectsresponsebody.md
@@ -706,82 +531,8 @@ generatedFiles:
   - docs/models/operations/patchv2listslistdata.md
   - docs/models/operations/patchv2listslistentriesentryiddata.md
   - docs/models/operations/patchv2listslistentriesentryidentriesdata.md
+  - docs/models/operations/patchv2listslistentriesentryidentriesentryvalues.md
   - docs/models/operations/patchv2listslistentriesentryidentryvalues.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues1.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues10.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues11.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues12.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues13.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues14.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues15.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues16.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues17.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues2.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues3.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues4.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues5.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues6.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues7.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues8.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvalues9.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluescountrycode.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluescreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluescurrencycode.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriescountrycode.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponse200type.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriesresponsetype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesentriestype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesinteractiontype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesowneractor.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluesreferencedactortype.md
-  - docs/models/operations/patchv2listslistentriesentryidentryvaluestype.md
   - docs/models/operations/patchv2listslistentriesentryidid.md
   - docs/models/operations/patchv2listslistentriesentryidrequest.md
   - docs/models/operations/patchv2listslistentriesentryidrequestbody.md
@@ -801,81 +552,6 @@ generatedFiles:
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidresponsebody.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues1.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues10.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues11.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues12.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues13.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues14.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues15.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues16.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues17.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues2.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues3.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues4.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues5.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues6.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues7.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues8.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvalues9.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluescountrycode.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluescreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluescurrencycode.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesinteractiontype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesowneractor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordscountrycode.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordscreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponse200type.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponseattributetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordsresponsetype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesrecordstype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluesreferencedactortype.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidvaluestype.md
   - docs/models/operations/patchv2objectsobjectrequest.md
   - docs/models/operations/patchv2objectsobjectrequestbody.md
   - docs/models/operations/patchv2objectsobjectresponsebody.md
@@ -963,133 +639,9 @@ generatedFiles:
   - docs/models/operations/postv2listslistentriesdata.md
   - docs/models/operations/postv2listslistentriesentriesdata.md
   - docs/models/operations/postv2listslistentriesentryvalues.md
-  - docs/models/operations/postv2listslistentriesentryvalues1.md
-  - docs/models/operations/postv2listslistentriesentryvalues10.md
-  - docs/models/operations/postv2listslistentriesentryvalues11.md
-  - docs/models/operations/postv2listslistentriesentryvalues12.md
-  - docs/models/operations/postv2listslistentriesentryvalues13.md
-  - docs/models/operations/postv2listslistentriesentryvalues14.md
-  - docs/models/operations/postv2listslistentriesentryvalues15.md
-  - docs/models/operations/postv2listslistentriesentryvalues16.md
-  - docs/models/operations/postv2listslistentriesentryvalues17.md
-  - docs/models/operations/postv2listslistentriesentryvalues2.md
-  - docs/models/operations/postv2listslistentriesentryvalues3.md
-  - docs/models/operations/postv2listslistentriesentryvalues4.md
-  - docs/models/operations/postv2listslistentriesentryvalues5.md
-  - docs/models/operations/postv2listslistentriesentryvalues6.md
-  - docs/models/operations/postv2listslistentriesentryvalues7.md
-  - docs/models/operations/postv2listslistentriesentryvalues8.md
-  - docs/models/operations/postv2listslistentriesentryvalues9.md
-  - docs/models/operations/postv2listslistentriesentryvaluesattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluescountrycode.md
-  - docs/models/operations/postv2listslistentriesentryvaluescreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluescurrencycode.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriescountrycode.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponse200type.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriesresponsetype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesentriestype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesinteractiontype.md
-  - docs/models/operations/postv2listslistentriesentryvaluesowneractor.md
-  - docs/models/operations/postv2listslistentriesentryvaluesreferencedactortype.md
-  - docs/models/operations/postv2listslistentriesentryvaluestype.md
   - docs/models/operations/postv2listslistentriesid.md
   - docs/models/operations/postv2listslistentriesquerydata.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluescountrycode.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluescreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponse200type.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriesresponsetype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluesentriestype.md
-  - docs/models/operations/postv2listslistentriesqueryentryvaluestype.md
+  - docs/models/operations/postv2listslistentriesqueryentryvalues.md
   - docs/models/operations/postv2listslistentriesqueryid.md
   - docs/models/operations/postv2listslistentriesqueryrequest.md
   - docs/models/operations/postv2listslistentriesqueryrequestbody.md
@@ -1114,136 +666,11 @@ generatedFiles:
   - docs/models/operations/postv2objectsobjectrecordsqueryrequestbody.md
   - docs/models/operations/postv2objectsobjectrecordsqueryresponsebody.md
   - docs/models/operations/postv2objectsobjectrecordsqueryvalues.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues10.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues11.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues12.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues13.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues14.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues15.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues16.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues17.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues3.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues4.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues5.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues6.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues7.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues8.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvalues9.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluescountrycode.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluescreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluescurrencycode.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesinteractiontype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesowneractor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordscreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata1attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata1createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponse200type.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponseattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordsresponsetype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesrecordstype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluesreferencedactortype.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryvaluestype.md
   - docs/models/operations/postv2objectsobjectrecordsrecordsdata.md
   - docs/models/operations/postv2objectsobjectrecordsrequest.md
   - docs/models/operations/postv2objectsobjectrecordsrequestbody.md
   - docs/models/operations/postv2objectsobjectrecordsresponsebody.md
   - docs/models/operations/postv2objectsobjectrecordsvalues.md
-  - docs/models/operations/postv2objectsobjectrecordsvalues1.md
-  - docs/models/operations/postv2objectsobjectrecordsvalues2.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluescountrycode.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluescreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordscountrycode.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordscreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponse200type.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponseattributetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordsresponsetype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluesrecordstype.md
-  - docs/models/operations/postv2objectsobjectrecordsvaluestype.md
   - docs/models/operations/postv2objectsrequestbody.md
   - docs/models/operations/postv2objectsresponsebody.md
   - docs/models/operations/postv2targetidentifierattributesattributeoptionsdata.md
@@ -1289,164 +716,16 @@ generatedFiles:
   - docs/models/operations/postv2webhookswebhooksdata.md
   - docs/models/operations/putv2listslistentriesdata.md
   - docs/models/operations/putv2listslistentriesentriesdata.md
+  - docs/models/operations/putv2listslistentriesentriesentryvalues.md
   - docs/models/operations/putv2listslistentriesentryiddata.md
   - docs/models/operations/putv2listslistentriesentryidentriesdata.md
+  - docs/models/operations/putv2listslistentriesentryidentriesentryvalues.md
   - docs/models/operations/putv2listslistentriesentryidentryvalues.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues1.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues10.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues11.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues12.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues13.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues14.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues15.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues16.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues17.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues2.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues3.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues4.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues5.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues6.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues7.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues8.md
-  - docs/models/operations/putv2listslistentriesentryidentryvalues9.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluescountrycode.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluescreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluescurrencycode.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriescountrycode.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponse200type.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriesresponsetype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesentriestype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesinteractiontype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesowneractor.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluesreferencedactortype.md
-  - docs/models/operations/putv2listslistentriesentryidentryvaluestype.md
   - docs/models/operations/putv2listslistentriesentryidid.md
   - docs/models/operations/putv2listslistentriesentryidrequest.md
   - docs/models/operations/putv2listslistentriesentryidrequestbody.md
   - docs/models/operations/putv2listslistentriesentryidresponsebody.md
   - docs/models/operations/putv2listslistentriesentryvalues.md
-  - docs/models/operations/putv2listslistentriesentryvalues1.md
-  - docs/models/operations/putv2listslistentriesentryvalues10.md
-  - docs/models/operations/putv2listslistentriesentryvalues11.md
-  - docs/models/operations/putv2listslistentriesentryvalues12.md
-  - docs/models/operations/putv2listslistentriesentryvalues13.md
-  - docs/models/operations/putv2listslistentriesentryvalues14.md
-  - docs/models/operations/putv2listslistentriesentryvalues15.md
-  - docs/models/operations/putv2listslistentriesentryvalues16.md
-  - docs/models/operations/putv2listslistentriesentryvalues17.md
-  - docs/models/operations/putv2listslistentriesentryvalues2.md
-  - docs/models/operations/putv2listslistentriesentryvalues3.md
-  - docs/models/operations/putv2listslistentriesentryvalues4.md
-  - docs/models/operations/putv2listslistentriesentryvalues5.md
-  - docs/models/operations/putv2listslistentriesentryvalues6.md
-  - docs/models/operations/putv2listslistentriesentryvalues7.md
-  - docs/models/operations/putv2listslistentriesentryvalues8.md
-  - docs/models/operations/putv2listslistentriesentryvalues9.md
-  - docs/models/operations/putv2listslistentriesentryvaluesattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluescountrycode.md
-  - docs/models/operations/putv2listslistentriesentryvaluescreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluescurrencycode.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriescountrycode.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriescreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200applicationjsontype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200attributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200createdbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponse200type.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponseattributetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponsecreatedbyactor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriesresponsetype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesentriestype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesinteractiontype.md
-  - docs/models/operations/putv2listslistentriesentryvaluesowneractor.md
-  - docs/models/operations/putv2listslistentriesentryvaluesreferencedactortype.md
-  - docs/models/operations/putv2listslistentriesentryvaluestype.md
   - docs/models/operations/putv2listslistentriesid.md
   - docs/models/operations/putv2listslistentriesrequest.md
   - docs/models/operations/putv2listslistentriesrequestbody.md
@@ -1461,162 +740,12 @@ generatedFiles:
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidresponsebody.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidvalues.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues1.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues10.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues11.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues12.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues13.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues14.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues15.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues16.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues17.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues2.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues3.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues4.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues5.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues6.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues7.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues8.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvalues9.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluescountrycode.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluescreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluescurrencycode.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesinteractiontype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesowneractor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordscountrycode.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordscreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponse200type.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponseattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordsresponsetype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesrecordstype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesreferencedactortype.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidvaluestype.md
   - docs/models/operations/putv2objectsobjectrecordsrecordsdata.md
   - docs/models/operations/putv2objectsobjectrecordsrecordsvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsresponsebody.md
   - docs/models/operations/putv2objectsobjectrecordsvalues.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues1.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues10.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues11.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues12.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues13.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues14.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues15.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues16.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues17.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues2.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues3.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues4.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues5.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues6.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues7.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues8.md
-  - docs/models/operations/putv2objectsobjectrecordsvalues9.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluescountrycode.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluescreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluescurrencycode.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesinteractiontype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesowneractor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordscountrycode.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordscreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata10type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata11type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata12type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata13type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata14type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata15type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata16type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata17type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8owneractortype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata8type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydata9type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydataattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydatacreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodydatatype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200applicationjsontype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200attributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200createdbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponse200type.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponseattributetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponsecreatedbyactor.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordsresponsetype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesrecordstype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluesreferencedactortype.md
-  - docs/models/operations/putv2objectsobjectrecordsvaluestype.md
   - docs/models/operations/recordreference.md
   - docs/models/operations/recordt.md
   - docs/models/operations/referencedactortype.md
@@ -1650,31 +779,6 @@ generatedFiles:
   - docs/models/operations/two.md
   - docs/models/operations/type.md
   - docs/models/operations/values.md
-  - docs/models/operations/values1.md
-  - docs/models/operations/values10.md
-  - docs/models/operations/values11.md
-  - docs/models/operations/values12.md
-  - docs/models/operations/values13.md
-  - docs/models/operations/values14.md
-  - docs/models/operations/values15.md
-  - docs/models/operations/values16.md
-  - docs/models/operations/values17.md
-  - docs/models/operations/values2.md
-  - docs/models/operations/values3.md
-  - docs/models/operations/values4.md
-  - docs/models/operations/values5.md
-  - docs/models/operations/values6.md
-  - docs/models/operations/values7.md
-  - docs/models/operations/values8.md
-  - docs/models/operations/values9.md
-  - docs/models/operations/valuesattributetype.md
-  - docs/models/operations/valuescountrycode.md
-  - docs/models/operations/valuescreatedbyactor.md
-  - docs/models/operations/valuescurrencycode.md
-  - docs/models/operations/valuesinteractiontype.md
-  - docs/models/operations/valuesowneractor.md
-  - docs/models/operations/valuesreferencedactortype.md
-  - docs/models/operations/valuestype.md
   - docs/models/operations/workspaceaccess.md
   - docs/models/operations/workspacememberaccess.md
   - docs/sdks/attio/README.md
@@ -2218,7 +1322,7 @@ examples:
         application/json: {"data": {"values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [], "key1": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
         "400":
           application/json: {"status_code": 1181.8, "type": "invalid_request_error", "code": "value_not_found", "message": "Cannot find select attribute with select option title \"In Progress\"."}
         "404":
@@ -2234,7 +1338,7 @@ examples:
         application/json: {"data": {"values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "domain": "app.attio.com", "root_domain": "attio.com", "attribute_type": "domain"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}], "key1": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_phone_number": "5558675309", "country_code": "US", "phone_number": "+15558675309", "attribute_type": "phone-number"}], "key2": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_email_address": "alice@app.attio.com", "email_address": "alice@app.attio.com", "email_domain": "app.attio.com", "email_root_domain": "attio.com", "email_local_specifier": "alice", "attribute_type": "email-address"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_phone_number": "5558675309", "country_code": "US", "phone_number": "+15558675309", "attribute_type": "phone-number"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
         "400":
           application/json: {"status_code": 9187.48, "type": "invalid_request_error", "code": "value_not_found", "message": "No attribute was found for matching_attribute slug/ID \"my-attribute\"."}
         "404":
@@ -2247,7 +1351,7 @@ examples:
           record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "key1": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "date", "value": "2023-01-01"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "currency_value": 99, "currency_code": "USD", "attribute_type": "currency"}], "key2": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": 42, "attribute_type": "number"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
         "404":
           application/json: {"status_code": 5169.37, "type": "invalid_request_error", "code": "not_found", "message": "Record with ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
   patch_/v2/objects/{object}/records/{record_id}:
@@ -2275,7 +1379,7 @@ examples:
         application/json: {"data": {"values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "key1": []}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
         "400":
           application/json: {"status_code": 2122.54, "type": "invalid_request_error", "code": "missing_value", "message": "Required value for attribute with ID \"41252299-f8c7-4b5e-99c9-4ff8321d2f96\" was not provided."}
         "404":
@@ -2372,7 +1476,7 @@ examples:
         application/json: {"filter": {"name": "Ada Lovelace"}, "sorts": [{"direction": "asc", "attribute": "name", "field": "last_name"}], "limit": 500, "offset": 0}
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "status": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, "attribute_type": "status"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}]}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": 42, "attribute_type": "number"}]}}]}
+          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}]}
         "404":
           application/json: {"status_code": 8611.36, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   post_/v2/lists/{list}/entries:
@@ -2381,10 +1485,10 @@ examples:
         path:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
       requestBody:
-        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "interaction_type": "email", "interacted_at": "2023-01-01T15:00:00.000000000Z", "owner_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "interaction"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
           application/json: {"status_code": 88.86, "type": "invalid_request_error", "code": "value_not_found", "message": "Parent record with slug/ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
         "404":
@@ -2395,10 +1499,10 @@ examples:
         path:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
       requestBody:
-        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "entry_values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
           application/json: {"status_code": 2809.08, "type": "invalid_request_error", "code": "multiple_match_results", "message": "Multiple entries were founds for the given parent record. Please remove duplicates or use the update or create entry endpoints instead."}
         "404":
@@ -2411,7 +1515,7 @@ examples:
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "404":
           application/json: {"status_code": 131.91, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   patch_/v2/lists/{list}/entries/{entry_id}:
@@ -2421,10 +1525,10 @@ examples:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       requestBody:
-        application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"entry_values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "option": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, "attribute_type": "select"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "first_name": "Ada", "last_name": "Lovelace", "full_name": "Ada Lovelace", "attribute_type": "personal-name"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_email_address": "alice@app.attio.com", "email_address": "alice@app.attio.com", "email_domain": "app.attio.com", "email_root_domain": "attio.com", "email_local_specifier": "alice", "attribute_type": "email-address"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
           application/json: {"status_code": 2136.2, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":
@@ -2436,10 +1540,10 @@ examples:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
           entry_id: "2e6e29ea-c4e0-4f44-842d-78a891f8c156"
       requestBody:
-        application/json: {"data": {"entry_values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"entry_values": {}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {"status": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "interaction_type": "email", "interacted_at": "2023-01-01T15:00:00.000000000Z", "owner_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "interaction"}], "created_at": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": true, "attribute_type": "checkbox"}], "created_by": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "status": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, "attribute_type": "status"}]}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
           application/json: {"status_code": 7486.01, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":

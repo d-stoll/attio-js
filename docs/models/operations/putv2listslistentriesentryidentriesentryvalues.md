@@ -1,13 +1,13 @@
-# PostV2ListsListEntriesEntryValues
+# PutV2ListsListEntriesEntryIdEntriesEntryValues
 
 A list of attribute values for the list entry (not attribute values for its parent record).
 
 ## Example Usage
 
 ```typescript
-import { PostV2ListsListEntriesEntryValues } from "attio-js/models/operations";
+import { PutV2ListsListEntriesEntryIdEntriesEntryValues } from "attio-js/models/operations";
 
-let value: PostV2ListsListEntriesEntryValues = {};
+let value: PutV2ListsListEntriesEntryIdEntriesEntryValues = {};
 ```
 
 ## Fields

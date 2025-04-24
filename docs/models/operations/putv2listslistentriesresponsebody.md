@@ -17,52 +17,7 @@ let value: PutV2ListsListEntriesResponseBody = {
     parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     parentObject: "people",
     createdAt: "2022-11-21T13:22:49.061281000Z",
-    entryValues: {
-      "status": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          originalEmailAddress: "alice@app.attio.com",
-          emailAddress: "alice@app.attio.com",
-          emailDomain: "app.attio.com",
-          emailRootDomain: "attio.com",
-          emailLocalSpecifier: "alice",
-          attributeType: "email-address",
-        },
-      ],
-      "created_at": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          originalEmailAddress: "alice@app.attio.com",
-          emailAddress: "alice@app.attio.com",
-          emailDomain: "app.attio.com",
-          emailRootDomain: "attio.com",
-          emailLocalSpecifier: "alice",
-          attributeType: "email-address",
-        },
-      ],
-      "created_by": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          value: true,
-          attributeType: "checkbox",
-        },
-      ],
-    },
+    entryValues: {},
   },
 };
 ```

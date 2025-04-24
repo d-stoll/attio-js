@@ -17,54 +17,7 @@ let value: PutV2ListsListEntriesEntryIdResponseBody = {
     parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     parentObject: "people",
     createdAt: "2022-11-21T13:22:49.061281000Z",
-    entryValues: {
-      "status": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          currencyValue: 99,
-          currencyCode: "USD",
-          attributeType: "currency",
-        },
-      ],
-      "created_at": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          option: {
-            id: {
-              workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",
-              objectId: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
-              attributeId: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
-              optionId: "08c2c59a-c18e-40c6-8dc4-95415313b2ea",
-            },
-            title: "Medium",
-            isArchived: false,
-          },
-          attributeType: "select",
-        },
-      ],
-      "created_by": [
-        {
-          activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
-          activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
-          createdByActor: {
-            id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-            type: "workspace-member",
-          },
-          value: 42,
-          attributeType: "number",
-        },
-      ],
-    },
+    entryValues: {},
   },
 };
 ```

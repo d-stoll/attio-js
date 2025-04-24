@@ -3,10 +3,10 @@ id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
   docChecksum: 3a151204a8b049335a929c6301361686
   docVersion: 2.0.0
-  speakeasyVersion: 1.538.0
+  speakeasyVersion: 1.539.2
   generationVersion: 2.591.1
-  releaseVersion: 0.0.9
-  configChecksum: 8e29275a781dd668088232e8a262c52c
+  releaseVersion: 0.1.0
+  configChecksum: 84837a8759c27c072498c263b81a0a65
   published: true
 features:
   typescript:
@@ -14,7 +14,6 @@ features:
     constsAndDefaults: 0.1.11
     core: 3.21.6
     defaultEnabledRetries: 0.1.0
-    devContainers: 2.90.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
     globalSecurity: 2.82.13
@@ -24,19 +23,14 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.1
-    reactQueryHooks: 0.2.3
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
     unions: 2.85.8
 generatedFiles:
-  - .devcontainer/README.md
-  - .devcontainer/devcontainer.json
-  - .devcontainer/setup.sh
   - .gitattributes
   - .npmignore
   - FUNCTIONS.md
-  - REACT_QUERY.md
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
@@ -997,66 +991,6 @@ generatedFiles:
   - src/models/operations/putv2listslistentriesentryid.ts
   - src/models/operations/putv2objectsobjectrecords.ts
   - src/models/operations/putv2objectsobjectrecordsrecordid.ts
-  - src/react-query/_context.tsx
-  - src/react-query/_types.ts
-  - src/react-query/attributesCreate.ts
-  - src/react-query/attributesCreateSelectOption.ts
-  - src/react-query/attributesGet.ts
-  - src/react-query/attributesList.ts
-  - src/react-query/attributesListSelectOptions.ts
-  - src/react-query/attributesListStatuses.ts
-  - src/react-query/attributesStatusesCreate.ts
-  - src/react-query/attributesStatusesUpdate.ts
-  - src/react-query/attributesUpdate.ts
-  - src/react-query/attributesUpdateOption.ts
-  - src/react-query/commentsCreate.ts
-  - src/react-query/commentsDelete.ts
-  - src/react-query/commentsGet.ts
-  - src/react-query/entriesAssert.ts
-  - src/react-query/entriesAttributesValuesList.ts
-  - src/react-query/entriesCreate.ts
-  - src/react-query/entriesDelete.ts
-  - src/react-query/entriesGetEntry.ts
-  - src/react-query/entriesOverwrite.ts
-  - src/react-query/entriesQuery.ts
-  - src/react-query/entriesUpdate.ts
-  - src/react-query/index.ts
-  - src/react-query/listsCreate.ts
-  - src/react-query/listsGet.ts
-  - src/react-query/listsListAll.ts
-  - src/react-query/listsUpdate.ts
-  - src/react-query/metaIdentify.ts
-  - src/react-query/notesCreate.ts
-  - src/react-query/notesDelete.ts
-  - src/react-query/notesGet.ts
-  - src/react-query/notesList.ts
-  - src/react-query/objectsCreate.ts
-  - src/react-query/objectsGet.ts
-  - src/react-query/objectsList.ts
-  - src/react-query/objectsPartialUpdate.ts
-  - src/react-query/recordsAssert.ts
-  - src/react-query/recordsCreate.ts
-  - src/react-query/recordsDelete.ts
-  - src/react-query/recordsGet.ts
-  - src/react-query/recordsListAttributeValues.ts
-  - src/react-query/recordsListEntries.ts
-  - src/react-query/recordsPartialUpdate.ts
-  - src/react-query/recordsQuery.ts
-  - src/react-query/recordsUpdate.ts
-  - src/react-query/tasksCreate.ts
-  - src/react-query/tasksDelete.ts
-  - src/react-query/tasksGet.ts
-  - src/react-query/tasksList.ts
-  - src/react-query/tasksUpdate.ts
-  - src/react-query/threadsGet.ts
-  - src/react-query/threadsList.ts
-  - src/react-query/webhooksCreate.ts
-  - src/react-query/webhooksDelete.ts
-  - src/react-query/webhooksGet.ts
-  - src/react-query/webhooksList.ts
-  - src/react-query/webhooksPartialUpdate.ts
-  - src/react-query/workspaceMembersGet.ts
-  - src/react-query/workspaceMembersList.ts
   - src/sdk/attioentriesattributes.ts
   - src/sdk/attributes.ts
   - src/sdk/comments.ts

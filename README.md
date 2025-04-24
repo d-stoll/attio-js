@@ -18,7 +18,6 @@ Attio API: Attio is a CRM platform which is highly customisable, incredibly powe
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Standalone functions](#standalone-functions)
-  * [React hooks with TanStack Query](#react-hooks-with-tanstack-query)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -39,32 +38,24 @@ The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https
 
 ```bash
 npm add attio-js
-# Install optional peer dependencies if you plan to use React hooks
-npm add @tanstack/react-query react react-dom
 ```
 
 ### PNPM
 
 ```bash
 pnpm add attio-js
-# Install optional peer dependencies if you plan to use React hooks
-pnpm add @tanstack/react-query react react-dom
 ```
 
 ### Bun
 
 ```bash
 bun add attio-js
-# Install optional peer dependencies if you plan to use React hooks
-bun add @tanstack/react-query react react-dom
 ```
 
 ### Yarn
 
 ```bash
 yarn add attio-js zod
-# Install optional peer dependencies if you plan to use React hooks
-yarn add @tanstack/react-query react react-dom
 
 # Note that Yarn does not install peer dependencies automatically. You will need
 # to install zod as shown above.
@@ -322,89 +313,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
-
-<!-- Start React hooks with TanStack Query [react-query] -->
-## React hooks with TanStack Query
-
-React hooks built on [TanStack Query][tanstack-query] are included in this SDK.
-These hooks and the utility functions provided alongside them can be used to
-build rich applications that pull data from the API using one of the most
-popular asynchronous state management library.
-
-[tanstack-query]: https://tanstack.com/query/v5/docs/framework/react/overview
-
-To learn about this feature and how to get started, check
-[REACT_QUERY.md](./REACT_QUERY.md).
-
-> [!WARNING]
->
-> This feature is currently in **preview** and is subject to breaking changes
-> within the current major version of the SDK as we gather user feedback on it.
-
-<details>
-
-<summary>Available React hooks</summary>
-
-- [`useAttributesCreateMutation`](docs/sdks/attributes/README.md#create) - Create an attribute
-- [`useAttributesCreateSelectOptionMutation`](docs/sdks/attributes/README.md#createselectoption) - Create a select option
-- [`useAttributesGet`](docs/sdks/attributes/README.md#get) - Get an attribute
-- [`useAttributesList`](docs/sdks/attributes/README.md#list) - List attributes
-- [`useAttributesListSelectOptions`](docs/sdks/attributes/README.md#listselectoptions) - List select options
-- [`useAttributesListStatuses`](docs/sdks/attributes/README.md#liststatuses) - List statuses
-- [`useAttributesStatusesCreateMutation`](docs/sdks/statuses/README.md#create) - Create a status
-- [`useAttributesStatusesUpdateMutation`](docs/sdks/statuses/README.md#update) - Update a status
-- [`useAttributesUpdateMutation`](docs/sdks/attributes/README.md#update) - Update an attribute
-- [`useAttributesUpdateOptionMutation`](docs/sdks/attributes/README.md#updateoption) - Update a select option
-- [`useCommentsCreateMutation`](docs/sdks/comments/README.md#create) - Create a comment
-- [`useCommentsDeleteMutation`](docs/sdks/comments/README.md#delete) - Delete a comment
-- [`useCommentsGet`](docs/sdks/comments/README.md#get) - Get a comment
-- [`useEntriesAssertMutation`](docs/sdks/entries/README.md#assert) - Assert a list entry by parent
-- [`useEntriesAttributesValuesList`](docs/sdks/values/README.md#list) - List attribute values for a list entry
-- [`useEntriesCreateMutation`](docs/sdks/entries/README.md#create) - Create an entry (add record to list)
-- [`useEntriesDeleteMutation`](docs/sdks/entries/README.md#delete) - Delete a list entry
-- [`useEntriesGetEntry`](docs/sdks/entries/README.md#getentry) - Get a list entry
-- [`useEntriesOverwriteMutation`](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
-- [`useEntriesQueryMutation`](docs/sdks/entries/README.md#query) - List entries
-- [`useEntriesUpdateMutation`](docs/sdks/entries/README.md#update) - Update a list entry (append multiselect values)
-- [`useListsCreateMutation`](docs/sdks/lists/README.md#create) - Create a list
-- [`useListsGet`](docs/sdks/lists/README.md#get) - Get a list
-- [`useListsListAll`](docs/sdks/lists/README.md#listall) - List all lists
-- [`useListsUpdateMutation`](docs/sdks/lists/README.md#update) - Update a list
-- [`useMetaIdentify`](docs/sdks/meta/README.md#identify) - Identify
-- [`useNotesCreateMutation`](docs/sdks/notes/README.md#create) - Create a note
-- [`useNotesDeleteMutation`](docs/sdks/notes/README.md#delete) - Delete a note
-- [`useNotesGet`](docs/sdks/notes/README.md#get) - Get a note
-- [`useNotesList`](docs/sdks/notes/README.md#list) - List notes
-- [`useObjectsCreateMutation`](docs/sdks/objects/README.md#create) - Create an object
-- [`useObjectsGet`](docs/sdks/objects/README.md#get) - Get an object
-- [`useObjectsList`](docs/sdks/objects/README.md#list) - List objects
-- [`useObjectsPartialUpdateMutation`](docs/sdks/objects/README.md#partialupdate) - Update an object
-- [`useRecordsAssertMutation`](docs/sdks/records/README.md#assert) - Assert a record
-- [`useRecordsCreateMutation`](docs/sdks/records/README.md#create) - Create a record
-- [`useRecordsDeleteMutation`](docs/sdks/records/README.md#delete) - Delete a record
-- [`useRecordsGet`](docs/sdks/records/README.md#get) - Get a record
-- [`useRecordsListAttributeValues`](docs/sdks/records/README.md#listattributevalues) - List record attribute values
-- [`useRecordsListEntries`](docs/sdks/records/README.md#listentries) - List record entries
-- [`useRecordsPartialUpdateMutation`](docs/sdks/records/README.md#partialupdate) - Update a record (append multiselect values)
-- [`useRecordsQueryMutation`](docs/sdks/records/README.md#query) - List records
-- [`useRecordsUpdateMutation`](docs/sdks/records/README.md#update) - Update a record (overwrite multiselect values)
-- [`useTasksCreateMutation`](docs/sdks/tasks/README.md#create) - Create a task
-- [`useTasksDeleteMutation`](docs/sdks/tasks/README.md#delete) - Delete a task
-- [`useTasksGet`](docs/sdks/tasks/README.md#get) - Get a task
-- [`useTasksList`](docs/sdks/tasks/README.md#list) - List tasks
-- [`useTasksUpdateMutation`](docs/sdks/tasks/README.md#update) - Update a task
-- [`useThreadsGet`](docs/sdks/threads/README.md#get) - Get a thread
-- [`useThreadsList`](docs/sdks/threads/README.md#list) - List threads
-- [`useWebhooksCreateMutation`](docs/sdks/webhooks/README.md#create) - Create a webhook
-- [`useWebhooksDeleteMutation`](docs/sdks/webhooks/README.md#delete) - Delete a webhook
-- [`useWebhooksGet`](docs/sdks/webhooks/README.md#get) - Get a webhook
-- [`useWebhooksList`](docs/sdks/webhooks/README.md#list) - List webhooks
-- [`useWebhooksPartialUpdateMutation`](docs/sdks/webhooks/README.md#partialupdate) - Update a webhook
-- [`useWorkspaceMembersGet`](docs/sdks/workspacemembers/README.md#get) - Get a workspace member
-- [`useWorkspaceMembersList`](docs/sdks/workspacemembers/README.md#list) - List workspace members
-
-</details>
-<!-- End React hooks with TanStack Query [react-query] -->
 
 <!-- Start Retries [retries] -->
 ## Retries

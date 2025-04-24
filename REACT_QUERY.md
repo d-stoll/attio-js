@@ -23,7 +23,7 @@ import { AttioProvider } from "attio-js/react-query";
 
 const queryClient = new QueryClient();
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 // Retries are handled by the underlying SDK.
@@ -228,7 +228,7 @@ import { useObjectsListSuspense } from "attio-js/react-query/objectsList.js";
 
 const queryClient = new QueryClient();
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 export function App() {
@@ -284,7 +284,7 @@ import { prefetchObjectsList } from "attio-js/react-query/objectsList.js";
 export default async function Page() {
   const queryClient = new QueryClient();
   const attio = new AttioCore({
-    oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+    apiKey: process.env["ATTIO_API_KEY"] ?? "",
   });
 
   await prefetchObjectsList(attio);

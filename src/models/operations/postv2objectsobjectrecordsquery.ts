@@ -2058,7 +2058,7 @@ export type Values1 = {
     PostV2ObjectsObjectRecordsQueryValuesRecordsResponse200ApplicationJSONResponseBodyData1AttributeType;
 };
 
-export type Values =
+export type PostV2ObjectsObjectRecordsQueryValues =
   | Values2
   | PostV2ObjectsObjectRecordsQueryValues4
   | PostV2ObjectsObjectRecordsQueryValues10
@@ -6722,29 +6722,32 @@ export function values1FromJSON(
 }
 
 /** @internal */
-export const Values$inboundSchema: z.ZodType<Values, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Values2$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues4$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues10$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues13$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues14$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues15$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues16$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues17$inboundSchema),
-    z.lazy(() => Values1$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues3$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues5$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues7$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues8$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues11$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues12$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues6$inboundSchema),
-    z.lazy(() => PostV2ObjectsObjectRecordsQueryValues9$inboundSchema),
-  ]);
+export const PostV2ObjectsObjectRecordsQueryValues$inboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsQueryValues,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Values2$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues4$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues10$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues13$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues14$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues15$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues16$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues17$inboundSchema),
+  z.lazy(() => Values1$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues3$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues5$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues7$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues8$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues11$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues12$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues6$inboundSchema),
+  z.lazy(() => PostV2ObjectsObjectRecordsQueryValues9$inboundSchema),
+]);
 
 /** @internal */
-export type Values$Outbound =
+export type PostV2ObjectsObjectRecordsQueryValues$Outbound =
   | Values2$Outbound
   | PostV2ObjectsObjectRecordsQueryValues4$Outbound
   | PostV2ObjectsObjectRecordsQueryValues10$Outbound
@@ -6764,10 +6767,10 @@ export type Values$Outbound =
   | PostV2ObjectsObjectRecordsQueryValues9$Outbound;
 
 /** @internal */
-export const Values$outboundSchema: z.ZodType<
-  Values$Outbound,
+export const PostV2ObjectsObjectRecordsQueryValues$outboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsQueryValues$Outbound,
   z.ZodTypeDef,
-  Values
+  PostV2ObjectsObjectRecordsQueryValues
 > = z.union([
   z.lazy(() => Values2$outboundSchema),
   z.lazy(() => PostV2ObjectsObjectRecordsQueryValues4$outboundSchema),
@@ -6792,26 +6795,35 @@ export const Values$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Values$ {
-  /** @deprecated use `Values$inboundSchema` instead. */
-  export const inboundSchema = Values$inboundSchema;
-  /** @deprecated use `Values$outboundSchema` instead. */
-  export const outboundSchema = Values$outboundSchema;
-  /** @deprecated use `Values$Outbound` instead. */
-  export type Outbound = Values$Outbound;
+export namespace PostV2ObjectsObjectRecordsQueryValues$ {
+  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2ObjectsObjectRecordsQueryValues$inboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2ObjectsObjectRecordsQueryValues$outboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsQueryValues$Outbound` instead. */
+  export type Outbound = PostV2ObjectsObjectRecordsQueryValues$Outbound;
 }
 
-export function valuesToJSON(values: Values): string {
-  return JSON.stringify(Values$outboundSchema.parse(values));
+export function postV2ObjectsObjectRecordsQueryValuesToJSON(
+  postV2ObjectsObjectRecordsQueryValues: PostV2ObjectsObjectRecordsQueryValues,
+): string {
+  return JSON.stringify(
+    PostV2ObjectsObjectRecordsQueryValues$outboundSchema.parse(
+      postV2ObjectsObjectRecordsQueryValues,
+    ),
+  );
 }
 
-export function valuesFromJSON(
+export function postV2ObjectsObjectRecordsQueryValuesFromJSON(
   jsonString: string,
-): SafeParseResult<Values, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsObjectRecordsQueryValues, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Values$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Values' from JSON`,
+    (x) =>
+      PostV2ObjectsObjectRecordsQueryValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsObjectRecordsQueryValues' from JSON`,
   );
 }
 

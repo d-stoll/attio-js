@@ -10,11 +10,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
+ */
+export type PutV2ObjectsObjectRecordsRecordIdValues = {};
+
 export type PutV2ObjectsObjectRecordsRecordIdData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  values: { [k: string]: Array<any> };
+  values: PutV2ObjectsObjectRecordsRecordIdValues;
 };
 
 export type PutV2ObjectsObjectRecordsRecordIdRequestBody = {
@@ -2007,7 +2012,7 @@ export type PutV2ObjectsObjectRecordsRecordIdValues1 = {
   attributeType: PutV2ObjectsObjectRecordsRecordIdValuesAttributeType;
 };
 
-export type PutV2ObjectsObjectRecordsRecordIdValues =
+export type PutV2ObjectsObjectRecordsRecordIdRecordsValues =
   | PutV2ObjectsObjectRecordsRecordIdValues2
   | PutV2ObjectsObjectRecordsRecordIdValues4
   | PutV2ObjectsObjectRecordsRecordIdValues10
@@ -2066,17 +2071,76 @@ export type PutV2ObjectsObjectRecordsRecordIdResponseBody = {
 };
 
 /** @internal */
+export const PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsRecordIdValues,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type PutV2ObjectsObjectRecordsRecordIdValues$Outbound = {};
+
+/** @internal */
+export const PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsRecordIdValues$Outbound,
+  z.ZodTypeDef,
+  PutV2ObjectsObjectRecordsRecordIdValues
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PutV2ObjectsObjectRecordsRecordIdValues$ {
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema` instead. */
+  export const inboundSchema =
+    PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema` instead. */
+  export const outboundSchema =
+    PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$Outbound` instead. */
+  export type Outbound = PutV2ObjectsObjectRecordsRecordIdValues$Outbound;
+}
+
+export function putV2ObjectsObjectRecordsRecordIdValuesToJSON(
+  putV2ObjectsObjectRecordsRecordIdValues:
+    PutV2ObjectsObjectRecordsRecordIdValues,
+): string {
+  return JSON.stringify(
+    PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema.parse(
+      putV2ObjectsObjectRecordsRecordIdValues,
+    ),
+  );
+}
+
+export function putV2ObjectsObjectRecordsRecordIdValuesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PutV2ObjectsObjectRecordsRecordIdValues,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PutV2ObjectsObjectRecordsRecordIdValues' from JSON`,
+  );
+}
+
+/** @internal */
 export const PutV2ObjectsObjectRecordsRecordIdData$inboundSchema: z.ZodType<
   PutV2ObjectsObjectRecordsRecordIdData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  values: z.record(z.array(z.any())),
+  values: z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema),
 });
 
 /** @internal */
 export type PutV2ObjectsObjectRecordsRecordIdData$Outbound = {
-  values: { [k: string]: Array<any> };
+  values: PutV2ObjectsObjectRecordsRecordIdValues$Outbound;
 };
 
 /** @internal */
@@ -2085,7 +2149,7 @@ export const PutV2ObjectsObjectRecordsRecordIdData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PutV2ObjectsObjectRecordsRecordIdData
 > = z.object({
-  values: z.record(z.array(z.any())),
+  values: z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema),
 });
 
 /**
@@ -6679,32 +6743,33 @@ export function putV2ObjectsObjectRecordsRecordIdValues1FromJSON(
 }
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordIdValues,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues2$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues4$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues10$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues13$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues14$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues15$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues16$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues17$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues1$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues3$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues5$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues7$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues8$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues11$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues12$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues6$inboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues9$inboundSchema),
-]);
+export const PutV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema:
+  z.ZodType<
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues2$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues4$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues10$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues13$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues14$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues15$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues16$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues17$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues1$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues3$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues5$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues7$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues8$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues11$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues12$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues6$inboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues9$inboundSchema),
+  ]);
 
 /** @internal */
-export type PutV2ObjectsObjectRecordsRecordIdValues$Outbound =
+export type PutV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound =
   | PutV2ObjectsObjectRecordsRecordIdValues2$Outbound
   | PutV2ObjectsObjectRecordsRecordIdValues4$Outbound
   | PutV2ObjectsObjectRecordsRecordIdValues10$Outbound
@@ -6724,69 +6789,71 @@ export type PutV2ObjectsObjectRecordsRecordIdValues$Outbound =
   | PutV2ObjectsObjectRecordsRecordIdValues9$Outbound;
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordIdValues$Outbound,
-  z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsRecordIdValues
-> = z.union([
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues2$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues4$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues10$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues13$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues14$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues15$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues16$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues17$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues1$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues3$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues5$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues7$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues8$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues11$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues12$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues6$outboundSchema),
-  z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues9$outboundSchema),
-]);
+export const PutV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema:
+  z.ZodType<
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound,
+    z.ZodTypeDef,
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues
+  > = z.union([
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues2$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues4$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues10$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues13$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues14$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues15$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues16$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues17$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues1$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues3$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues5$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues7$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues8$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues11$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues12$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues6$outboundSchema),
+    z.lazy(() => PutV2ObjectsObjectRecordsRecordIdValues9$outboundSchema),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ObjectsObjectRecordsRecordIdValues$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema` instead. */
+export namespace PutV2ObjectsObjectRecordsRecordIdRecordsValues$ {
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema` instead. */
   export const inboundSchema =
-    PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema` instead. */
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema` instead. */
   export const outboundSchema =
-    PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdValues$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsRecordIdValues$Outbound;
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound` instead. */
+  export type Outbound =
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues$Outbound;
 }
 
-export function putV2ObjectsObjectRecordsRecordIdValuesToJSON(
-  putV2ObjectsObjectRecordsRecordIdValues:
-    PutV2ObjectsObjectRecordsRecordIdValues,
+export function putV2ObjectsObjectRecordsRecordIdRecordsValuesToJSON(
+  putV2ObjectsObjectRecordsRecordIdRecordsValues:
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues,
 ): string {
   return JSON.stringify(
-    PutV2ObjectsObjectRecordsRecordIdValues$outboundSchema.parse(
-      putV2ObjectsObjectRecordsRecordIdValues,
+    PutV2ObjectsObjectRecordsRecordIdRecordsValues$outboundSchema.parse(
+      putV2ObjectsObjectRecordsRecordIdRecordsValues,
     ),
   );
 }
 
-export function putV2ObjectsObjectRecordsRecordIdValuesFromJSON(
+export function putV2ObjectsObjectRecordsRecordIdRecordsValuesFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PutV2ObjectsObjectRecordsRecordIdValues,
+  PutV2ObjectsObjectRecordsRecordIdRecordsValues,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PutV2ObjectsObjectRecordsRecordIdValues$inboundSchema.parse(
+      PutV2ObjectsObjectRecordsRecordIdRecordsValues$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PutV2ObjectsObjectRecordsRecordIdValues' from JSON`,
+    `Failed to parse 'PutV2ObjectsObjectRecordsRecordIdRecordsValues' from JSON`,
   );
 }
 

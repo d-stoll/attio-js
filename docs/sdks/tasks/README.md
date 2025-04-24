@@ -25,7 +25,7 @@ Required scopes: `task:read`, `object_configuration:read`, `record_permission:re
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -57,7 +57,7 @@ import { tasksList } from "attio-js/funcs/tasksList.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -145,7 +145,7 @@ Required scopes: `task:read-write`, `object_configuration:read`, `record_permiss
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -187,7 +187,7 @@ import { tasksCreate } from "attio-js/funcs/tasksCreate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -274,7 +274,7 @@ Required scopes: `task:read`, `object_configuration:read`, `record_permission:re
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -300,7 +300,7 @@ import { tasksGet } from "attio-js/funcs/tasksGet.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -381,7 +381,7 @@ Required scopes: `task:read-write`, `object_configuration:read`, `record_permiss
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -446,7 +446,7 @@ import { tasksUpdate } from "attio-js/funcs/tasksUpdate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -556,7 +556,7 @@ Required scopes: `task:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -582,7 +582,7 @@ import { tasksDelete } from "attio-js/funcs/tasksDelete.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
-  docChecksum: 6de5b759327046cb0c906514e2bfd0c4
+  docChecksum: 61ed6361e3e2bb3a5943900f0ef5a321
   docVersion: 2.0.0
   speakeasyVersion: 1.538.0
   generationVersion: 2.591.1
-  releaseVersion: 0.0.4
-  configChecksum: 0966e0d197cf4466e1c4730522dd0107
+  releaseVersion: 0.0.5
+  configChecksum: 9f0b53bd89915520707f53b2ff58cec5
   published: true
 features:
   typescript:
@@ -796,6 +796,7 @@ generatedFiles:
   - docs/models/operations/patchv2objectsobjectrecordsrecordiddata.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrecordsdata.md
+  - docs/models/operations/patchv2objectsobjectrecordsrecordidrecordsvalues.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidresponsebody.md
@@ -1112,6 +1113,7 @@ generatedFiles:
   - docs/models/operations/postv2objectsobjectrecordsqueryrequest.md
   - docs/models/operations/postv2objectsobjectrecordsqueryrequestbody.md
   - docs/models/operations/postv2objectsobjectrecordsqueryresponsebody.md
+  - docs/models/operations/postv2objectsobjectrecordsqueryvalues.md
   - docs/models/operations/postv2objectsobjectrecordsqueryvalues10.md
   - docs/models/operations/postv2objectsobjectrecordsqueryvalues11.md
   - docs/models/operations/postv2objectsobjectrecordsqueryvalues12.md
@@ -1454,6 +1456,7 @@ generatedFiles:
   - docs/models/operations/putv2objectsobjectrecordsrecordiddata.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrecordsdata.md
+  - docs/models/operations/putv2objectsobjectrecordsrecordidrecordsvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidresponsebody.md
@@ -1534,6 +1537,7 @@ generatedFiles:
   - docs/models/operations/putv2objectsobjectrecordsrecordidvaluesreferencedactortype.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidvaluestype.md
   - docs/models/operations/putv2objectsobjectrecordsrecordsdata.md
+  - docs/models/operations/putv2objectsobjectrecordsrecordsvalues.md
   - docs/models/operations/putv2objectsobjectrecordsrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrequestbody.md
   - docs/models/operations/putv2objectsobjectrecordsresponsebody.md
@@ -2211,7 +2215,7 @@ examples:
         path:
           object: "people"
       requestBody:
-        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"values": {}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [], "key1": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "attribute_type": "timestamp", "value": "2023-01-01T15:00:00.000000000Z"}]}}}
@@ -2227,7 +2231,7 @@ examples:
         query:
           matching_attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
       requestBody:
-        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"values": {}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "domain": "app.attio.com", "root_domain": "attio.com", "attribute_type": "domain"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "attribute_type": "record-reference"}], "key1": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_phone_number": "5558675309", "country_code": "US", "phone_number": "+15558675309", "attribute_type": "phone-number"}], "key2": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_email_address": "alice@app.attio.com", "email_address": "alice@app.attio.com", "email_domain": "app.attio.com", "email_root_domain": "attio.com", "email_local_specifier": "alice", "attribute_type": "email-address"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "original_phone_number": "5558675309", "country_code": "US", "phone_number": "+15558675309", "attribute_type": "phone-number"}]}}}
@@ -2253,7 +2257,7 @@ examples:
           object: "people"
           record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       requestBody:
-        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"values": {}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
@@ -2268,7 +2272,7 @@ examples:
           object: "people"
           record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       requestBody:
-        application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": ["Text value"], "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
+        application/json: {"data": {"values": {}}}
       responses:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}], "key1": []}}}

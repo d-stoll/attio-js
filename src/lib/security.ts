@@ -243,8 +243,8 @@ export function resolveGlobalSecurity(
     [
       {
         fieldName: "Authorization",
-        type: "oauth2",
-        value: security?.oauth2 ?? env().ATTIO_OAUTH2,
+        type: "http:bearer",
+        value: security?.apiKey ?? env().ATTIO_API_KEY,
       },
     ],
   );

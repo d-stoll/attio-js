@@ -25,7 +25,7 @@ Required scopes: `webhook:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -52,7 +52,7 @@ import { webhooksList } from "attio-js/funcs/webhooksList.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -133,7 +133,7 @@ Required scopes: `webhook:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -162,7 +162,7 @@ import { webhooksCreate } from "attio-js/funcs/webhooksCreate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -235,7 +235,7 @@ Required scopes: `webhook:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -261,7 +261,7 @@ import { webhooksGet } from "attio-js/funcs/webhooksGet.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -342,7 +342,7 @@ Required scopes: `webhook:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -399,7 +399,7 @@ import { webhooksPartialUpdate } from "attio-js/funcs/webhooksPartialUpdate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -500,7 +500,7 @@ Required scopes: `webhook:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -526,7 +526,7 @@ import { webhooksDelete } from "attio-js/funcs/webhooksDelete.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

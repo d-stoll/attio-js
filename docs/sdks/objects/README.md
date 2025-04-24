@@ -24,7 +24,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -48,7 +48,7 @@ import { objectsList } from "attio-js/funcs/objectsList.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -124,7 +124,7 @@ Required scopes: `object_configuration:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -154,7 +154,7 @@ import { objectsCreate } from "attio-js/funcs/objectsCreate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -228,7 +228,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -254,7 +254,7 @@ import { objectsGet } from "attio-js/funcs/objectsGet.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -335,7 +335,7 @@ Required scopes: `object_configuration:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -368,7 +368,7 @@ import { objectsPartialUpdate } from "attio-js/funcs/objectsPartialUpdate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

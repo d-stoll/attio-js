@@ -10,11 +10,16 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import * as components from "../components/index.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
+/**
+ * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
+ */
+export type Values = {};
+
 export type PostV2ObjectsObjectRecordsData = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
-  values: { [k: string]: Array<any> };
+  values: Values;
 };
 
 export type PostV2ObjectsObjectRecordsRequestBody = {
@@ -2049,17 +2054,58 @@ export type PostV2ObjectsObjectRecordsResponseBody = {
 };
 
 /** @internal */
+export const Values$inboundSchema: z.ZodType<Values, z.ZodTypeDef, unknown> = z
+  .object({});
+
+/** @internal */
+export type Values$Outbound = {};
+
+/** @internal */
+export const Values$outboundSchema: z.ZodType<
+  Values$Outbound,
+  z.ZodTypeDef,
+  Values
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Values$ {
+  /** @deprecated use `Values$inboundSchema` instead. */
+  export const inboundSchema = Values$inboundSchema;
+  /** @deprecated use `Values$outboundSchema` instead. */
+  export const outboundSchema = Values$outboundSchema;
+  /** @deprecated use `Values$Outbound` instead. */
+  export type Outbound = Values$Outbound;
+}
+
+export function valuesToJSON(values: Values): string {
+  return JSON.stringify(Values$outboundSchema.parse(values));
+}
+
+export function valuesFromJSON(
+  jsonString: string,
+): SafeParseResult<Values, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Values$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Values' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
   PostV2ObjectsObjectRecordsData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  values: z.record(z.array(z.any())),
+  values: z.lazy(() => Values$inboundSchema),
 });
 
 /** @internal */
 export type PostV2ObjectsObjectRecordsData$Outbound = {
-  values: { [k: string]: Array<any> };
+  values: Values$Outbound;
 };
 
 /** @internal */
@@ -2068,7 +2114,7 @@ export const PostV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV2ObjectsObjectRecordsData
 > = z.object({
-  values: z.record(z.array(z.any())),
+  values: z.lazy(() => Values$outboundSchema),
 });
 
 /**

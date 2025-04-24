@@ -3,7 +3,7 @@
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

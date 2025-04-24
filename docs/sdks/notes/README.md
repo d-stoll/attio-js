@@ -24,7 +24,7 @@ Required scopes: `note:read`, `object_configuration:read`, `record_permission:re
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -53,7 +53,7 @@ import { notesList } from "attio-js/funcs/notesList.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -137,7 +137,7 @@ Required scopes: `note:read-write`, `object_configuration:read`, `record_permiss
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -177,7 +177,7 @@ import { notesCreate } from "attio-js/funcs/notesCreate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -261,7 +261,7 @@ Required scopes: `note:read`, `object_configuration:read`, `record_permission:re
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -287,7 +287,7 @@ import { notesGet } from "attio-js/funcs/notesGet.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -368,7 +368,7 @@ Required scopes: `note:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -394,7 +394,7 @@ import { notesDelete } from "attio-js/funcs/notesDelete.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

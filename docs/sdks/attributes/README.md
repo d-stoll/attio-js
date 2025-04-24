@@ -28,7 +28,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -58,7 +58,7 @@ import { attributesList } from "attio-js/funcs/attributesList.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -144,7 +144,7 @@ To create an attribute on a list, you must also have the `list_configuration:rea
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -201,7 +201,7 @@ import { attributesCreate } from "attio-js/funcs/attributesCreate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -304,7 +304,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -332,7 +332,7 @@ import { attributesGet } from "attio-js/funcs/attributesGet.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -415,7 +415,7 @@ Required scopes: `object_configuration:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -472,7 +472,7 @@ import { attributesUpdate } from "attio-js/funcs/attributesUpdate.js";
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -574,7 +574,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -603,7 +603,7 @@ import { attributesListSelectOptions } from "attio-js/funcs/attributesListSelect
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -687,7 +687,7 @@ Required scopes: `object_configuration:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -720,7 +720,7 @@ import { attributesCreateSelectOption } from "attio-js/funcs/attributesCreateSel
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -799,7 +799,7 @@ Required scopes: `object_configuration:read-write`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -834,7 +834,7 @@ import { attributesUpdateOption } from "attio-js/funcs/attributesUpdateOption.js
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -915,7 +915,7 @@ Required scopes: `object_configuration:read`.
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -943,7 +943,7 @@ import { attributesListStatuses } from "attio-js/funcs/attributesListStatuses.js
 // Use `AttioCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const attio = new AttioCore({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

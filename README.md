@@ -5,9 +5,6 @@ Developer-friendly & type-safe JS/TS SDK based on the [official OpenAPI spec](ht
 <!-- Start Summary [summary] -->
 ## Summary
 
-Attio is a CRM platform which is highly customisable, incredibly powerful and data-driven. The public API allows you to manipulate records, lists, notes, tasks and more. You can find more information about the Attio API in the [official docs](https://developers.attio.com/docs/getting-started).
-
-Unfortunately, an official JavaScript or TypeScript SDK has not been released yet. In the meantime, we maintain this unofficial SDK to bridge the gap until an official SDK becomes available.
 
 <!-- End Summary [summary] -->
 
@@ -92,7 +89,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -114,16 +111,16 @@ run();
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type   | Scheme       | Environment Variable |
-| -------- | ------ | ------------ | -------------------- |
-| `oauth2` | oauth2 | OAuth2 token | `ATTIO_OAUTH2`       |
+| Name     | Type | Scheme      | Environment Variable |
+| -------- | ---- | ----------- | -------------------- |
+| `apiKey` | http | HTTP Bearer | `ATTIO_API_KEY`      |
 
-To authenticate with the API the `oauth2` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -419,7 +416,7 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Attio } from "attio-js";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -459,7 +456,7 @@ const attio = new Attio({
     },
     retryConnectionErrors: false,
   },
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -494,7 +491,7 @@ import {
 } from "attio-js/models/errors";
 
 const attio = new Attio({
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
@@ -561,7 +558,7 @@ import { Attio } from "attio-js";
 
 const attio = new Attio({
   serverURL: "https://api.attio.com",
-  oauth2: process.env["ATTIO_OAUTH2"] ?? "",
+  apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {

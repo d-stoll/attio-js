@@ -5,7 +5,7 @@ The ISO4217 code representing the currency that values for this attribute should
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeDefaultCurrencyCode } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeDefaultCurrencyCode } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeDefaultCurrencyCode =
   "USD";

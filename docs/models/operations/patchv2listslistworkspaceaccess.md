@@ -5,7 +5,7 @@ The level of access granted to all members of the workspace for this list. Pass 
 ## Example Usage
 
 ```typescript
-import { PatchV2ListsListWorkspaceAccess } from "attio-js/models/operations";
+import { PatchV2ListsListWorkspaceAccess } from "attio-js/models/operations/patchv2listslist.js";
 
 let value: PatchV2ListsListWorkspaceAccess = "read-and-write";
 ```

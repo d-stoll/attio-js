@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2TasksTaskIdRequest } from "attio-js/models/operations";
+import { PatchV2TasksTaskIdRequest } from "attio-js/models/operations/patchv2taskstaskid.js";
 
 let value: PatchV2TasksTaskIdRequest = {
   taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",

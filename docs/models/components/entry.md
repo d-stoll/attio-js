@@ -5,7 +5,7 @@ The entry the comment belongs to, `null` for comments on records.
 ## Example Usage
 
 ```typescript
-import { Entry } from "attio-js/models/components";
+import { Entry } from "attio-js/models/components/comment.js";
 
 let value: Entry = {
   entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",

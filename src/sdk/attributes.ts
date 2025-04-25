@@ -11,7 +11,38 @@ import { attributesListStatuses } from "../funcs/attributesListStatuses.js";
 import { attributesUpdate } from "../funcs/attributesUpdate.js";
 import { attributesUpdateOption } from "../funcs/attributesUpdateOption.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2TargetIdentifierAttributesRequest,
+  GetV2TargetIdentifierAttributesResponse,
+} from "../models/operations/getv2targetidentifierattributes.js";
+import {
+  GetV2TargetIdentifierAttributesAttributeRequest,
+  GetV2TargetIdentifierAttributesAttributeResponse,
+} from "../models/operations/getv2targetidentifierattributesattribute.js";
+import {
+  GetV2TargetIdentifierAttributesAttributeOptionsRequest,
+  GetV2TargetIdentifierAttributesAttributeOptionsResponse,
+} from "../models/operations/getv2targetidentifierattributesattributeoptions.js";
+import {
+  GetV2TargetIdentifierAttributesAttributeStatusesRequest,
+  GetV2TargetIdentifierAttributesAttributeStatusesResponse,
+} from "../models/operations/getv2targetidentifierattributesattributestatuses.js";
+import {
+  PatchV2TargetIdentifierAttributesAttributeRequest,
+  PatchV2TargetIdentifierAttributesAttributeResponse,
+} from "../models/operations/patchv2targetidentifierattributesattribute.js";
+import {
+  PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest,
+  PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse,
+} from "../models/operations/patchv2targetidentifierattributesattributeoptionsoption.js";
+import {
+  PostV2TargetIdentifierAttributesRequest,
+  PostV2TargetIdentifierAttributesResponse,
+} from "../models/operations/postv2targetidentifierattributes.js";
+import {
+  PostV2TargetIdentifierAttributesAttributeOptionsRequest,
+  PostV2TargetIdentifierAttributesAttributeOptionsResponse,
+} from "../models/operations/postv2targetidentifierattributesattributeoptions.js";
 import { unwrapAsync } from "../types/fp.js";
 import { Statuses } from "./statuses.js";
 
@@ -30,9 +61,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read`.
    */
   async list(
-    request: operations.GetV2TargetIdentifierAttributesRequest,
+    request: GetV2TargetIdentifierAttributesRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2TargetIdentifierAttributesResponseBody> {
+  ): Promise<GetV2TargetIdentifierAttributesResponse> {
     return unwrapAsync(attributesList(
       this,
       request,
@@ -51,9 +82,9 @@ export class Attributes extends ClientSDK {
    * To create an attribute on a list, you must also have the `list_configuration:read-write` scope.
    */
   async create(
-    request: operations.PostV2TargetIdentifierAttributesRequest,
+    request: PostV2TargetIdentifierAttributesRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2TargetIdentifierAttributesResponseBody> {
+  ): Promise<PostV2TargetIdentifierAttributesResponse> {
     return unwrapAsync(attributesCreate(
       this,
       request,
@@ -70,9 +101,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read`.
    */
   async get(
-    request: operations.GetV2TargetIdentifierAttributesAttributeRequest,
+    request: GetV2TargetIdentifierAttributesAttributeRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2TargetIdentifierAttributesAttributeResponseBody> {
+  ): Promise<GetV2TargetIdentifierAttributesAttributeResponse> {
     return unwrapAsync(attributesGet(
       this,
       request,
@@ -89,11 +120,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async update(
-    request: operations.PatchV2TargetIdentifierAttributesAttributeRequest,
+    request: PatchV2TargetIdentifierAttributesAttributeRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.PatchV2TargetIdentifierAttributesAttributeResponseBody
-  > {
+  ): Promise<PatchV2TargetIdentifierAttributesAttributeResponse> {
     return unwrapAsync(attributesUpdate(
       this,
       request,
@@ -110,11 +139,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read`.
    */
   async listSelectOptions(
-    request: operations.GetV2TargetIdentifierAttributesAttributeOptionsRequest,
+    request: GetV2TargetIdentifierAttributesAttributeOptionsRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.GetV2TargetIdentifierAttributesAttributeOptionsResponseBody
-  > {
+  ): Promise<GetV2TargetIdentifierAttributesAttributeOptionsResponse> {
     return unwrapAsync(attributesListSelectOptions(
       this,
       request,
@@ -131,11 +158,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async createSelectOption(
-    request: operations.PostV2TargetIdentifierAttributesAttributeOptionsRequest,
+    request: PostV2TargetIdentifierAttributesAttributeOptionsRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.PostV2TargetIdentifierAttributesAttributeOptionsResponseBody
-  > {
+  ): Promise<PostV2TargetIdentifierAttributesAttributeOptionsResponse> {
     return unwrapAsync(attributesCreateSelectOption(
       this,
       request,
@@ -152,12 +177,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async updateOption(
-    request:
-      operations.PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest,
+    request: PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody
-  > {
+  ): Promise<PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse> {
     return unwrapAsync(attributesUpdateOption(
       this,
       request,
@@ -174,11 +196,9 @@ export class Attributes extends ClientSDK {
    * Required scopes: `object_configuration:read`.
    */
   async listStatuses(
-    request: operations.GetV2TargetIdentifierAttributesAttributeStatusesRequest,
+    request: GetV2TargetIdentifierAttributesAttributeStatusesRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody
-  > {
+  ): Promise<GetV2TargetIdentifierAttributesAttributeStatusesResponse> {
     return unwrapAsync(attributesListStatuses(
       this,
       request,

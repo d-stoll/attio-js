@@ -37,7 +37,7 @@ export type GetV2ObjectsObjectRecordsRecordIdEntriesData = {
 /**
  * Success
  */
-export type GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody = {
+export type GetV2ObjectsObjectRecordsRecordIdEntriesResponse = {
   data: Array<GetV2ObjectsObjectRecordsRecordIdEntriesData>;
 };
 
@@ -217,9 +217,9 @@ export function getV2ObjectsObjectRecordsRecordIdEntriesDataFromJSON(
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -229,16 +229,16 @@ export const GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema:
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$Outbound = {
+export type GetV2ObjectsObjectRecordsRecordIdEntriesResponse$Outbound = {
   data: Array<GetV2ObjectsObjectRecordsRecordIdEntriesData$Outbound>;
 };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdEntriesResponse$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse
   > = z.object({
     data: z.array(
       z.lazy(() => GetV2ObjectsObjectRecordsRecordIdEntriesData$outboundSchema),
@@ -249,41 +249,41 @@ export const GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$outboundSchema
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdEntriesResponse$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponse$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdEntriesResponse$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdEntriesResponseBodyToJSON(
-  getV2ObjectsObjectRecordsRecordIdEntriesResponseBody:
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+export function getV2ObjectsObjectRecordsRecordIdEntriesResponseToJSON(
+  getV2ObjectsObjectRecordsRecordIdEntriesResponse:
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$outboundSchema.parse(
-      getV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse$outboundSchema.parse(
+      getV2ObjectsObjectRecordsRecordIdEntriesResponse,
     ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdEntriesResponseBodyFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdEntriesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+  GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema.parse(
+      GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdEntriesResponse' from JSON`,
   );
 }

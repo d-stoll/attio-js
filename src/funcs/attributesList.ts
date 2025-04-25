@@ -19,7 +19,12 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2TargetIdentifierAttributesRequest,
+  GetV2TargetIdentifierAttributesRequest$outboundSchema,
+  GetV2TargetIdentifierAttributesResponse,
+  GetV2TargetIdentifierAttributesResponse$inboundSchema,
+} from "../models/operations/getv2targetidentifierattributes.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,11 +38,11 @@ import { Result } from "../types/fp.js";
  */
 export function attributesList(
   client: AttioCore,
-  request: operations.GetV2TargetIdentifierAttributesRequest,
+  request: GetV2TargetIdentifierAttributesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2TargetIdentifierAttributesResponseBody,
+    GetV2TargetIdentifierAttributesResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -56,12 +61,12 @@ export function attributesList(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2TargetIdentifierAttributesRequest,
+  request: GetV2TargetIdentifierAttributesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2TargetIdentifierAttributesResponseBody,
+      GetV2TargetIdentifierAttributesResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -76,9 +81,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetV2TargetIdentifierAttributesRequest$outboundSchema.parse(
-        value,
-      ),
+      GetV2TargetIdentifierAttributesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -155,7 +158,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2TargetIdentifierAttributesResponseBody,
+    GetV2TargetIdentifierAttributesResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -164,10 +167,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.GetV2TargetIdentifierAttributesResponseBody$inboundSchema,
-    ),
+    M.json(200, GetV2TargetIdentifierAttributesResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

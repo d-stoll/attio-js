@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { StatusId } from "attio-js/models/components";
+import { StatusId } from "attio-js/models/components/status.js";
 
 let value: StatusId = {
   workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",

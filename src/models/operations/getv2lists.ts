@@ -5,66 +5,71 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  List,
+  List$inboundSchema,
+  List$Outbound,
+  List$outboundSchema,
+} from "../components/list.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Success
  */
-export type GetV2ListsResponseBody = {
-  data: Array<components.List>;
+export type GetV2ListsResponse = {
+  data: Array<List>;
 };
 
 /** @internal */
-export const GetV2ListsResponseBody$inboundSchema: z.ZodType<
-  GetV2ListsResponseBody,
+export const GetV2ListsResponse$inboundSchema: z.ZodType<
+  GetV2ListsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(components.List$inboundSchema),
+  data: z.array(List$inboundSchema),
 });
 
 /** @internal */
-export type GetV2ListsResponseBody$Outbound = {
-  data: Array<components.List$Outbound>;
+export type GetV2ListsResponse$Outbound = {
+  data: Array<List$Outbound>;
 };
 
 /** @internal */
-export const GetV2ListsResponseBody$outboundSchema: z.ZodType<
-  GetV2ListsResponseBody$Outbound,
+export const GetV2ListsResponse$outboundSchema: z.ZodType<
+  GetV2ListsResponse$Outbound,
   z.ZodTypeDef,
-  GetV2ListsResponseBody
+  GetV2ListsResponse
 > = z.object({
-  data: z.array(components.List$outboundSchema),
+  data: z.array(List$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ListsResponseBody$ {
-  /** @deprecated use `GetV2ListsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2ListsResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ListsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2ListsResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ListsResponseBody$Outbound` instead. */
-  export type Outbound = GetV2ListsResponseBody$Outbound;
+export namespace GetV2ListsResponse$ {
+  /** @deprecated use `GetV2ListsResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2ListsResponse$inboundSchema;
+  /** @deprecated use `GetV2ListsResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2ListsResponse$outboundSchema;
+  /** @deprecated use `GetV2ListsResponse$Outbound` instead. */
+  export type Outbound = GetV2ListsResponse$Outbound;
 }
 
-export function getV2ListsResponseBodyToJSON(
-  getV2ListsResponseBody: GetV2ListsResponseBody,
+export function getV2ListsResponseToJSON(
+  getV2ListsResponse: GetV2ListsResponse,
 ): string {
   return JSON.stringify(
-    GetV2ListsResponseBody$outboundSchema.parse(getV2ListsResponseBody),
+    GetV2ListsResponse$outboundSchema.parse(getV2ListsResponse),
   );
 }
 
-export function getV2ListsResponseBodyFromJSON(
+export function getV2ListsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2ListsResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2ListsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2ListsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ListsResponseBody' from JSON`,
+    (x) => GetV2ListsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ListsResponse' from JSON`,
   );
 }

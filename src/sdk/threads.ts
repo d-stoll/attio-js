@@ -5,7 +5,14 @@
 import { threadsGet } from "../funcs/threadsGet.js";
 import { threadsList } from "../funcs/threadsList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ThreadsRequest,
+  GetV2ThreadsResponse,
+} from "../models/operations/getv2threads.js";
+import {
+  GetV2ThreadsThreadIdRequest,
+  GetV2ThreadsThreadIdResponse,
+} from "../models/operations/getv2threadsthreadid.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Threads extends ClientSDK {
@@ -22,9 +29,9 @@ export class Threads extends ClientSDK {
    * Required scopes: `comment:read`.
    */
   async list(
-    request: operations.GetV2ThreadsRequest,
+    request: GetV2ThreadsRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ThreadsResponseBody> {
+  ): Promise<GetV2ThreadsResponse> {
     return unwrapAsync(threadsList(
       this,
       request,
@@ -45,9 +52,9 @@ export class Threads extends ClientSDK {
    * Required scopes: `comment:read`.
    */
   async get(
-    request: operations.GetV2ThreadsThreadIdRequest,
+    request: GetV2ThreadsThreadIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ThreadsThreadIdResponseBody> {
+  ): Promise<GetV2ThreadsThreadIdResponse> {
     return unwrapAsync(threadsGet(
       this,
       request,

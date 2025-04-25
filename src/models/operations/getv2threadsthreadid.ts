@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Thread,
+  Thread$inboundSchema,
+  Thread$Outbound,
+  Thread$outboundSchema,
+} from "../components/thread.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2ThreadsThreadIdRequest = {
@@ -16,8 +21,8 @@ export type GetV2ThreadsThreadIdRequest = {
 /**
  * Success
  */
-export type GetV2ThreadsThreadIdResponseBody = {
-  data: components.Thread;
+export type GetV2ThreadsThreadIdResponse = {
+  data: Thread;
 };
 
 /** @internal */
@@ -85,57 +90,57 @@ export function getV2ThreadsThreadIdRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2ThreadsThreadIdResponseBody$inboundSchema: z.ZodType<
-  GetV2ThreadsThreadIdResponseBody,
+export const GetV2ThreadsThreadIdResponse$inboundSchema: z.ZodType<
+  GetV2ThreadsThreadIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Thread$inboundSchema,
+  data: Thread$inboundSchema,
 });
 
 /** @internal */
-export type GetV2ThreadsThreadIdResponseBody$Outbound = {
-  data: components.Thread$Outbound;
+export type GetV2ThreadsThreadIdResponse$Outbound = {
+  data: Thread$Outbound;
 };
 
 /** @internal */
-export const GetV2ThreadsThreadIdResponseBody$outboundSchema: z.ZodType<
-  GetV2ThreadsThreadIdResponseBody$Outbound,
+export const GetV2ThreadsThreadIdResponse$outboundSchema: z.ZodType<
+  GetV2ThreadsThreadIdResponse$Outbound,
   z.ZodTypeDef,
-  GetV2ThreadsThreadIdResponseBody
+  GetV2ThreadsThreadIdResponse
 > = z.object({
-  data: components.Thread$outboundSchema,
+  data: Thread$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ThreadsThreadIdResponseBody$ {
-  /** @deprecated use `GetV2ThreadsThreadIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2ThreadsThreadIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ThreadsThreadIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2ThreadsThreadIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ThreadsThreadIdResponseBody$Outbound` instead. */
-  export type Outbound = GetV2ThreadsThreadIdResponseBody$Outbound;
+export namespace GetV2ThreadsThreadIdResponse$ {
+  /** @deprecated use `GetV2ThreadsThreadIdResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2ThreadsThreadIdResponse$inboundSchema;
+  /** @deprecated use `GetV2ThreadsThreadIdResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2ThreadsThreadIdResponse$outboundSchema;
+  /** @deprecated use `GetV2ThreadsThreadIdResponse$Outbound` instead. */
+  export type Outbound = GetV2ThreadsThreadIdResponse$Outbound;
 }
 
-export function getV2ThreadsThreadIdResponseBodyToJSON(
-  getV2ThreadsThreadIdResponseBody: GetV2ThreadsThreadIdResponseBody,
+export function getV2ThreadsThreadIdResponseToJSON(
+  getV2ThreadsThreadIdResponse: GetV2ThreadsThreadIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2ThreadsThreadIdResponseBody$outboundSchema.parse(
-      getV2ThreadsThreadIdResponseBody,
+    GetV2ThreadsThreadIdResponse$outboundSchema.parse(
+      getV2ThreadsThreadIdResponse,
     ),
   );
 }
 
-export function getV2ThreadsThreadIdResponseBodyFromJSON(
+export function getV2ThreadsThreadIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2ThreadsThreadIdResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2ThreadsThreadIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2ThreadsThreadIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ThreadsThreadIdResponseBody' from JSON`,
+    (x) => GetV2ThreadsThreadIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ThreadsThreadIdResponse' from JSON`,
   );
 }

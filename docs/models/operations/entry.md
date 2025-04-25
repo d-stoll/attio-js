@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Entry } from "attio-js/models/operations";
+import { Entry } from "attio-js/models/operations/postv2comments.js";
 
 let value: Entry = {
   list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",

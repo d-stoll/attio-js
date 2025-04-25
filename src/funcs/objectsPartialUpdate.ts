@@ -12,15 +12,27 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+  PatchV2ObjectsObjectSlugConflictError,
+  PatchV2ObjectsObjectSlugConflictError$inboundSchema,
+  PatchV2ObjectsObjectValidationTypeError,
+  PatchV2ObjectsObjectValidationTypeError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2ObjectsObjectRequest,
+  PatchV2ObjectsObjectRequest$outboundSchema,
+  PatchV2ObjectsObjectResponse,
+  PatchV2ObjectsObjectResponse$inboundSchema,
+} from "../models/operations/patchv2objectsobject.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,14 +46,14 @@ import { Result } from "../types/fp.js";
  */
 export function objectsPartialUpdate(
   client: AttioCore,
-  request: operations.PatchV2ObjectsObjectRequest,
+  request: PatchV2ObjectsObjectRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2ObjectsObjectResponseBody,
-    | errors.PatchV2ObjectsObjectResponseBody
-    | errors.ResponseBody
-    | errors.PatchV2ObjectsObjectObjectsResponseBody
+    PatchV2ObjectsObjectResponse,
+    | PatchV2ObjectsObjectValidationTypeError
+    | GetV2ObjectsObjectNotFoundError
+    | PatchV2ObjectsObjectSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -60,15 +72,15 @@ export function objectsPartialUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2ObjectsObjectRequest,
+  request: PatchV2ObjectsObjectRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2ObjectsObjectResponseBody,
-      | errors.PatchV2ObjectsObjectResponseBody
-      | errors.ResponseBody
-      | errors.PatchV2ObjectsObjectObjectsResponseBody
+      PatchV2ObjectsObjectResponse,
+      | PatchV2ObjectsObjectValidationTypeError
+      | GetV2ObjectsObjectNotFoundError
+      | PatchV2ObjectsObjectSlugConflictError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -82,8 +94,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.PatchV2ObjectsObjectRequest$outboundSchema.parse(value),
+    (value) => PatchV2ObjectsObjectRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -154,10 +165,10 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2ObjectsObjectResponseBody,
-    | errors.PatchV2ObjectsObjectResponseBody
-    | errors.ResponseBody
-    | errors.PatchV2ObjectsObjectObjectsResponseBody
+    PatchV2ObjectsObjectResponse,
+    | PatchV2ObjectsObjectValidationTypeError
+    | GetV2ObjectsObjectNotFoundError
+    | PatchV2ObjectsObjectSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -166,13 +177,10 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PatchV2ObjectsObjectResponseBody$inboundSchema),
-    M.jsonErr(400, errors.PatchV2ObjectsObjectResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
-    M.jsonErr(
-      409,
-      errors.PatchV2ObjectsObjectObjectsResponseBody$inboundSchema,
-    ),
+    M.json(200, PatchV2ObjectsObjectResponse$inboundSchema),
+    M.jsonErr(400, PatchV2ObjectsObjectValidationTypeError$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
+    M.jsonErr(409, PatchV2ObjectsObjectSlugConflictError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

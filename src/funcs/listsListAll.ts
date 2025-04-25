@@ -17,7 +17,10 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ListsResponse,
+  GetV2ListsResponse$inboundSchema,
+} from "../models/operations/getv2lists.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,7 +37,7 @@ export function listsListAll(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ListsResponseBody,
+    GetV2ListsResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -56,7 +59,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetV2ListsResponseBody,
+      GetV2ListsResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -117,7 +120,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2ListsResponseBody,
+    GetV2ListsResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -126,7 +129,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2ListsResponseBody$inboundSchema),
+    M.json(200, GetV2ListsResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

@@ -7,66 +7,77 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Attribute,
+  Attribute$inboundSchema,
+  Attribute$Outbound,
+  Attribute$outboundSchema,
+} from "../components/attribute.js";
+import {
+  InputValueUnion,
+  InputValueUnion$inboundSchema,
+  InputValueUnion$Outbound,
+  InputValueUnion$outboundSchema,
+} from "../components/inputvalueunion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is on an object or a list.
  */
-export const PatchV2TargetIdentifierAttributesAttributePathParamTarget = {
+export const PatchV2TargetIdentifierAttributesAttributeTarget = {
   Objects: "objects",
   Lists: "lists",
 } as const;
 /**
  * Whether the attribute is on an object or a list.
  */
-export type PatchV2TargetIdentifierAttributesAttributePathParamTarget =
-  ClosedEnum<typeof PatchV2TargetIdentifierAttributesAttributePathParamTarget>;
+export type PatchV2TargetIdentifierAttributesAttributeTarget = ClosedEnum<
+  typeof PatchV2TargetIdentifierAttributesAttributeTarget
+>;
 
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType =
-  {
-    Static: "static",
-  } as const;
-export type PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType =
-  ClosedEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType
-  >;
+export const PatchV2TargetIdentifierAttributesAttributeTypeStatic = {
+  Static: "static",
+} as const;
+export type PatchV2TargetIdentifierAttributesAttributeTypeStatic = ClosedEnum<
+  typeof PatchV2TargetIdentifierAttributesAttributeTypeStatic
+>;
 
-export type DefaultValue2 = {
-  type: PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType;
-  template: Array<components.InputValue>;
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic = {
+  type: PatchV2TargetIdentifierAttributesAttributeTypeStatic;
+  template: Array<InputValueUnion>;
 };
 
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueType = {
+export const PatchV2TargetIdentifierAttributesAttributeTypeDynamic = {
   Dynamic: "dynamic",
 } as const;
-export type PatchV2TargetIdentifierAttributesAttributeDefaultValueType =
-  ClosedEnum<typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueType>;
+export type PatchV2TargetIdentifierAttributesAttributeTypeDynamic = ClosedEnum<
+  typeof PatchV2TargetIdentifierAttributesAttributeTypeDynamic
+>;
 
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export const PatchV2TargetIdentifierAttributesAttributeTemplate1 = {
+export const PatchV2TargetIdentifierAttributesAttributeTemplate = {
   CurrentUser: "current-user",
 } as const;
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export type PatchV2TargetIdentifierAttributesAttributeTemplate1 = ClosedEnum<
-  typeof PatchV2TargetIdentifierAttributesAttributeTemplate1
+export type PatchV2TargetIdentifierAttributesAttributeTemplate = ClosedEnum<
+  typeof PatchV2TargetIdentifierAttributesAttributeTemplate
 >;
 
-export type DefaultValue1 = {
-  type: PatchV2TargetIdentifierAttributesAttributeDefaultValueType;
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic = {
+  type: PatchV2TargetIdentifierAttributesAttributeTypeDynamic;
   template?: any | undefined;
 };
 
 /**
  * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
  */
-export type PatchV2TargetIdentifierAttributesAttributeDefaultValue =
-  | DefaultValue1
-  | DefaultValue2;
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion =
+  | PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic
+  | PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic;
 
 /**
  * The ISO4217 code representing the currency that values for this attribute should be stored in.
@@ -195,7 +206,11 @@ export type PatchV2TargetIdentifierAttributesAttributeData = {
   /**
    * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
    */
-  defaultValue?: DefaultValue1 | DefaultValue2 | null | undefined;
+  defaultValue?:
+    | PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic
+    | PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic
+    | null
+    | undefined;
   /**
    * Additional, type-dependent configuration for the attribute.
    */
@@ -214,7 +229,7 @@ export type PatchV2TargetIdentifierAttributesAttributeRequest = {
   /**
    * Whether the attribute is on an object or a list.
    */
-  target: PatchV2TargetIdentifierAttributesAttributePathParamTarget;
+  target: PatchV2TargetIdentifierAttributesAttributeTarget;
   identifier: string;
   attribute: string;
   requestBody: PatchV2TargetIdentifierAttributesAttributeRequestBody;
@@ -223,287 +238,317 @@ export type PatchV2TargetIdentifierAttributesAttributeRequest = {
 /**
  * Success
  */
-export type PatchV2TargetIdentifierAttributesAttributeResponseBody = {
-  data: components.Attribute;
+export type PatchV2TargetIdentifierAttributesAttributeResponse = {
+  data: Attribute;
 };
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributePathParamTarget$inboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributePathParamTarget
-  > = z.nativeEnum(PatchV2TargetIdentifierAttributesAttributePathParamTarget);
+export const PatchV2TargetIdentifierAttributesAttributeTarget$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTarget> = z
+    .nativeEnum(PatchV2TargetIdentifierAttributesAttributeTarget);
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributePathParamTarget$outboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributePathParamTarget
-  > = PatchV2TargetIdentifierAttributesAttributePathParamTarget$inboundSchema;
+export const PatchV2TargetIdentifierAttributesAttributeTarget$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTarget> =
+    PatchV2TargetIdentifierAttributesAttributeTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributePathParamTarget$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributePathParamTarget$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeTarget$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTarget$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributePathParamTarget$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributePathParamTarget$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeTarget$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTarget$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributePathParamTarget$outboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeTarget$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType
-  > = z.nativeEnum(
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType,
-  );
+export const PatchV2TargetIdentifierAttributesAttributeTypeStatic$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTypeStatic> =
+    z.nativeEnum(PatchV2TargetIdentifierAttributesAttributeTypeStatic);
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType
-  > =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$inboundSchema;
+export const PatchV2TargetIdentifierAttributesAttributeTypeStatic$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTypeStatic> =
+    PatchV2TargetIdentifierAttributesAttributeTypeStatic$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeTypeStatic$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTypeStatic$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeTypeStatic$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTypeStatic$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$outboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeTypeStatic$outboundSchema;
 }
 
 /** @internal */
-export const DefaultValue2$inboundSchema: z.ZodType<
-  DefaultValue2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type:
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$inboundSchema,
-  template: z.array(components.InputValue$inboundSchema),
-});
-
-/** @internal */
-export type DefaultValue2$Outbound = {
-  type: string;
-  template: Array<components.InputValue$Outbound>;
-};
-
-/** @internal */
-export const DefaultValue2$outboundSchema: z.ZodType<
-  DefaultValue2$Outbound,
-  z.ZodTypeDef,
-  DefaultValue2
-> = z.object({
-  type:
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueAttributesType$outboundSchema,
-  template: z.array(components.InputValue$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultValue2$ {
-  /** @deprecated use `DefaultValue2$inboundSchema` instead. */
-  export const inboundSchema = DefaultValue2$inboundSchema;
-  /** @deprecated use `DefaultValue2$outboundSchema` instead. */
-  export const outboundSchema = DefaultValue2$outboundSchema;
-  /** @deprecated use `DefaultValue2$Outbound` instead. */
-  export type Outbound = DefaultValue2$Outbound;
-}
-
-export function defaultValue2ToJSON(defaultValue2: DefaultValue2): string {
-  return JSON.stringify(DefaultValue2$outboundSchema.parse(defaultValue2));
-}
-
-export function defaultValue2FromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultValue2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultValue2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultValue2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueType
-  > = z.nativeEnum(PatchV2TargetIdentifierAttributesAttributeDefaultValueType);
-
-/** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValueType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeDefaultValueType
-  > = PatchV2TargetIdentifierAttributesAttributeDefaultValueType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValueType$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueType$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueType$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueType$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueType$outboundSchema;
-}
-
-/** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeTemplate1$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTemplate1> =
-    z.nativeEnum(PatchV2TargetIdentifierAttributesAttributeTemplate1);
-
-/** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeTemplate1$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTemplate1> =
-    PatchV2TargetIdentifierAttributesAttributeTemplate1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2TargetIdentifierAttributesAttributeTemplate1$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTemplate1$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeTemplate1$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTemplate1$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeTemplate1$outboundSchema;
-}
-
-/** @internal */
-export const DefaultValue1$inboundSchema: z.ZodType<
-  DefaultValue1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type:
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueType$inboundSchema,
-  template: z.any().optional(),
-});
-
-/** @internal */
-export type DefaultValue1$Outbound = {
-  type: string;
-  template?: any | undefined;
-};
-
-/** @internal */
-export const DefaultValue1$outboundSchema: z.ZodType<
-  DefaultValue1$Outbound,
-  z.ZodTypeDef,
-  DefaultValue1
-> = z.object({
-  type:
-    PatchV2TargetIdentifierAttributesAttributeDefaultValueType$outboundSchema,
-  template: z.any().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DefaultValue1$ {
-  /** @deprecated use `DefaultValue1$inboundSchema` instead. */
-  export const inboundSchema = DefaultValue1$inboundSchema;
-  /** @deprecated use `DefaultValue1$outboundSchema` instead. */
-  export const outboundSchema = DefaultValue1$outboundSchema;
-  /** @deprecated use `DefaultValue1$Outbound` instead. */
-  export type Outbound = DefaultValue1$Outbound;
-}
-
-export function defaultValue1ToJSON(defaultValue1: DefaultValue1): string {
-  return JSON.stringify(DefaultValue1$outboundSchema.parse(defaultValue1));
-}
-
-export function defaultValue1FromJSON(
-  jsonString: string,
-): SafeParseResult<DefaultValue1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DefaultValue1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultValue1' from JSON`,
-  );
-}
-
-/** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValue$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue,
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => DefaultValue1$inboundSchema),
-    z.lazy(() => DefaultValue2$inboundSchema),
-  ]);
+  > = z.object({
+    type: PatchV2TargetIdentifierAttributesAttributeTypeStatic$inboundSchema,
+    template: z.array(InputValueUnion$inboundSchema),
+  });
 
 /** @internal */
-export type PatchV2TargetIdentifierAttributesAttributeDefaultValue$Outbound =
-  | DefaultValue1$Outbound
-  | DefaultValue2$Outbound;
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound =
+  {
+    type: string;
+    template: Array<InputValueUnion$Outbound>;
+  };
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeDefaultValue$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue$Outbound,
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound,
     z.ZodTypeDef,
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue
-  > = z.union([
-    z.lazy(() => DefaultValue1$outboundSchema),
-    z.lazy(() => DefaultValue2$outboundSchema),
-  ]);
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic
+  > = z.object({
+    type: PatchV2TargetIdentifierAttributesAttributeTypeStatic$outboundSchema,
+    template: z.array(InputValueUnion$outboundSchema),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValue$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValue$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValue$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue$outboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValue$Outbound` instead. */
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound` instead. */
   export type Outbound =
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue$Outbound;
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound;
 }
 
-export function patchV2TargetIdentifierAttributesAttributeDefaultValueToJSON(
-  patchV2TargetIdentifierAttributesAttributeDefaultValue:
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue,
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueStaticToJSON(
+  patchV2TargetIdentifierAttributesAttributeDefaultValueStatic:
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic,
 ): string {
   return JSON.stringify(
-    PatchV2TargetIdentifierAttributesAttributeDefaultValue$outboundSchema.parse(
-      patchV2TargetIdentifierAttributesAttributeDefaultValue,
-    ),
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema
+      .parse(patchV2TargetIdentifierAttributesAttributeDefaultValueStatic),
   );
 }
 
-export function patchV2TargetIdentifierAttributesAttributeDefaultValueFromJSON(
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueStaticFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2TargetIdentifierAttributesAttributeDefaultValue,
+  PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2TargetIdentifierAttributesAttributeDefaultValue$inboundSchema
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeDefaultValue' from JSON`,
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeTypeDynamic$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2TargetIdentifierAttributesAttributeTypeDynamic
+  > = z.nativeEnum(PatchV2TargetIdentifierAttributesAttributeTypeDynamic);
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeTypeDynamic$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2TargetIdentifierAttributesAttributeTypeDynamic
+  > = PatchV2TargetIdentifierAttributesAttributeTypeDynamic$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchV2TargetIdentifierAttributesAttributeTypeDynamic$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTypeDynamic$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeTypeDynamic$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTypeDynamic$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeTypeDynamic$outboundSchema;
+}
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeTemplate$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTemplate> = z
+    .nativeEnum(PatchV2TargetIdentifierAttributesAttributeTemplate);
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeTemplate$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TargetIdentifierAttributesAttributeTemplate> =
+    PatchV2TargetIdentifierAttributesAttributeTemplate$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchV2TargetIdentifierAttributesAttributeTemplate$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTemplate$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeTemplate$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeTemplate$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeTemplate$outboundSchema;
+}
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema:
+  z.ZodType<
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: PatchV2TargetIdentifierAttributesAttributeTypeDynamic$inboundSchema,
+    template: z.any().optional(),
+  });
+
+/** @internal */
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound =
+  {
+    type: string;
+    template?: any | undefined;
+  };
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema:
+  z.ZodType<
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound,
+    z.ZodTypeDef,
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic
+  > = z.object({
+    type: PatchV2TargetIdentifierAttributesAttributeTypeDynamic$outboundSchema,
+    template: z.any().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound` instead. */
+  export type Outbound =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound;
+}
+
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueDynamicToJSON(
+  patchV2TargetIdentifierAttributesAttributeDefaultValueDynamic:
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic,
+): string {
+  return JSON.stringify(
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema
+      .parse(patchV2TargetIdentifierAttributesAttributeDefaultValueDynamic),
+  );
+}
+
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueDynamicFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic' from JSON`,
+  );
+}
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$inboundSchema:
+  z.ZodType<
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema
+    ),
+    z.lazy(() =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema
+    ),
+  ]);
+
+/** @internal */
+export type PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$Outbound =
+  | PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound
+  | PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound;
+
+/** @internal */
+export const PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$outboundSchema:
+  z.ZodType<
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion
+  > = z.union([
+    z.lazy(() =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema
+    ),
+    z.lazy(() =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema
+    ),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$Outbound` instead. */
+  export type Outbound =
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$Outbound;
+}
+
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueUnionToJSON(
+  patchV2TargetIdentifierAttributesAttributeDefaultValueUnion:
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion,
+): string {
+  return JSON.stringify(
+    PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$outboundSchema
+      .parse(patchV2TargetIdentifierAttributesAttributeDefaultValueUnion),
+  );
+}
+
+export function patchV2TargetIdentifierAttributesAttributeDefaultValueUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeDefaultValueUnion' from JSON`,
   );
 }
 
@@ -825,8 +870,12 @@ export const PatchV2TargetIdentifierAttributesAttributeData$inboundSchema:
     is_unique: z.boolean().optional(),
     default_value: z.nullable(
       z.union([
-        z.lazy(() => DefaultValue1$inboundSchema),
-        z.lazy(() => DefaultValue2$inboundSchema),
+        z.lazy(() =>
+          PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$inboundSchema
+        ),
+        z.lazy(() =>
+          PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$inboundSchema
+        ),
       ]),
     ).optional(),
     config: z.lazy(() =>
@@ -851,8 +900,8 @@ export type PatchV2TargetIdentifierAttributesAttributeData$Outbound = {
   is_required?: boolean | undefined;
   is_unique?: boolean | undefined;
   default_value?:
-    | DefaultValue1$Outbound
-    | DefaultValue2$Outbound
+    | PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$Outbound
+    | PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$Outbound
     | null
     | undefined;
   config?:
@@ -875,8 +924,12 @@ export const PatchV2TargetIdentifierAttributesAttributeData$outboundSchema:
     isUnique: z.boolean().optional(),
     defaultValue: z.nullable(
       z.union([
-        z.lazy(() => DefaultValue1$outboundSchema),
-        z.lazy(() => DefaultValue2$outboundSchema),
+        z.lazy(() =>
+          PatchV2TargetIdentifierAttributesAttributeDefaultValueDynamic$outboundSchema
+        ),
+        z.lazy(() =>
+          PatchV2TargetIdentifierAttributesAttributeDefaultValueStatic$outboundSchema
+        ),
       ]),
     ).optional(),
     config: z.lazy(() =>
@@ -1015,8 +1068,7 @@ export const PatchV2TargetIdentifierAttributesAttributeRequest$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    target:
-      PatchV2TargetIdentifierAttributesAttributePathParamTarget$inboundSchema,
+    target: PatchV2TargetIdentifierAttributesAttributeTarget$inboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     RequestBody: z.lazy(() =>
@@ -1043,8 +1095,7 @@ export const PatchV2TargetIdentifierAttributesAttributeRequest$outboundSchema:
     z.ZodTypeDef,
     PatchV2TargetIdentifierAttributesAttributeRequest
   > = z.object({
-    target:
-      PatchV2TargetIdentifierAttributesAttributePathParamTarget$outboundSchema,
+    target: PatchV2TargetIdentifierAttributesAttributeTarget$outboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     requestBody: z.lazy(() =>
@@ -1100,68 +1151,69 @@ export function patchV2TargetIdentifierAttributesAttributeRequestFromJSON(
 }
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeResponseBody,
+    PatchV2TargetIdentifierAttributesAttributeResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: components.Attribute$inboundSchema,
+    data: Attribute$inboundSchema,
   });
 
 /** @internal */
-export type PatchV2TargetIdentifierAttributesAttributeResponseBody$Outbound = {
-  data: components.Attribute$Outbound;
+export type PatchV2TargetIdentifierAttributesAttributeResponse$Outbound = {
+  data: Attribute$Outbound;
 };
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeResponseBody$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeResponse$outboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeResponseBody$Outbound,
+    PatchV2TargetIdentifierAttributesAttributeResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2TargetIdentifierAttributesAttributeResponseBody
+    PatchV2TargetIdentifierAttributesAttributeResponse
   > = z.object({
-    data: components.Attribute$outboundSchema,
+    data: Attribute$outboundSchema,
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeResponseBody$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeResponse$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponseBody$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponseBody$Outbound` instead. */
+    PatchV2TargetIdentifierAttributesAttributeResponse$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeResponse$Outbound` instead. */
   export type Outbound =
-    PatchV2TargetIdentifierAttributesAttributeResponseBody$Outbound;
+    PatchV2TargetIdentifierAttributesAttributeResponse$Outbound;
 }
 
-export function patchV2TargetIdentifierAttributesAttributeResponseBodyToJSON(
-  patchV2TargetIdentifierAttributesAttributeResponseBody:
-    PatchV2TargetIdentifierAttributesAttributeResponseBody,
+export function patchV2TargetIdentifierAttributesAttributeResponseToJSON(
+  patchV2TargetIdentifierAttributesAttributeResponse:
+    PatchV2TargetIdentifierAttributesAttributeResponse,
 ): string {
   return JSON.stringify(
-    PatchV2TargetIdentifierAttributesAttributeResponseBody$outboundSchema.parse(
-      patchV2TargetIdentifierAttributesAttributeResponseBody,
+    PatchV2TargetIdentifierAttributesAttributeResponse$outboundSchema.parse(
+      patchV2TargetIdentifierAttributesAttributeResponse,
     ),
   );
 }
 
-export function patchV2TargetIdentifierAttributesAttributeResponseBodyFromJSON(
+export function patchV2TargetIdentifierAttributesAttributeResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2TargetIdentifierAttributesAttributeResponseBody,
+  PatchV2TargetIdentifierAttributesAttributeResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeResponseBody' from JSON`,
+      PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeResponse' from JSON`,
   );
 }

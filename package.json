@@ -1,7 +1,17 @@
 {
   "name": "attio-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Daniel Stoll",
+  "keywords": [
+    "attio",
+    "sdk",
+    "crm",
+    "attio ts",
+    "attio js",
+    "attio typescript",
+    "attio javascript",
+    "attio api"
+  ],
   "license": "MIT",
   "type": "module",
   "tshy": {
@@ -11,10 +21,6 @@
     "exports": {
       ".": "./src/index.ts",
       "./package.json": "./package.json",
-      "./types": "./src/types/index.ts",
-      "./models/errors": "./src/models/errors/index.ts",
-      "./models/components": "./src/models/components/index.ts",
-      "./models/operations": "./src/models/operations/index.ts",
       "./*.js": "./src/*.ts",
       "./*": "./src/*.ts"
     }
@@ -35,6 +41,7 @@
     "tshy": "^2.0.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.22.0",
+    "vitest": "^3.1.2",
     "zod": "^3.23.4"
   },
   "dependencies": {},
@@ -51,50 +58,6 @@
       }
     },
     "./package.json": "./package.json",
-    "./types": {
-      "import": {
-        "attio-js/source": "./src/types/index.ts",
-        "types": "./dist/esm/types/index.d.ts",
-        "default": "./dist/esm/types/index.js"
-      },
-      "require": {
-        "types": "./dist/commonjs/types/index.d.ts",
-        "default": "./dist/commonjs/types/index.js"
-      }
-    },
-    "./models/errors": {
-      "import": {
-        "attio-js/source": "./src/models/errors/index.ts",
-        "types": "./dist/esm/models/errors/index.d.ts",
-        "default": "./dist/esm/models/errors/index.js"
-      },
-      "require": {
-        "types": "./dist/commonjs/models/errors/index.d.ts",
-        "default": "./dist/commonjs/models/errors/index.js"
-      }
-    },
-    "./models/components": {
-      "import": {
-        "attio-js/source": "./src/models/components/index.ts",
-        "types": "./dist/esm/models/components/index.d.ts",
-        "default": "./dist/esm/models/components/index.js"
-      },
-      "require": {
-        "types": "./dist/commonjs/models/components/index.d.ts",
-        "default": "./dist/commonjs/models/components/index.js"
-      }
-    },
-    "./models/operations": {
-      "import": {
-        "attio-js/source": "./src/models/operations/index.ts",
-        "types": "./dist/esm/models/operations/index.d.ts",
-        "default": "./dist/esm/models/operations/index.js"
-      },
-      "require": {
-        "types": "./dist/commonjs/models/operations/index.d.ts",
-        "default": "./dist/commonjs/models/operations/index.js"
-      }
-    },
     "./*.js": {
       "import": {
         "attio-js/source": "./src/*.ts",

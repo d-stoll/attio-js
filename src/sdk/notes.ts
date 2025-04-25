@@ -7,7 +7,22 @@ import { notesDelete } from "../funcs/notesDelete.js";
 import { notesGet } from "../funcs/notesGet.js";
 import { notesList } from "../funcs/notesList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2NotesNoteIdRequest,
+  DeleteV2NotesNoteIdResponse,
+} from "../models/operations/deletev2notesnoteid.js";
+import {
+  GetV2NotesRequest,
+  GetV2NotesResponse,
+} from "../models/operations/getv2notes.js";
+import {
+  GetV2NotesNoteIdRequest,
+  GetV2NotesNoteIdResponse,
+} from "../models/operations/getv2notesnoteid.js";
+import {
+  PostV2NotesRequest,
+  PostV2NotesResponse,
+} from "../models/operations/postv2notes.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Notes extends ClientSDK {
@@ -20,9 +35,9 @@ export class Notes extends ClientSDK {
    * Required scopes: `note:read`, `object_configuration:read`, `record_permission:read`.
    */
   async list(
-    request: operations.GetV2NotesRequest,
+    request: GetV2NotesRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2NotesResponseBody> {
+  ): Promise<GetV2NotesResponse> {
     return unwrapAsync(notesList(
       this,
       request,
@@ -39,9 +54,9 @@ export class Notes extends ClientSDK {
    * Required scopes: `note:read-write`, `object_configuration:read`, `record_permission:read`.
    */
   async create(
-    request: operations.PostV2NotesRequestBody,
+    request: PostV2NotesRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2NotesResponseBody> {
+  ): Promise<PostV2NotesResponse> {
     return unwrapAsync(notesCreate(
       this,
       request,
@@ -58,9 +73,9 @@ export class Notes extends ClientSDK {
    * Required scopes: `note:read`, `object_configuration:read`, `record_permission:read`.
    */
   async get(
-    request: operations.GetV2NotesNoteIdRequest,
+    request: GetV2NotesNoteIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2NotesNoteIdResponseBody> {
+  ): Promise<GetV2NotesNoteIdResponse> {
     return unwrapAsync(notesGet(
       this,
       request,
@@ -77,9 +92,9 @@ export class Notes extends ClientSDK {
    * Required scopes: `note:read-write`.
    */
   async delete(
-    request: operations.DeleteV2NotesNoteIdRequest,
+    request: DeleteV2NotesNoteIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2NotesNoteIdResponseBody> {
+  ): Promise<DeleteV2NotesNoteIdResponse> {
     return unwrapAsync(notesDelete(
       this,
       request,

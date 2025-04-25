@@ -85,7 +85,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2WebhooksResponseBody](../../models/operations/getv2webhooksresponsebody.md)\>**
+**Promise\<[operations.GetV2WebhooksResponse](../../models/operations/getv2webhooksresponse.md)\>**
 
 ### Errors
 
@@ -162,21 +162,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostV2WebhooksRequestBody](../../models/operations/postv2webhooksrequestbody.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV2WebhooksRequest](../../models/operations/postv2webhooksrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.PostV2WebhooksResponseBody](../../models/operations/postv2webhooksresponsebody.md)\>**
+**Promise\<[operations.PostV2WebhooksResponse](../../models/operations/postv2webhooksresponse.md)\>**
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.PostV2WebhooksResponseBody | 400                               | application/json                  |
-| errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| errors.PostV2WebhooksValidationTypeError | 400                                      | application/json                         |
+| errors.APIError                          | 4XX, 5XX                                 | \*/\*                                    |
 
 ## get
 
@@ -248,14 +248,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2WebhooksWebhookIdResponseBody](../../models/operations/getv2webhookswebhookidresponsebody.md)\>**
+**Promise\<[operations.GetV2WebhooksWebhookIdResponse](../../models/operations/getv2webhookswebhookidresponse.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.WebhooksResponseBody | 404                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.GetV2WebhooksWebhookIdNotFoundError | 404                                        | application/json                           |
+| errors.APIError                            | 4XX, 5XX                                   | \*/\*                                      |
 
 ## partialUpdate
 
@@ -389,14 +389,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2WebhooksWebhookIdResponseBody](../../models/operations/patchv2webhookswebhookidresponsebody.md)\>**
+**Promise\<[operations.PatchV2WebhooksWebhookIdResponse](../../models/operations/patchv2webhookswebhookidresponse.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.WebhooksResponseBody | 404                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.GetV2WebhooksWebhookIdNotFoundError | 404                                        | application/json                           |
+| errors.APIError                            | 4XX, 5XX                                   | \*/\*                                      |
 
 ## delete
 
@@ -468,11 +468,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteV2WebhooksWebhookIdResponseBody](../../models/operations/deletev2webhookswebhookidresponsebody.md)\>**
+**Promise\<[operations.DeleteV2WebhooksWebhookIdResponse](../../models/operations/deletev2webhookswebhookidresponse.md)\>**
 
 ### Errors
 
-| Error Type                                   | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| errors.DeleteV2WebhooksWebhookIdResponseBody | 404                                          | application/json                             |
-| errors.APIError                              | 4XX, 5XX                                     | \*/\*                                        |
+| Error Type                                    | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| errors.DeleteV2WebhooksWebhookIdNotFoundError | 404                                           | application/json                              |
+| errors.APIError                               | 4XX, 5XX                                      | \*/\*                                         |

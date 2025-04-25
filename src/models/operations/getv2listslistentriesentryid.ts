@@ -56,7 +56,7 @@ export type GetV2ListsListEntriesEntryIdData = {
 /**
  * Success
  */
-export type GetV2ListsListEntriesEntryIdResponseBody = {
+export type GetV2ListsListEntriesEntryIdResponse = {
   data: GetV2ListsListEntriesEntryIdData;
 };
 
@@ -350,8 +350,8 @@ export function getV2ListsListEntriesEntryIdDataFromJSON(
 }
 
 /** @internal */
-export const GetV2ListsListEntriesEntryIdResponseBody$inboundSchema: z.ZodType<
-  GetV2ListsListEntriesEntryIdResponseBody,
+export const GetV2ListsListEntriesEntryIdResponse$inboundSchema: z.ZodType<
+  GetV2ListsListEntriesEntryIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -359,15 +359,15 @@ export const GetV2ListsListEntriesEntryIdResponseBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetV2ListsListEntriesEntryIdResponseBody$Outbound = {
+export type GetV2ListsListEntriesEntryIdResponse$Outbound = {
   data: GetV2ListsListEntriesEntryIdData$Outbound;
 };
 
 /** @internal */
-export const GetV2ListsListEntriesEntryIdResponseBody$outboundSchema: z.ZodType<
-  GetV2ListsListEntriesEntryIdResponseBody$Outbound,
+export const GetV2ListsListEntriesEntryIdResponse$outboundSchema: z.ZodType<
+  GetV2ListsListEntriesEntryIdResponse$Outbound,
   z.ZodTypeDef,
-  GetV2ListsListEntriesEntryIdResponseBody
+  GetV2ListsListEntriesEntryIdResponse
 > = z.object({
   data: z.lazy(() => GetV2ListsListEntriesEntryIdData$outboundSchema),
 });
@@ -376,40 +376,34 @@ export const GetV2ListsListEntriesEntryIdResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ListsListEntriesEntryIdResponseBody$ {
-  /** @deprecated use `GetV2ListsListEntriesEntryIdResponseBody$inboundSchema` instead. */
+export namespace GetV2ListsListEntriesEntryIdResponse$ {
+  /** @deprecated use `GetV2ListsListEntriesEntryIdResponse$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ListsListEntriesEntryIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ListsListEntriesEntryIdResponseBody$outboundSchema` instead. */
+    GetV2ListsListEntriesEntryIdResponse$inboundSchema;
+  /** @deprecated use `GetV2ListsListEntriesEntryIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ListsListEntriesEntryIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ListsListEntriesEntryIdResponseBody$Outbound` instead. */
-  export type Outbound = GetV2ListsListEntriesEntryIdResponseBody$Outbound;
+    GetV2ListsListEntriesEntryIdResponse$outboundSchema;
+  /** @deprecated use `GetV2ListsListEntriesEntryIdResponse$Outbound` instead. */
+  export type Outbound = GetV2ListsListEntriesEntryIdResponse$Outbound;
 }
 
-export function getV2ListsListEntriesEntryIdResponseBodyToJSON(
-  getV2ListsListEntriesEntryIdResponseBody:
-    GetV2ListsListEntriesEntryIdResponseBody,
+export function getV2ListsListEntriesEntryIdResponseToJSON(
+  getV2ListsListEntriesEntryIdResponse: GetV2ListsListEntriesEntryIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2ListsListEntriesEntryIdResponseBody$outboundSchema.parse(
-      getV2ListsListEntriesEntryIdResponseBody,
+    GetV2ListsListEntriesEntryIdResponse$outboundSchema.parse(
+      getV2ListsListEntriesEntryIdResponse,
     ),
   );
 }
 
-export function getV2ListsListEntriesEntryIdResponseBodyFromJSON(
+export function getV2ListsListEntriesEntryIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetV2ListsListEntriesEntryIdResponseBody,
-  SDKValidationError
-> {
+): SafeParseResult<GetV2ListsListEntriesEntryIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ListsListEntriesEntryIdResponseBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetV2ListsListEntriesEntryIdResponseBody' from JSON`,
+      GetV2ListsListEntriesEntryIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ListsListEntriesEntryIdResponse' from JSON`,
   );
 }

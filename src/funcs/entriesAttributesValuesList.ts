@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ListsListNotFoundError,
+  GetV2ListsListNotFoundError$inboundSchema,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest$outboundSchema,
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse,
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$inboundSchema,
+} from "../models/operations/getv2listslistentriesentryidattributesattributevalues.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,14 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function entriesAttributesValuesList(
   client: AttioCore,
-  request:
-    operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
+  request: GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody,
-    | errors.Response400ResponseBody
-    | errors.Response404ResponseBody
+    GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse,
+    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -60,15 +69,14 @@ export function entriesAttributesValuesList(
 
 async function $do(
   client: AttioCore,
-  request:
-    operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
+  request: GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody,
-      | errors.Response400ResponseBody
-      | errors.Response404ResponseBody
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse,
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+      | GetV2ListsListNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -83,8 +91,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations
-        .GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest$outboundSchema
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -173,9 +180,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody,
-    | errors.Response400ResponseBody
-    | errors.Response404ResponseBody
+    GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse,
+    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -186,11 +193,13 @@ async function $do(
   >(
     M.json(
       200,
-      operations
-        .GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody$inboundSchema,
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$inboundSchema,
     ),
-    M.jsonErr(400, errors.Response400ResponseBody$inboundSchema),
-    M.jsonErr(404, errors.Response404ResponseBody$inboundSchema),
+    M.jsonErr(
+      400,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError$inboundSchema,
+    ),
+    M.jsonErr(404, GetV2ListsListNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

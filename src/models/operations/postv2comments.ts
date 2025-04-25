@@ -7,34 +7,35 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Comment,
+  Comment$inboundSchema,
+  Comment$Outbound,
+  Comment$outboundSchema,
+} from "../components/comment.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export const PostV2CommentsDataCommentsFormat = {
+export const PostV2CommentsFormat3 = {
   Plaintext: "plaintext",
 } as const;
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export type PostV2CommentsDataCommentsFormat = ClosedEnum<
-  typeof PostV2CommentsDataCommentsFormat
->;
+export type PostV2CommentsFormat3 = ClosedEnum<typeof PostV2CommentsFormat3>;
 
-export const PostV2CommentsDataCommentsType = {
+export const PostV2CommentsType3 = {
   WorkspaceMember: "workspace-member",
 } as const;
-export type PostV2CommentsDataCommentsType = ClosedEnum<
-  typeof PostV2CommentsDataCommentsType
->;
+export type PostV2CommentsType3 = ClosedEnum<typeof PostV2CommentsType3>;
 
 /**
  * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
  */
-export type PostV2CommentsDataAuthor = {
-  type: PostV2CommentsDataCommentsType;
+export type Author3 = {
+  type: PostV2CommentsType3;
   id: string;
 };
 
@@ -49,11 +50,11 @@ export type Entry = {
   entryId: string;
 };
 
-export type Data3 = {
+export type PostV2CommentsDataPlaintext3 = {
   /**
    * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
    */
-  format: PostV2CommentsDataCommentsFormat;
+  format: PostV2CommentsFormat3;
   /**
    * The content of the comment itself. Workspace members can be mentioned using their email address, otherwise email addresses will be presented to users as clickable mailto links.
    */
@@ -61,7 +62,7 @@ export type Data3 = {
   /**
    * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
    */
-  author: PostV2CommentsDataAuthor;
+  author: Author3;
   /**
    * `created_at` will default to the current time. However, if you wish to backdate a comment for migration or other purposes, you can override with a custom `created_at` value. Note that dates before 1970 or in the future are not allowed.
    */
@@ -72,26 +73,24 @@ export type Data3 = {
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export const PostV2CommentsDataFormat = {
+export const PostV2CommentsFormat2 = {
   Plaintext: "plaintext",
 } as const;
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export type PostV2CommentsDataFormat = ClosedEnum<
-  typeof PostV2CommentsDataFormat
->;
+export type PostV2CommentsFormat2 = ClosedEnum<typeof PostV2CommentsFormat2>;
 
-export const PostV2CommentsDataType = {
+export const PostV2CommentsType2 = {
   WorkspaceMember: "workspace-member",
 } as const;
-export type PostV2CommentsDataType = ClosedEnum<typeof PostV2CommentsDataType>;
+export type PostV2CommentsType2 = ClosedEnum<typeof PostV2CommentsType2>;
 
 /**
  * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
  */
-export type DataAuthor = {
-  type: PostV2CommentsDataType;
+export type Author2 = {
+  type: PostV2CommentsType2;
   id: string;
 };
 
@@ -106,11 +105,11 @@ export type RecordT = {
   recordId: string;
 };
 
-export type Data2 = {
+export type PostV2CommentsDataPlaintext2 = {
   /**
    * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
    */
-  format: PostV2CommentsDataFormat;
+  format: PostV2CommentsFormat2;
   /**
    * The content of the comment itself. Workspace members can be mentioned using their email address, otherwise email addresses will be presented to users as clickable mailto links.
    */
@@ -118,7 +117,7 @@ export type Data2 = {
   /**
    * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
    */
-  author: DataAuthor;
+  author: Author2;
   /**
    * `created_at` will default to the current time. However, if you wish to backdate a comment for migration or other purposes, you can override with a custom `created_at` value. Note that dates before 1970 or in the future are not allowed.
    */
@@ -129,32 +128,32 @@ export type Data2 = {
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export const DataFormat = {
+export const PostV2CommentsFormat1 = {
   Plaintext: "plaintext",
 } as const;
 /**
  * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
  */
-export type DataFormat = ClosedEnum<typeof DataFormat>;
+export type PostV2CommentsFormat1 = ClosedEnum<typeof PostV2CommentsFormat1>;
 
-export const DataType = {
+export const PostV2CommentsType1 = {
   WorkspaceMember: "workspace-member",
 } as const;
-export type DataType = ClosedEnum<typeof DataType>;
+export type PostV2CommentsType1 = ClosedEnum<typeof PostV2CommentsType1>;
 
 /**
  * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
  */
-export type Author = {
-  type: DataType;
+export type Author1 = {
+  type: PostV2CommentsType1;
   id: string;
 };
 
-export type Data1 = {
+export type PostV2CommentsDataPlaintext1 = {
   /**
    * The format that the comment content is provided in. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. Rich text formatting and links are not supported.
    */
-  format: DataFormat;
+  format: PostV2CommentsFormat1;
   /**
    * The content of the comment itself. Workspace members can be mentioned using their email address, otherwise email addresses will be presented to users as clickable mailto links.
    */
@@ -162,7 +161,7 @@ export type Data1 = {
   /**
    * The workspace member who wrote this comment. Note that other types of actors are not currently supported.
    */
-  author: Author;
+  author: Author1;
   /**
    * `created_at` will default to the current time. However, if you wish to backdate a comment for migration or other purposes, you can override with a custom `created_at` value. Note that dates before 1970 or in the future are not allowed.
    */
@@ -173,84 +172,87 @@ export type Data1 = {
   threadId: string;
 };
 
-export type PostV2CommentsData = Data1 | Data2 | Data3;
+export type PostV2CommentsDataUnion =
+  | PostV2CommentsDataPlaintext1
+  | PostV2CommentsDataPlaintext2
+  | PostV2CommentsDataPlaintext3;
 
-export type PostV2CommentsRequestBody = {
-  data: Data1 | Data2 | Data3;
+export type PostV2CommentsRequest = {
+  data:
+    | PostV2CommentsDataPlaintext1
+    | PostV2CommentsDataPlaintext2
+    | PostV2CommentsDataPlaintext3;
 };
 
 /**
  * Success
  */
-export type PostV2CommentsResponseBody = {
-  data: components.Comment;
+export type PostV2CommentsResponse = {
+  data: Comment;
 };
 
 /** @internal */
-export const PostV2CommentsDataCommentsFormat$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataCommentsFormat
-> = z.nativeEnum(PostV2CommentsDataCommentsFormat);
+export const PostV2CommentsFormat3$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat3
+> = z.nativeEnum(PostV2CommentsFormat3);
 
 /** @internal */
-export const PostV2CommentsDataCommentsFormat$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataCommentsFormat
-> = PostV2CommentsDataCommentsFormat$inboundSchema;
+export const PostV2CommentsFormat3$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat3
+> = PostV2CommentsFormat3$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsDataCommentsFormat$ {
-  /** @deprecated use `PostV2CommentsDataCommentsFormat$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsDataCommentsFormat$inboundSchema;
-  /** @deprecated use `PostV2CommentsDataCommentsFormat$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsDataCommentsFormat$outboundSchema;
+export namespace PostV2CommentsFormat3$ {
+  /** @deprecated use `PostV2CommentsFormat3$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsFormat3$inboundSchema;
+  /** @deprecated use `PostV2CommentsFormat3$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsFormat3$outboundSchema;
 }
 
 /** @internal */
-export const PostV2CommentsDataCommentsType$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataCommentsType
-> = z.nativeEnum(PostV2CommentsDataCommentsType);
+export const PostV2CommentsType3$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType3
+> = z.nativeEnum(PostV2CommentsType3);
 
 /** @internal */
-export const PostV2CommentsDataCommentsType$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataCommentsType
-> = PostV2CommentsDataCommentsType$inboundSchema;
+export const PostV2CommentsType3$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType3
+> = PostV2CommentsType3$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsDataCommentsType$ {
-  /** @deprecated use `PostV2CommentsDataCommentsType$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsDataCommentsType$inboundSchema;
-  /** @deprecated use `PostV2CommentsDataCommentsType$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsDataCommentsType$outboundSchema;
+export namespace PostV2CommentsType3$ {
+  /** @deprecated use `PostV2CommentsType3$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsType3$inboundSchema;
+  /** @deprecated use `PostV2CommentsType3$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsType3$outboundSchema;
 }
 
 /** @internal */
-export const PostV2CommentsDataAuthor$inboundSchema: z.ZodType<
-  PostV2CommentsDataAuthor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: PostV2CommentsDataCommentsType$inboundSchema,
-  id: z.string(),
-});
+export const Author3$inboundSchema: z.ZodType<Author3, z.ZodTypeDef, unknown> =
+  z.object({
+    type: PostV2CommentsType3$inboundSchema,
+    id: z.string(),
+  });
 
 /** @internal */
-export type PostV2CommentsDataAuthor$Outbound = {
+export type Author3$Outbound = {
   type: string;
   id: string;
 };
 
 /** @internal */
-export const PostV2CommentsDataAuthor$outboundSchema: z.ZodType<
-  PostV2CommentsDataAuthor$Outbound,
+export const Author3$outboundSchema: z.ZodType<
+  Author3$Outbound,
   z.ZodTypeDef,
-  PostV2CommentsDataAuthor
+  Author3
 > = z.object({
-  type: PostV2CommentsDataCommentsType$outboundSchema,
+  type: PostV2CommentsType3$outboundSchema,
   id: z.string(),
 });
 
@@ -258,30 +260,26 @@ export const PostV2CommentsDataAuthor$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsDataAuthor$ {
-  /** @deprecated use `PostV2CommentsDataAuthor$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsDataAuthor$inboundSchema;
-  /** @deprecated use `PostV2CommentsDataAuthor$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsDataAuthor$outboundSchema;
-  /** @deprecated use `PostV2CommentsDataAuthor$Outbound` instead. */
-  export type Outbound = PostV2CommentsDataAuthor$Outbound;
+export namespace Author3$ {
+  /** @deprecated use `Author3$inboundSchema` instead. */
+  export const inboundSchema = Author3$inboundSchema;
+  /** @deprecated use `Author3$outboundSchema` instead. */
+  export const outboundSchema = Author3$outboundSchema;
+  /** @deprecated use `Author3$Outbound` instead. */
+  export type Outbound = Author3$Outbound;
 }
 
-export function postV2CommentsDataAuthorToJSON(
-  postV2CommentsDataAuthor: PostV2CommentsDataAuthor,
-): string {
-  return JSON.stringify(
-    PostV2CommentsDataAuthor$outboundSchema.parse(postV2CommentsDataAuthor),
-  );
+export function author3ToJSON(author3: Author3): string {
+  return JSON.stringify(Author3$outboundSchema.parse(author3));
 }
 
-export function postV2CommentsDataAuthorFromJSON(
+export function author3FromJSON(
   jsonString: string,
-): SafeParseResult<PostV2CommentsDataAuthor, SDKValidationError> {
+): SafeParseResult<Author3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2CommentsDataAuthor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2CommentsDataAuthor' from JSON`,
+    (x) => Author3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Author3' from JSON`,
   );
 }
 
@@ -344,37 +342,40 @@ export function entryFromJSON(
 }
 
 /** @internal */
-export const Data3$inboundSchema: z.ZodType<Data3, z.ZodTypeDef, unknown> = z
-  .object({
-    format: PostV2CommentsDataCommentsFormat$inboundSchema,
-    content: z.string(),
-    author: z.lazy(() => PostV2CommentsDataAuthor$inboundSchema),
-    created_at: z.string().optional(),
-    entry: z.lazy(() => Entry$inboundSchema),
-  }).transform((v) => {
-    return remap$(v, {
-      "created_at": "createdAt",
-    });
+export const PostV2CommentsDataPlaintext3$inboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  format: PostV2CommentsFormat3$inboundSchema,
+  content: z.string(),
+  author: z.lazy(() => Author3$inboundSchema),
+  created_at: z.string().optional(),
+  entry: z.lazy(() => Entry$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
   });
+});
 
 /** @internal */
-export type Data3$Outbound = {
+export type PostV2CommentsDataPlaintext3$Outbound = {
   format: string;
   content: string;
-  author: PostV2CommentsDataAuthor$Outbound;
+  author: Author3$Outbound;
   created_at?: string | undefined;
   entry: Entry$Outbound;
 };
 
 /** @internal */
-export const Data3$outboundSchema: z.ZodType<
-  Data3$Outbound,
+export const PostV2CommentsDataPlaintext3$outboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext3$Outbound,
   z.ZodTypeDef,
-  Data3
+  PostV2CommentsDataPlaintext3
 > = z.object({
-  format: PostV2CommentsDataCommentsFormat$outboundSchema,
+  format: PostV2CommentsFormat3$outboundSchema,
   content: z.string(),
-  author: z.lazy(() => PostV2CommentsDataAuthor$outboundSchema),
+  author: z.lazy(() => Author3$outboundSchema),
   createdAt: z.string().optional(),
   entry: z.lazy(() => Entry$outboundSchema),
 }).transform((v) => {
@@ -387,94 +388,97 @@ export const Data3$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data3$ {
-  /** @deprecated use `Data3$inboundSchema` instead. */
-  export const inboundSchema = Data3$inboundSchema;
-  /** @deprecated use `Data3$outboundSchema` instead. */
-  export const outboundSchema = Data3$outboundSchema;
-  /** @deprecated use `Data3$Outbound` instead. */
-  export type Outbound = Data3$Outbound;
+export namespace PostV2CommentsDataPlaintext3$ {
+  /** @deprecated use `PostV2CommentsDataPlaintext3$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsDataPlaintext3$inboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext3$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsDataPlaintext3$outboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext3$Outbound` instead. */
+  export type Outbound = PostV2CommentsDataPlaintext3$Outbound;
 }
 
-export function data3ToJSON(data3: Data3): string {
-  return JSON.stringify(Data3$outboundSchema.parse(data3));
+export function postV2CommentsDataPlaintext3ToJSON(
+  postV2CommentsDataPlaintext3: PostV2CommentsDataPlaintext3,
+): string {
+  return JSON.stringify(
+    PostV2CommentsDataPlaintext3$outboundSchema.parse(
+      postV2CommentsDataPlaintext3,
+    ),
+  );
 }
 
-export function data3FromJSON(
+export function postV2CommentsDataPlaintext3FromJSON(
   jsonString: string,
-): SafeParseResult<Data3, SDKValidationError> {
+): SafeParseResult<PostV2CommentsDataPlaintext3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data3' from JSON`,
+    (x) => PostV2CommentsDataPlaintext3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsDataPlaintext3' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2CommentsDataFormat$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataFormat
-> = z.nativeEnum(PostV2CommentsDataFormat);
+export const PostV2CommentsFormat2$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat2
+> = z.nativeEnum(PostV2CommentsFormat2);
 
 /** @internal */
-export const PostV2CommentsDataFormat$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataFormat
-> = PostV2CommentsDataFormat$inboundSchema;
+export const PostV2CommentsFormat2$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat2
+> = PostV2CommentsFormat2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsDataFormat$ {
-  /** @deprecated use `PostV2CommentsDataFormat$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsDataFormat$inboundSchema;
-  /** @deprecated use `PostV2CommentsDataFormat$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsDataFormat$outboundSchema;
+export namespace PostV2CommentsFormat2$ {
+  /** @deprecated use `PostV2CommentsFormat2$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsFormat2$inboundSchema;
+  /** @deprecated use `PostV2CommentsFormat2$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsFormat2$outboundSchema;
 }
 
 /** @internal */
-export const PostV2CommentsDataType$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataType
-> = z.nativeEnum(PostV2CommentsDataType);
+export const PostV2CommentsType2$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType2
+> = z.nativeEnum(PostV2CommentsType2);
 
 /** @internal */
-export const PostV2CommentsDataType$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2CommentsDataType
-> = PostV2CommentsDataType$inboundSchema;
+export const PostV2CommentsType2$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType2
+> = PostV2CommentsType2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsDataType$ {
-  /** @deprecated use `PostV2CommentsDataType$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsDataType$inboundSchema;
-  /** @deprecated use `PostV2CommentsDataType$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsDataType$outboundSchema;
+export namespace PostV2CommentsType2$ {
+  /** @deprecated use `PostV2CommentsType2$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsType2$inboundSchema;
+  /** @deprecated use `PostV2CommentsType2$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsType2$outboundSchema;
 }
 
 /** @internal */
-export const DataAuthor$inboundSchema: z.ZodType<
-  DataAuthor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: PostV2CommentsDataType$inboundSchema,
-  id: z.string(),
-});
+export const Author2$inboundSchema: z.ZodType<Author2, z.ZodTypeDef, unknown> =
+  z.object({
+    type: PostV2CommentsType2$inboundSchema,
+    id: z.string(),
+  });
 
 /** @internal */
-export type DataAuthor$Outbound = {
+export type Author2$Outbound = {
   type: string;
   id: string;
 };
 
 /** @internal */
-export const DataAuthor$outboundSchema: z.ZodType<
-  DataAuthor$Outbound,
+export const Author2$outboundSchema: z.ZodType<
+  Author2$Outbound,
   z.ZodTypeDef,
-  DataAuthor
+  Author2
 > = z.object({
-  type: PostV2CommentsDataType$outboundSchema,
+  type: PostV2CommentsType2$outboundSchema,
   id: z.string(),
 });
 
@@ -482,26 +486,26 @@ export const DataAuthor$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DataAuthor$ {
-  /** @deprecated use `DataAuthor$inboundSchema` instead. */
-  export const inboundSchema = DataAuthor$inboundSchema;
-  /** @deprecated use `DataAuthor$outboundSchema` instead. */
-  export const outboundSchema = DataAuthor$outboundSchema;
-  /** @deprecated use `DataAuthor$Outbound` instead. */
-  export type Outbound = DataAuthor$Outbound;
+export namespace Author2$ {
+  /** @deprecated use `Author2$inboundSchema` instead. */
+  export const inboundSchema = Author2$inboundSchema;
+  /** @deprecated use `Author2$outboundSchema` instead. */
+  export const outboundSchema = Author2$outboundSchema;
+  /** @deprecated use `Author2$Outbound` instead. */
+  export type Outbound = Author2$Outbound;
 }
 
-export function dataAuthorToJSON(dataAuthor: DataAuthor): string {
-  return JSON.stringify(DataAuthor$outboundSchema.parse(dataAuthor));
+export function author2ToJSON(author2: Author2): string {
+  return JSON.stringify(Author2$outboundSchema.parse(author2));
 }
 
-export function dataAuthorFromJSON(
+export function author2FromJSON(
   jsonString: string,
-): SafeParseResult<DataAuthor, SDKValidationError> {
+): SafeParseResult<Author2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DataAuthor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DataAuthor' from JSON`,
+    (x) => Author2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Author2' from JSON`,
   );
 }
 
@@ -564,37 +568,40 @@ export function recordFromJSON(
 }
 
 /** @internal */
-export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> = z
-  .object({
-    format: PostV2CommentsDataFormat$inboundSchema,
-    content: z.string(),
-    author: z.lazy(() => DataAuthor$inboundSchema),
-    created_at: z.string().optional(),
-    record: z.lazy(() => RecordT$inboundSchema),
-  }).transform((v) => {
-    return remap$(v, {
-      "created_at": "createdAt",
-    });
+export const PostV2CommentsDataPlaintext2$inboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  format: PostV2CommentsFormat2$inboundSchema,
+  content: z.string(),
+  author: z.lazy(() => Author2$inboundSchema),
+  created_at: z.string().optional(),
+  record: z.lazy(() => RecordT$inboundSchema),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
   });
+});
 
 /** @internal */
-export type Data2$Outbound = {
+export type PostV2CommentsDataPlaintext2$Outbound = {
   format: string;
   content: string;
-  author: DataAuthor$Outbound;
+  author: Author2$Outbound;
   created_at?: string | undefined;
   record: RecordT$Outbound;
 };
 
 /** @internal */
-export const Data2$outboundSchema: z.ZodType<
-  Data2$Outbound,
+export const PostV2CommentsDataPlaintext2$outboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext2$Outbound,
   z.ZodTypeDef,
-  Data2
+  PostV2CommentsDataPlaintext2
 > = z.object({
-  format: PostV2CommentsDataFormat$outboundSchema,
+  format: PostV2CommentsFormat2$outboundSchema,
   content: z.string(),
-  author: z.lazy(() => DataAuthor$outboundSchema),
+  author: z.lazy(() => Author2$outboundSchema),
   createdAt: z.string().optional(),
   record: z.lazy(() => RecordT$outboundSchema),
 }).transform((v) => {
@@ -607,87 +614,97 @@ export const Data2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data2$ {
-  /** @deprecated use `Data2$inboundSchema` instead. */
-  export const inboundSchema = Data2$inboundSchema;
-  /** @deprecated use `Data2$outboundSchema` instead. */
-  export const outboundSchema = Data2$outboundSchema;
-  /** @deprecated use `Data2$Outbound` instead. */
-  export type Outbound = Data2$Outbound;
+export namespace PostV2CommentsDataPlaintext2$ {
+  /** @deprecated use `PostV2CommentsDataPlaintext2$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsDataPlaintext2$inboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext2$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsDataPlaintext2$outboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext2$Outbound` instead. */
+  export type Outbound = PostV2CommentsDataPlaintext2$Outbound;
 }
 
-export function data2ToJSON(data2: Data2): string {
-  return JSON.stringify(Data2$outboundSchema.parse(data2));
+export function postV2CommentsDataPlaintext2ToJSON(
+  postV2CommentsDataPlaintext2: PostV2CommentsDataPlaintext2,
+): string {
+  return JSON.stringify(
+    PostV2CommentsDataPlaintext2$outboundSchema.parse(
+      postV2CommentsDataPlaintext2,
+    ),
+  );
 }
 
-export function data2FromJSON(
+export function postV2CommentsDataPlaintext2FromJSON(
   jsonString: string,
-): SafeParseResult<Data2, SDKValidationError> {
+): SafeParseResult<PostV2CommentsDataPlaintext2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data2' from JSON`,
+    (x) => PostV2CommentsDataPlaintext2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsDataPlaintext2' from JSON`,
   );
 }
 
 /** @internal */
-export const DataFormat$inboundSchema: z.ZodNativeEnum<typeof DataFormat> = z
-  .nativeEnum(DataFormat);
+export const PostV2CommentsFormat1$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat1
+> = z.nativeEnum(PostV2CommentsFormat1);
 
 /** @internal */
-export const DataFormat$outboundSchema: z.ZodNativeEnum<typeof DataFormat> =
-  DataFormat$inboundSchema;
+export const PostV2CommentsFormat1$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsFormat1
+> = PostV2CommentsFormat1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DataFormat$ {
-  /** @deprecated use `DataFormat$inboundSchema` instead. */
-  export const inboundSchema = DataFormat$inboundSchema;
-  /** @deprecated use `DataFormat$outboundSchema` instead. */
-  export const outboundSchema = DataFormat$outboundSchema;
+export namespace PostV2CommentsFormat1$ {
+  /** @deprecated use `PostV2CommentsFormat1$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsFormat1$inboundSchema;
+  /** @deprecated use `PostV2CommentsFormat1$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsFormat1$outboundSchema;
 }
 
 /** @internal */
-export const DataType$inboundSchema: z.ZodNativeEnum<typeof DataType> = z
-  .nativeEnum(DataType);
+export const PostV2CommentsType1$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType1
+> = z.nativeEnum(PostV2CommentsType1);
 
 /** @internal */
-export const DataType$outboundSchema: z.ZodNativeEnum<typeof DataType> =
-  DataType$inboundSchema;
+export const PostV2CommentsType1$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2CommentsType1
+> = PostV2CommentsType1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DataType$ {
-  /** @deprecated use `DataType$inboundSchema` instead. */
-  export const inboundSchema = DataType$inboundSchema;
-  /** @deprecated use `DataType$outboundSchema` instead. */
-  export const outboundSchema = DataType$outboundSchema;
+export namespace PostV2CommentsType1$ {
+  /** @deprecated use `PostV2CommentsType1$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsType1$inboundSchema;
+  /** @deprecated use `PostV2CommentsType1$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsType1$outboundSchema;
 }
 
 /** @internal */
-export const Author$inboundSchema: z.ZodType<Author, z.ZodTypeDef, unknown> = z
-  .object({
-    type: DataType$inboundSchema,
+export const Author1$inboundSchema: z.ZodType<Author1, z.ZodTypeDef, unknown> =
+  z.object({
+    type: PostV2CommentsType1$inboundSchema,
     id: z.string(),
   });
 
 /** @internal */
-export type Author$Outbound = {
+export type Author1$Outbound = {
   type: string;
   id: string;
 };
 
 /** @internal */
-export const Author$outboundSchema: z.ZodType<
-  Author$Outbound,
+export const Author1$outboundSchema: z.ZodType<
+  Author1$Outbound,
   z.ZodTypeDef,
-  Author
+  Author1
 > = z.object({
-  type: DataType$outboundSchema,
+  type: PostV2CommentsType1$outboundSchema,
   id: z.string(),
 });
 
@@ -695,62 +712,65 @@ export const Author$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Author$ {
-  /** @deprecated use `Author$inboundSchema` instead. */
-  export const inboundSchema = Author$inboundSchema;
-  /** @deprecated use `Author$outboundSchema` instead. */
-  export const outboundSchema = Author$outboundSchema;
-  /** @deprecated use `Author$Outbound` instead. */
-  export type Outbound = Author$Outbound;
+export namespace Author1$ {
+  /** @deprecated use `Author1$inboundSchema` instead. */
+  export const inboundSchema = Author1$inboundSchema;
+  /** @deprecated use `Author1$outboundSchema` instead. */
+  export const outboundSchema = Author1$outboundSchema;
+  /** @deprecated use `Author1$Outbound` instead. */
+  export type Outbound = Author1$Outbound;
 }
 
-export function authorToJSON(author: Author): string {
-  return JSON.stringify(Author$outboundSchema.parse(author));
+export function author1ToJSON(author1: Author1): string {
+  return JSON.stringify(Author1$outboundSchema.parse(author1));
 }
 
-export function authorFromJSON(
+export function author1FromJSON(
   jsonString: string,
-): SafeParseResult<Author, SDKValidationError> {
+): SafeParseResult<Author1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Author$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Author' from JSON`,
+    (x) => Author1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Author1' from JSON`,
   );
 }
 
 /** @internal */
-export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
-  .object({
-    format: DataFormat$inboundSchema,
-    content: z.string(),
-    author: z.lazy(() => Author$inboundSchema),
-    created_at: z.string().optional(),
-    thread_id: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "created_at": "createdAt",
-      "thread_id": "threadId",
-    });
+export const PostV2CommentsDataPlaintext1$inboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  format: PostV2CommentsFormat1$inboundSchema,
+  content: z.string(),
+  author: z.lazy(() => Author1$inboundSchema),
+  created_at: z.string().optional(),
+  thread_id: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "created_at": "createdAt",
+    "thread_id": "threadId",
   });
+});
 
 /** @internal */
-export type Data1$Outbound = {
+export type PostV2CommentsDataPlaintext1$Outbound = {
   format: string;
   content: string;
-  author: Author$Outbound;
+  author: Author1$Outbound;
   created_at?: string | undefined;
   thread_id: string;
 };
 
 /** @internal */
-export const Data1$outboundSchema: z.ZodType<
-  Data1$Outbound,
+export const PostV2CommentsDataPlaintext1$outboundSchema: z.ZodType<
+  PostV2CommentsDataPlaintext1$Outbound,
   z.ZodTypeDef,
-  Data1
+  PostV2CommentsDataPlaintext1
 > = z.object({
-  format: DataFormat$outboundSchema,
+  format: PostV2CommentsFormat1$outboundSchema,
   content: z.string(),
-  author: z.lazy(() => Author$outboundSchema),
+  author: z.lazy(() => Author1$outboundSchema),
   createdAt: z.string().optional(),
   threadId: z.string(),
 }).transform((v) => {
@@ -764,116 +784,125 @@ export const Data1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data1$ {
-  /** @deprecated use `Data1$inboundSchema` instead. */
-  export const inboundSchema = Data1$inboundSchema;
-  /** @deprecated use `Data1$outboundSchema` instead. */
-  export const outboundSchema = Data1$outboundSchema;
-  /** @deprecated use `Data1$Outbound` instead. */
-  export type Outbound = Data1$Outbound;
+export namespace PostV2CommentsDataPlaintext1$ {
+  /** @deprecated use `PostV2CommentsDataPlaintext1$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsDataPlaintext1$inboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext1$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsDataPlaintext1$outboundSchema;
+  /** @deprecated use `PostV2CommentsDataPlaintext1$Outbound` instead. */
+  export type Outbound = PostV2CommentsDataPlaintext1$Outbound;
 }
 
-export function data1ToJSON(data1: Data1): string {
-  return JSON.stringify(Data1$outboundSchema.parse(data1));
+export function postV2CommentsDataPlaintext1ToJSON(
+  postV2CommentsDataPlaintext1: PostV2CommentsDataPlaintext1,
+): string {
+  return JSON.stringify(
+    PostV2CommentsDataPlaintext1$outboundSchema.parse(
+      postV2CommentsDataPlaintext1,
+    ),
+  );
 }
 
-export function data1FromJSON(
+export function postV2CommentsDataPlaintext1FromJSON(
   jsonString: string,
-): SafeParseResult<Data1, SDKValidationError> {
+): SafeParseResult<PostV2CommentsDataPlaintext1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data1' from JSON`,
+    (x) => PostV2CommentsDataPlaintext1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsDataPlaintext1' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2CommentsData$inboundSchema: z.ZodType<
-  PostV2CommentsData,
+export const PostV2CommentsDataUnion$inboundSchema: z.ZodType<
+  PostV2CommentsDataUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Data1$inboundSchema),
-  z.lazy(() => Data2$inboundSchema),
-  z.lazy(() => Data3$inboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext1$inboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext2$inboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext3$inboundSchema),
 ]);
 
 /** @internal */
-export type PostV2CommentsData$Outbound =
-  | Data1$Outbound
-  | Data2$Outbound
-  | Data3$Outbound;
+export type PostV2CommentsDataUnion$Outbound =
+  | PostV2CommentsDataPlaintext1$Outbound
+  | PostV2CommentsDataPlaintext2$Outbound
+  | PostV2CommentsDataPlaintext3$Outbound;
 
 /** @internal */
-export const PostV2CommentsData$outboundSchema: z.ZodType<
-  PostV2CommentsData$Outbound,
+export const PostV2CommentsDataUnion$outboundSchema: z.ZodType<
+  PostV2CommentsDataUnion$Outbound,
   z.ZodTypeDef,
-  PostV2CommentsData
+  PostV2CommentsDataUnion
 > = z.union([
-  z.lazy(() => Data1$outboundSchema),
-  z.lazy(() => Data2$outboundSchema),
-  z.lazy(() => Data3$outboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext1$outboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext2$outboundSchema),
+  z.lazy(() => PostV2CommentsDataPlaintext3$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsData$ {
-  /** @deprecated use `PostV2CommentsData$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsData$inboundSchema;
-  /** @deprecated use `PostV2CommentsData$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsData$outboundSchema;
-  /** @deprecated use `PostV2CommentsData$Outbound` instead. */
-  export type Outbound = PostV2CommentsData$Outbound;
+export namespace PostV2CommentsDataUnion$ {
+  /** @deprecated use `PostV2CommentsDataUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsDataUnion$inboundSchema;
+  /** @deprecated use `PostV2CommentsDataUnion$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsDataUnion$outboundSchema;
+  /** @deprecated use `PostV2CommentsDataUnion$Outbound` instead. */
+  export type Outbound = PostV2CommentsDataUnion$Outbound;
 }
 
-export function postV2CommentsDataToJSON(
-  postV2CommentsData: PostV2CommentsData,
+export function postV2CommentsDataUnionToJSON(
+  postV2CommentsDataUnion: PostV2CommentsDataUnion,
 ): string {
   return JSON.stringify(
-    PostV2CommentsData$outboundSchema.parse(postV2CommentsData),
+    PostV2CommentsDataUnion$outboundSchema.parse(postV2CommentsDataUnion),
   );
 }
 
-export function postV2CommentsDataFromJSON(
+export function postV2CommentsDataUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2CommentsData, SDKValidationError> {
+): SafeParseResult<PostV2CommentsDataUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2CommentsData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2CommentsData' from JSON`,
+    (x) => PostV2CommentsDataUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsDataUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2CommentsRequestBody$inboundSchema: z.ZodType<
-  PostV2CommentsRequestBody,
+export const PostV2CommentsRequest$inboundSchema: z.ZodType<
+  PostV2CommentsRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.union([
-    z.lazy(() => Data1$inboundSchema),
-    z.lazy(() => Data2$inboundSchema),
-    z.lazy(() => Data3$inboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext1$inboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext2$inboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext3$inboundSchema),
   ]),
 });
 
 /** @internal */
-export type PostV2CommentsRequestBody$Outbound = {
-  data: Data1$Outbound | Data2$Outbound | Data3$Outbound;
+export type PostV2CommentsRequest$Outbound = {
+  data:
+    | PostV2CommentsDataPlaintext1$Outbound
+    | PostV2CommentsDataPlaintext2$Outbound
+    | PostV2CommentsDataPlaintext3$Outbound;
 };
 
 /** @internal */
-export const PostV2CommentsRequestBody$outboundSchema: z.ZodType<
-  PostV2CommentsRequestBody$Outbound,
+export const PostV2CommentsRequest$outboundSchema: z.ZodType<
+  PostV2CommentsRequest$Outbound,
   z.ZodTypeDef,
-  PostV2CommentsRequestBody
+  PostV2CommentsRequest
 > = z.object({
   data: z.union([
-    z.lazy(() => Data1$outboundSchema),
-    z.lazy(() => Data2$outboundSchema),
-    z.lazy(() => Data3$outboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext1$outboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext2$outboundSchema),
+    z.lazy(() => PostV2CommentsDataPlaintext3$outboundSchema),
   ]),
 });
 
@@ -881,83 +910,83 @@ export const PostV2CommentsRequestBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsRequestBody$ {
-  /** @deprecated use `PostV2CommentsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsRequestBody$inboundSchema;
-  /** @deprecated use `PostV2CommentsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsRequestBody$outboundSchema;
-  /** @deprecated use `PostV2CommentsRequestBody$Outbound` instead. */
-  export type Outbound = PostV2CommentsRequestBody$Outbound;
+export namespace PostV2CommentsRequest$ {
+  /** @deprecated use `PostV2CommentsRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsRequest$inboundSchema;
+  /** @deprecated use `PostV2CommentsRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsRequest$outboundSchema;
+  /** @deprecated use `PostV2CommentsRequest$Outbound` instead. */
+  export type Outbound = PostV2CommentsRequest$Outbound;
 }
 
-export function postV2CommentsRequestBodyToJSON(
-  postV2CommentsRequestBody: PostV2CommentsRequestBody,
+export function postV2CommentsRequestToJSON(
+  postV2CommentsRequest: PostV2CommentsRequest,
 ): string {
   return JSON.stringify(
-    PostV2CommentsRequestBody$outboundSchema.parse(postV2CommentsRequestBody),
+    PostV2CommentsRequest$outboundSchema.parse(postV2CommentsRequest),
   );
 }
 
-export function postV2CommentsRequestBodyFromJSON(
+export function postV2CommentsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2CommentsRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2CommentsRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2CommentsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2CommentsRequestBody' from JSON`,
+    (x) => PostV2CommentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2CommentsResponseBody$inboundSchema: z.ZodType<
-  PostV2CommentsResponseBody,
+export const PostV2CommentsResponse$inboundSchema: z.ZodType<
+  PostV2CommentsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Comment$inboundSchema,
+  data: Comment$inboundSchema,
 });
 
 /** @internal */
-export type PostV2CommentsResponseBody$Outbound = {
-  data: components.Comment$Outbound;
+export type PostV2CommentsResponse$Outbound = {
+  data: Comment$Outbound;
 };
 
 /** @internal */
-export const PostV2CommentsResponseBody$outboundSchema: z.ZodType<
-  PostV2CommentsResponseBody$Outbound,
+export const PostV2CommentsResponse$outboundSchema: z.ZodType<
+  PostV2CommentsResponse$Outbound,
   z.ZodTypeDef,
-  PostV2CommentsResponseBody
+  PostV2CommentsResponse
 > = z.object({
-  data: components.Comment$outboundSchema,
+  data: Comment$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2CommentsResponseBody$ {
-  /** @deprecated use `PostV2CommentsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2CommentsResponseBody$inboundSchema;
-  /** @deprecated use `PostV2CommentsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2CommentsResponseBody$outboundSchema;
-  /** @deprecated use `PostV2CommentsResponseBody$Outbound` instead. */
-  export type Outbound = PostV2CommentsResponseBody$Outbound;
+export namespace PostV2CommentsResponse$ {
+  /** @deprecated use `PostV2CommentsResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2CommentsResponse$inboundSchema;
+  /** @deprecated use `PostV2CommentsResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2CommentsResponse$outboundSchema;
+  /** @deprecated use `PostV2CommentsResponse$Outbound` instead. */
+  export type Outbound = PostV2CommentsResponse$Outbound;
 }
 
-export function postV2CommentsResponseBodyToJSON(
-  postV2CommentsResponseBody: PostV2CommentsResponseBody,
+export function postV2CommentsResponseToJSON(
+  postV2CommentsResponse: PostV2CommentsResponse,
 ): string {
   return JSON.stringify(
-    PostV2CommentsResponseBody$outboundSchema.parse(postV2CommentsResponseBody),
+    PostV2CommentsResponse$outboundSchema.parse(postV2CommentsResponse),
   );
 }
 
-export function postV2CommentsResponseBodyFromJSON(
+export function postV2CommentsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2CommentsResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2CommentsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2CommentsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2CommentsResponseBody' from JSON`,
+    (x) => PostV2CommentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2CommentsResponse' from JSON`,
   );
 }

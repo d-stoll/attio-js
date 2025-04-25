@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2WebhooksWebhookIdRequest } from "attio-js/models/operations";
+import { GetV2WebhooksWebhookIdRequest } from "attio-js/models/operations/getv2webhookswebhookid.js";
 
 let value: GetV2WebhooksWebhookIdRequest = {
   webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",

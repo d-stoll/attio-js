@@ -74,7 +74,7 @@ export type ListType = ClosedEnum<typeof ListType>;
 /**
  * The actor which created this list.
  */
-export type CreatedByActor = {
+export type ListCreatedByActor = {
   /**
    * An ID to identify the actor.
    */
@@ -110,7 +110,7 @@ export type List = {
   /**
    * The actor which created this list.
    */
-  createdByActor: CreatedByActor;
+  createdByActor: ListCreatedByActor;
   /**
    * When the list was created.
    */
@@ -303,8 +303,8 @@ export namespace ListType$ {
 }
 
 /** @internal */
-export const CreatedByActor$inboundSchema: z.ZodType<
-  CreatedByActor,
+export const ListCreatedByActor$inboundSchema: z.ZodType<
+  ListCreatedByActor,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -313,16 +313,16 @@ export const CreatedByActor$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CreatedByActor$Outbound = {
+export type ListCreatedByActor$Outbound = {
   id?: string | null | undefined;
   type?: string | null | undefined;
 };
 
 /** @internal */
-export const CreatedByActor$outboundSchema: z.ZodType<
-  CreatedByActor$Outbound,
+export const ListCreatedByActor$outboundSchema: z.ZodType<
+  ListCreatedByActor$Outbound,
   z.ZodTypeDef,
-  CreatedByActor
+  ListCreatedByActor
 > = z.object({
   id: z.nullable(z.string()).optional(),
   type: z.nullable(ListType$outboundSchema).optional(),
@@ -332,26 +332,30 @@ export const CreatedByActor$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatedByActor$ {
-  /** @deprecated use `CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema = CreatedByActor$inboundSchema;
-  /** @deprecated use `CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema = CreatedByActor$outboundSchema;
-  /** @deprecated use `CreatedByActor$Outbound` instead. */
-  export type Outbound = CreatedByActor$Outbound;
+export namespace ListCreatedByActor$ {
+  /** @deprecated use `ListCreatedByActor$inboundSchema` instead. */
+  export const inboundSchema = ListCreatedByActor$inboundSchema;
+  /** @deprecated use `ListCreatedByActor$outboundSchema` instead. */
+  export const outboundSchema = ListCreatedByActor$outboundSchema;
+  /** @deprecated use `ListCreatedByActor$Outbound` instead. */
+  export type Outbound = ListCreatedByActor$Outbound;
 }
 
-export function createdByActorToJSON(createdByActor: CreatedByActor): string {
-  return JSON.stringify(CreatedByActor$outboundSchema.parse(createdByActor));
+export function listCreatedByActorToJSON(
+  listCreatedByActor: ListCreatedByActor,
+): string {
+  return JSON.stringify(
+    ListCreatedByActor$outboundSchema.parse(listCreatedByActor),
+  );
 }
 
-export function createdByActorFromJSON(
+export function listCreatedByActorFromJSON(
   jsonString: string,
-): SafeParseResult<CreatedByActor, SDKValidationError> {
+): SafeParseResult<ListCreatedByActor, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CreatedByActor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedByActor' from JSON`,
+    (x) => ListCreatedByActor$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListCreatedByActor' from JSON`,
   );
 }
 
@@ -366,7 +370,7 @@ export const List$inboundSchema: z.ZodType<List, z.ZodTypeDef, unknown> = z
     workspace_member_access: z.array(
       z.lazy(() => WorkspaceMemberAccess$inboundSchema),
     ),
-    created_by_actor: z.lazy(() => CreatedByActor$inboundSchema),
+    created_by_actor: z.lazy(() => ListCreatedByActor$inboundSchema),
     created_at: z.string(),
   }).transform((v) => {
     return remap$(v, {
@@ -387,7 +391,7 @@ export type List$Outbound = {
   parent_object: Array<string>;
   workspace_access: string | null;
   workspace_member_access: Array<WorkspaceMemberAccess$Outbound>;
-  created_by_actor: CreatedByActor$Outbound;
+  created_by_actor: ListCreatedByActor$Outbound;
   created_at: string;
 };
 
@@ -402,7 +406,7 @@ export const List$outboundSchema: z.ZodType<List$Outbound, z.ZodTypeDef, List> =
     workspaceMemberAccess: z.array(
       z.lazy(() => WorkspaceMemberAccess$outboundSchema),
     ),
-    createdByActor: z.lazy(() => CreatedByActor$outboundSchema),
+    createdByActor: z.lazy(() => ListCreatedByActor$outboundSchema),
     createdAt: z.string(),
   }).transform((v) => {
     return remap$(v, {

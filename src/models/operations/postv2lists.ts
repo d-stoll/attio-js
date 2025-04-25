@@ -7,13 +7,18 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  List,
+  List$inboundSchema,
+  List$Outbound,
+  List$outboundSchema,
+} from "../components/list.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The level of access granted to all members of the workspace for this list. Pass `null` to keep the list private and only grant access to specific workspace members.
  */
-export const WorkspaceAccess = {
+export const PostV2ListsWorkspaceAccess = {
   FullAccess: "full-access",
   ReadAndWrite: "read-and-write",
   ReadOnly: "read-only",
@@ -21,12 +26,14 @@ export const WorkspaceAccess = {
 /**
  * The level of access granted to all members of the workspace for this list. Pass `null` to keep the list private and only grant access to specific workspace members.
  */
-export type WorkspaceAccess = ClosedEnum<typeof WorkspaceAccess>;
+export type PostV2ListsWorkspaceAccess = ClosedEnum<
+  typeof PostV2ListsWorkspaceAccess
+>;
 
 /**
  * The level of access to the list.
  */
-export const Level = {
+export const PostV2ListsLevel = {
   FullAccess: "full-access",
   ReadAndWrite: "read-and-write",
   ReadOnly: "read-only",
@@ -34,9 +41,9 @@ export const Level = {
 /**
  * The level of access to the list.
  */
-export type Level = ClosedEnum<typeof Level>;
+export type PostV2ListsLevel = ClosedEnum<typeof PostV2ListsLevel>;
 
-export type WorkspaceMemberAccess = {
+export type PostV2ListsWorkspaceMemberAccess = {
   /**
    * A UUID to identify the workspace member to grant access to.
    */
@@ -44,7 +51,7 @@ export type WorkspaceMemberAccess = {
   /**
    * The level of access to the list.
    */
-  level: Level;
+  level: PostV2ListsLevel;
 };
 
 export type PostV2ListsData = {
@@ -63,73 +70,74 @@ export type PostV2ListsData = {
   /**
    * The level of access granted to all members of the workspace for this list. Pass `null` to keep the list private and only grant access to specific workspace members.
    */
-  workspaceAccess: WorkspaceAccess | null;
+  workspaceAccess: PostV2ListsWorkspaceAccess | null;
   /**
    * The level of access granted to specific workspace members for this list. Pass an empty array to grant access to no workspace members.
    */
-  workspaceMemberAccess: Array<WorkspaceMemberAccess>;
+  workspaceMemberAccess: Array<PostV2ListsWorkspaceMemberAccess>;
 };
 
-export type PostV2ListsRequestBody = {
+export type PostV2ListsRequest = {
   data: PostV2ListsData;
 };
 
 /**
  * Success
  */
-export type PostV2ListsResponseBody = {
-  data: components.List;
+export type PostV2ListsResponse = {
+  data: List;
 };
 
 /** @internal */
-export const WorkspaceAccess$inboundSchema: z.ZodNativeEnum<
-  typeof WorkspaceAccess
-> = z.nativeEnum(WorkspaceAccess);
+export const PostV2ListsWorkspaceAccess$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2ListsWorkspaceAccess
+> = z.nativeEnum(PostV2ListsWorkspaceAccess);
 
 /** @internal */
-export const WorkspaceAccess$outboundSchema: z.ZodNativeEnum<
-  typeof WorkspaceAccess
-> = WorkspaceAccess$inboundSchema;
+export const PostV2ListsWorkspaceAccess$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2ListsWorkspaceAccess
+> = PostV2ListsWorkspaceAccess$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkspaceAccess$ {
-  /** @deprecated use `WorkspaceAccess$inboundSchema` instead. */
-  export const inboundSchema = WorkspaceAccess$inboundSchema;
-  /** @deprecated use `WorkspaceAccess$outboundSchema` instead. */
-  export const outboundSchema = WorkspaceAccess$outboundSchema;
+export namespace PostV2ListsWorkspaceAccess$ {
+  /** @deprecated use `PostV2ListsWorkspaceAccess$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsWorkspaceAccess$inboundSchema;
+  /** @deprecated use `PostV2ListsWorkspaceAccess$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsWorkspaceAccess$outboundSchema;
 }
 
 /** @internal */
-export const Level$inboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
-  Level,
-);
+export const PostV2ListsLevel$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2ListsLevel
+> = z.nativeEnum(PostV2ListsLevel);
 
 /** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
-  Level$inboundSchema;
+export const PostV2ListsLevel$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2ListsLevel
+> = PostV2ListsLevel$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
+export namespace PostV2ListsLevel$ {
+  /** @deprecated use `PostV2ListsLevel$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsLevel$inboundSchema;
+  /** @deprecated use `PostV2ListsLevel$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsLevel$outboundSchema;
 }
 
 /** @internal */
-export const WorkspaceMemberAccess$inboundSchema: z.ZodType<
-  WorkspaceMemberAccess,
+export const PostV2ListsWorkspaceMemberAccess$inboundSchema: z.ZodType<
+  PostV2ListsWorkspaceMemberAccess,
   z.ZodTypeDef,
   unknown
 > = z.object({
   workspace_member_id: z.string(),
-  level: Level$inboundSchema,
+  level: PostV2ListsLevel$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "workspace_member_id": "workspaceMemberId",
@@ -137,19 +145,19 @@ export const WorkspaceMemberAccess$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type WorkspaceMemberAccess$Outbound = {
+export type PostV2ListsWorkspaceMemberAccess$Outbound = {
   workspace_member_id: string;
   level: string;
 };
 
 /** @internal */
-export const WorkspaceMemberAccess$outboundSchema: z.ZodType<
-  WorkspaceMemberAccess$Outbound,
+export const PostV2ListsWorkspaceMemberAccess$outboundSchema: z.ZodType<
+  PostV2ListsWorkspaceMemberAccess$Outbound,
   z.ZodTypeDef,
-  WorkspaceMemberAccess
+  PostV2ListsWorkspaceMemberAccess
 > = z.object({
   workspaceMemberId: z.string(),
-  level: Level$outboundSchema,
+  level: PostV2ListsLevel$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     workspaceMemberId: "workspace_member_id",
@@ -160,30 +168,32 @@ export const WorkspaceMemberAccess$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkspaceMemberAccess$ {
-  /** @deprecated use `WorkspaceMemberAccess$inboundSchema` instead. */
-  export const inboundSchema = WorkspaceMemberAccess$inboundSchema;
-  /** @deprecated use `WorkspaceMemberAccess$outboundSchema` instead. */
-  export const outboundSchema = WorkspaceMemberAccess$outboundSchema;
-  /** @deprecated use `WorkspaceMemberAccess$Outbound` instead. */
-  export type Outbound = WorkspaceMemberAccess$Outbound;
+export namespace PostV2ListsWorkspaceMemberAccess$ {
+  /** @deprecated use `PostV2ListsWorkspaceMemberAccess$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsWorkspaceMemberAccess$inboundSchema;
+  /** @deprecated use `PostV2ListsWorkspaceMemberAccess$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsWorkspaceMemberAccess$outboundSchema;
+  /** @deprecated use `PostV2ListsWorkspaceMemberAccess$Outbound` instead. */
+  export type Outbound = PostV2ListsWorkspaceMemberAccess$Outbound;
 }
 
-export function workspaceMemberAccessToJSON(
-  workspaceMemberAccess: WorkspaceMemberAccess,
+export function postV2ListsWorkspaceMemberAccessToJSON(
+  postV2ListsWorkspaceMemberAccess: PostV2ListsWorkspaceMemberAccess,
 ): string {
   return JSON.stringify(
-    WorkspaceMemberAccess$outboundSchema.parse(workspaceMemberAccess),
+    PostV2ListsWorkspaceMemberAccess$outboundSchema.parse(
+      postV2ListsWorkspaceMemberAccess,
+    ),
   );
 }
 
-export function workspaceMemberAccessFromJSON(
+export function postV2ListsWorkspaceMemberAccessFromJSON(
   jsonString: string,
-): SafeParseResult<WorkspaceMemberAccess, SDKValidationError> {
+): SafeParseResult<PostV2ListsWorkspaceMemberAccess, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => WorkspaceMemberAccess$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WorkspaceMemberAccess' from JSON`,
+    (x) => PostV2ListsWorkspaceMemberAccess$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsWorkspaceMemberAccess' from JSON`,
   );
 }
 
@@ -196,9 +206,9 @@ export const PostV2ListsData$inboundSchema: z.ZodType<
   name: z.string(),
   api_slug: z.string(),
   parent_object: z.string(),
-  workspace_access: z.nullable(WorkspaceAccess$inboundSchema),
+  workspace_access: z.nullable(PostV2ListsWorkspaceAccess$inboundSchema),
   workspace_member_access: z.array(
-    z.lazy(() => WorkspaceMemberAccess$inboundSchema),
+    z.lazy(() => PostV2ListsWorkspaceMemberAccess$inboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -215,7 +225,7 @@ export type PostV2ListsData$Outbound = {
   api_slug: string;
   parent_object: string;
   workspace_access: string | null;
-  workspace_member_access: Array<WorkspaceMemberAccess$Outbound>;
+  workspace_member_access: Array<PostV2ListsWorkspaceMemberAccess$Outbound>;
 };
 
 /** @internal */
@@ -227,9 +237,9 @@ export const PostV2ListsData$outboundSchema: z.ZodType<
   name: z.string(),
   apiSlug: z.string(),
   parentObject: z.string(),
-  workspaceAccess: z.nullable(WorkspaceAccess$outboundSchema),
+  workspaceAccess: z.nullable(PostV2ListsWorkspaceAccess$outboundSchema),
   workspaceMemberAccess: z.array(
-    z.lazy(() => WorkspaceMemberAccess$outboundSchema),
+    z.lazy(() => PostV2ListsWorkspaceMemberAccess$outboundSchema),
   ),
 }).transform((v) => {
   return remap$(v, {
@@ -270,8 +280,8 @@ export function postV2ListsDataFromJSON(
 }
 
 /** @internal */
-export const PostV2ListsRequestBody$inboundSchema: z.ZodType<
-  PostV2ListsRequestBody,
+export const PostV2ListsRequest$inboundSchema: z.ZodType<
+  PostV2ListsRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -279,15 +289,15 @@ export const PostV2ListsRequestBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ListsRequestBody$Outbound = {
+export type PostV2ListsRequest$Outbound = {
   data: PostV2ListsData$Outbound;
 };
 
 /** @internal */
-export const PostV2ListsRequestBody$outboundSchema: z.ZodType<
-  PostV2ListsRequestBody$Outbound,
+export const PostV2ListsRequest$outboundSchema: z.ZodType<
+  PostV2ListsRequest$Outbound,
   z.ZodTypeDef,
-  PostV2ListsRequestBody
+  PostV2ListsRequest
 > = z.object({
   data: z.lazy(() => PostV2ListsData$outboundSchema),
 });
@@ -296,83 +306,83 @@ export const PostV2ListsRequestBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsRequestBody$ {
-  /** @deprecated use `PostV2ListsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsRequestBody$inboundSchema;
-  /** @deprecated use `PostV2ListsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2ListsRequestBody$outboundSchema;
-  /** @deprecated use `PostV2ListsRequestBody$Outbound` instead. */
-  export type Outbound = PostV2ListsRequestBody$Outbound;
+export namespace PostV2ListsRequest$ {
+  /** @deprecated use `PostV2ListsRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsRequest$inboundSchema;
+  /** @deprecated use `PostV2ListsRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsRequest$outboundSchema;
+  /** @deprecated use `PostV2ListsRequest$Outbound` instead. */
+  export type Outbound = PostV2ListsRequest$Outbound;
 }
 
-export function postV2ListsRequestBodyToJSON(
-  postV2ListsRequestBody: PostV2ListsRequestBody,
+export function postV2ListsRequestToJSON(
+  postV2ListsRequest: PostV2ListsRequest,
 ): string {
   return JSON.stringify(
-    PostV2ListsRequestBody$outboundSchema.parse(postV2ListsRequestBody),
+    PostV2ListsRequest$outboundSchema.parse(postV2ListsRequest),
   );
 }
 
-export function postV2ListsRequestBodyFromJSON(
+export function postV2ListsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2ListsRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsRequestBody' from JSON`,
+    (x) => PostV2ListsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ListsResponseBody$inboundSchema: z.ZodType<
-  PostV2ListsResponseBody,
+export const PostV2ListsResponse$inboundSchema: z.ZodType<
+  PostV2ListsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.List$inboundSchema,
+  data: List$inboundSchema,
 });
 
 /** @internal */
-export type PostV2ListsResponseBody$Outbound = {
-  data: components.List$Outbound;
+export type PostV2ListsResponse$Outbound = {
+  data: List$Outbound;
 };
 
 /** @internal */
-export const PostV2ListsResponseBody$outboundSchema: z.ZodType<
-  PostV2ListsResponseBody$Outbound,
+export const PostV2ListsResponse$outboundSchema: z.ZodType<
+  PostV2ListsResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ListsResponseBody
+  PostV2ListsResponse
 > = z.object({
-  data: components.List$outboundSchema,
+  data: List$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsResponseBody$ {
-  /** @deprecated use `PostV2ListsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsResponseBody$inboundSchema;
-  /** @deprecated use `PostV2ListsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2ListsResponseBody$outboundSchema;
-  /** @deprecated use `PostV2ListsResponseBody$Outbound` instead. */
-  export type Outbound = PostV2ListsResponseBody$Outbound;
+export namespace PostV2ListsResponse$ {
+  /** @deprecated use `PostV2ListsResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsResponse$inboundSchema;
+  /** @deprecated use `PostV2ListsResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsResponse$outboundSchema;
+  /** @deprecated use `PostV2ListsResponse$Outbound` instead. */
+  export type Outbound = PostV2ListsResponse$Outbound;
 }
 
-export function postV2ListsResponseBodyToJSON(
-  postV2ListsResponseBody: PostV2ListsResponseBody,
+export function postV2ListsResponseToJSON(
+  postV2ListsResponse: PostV2ListsResponse,
 ): string {
   return JSON.stringify(
-    PostV2ListsResponseBody$outboundSchema.parse(postV2ListsResponseBody),
+    PostV2ListsResponse$outboundSchema.parse(postV2ListsResponse),
   );
 }
 
-export function postV2ListsResponseBodyFromJSON(
+export function postV2ListsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2ListsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsResponseBody' from JSON`,
+    (x) => PostV2ListsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsResponse' from JSON`,
   );
 }

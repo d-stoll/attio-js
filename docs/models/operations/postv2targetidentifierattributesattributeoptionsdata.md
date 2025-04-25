@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV2TargetIdentifierAttributesAttributeOptionsData } from "attio-js/models/operations";
+import { PostV2TargetIdentifierAttributesAttributeOptionsData } from "attio-js/models/operations/postv2targetidentifierattributesattributeoptions.js";
 
 let value: PostV2TargetIdentifierAttributesAttributeOptionsData = {
   title: "Medium",

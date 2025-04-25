@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PostV2ObjectsObjectRecordsData = {
+export type PostV2ObjectsObjectRecordsDataRequest = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
@@ -16,7 +16,7 @@ export type PostV2ObjectsObjectRecordsData = {
 };
 
 export type PostV2ObjectsObjectRecordsRequestBody = {
-  data: PostV2ObjectsObjectRecordsData;
+  data: PostV2ObjectsObjectRecordsDataRequest;
 };
 
 export type PostV2ObjectsObjectRecordsRequest = {
@@ -39,7 +39,7 @@ export type PostV2ObjectsObjectRecordsId = {
   recordId: string;
 };
 
-export type PostV2ObjectsObjectRecordsRecordsData = {
+export type PostV2ObjectsObjectRecordsDataResponse = {
   id: PostV2ObjectsObjectRecordsId;
   /**
    * When this record was created.
@@ -54,13 +54,13 @@ export type PostV2ObjectsObjectRecordsRecordsData = {
 /**
  * Success
  */
-export type PostV2ObjectsObjectRecordsResponseBody = {
-  data: PostV2ObjectsObjectRecordsRecordsData;
+export type PostV2ObjectsObjectRecordsResponse = {
+  data: PostV2ObjectsObjectRecordsDataResponse;
 };
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsData,
+export const PostV2ObjectsObjectRecordsDataRequest$inboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -68,15 +68,15 @@ export const PostV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ObjectsObjectRecordsData$Outbound = {
+export type PostV2ObjectsObjectRecordsDataRequest$Outbound = {
   values: { [k: string]: any };
 };
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsData$Outbound,
+export const PostV2ObjectsObjectRecordsDataRequest$outboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsDataRequest$Outbound,
   z.ZodTypeDef,
-  PostV2ObjectsObjectRecordsData
+  PostV2ObjectsObjectRecordsDataRequest
 > = z.object({
   values: z.record(z.any()),
 });
@@ -85,32 +85,35 @@ export const PostV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ObjectsObjectRecordsData$ {
-  /** @deprecated use `PostV2ObjectsObjectRecordsData$inboundSchema` instead. */
-  export const inboundSchema = PostV2ObjectsObjectRecordsData$inboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsData$outboundSchema` instead. */
-  export const outboundSchema = PostV2ObjectsObjectRecordsData$outboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsData$Outbound` instead. */
-  export type Outbound = PostV2ObjectsObjectRecordsData$Outbound;
+export namespace PostV2ObjectsObjectRecordsDataRequest$ {
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2ObjectsObjectRecordsDataRequest$inboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2ObjectsObjectRecordsDataRequest$outboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataRequest$Outbound` instead. */
+  export type Outbound = PostV2ObjectsObjectRecordsDataRequest$Outbound;
 }
 
-export function postV2ObjectsObjectRecordsDataToJSON(
-  postV2ObjectsObjectRecordsData: PostV2ObjectsObjectRecordsData,
+export function postV2ObjectsObjectRecordsDataRequestToJSON(
+  postV2ObjectsObjectRecordsDataRequest: PostV2ObjectsObjectRecordsDataRequest,
 ): string {
   return JSON.stringify(
-    PostV2ObjectsObjectRecordsData$outboundSchema.parse(
-      postV2ObjectsObjectRecordsData,
+    PostV2ObjectsObjectRecordsDataRequest$outboundSchema.parse(
+      postV2ObjectsObjectRecordsDataRequest,
     ),
   );
 }
 
-export function postV2ObjectsObjectRecordsDataFromJSON(
+export function postV2ObjectsObjectRecordsDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ObjectsObjectRecordsData, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsObjectRecordsDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ObjectsObjectRecordsData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsObjectRecordsData' from JSON`,
+    (x) =>
+      PostV2ObjectsObjectRecordsDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsObjectRecordsDataRequest' from JSON`,
   );
 }
 
@@ -120,12 +123,12 @@ export const PostV2ObjectsObjectRecordsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2ObjectsObjectRecordsData$inboundSchema),
+  data: z.lazy(() => PostV2ObjectsObjectRecordsDataRequest$inboundSchema),
 });
 
 /** @internal */
 export type PostV2ObjectsObjectRecordsRequestBody$Outbound = {
-  data: PostV2ObjectsObjectRecordsData$Outbound;
+  data: PostV2ObjectsObjectRecordsDataRequest$Outbound;
 };
 
 /** @internal */
@@ -134,7 +137,7 @@ export const PostV2ObjectsObjectRecordsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV2ObjectsObjectRecordsRequestBody
 > = z.object({
-  data: z.lazy(() => PostV2ObjectsObjectRecordsData$outboundSchema),
+  data: z.lazy(() => PostV2ObjectsObjectRecordsDataRequest$outboundSchema),
 });
 
 /**
@@ -320,8 +323,8 @@ export function postV2ObjectsObjectRecordsIdFromJSON(
 }
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsRecordsData,
+export const PostV2ObjectsObjectRecordsDataResponse$inboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -335,17 +338,17 @@ export const PostV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ObjectsObjectRecordsRecordsData$Outbound = {
+export type PostV2ObjectsObjectRecordsDataResponse$Outbound = {
   id: PostV2ObjectsObjectRecordsId$Outbound;
   created_at: string;
   values: { [k: string]: any };
 };
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsRecordsData$outboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsRecordsData$Outbound,
+export const PostV2ObjectsObjectRecordsDataResponse$outboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsDataResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ObjectsObjectRecordsRecordsData
+  PostV2ObjectsObjectRecordsDataResponse
 > = z.object({
   id: z.lazy(() => PostV2ObjectsObjectRecordsId$outboundSchema),
   createdAt: z.string(),
@@ -360,94 +363,93 @@ export const PostV2ObjectsObjectRecordsRecordsData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ObjectsObjectRecordsRecordsData$ {
-  /** @deprecated use `PostV2ObjectsObjectRecordsRecordsData$inboundSchema` instead. */
+export namespace PostV2ObjectsObjectRecordsDataResponse$ {
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2ObjectsObjectRecordsRecordsData$inboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsRecordsData$outboundSchema` instead. */
+    PostV2ObjectsObjectRecordsDataResponse$inboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ObjectsObjectRecordsRecordsData$outboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsRecordsData$Outbound` instead. */
-  export type Outbound = PostV2ObjectsObjectRecordsRecordsData$Outbound;
+    PostV2ObjectsObjectRecordsDataResponse$outboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsDataResponse$Outbound` instead. */
+  export type Outbound = PostV2ObjectsObjectRecordsDataResponse$Outbound;
 }
 
-export function postV2ObjectsObjectRecordsRecordsDataToJSON(
-  postV2ObjectsObjectRecordsRecordsData: PostV2ObjectsObjectRecordsRecordsData,
+export function postV2ObjectsObjectRecordsDataResponseToJSON(
+  postV2ObjectsObjectRecordsDataResponse:
+    PostV2ObjectsObjectRecordsDataResponse,
 ): string {
   return JSON.stringify(
-    PostV2ObjectsObjectRecordsRecordsData$outboundSchema.parse(
-      postV2ObjectsObjectRecordsRecordsData,
+    PostV2ObjectsObjectRecordsDataResponse$outboundSchema.parse(
+      postV2ObjectsObjectRecordsDataResponse,
     ),
   );
 }
 
-export function postV2ObjectsObjectRecordsRecordsDataFromJSON(
+export function postV2ObjectsObjectRecordsDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ObjectsObjectRecordsRecordsData, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsObjectRecordsDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PostV2ObjectsObjectRecordsRecordsData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsObjectRecordsRecordsData' from JSON`,
+      PostV2ObjectsObjectRecordsDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsObjectRecordsDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsResponseBody$inboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsResponseBody,
+export const PostV2ObjectsObjectRecordsResponse$inboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2ObjectsObjectRecordsRecordsData$inboundSchema),
+  data: z.lazy(() => PostV2ObjectsObjectRecordsDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PostV2ObjectsObjectRecordsResponseBody$Outbound = {
-  data: PostV2ObjectsObjectRecordsRecordsData$Outbound;
+export type PostV2ObjectsObjectRecordsResponse$Outbound = {
+  data: PostV2ObjectsObjectRecordsDataResponse$Outbound;
 };
 
 /** @internal */
-export const PostV2ObjectsObjectRecordsResponseBody$outboundSchema: z.ZodType<
-  PostV2ObjectsObjectRecordsResponseBody$Outbound,
+export const PostV2ObjectsObjectRecordsResponse$outboundSchema: z.ZodType<
+  PostV2ObjectsObjectRecordsResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ObjectsObjectRecordsResponseBody
+  PostV2ObjectsObjectRecordsResponse
 > = z.object({
-  data: z.lazy(() => PostV2ObjectsObjectRecordsRecordsData$outboundSchema),
+  data: z.lazy(() => PostV2ObjectsObjectRecordsDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ObjectsObjectRecordsResponseBody$ {
-  /** @deprecated use `PostV2ObjectsObjectRecordsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV2ObjectsObjectRecordsResponseBody$inboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsResponseBody$outboundSchema` instead. */
+export namespace PostV2ObjectsObjectRecordsResponse$ {
+  /** @deprecated use `PostV2ObjectsObjectRecordsResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2ObjectsObjectRecordsResponse$inboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ObjectsObjectRecordsResponseBody$outboundSchema;
-  /** @deprecated use `PostV2ObjectsObjectRecordsResponseBody$Outbound` instead. */
-  export type Outbound = PostV2ObjectsObjectRecordsResponseBody$Outbound;
+    PostV2ObjectsObjectRecordsResponse$outboundSchema;
+  /** @deprecated use `PostV2ObjectsObjectRecordsResponse$Outbound` instead. */
+  export type Outbound = PostV2ObjectsObjectRecordsResponse$Outbound;
 }
 
-export function postV2ObjectsObjectRecordsResponseBodyToJSON(
-  postV2ObjectsObjectRecordsResponseBody:
-    PostV2ObjectsObjectRecordsResponseBody,
+export function postV2ObjectsObjectRecordsResponseToJSON(
+  postV2ObjectsObjectRecordsResponse: PostV2ObjectsObjectRecordsResponse,
 ): string {
   return JSON.stringify(
-    PostV2ObjectsObjectRecordsResponseBody$outboundSchema.parse(
-      postV2ObjectsObjectRecordsResponseBody,
+    PostV2ObjectsObjectRecordsResponse$outboundSchema.parse(
+      postV2ObjectsObjectRecordsResponse,
     ),
   );
 }
 
-export function postV2ObjectsObjectRecordsResponseBodyFromJSON(
+export function postV2ObjectsObjectRecordsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ObjectsObjectRecordsResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsObjectRecordsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PostV2ObjectsObjectRecordsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsObjectRecordsResponseBody' from JSON`,
+      PostV2ObjectsObjectRecordsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsObjectRecordsResponse' from JSON`,
   );
 }

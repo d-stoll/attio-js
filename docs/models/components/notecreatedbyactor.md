@@ -5,7 +5,7 @@ The actor that created this note.
 ## Example Usage
 
 ```typescript
-import { NoteCreatedByActor } from "attio-js/models/components";
+import { NoteCreatedByActor } from "attio-js/models/components/note.js";
 
 let value: NoteCreatedByActor = {
   id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",

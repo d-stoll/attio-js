@@ -7,10 +7,15 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Task,
+  Task$inboundSchema,
+  Task$Outbound,
+  Task$outboundSchema,
+} from "../components/task.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type SlugOrIdOfMatchingAttribute5 = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5 = {
   /**
    * A raw text field. Values are limited to 10MB.
    */
@@ -20,7 +25,7 @@ export type SlugOrIdOfMatchingAttribute5 = {
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export const SlugOrIdOfMatchingAttributeCountryCode = {
+export const PatchV2TasksTaskIdCountryCode = {
   Af: "AF",
   Ax: "AX",
   Al: "AL",
@@ -272,11 +277,11 @@ export const SlugOrIdOfMatchingAttributeCountryCode = {
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export type SlugOrIdOfMatchingAttributeCountryCode = ClosedEnum<
-  typeof SlugOrIdOfMatchingAttributeCountryCode
+export type PatchV2TasksTaskIdCountryCode = ClosedEnum<
+  typeof PatchV2TasksTaskIdCountryCode
 >;
 
-export type SlugOrIdOfMatchingAttribute4 = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4 = {
   /**
    * The raw, original phone number, as inputted.
    */
@@ -284,10 +289,10 @@ export type SlugOrIdOfMatchingAttribute4 = {
   /**
    * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
    */
-  countryCode?: SlugOrIdOfMatchingAttributeCountryCode | null | undefined;
+  countryCode?: PatchV2TasksTaskIdCountryCode | null | undefined;
 };
 
-export type SlugOrIdOfMatchingAttribute3 = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3 = {
   /**
    * Numbers are persisted as 64 bit floats.
    */
@@ -308,14 +313,14 @@ export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1 = {
   domain?: string | undefined;
 };
 
-export type LinkedRecordsSlugOrIdOfMatchingAttribute =
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion =
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2
-  | SlugOrIdOfMatchingAttribute3
-  | SlugOrIdOfMatchingAttribute5
-  | SlugOrIdOfMatchingAttribute4;
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4;
 
-export type PatchV2TasksTaskIdLinkedRecords2 = {
+export type PatchV2TasksTaskIdLinkedRecord2 = {
   /**
    * A UUID or slug to identify the object that the referenced record belongs to.
    */
@@ -326,13 +331,13 @@ export type PatchV2TasksTaskIdLinkedRecords2 = {
   slugOrIdOfMatchingAttribute: Array<
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2
-    | SlugOrIdOfMatchingAttribute3
-    | SlugOrIdOfMatchingAttribute5
-    | SlugOrIdOfMatchingAttribute4
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4
   >;
 };
 
-export type PatchV2TasksTaskIdLinkedRecords1 = {
+export type PatchV2TasksTaskIdLinkedRecord1 = {
   /**
    * The ID or slug of the parent object the tasks refers to. This can reference both standard and custom objects.`
    */
@@ -343,11 +348,11 @@ export type PatchV2TasksTaskIdLinkedRecords1 = {
   targetRecordId: string;
 };
 
-export type PatchV2TasksTaskIdLinkedRecords =
-  | PatchV2TasksTaskIdLinkedRecords1
-  | PatchV2TasksTaskIdLinkedRecords2;
+export type PatchV2TasksTaskIdLinkedRecordUnion =
+  | PatchV2TasksTaskIdLinkedRecord1
+  | PatchV2TasksTaskIdLinkedRecord2;
 
-export type PatchV2TasksTaskIdAssignees2 = {
+export type PatchV2TasksTaskIdAssignee = {
   /**
    * Workspace member actors can be referenced by email address as well as actor ID.
    */
@@ -357,30 +362,30 @@ export type PatchV2TasksTaskIdAssignees2 = {
 /**
  * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
  */
-export const AssigneesReferencedActorType = {
+export const PatchV2TasksTaskIdReferencedActorType = {
   WorkspaceMember: "workspace-member",
 } as const;
 /**
  * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
  */
-export type AssigneesReferencedActorType = ClosedEnum<
-  typeof AssigneesReferencedActorType
+export type PatchV2TasksTaskIdReferencedActorType = ClosedEnum<
+  typeof PatchV2TasksTaskIdReferencedActorType
 >;
 
-export type PatchV2TasksTaskIdAssignees1 = {
+export type PatchV2TasksTaskIdAssigneeWorkspaceMember = {
   /**
    * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
    */
-  referencedActorType: AssigneesReferencedActorType;
+  referencedActorType: PatchV2TasksTaskIdReferencedActorType;
   /**
    * The ID of the actor assigned to this task.
    */
   referencedActorId: string;
 };
 
-export type PatchV2TasksTaskIdAssignees =
-  | PatchV2TasksTaskIdAssignees2
-  | PatchV2TasksTaskIdAssignees1;
+export type PatchV2TasksTaskIdAssigneeUnion =
+  | PatchV2TasksTaskIdAssignee
+  | PatchV2TasksTaskIdAssigneeWorkspaceMember;
 
 export type PatchV2TasksTaskIdData = {
   /**
@@ -395,13 +400,15 @@ export type PatchV2TasksTaskIdData = {
    * Records linked to the task. Creating record links within task content text is not possible via the API at present.
    */
   linkedRecords?:
-    | Array<PatchV2TasksTaskIdLinkedRecords1 | PatchV2TasksTaskIdLinkedRecords2>
+    | Array<PatchV2TasksTaskIdLinkedRecord1 | PatchV2TasksTaskIdLinkedRecord2>
     | undefined;
   /**
    * Workspace members assigned to this task.
    */
   assignees?:
-    | Array<PatchV2TasksTaskIdAssignees2 | PatchV2TasksTaskIdAssignees1>
+    | Array<
+      PatchV2TasksTaskIdAssignee | PatchV2TasksTaskIdAssigneeWorkspaceMember
+    >
     | undefined;
 };
 
@@ -417,214 +424,247 @@ export type PatchV2TasksTaskIdRequest = {
 /**
  * Success
  */
-export type PatchV2TasksTaskIdResponseBody = {
-  data: components.Task;
+export type PatchV2TasksTaskIdResponse = {
+  data: Task;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute5$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.string().optional(),
-});
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.string().optional(),
+  });
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute5$Outbound = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute5$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute5$Outbound,
-  z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute5
-> = z.object({
-  value: z.string().optional(),
-});
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound,
+    z.ZodTypeDef,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
+  > = z.object({
+    value: z.string().optional(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute5$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute5$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute5$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute5$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute5$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute5$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute5$Outbound;
+export namespace PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$ {
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound` instead. */
+  export type Outbound =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound;
 }
 
-export function slugOrIdOfMatchingAttribute5ToJSON(
-  slugOrIdOfMatchingAttribute5: SlugOrIdOfMatchingAttribute5,
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute5ToJSON(
+  patchV2TasksTaskIdSlugOrIdOfMatchingAttribute5:
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute5$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute5,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema.parse(
+      patchV2TasksTaskIdSlugOrIdOfMatchingAttribute5,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttribute5FromJSON(
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute5FromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute5, SDKValidationError> {
+): SafeParseResult<
+  PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute5' from JSON`,
+    (x) =>
+      PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5' from JSON`,
   );
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttributeCountryCode$inboundSchema:
-  z.ZodNativeEnum<typeof SlugOrIdOfMatchingAttributeCountryCode> = z.nativeEnum(
-    SlugOrIdOfMatchingAttributeCountryCode,
-  );
+export const PatchV2TasksTaskIdCountryCode$inboundSchema: z.ZodNativeEnum<
+  typeof PatchV2TasksTaskIdCountryCode
+> = z.nativeEnum(PatchV2TasksTaskIdCountryCode);
 
 /** @internal */
-export const SlugOrIdOfMatchingAttributeCountryCode$outboundSchema:
-  z.ZodNativeEnum<typeof SlugOrIdOfMatchingAttributeCountryCode> =
-    SlugOrIdOfMatchingAttributeCountryCode$inboundSchema;
+export const PatchV2TasksTaskIdCountryCode$outboundSchema: z.ZodNativeEnum<
+  typeof PatchV2TasksTaskIdCountryCode
+> = PatchV2TasksTaskIdCountryCode$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttributeCountryCode$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttributeCountryCode$inboundSchema` instead. */
-  export const inboundSchema =
-    SlugOrIdOfMatchingAttributeCountryCode$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttributeCountryCode$outboundSchema` instead. */
-  export const outboundSchema =
-    SlugOrIdOfMatchingAttributeCountryCode$outboundSchema;
+export namespace PatchV2TasksTaskIdCountryCode$ {
+  /** @deprecated use `PatchV2TasksTaskIdCountryCode$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdCountryCode$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdCountryCode$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdCountryCode$outboundSchema;
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute4$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  original_phone_number: z.string().optional(),
-  country_code: z.nullable(SlugOrIdOfMatchingAttributeCountryCode$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "original_phone_number": "originalPhoneNumber",
-    "country_code": "countryCode",
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    original_phone_number: z.string().optional(),
+    country_code: z.nullable(PatchV2TasksTaskIdCountryCode$inboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "original_phone_number": "originalPhoneNumber",
+      "country_code": "countryCode",
+    });
   });
-});
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute4$Outbound = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound = {
   original_phone_number?: string | undefined;
   country_code?: string | null | undefined;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute4$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute4$Outbound,
-  z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute4
-> = z.object({
-  originalPhoneNumber: z.string().optional(),
-  countryCode: z.nullable(SlugOrIdOfMatchingAttributeCountryCode$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    originalPhoneNumber: "original_phone_number",
-    countryCode: "country_code",
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound,
+    z.ZodTypeDef,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4
+  > = z.object({
+    originalPhoneNumber: z.string().optional(),
+    countryCode: z.nullable(PatchV2TasksTaskIdCountryCode$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      originalPhoneNumber: "original_phone_number",
+      countryCode: "country_code",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute4$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute4$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute4$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute4$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute4$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute4$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute4$Outbound;
+export namespace PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$ {
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound` instead. */
+  export type Outbound =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound;
 }
 
-export function slugOrIdOfMatchingAttribute4ToJSON(
-  slugOrIdOfMatchingAttribute4: SlugOrIdOfMatchingAttribute4,
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute4ToJSON(
+  patchV2TasksTaskIdSlugOrIdOfMatchingAttribute4:
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute4$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute4,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema.parse(
+      patchV2TasksTaskIdSlugOrIdOfMatchingAttribute4,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttribute4FromJSON(
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute4FromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute4, SDKValidationError> {
+): SafeParseResult<
+  PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute4' from JSON`,
+    (x) =>
+      PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4' from JSON`,
   );
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute3$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  value: z.number().optional(),
-});
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    value: z.number().optional(),
+  });
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute3$Outbound = {
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound = {
   value?: number | undefined;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute3$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute3$Outbound,
-  z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute3
-> = z.object({
-  value: z.number().optional(),
-});
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound,
+    z.ZodTypeDef,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3
+  > = z.object({
+    value: z.number().optional(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute3$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute3$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute3$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute3$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute3$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute3$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute3$Outbound;
+export namespace PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$ {
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound` instead. */
+  export type Outbound =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound;
 }
 
-export function slugOrIdOfMatchingAttribute3ToJSON(
-  slugOrIdOfMatchingAttribute3: SlugOrIdOfMatchingAttribute3,
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute3ToJSON(
+  patchV2TasksTaskIdSlugOrIdOfMatchingAttribute3:
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute3$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute3,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema.parse(
+      patchV2TasksTaskIdSlugOrIdOfMatchingAttribute3,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttribute3FromJSON(
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute3FromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute3, SDKValidationError> {
+): SafeParseResult<
+  PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute3' from JSON`,
+    (x) =>
+      PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3' from JSON`,
   );
 }
 
@@ -773,84 +813,87 @@ export function patchV2TasksTaskIdSlugOrIdOfMatchingAttribute1FromJSON(
 }
 
 /** @internal */
-export const LinkedRecordsSlugOrIdOfMatchingAttribute$inboundSchema: z.ZodType<
-  LinkedRecordsSlugOrIdOfMatchingAttribute,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$inboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$inboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute3$inboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute5$inboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute4$inboundSchema),
-]);
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$inboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$inboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$inboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema),
+  ]);
 
 /** @internal */
-export type LinkedRecordsSlugOrIdOfMatchingAttribute$Outbound =
+export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$Outbound =
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$Outbound
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$Outbound
-  | SlugOrIdOfMatchingAttribute3$Outbound
-  | SlugOrIdOfMatchingAttribute5$Outbound
-  | SlugOrIdOfMatchingAttribute4$Outbound;
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound;
 
 /** @internal */
-export const LinkedRecordsSlugOrIdOfMatchingAttribute$outboundSchema: z.ZodType<
-  LinkedRecordsSlugOrIdOfMatchingAttribute$Outbound,
-  z.ZodTypeDef,
-  LinkedRecordsSlugOrIdOfMatchingAttribute
-> = z.union([
-  z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$outboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$outboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute3$outboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute5$outboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute4$outboundSchema),
-]);
+export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion
+  > = z.union([
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$outboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$outboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkedRecordsSlugOrIdOfMatchingAttribute$ {
-  /** @deprecated use `LinkedRecordsSlugOrIdOfMatchingAttribute$inboundSchema` instead. */
+export namespace PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$ {
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$inboundSchema` instead. */
   export const inboundSchema =
-    LinkedRecordsSlugOrIdOfMatchingAttribute$inboundSchema;
-  /** @deprecated use `LinkedRecordsSlugOrIdOfMatchingAttribute$outboundSchema` instead. */
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema` instead. */
   export const outboundSchema =
-    LinkedRecordsSlugOrIdOfMatchingAttribute$outboundSchema;
-  /** @deprecated use `LinkedRecordsSlugOrIdOfMatchingAttribute$Outbound` instead. */
-  export type Outbound = LinkedRecordsSlugOrIdOfMatchingAttribute$Outbound;
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$Outbound` instead. */
+  export type Outbound =
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$Outbound;
 }
 
-export function linkedRecordsSlugOrIdOfMatchingAttributeToJSON(
-  linkedRecordsSlugOrIdOfMatchingAttribute:
-    LinkedRecordsSlugOrIdOfMatchingAttribute,
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnionToJSON(
+  patchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion:
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion,
 ): string {
   return JSON.stringify(
-    LinkedRecordsSlugOrIdOfMatchingAttribute$outboundSchema.parse(
-      linkedRecordsSlugOrIdOfMatchingAttribute,
+    PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema.parse(
+      patchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion,
     ),
   );
 }
 
-export function linkedRecordsSlugOrIdOfMatchingAttributeFromJSON(
+export function patchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnionFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  LinkedRecordsSlugOrIdOfMatchingAttribute,
+  PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      LinkedRecordsSlugOrIdOfMatchingAttribute$inboundSchema.parse(
+      PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'LinkedRecordsSlugOrIdOfMatchingAttribute' from JSON`,
+    `Failed to parse 'PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords2$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords2,
+export const PatchV2TasksTaskIdLinkedRecord2$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecord2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -863,9 +906,15 @@ export const PatchV2TasksTaskIdLinkedRecords2$inboundSchema: z.ZodType<
       z.lazy(() =>
         PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$inboundSchema
       ),
-      z.lazy(() => SlugOrIdOfMatchingAttribute3$inboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute5$inboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute4$inboundSchema),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -876,22 +925,22 @@ export const PatchV2TasksTaskIdLinkedRecords2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2TasksTaskIdLinkedRecords2$Outbound = {
+export type PatchV2TasksTaskIdLinkedRecord2$Outbound = {
   target_object: string;
   "[slug_or_id_of_matching_attribute]": Array<
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$Outbound
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$Outbound
-    | SlugOrIdOfMatchingAttribute3$Outbound
-    | SlugOrIdOfMatchingAttribute5$Outbound
-    | SlugOrIdOfMatchingAttribute4$Outbound
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound
   >;
 };
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords2$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords2$Outbound,
+export const PatchV2TasksTaskIdLinkedRecord2$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecord2$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdLinkedRecords2
+  PatchV2TasksTaskIdLinkedRecord2
 > = z.object({
   targetObject: z.string(),
   slugOrIdOfMatchingAttribute: z.array(
@@ -902,9 +951,15 @@ export const PatchV2TasksTaskIdLinkedRecords2$outboundSchema: z.ZodType<
       z.lazy(() =>
         PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$outboundSchema
       ),
-      z.lazy(() => SlugOrIdOfMatchingAttribute3$outboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute5$outboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute4$outboundSchema),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -918,38 +973,38 @@ export const PatchV2TasksTaskIdLinkedRecords2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdLinkedRecords2$ {
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords2$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdLinkedRecords2$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords2$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdLinkedRecords2$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords2$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdLinkedRecords2$Outbound;
+export namespace PatchV2TasksTaskIdLinkedRecord2$ {
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord2$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdLinkedRecord2$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord2$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdLinkedRecord2$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord2$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdLinkedRecord2$Outbound;
 }
 
-export function patchV2TasksTaskIdLinkedRecords2ToJSON(
-  patchV2TasksTaskIdLinkedRecords2: PatchV2TasksTaskIdLinkedRecords2,
+export function patchV2TasksTaskIdLinkedRecord2ToJSON(
+  patchV2TasksTaskIdLinkedRecord2: PatchV2TasksTaskIdLinkedRecord2,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdLinkedRecords2$outboundSchema.parse(
-      patchV2TasksTaskIdLinkedRecords2,
+    PatchV2TasksTaskIdLinkedRecord2$outboundSchema.parse(
+      patchV2TasksTaskIdLinkedRecord2,
     ),
   );
 }
 
-export function patchV2TasksTaskIdLinkedRecords2FromJSON(
+export function patchV2TasksTaskIdLinkedRecord2FromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdLinkedRecords2, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdLinkedRecord2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdLinkedRecords2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdLinkedRecords2' from JSON`,
+    (x) => PatchV2TasksTaskIdLinkedRecord2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdLinkedRecord2' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords1$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords1,
+export const PatchV2TasksTaskIdLinkedRecord1$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecord1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -963,16 +1018,16 @@ export const PatchV2TasksTaskIdLinkedRecords1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2TasksTaskIdLinkedRecords1$Outbound = {
+export type PatchV2TasksTaskIdLinkedRecord1$Outbound = {
   target_object: string;
   target_record_id: string;
 };
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords1$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords1$Outbound,
+export const PatchV2TasksTaskIdLinkedRecord1$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecord1$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdLinkedRecords1
+  PatchV2TasksTaskIdLinkedRecord1
 > = z.object({
   targetObject: z.string(),
   targetRecordId: z.string(),
@@ -987,96 +1042,99 @@ export const PatchV2TasksTaskIdLinkedRecords1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdLinkedRecords1$ {
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords1$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdLinkedRecords1$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords1$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdLinkedRecords1$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords1$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdLinkedRecords1$Outbound;
+export namespace PatchV2TasksTaskIdLinkedRecord1$ {
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord1$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdLinkedRecord1$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord1$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdLinkedRecord1$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecord1$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdLinkedRecord1$Outbound;
 }
 
-export function patchV2TasksTaskIdLinkedRecords1ToJSON(
-  patchV2TasksTaskIdLinkedRecords1: PatchV2TasksTaskIdLinkedRecords1,
+export function patchV2TasksTaskIdLinkedRecord1ToJSON(
+  patchV2TasksTaskIdLinkedRecord1: PatchV2TasksTaskIdLinkedRecord1,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdLinkedRecords1$outboundSchema.parse(
-      patchV2TasksTaskIdLinkedRecords1,
+    PatchV2TasksTaskIdLinkedRecord1$outboundSchema.parse(
+      patchV2TasksTaskIdLinkedRecord1,
     ),
   );
 }
 
-export function patchV2TasksTaskIdLinkedRecords1FromJSON(
+export function patchV2TasksTaskIdLinkedRecord1FromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdLinkedRecords1, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdLinkedRecord1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdLinkedRecords1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdLinkedRecords1' from JSON`,
+    (x) => PatchV2TasksTaskIdLinkedRecord1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdLinkedRecord1' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords,
+export const PatchV2TasksTaskIdLinkedRecordUnion$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecordUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdLinkedRecords1$inboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdLinkedRecords2$inboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdLinkedRecord1$inboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdLinkedRecord2$inboundSchema),
 ]);
 
 /** @internal */
-export type PatchV2TasksTaskIdLinkedRecords$Outbound =
-  | PatchV2TasksTaskIdLinkedRecords1$Outbound
-  | PatchV2TasksTaskIdLinkedRecords2$Outbound;
+export type PatchV2TasksTaskIdLinkedRecordUnion$Outbound =
+  | PatchV2TasksTaskIdLinkedRecord1$Outbound
+  | PatchV2TasksTaskIdLinkedRecord2$Outbound;
 
 /** @internal */
-export const PatchV2TasksTaskIdLinkedRecords$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdLinkedRecords$Outbound,
+export const PatchV2TasksTaskIdLinkedRecordUnion$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdLinkedRecordUnion$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdLinkedRecords
+  PatchV2TasksTaskIdLinkedRecordUnion
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdLinkedRecords1$outboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdLinkedRecords2$outboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdLinkedRecord1$outboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdLinkedRecord2$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdLinkedRecords$ {
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdLinkedRecords$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdLinkedRecords$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdLinkedRecords$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdLinkedRecords$Outbound;
+export namespace PatchV2TasksTaskIdLinkedRecordUnion$ {
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecordUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdLinkedRecordUnion$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecordUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdLinkedRecordUnion$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdLinkedRecordUnion$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdLinkedRecordUnion$Outbound;
 }
 
-export function patchV2TasksTaskIdLinkedRecordsToJSON(
-  patchV2TasksTaskIdLinkedRecords: PatchV2TasksTaskIdLinkedRecords,
+export function patchV2TasksTaskIdLinkedRecordUnionToJSON(
+  patchV2TasksTaskIdLinkedRecordUnion: PatchV2TasksTaskIdLinkedRecordUnion,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdLinkedRecords$outboundSchema.parse(
-      patchV2TasksTaskIdLinkedRecords,
+    PatchV2TasksTaskIdLinkedRecordUnion$outboundSchema.parse(
+      patchV2TasksTaskIdLinkedRecordUnion,
     ),
   );
 }
 
-export function patchV2TasksTaskIdLinkedRecordsFromJSON(
+export function patchV2TasksTaskIdLinkedRecordUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdLinkedRecords, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdLinkedRecordUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdLinkedRecords$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdLinkedRecords' from JSON`,
+    (x) =>
+      PatchV2TasksTaskIdLinkedRecordUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdLinkedRecordUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees2$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees2,
+export const PatchV2TasksTaskIdAssignee$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdAssignee,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1088,15 +1146,15 @@ export const PatchV2TasksTaskIdAssignees2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2TasksTaskIdAssignees2$Outbound = {
+export type PatchV2TasksTaskIdAssignee$Outbound = {
   workspace_member_email_address: string;
 };
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees2$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees2$Outbound,
+export const PatchV2TasksTaskIdAssignee$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdAssignee$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdAssignees2
+  PatchV2TasksTaskIdAssignee
 > = z.object({
   workspaceMemberEmailAddress: z.string(),
 }).transform((v) => {
@@ -1109,63 +1167,64 @@ export const PatchV2TasksTaskIdAssignees2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdAssignees2$ {
-  /** @deprecated use `PatchV2TasksTaskIdAssignees2$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdAssignees2$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees2$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdAssignees2$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees2$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdAssignees2$Outbound;
+export namespace PatchV2TasksTaskIdAssignee$ {
+  /** @deprecated use `PatchV2TasksTaskIdAssignee$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdAssignee$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssignee$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdAssignee$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssignee$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdAssignee$Outbound;
 }
 
-export function patchV2TasksTaskIdAssignees2ToJSON(
-  patchV2TasksTaskIdAssignees2: PatchV2TasksTaskIdAssignees2,
+export function patchV2TasksTaskIdAssigneeToJSON(
+  patchV2TasksTaskIdAssignee: PatchV2TasksTaskIdAssignee,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdAssignees2$outboundSchema.parse(
-      patchV2TasksTaskIdAssignees2,
-    ),
+    PatchV2TasksTaskIdAssignee$outboundSchema.parse(patchV2TasksTaskIdAssignee),
   );
 }
 
-export function patchV2TasksTaskIdAssignees2FromJSON(
+export function patchV2TasksTaskIdAssigneeFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdAssignees2, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdAssignee, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdAssignees2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdAssignees2' from JSON`,
+    (x) => PatchV2TasksTaskIdAssignee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdAssignee' from JSON`,
   );
 }
 
 /** @internal */
-export const AssigneesReferencedActorType$inboundSchema: z.ZodNativeEnum<
-  typeof AssigneesReferencedActorType
-> = z.nativeEnum(AssigneesReferencedActorType);
+export const PatchV2TasksTaskIdReferencedActorType$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TasksTaskIdReferencedActorType> = z.nativeEnum(
+    PatchV2TasksTaskIdReferencedActorType,
+  );
 
 /** @internal */
-export const AssigneesReferencedActorType$outboundSchema: z.ZodNativeEnum<
-  typeof AssigneesReferencedActorType
-> = AssigneesReferencedActorType$inboundSchema;
+export const PatchV2TasksTaskIdReferencedActorType$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2TasksTaskIdReferencedActorType> =
+    PatchV2TasksTaskIdReferencedActorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AssigneesReferencedActorType$ {
-  /** @deprecated use `AssigneesReferencedActorType$inboundSchema` instead. */
-  export const inboundSchema = AssigneesReferencedActorType$inboundSchema;
-  /** @deprecated use `AssigneesReferencedActorType$outboundSchema` instead. */
-  export const outboundSchema = AssigneesReferencedActorType$outboundSchema;
+export namespace PatchV2TasksTaskIdReferencedActorType$ {
+  /** @deprecated use `PatchV2TasksTaskIdReferencedActorType$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdReferencedActorType$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdReferencedActorType$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdReferencedActorType$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees1$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees1,
+export const PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdAssigneeWorkspaceMember,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  referenced_actor_type: AssigneesReferencedActorType$inboundSchema,
+  referenced_actor_type: PatchV2TasksTaskIdReferencedActorType$inboundSchema,
   referenced_actor_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -1175,114 +1234,124 @@ export const PatchV2TasksTaskIdAssignees1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2TasksTaskIdAssignees1$Outbound = {
+export type PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound = {
   referenced_actor_type: string;
   referenced_actor_id: string;
 };
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees1$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees1$Outbound,
-  z.ZodTypeDef,
-  PatchV2TasksTaskIdAssignees1
-> = z.object({
-  referencedActorType: AssigneesReferencedActorType$outboundSchema,
-  referencedActorId: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    referencedActorType: "referenced_actor_type",
-    referencedActorId: "referenced_actor_id",
+export const PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema:
+  z.ZodType<
+    PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound,
+    z.ZodTypeDef,
+    PatchV2TasksTaskIdAssigneeWorkspaceMember
+  > = z.object({
+    referencedActorType: PatchV2TasksTaskIdReferencedActorType$outboundSchema,
+    referencedActorId: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      referencedActorType: "referenced_actor_type",
+      referencedActorId: "referenced_actor_id",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdAssignees1$ {
-  /** @deprecated use `PatchV2TasksTaskIdAssignees1$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdAssignees1$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees1$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdAssignees1$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees1$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdAssignees1$Outbound;
+export namespace PatchV2TasksTaskIdAssigneeWorkspaceMember$ {
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound;
 }
 
-export function patchV2TasksTaskIdAssignees1ToJSON(
-  patchV2TasksTaskIdAssignees1: PatchV2TasksTaskIdAssignees1,
+export function patchV2TasksTaskIdAssigneeWorkspaceMemberToJSON(
+  patchV2TasksTaskIdAssigneeWorkspaceMember:
+    PatchV2TasksTaskIdAssigneeWorkspaceMember,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdAssignees1$outboundSchema.parse(
-      patchV2TasksTaskIdAssignees1,
+    PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema.parse(
+      patchV2TasksTaskIdAssigneeWorkspaceMember,
     ),
   );
 }
 
-export function patchV2TasksTaskIdAssignees1FromJSON(
+export function patchV2TasksTaskIdAssigneeWorkspaceMemberFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdAssignees1, SDKValidationError> {
+): SafeParseResult<
+  PatchV2TasksTaskIdAssigneeWorkspaceMember,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdAssignees1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdAssignees1' from JSON`,
+    (x) =>
+      PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2TasksTaskIdAssigneeWorkspaceMember' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees,
+export const PatchV2TasksTaskIdAssigneeUnion$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdAssigneeUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdAssignees2$inboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdAssignees1$inboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema),
 ]);
 
 /** @internal */
-export type PatchV2TasksTaskIdAssignees$Outbound =
-  | PatchV2TasksTaskIdAssignees2$Outbound
-  | PatchV2TasksTaskIdAssignees1$Outbound;
+export type PatchV2TasksTaskIdAssigneeUnion$Outbound =
+  | PatchV2TasksTaskIdAssignee$Outbound
+  | PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound;
 
 /** @internal */
-export const PatchV2TasksTaskIdAssignees$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdAssignees$Outbound,
+export const PatchV2TasksTaskIdAssigneeUnion$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdAssigneeUnion$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdAssignees
+  PatchV2TasksTaskIdAssigneeUnion
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdAssignees2$outboundSchema),
-  z.lazy(() => PatchV2TasksTaskIdAssignees1$outboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdAssignees$ {
-  /** @deprecated use `PatchV2TasksTaskIdAssignees$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdAssignees$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdAssignees$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdAssignees$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdAssignees$Outbound;
+export namespace PatchV2TasksTaskIdAssigneeUnion$ {
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeUnion$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdAssigneeUnion$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeUnion$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdAssigneeUnion$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdAssigneeUnion$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdAssigneeUnion$Outbound;
 }
 
-export function patchV2TasksTaskIdAssigneesToJSON(
-  patchV2TasksTaskIdAssignees: PatchV2TasksTaskIdAssignees,
+export function patchV2TasksTaskIdAssigneeUnionToJSON(
+  patchV2TasksTaskIdAssigneeUnion: PatchV2TasksTaskIdAssigneeUnion,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdAssignees$outboundSchema.parse(
-      patchV2TasksTaskIdAssignees,
+    PatchV2TasksTaskIdAssigneeUnion$outboundSchema.parse(
+      patchV2TasksTaskIdAssigneeUnion,
     ),
   );
 }
 
-export function patchV2TasksTaskIdAssigneesFromJSON(
+export function patchV2TasksTaskIdAssigneeUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdAssignees, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdAssigneeUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdAssignees$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdAssignees' from JSON`,
+    (x) => PatchV2TasksTaskIdAssigneeUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdAssigneeUnion' from JSON`,
   );
 }
 
@@ -1296,14 +1365,14 @@ export const PatchV2TasksTaskIdData$inboundSchema: z.ZodType<
   is_completed: z.boolean().optional(),
   linked_records: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdLinkedRecords1$inboundSchema),
-      z.lazy(() => PatchV2TasksTaskIdLinkedRecords2$inboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdLinkedRecord1$inboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdLinkedRecord2$inboundSchema),
     ]),
   ).optional(),
   assignees: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdAssignees2$inboundSchema),
-      z.lazy(() => PatchV2TasksTaskIdAssignees1$inboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema),
     ]),
   ).optional(),
 }).transform((v) => {
@@ -1320,14 +1389,14 @@ export type PatchV2TasksTaskIdData$Outbound = {
   is_completed?: boolean | undefined;
   linked_records?:
     | Array<
-      | PatchV2TasksTaskIdLinkedRecords1$Outbound
-      | PatchV2TasksTaskIdLinkedRecords2$Outbound
+      | PatchV2TasksTaskIdLinkedRecord1$Outbound
+      | PatchV2TasksTaskIdLinkedRecord2$Outbound
     >
     | undefined;
   assignees?:
     | Array<
-      | PatchV2TasksTaskIdAssignees2$Outbound
-      | PatchV2TasksTaskIdAssignees1$Outbound
+      | PatchV2TasksTaskIdAssignee$Outbound
+      | PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound
     >
     | undefined;
 };
@@ -1342,14 +1411,14 @@ export const PatchV2TasksTaskIdData$outboundSchema: z.ZodType<
   isCompleted: z.boolean().optional(),
   linkedRecords: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdLinkedRecords1$outboundSchema),
-      z.lazy(() => PatchV2TasksTaskIdLinkedRecords2$outboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdLinkedRecord1$outboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdLinkedRecord2$outboundSchema),
     ]),
   ).optional(),
   assignees: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdAssignees2$outboundSchema),
-      z.lazy(() => PatchV2TasksTaskIdAssignees1$outboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema),
     ]),
   ).optional(),
 }).transform((v) => {
@@ -1515,57 +1584,55 @@ export function patchV2TasksTaskIdRequestFromJSON(
 }
 
 /** @internal */
-export const PatchV2TasksTaskIdResponseBody$inboundSchema: z.ZodType<
-  PatchV2TasksTaskIdResponseBody,
+export const PatchV2TasksTaskIdResponse$inboundSchema: z.ZodType<
+  PatchV2TasksTaskIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Task$inboundSchema,
+  data: Task$inboundSchema,
 });
 
 /** @internal */
-export type PatchV2TasksTaskIdResponseBody$Outbound = {
-  data: components.Task$Outbound;
+export type PatchV2TasksTaskIdResponse$Outbound = {
+  data: Task$Outbound;
 };
 
 /** @internal */
-export const PatchV2TasksTaskIdResponseBody$outboundSchema: z.ZodType<
-  PatchV2TasksTaskIdResponseBody$Outbound,
+export const PatchV2TasksTaskIdResponse$outboundSchema: z.ZodType<
+  PatchV2TasksTaskIdResponse$Outbound,
   z.ZodTypeDef,
-  PatchV2TasksTaskIdResponseBody
+  PatchV2TasksTaskIdResponse
 > = z.object({
-  data: components.Task$outboundSchema,
+  data: Task$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TasksTaskIdResponseBody$ {
-  /** @deprecated use `PatchV2TasksTaskIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchV2TasksTaskIdResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PatchV2TasksTaskIdResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2TasksTaskIdResponseBody$Outbound` instead. */
-  export type Outbound = PatchV2TasksTaskIdResponseBody$Outbound;
+export namespace PatchV2TasksTaskIdResponse$ {
+  /** @deprecated use `PatchV2TasksTaskIdResponse$inboundSchema` instead. */
+  export const inboundSchema = PatchV2TasksTaskIdResponse$inboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdResponse$outboundSchema` instead. */
+  export const outboundSchema = PatchV2TasksTaskIdResponse$outboundSchema;
+  /** @deprecated use `PatchV2TasksTaskIdResponse$Outbound` instead. */
+  export type Outbound = PatchV2TasksTaskIdResponse$Outbound;
 }
 
-export function patchV2TasksTaskIdResponseBodyToJSON(
-  patchV2TasksTaskIdResponseBody: PatchV2TasksTaskIdResponseBody,
+export function patchV2TasksTaskIdResponseToJSON(
+  patchV2TasksTaskIdResponse: PatchV2TasksTaskIdResponse,
 ): string {
   return JSON.stringify(
-    PatchV2TasksTaskIdResponseBody$outboundSchema.parse(
-      patchV2TasksTaskIdResponseBody,
-    ),
+    PatchV2TasksTaskIdResponse$outboundSchema.parse(patchV2TasksTaskIdResponse),
   );
 }
 
-export function patchV2TasksTaskIdResponseBodyFromJSON(
+export function patchV2TasksTaskIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2TasksTaskIdResponseBody, SDKValidationError> {
+): SafeParseResult<PatchV2TasksTaskIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2TasksTaskIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TasksTaskIdResponseBody' from JSON`,
+    (x) => PatchV2TasksTaskIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2TasksTaskIdResponse' from JSON`,
   );
 }

@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ThreadsThreadIdNotFoundError,
+  GetV2ThreadsThreadIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ThreadsThreadIdRequest,
+  GetV2ThreadsThreadIdRequest$outboundSchema,
+  GetV2ThreadsThreadIdResponse,
+  GetV2ThreadsThreadIdResponse$inboundSchema,
+} from "../models/operations/getv2threadsthreadid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -38,12 +46,12 @@ import { Result } from "../types/fp.js";
  */
 export function threadsGet(
   client: AttioCore,
-  request: operations.GetV2ThreadsThreadIdRequest,
+  request: GetV2ThreadsThreadIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ThreadsThreadIdResponseBody,
-    | errors.GetV2ThreadsThreadIdResponseBody
+    GetV2ThreadsThreadIdResponse,
+    | GetV2ThreadsThreadIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -62,13 +70,13 @@ export function threadsGet(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2ThreadsThreadIdRequest,
+  request: GetV2ThreadsThreadIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2ThreadsThreadIdResponseBody,
-      | errors.GetV2ThreadsThreadIdResponseBody
+      GetV2ThreadsThreadIdResponse,
+      | GetV2ThreadsThreadIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -82,8 +90,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.GetV2ThreadsThreadIdRequest$outboundSchema.parse(value),
+    (value) => GetV2ThreadsThreadIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -153,8 +160,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2ThreadsThreadIdResponseBody,
-    | errors.GetV2ThreadsThreadIdResponseBody
+    GetV2ThreadsThreadIdResponse,
+    | GetV2ThreadsThreadIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -163,8 +170,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2ThreadsThreadIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.GetV2ThreadsThreadIdResponseBody$inboundSchema),
+    M.json(200, GetV2ThreadsThreadIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2ThreadsThreadIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

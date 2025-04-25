@@ -7,29 +7,33 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Status,
+  Status$inboundSchema,
+  Status$Outbound,
+  Status$outboundSchema,
+} from "../components/status.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is on an object or a list. Please note that the company and people objects do not support status attributes at this time.
  */
-export const GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget = {
+export const GetV2TargetIdentifierAttributesAttributeStatusesTarget = {
   Lists: "lists",
   Objects: "objects",
 } as const;
 /**
  * Whether the attribute is on an object or a list. Please note that the company and people objects do not support status attributes at this time.
  */
-export type GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget =
-  ClosedEnum<
-    typeof GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget
-  >;
+export type GetV2TargetIdentifierAttributesAttributeStatusesTarget = ClosedEnum<
+  typeof GetV2TargetIdentifierAttributesAttributeStatusesTarget
+>;
 
 export type GetV2TargetIdentifierAttributesAttributeStatusesRequest = {
   /**
    * Whether the attribute is on an object or a list. Please note that the company and people objects do not support status attributes at this time.
    */
-  target: GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget;
+  target: GetV2TargetIdentifierAttributesAttributeStatusesTarget;
   identifier: string;
   attribute: string;
   showArchived?: boolean | undefined;
@@ -38,36 +42,33 @@ export type GetV2TargetIdentifierAttributesAttributeStatusesRequest = {
 /**
  * Success
  */
-export type GetV2TargetIdentifierAttributesAttributeStatusesResponseBody = {
-  data: Array<components.Status>;
+export type GetV2TargetIdentifierAttributesAttributeStatusesResponse = {
+  data: Array<Status>;
 };
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$inboundSchema:
+export const GetV2TargetIdentifierAttributesAttributeStatusesTarget$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget
-  > = z.nativeEnum(
-    GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget,
-  );
+    typeof GetV2TargetIdentifierAttributesAttributeStatusesTarget
+  > = z.nativeEnum(GetV2TargetIdentifierAttributesAttributeStatusesTarget);
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$outboundSchema:
+export const GetV2TargetIdentifierAttributesAttributeStatusesTarget$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget
-  > =
-    GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$inboundSchema;
+    typeof GetV2TargetIdentifierAttributesAttributeStatusesTarget
+  > = GetV2TargetIdentifierAttributesAttributeStatusesTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$ {
-  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$inboundSchema` instead. */
+export namespace GetV2TargetIdentifierAttributesAttributeStatusesTarget$ {
+  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesTarget$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$inboundSchema;
-  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$outboundSchema` instead. */
+    GetV2TargetIdentifierAttributesAttributeStatusesTarget$inboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesTarget$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$outboundSchema;
+    GetV2TargetIdentifierAttributesAttributeStatusesTarget$outboundSchema;
 }
 
 /** @internal */
@@ -78,7 +79,7 @@ export const GetV2TargetIdentifierAttributesAttributeStatusesRequest$inboundSche
     unknown
   > = z.object({
     target:
-      GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$inboundSchema,
+      GetV2TargetIdentifierAttributesAttributeStatusesTarget$inboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     show_archived: z.boolean().default(false),
@@ -104,7 +105,7 @@ export const GetV2TargetIdentifierAttributesAttributeStatusesRequest$outboundSch
     GetV2TargetIdentifierAttributesAttributeStatusesRequest
   > = z.object({
     target:
-      GetV2TargetIdentifierAttributesAttributeStatusesPathParamTarget$outboundSchema,
+      GetV2TargetIdentifierAttributesAttributeStatusesTarget$outboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     showArchived: z.boolean().default(false),
@@ -156,68 +157,68 @@ export function getV2TargetIdentifierAttributesAttributeStatusesRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$inboundSchema:
+export const GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema:
   z.ZodType<
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: z.array(components.Status$inboundSchema),
+    data: z.array(Status$inboundSchema),
   });
 
 /** @internal */
-export type GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$Outbound =
+export type GetV2TargetIdentifierAttributesAttributeStatusesResponse$Outbound =
   {
-    data: Array<components.Status$Outbound>;
+    data: Array<Status$Outbound>;
   };
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$outboundSchema:
+export const GetV2TargetIdentifierAttributesAttributeStatusesResponse$outboundSchema:
   z.ZodType<
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$Outbound,
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse$Outbound,
     z.ZodTypeDef,
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse
   > = z.object({
-    data: z.array(components.Status$outboundSchema),
+    data: z.array(Status$outboundSchema),
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$ {
-  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$inboundSchema` instead. */
+export namespace GetV2TargetIdentifierAttributesAttributeStatusesResponse$ {
+  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$inboundSchema;
-  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$outboundSchema` instead. */
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponse$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$outboundSchema;
-  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$Outbound` instead. */
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse$outboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesAttributeStatusesResponse$Outbound` instead. */
   export type Outbound =
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$Outbound;
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse$Outbound;
 }
 
-export function getV2TargetIdentifierAttributesAttributeStatusesResponseBodyToJSON(
-  getV2TargetIdentifierAttributesAttributeStatusesResponseBody:
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
+export function getV2TargetIdentifierAttributesAttributeStatusesResponseToJSON(
+  getV2TargetIdentifierAttributesAttributeStatusesResponse:
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse,
 ): string {
   return JSON.stringify(
-    GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$outboundSchema
-      .parse(getV2TargetIdentifierAttributesAttributeStatusesResponseBody),
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse$outboundSchema
+      .parse(getV2TargetIdentifierAttributesAttributeStatusesResponse),
   );
 }
 
-export function getV2TargetIdentifierAttributesAttributeStatusesResponseBodyFromJSON(
+export function getV2TargetIdentifierAttributesAttributeStatusesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
+  GetV2TargetIdentifierAttributesAttributeStatusesResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$inboundSchema
+      GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2TargetIdentifierAttributesAttributeStatusesResponseBody' from JSON`,
+    `Failed to parse 'GetV2TargetIdentifierAttributesAttributeStatusesResponse' from JSON`,
   );
 }

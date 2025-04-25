@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+  PutV2ObjectsObjectRecordsInvalidRequestError,
+  PutV2ObjectsObjectRecordsInvalidRequestError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PutV2ObjectsObjectRecordsRequest,
+  PutV2ObjectsObjectRecordsRequest$outboundSchema,
+  PutV2ObjectsObjectRecordsResponse,
+  PutV2ObjectsObjectRecordsResponse$inboundSchema,
+} from "../models/operations/putv2objectsobjectrecords.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -36,13 +46,13 @@ import { Result } from "../types/fp.js";
  */
 export function recordsAssert(
   client: AttioCore,
-  request: operations.PutV2ObjectsObjectRecordsRequest,
+  request: PutV2ObjectsObjectRecordsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PutV2ObjectsObjectRecordsResponseBody,
-    | errors.PutV2ObjectsObjectRecordsResponseBody
-    | errors.ResponseBody
+    PutV2ObjectsObjectRecordsResponse,
+    | PutV2ObjectsObjectRecordsInvalidRequestError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -61,14 +71,14 @@ export function recordsAssert(
 
 async function $do(
   client: AttioCore,
-  request: operations.PutV2ObjectsObjectRecordsRequest,
+  request: PutV2ObjectsObjectRecordsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PutV2ObjectsObjectRecordsResponseBody,
-      | errors.PutV2ObjectsObjectRecordsResponseBody
-      | errors.ResponseBody
+      PutV2ObjectsObjectRecordsResponse,
+      | PutV2ObjectsObjectRecordsInvalidRequestError
+      | GetV2ObjectsObjectNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -82,8 +92,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.PutV2ObjectsObjectRecordsRequest$outboundSchema.parse(value),
+    (value) => PutV2ObjectsObjectRecordsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -159,9 +168,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PutV2ObjectsObjectRecordsResponseBody,
-    | errors.PutV2ObjectsObjectRecordsResponseBody
-    | errors.ResponseBody
+    PutV2ObjectsObjectRecordsResponse,
+    | PutV2ObjectsObjectRecordsInvalidRequestError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -170,9 +179,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PutV2ObjectsObjectRecordsResponseBody$inboundSchema),
-    M.jsonErr(400, errors.PutV2ObjectsObjectRecordsResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
+    M.json(200, PutV2ObjectsObjectRecordsResponse$inboundSchema),
+    M.jsonErr(400, PutV2ObjectsObjectRecordsInvalidRequestError$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

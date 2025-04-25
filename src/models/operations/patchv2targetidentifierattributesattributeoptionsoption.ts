@@ -7,23 +7,27 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  SelectOption,
+  SelectOption$inboundSchema,
+  SelectOption$Outbound,
+  SelectOption$outboundSchema,
+} from "../components/selectoption.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is on an object or a list.
  */
-export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget =
-  {
-    Objects: "objects",
-    Lists: "lists",
-  } as const;
+export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget = {
+  Objects: "objects",
+  Lists: "lists",
+} as const;
 /**
  * Whether the attribute is on an object or a list.
  */
-export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget =
+export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget =
   ClosedEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget
   >;
 
 export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionData = {
@@ -46,8 +50,7 @@ export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest = {
   /**
    * Whether the attribute is on an object or a list.
    */
-  target:
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget;
+  target: PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget;
   identifier: string;
   attribute: string;
   option: string;
@@ -58,37 +61,36 @@ export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest = {
 /**
  * Success
  */
-export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody =
-  {
-    data: components.SelectOption;
-  };
+export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse = {
+  data: SelectOption;
+};
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget
   > = z.nativeEnum(
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget,
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget,
   );
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget
   > =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$inboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$outboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$outboundSchema;
 }
 
 /** @internal */
@@ -250,7 +252,7 @@ export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest$inbo
     unknown
   > = z.object({
     target:
-      PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$inboundSchema,
+      PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$inboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     option: z.string(),
@@ -282,7 +284,7 @@ export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest$outb
     PatchV2TargetIdentifierAttributesAttributeOptionsOptionRequest
   > = z.object({
     target:
-      PatchV2TargetIdentifierAttributesAttributeOptionsOptionPathParamTarget$outboundSchema,
+      PatchV2TargetIdentifierAttributesAttributeOptionsOptionTarget$outboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     option: z.string(),
@@ -337,70 +339,68 @@ export function patchV2TargetIdentifierAttributesAttributeOptionsOptionRequestFr
 }
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$inboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody,
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: components.SelectOption$inboundSchema,
+    data: SelectOption$inboundSchema,
   });
 
 /** @internal */
-export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$Outbound =
+export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$Outbound =
   {
-    data: components.SelectOption$Outbound;
+    data: SelectOption$Outbound;
   };
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$outboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$Outbound,
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse
   > = z.object({
-    data: components.SelectOption$outboundSchema,
+    data: SelectOption$outboundSchema,
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$Outbound` instead. */
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$Outbound` instead. */
   export type Outbound =
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$Outbound;
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$Outbound;
 }
 
-export function patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBodyToJSON(
-  patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody:
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody,
+export function patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseToJSON(
+  patchV2TargetIdentifierAttributesAttributeOptionsOptionResponse:
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse,
 ): string {
   return JSON.stringify(
-    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$outboundSchema
-      .parse(
-        patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody,
-      ),
+    PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$outboundSchema
+      .parse(patchV2TargetIdentifierAttributesAttributeOptionsOptionResponse),
   );
 }
 
-export function patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBodyFromJSON(
+export function patchV2TargetIdentifierAttributesAttributeOptionsOptionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody,
+  PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody$inboundSchema
+      PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody' from JSON`,
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse' from JSON`,
   );
 }

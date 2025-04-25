@@ -5,7 +5,7 @@ A list of attribute values for the list entry (not attribute values for its pare
 ## Example Usage
 
 ```typescript
-import { PutV2ListsListEntriesEntryIdEntryValues } from "attio-js/models/operations";
+import { PutV2ListsListEntriesEntryIdEntryValues } from "attio-js/models/operations/putv2listslistentriesentryid.js";
 
 let value: PutV2ListsListEntriesEntryIdEntryValues = {};
 ```

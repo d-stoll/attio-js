@@ -5,7 +5,14 @@
 import { attributesStatusesCreate } from "../funcs/attributesStatusesCreate.js";
 import { attributesStatusesUpdate } from "../funcs/attributesStatusesUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest,
+  PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse,
+} from "../models/operations/patchv2targetidentifierattributesattributestatusesstatus.js";
+import {
+  PostV2TargetIdentifierAttributesAttributeStatusesRequest,
+  PostV2TargetIdentifierAttributesAttributeStatusesResponse,
+} from "../models/operations/postv2targetidentifierattributesattributestatuses.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Statuses extends ClientSDK {
@@ -18,12 +25,9 @@ export class Statuses extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async create(
-    request:
-      operations.PostV2TargetIdentifierAttributesAttributeStatusesRequest,
+    request: PostV2TargetIdentifierAttributesAttributeStatusesRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.PostV2TargetIdentifierAttributesAttributeStatusesResponseBody
-  > {
+  ): Promise<PostV2TargetIdentifierAttributesAttributeStatusesResponse> {
     return unwrapAsync(attributesStatusesCreate(
       this,
       request,
@@ -40,12 +44,9 @@ export class Statuses extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async update(
-    request:
-      operations.PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest,
+    request: PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody
-  > {
+  ): Promise<PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse> {
     return unwrapAsync(attributesStatusesUpdate(
       this,
       request,

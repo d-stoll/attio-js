@@ -24,21 +24,19 @@ import {
 /**
  * The attribute type of the value.
  */
-export const OutputValue19AttributeType = {
+export const AttributeTypeTimestamp = {
   Timestamp: "timestamp",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue19AttributeType = ClosedEnum<
-  typeof OutputValue19AttributeType
->;
+export type AttributeTypeTimestamp = ClosedEnum<typeof AttributeTypeTimestamp>;
 
-export type Nineteen = {
+export type OutputValueTimestamp = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue19AttributeType;
+  attributeType: AttributeTypeTimestamp;
   /**
    * A timestamp value represents a single, universal moment in time using an ISO 8601 formatted string. This means that a timestamp consists of a date, a time (with nanosecond precision), and a time zone. Attio will coerce timestamps which do not provide full nanosecond precision and UTC is assumed if no time zone is provided. For example, "2023", "2023-01", "2023-01-02", "2023-01-02T13:00", "2023-01-02T13:00:00", and "2023-01-02T13:00:00.000000000" will all be coerced to "2023-01-02T13:00:00.000000000Z". Timestamps are always returned in UTC. For example, writing a timestamp value using the string "2023-01-02T13:00:00.000000000+02:00" will result in the value "2023-01-02T11:00:00.000000000Z" being returned. The maximum date is "9999-12-31T23:59:59.999999999Z".
    */
@@ -48,17 +46,15 @@ export type Nineteen = {
 /**
  * The attribute type of the value.
  */
-export const OutputValue18AttributeType = {
+export const AttributeTypeText = {
   Text: "text",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue18AttributeType = ClosedEnum<
-  typeof OutputValue18AttributeType
->;
+export type AttributeTypeText = ClosedEnum<typeof AttributeTypeText>;
 
-export type Eighteen = {
+export type OutputValueText = {
   /**
    * A raw text field. Values are limited to 10MB.
    */
@@ -66,44 +62,40 @@ export type Eighteen = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue18AttributeType;
+  attributeType: AttributeTypeText;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue17AttributeType = {
+export const AttributeTypeSelect2 = {
   Select: "select",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue17AttributeType = ClosedEnum<
-  typeof OutputValue17AttributeType
->;
+export type AttributeTypeSelect2 = ClosedEnum<typeof AttributeTypeSelect2>;
 
-export type Seventeen = {
+export type OutputValueSelect2 = {
   option: SelectOption;
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue17AttributeType;
+  attributeType: AttributeTypeSelect2;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue16AttributeType = {
+export const AttributeTypeSelect1 = {
   Select: "select",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue16AttributeType = ClosedEnum<
-  typeof OutputValue16AttributeType
->;
+export type AttributeTypeSelect1 = ClosedEnum<typeof AttributeTypeSelect1>;
 
-export type Sixteen = {
+export type OutputValueSelect1 = {
   /**
    * The UUID identifying the selected select option.
    */
@@ -111,23 +103,21 @@ export type Sixteen = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue16AttributeType;
+  attributeType: AttributeTypeSelect1;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue15AttributeType = {
+export const AttributeTypeRating = {
   Rating: "rating",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue15AttributeType = ClosedEnum<
-  typeof OutputValue15AttributeType
->;
+export type AttributeTypeRating = ClosedEnum<typeof AttributeTypeRating>;
 
-export type Fifteen = {
+export type OutputValueRating = {
   /**
    * A number between 0 and 5 (inclusive) to represent a star rating.
    */
@@ -135,44 +125,40 @@ export type Fifteen = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue15AttributeType;
+  attributeType: AttributeTypeRating;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue14AttributeType = {
+export const AttributeTypeStatus2 = {
   Status: "status",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue14AttributeType = ClosedEnum<
-  typeof OutputValue14AttributeType
->;
+export type AttributeTypeStatus2 = ClosedEnum<typeof AttributeTypeStatus2>;
 
-export type Fourteen = {
+export type OutputValueStatus2 = {
   status: Status;
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue14AttributeType;
+  attributeType: AttributeTypeStatus2;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue13AttributeType = {
+export const AttributeTypeStatus1 = {
   Status: "status",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue13AttributeType = ClosedEnum<
-  typeof OutputValue13AttributeType
->;
+export type AttributeTypeStatus1 = ClosedEnum<typeof AttributeTypeStatus1>;
 
-export type Thirteen = {
+export type OutputValueStatus1 = {
   /**
    * The UUID identifying the selected status.
    */
@@ -180,13 +166,13 @@ export type Thirteen = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue13AttributeType;
+  attributeType: AttributeTypeStatus1;
 };
 
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export const OutputValueCountryCode = {
+export const OutputValueCountryCode2 = {
   Af: "AF",
   Ax: "AX",
   Al: "AL",
@@ -438,22 +424,24 @@ export const OutputValueCountryCode = {
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export type OutputValueCountryCode = ClosedEnum<typeof OutputValueCountryCode>;
+export type OutputValueCountryCode2 = ClosedEnum<
+  typeof OutputValueCountryCode2
+>;
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue12AttributeType = {
+export const AttributeTypePhoneNumber = {
   PhoneNumber: "phone-number",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue12AttributeType = ClosedEnum<
-  typeof OutputValue12AttributeType
+export type AttributeTypePhoneNumber = ClosedEnum<
+  typeof AttributeTypePhoneNumber
 >;
 
-export type Twelve = {
+export type OutputValuePhoneNumber = {
   /**
    * The raw, original phone number, as inputted.
    */
@@ -461,28 +449,28 @@ export type Twelve = {
   /**
    * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
    */
-  countryCode: OutputValueCountryCode;
+  countryCode: OutputValueCountryCode2;
   phoneNumber: string;
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue12AttributeType;
+  attributeType: AttributeTypePhoneNumber;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue11AttributeType = {
+export const AttributeTypePersonalName = {
   PersonalName: "personal-name",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue11AttributeType = ClosedEnum<
-  typeof OutputValue11AttributeType
+export type AttributeTypePersonalName = ClosedEnum<
+  typeof AttributeTypePersonalName
 >;
 
-export type Eleven = {
+export type OutputValuePersonalName = {
   /**
    * The first name.
    */
@@ -498,23 +486,21 @@ export type Eleven = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue11AttributeType;
+  attributeType: AttributeTypePersonalName;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue10AttributeType = {
+export const AttributeTypeNumber = {
   Number: "number",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue10AttributeType = ClosedEnum<
-  typeof OutputValue10AttributeType
->;
+export type AttributeTypeNumber = ClosedEnum<typeof AttributeTypeNumber>;
 
-export type Ten = {
+export type OutputValueNumber = {
   /**
    * Numbers are persisted as 64 bit floats.
    */
@@ -522,13 +508,13 @@ export type Ten = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue10AttributeType;
+  attributeType: AttributeTypeNumber;
 };
 
 /**
  * The ISO 3166-1 alpha-2 country code for the country this location is in.
  */
-export const CountryCode = {
+export const OutputValueCountryCode1 = {
   Af: "AF",
   Ax: "AX",
   Al: "AL",
@@ -780,22 +766,22 @@ export const CountryCode = {
 /**
  * The ISO 3166-1 alpha-2 country code for the country this location is in.
  */
-export type CountryCode = ClosedEnum<typeof CountryCode>;
+export type OutputValueCountryCode1 = ClosedEnum<
+  typeof OutputValueCountryCode1
+>;
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue9AttributeType = {
+export const AttributeTypeLocation = {
   Location: "location",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue9AttributeType = ClosedEnum<
-  typeof OutputValue9AttributeType
->;
+export type AttributeTypeLocation = ClosedEnum<typeof AttributeTypeLocation>;
 
-export type Nine = {
+export type OutputValueLocation = {
   /**
    * The first line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
    */
@@ -827,7 +813,7 @@ export type Nine = {
   /**
    * The ISO 3166-1 alpha-2 country code for the country this location is in.
    */
-  countryCode: CountryCode | null;
+  countryCode: OutputValueCountryCode1 | null;
   /**
    * The latitude of the location. Validated by the regular expression `/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/`. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.}
    */
@@ -839,13 +825,13 @@ export type Nine = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue9AttributeType;
+  attributeType: AttributeTypeLocation;
 };
 
 /**
  * The type of interaction e.g. calendar or email.
  */
-export const InteractionType = {
+export const OutputValueInteractionType = {
   CalendarEvent: "calendar-event",
   Call: "call",
   ChatThread: "chat-thread",
@@ -856,7 +842,9 @@ export const InteractionType = {
 /**
  * The type of interaction e.g. calendar or email.
  */
-export type InteractionType = ClosedEnum<typeof InteractionType>;
+export type OutputValueInteractionType = ClosedEnum<
+  typeof OutputValueInteractionType
+>;
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
@@ -875,7 +863,7 @@ export type OutputValueType = ClosedEnum<typeof OutputValueType>;
 /**
  * The actor that created this value.
  */
-export type OwnerActor = {
+export type OutputValueOwnerActor = {
   /**
    * An ID to identify the actor.
    */
@@ -889,21 +877,21 @@ export type OwnerActor = {
 /**
  * The attribute type of the value.
  */
-export const OutputValue8AttributeType = {
+export const AttributeTypeInteraction = {
   Interaction: "interaction",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue8AttributeType = ClosedEnum<
-  typeof OutputValue8AttributeType
+export type AttributeTypeInteraction = ClosedEnum<
+  typeof AttributeTypeInteraction
 >;
 
-export type Eight = {
+export type OutputValueInteraction = {
   /**
    * The type of interaction e.g. calendar or email.
    */
-  interactionType: InteractionType;
+  interactionType: OutputValueInteractionType;
   /**
    * When the interaction occurred.
    */
@@ -911,27 +899,27 @@ export type Eight = {
   /**
    * The actor that created this value.
    */
-  ownerActor: OwnerActor;
+  ownerActor: OutputValueOwnerActor;
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue8AttributeType;
+  attributeType: AttributeTypeInteraction;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue7AttributeType = {
+export const AttributeTypeRecordReference = {
   RecordReference: "record-reference",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue7AttributeType = ClosedEnum<
-  typeof OutputValue7AttributeType
+export type AttributeTypeRecordReference = ClosedEnum<
+  typeof AttributeTypeRecordReference
 >;
 
-export type Seven = {
+export type OutputValueRecordReference = {
   /**
    * A slug identifying the object that the referenced record belongs to.
    */
@@ -943,23 +931,23 @@ export type Seven = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue7AttributeType;
+  attributeType: AttributeTypeRecordReference;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue6AttributeType = {
+export const AttributeTypeEmailAddress = {
   EmailAddress: "email-address",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue6AttributeType = ClosedEnum<
-  typeof OutputValue6AttributeType
+export type AttributeTypeEmailAddress = ClosedEnum<
+  typeof AttributeTypeEmailAddress
 >;
 
-export type Six = {
+export type OutputValueEmailAddress = {
   originalEmailAddress: string;
   emailAddress: string;
   emailDomain: string;
@@ -968,49 +956,45 @@ export type Six = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue6AttributeType;
+  attributeType: AttributeTypeEmailAddress;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue5AttributeType = {
+export const AttributeTypeDomain = {
   Domain: "domain",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue5AttributeType = ClosedEnum<
-  typeof OutputValue5AttributeType
->;
+export type AttributeTypeDomain = ClosedEnum<typeof AttributeTypeDomain>;
 
-export type Five = {
+export type OutputValueDomain = {
   domain: string;
   rootDomain: string;
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue5AttributeType;
+  attributeType: AttributeTypeDomain;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValue4AttributeType = {
+export const AttributeTypeDate = {
   Date: "date",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue4AttributeType = ClosedEnum<
-  typeof OutputValue4AttributeType
->;
+export type AttributeTypeDate = ClosedEnum<typeof AttributeTypeDate>;
 
-export type Four = {
+export type OutputValueDate = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue4AttributeType;
+  attributeType: AttributeTypeDate;
   /**
    * A date represents a single calendar year, month and day, independent of timezone. If hours, months, seconds or timezones are provided, they will be trimmed. For example, "2023" and "2023-01" will be coerced into "2023-01-01", and "2023-01-02", "2023-01-02T13:00", "2023-01-02T14:00:00", "2023-01-02T15:00:00.000000000", and "2023-01-02T15:00:00.000000000+02:00" will all be coerced to "2023-01-02". If a timezone is provided that would result in a different calendar date in UTC, the date will be coerced to UTC and then the timezone component will be trimmed. For example, the value "2023-01-02T23:00:00-10:00" will be returned as "2023-01-03". The maximum date is "9999-12-31".
    */
@@ -1063,17 +1047,15 @@ export type CurrencyCode = ClosedEnum<typeof CurrencyCode>;
 /**
  * The attribute type of the value.
  */
-export const OutputValue3AttributeType = {
+export const AttributeTypeCurrency = {
   Currency: "currency",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValue3AttributeType = ClosedEnum<
-  typeof OutputValue3AttributeType
->;
+export type AttributeTypeCurrency = ClosedEnum<typeof AttributeTypeCurrency>;
 
-export type Three = {
+export type OutputValueCurrency = {
   /**
    * A numerical representation of the currency value. A decimal with a max of 4 decimal places.
    */
@@ -1085,23 +1067,21 @@ export type Three = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValue3AttributeType;
+  attributeType: AttributeTypeCurrency;
 };
 
 /**
  * The attribute type of the value.
  */
-export const OutputValueAttributeType = {
+export const AttributeTypeCheckbox = {
   Checkbox: "checkbox",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type OutputValueAttributeType = ClosedEnum<
-  typeof OutputValueAttributeType
->;
+export type AttributeTypeCheckbox = ClosedEnum<typeof AttributeTypeCheckbox>;
 
-export type OutputValue2 = {
+export type OutputValueCheckbox = {
   /**
    * A boolean representing whether the checkbox is checked or not. The string values 'true' and 'false' are also accepted.
    */
@@ -1109,7 +1089,7 @@ export type OutputValue2 = {
   /**
    * The attribute type of the value.
    */
-  attributeType: OutputValueAttributeType;
+  attributeType: AttributeTypeCheckbox;
 };
 
 /**
@@ -1131,15 +1111,17 @@ export type OutputValueReferencedActorType = ClosedEnum<
 /**
  * The attribute type of the value.
  */
-export const AttributeType = {
+export const AttributeTypeActorReference = {
   ActorReference: "actor-reference",
 } as const;
 /**
  * The attribute type of the value.
  */
-export type AttributeType = ClosedEnum<typeof AttributeType>;
+export type AttributeTypeActorReference = ClosedEnum<
+  typeof AttributeTypeActorReference
+>;
 
-export type OutputValue1 = {
+export type OutputValueActorReference = {
   /**
    * The type of the referenced actor. [Read more information on actor types here](/docs/actors).
    */
@@ -1151,61 +1133,61 @@ export type OutputValue1 = {
   /**
    * The attribute type of the value.
    */
-  attributeType: AttributeType;
+  attributeType: AttributeTypeActorReference;
 };
 
 /**
  * A union of possible value types, as returned in response bodies.
  */
 export type OutputValue =
-  | OutputValue2
-  | Four
-  | Ten
-  | Thirteen
-  | Fourteen
-  | Fifteen
-  | Sixteen
-  | Seventeen
-  | Eighteen
-  | Nineteen
-  | OutputValue1
-  | Three
-  | Five
-  | Seven
-  | Eight
-  | Eleven
-  | Twelve
-  | Six
-  | Nine;
+  | OutputValueCheckbox
+  | OutputValueDate
+  | OutputValueNumber
+  | OutputValueStatus1
+  | OutputValueStatus2
+  | OutputValueRating
+  | OutputValueSelect1
+  | OutputValueSelect2
+  | OutputValueText
+  | OutputValueTimestamp
+  | OutputValueActorReference
+  | OutputValueCurrency
+  | OutputValueDomain
+  | OutputValueRecordReference
+  | OutputValueInteraction
+  | OutputValuePersonalName
+  | OutputValuePhoneNumber
+  | OutputValueEmailAddress
+  | OutputValueLocation;
 
 /** @internal */
-export const OutputValue19AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue19AttributeType
-> = z.nativeEnum(OutputValue19AttributeType);
+export const AttributeTypeTimestamp$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeTimestamp
+> = z.nativeEnum(AttributeTypeTimestamp);
 
 /** @internal */
-export const OutputValue19AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue19AttributeType
-> = OutputValue19AttributeType$inboundSchema;
+export const AttributeTypeTimestamp$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeTimestamp
+> = AttributeTypeTimestamp$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue19AttributeType$ {
-  /** @deprecated use `OutputValue19AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue19AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue19AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue19AttributeType$outboundSchema;
+export namespace AttributeTypeTimestamp$ {
+  /** @deprecated use `AttributeTypeTimestamp$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeTimestamp$inboundSchema;
+  /** @deprecated use `AttributeTypeTimestamp$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeTimestamp$outboundSchema;
 }
 
 /** @internal */
-export const Nineteen$inboundSchema: z.ZodType<
-  Nineteen,
+export const OutputValueTimestamp$inboundSchema: z.ZodType<
+  OutputValueTimestamp,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  attribute_type: OutputValue19AttributeType$inboundSchema,
+  attribute_type: AttributeTypeTimestamp$inboundSchema,
   value: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 }).transform((v) => {
   return remap$(v, {
@@ -1214,18 +1196,18 @@ export const Nineteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Nineteen$Outbound = {
+export type OutputValueTimestamp$Outbound = {
   attribute_type: string;
   value: string;
 };
 
 /** @internal */
-export const Nineteen$outboundSchema: z.ZodType<
-  Nineteen$Outbound,
+export const OutputValueTimestamp$outboundSchema: z.ZodType<
+  OutputValueTimestamp$Outbound,
   z.ZodTypeDef,
-  Nineteen
+  OutputValueTimestamp
 > = z.object({
-  attributeType: OutputValue19AttributeType$outboundSchema,
+  attributeType: AttributeTypeTimestamp$outboundSchema,
   value: z.date().transform(v => v.toISOString()),
 }).transform((v) => {
   return remap$(v, {
@@ -1237,58 +1219,62 @@ export const Nineteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Nineteen$ {
-  /** @deprecated use `Nineteen$inboundSchema` instead. */
-  export const inboundSchema = Nineteen$inboundSchema;
-  /** @deprecated use `Nineteen$outboundSchema` instead. */
-  export const outboundSchema = Nineteen$outboundSchema;
-  /** @deprecated use `Nineteen$Outbound` instead. */
-  export type Outbound = Nineteen$Outbound;
+export namespace OutputValueTimestamp$ {
+  /** @deprecated use `OutputValueTimestamp$inboundSchema` instead. */
+  export const inboundSchema = OutputValueTimestamp$inboundSchema;
+  /** @deprecated use `OutputValueTimestamp$outboundSchema` instead. */
+  export const outboundSchema = OutputValueTimestamp$outboundSchema;
+  /** @deprecated use `OutputValueTimestamp$Outbound` instead. */
+  export type Outbound = OutputValueTimestamp$Outbound;
 }
 
-export function nineteenToJSON(nineteen: Nineteen): string {
-  return JSON.stringify(Nineteen$outboundSchema.parse(nineteen));
+export function outputValueTimestampToJSON(
+  outputValueTimestamp: OutputValueTimestamp,
+): string {
+  return JSON.stringify(
+    OutputValueTimestamp$outboundSchema.parse(outputValueTimestamp),
+  );
 }
 
-export function nineteenFromJSON(
+export function outputValueTimestampFromJSON(
   jsonString: string,
-): SafeParseResult<Nineteen, SDKValidationError> {
+): SafeParseResult<OutputValueTimestamp, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Nineteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Nineteen' from JSON`,
+    (x) => OutputValueTimestamp$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueTimestamp' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue18AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue18AttributeType
-> = z.nativeEnum(OutputValue18AttributeType);
+export const AttributeTypeText$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeText
+> = z.nativeEnum(AttributeTypeText);
 
 /** @internal */
-export const OutputValue18AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue18AttributeType
-> = OutputValue18AttributeType$inboundSchema;
+export const AttributeTypeText$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeText
+> = AttributeTypeText$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue18AttributeType$ {
-  /** @deprecated use `OutputValue18AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue18AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue18AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue18AttributeType$outboundSchema;
+export namespace AttributeTypeText$ {
+  /** @deprecated use `AttributeTypeText$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeText$inboundSchema;
+  /** @deprecated use `AttributeTypeText$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeText$outboundSchema;
 }
 
 /** @internal */
-export const Eighteen$inboundSchema: z.ZodType<
-  Eighteen,
+export const OutputValueText$inboundSchema: z.ZodType<
+  OutputValueText,
   z.ZodTypeDef,
   unknown
 > = z.object({
   value: z.string(),
-  attribute_type: OutputValue18AttributeType$inboundSchema,
+  attribute_type: AttributeTypeText$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "attribute_type": "attributeType",
@@ -1296,19 +1282,19 @@ export const Eighteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Eighteen$Outbound = {
+export type OutputValueText$Outbound = {
   value: string;
   attribute_type: string;
 };
 
 /** @internal */
-export const Eighteen$outboundSchema: z.ZodType<
-  Eighteen$Outbound,
+export const OutputValueText$outboundSchema: z.ZodType<
+  OutputValueText$Outbound,
   z.ZodTypeDef,
-  Eighteen
+  OutputValueText
 > = z.object({
   value: z.string(),
-  attributeType: OutputValue18AttributeType$outboundSchema,
+  attributeType: AttributeTypeText$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1319,58 +1305,60 @@ export const Eighteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Eighteen$ {
-  /** @deprecated use `Eighteen$inboundSchema` instead. */
-  export const inboundSchema = Eighteen$inboundSchema;
-  /** @deprecated use `Eighteen$outboundSchema` instead. */
-  export const outboundSchema = Eighteen$outboundSchema;
-  /** @deprecated use `Eighteen$Outbound` instead. */
-  export type Outbound = Eighteen$Outbound;
+export namespace OutputValueText$ {
+  /** @deprecated use `OutputValueText$inboundSchema` instead. */
+  export const inboundSchema = OutputValueText$inboundSchema;
+  /** @deprecated use `OutputValueText$outboundSchema` instead. */
+  export const outboundSchema = OutputValueText$outboundSchema;
+  /** @deprecated use `OutputValueText$Outbound` instead. */
+  export type Outbound = OutputValueText$Outbound;
 }
 
-export function eighteenToJSON(eighteen: Eighteen): string {
-  return JSON.stringify(Eighteen$outboundSchema.parse(eighteen));
+export function outputValueTextToJSON(
+  outputValueText: OutputValueText,
+): string {
+  return JSON.stringify(OutputValueText$outboundSchema.parse(outputValueText));
 }
 
-export function eighteenFromJSON(
+export function outputValueTextFromJSON(
   jsonString: string,
-): SafeParseResult<Eighteen, SDKValidationError> {
+): SafeParseResult<OutputValueText, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Eighteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eighteen' from JSON`,
+    (x) => OutputValueText$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueText' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue17AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue17AttributeType
-> = z.nativeEnum(OutputValue17AttributeType);
+export const AttributeTypeSelect2$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeSelect2
+> = z.nativeEnum(AttributeTypeSelect2);
 
 /** @internal */
-export const OutputValue17AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue17AttributeType
-> = OutputValue17AttributeType$inboundSchema;
+export const AttributeTypeSelect2$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeSelect2
+> = AttributeTypeSelect2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue17AttributeType$ {
-  /** @deprecated use `OutputValue17AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue17AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue17AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue17AttributeType$outboundSchema;
+export namespace AttributeTypeSelect2$ {
+  /** @deprecated use `AttributeTypeSelect2$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeSelect2$inboundSchema;
+  /** @deprecated use `AttributeTypeSelect2$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeSelect2$outboundSchema;
 }
 
 /** @internal */
-export const Seventeen$inboundSchema: z.ZodType<
-  Seventeen,
+export const OutputValueSelect2$inboundSchema: z.ZodType<
+  OutputValueSelect2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   option: SelectOption$inboundSchema,
-  attribute_type: OutputValue17AttributeType$inboundSchema,
+  attribute_type: AttributeTypeSelect2$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "attribute_type": "attributeType",
@@ -1378,19 +1366,19 @@ export const Seventeen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Seventeen$Outbound = {
+export type OutputValueSelect2$Outbound = {
   option: SelectOption$Outbound;
   attribute_type: string;
 };
 
 /** @internal */
-export const Seventeen$outboundSchema: z.ZodType<
-  Seventeen$Outbound,
+export const OutputValueSelect2$outboundSchema: z.ZodType<
+  OutputValueSelect2$Outbound,
   z.ZodTypeDef,
-  Seventeen
+  OutputValueSelect2
 > = z.object({
   option: SelectOption$outboundSchema,
-  attributeType: OutputValue17AttributeType$outboundSchema,
+  attributeType: AttributeTypeSelect2$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1401,75 +1389,82 @@ export const Seventeen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Seventeen$ {
-  /** @deprecated use `Seventeen$inboundSchema` instead. */
-  export const inboundSchema = Seventeen$inboundSchema;
-  /** @deprecated use `Seventeen$outboundSchema` instead. */
-  export const outboundSchema = Seventeen$outboundSchema;
-  /** @deprecated use `Seventeen$Outbound` instead. */
-  export type Outbound = Seventeen$Outbound;
+export namespace OutputValueSelect2$ {
+  /** @deprecated use `OutputValueSelect2$inboundSchema` instead. */
+  export const inboundSchema = OutputValueSelect2$inboundSchema;
+  /** @deprecated use `OutputValueSelect2$outboundSchema` instead. */
+  export const outboundSchema = OutputValueSelect2$outboundSchema;
+  /** @deprecated use `OutputValueSelect2$Outbound` instead. */
+  export type Outbound = OutputValueSelect2$Outbound;
 }
 
-export function seventeenToJSON(seventeen: Seventeen): string {
-  return JSON.stringify(Seventeen$outboundSchema.parse(seventeen));
+export function outputValueSelect2ToJSON(
+  outputValueSelect2: OutputValueSelect2,
+): string {
+  return JSON.stringify(
+    OutputValueSelect2$outboundSchema.parse(outputValueSelect2),
+  );
 }
 
-export function seventeenFromJSON(
+export function outputValueSelect2FromJSON(
   jsonString: string,
-): SafeParseResult<Seventeen, SDKValidationError> {
+): SafeParseResult<OutputValueSelect2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Seventeen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seventeen' from JSON`,
+    (x) => OutputValueSelect2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueSelect2' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue16AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue16AttributeType
-> = z.nativeEnum(OutputValue16AttributeType);
+export const AttributeTypeSelect1$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeSelect1
+> = z.nativeEnum(AttributeTypeSelect1);
 
 /** @internal */
-export const OutputValue16AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue16AttributeType
-> = OutputValue16AttributeType$inboundSchema;
+export const AttributeTypeSelect1$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeSelect1
+> = AttributeTypeSelect1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue16AttributeType$ {
-  /** @deprecated use `OutputValue16AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue16AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue16AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue16AttributeType$outboundSchema;
+export namespace AttributeTypeSelect1$ {
+  /** @deprecated use `AttributeTypeSelect1$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeSelect1$inboundSchema;
+  /** @deprecated use `AttributeTypeSelect1$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeSelect1$outboundSchema;
 }
 
 /** @internal */
-export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
-  z.object({
-    option: z.string(),
-    attribute_type: OutputValue16AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "attribute_type": "attributeType",
-    });
+export const OutputValueSelect1$inboundSchema: z.ZodType<
+  OutputValueSelect1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  option: z.string(),
+  attribute_type: AttributeTypeSelect1$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Sixteen$Outbound = {
+export type OutputValueSelect1$Outbound = {
   option: string;
   attribute_type: string;
 };
 
 /** @internal */
-export const Sixteen$outboundSchema: z.ZodType<
-  Sixteen$Outbound,
+export const OutputValueSelect1$outboundSchema: z.ZodType<
+  OutputValueSelect1$Outbound,
   z.ZodTypeDef,
-  Sixteen
+  OutputValueSelect1
 > = z.object({
   option: z.string(),
-  attributeType: OutputValue16AttributeType$outboundSchema,
+  attributeType: AttributeTypeSelect1$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1480,75 +1475,82 @@ export const Sixteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Sixteen$ {
-  /** @deprecated use `Sixteen$inboundSchema` instead. */
-  export const inboundSchema = Sixteen$inboundSchema;
-  /** @deprecated use `Sixteen$outboundSchema` instead. */
-  export const outboundSchema = Sixteen$outboundSchema;
-  /** @deprecated use `Sixteen$Outbound` instead. */
-  export type Outbound = Sixteen$Outbound;
+export namespace OutputValueSelect1$ {
+  /** @deprecated use `OutputValueSelect1$inboundSchema` instead. */
+  export const inboundSchema = OutputValueSelect1$inboundSchema;
+  /** @deprecated use `OutputValueSelect1$outboundSchema` instead. */
+  export const outboundSchema = OutputValueSelect1$outboundSchema;
+  /** @deprecated use `OutputValueSelect1$Outbound` instead. */
+  export type Outbound = OutputValueSelect1$Outbound;
 }
 
-export function sixteenToJSON(sixteen: Sixteen): string {
-  return JSON.stringify(Sixteen$outboundSchema.parse(sixteen));
+export function outputValueSelect1ToJSON(
+  outputValueSelect1: OutputValueSelect1,
+): string {
+  return JSON.stringify(
+    OutputValueSelect1$outboundSchema.parse(outputValueSelect1),
+  );
 }
 
-export function sixteenFromJSON(
+export function outputValueSelect1FromJSON(
   jsonString: string,
-): SafeParseResult<Sixteen, SDKValidationError> {
+): SafeParseResult<OutputValueSelect1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Sixteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sixteen' from JSON`,
+    (x) => OutputValueSelect1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueSelect1' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue15AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue15AttributeType
-> = z.nativeEnum(OutputValue15AttributeType);
+export const AttributeTypeRating$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeRating
+> = z.nativeEnum(AttributeTypeRating);
 
 /** @internal */
-export const OutputValue15AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue15AttributeType
-> = OutputValue15AttributeType$inboundSchema;
+export const AttributeTypeRating$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeRating
+> = AttributeTypeRating$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue15AttributeType$ {
-  /** @deprecated use `OutputValue15AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue15AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue15AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue15AttributeType$outboundSchema;
+export namespace AttributeTypeRating$ {
+  /** @deprecated use `AttributeTypeRating$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeRating$inboundSchema;
+  /** @deprecated use `AttributeTypeRating$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeRating$outboundSchema;
 }
 
 /** @internal */
-export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
-  z.object({
-    value: z.number(),
-    attribute_type: OutputValue15AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "attribute_type": "attributeType",
-    });
+export const OutputValueRating$inboundSchema: z.ZodType<
+  OutputValueRating,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.number(),
+  attribute_type: AttributeTypeRating$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Fifteen$Outbound = {
+export type OutputValueRating$Outbound = {
   value: number;
   attribute_type: string;
 };
 
 /** @internal */
-export const Fifteen$outboundSchema: z.ZodType<
-  Fifteen$Outbound,
+export const OutputValueRating$outboundSchema: z.ZodType<
+  OutputValueRating$Outbound,
   z.ZodTypeDef,
-  Fifteen
+  OutputValueRating
 > = z.object({
   value: z.number(),
-  attributeType: OutputValue15AttributeType$outboundSchema,
+  attributeType: AttributeTypeRating$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1559,58 +1561,62 @@ export const Fifteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Fifteen$ {
-  /** @deprecated use `Fifteen$inboundSchema` instead. */
-  export const inboundSchema = Fifteen$inboundSchema;
-  /** @deprecated use `Fifteen$outboundSchema` instead. */
-  export const outboundSchema = Fifteen$outboundSchema;
-  /** @deprecated use `Fifteen$Outbound` instead. */
-  export type Outbound = Fifteen$Outbound;
+export namespace OutputValueRating$ {
+  /** @deprecated use `OutputValueRating$inboundSchema` instead. */
+  export const inboundSchema = OutputValueRating$inboundSchema;
+  /** @deprecated use `OutputValueRating$outboundSchema` instead. */
+  export const outboundSchema = OutputValueRating$outboundSchema;
+  /** @deprecated use `OutputValueRating$Outbound` instead. */
+  export type Outbound = OutputValueRating$Outbound;
 }
 
-export function fifteenToJSON(fifteen: Fifteen): string {
-  return JSON.stringify(Fifteen$outboundSchema.parse(fifteen));
+export function outputValueRatingToJSON(
+  outputValueRating: OutputValueRating,
+): string {
+  return JSON.stringify(
+    OutputValueRating$outboundSchema.parse(outputValueRating),
+  );
 }
 
-export function fifteenFromJSON(
+export function outputValueRatingFromJSON(
   jsonString: string,
-): SafeParseResult<Fifteen, SDKValidationError> {
+): SafeParseResult<OutputValueRating, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fifteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fifteen' from JSON`,
+    (x) => OutputValueRating$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueRating' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue14AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue14AttributeType
-> = z.nativeEnum(OutputValue14AttributeType);
+export const AttributeTypeStatus2$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeStatus2
+> = z.nativeEnum(AttributeTypeStatus2);
 
 /** @internal */
-export const OutputValue14AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue14AttributeType
-> = OutputValue14AttributeType$inboundSchema;
+export const AttributeTypeStatus2$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeStatus2
+> = AttributeTypeStatus2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue14AttributeType$ {
-  /** @deprecated use `OutputValue14AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue14AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue14AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue14AttributeType$outboundSchema;
+export namespace AttributeTypeStatus2$ {
+  /** @deprecated use `AttributeTypeStatus2$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeStatus2$inboundSchema;
+  /** @deprecated use `AttributeTypeStatus2$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeStatus2$outboundSchema;
 }
 
 /** @internal */
-export const Fourteen$inboundSchema: z.ZodType<
-  Fourteen,
+export const OutputValueStatus2$inboundSchema: z.ZodType<
+  OutputValueStatus2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: Status$inboundSchema,
-  attribute_type: OutputValue14AttributeType$inboundSchema,
+  attribute_type: AttributeTypeStatus2$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "attribute_type": "attributeType",
@@ -1618,19 +1624,19 @@ export const Fourteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Fourteen$Outbound = {
+export type OutputValueStatus2$Outbound = {
   status: Status$Outbound;
   attribute_type: string;
 };
 
 /** @internal */
-export const Fourteen$outboundSchema: z.ZodType<
-  Fourteen$Outbound,
+export const OutputValueStatus2$outboundSchema: z.ZodType<
+  OutputValueStatus2$Outbound,
   z.ZodTypeDef,
-  Fourteen
+  OutputValueStatus2
 > = z.object({
   status: Status$outboundSchema,
-  attributeType: OutputValue14AttributeType$outboundSchema,
+  attributeType: AttributeTypeStatus2$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1641,58 +1647,62 @@ export const Fourteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Fourteen$ {
-  /** @deprecated use `Fourteen$inboundSchema` instead. */
-  export const inboundSchema = Fourteen$inboundSchema;
-  /** @deprecated use `Fourteen$outboundSchema` instead. */
-  export const outboundSchema = Fourteen$outboundSchema;
-  /** @deprecated use `Fourteen$Outbound` instead. */
-  export type Outbound = Fourteen$Outbound;
+export namespace OutputValueStatus2$ {
+  /** @deprecated use `OutputValueStatus2$inboundSchema` instead. */
+  export const inboundSchema = OutputValueStatus2$inboundSchema;
+  /** @deprecated use `OutputValueStatus2$outboundSchema` instead. */
+  export const outboundSchema = OutputValueStatus2$outboundSchema;
+  /** @deprecated use `OutputValueStatus2$Outbound` instead. */
+  export type Outbound = OutputValueStatus2$Outbound;
 }
 
-export function fourteenToJSON(fourteen: Fourteen): string {
-  return JSON.stringify(Fourteen$outboundSchema.parse(fourteen));
+export function outputValueStatus2ToJSON(
+  outputValueStatus2: OutputValueStatus2,
+): string {
+  return JSON.stringify(
+    OutputValueStatus2$outboundSchema.parse(outputValueStatus2),
+  );
 }
 
-export function fourteenFromJSON(
+export function outputValueStatus2FromJSON(
   jsonString: string,
-): SafeParseResult<Fourteen, SDKValidationError> {
+): SafeParseResult<OutputValueStatus2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Fourteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fourteen' from JSON`,
+    (x) => OutputValueStatus2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueStatus2' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue13AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue13AttributeType
-> = z.nativeEnum(OutputValue13AttributeType);
+export const AttributeTypeStatus1$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeStatus1
+> = z.nativeEnum(AttributeTypeStatus1);
 
 /** @internal */
-export const OutputValue13AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue13AttributeType
-> = OutputValue13AttributeType$inboundSchema;
+export const AttributeTypeStatus1$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeStatus1
+> = AttributeTypeStatus1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue13AttributeType$ {
-  /** @deprecated use `OutputValue13AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue13AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue13AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue13AttributeType$outboundSchema;
+export namespace AttributeTypeStatus1$ {
+  /** @deprecated use `AttributeTypeStatus1$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeStatus1$inboundSchema;
+  /** @deprecated use `AttributeTypeStatus1$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeStatus1$outboundSchema;
 }
 
 /** @internal */
-export const Thirteen$inboundSchema: z.ZodType<
-  Thirteen,
+export const OutputValueStatus1$inboundSchema: z.ZodType<
+  OutputValueStatus1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   status: z.string(),
-  attribute_type: OutputValue13AttributeType$inboundSchema,
+  attribute_type: AttributeTypeStatus1$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "attribute_type": "attributeType",
@@ -1700,19 +1710,19 @@ export const Thirteen$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Thirteen$Outbound = {
+export type OutputValueStatus1$Outbound = {
   status: string;
   attribute_type: string;
 };
 
 /** @internal */
-export const Thirteen$outboundSchema: z.ZodType<
-  Thirteen$Outbound,
+export const OutputValueStatus1$outboundSchema: z.ZodType<
+  OutputValueStatus1$Outbound,
   z.ZodTypeDef,
-  Thirteen
+  OutputValueStatus1
 > = z.object({
   status: z.string(),
-  attributeType: OutputValue13AttributeType$outboundSchema,
+  attributeType: AttributeTypeStatus1$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -1723,89 +1733,96 @@ export const Thirteen$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Thirteen$ {
-  /** @deprecated use `Thirteen$inboundSchema` instead. */
-  export const inboundSchema = Thirteen$inboundSchema;
-  /** @deprecated use `Thirteen$outboundSchema` instead. */
-  export const outboundSchema = Thirteen$outboundSchema;
-  /** @deprecated use `Thirteen$Outbound` instead. */
-  export type Outbound = Thirteen$Outbound;
+export namespace OutputValueStatus1$ {
+  /** @deprecated use `OutputValueStatus1$inboundSchema` instead. */
+  export const inboundSchema = OutputValueStatus1$inboundSchema;
+  /** @deprecated use `OutputValueStatus1$outboundSchema` instead. */
+  export const outboundSchema = OutputValueStatus1$outboundSchema;
+  /** @deprecated use `OutputValueStatus1$Outbound` instead. */
+  export type Outbound = OutputValueStatus1$Outbound;
 }
 
-export function thirteenToJSON(thirteen: Thirteen): string {
-  return JSON.stringify(Thirteen$outboundSchema.parse(thirteen));
+export function outputValueStatus1ToJSON(
+  outputValueStatus1: OutputValueStatus1,
+): string {
+  return JSON.stringify(
+    OutputValueStatus1$outboundSchema.parse(outputValueStatus1),
+  );
 }
 
-export function thirteenFromJSON(
+export function outputValueStatus1FromJSON(
   jsonString: string,
-): SafeParseResult<Thirteen, SDKValidationError> {
+): SafeParseResult<OutputValueStatus1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Thirteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirteen' from JSON`,
+    (x) => OutputValueStatus1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueStatus1' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValueCountryCode$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValueCountryCode
-> = z.nativeEnum(OutputValueCountryCode);
+export const OutputValueCountryCode2$inboundSchema: z.ZodNativeEnum<
+  typeof OutputValueCountryCode2
+> = z.nativeEnum(OutputValueCountryCode2);
 
 /** @internal */
-export const OutputValueCountryCode$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValueCountryCode
-> = OutputValueCountryCode$inboundSchema;
+export const OutputValueCountryCode2$outboundSchema: z.ZodNativeEnum<
+  typeof OutputValueCountryCode2
+> = OutputValueCountryCode2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValueCountryCode$ {
-  /** @deprecated use `OutputValueCountryCode$inboundSchema` instead. */
-  export const inboundSchema = OutputValueCountryCode$inboundSchema;
-  /** @deprecated use `OutputValueCountryCode$outboundSchema` instead. */
-  export const outboundSchema = OutputValueCountryCode$outboundSchema;
+export namespace OutputValueCountryCode2$ {
+  /** @deprecated use `OutputValueCountryCode2$inboundSchema` instead. */
+  export const inboundSchema = OutputValueCountryCode2$inboundSchema;
+  /** @deprecated use `OutputValueCountryCode2$outboundSchema` instead. */
+  export const outboundSchema = OutputValueCountryCode2$outboundSchema;
 }
 
 /** @internal */
-export const OutputValue12AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue12AttributeType
-> = z.nativeEnum(OutputValue12AttributeType);
+export const AttributeTypePhoneNumber$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypePhoneNumber
+> = z.nativeEnum(AttributeTypePhoneNumber);
 
 /** @internal */
-export const OutputValue12AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue12AttributeType
-> = OutputValue12AttributeType$inboundSchema;
+export const AttributeTypePhoneNumber$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypePhoneNumber
+> = AttributeTypePhoneNumber$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue12AttributeType$ {
-  /** @deprecated use `OutputValue12AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue12AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue12AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue12AttributeType$outboundSchema;
+export namespace AttributeTypePhoneNumber$ {
+  /** @deprecated use `AttributeTypePhoneNumber$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypePhoneNumber$inboundSchema;
+  /** @deprecated use `AttributeTypePhoneNumber$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypePhoneNumber$outboundSchema;
 }
 
 /** @internal */
-export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
-  .object({
-    original_phone_number: z.string(),
-    country_code: OutputValueCountryCode$inboundSchema,
-    phone_number: z.string(),
-    attribute_type: OutputValue12AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "original_phone_number": "originalPhoneNumber",
-      "country_code": "countryCode",
-      "phone_number": "phoneNumber",
-      "attribute_type": "attributeType",
-    });
+export const OutputValuePhoneNumber$inboundSchema: z.ZodType<
+  OutputValuePhoneNumber,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  original_phone_number: z.string(),
+  country_code: OutputValueCountryCode2$inboundSchema,
+  phone_number: z.string(),
+  attribute_type: AttributeTypePhoneNumber$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "original_phone_number": "originalPhoneNumber",
+    "country_code": "countryCode",
+    "phone_number": "phoneNumber",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Twelve$Outbound = {
+export type OutputValuePhoneNumber$Outbound = {
   original_phone_number: string;
   country_code: string;
   phone_number: string;
@@ -1813,15 +1830,15 @@ export type Twelve$Outbound = {
 };
 
 /** @internal */
-export const Twelve$outboundSchema: z.ZodType<
-  Twelve$Outbound,
+export const OutputValuePhoneNumber$outboundSchema: z.ZodType<
+  OutputValuePhoneNumber$Outbound,
   z.ZodTypeDef,
-  Twelve
+  OutputValuePhoneNumber
 > = z.object({
   originalPhoneNumber: z.string(),
-  countryCode: OutputValueCountryCode$outboundSchema,
+  countryCode: OutputValueCountryCode2$outboundSchema,
   phoneNumber: z.string(),
-  attributeType: OutputValue12AttributeType$outboundSchema,
+  attributeType: AttributeTypePhoneNumber$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     originalPhoneNumber: "original_phone_number",
@@ -1835,68 +1852,75 @@ export const Twelve$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Twelve$ {
-  /** @deprecated use `Twelve$inboundSchema` instead. */
-  export const inboundSchema = Twelve$inboundSchema;
-  /** @deprecated use `Twelve$outboundSchema` instead. */
-  export const outboundSchema = Twelve$outboundSchema;
-  /** @deprecated use `Twelve$Outbound` instead. */
-  export type Outbound = Twelve$Outbound;
+export namespace OutputValuePhoneNumber$ {
+  /** @deprecated use `OutputValuePhoneNumber$inboundSchema` instead. */
+  export const inboundSchema = OutputValuePhoneNumber$inboundSchema;
+  /** @deprecated use `OutputValuePhoneNumber$outboundSchema` instead. */
+  export const outboundSchema = OutputValuePhoneNumber$outboundSchema;
+  /** @deprecated use `OutputValuePhoneNumber$Outbound` instead. */
+  export type Outbound = OutputValuePhoneNumber$Outbound;
 }
 
-export function twelveToJSON(twelve: Twelve): string {
-  return JSON.stringify(Twelve$outboundSchema.parse(twelve));
+export function outputValuePhoneNumberToJSON(
+  outputValuePhoneNumber: OutputValuePhoneNumber,
+): string {
+  return JSON.stringify(
+    OutputValuePhoneNumber$outboundSchema.parse(outputValuePhoneNumber),
+  );
 }
 
-export function twelveFromJSON(
+export function outputValuePhoneNumberFromJSON(
   jsonString: string,
-): SafeParseResult<Twelve, SDKValidationError> {
+): SafeParseResult<OutputValuePhoneNumber, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Twelve$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Twelve' from JSON`,
+    (x) => OutputValuePhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValuePhoneNumber' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue11AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue11AttributeType
-> = z.nativeEnum(OutputValue11AttributeType);
+export const AttributeTypePersonalName$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypePersonalName
+> = z.nativeEnum(AttributeTypePersonalName);
 
 /** @internal */
-export const OutputValue11AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue11AttributeType
-> = OutputValue11AttributeType$inboundSchema;
+export const AttributeTypePersonalName$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypePersonalName
+> = AttributeTypePersonalName$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue11AttributeType$ {
-  /** @deprecated use `OutputValue11AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue11AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue11AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue11AttributeType$outboundSchema;
+export namespace AttributeTypePersonalName$ {
+  /** @deprecated use `AttributeTypePersonalName$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypePersonalName$inboundSchema;
+  /** @deprecated use `AttributeTypePersonalName$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypePersonalName$outboundSchema;
 }
 
 /** @internal */
-export const Eleven$inboundSchema: z.ZodType<Eleven, z.ZodTypeDef, unknown> = z
-  .object({
-    first_name: z.string(),
-    last_name: z.string(),
-    full_name: z.string(),
-    attribute_type: OutputValue11AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "first_name": "firstName",
-      "last_name": "lastName",
-      "full_name": "fullName",
-      "attribute_type": "attributeType",
-    });
+export const OutputValuePersonalName$inboundSchema: z.ZodType<
+  OutputValuePersonalName,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  first_name: z.string(),
+  last_name: z.string(),
+  full_name: z.string(),
+  attribute_type: AttributeTypePersonalName$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "first_name": "firstName",
+    "last_name": "lastName",
+    "full_name": "fullName",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Eleven$Outbound = {
+export type OutputValuePersonalName$Outbound = {
   first_name: string;
   last_name: string;
   full_name: string;
@@ -1904,15 +1928,15 @@ export type Eleven$Outbound = {
 };
 
 /** @internal */
-export const Eleven$outboundSchema: z.ZodType<
-  Eleven$Outbound,
+export const OutputValuePersonalName$outboundSchema: z.ZodType<
+  OutputValuePersonalName$Outbound,
   z.ZodTypeDef,
-  Eleven
+  OutputValuePersonalName
 > = z.object({
   firstName: z.string(),
   lastName: z.string(),
   fullName: z.string(),
-  attributeType: OutputValue11AttributeType$outboundSchema,
+  attributeType: AttributeTypePersonalName$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
@@ -1926,172 +1950,191 @@ export const Eleven$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Eleven$ {
-  /** @deprecated use `Eleven$inboundSchema` instead. */
-  export const inboundSchema = Eleven$inboundSchema;
-  /** @deprecated use `Eleven$outboundSchema` instead. */
-  export const outboundSchema = Eleven$outboundSchema;
-  /** @deprecated use `Eleven$Outbound` instead. */
-  export type Outbound = Eleven$Outbound;
+export namespace OutputValuePersonalName$ {
+  /** @deprecated use `OutputValuePersonalName$inboundSchema` instead. */
+  export const inboundSchema = OutputValuePersonalName$inboundSchema;
+  /** @deprecated use `OutputValuePersonalName$outboundSchema` instead. */
+  export const outboundSchema = OutputValuePersonalName$outboundSchema;
+  /** @deprecated use `OutputValuePersonalName$Outbound` instead. */
+  export type Outbound = OutputValuePersonalName$Outbound;
 }
 
-export function elevenToJSON(eleven: Eleven): string {
-  return JSON.stringify(Eleven$outboundSchema.parse(eleven));
+export function outputValuePersonalNameToJSON(
+  outputValuePersonalName: OutputValuePersonalName,
+): string {
+  return JSON.stringify(
+    OutputValuePersonalName$outboundSchema.parse(outputValuePersonalName),
+  );
 }
 
-export function elevenFromJSON(
+export function outputValuePersonalNameFromJSON(
   jsonString: string,
-): SafeParseResult<Eleven, SDKValidationError> {
+): SafeParseResult<OutputValuePersonalName, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Eleven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eleven' from JSON`,
+    (x) => OutputValuePersonalName$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValuePersonalName' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue10AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue10AttributeType
-> = z.nativeEnum(OutputValue10AttributeType);
+export const AttributeTypeNumber$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeNumber
+> = z.nativeEnum(AttributeTypeNumber);
 
 /** @internal */
-export const OutputValue10AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue10AttributeType
-> = OutputValue10AttributeType$inboundSchema;
+export const AttributeTypeNumber$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeNumber
+> = AttributeTypeNumber$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue10AttributeType$ {
-  /** @deprecated use `OutputValue10AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue10AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue10AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue10AttributeType$outboundSchema;
+export namespace AttributeTypeNumber$ {
+  /** @deprecated use `AttributeTypeNumber$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeNumber$inboundSchema;
+  /** @deprecated use `AttributeTypeNumber$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeNumber$outboundSchema;
 }
 
 /** @internal */
-export const Ten$inboundSchema: z.ZodType<Ten, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.number(),
-    attribute_type: OutputValue10AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "attribute_type": "attributeType",
-    });
+export const OutputValueNumber$inboundSchema: z.ZodType<
+  OutputValueNumber,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.number(),
+  attribute_type: AttributeTypeNumber$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Ten$Outbound = {
+export type OutputValueNumber$Outbound = {
   value: number;
   attribute_type: string;
 };
 
 /** @internal */
-export const Ten$outboundSchema: z.ZodType<Ten$Outbound, z.ZodTypeDef, Ten> = z
-  .object({
-    value: z.number(),
-    attributeType: OutputValue10AttributeType$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      attributeType: "attribute_type",
-    });
+export const OutputValueNumber$outboundSchema: z.ZodType<
+  OutputValueNumber$Outbound,
+  z.ZodTypeDef,
+  OutputValueNumber
+> = z.object({
+  value: z.number(),
+  attributeType: AttributeTypeNumber$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    attributeType: "attribute_type",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Ten$ {
-  /** @deprecated use `Ten$inboundSchema` instead. */
-  export const inboundSchema = Ten$inboundSchema;
-  /** @deprecated use `Ten$outboundSchema` instead. */
-  export const outboundSchema = Ten$outboundSchema;
-  /** @deprecated use `Ten$Outbound` instead. */
-  export type Outbound = Ten$Outbound;
+export namespace OutputValueNumber$ {
+  /** @deprecated use `OutputValueNumber$inboundSchema` instead. */
+  export const inboundSchema = OutputValueNumber$inboundSchema;
+  /** @deprecated use `OutputValueNumber$outboundSchema` instead. */
+  export const outboundSchema = OutputValueNumber$outboundSchema;
+  /** @deprecated use `OutputValueNumber$Outbound` instead. */
+  export type Outbound = OutputValueNumber$Outbound;
 }
 
-export function tenToJSON(ten: Ten): string {
-  return JSON.stringify(Ten$outboundSchema.parse(ten));
+export function outputValueNumberToJSON(
+  outputValueNumber: OutputValueNumber,
+): string {
+  return JSON.stringify(
+    OutputValueNumber$outboundSchema.parse(outputValueNumber),
+  );
 }
 
-export function tenFromJSON(
+export function outputValueNumberFromJSON(
   jsonString: string,
-): SafeParseResult<Ten, SDKValidationError> {
+): SafeParseResult<OutputValueNumber, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Ten$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Ten' from JSON`,
+    (x) => OutputValueNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueNumber' from JSON`,
   );
 }
 
 /** @internal */
-export const CountryCode$inboundSchema: z.ZodNativeEnum<typeof CountryCode> = z
-  .nativeEnum(CountryCode);
+export const OutputValueCountryCode1$inboundSchema: z.ZodNativeEnum<
+  typeof OutputValueCountryCode1
+> = z.nativeEnum(OutputValueCountryCode1);
 
 /** @internal */
-export const CountryCode$outboundSchema: z.ZodNativeEnum<typeof CountryCode> =
-  CountryCode$inboundSchema;
+export const OutputValueCountryCode1$outboundSchema: z.ZodNativeEnum<
+  typeof OutputValueCountryCode1
+> = OutputValueCountryCode1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CountryCode$ {
-  /** @deprecated use `CountryCode$inboundSchema` instead. */
-  export const inboundSchema = CountryCode$inboundSchema;
-  /** @deprecated use `CountryCode$outboundSchema` instead. */
-  export const outboundSchema = CountryCode$outboundSchema;
+export namespace OutputValueCountryCode1$ {
+  /** @deprecated use `OutputValueCountryCode1$inboundSchema` instead. */
+  export const inboundSchema = OutputValueCountryCode1$inboundSchema;
+  /** @deprecated use `OutputValueCountryCode1$outboundSchema` instead. */
+  export const outboundSchema = OutputValueCountryCode1$outboundSchema;
 }
 
 /** @internal */
-export const OutputValue9AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue9AttributeType
-> = z.nativeEnum(OutputValue9AttributeType);
+export const AttributeTypeLocation$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeLocation
+> = z.nativeEnum(AttributeTypeLocation);
 
 /** @internal */
-export const OutputValue9AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue9AttributeType
-> = OutputValue9AttributeType$inboundSchema;
+export const AttributeTypeLocation$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeLocation
+> = AttributeTypeLocation$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue9AttributeType$ {
-  /** @deprecated use `OutputValue9AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue9AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue9AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue9AttributeType$outboundSchema;
+export namespace AttributeTypeLocation$ {
+  /** @deprecated use `AttributeTypeLocation$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeLocation$inboundSchema;
+  /** @deprecated use `AttributeTypeLocation$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeLocation$outboundSchema;
 }
 
 /** @internal */
-export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
-  .object({
-    line_1: z.nullable(z.string()),
-    line_2: z.nullable(z.string()),
-    line_3: z.nullable(z.string()),
-    line_4: z.nullable(z.string()),
-    locality: z.nullable(z.string()),
-    region: z.nullable(z.string()),
-    postcode: z.nullable(z.string()),
-    country_code: z.nullable(CountryCode$inboundSchema),
-    latitude: z.nullable(z.string()),
-    longitude: z.nullable(z.string()),
-    attribute_type: OutputValue9AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "line_1": "line1",
-      "line_2": "line2",
-      "line_3": "line3",
-      "line_4": "line4",
-      "country_code": "countryCode",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueLocation$inboundSchema: z.ZodType<
+  OutputValueLocation,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  line_1: z.nullable(z.string()),
+  line_2: z.nullable(z.string()),
+  line_3: z.nullable(z.string()),
+  line_4: z.nullable(z.string()),
+  locality: z.nullable(z.string()),
+  region: z.nullable(z.string()),
+  postcode: z.nullable(z.string()),
+  country_code: z.nullable(OutputValueCountryCode1$inboundSchema),
+  latitude: z.nullable(z.string()),
+  longitude: z.nullable(z.string()),
+  attribute_type: AttributeTypeLocation$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "line_1": "line1",
+    "line_2": "line2",
+    "line_3": "line3",
+    "line_4": "line4",
+    "country_code": "countryCode",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Nine$Outbound = {
+export type OutputValueLocation$Outbound = {
   line_1: string | null;
   line_2: string | null;
   line_3: string | null;
@@ -2106,76 +2149,83 @@ export type Nine$Outbound = {
 };
 
 /** @internal */
-export const Nine$outboundSchema: z.ZodType<Nine$Outbound, z.ZodTypeDef, Nine> =
-  z.object({
-    line1: z.nullable(z.string()),
-    line2: z.nullable(z.string()),
-    line3: z.nullable(z.string()),
-    line4: z.nullable(z.string()),
-    locality: z.nullable(z.string()),
-    region: z.nullable(z.string()),
-    postcode: z.nullable(z.string()),
-    countryCode: z.nullable(CountryCode$outboundSchema),
-    latitude: z.nullable(z.string()),
-    longitude: z.nullable(z.string()),
-    attributeType: OutputValue9AttributeType$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      line1: "line_1",
-      line2: "line_2",
-      line3: "line_3",
-      line4: "line_4",
-      countryCode: "country_code",
-      attributeType: "attribute_type",
-    });
+export const OutputValueLocation$outboundSchema: z.ZodType<
+  OutputValueLocation$Outbound,
+  z.ZodTypeDef,
+  OutputValueLocation
+> = z.object({
+  line1: z.nullable(z.string()),
+  line2: z.nullable(z.string()),
+  line3: z.nullable(z.string()),
+  line4: z.nullable(z.string()),
+  locality: z.nullable(z.string()),
+  region: z.nullable(z.string()),
+  postcode: z.nullable(z.string()),
+  countryCode: z.nullable(OutputValueCountryCode1$outboundSchema),
+  latitude: z.nullable(z.string()),
+  longitude: z.nullable(z.string()),
+  attributeType: AttributeTypeLocation$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    line1: "line_1",
+    line2: "line_2",
+    line3: "line_3",
+    line4: "line_4",
+    countryCode: "country_code",
+    attributeType: "attribute_type",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Nine$ {
-  /** @deprecated use `Nine$inboundSchema` instead. */
-  export const inboundSchema = Nine$inboundSchema;
-  /** @deprecated use `Nine$outboundSchema` instead. */
-  export const outboundSchema = Nine$outboundSchema;
-  /** @deprecated use `Nine$Outbound` instead. */
-  export type Outbound = Nine$Outbound;
+export namespace OutputValueLocation$ {
+  /** @deprecated use `OutputValueLocation$inboundSchema` instead. */
+  export const inboundSchema = OutputValueLocation$inboundSchema;
+  /** @deprecated use `OutputValueLocation$outboundSchema` instead. */
+  export const outboundSchema = OutputValueLocation$outboundSchema;
+  /** @deprecated use `OutputValueLocation$Outbound` instead. */
+  export type Outbound = OutputValueLocation$Outbound;
 }
 
-export function nineToJSON(nine: Nine): string {
-  return JSON.stringify(Nine$outboundSchema.parse(nine));
+export function outputValueLocationToJSON(
+  outputValueLocation: OutputValueLocation,
+): string {
+  return JSON.stringify(
+    OutputValueLocation$outboundSchema.parse(outputValueLocation),
+  );
 }
 
-export function nineFromJSON(
+export function outputValueLocationFromJSON(
   jsonString: string,
-): SafeParseResult<Nine, SDKValidationError> {
+): SafeParseResult<OutputValueLocation, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Nine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Nine' from JSON`,
+    (x) => OutputValueLocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueLocation' from JSON`,
   );
 }
 
 /** @internal */
-export const InteractionType$inboundSchema: z.ZodNativeEnum<
-  typeof InteractionType
-> = z.nativeEnum(InteractionType);
+export const OutputValueInteractionType$inboundSchema: z.ZodNativeEnum<
+  typeof OutputValueInteractionType
+> = z.nativeEnum(OutputValueInteractionType);
 
 /** @internal */
-export const InteractionType$outboundSchema: z.ZodNativeEnum<
-  typeof InteractionType
-> = InteractionType$inboundSchema;
+export const OutputValueInteractionType$outboundSchema: z.ZodNativeEnum<
+  typeof OutputValueInteractionType
+> = OutputValueInteractionType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace InteractionType$ {
-  /** @deprecated use `InteractionType$inboundSchema` instead. */
-  export const inboundSchema = InteractionType$inboundSchema;
-  /** @deprecated use `InteractionType$outboundSchema` instead. */
-  export const outboundSchema = InteractionType$outboundSchema;
+export namespace OutputValueInteractionType$ {
+  /** @deprecated use `OutputValueInteractionType$inboundSchema` instead. */
+  export const inboundSchema = OutputValueInteractionType$inboundSchema;
+  /** @deprecated use `OutputValueInteractionType$outboundSchema` instead. */
+  export const outboundSchema = OutputValueInteractionType$outboundSchema;
 }
 
 /** @internal */
@@ -2200,8 +2250,8 @@ export namespace OutputValueType$ {
 }
 
 /** @internal */
-export const OwnerActor$inboundSchema: z.ZodType<
-  OwnerActor,
+export const OutputValueOwnerActor$inboundSchema: z.ZodType<
+  OutputValueOwnerActor,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2210,16 +2260,16 @@ export const OwnerActor$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OwnerActor$Outbound = {
+export type OutputValueOwnerActor$Outbound = {
   id?: string | null | undefined;
   type?: string | null | undefined;
 };
 
 /** @internal */
-export const OwnerActor$outboundSchema: z.ZodType<
-  OwnerActor$Outbound,
+export const OutputValueOwnerActor$outboundSchema: z.ZodType<
+  OutputValueOwnerActor$Outbound,
   z.ZodTypeDef,
-  OwnerActor
+  OutputValueOwnerActor
 > = z.object({
   id: z.nullable(z.string()).optional(),
   type: z.nullable(OutputValueType$outboundSchema).optional(),
@@ -2229,86 +2279,93 @@ export const OwnerActor$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OwnerActor$ {
-  /** @deprecated use `OwnerActor$inboundSchema` instead. */
-  export const inboundSchema = OwnerActor$inboundSchema;
-  /** @deprecated use `OwnerActor$outboundSchema` instead. */
-  export const outboundSchema = OwnerActor$outboundSchema;
-  /** @deprecated use `OwnerActor$Outbound` instead. */
-  export type Outbound = OwnerActor$Outbound;
+export namespace OutputValueOwnerActor$ {
+  /** @deprecated use `OutputValueOwnerActor$inboundSchema` instead. */
+  export const inboundSchema = OutputValueOwnerActor$inboundSchema;
+  /** @deprecated use `OutputValueOwnerActor$outboundSchema` instead. */
+  export const outboundSchema = OutputValueOwnerActor$outboundSchema;
+  /** @deprecated use `OutputValueOwnerActor$Outbound` instead. */
+  export type Outbound = OutputValueOwnerActor$Outbound;
 }
 
-export function ownerActorToJSON(ownerActor: OwnerActor): string {
-  return JSON.stringify(OwnerActor$outboundSchema.parse(ownerActor));
+export function outputValueOwnerActorToJSON(
+  outputValueOwnerActor: OutputValueOwnerActor,
+): string {
+  return JSON.stringify(
+    OutputValueOwnerActor$outboundSchema.parse(outputValueOwnerActor),
+  );
 }
 
-export function ownerActorFromJSON(
+export function outputValueOwnerActorFromJSON(
   jsonString: string,
-): SafeParseResult<OwnerActor, SDKValidationError> {
+): SafeParseResult<OutputValueOwnerActor, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OwnerActor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OwnerActor' from JSON`,
+    (x) => OutputValueOwnerActor$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueOwnerActor' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue8AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue8AttributeType
-> = z.nativeEnum(OutputValue8AttributeType);
+export const AttributeTypeInteraction$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeInteraction
+> = z.nativeEnum(AttributeTypeInteraction);
 
 /** @internal */
-export const OutputValue8AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue8AttributeType
-> = OutputValue8AttributeType$inboundSchema;
+export const AttributeTypeInteraction$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeInteraction
+> = AttributeTypeInteraction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue8AttributeType$ {
-  /** @deprecated use `OutputValue8AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue8AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue8AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue8AttributeType$outboundSchema;
+export namespace AttributeTypeInteraction$ {
+  /** @deprecated use `AttributeTypeInteraction$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeInteraction$inboundSchema;
+  /** @deprecated use `AttributeTypeInteraction$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeInteraction$outboundSchema;
 }
 
 /** @internal */
-export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
-  .object({
-    interaction_type: InteractionType$inboundSchema,
-    interacted_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    owner_actor: z.lazy(() => OwnerActor$inboundSchema),
-    attribute_type: OutputValue8AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "interaction_type": "interactionType",
-      "interacted_at": "interactedAt",
-      "owner_actor": "ownerActor",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueInteraction$inboundSchema: z.ZodType<
+  OutputValueInteraction,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  interaction_type: OutputValueInteractionType$inboundSchema,
+  interacted_at: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ),
+  owner_actor: z.lazy(() => OutputValueOwnerActor$inboundSchema),
+  attribute_type: AttributeTypeInteraction$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "interaction_type": "interactionType",
+    "interacted_at": "interactedAt",
+    "owner_actor": "ownerActor",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Eight$Outbound = {
+export type OutputValueInteraction$Outbound = {
   interaction_type: string;
   interacted_at: string;
-  owner_actor: OwnerActor$Outbound;
+  owner_actor: OutputValueOwnerActor$Outbound;
   attribute_type: string;
 };
 
 /** @internal */
-export const Eight$outboundSchema: z.ZodType<
-  Eight$Outbound,
+export const OutputValueInteraction$outboundSchema: z.ZodType<
+  OutputValueInteraction$Outbound,
   z.ZodTypeDef,
-  Eight
+  OutputValueInteraction
 > = z.object({
-  interactionType: InteractionType$outboundSchema,
+  interactionType: OutputValueInteractionType$outboundSchema,
   interactedAt: z.date().transform(v => v.toISOString()),
-  ownerActor: z.lazy(() => OwnerActor$outboundSchema),
-  attributeType: OutputValue8AttributeType$outboundSchema,
+  ownerActor: z.lazy(() => OutputValueOwnerActor$outboundSchema),
+  attributeType: AttributeTypeInteraction$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     interactionType: "interaction_type",
@@ -2322,80 +2379,87 @@ export const Eight$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Eight$ {
-  /** @deprecated use `Eight$inboundSchema` instead. */
-  export const inboundSchema = Eight$inboundSchema;
-  /** @deprecated use `Eight$outboundSchema` instead. */
-  export const outboundSchema = Eight$outboundSchema;
-  /** @deprecated use `Eight$Outbound` instead. */
-  export type Outbound = Eight$Outbound;
+export namespace OutputValueInteraction$ {
+  /** @deprecated use `OutputValueInteraction$inboundSchema` instead. */
+  export const inboundSchema = OutputValueInteraction$inboundSchema;
+  /** @deprecated use `OutputValueInteraction$outboundSchema` instead. */
+  export const outboundSchema = OutputValueInteraction$outboundSchema;
+  /** @deprecated use `OutputValueInteraction$Outbound` instead. */
+  export type Outbound = OutputValueInteraction$Outbound;
 }
 
-export function eightToJSON(eight: Eight): string {
-  return JSON.stringify(Eight$outboundSchema.parse(eight));
+export function outputValueInteractionToJSON(
+  outputValueInteraction: OutputValueInteraction,
+): string {
+  return JSON.stringify(
+    OutputValueInteraction$outboundSchema.parse(outputValueInteraction),
+  );
 }
 
-export function eightFromJSON(
+export function outputValueInteractionFromJSON(
   jsonString: string,
-): SafeParseResult<Eight, SDKValidationError> {
+): SafeParseResult<OutputValueInteraction, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Eight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eight' from JSON`,
+    (x) => OutputValueInteraction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueInteraction' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue7AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue7AttributeType
-> = z.nativeEnum(OutputValue7AttributeType);
+export const AttributeTypeRecordReference$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeRecordReference
+> = z.nativeEnum(AttributeTypeRecordReference);
 
 /** @internal */
-export const OutputValue7AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue7AttributeType
-> = OutputValue7AttributeType$inboundSchema;
+export const AttributeTypeRecordReference$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeRecordReference
+> = AttributeTypeRecordReference$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue7AttributeType$ {
-  /** @deprecated use `OutputValue7AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue7AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue7AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue7AttributeType$outboundSchema;
+export namespace AttributeTypeRecordReference$ {
+  /** @deprecated use `AttributeTypeRecordReference$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeRecordReference$inboundSchema;
+  /** @deprecated use `AttributeTypeRecordReference$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeRecordReference$outboundSchema;
 }
 
 /** @internal */
-export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
-  .object({
-    target_object: z.string(),
-    target_record_id: z.string(),
-    attribute_type: OutputValue7AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "target_object": "targetObject",
-      "target_record_id": "targetRecordId",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueRecordReference$inboundSchema: z.ZodType<
+  OutputValueRecordReference,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  target_object: z.string(),
+  target_record_id: z.string(),
+  attribute_type: AttributeTypeRecordReference$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "target_object": "targetObject",
+    "target_record_id": "targetRecordId",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Seven$Outbound = {
+export type OutputValueRecordReference$Outbound = {
   target_object: string;
   target_record_id: string;
   attribute_type: string;
 };
 
 /** @internal */
-export const Seven$outboundSchema: z.ZodType<
-  Seven$Outbound,
+export const OutputValueRecordReference$outboundSchema: z.ZodType<
+  OutputValueRecordReference$Outbound,
   z.ZodTypeDef,
-  Seven
+  OutputValueRecordReference
 > = z.object({
   targetObject: z.string(),
   targetRecordId: z.string(),
-  attributeType: OutputValue7AttributeType$outboundSchema,
+  attributeType: AttributeTypeRecordReference$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     targetObject: "target_object",
@@ -2408,72 +2472,79 @@ export const Seven$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Seven$ {
-  /** @deprecated use `Seven$inboundSchema` instead. */
-  export const inboundSchema = Seven$inboundSchema;
-  /** @deprecated use `Seven$outboundSchema` instead. */
-  export const outboundSchema = Seven$outboundSchema;
-  /** @deprecated use `Seven$Outbound` instead. */
-  export type Outbound = Seven$Outbound;
+export namespace OutputValueRecordReference$ {
+  /** @deprecated use `OutputValueRecordReference$inboundSchema` instead. */
+  export const inboundSchema = OutputValueRecordReference$inboundSchema;
+  /** @deprecated use `OutputValueRecordReference$outboundSchema` instead. */
+  export const outboundSchema = OutputValueRecordReference$outboundSchema;
+  /** @deprecated use `OutputValueRecordReference$Outbound` instead. */
+  export type Outbound = OutputValueRecordReference$Outbound;
 }
 
-export function sevenToJSON(seven: Seven): string {
-  return JSON.stringify(Seven$outboundSchema.parse(seven));
+export function outputValueRecordReferenceToJSON(
+  outputValueRecordReference: OutputValueRecordReference,
+): string {
+  return JSON.stringify(
+    OutputValueRecordReference$outboundSchema.parse(outputValueRecordReference),
+  );
 }
 
-export function sevenFromJSON(
+export function outputValueRecordReferenceFromJSON(
   jsonString: string,
-): SafeParseResult<Seven, SDKValidationError> {
+): SafeParseResult<OutputValueRecordReference, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Seven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seven' from JSON`,
+    (x) => OutputValueRecordReference$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueRecordReference' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue6AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue6AttributeType
-> = z.nativeEnum(OutputValue6AttributeType);
+export const AttributeTypeEmailAddress$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeEmailAddress
+> = z.nativeEnum(AttributeTypeEmailAddress);
 
 /** @internal */
-export const OutputValue6AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue6AttributeType
-> = OutputValue6AttributeType$inboundSchema;
+export const AttributeTypeEmailAddress$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeEmailAddress
+> = AttributeTypeEmailAddress$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue6AttributeType$ {
-  /** @deprecated use `OutputValue6AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue6AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue6AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue6AttributeType$outboundSchema;
+export namespace AttributeTypeEmailAddress$ {
+  /** @deprecated use `AttributeTypeEmailAddress$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeEmailAddress$inboundSchema;
+  /** @deprecated use `AttributeTypeEmailAddress$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeEmailAddress$outboundSchema;
 }
 
 /** @internal */
-export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
-  .object({
-    original_email_address: z.string(),
-    email_address: z.string(),
-    email_domain: z.string(),
-    email_root_domain: z.string(),
-    email_local_specifier: z.string(),
-    attribute_type: OutputValue6AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "original_email_address": "originalEmailAddress",
-      "email_address": "emailAddress",
-      "email_domain": "emailDomain",
-      "email_root_domain": "emailRootDomain",
-      "email_local_specifier": "emailLocalSpecifier",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueEmailAddress$inboundSchema: z.ZodType<
+  OutputValueEmailAddress,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  original_email_address: z.string(),
+  email_address: z.string(),
+  email_domain: z.string(),
+  email_root_domain: z.string(),
+  email_local_specifier: z.string(),
+  attribute_type: AttributeTypeEmailAddress$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "original_email_address": "originalEmailAddress",
+    "email_address": "emailAddress",
+    "email_domain": "emailDomain",
+    "email_root_domain": "emailRootDomain",
+    "email_local_specifier": "emailLocalSpecifier",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Six$Outbound = {
+export type OutputValueEmailAddress$Outbound = {
   original_email_address: string;
   email_address: string;
   email_domain: string;
@@ -2483,206 +2554,231 @@ export type Six$Outbound = {
 };
 
 /** @internal */
-export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
-  .object({
-    originalEmailAddress: z.string(),
-    emailAddress: z.string(),
-    emailDomain: z.string(),
-    emailRootDomain: z.string(),
-    emailLocalSpecifier: z.string(),
-    attributeType: OutputValue6AttributeType$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      originalEmailAddress: "original_email_address",
-      emailAddress: "email_address",
-      emailDomain: "email_domain",
-      emailRootDomain: "email_root_domain",
-      emailLocalSpecifier: "email_local_specifier",
-      attributeType: "attribute_type",
-    });
+export const OutputValueEmailAddress$outboundSchema: z.ZodType<
+  OutputValueEmailAddress$Outbound,
+  z.ZodTypeDef,
+  OutputValueEmailAddress
+> = z.object({
+  originalEmailAddress: z.string(),
+  emailAddress: z.string(),
+  emailDomain: z.string(),
+  emailRootDomain: z.string(),
+  emailLocalSpecifier: z.string(),
+  attributeType: AttributeTypeEmailAddress$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    originalEmailAddress: "original_email_address",
+    emailAddress: "email_address",
+    emailDomain: "email_domain",
+    emailRootDomain: "email_root_domain",
+    emailLocalSpecifier: "email_local_specifier",
+    attributeType: "attribute_type",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Six$ {
-  /** @deprecated use `Six$inboundSchema` instead. */
-  export const inboundSchema = Six$inboundSchema;
-  /** @deprecated use `Six$outboundSchema` instead. */
-  export const outboundSchema = Six$outboundSchema;
-  /** @deprecated use `Six$Outbound` instead. */
-  export type Outbound = Six$Outbound;
+export namespace OutputValueEmailAddress$ {
+  /** @deprecated use `OutputValueEmailAddress$inboundSchema` instead. */
+  export const inboundSchema = OutputValueEmailAddress$inboundSchema;
+  /** @deprecated use `OutputValueEmailAddress$outboundSchema` instead. */
+  export const outboundSchema = OutputValueEmailAddress$outboundSchema;
+  /** @deprecated use `OutputValueEmailAddress$Outbound` instead. */
+  export type Outbound = OutputValueEmailAddress$Outbound;
 }
 
-export function sixToJSON(six: Six): string {
-  return JSON.stringify(Six$outboundSchema.parse(six));
+export function outputValueEmailAddressToJSON(
+  outputValueEmailAddress: OutputValueEmailAddress,
+): string {
+  return JSON.stringify(
+    OutputValueEmailAddress$outboundSchema.parse(outputValueEmailAddress),
+  );
 }
 
-export function sixFromJSON(
+export function outputValueEmailAddressFromJSON(
   jsonString: string,
-): SafeParseResult<Six, SDKValidationError> {
+): SafeParseResult<OutputValueEmailAddress, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Six$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Six' from JSON`,
+    (x) => OutputValueEmailAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueEmailAddress' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue5AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue5AttributeType
-> = z.nativeEnum(OutputValue5AttributeType);
+export const AttributeTypeDomain$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeDomain
+> = z.nativeEnum(AttributeTypeDomain);
 
 /** @internal */
-export const OutputValue5AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue5AttributeType
-> = OutputValue5AttributeType$inboundSchema;
+export const AttributeTypeDomain$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeDomain
+> = AttributeTypeDomain$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue5AttributeType$ {
-  /** @deprecated use `OutputValue5AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue5AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue5AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue5AttributeType$outboundSchema;
+export namespace AttributeTypeDomain$ {
+  /** @deprecated use `AttributeTypeDomain$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeDomain$inboundSchema;
+  /** @deprecated use `AttributeTypeDomain$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeDomain$outboundSchema;
 }
 
 /** @internal */
-export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
-  .object({
-    domain: z.string(),
-    root_domain: z.string(),
-    attribute_type: OutputValue5AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "root_domain": "rootDomain",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueDomain$inboundSchema: z.ZodType<
+  OutputValueDomain,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domain: z.string(),
+  root_domain: z.string(),
+  attribute_type: AttributeTypeDomain$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "root_domain": "rootDomain",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Five$Outbound = {
+export type OutputValueDomain$Outbound = {
   domain: string;
   root_domain: string;
   attribute_type: string;
 };
 
 /** @internal */
-export const Five$outboundSchema: z.ZodType<Five$Outbound, z.ZodTypeDef, Five> =
-  z.object({
-    domain: z.string(),
-    rootDomain: z.string(),
-    attributeType: OutputValue5AttributeType$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      rootDomain: "root_domain",
-      attributeType: "attribute_type",
-    });
+export const OutputValueDomain$outboundSchema: z.ZodType<
+  OutputValueDomain$Outbound,
+  z.ZodTypeDef,
+  OutputValueDomain
+> = z.object({
+  domain: z.string(),
+  rootDomain: z.string(),
+  attributeType: AttributeTypeDomain$outboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    rootDomain: "root_domain",
+    attributeType: "attribute_type",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Five$ {
-  /** @deprecated use `Five$inboundSchema` instead. */
-  export const inboundSchema = Five$inboundSchema;
-  /** @deprecated use `Five$outboundSchema` instead. */
-  export const outboundSchema = Five$outboundSchema;
-  /** @deprecated use `Five$Outbound` instead. */
-  export type Outbound = Five$Outbound;
+export namespace OutputValueDomain$ {
+  /** @deprecated use `OutputValueDomain$inboundSchema` instead. */
+  export const inboundSchema = OutputValueDomain$inboundSchema;
+  /** @deprecated use `OutputValueDomain$outboundSchema` instead. */
+  export const outboundSchema = OutputValueDomain$outboundSchema;
+  /** @deprecated use `OutputValueDomain$Outbound` instead. */
+  export type Outbound = OutputValueDomain$Outbound;
 }
 
-export function fiveToJSON(five: Five): string {
-  return JSON.stringify(Five$outboundSchema.parse(five));
+export function outputValueDomainToJSON(
+  outputValueDomain: OutputValueDomain,
+): string {
+  return JSON.stringify(
+    OutputValueDomain$outboundSchema.parse(outputValueDomain),
+  );
 }
 
-export function fiveFromJSON(
+export function outputValueDomainFromJSON(
   jsonString: string,
-): SafeParseResult<Five, SDKValidationError> {
+): SafeParseResult<OutputValueDomain, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Five$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Five' from JSON`,
+    (x) => OutputValueDomain$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueDomain' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValue4AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue4AttributeType
-> = z.nativeEnum(OutputValue4AttributeType);
+export const AttributeTypeDate$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeDate
+> = z.nativeEnum(AttributeTypeDate);
 
 /** @internal */
-export const OutputValue4AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue4AttributeType
-> = OutputValue4AttributeType$inboundSchema;
+export const AttributeTypeDate$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeDate
+> = AttributeTypeDate$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue4AttributeType$ {
-  /** @deprecated use `OutputValue4AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue4AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue4AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue4AttributeType$outboundSchema;
+export namespace AttributeTypeDate$ {
+  /** @deprecated use `AttributeTypeDate$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeDate$inboundSchema;
+  /** @deprecated use `AttributeTypeDate$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeDate$outboundSchema;
 }
 
 /** @internal */
-export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
-  .object({
-    attribute_type: OutputValue4AttributeType$inboundSchema,
-    value: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "attribute_type": "attributeType",
-    });
+export const OutputValueDate$inboundSchema: z.ZodType<
+  OutputValueDate,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attribute_type: AttributeTypeDate$inboundSchema,
+  value: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Four$Outbound = {
+export type OutputValueDate$Outbound = {
   attribute_type: string;
   value: string;
 };
 
 /** @internal */
-export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
-  z.object({
-    attributeType: OutputValue4AttributeType$outboundSchema,
-    value: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      attributeType: "attribute_type",
-    });
+export const OutputValueDate$outboundSchema: z.ZodType<
+  OutputValueDate$Outbound,
+  z.ZodTypeDef,
+  OutputValueDate
+> = z.object({
+  attributeType: AttributeTypeDate$outboundSchema,
+  value: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    attributeType: "attribute_type",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Four$ {
-  /** @deprecated use `Four$inboundSchema` instead. */
-  export const inboundSchema = Four$inboundSchema;
-  /** @deprecated use `Four$outboundSchema` instead. */
-  export const outboundSchema = Four$outboundSchema;
-  /** @deprecated use `Four$Outbound` instead. */
-  export type Outbound = Four$Outbound;
+export namespace OutputValueDate$ {
+  /** @deprecated use `OutputValueDate$inboundSchema` instead. */
+  export const inboundSchema = OutputValueDate$inboundSchema;
+  /** @deprecated use `OutputValueDate$outboundSchema` instead. */
+  export const outboundSchema = OutputValueDate$outboundSchema;
+  /** @deprecated use `OutputValueDate$Outbound` instead. */
+  export type Outbound = OutputValueDate$Outbound;
 }
 
-export function fourToJSON(four: Four): string {
-  return JSON.stringify(Four$outboundSchema.parse(four));
+export function outputValueDateToJSON(
+  outputValueDate: OutputValueDate,
+): string {
+  return JSON.stringify(OutputValueDate$outboundSchema.parse(outputValueDate));
 }
 
-export function fourFromJSON(
+export function outputValueDateFromJSON(
   jsonString: string,
-): SafeParseResult<Four, SDKValidationError> {
+): SafeParseResult<OutputValueDate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Four$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Four' from JSON`,
+    (x) => OutputValueDate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueDate' from JSON`,
   );
 }
 
@@ -2706,56 +2802,59 @@ export namespace CurrencyCode$ {
 }
 
 /** @internal */
-export const OutputValue3AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValue3AttributeType
-> = z.nativeEnum(OutputValue3AttributeType);
+export const AttributeTypeCurrency$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeCurrency
+> = z.nativeEnum(AttributeTypeCurrency);
 
 /** @internal */
-export const OutputValue3AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValue3AttributeType
-> = OutputValue3AttributeType$inboundSchema;
+export const AttributeTypeCurrency$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeCurrency
+> = AttributeTypeCurrency$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue3AttributeType$ {
-  /** @deprecated use `OutputValue3AttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValue3AttributeType$inboundSchema;
-  /** @deprecated use `OutputValue3AttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValue3AttributeType$outboundSchema;
+export namespace AttributeTypeCurrency$ {
+  /** @deprecated use `AttributeTypeCurrency$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeCurrency$inboundSchema;
+  /** @deprecated use `AttributeTypeCurrency$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeCurrency$outboundSchema;
 }
 
 /** @internal */
-export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
-  .object({
-    currency_value: z.number(),
-    currency_code: z.nullable(CurrencyCode$inboundSchema).optional(),
-    attribute_type: OutputValue3AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "currency_value": "currencyValue",
-      "currency_code": "currencyCode",
-      "attribute_type": "attributeType",
-    });
+export const OutputValueCurrency$inboundSchema: z.ZodType<
+  OutputValueCurrency,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency_value: z.number(),
+  currency_code: z.nullable(CurrencyCode$inboundSchema).optional(),
+  attribute_type: AttributeTypeCurrency$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "currency_value": "currencyValue",
+    "currency_code": "currencyCode",
+    "attribute_type": "attributeType",
   });
+});
 
 /** @internal */
-export type Three$Outbound = {
+export type OutputValueCurrency$Outbound = {
   currency_value: number;
   currency_code?: string | null | undefined;
   attribute_type: string;
 };
 
 /** @internal */
-export const Three$outboundSchema: z.ZodType<
-  Three$Outbound,
+export const OutputValueCurrency$outboundSchema: z.ZodType<
+  OutputValueCurrency$Outbound,
   z.ZodTypeDef,
-  Three
+  OutputValueCurrency
 > = z.object({
   currencyValue: z.number(),
   currencyCode: z.nullable(CurrencyCode$outboundSchema).optional(),
-  attributeType: OutputValue3AttributeType$outboundSchema,
+  attributeType: AttributeTypeCurrency$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     currencyValue: "currency_value",
@@ -2768,58 +2867,62 @@ export const Three$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Three$ {
-  /** @deprecated use `Three$inboundSchema` instead. */
-  export const inboundSchema = Three$inboundSchema;
-  /** @deprecated use `Three$outboundSchema` instead. */
-  export const outboundSchema = Three$outboundSchema;
-  /** @deprecated use `Three$Outbound` instead. */
-  export type Outbound = Three$Outbound;
+export namespace OutputValueCurrency$ {
+  /** @deprecated use `OutputValueCurrency$inboundSchema` instead. */
+  export const inboundSchema = OutputValueCurrency$inboundSchema;
+  /** @deprecated use `OutputValueCurrency$outboundSchema` instead. */
+  export const outboundSchema = OutputValueCurrency$outboundSchema;
+  /** @deprecated use `OutputValueCurrency$Outbound` instead. */
+  export type Outbound = OutputValueCurrency$Outbound;
 }
 
-export function threeToJSON(three: Three): string {
-  return JSON.stringify(Three$outboundSchema.parse(three));
+export function outputValueCurrencyToJSON(
+  outputValueCurrency: OutputValueCurrency,
+): string {
+  return JSON.stringify(
+    OutputValueCurrency$outboundSchema.parse(outputValueCurrency),
+  );
 }
 
-export function threeFromJSON(
+export function outputValueCurrencyFromJSON(
   jsonString: string,
-): SafeParseResult<Three, SDKValidationError> {
+): SafeParseResult<OutputValueCurrency, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Three$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Three' from JSON`,
+    (x) => OutputValueCurrency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueCurrency' from JSON`,
   );
 }
 
 /** @internal */
-export const OutputValueAttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof OutputValueAttributeType
-> = z.nativeEnum(OutputValueAttributeType);
+export const AttributeTypeCheckbox$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeCheckbox
+> = z.nativeEnum(AttributeTypeCheckbox);
 
 /** @internal */
-export const OutputValueAttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof OutputValueAttributeType
-> = OutputValueAttributeType$inboundSchema;
+export const AttributeTypeCheckbox$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeCheckbox
+> = AttributeTypeCheckbox$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValueAttributeType$ {
-  /** @deprecated use `OutputValueAttributeType$inboundSchema` instead. */
-  export const inboundSchema = OutputValueAttributeType$inboundSchema;
-  /** @deprecated use `OutputValueAttributeType$outboundSchema` instead. */
-  export const outboundSchema = OutputValueAttributeType$outboundSchema;
+export namespace AttributeTypeCheckbox$ {
+  /** @deprecated use `AttributeTypeCheckbox$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeCheckbox$inboundSchema;
+  /** @deprecated use `AttributeTypeCheckbox$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeCheckbox$outboundSchema;
 }
 
 /** @internal */
-export const OutputValue2$inboundSchema: z.ZodType<
-  OutputValue2,
+export const OutputValueCheckbox$inboundSchema: z.ZodType<
+  OutputValueCheckbox,
   z.ZodTypeDef,
   unknown
 > = z.object({
   value: z.boolean(),
-  attribute_type: OutputValueAttributeType$inboundSchema,
+  attribute_type: AttributeTypeCheckbox$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "attribute_type": "attributeType",
@@ -2827,19 +2930,19 @@ export const OutputValue2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OutputValue2$Outbound = {
+export type OutputValueCheckbox$Outbound = {
   value: boolean;
   attribute_type: string;
 };
 
 /** @internal */
-export const OutputValue2$outboundSchema: z.ZodType<
-  OutputValue2$Outbound,
+export const OutputValueCheckbox$outboundSchema: z.ZodType<
+  OutputValueCheckbox$Outbound,
   z.ZodTypeDef,
-  OutputValue2
+  OutputValueCheckbox
 > = z.object({
   value: z.boolean(),
-  attributeType: OutputValueAttributeType$outboundSchema,
+  attributeType: AttributeTypeCheckbox$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     attributeType: "attribute_type",
@@ -2850,26 +2953,30 @@ export const OutputValue2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue2$ {
-  /** @deprecated use `OutputValue2$inboundSchema` instead. */
-  export const inboundSchema = OutputValue2$inboundSchema;
-  /** @deprecated use `OutputValue2$outboundSchema` instead. */
-  export const outboundSchema = OutputValue2$outboundSchema;
-  /** @deprecated use `OutputValue2$Outbound` instead. */
-  export type Outbound = OutputValue2$Outbound;
+export namespace OutputValueCheckbox$ {
+  /** @deprecated use `OutputValueCheckbox$inboundSchema` instead. */
+  export const inboundSchema = OutputValueCheckbox$inboundSchema;
+  /** @deprecated use `OutputValueCheckbox$outboundSchema` instead. */
+  export const outboundSchema = OutputValueCheckbox$outboundSchema;
+  /** @deprecated use `OutputValueCheckbox$Outbound` instead. */
+  export type Outbound = OutputValueCheckbox$Outbound;
 }
 
-export function outputValue2ToJSON(outputValue2: OutputValue2): string {
-  return JSON.stringify(OutputValue2$outboundSchema.parse(outputValue2));
+export function outputValueCheckboxToJSON(
+  outputValueCheckbox: OutputValueCheckbox,
+): string {
+  return JSON.stringify(
+    OutputValueCheckbox$outboundSchema.parse(outputValueCheckbox),
+  );
 }
 
-export function outputValue2FromJSON(
+export function outputValueCheckboxFromJSON(
   jsonString: string,
-): SafeParseResult<OutputValue2, SDKValidationError> {
+): SafeParseResult<OutputValueCheckbox, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OutputValue2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OutputValue2' from JSON`,
+    (x) => OutputValueCheckbox$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueCheckbox' from JSON`,
   );
 }
 
@@ -2895,35 +3002,35 @@ export namespace OutputValueReferencedActorType$ {
 }
 
 /** @internal */
-export const AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof AttributeType
-> = z.nativeEnum(AttributeType);
+export const AttributeTypeActorReference$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeActorReference
+> = z.nativeEnum(AttributeTypeActorReference);
 
 /** @internal */
-export const AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof AttributeType
-> = AttributeType$inboundSchema;
+export const AttributeTypeActorReference$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeTypeActorReference
+> = AttributeTypeActorReference$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AttributeType$ {
-  /** @deprecated use `AttributeType$inboundSchema` instead. */
-  export const inboundSchema = AttributeType$inboundSchema;
-  /** @deprecated use `AttributeType$outboundSchema` instead. */
-  export const outboundSchema = AttributeType$outboundSchema;
+export namespace AttributeTypeActorReference$ {
+  /** @deprecated use `AttributeTypeActorReference$inboundSchema` instead. */
+  export const inboundSchema = AttributeTypeActorReference$inboundSchema;
+  /** @deprecated use `AttributeTypeActorReference$outboundSchema` instead. */
+  export const outboundSchema = AttributeTypeActorReference$outboundSchema;
 }
 
 /** @internal */
-export const OutputValue1$inboundSchema: z.ZodType<
-  OutputValue1,
+export const OutputValueActorReference$inboundSchema: z.ZodType<
+  OutputValueActorReference,
   z.ZodTypeDef,
   unknown
 > = z.object({
   referenced_actor_type: OutputValueReferencedActorType$inboundSchema,
   referenced_actor_id: z.nullable(z.string()),
-  attribute_type: AttributeType$inboundSchema,
+  attribute_type: AttributeTypeActorReference$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "referenced_actor_type": "referencedActorType",
@@ -2933,21 +3040,21 @@ export const OutputValue1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type OutputValue1$Outbound = {
+export type OutputValueActorReference$Outbound = {
   referenced_actor_type: string;
   referenced_actor_id: string | null;
   attribute_type: string;
 };
 
 /** @internal */
-export const OutputValue1$outboundSchema: z.ZodType<
-  OutputValue1$Outbound,
+export const OutputValueActorReference$outboundSchema: z.ZodType<
+  OutputValueActorReference$Outbound,
   z.ZodTypeDef,
-  OutputValue1
+  OutputValueActorReference
 > = z.object({
   referencedActorType: OutputValueReferencedActorType$outboundSchema,
   referencedActorId: z.nullable(z.string()),
-  attributeType: AttributeType$outboundSchema,
+  attributeType: AttributeTypeActorReference$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     referencedActorType: "referenced_actor_type",
@@ -2960,26 +3067,30 @@ export const OutputValue1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OutputValue1$ {
-  /** @deprecated use `OutputValue1$inboundSchema` instead. */
-  export const inboundSchema = OutputValue1$inboundSchema;
-  /** @deprecated use `OutputValue1$outboundSchema` instead. */
-  export const outboundSchema = OutputValue1$outboundSchema;
-  /** @deprecated use `OutputValue1$Outbound` instead. */
-  export type Outbound = OutputValue1$Outbound;
+export namespace OutputValueActorReference$ {
+  /** @deprecated use `OutputValueActorReference$inboundSchema` instead. */
+  export const inboundSchema = OutputValueActorReference$inboundSchema;
+  /** @deprecated use `OutputValueActorReference$outboundSchema` instead. */
+  export const outboundSchema = OutputValueActorReference$outboundSchema;
+  /** @deprecated use `OutputValueActorReference$Outbound` instead. */
+  export type Outbound = OutputValueActorReference$Outbound;
 }
 
-export function outputValue1ToJSON(outputValue1: OutputValue1): string {
-  return JSON.stringify(OutputValue1$outboundSchema.parse(outputValue1));
+export function outputValueActorReferenceToJSON(
+  outputValueActorReference: OutputValueActorReference,
+): string {
+  return JSON.stringify(
+    OutputValueActorReference$outboundSchema.parse(outputValueActorReference),
+  );
 }
 
-export function outputValue1FromJSON(
+export function outputValueActorReferenceFromJSON(
   jsonString: string,
-): SafeParseResult<OutputValue1, SDKValidationError> {
+): SafeParseResult<OutputValueActorReference, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => OutputValue1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OutputValue1' from JSON`,
+    (x) => OutputValueActorReference$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OutputValueActorReference' from JSON`,
   );
 }
 
@@ -2989,48 +3100,48 @@ export const OutputValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => OutputValue2$inboundSchema),
-  z.lazy(() => Four$inboundSchema),
-  z.lazy(() => Ten$inboundSchema),
-  z.lazy(() => Thirteen$inboundSchema),
-  z.lazy(() => Fourteen$inboundSchema),
-  z.lazy(() => Fifteen$inboundSchema),
-  z.lazy(() => Sixteen$inboundSchema),
-  z.lazy(() => Seventeen$inboundSchema),
-  z.lazy(() => Eighteen$inboundSchema),
-  z.lazy(() => Nineteen$inboundSchema),
-  z.lazy(() => OutputValue1$inboundSchema),
-  z.lazy(() => Three$inboundSchema),
-  z.lazy(() => Five$inboundSchema),
-  z.lazy(() => Seven$inboundSchema),
-  z.lazy(() => Eight$inboundSchema),
-  z.lazy(() => Eleven$inboundSchema),
-  z.lazy(() => Twelve$inboundSchema),
-  z.lazy(() => Six$inboundSchema),
-  z.lazy(() => Nine$inboundSchema),
+  z.lazy(() => OutputValueCheckbox$inboundSchema),
+  z.lazy(() => OutputValueDate$inboundSchema),
+  z.lazy(() => OutputValueNumber$inboundSchema),
+  z.lazy(() => OutputValueStatus1$inboundSchema),
+  z.lazy(() => OutputValueStatus2$inboundSchema),
+  z.lazy(() => OutputValueRating$inboundSchema),
+  z.lazy(() => OutputValueSelect1$inboundSchema),
+  z.lazy(() => OutputValueSelect2$inboundSchema),
+  z.lazy(() => OutputValueText$inboundSchema),
+  z.lazy(() => OutputValueTimestamp$inboundSchema),
+  z.lazy(() => OutputValueActorReference$inboundSchema),
+  z.lazy(() => OutputValueCurrency$inboundSchema),
+  z.lazy(() => OutputValueDomain$inboundSchema),
+  z.lazy(() => OutputValueRecordReference$inboundSchema),
+  z.lazy(() => OutputValueInteraction$inboundSchema),
+  z.lazy(() => OutputValuePersonalName$inboundSchema),
+  z.lazy(() => OutputValuePhoneNumber$inboundSchema),
+  z.lazy(() => OutputValueEmailAddress$inboundSchema),
+  z.lazy(() => OutputValueLocation$inboundSchema),
 ]);
 
 /** @internal */
 export type OutputValue$Outbound =
-  | OutputValue2$Outbound
-  | Four$Outbound
-  | Ten$Outbound
-  | Thirteen$Outbound
-  | Fourteen$Outbound
-  | Fifteen$Outbound
-  | Sixteen$Outbound
-  | Seventeen$Outbound
-  | Eighteen$Outbound
-  | Nineteen$Outbound
-  | OutputValue1$Outbound
-  | Three$Outbound
-  | Five$Outbound
-  | Seven$Outbound
-  | Eight$Outbound
-  | Eleven$Outbound
-  | Twelve$Outbound
-  | Six$Outbound
-  | Nine$Outbound;
+  | OutputValueCheckbox$Outbound
+  | OutputValueDate$Outbound
+  | OutputValueNumber$Outbound
+  | OutputValueStatus1$Outbound
+  | OutputValueStatus2$Outbound
+  | OutputValueRating$Outbound
+  | OutputValueSelect1$Outbound
+  | OutputValueSelect2$Outbound
+  | OutputValueText$Outbound
+  | OutputValueTimestamp$Outbound
+  | OutputValueActorReference$Outbound
+  | OutputValueCurrency$Outbound
+  | OutputValueDomain$Outbound
+  | OutputValueRecordReference$Outbound
+  | OutputValueInteraction$Outbound
+  | OutputValuePersonalName$Outbound
+  | OutputValuePhoneNumber$Outbound
+  | OutputValueEmailAddress$Outbound
+  | OutputValueLocation$Outbound;
 
 /** @internal */
 export const OutputValue$outboundSchema: z.ZodType<
@@ -3038,25 +3149,25 @@ export const OutputValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OutputValue
 > = z.union([
-  z.lazy(() => OutputValue2$outboundSchema),
-  z.lazy(() => Four$outboundSchema),
-  z.lazy(() => Ten$outboundSchema),
-  z.lazy(() => Thirteen$outboundSchema),
-  z.lazy(() => Fourteen$outboundSchema),
-  z.lazy(() => Fifteen$outboundSchema),
-  z.lazy(() => Sixteen$outboundSchema),
-  z.lazy(() => Seventeen$outboundSchema),
-  z.lazy(() => Eighteen$outboundSchema),
-  z.lazy(() => Nineteen$outboundSchema),
-  z.lazy(() => OutputValue1$outboundSchema),
-  z.lazy(() => Three$outboundSchema),
-  z.lazy(() => Five$outboundSchema),
-  z.lazy(() => Seven$outboundSchema),
-  z.lazy(() => Eight$outboundSchema),
-  z.lazy(() => Eleven$outboundSchema),
-  z.lazy(() => Twelve$outboundSchema),
-  z.lazy(() => Six$outboundSchema),
-  z.lazy(() => Nine$outboundSchema),
+  z.lazy(() => OutputValueCheckbox$outboundSchema),
+  z.lazy(() => OutputValueDate$outboundSchema),
+  z.lazy(() => OutputValueNumber$outboundSchema),
+  z.lazy(() => OutputValueStatus1$outboundSchema),
+  z.lazy(() => OutputValueStatus2$outboundSchema),
+  z.lazy(() => OutputValueRating$outboundSchema),
+  z.lazy(() => OutputValueSelect1$outboundSchema),
+  z.lazy(() => OutputValueSelect2$outboundSchema),
+  z.lazy(() => OutputValueText$outboundSchema),
+  z.lazy(() => OutputValueTimestamp$outboundSchema),
+  z.lazy(() => OutputValueActorReference$outboundSchema),
+  z.lazy(() => OutputValueCurrency$outboundSchema),
+  z.lazy(() => OutputValueDomain$outboundSchema),
+  z.lazy(() => OutputValueRecordReference$outboundSchema),
+  z.lazy(() => OutputValueInteraction$outboundSchema),
+  z.lazy(() => OutputValuePersonalName$outboundSchema),
+  z.lazy(() => OutputValuePhoneNumber$outboundSchema),
+  z.lazy(() => OutputValueEmailAddress$outboundSchema),
+  z.lazy(() => OutputValueLocation$outboundSchema),
 ]);
 
 /**

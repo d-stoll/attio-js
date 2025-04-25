@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV2TargetIdentifierAttributesAttributeStatusesRequestBody } from "attio-js/models/operations";
+import { PostV2TargetIdentifierAttributesAttributeStatusesRequestBody } from "attio-js/models/operations/postv2targetidentifierattributesattributestatuses.js";
 
 let value: PostV2TargetIdentifierAttributesAttributeStatusesRequestBody = {
   data: {

@@ -15,7 +15,7 @@ export type DeleteV2CommentsCommentIdRequest = {
 /**
  * Success
  */
-export type DeleteV2CommentsCommentIdResponseBody = {};
+export type DeleteV2CommentsCommentIdResponse = {};
 
 /** @internal */
 export const DeleteV2CommentsCommentIdRequest$inboundSchema: z.ZodType<
@@ -82,54 +82,52 @@ export function deleteV2CommentsCommentIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2CommentsCommentIdResponseBody$inboundSchema: z.ZodType<
-  DeleteV2CommentsCommentIdResponseBody,
+export const DeleteV2CommentsCommentIdResponse$inboundSchema: z.ZodType<
+  DeleteV2CommentsCommentIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type DeleteV2CommentsCommentIdResponseBody$Outbound = {};
+export type DeleteV2CommentsCommentIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2CommentsCommentIdResponseBody$outboundSchema: z.ZodType<
-  DeleteV2CommentsCommentIdResponseBody$Outbound,
+export const DeleteV2CommentsCommentIdResponse$outboundSchema: z.ZodType<
+  DeleteV2CommentsCommentIdResponse$Outbound,
   z.ZodTypeDef,
-  DeleteV2CommentsCommentIdResponseBody
+  DeleteV2CommentsCommentIdResponse
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2CommentsCommentIdResponseBody$ {
-  /** @deprecated use `DeleteV2CommentsCommentIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteV2CommentsCommentIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2CommentsCommentIdResponseBody$outboundSchema` instead. */
+export namespace DeleteV2CommentsCommentIdResponse$ {
+  /** @deprecated use `DeleteV2CommentsCommentIdResponse$inboundSchema` instead. */
+  export const inboundSchema = DeleteV2CommentsCommentIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2CommentsCommentIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    DeleteV2CommentsCommentIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2CommentsCommentIdResponseBody$Outbound` instead. */
-  export type Outbound = DeleteV2CommentsCommentIdResponseBody$Outbound;
+    DeleteV2CommentsCommentIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2CommentsCommentIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2CommentsCommentIdResponse$Outbound;
 }
 
-export function deleteV2CommentsCommentIdResponseBodyToJSON(
-  deleteV2CommentsCommentIdResponseBody: DeleteV2CommentsCommentIdResponseBody,
+export function deleteV2CommentsCommentIdResponseToJSON(
+  deleteV2CommentsCommentIdResponse: DeleteV2CommentsCommentIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2CommentsCommentIdResponseBody$outboundSchema.parse(
-      deleteV2CommentsCommentIdResponseBody,
+    DeleteV2CommentsCommentIdResponse$outboundSchema.parse(
+      deleteV2CommentsCommentIdResponse,
     ),
   );
 }
 
-export function deleteV2CommentsCommentIdResponseBodyFromJSON(
+export function deleteV2CommentsCommentIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<DeleteV2CommentsCommentIdResponseBody, SDKValidationError> {
+): SafeParseResult<DeleteV2CommentsCommentIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      DeleteV2CommentsCommentIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteV2CommentsCommentIdResponseBody' from JSON`,
+    (x) => DeleteV2CommentsCommentIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteV2CommentsCommentIdResponse' from JSON`,
   );
 }

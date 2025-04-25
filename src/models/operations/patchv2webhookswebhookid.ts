@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Type of event the webhook is subscribed to.
  */
-export const PatchV2WebhooksWebhookIdEventType = {
+export const PatchV2WebhooksWebhookIdEventTypeRequest = {
   CommentCreated: "comment.created",
   CommentResolved: "comment.resolved",
   CommentUnresolved: "comment.unresolved",
@@ -42,104 +42,104 @@ export const PatchV2WebhooksWebhookIdEventType = {
 /**
  * Type of event the webhook is subscribed to.
  */
-export type PatchV2WebhooksWebhookIdEventType = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdEventType
+export type PatchV2WebhooksWebhookIdEventTypeRequest = ClosedEnum<
+  typeof PatchV2WebhooksWebhookIdEventTypeRequest
 >;
 
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksOperator = {
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest = {
   NotEquals: "not_equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarAndWebhooksOperator = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdDollarAndWebhooksOperator
->;
+export type PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest =
+  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest>;
 
-export type PatchV2WebhooksWebhookIdDollarAnd2 = {
+export type PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarAndWebhooksOperator;
+  operator: PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest;
   value: string;
 };
 
-export const PatchV2WebhooksWebhookIdDollarAndOperator = {
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest = {
   Equals: "equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarAndOperator = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdDollarAndOperator
+export type PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest = ClosedEnum<
+  typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest
 >;
 
-export type PatchV2WebhooksWebhookIdDollarAnd1 = {
+export type PatchV2WebhooksWebhookIdDollarAndEqualsRequest = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarAndOperator;
+  operator: PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest;
   value: string;
 };
 
-export type FilterDollarAnd =
-  | PatchV2WebhooksWebhookIdDollarAnd1
-  | PatchV2WebhooksWebhookIdDollarAnd2;
+export type PatchV2WebhooksWebhookIdDollarAndRequestUnion =
+  | PatchV2WebhooksWebhookIdDollarAndEqualsRequest
+  | PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest;
 
-export type PatchV2WebhooksWebhookIdFilter2 = {
+export type PatchV2WebhooksWebhookIdFilterRequest2 = {
   dollarAnd: Array<
-    PatchV2WebhooksWebhookIdDollarAnd1 | PatchV2WebhooksWebhookIdDollarAnd2
+    | PatchV2WebhooksWebhookIdDollarAndEqualsRequest
+    | PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest
   >;
 };
 
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksOperator = {
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest = {
   NotEquals: "not_equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarOrWebhooksOperator = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdDollarOrWebhooksOperator
->;
+export type PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest =
+  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest>;
 
-export type PatchV2WebhooksWebhookIdDollarOr2 = {
+export type PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarOrWebhooksOperator;
+  operator: PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest;
   value: string;
 };
 
-export const PatchV2WebhooksWebhookIdDollarOrOperator = {
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest = {
   Equals: "equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarOrOperator = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdDollarOrOperator
+export type PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest = ClosedEnum<
+  typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest
 >;
 
-export type PatchV2WebhooksWebhookIdDollarOr1 = {
+export type PatchV2WebhooksWebhookIdDollarOrEqualsRequest = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarOrOperator;
+  operator: PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest;
   value: string;
 };
 
-export type FilterDollarOr =
-  | PatchV2WebhooksWebhookIdDollarOr1
-  | PatchV2WebhooksWebhookIdDollarOr2;
+export type PatchV2WebhooksWebhookIdDollarOrRequestUnion =
+  | PatchV2WebhooksWebhookIdDollarOrEqualsRequest
+  | PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest;
 
-export type PatchV2WebhooksWebhookIdFilter1 = {
+export type PatchV2WebhooksWebhookIdFilterRequest1 = {
   dollarOr: Array<
-    PatchV2WebhooksWebhookIdDollarOr1 | PatchV2WebhooksWebhookIdDollarOr2
+    | PatchV2WebhooksWebhookIdDollarOrEqualsRequest
+    | PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest
   >;
 };
 
 /**
  * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
  */
-export type PatchV2WebhooksWebhookIdFilter =
-  | PatchV2WebhooksWebhookIdFilter1
-  | PatchV2WebhooksWebhookIdFilter2;
+export type PatchV2WebhooksWebhookIdFilterRequestUnion =
+  | PatchV2WebhooksWebhookIdFilterRequest1
+  | PatchV2WebhooksWebhookIdFilterRequest2;
 
-export type PatchV2WebhooksWebhookIdSubscriptions = {
+export type PatchV2WebhooksWebhookIdSubscriptionRequest = {
   /**
    * Type of event the webhook is subscribed to.
    */
-  eventType: PatchV2WebhooksWebhookIdEventType;
+  eventType: PatchV2WebhooksWebhookIdEventTypeRequest;
   /**
    * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
    */
   filter:
-    | PatchV2WebhooksWebhookIdFilter1
-    | PatchV2WebhooksWebhookIdFilter2
+    | PatchV2WebhooksWebhookIdFilterRequest1
+    | PatchV2WebhooksWebhookIdFilterRequest2
     | null;
 };
 
-export type PatchV2WebhooksWebhookIdData = {
+export type PatchV2WebhooksWebhookIdDataRequest = {
   /**
    * URL where the webhook events will be delivered to.
    */
@@ -147,11 +147,13 @@ export type PatchV2WebhooksWebhookIdData = {
   /**
    * One or more events the webhook is subscribed to.
    */
-  subscriptions?: Array<PatchV2WebhooksWebhookIdSubscriptions> | undefined;
+  subscriptions?:
+    | Array<PatchV2WebhooksWebhookIdSubscriptionRequest>
+    | undefined;
 };
 
 export type PatchV2WebhooksWebhookIdRequestBody = {
-  data: PatchV2WebhooksWebhookIdData;
+  data: PatchV2WebhooksWebhookIdDataRequest;
 };
 
 export type PatchV2WebhooksWebhookIdRequest = {
@@ -162,7 +164,7 @@ export type PatchV2WebhooksWebhookIdRequest = {
 /**
  * Type of event the webhook is subscribed to.
  */
-export const PatchV2WebhooksWebhookIdWebhooksEventType = {
+export const PatchV2WebhooksWebhookIdEventTypeResponse = {
   CommentCreated: "comment.created",
   CommentResolved: "comment.resolved",
   CommentUnresolved: "comment.unresolved",
@@ -192,102 +194,99 @@ export const PatchV2WebhooksWebhookIdWebhooksEventType = {
 /**
  * Type of event the webhook is subscribed to.
  */
-export type PatchV2WebhooksWebhookIdWebhooksEventType = ClosedEnum<
-  typeof PatchV2WebhooksWebhookIdWebhooksEventType
+export type PatchV2WebhooksWebhookIdEventTypeResponse = ClosedEnum<
+  typeof PatchV2WebhooksWebhookIdEventTypeResponse
 >;
 
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator = {
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse = {
   NotEquals: "not_equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator =
-  ClosedEnum<
-    typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator
-  >;
+export type PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse =
+  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse>;
 
-export type PatchV2WebhooksWebhookIdDollarAndWebhooks2 = {
+export type PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator;
+  operator: PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse;
   value: string;
 };
 
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator = {
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse = {
   Equals: "equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator =
-  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator>;
+export type PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse =
+  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse>;
 
-export type PatchV2WebhooksWebhookIdDollarAndWebhooks1 = {
+export type PatchV2WebhooksWebhookIdDollarAndEqualsResponse = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator;
+  operator: PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse;
   value: string;
 };
 
-export type PatchV2WebhooksWebhookIdFilterDollarAnd =
-  | PatchV2WebhooksWebhookIdDollarAndWebhooks1
-  | PatchV2WebhooksWebhookIdDollarAndWebhooks2;
+export type PatchV2WebhooksWebhookIdDollarAndResponseUnion =
+  | PatchV2WebhooksWebhookIdDollarAndEqualsResponse
+  | PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse;
 
-export type PatchV2WebhooksWebhookIdFilterWebhooks2 = {
+export type PatchV2WebhooksWebhookIdFilterResponse2 = {
   dollarAnd: Array<
-    | PatchV2WebhooksWebhookIdDollarAndWebhooks1
-    | PatchV2WebhooksWebhookIdDollarAndWebhooks2
+    | PatchV2WebhooksWebhookIdDollarAndEqualsResponse
+    | PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse
   >;
 };
 
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator = {
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse = {
   NotEquals: "not_equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator =
-  ClosedEnum<
-    typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator
-  >;
+export type PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse =
+  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse>;
 
-export type PatchV2WebhooksWebhookIdDollarOrWebhooks2 = {
+export type PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator;
+  operator: PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse;
   value: string;
 };
 
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator = {
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse = {
   Equals: "equals",
 } as const;
-export type PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator =
-  ClosedEnum<typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator>;
+export type PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse = ClosedEnum<
+  typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse
+>;
 
-export type PatchV2WebhooksWebhookIdDollarOrWebhooks1 = {
+export type PatchV2WebhooksWebhookIdDollarOrEqualsResponse = {
   field: string;
-  operator: PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator;
+  operator: PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse;
   value: string;
 };
 
-export type PatchV2WebhooksWebhookIdFilterDollarOr =
-  | PatchV2WebhooksWebhookIdDollarOrWebhooks1
-  | PatchV2WebhooksWebhookIdDollarOrWebhooks2;
+export type PatchV2WebhooksWebhookIdDollarOrResponseUnion =
+  | PatchV2WebhooksWebhookIdDollarOrEqualsResponse
+  | PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse;
 
-export type PatchV2WebhooksWebhookIdFilterWebhooks1 = {
+export type PatchV2WebhooksWebhookIdFilterResponse1 = {
   dollarOr: Array<
-    | PatchV2WebhooksWebhookIdDollarOrWebhooks1
-    | PatchV2WebhooksWebhookIdDollarOrWebhooks2
+    | PatchV2WebhooksWebhookIdDollarOrEqualsResponse
+    | PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse
   >;
 };
 
 /**
  * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
  */
-export type PatchV2WebhooksWebhookIdWebhooksFilter =
-  | PatchV2WebhooksWebhookIdFilterWebhooks1
-  | PatchV2WebhooksWebhookIdFilterWebhooks2;
+export type PatchV2WebhooksWebhookIdFilterResponseUnion =
+  | PatchV2WebhooksWebhookIdFilterResponse1
+  | PatchV2WebhooksWebhookIdFilterResponse2;
 
-export type PatchV2WebhooksWebhookIdWebhooksSubscriptions = {
+export type PatchV2WebhooksWebhookIdSubscriptionResponse = {
   /**
    * Type of event the webhook is subscribed to.
    */
-  eventType: PatchV2WebhooksWebhookIdWebhooksEventType;
+  eventType: PatchV2WebhooksWebhookIdEventTypeResponse;
   /**
    * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
    */
   filter:
-    | PatchV2WebhooksWebhookIdFilterWebhooks1
-    | PatchV2WebhooksWebhookIdFilterWebhooks2
+    | PatchV2WebhooksWebhookIdFilterResponse1
+    | PatchV2WebhooksWebhookIdFilterResponse2
     | null;
 };
 
@@ -317,7 +316,7 @@ export type PatchV2WebhooksWebhookIdStatus = ClosedEnum<
   typeof PatchV2WebhooksWebhookIdStatus
 >;
 
-export type PatchV2WebhooksWebhookIdWebhooksData = {
+export type PatchV2WebhooksWebhookIdDataResponse = {
   /**
    * URL where the webhook events will be delivered to.
    */
@@ -325,7 +324,7 @@ export type PatchV2WebhooksWebhookIdWebhooksData = {
   /**
    * One or more events the webhook is subscribed to.
    */
-  subscriptions: Array<PatchV2WebhooksWebhookIdWebhooksSubscriptions>;
+  subscriptions: Array<PatchV2WebhooksWebhookIdSubscriptionResponse>;
   id: PatchV2WebhooksWebhookIdId;
   /**
    * The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
@@ -340,270 +339,322 @@ export type PatchV2WebhooksWebhookIdWebhooksData = {
 /**
  * Success
  */
-export type PatchV2WebhooksWebhookIdResponseBody = {
-  data: PatchV2WebhooksWebhookIdWebhooksData;
+export type PatchV2WebhooksWebhookIdResponse = {
+  data: PatchV2WebhooksWebhookIdDataResponse;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdEventType$inboundSchema: z.ZodNativeEnum<
-  typeof PatchV2WebhooksWebhookIdEventType
-> = z.nativeEnum(PatchV2WebhooksWebhookIdEventType);
+export const PatchV2WebhooksWebhookIdEventTypeRequest$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdEventTypeRequest> = z
+    .nativeEnum(PatchV2WebhooksWebhookIdEventTypeRequest);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdEventType$outboundSchema: z.ZodNativeEnum<
-  typeof PatchV2WebhooksWebhookIdEventType
-> = PatchV2WebhooksWebhookIdEventType$inboundSchema;
+export const PatchV2WebhooksWebhookIdEventTypeRequest$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdEventTypeRequest> =
+    PatchV2WebhooksWebhookIdEventTypeRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdEventType$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdEventType$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdEventType$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdEventType$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2WebhooksWebhookIdEventType$outboundSchema;
-}
-
-/** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarAndWebhooksOperator> = z
-    .nativeEnum(PatchV2WebhooksWebhookIdDollarAndWebhooksOperator);
-
-/** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarAndWebhooksOperator> =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdEventTypeRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdEventTypeRequest$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdEventTypeRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdEventTypeRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdEventTypeRequest$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarAnd2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest);
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarAnd2$Outbound = {
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest
+  > = PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$outboundSchema;
+}
+
+/** @internal */
+export const PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$inboundSchema,
+    value: z.string(),
+  });
+
+/** @internal */
+export type PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarAnd2$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdDollarAnd2
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarAndWebhooksOperator$outboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsRequest$outboundSchema,
+    value: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAnd2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarAnd2$Outbound;
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarAnd2ToJSON(
-  patchV2WebhooksWebhookIdDollarAnd2: PatchV2WebhooksWebhookIdDollarAnd2,
+export function patchV2WebhooksWebhookIdDollarAndNotEqualsRequestToJSON(
+  patchV2WebhooksWebhookIdDollarAndNotEqualsRequest:
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarAnd2,
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndNotEqualsRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarAnd2FromJSON(
+export function patchV2WebhooksWebhookIdDollarAndNotEqualsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdDollarAnd2, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAnd2' from JSON`,
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarAndOperator> = z
-    .nativeEnum(PatchV2WebhooksWebhookIdDollarAndOperator);
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarAndOperator> =
-    PatchV2WebhooksWebhookIdDollarAndOperator$inboundSchema;
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest
+  > = PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAndOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarAnd1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarAndOperator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarAnd1$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarAnd1$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdDollarAnd1
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarAndOperator$outboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorEqualsRequest$outboundSchema,
+    value: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAnd1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAnd1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarAnd1$Outbound;
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarAnd1ToJSON(
-  patchV2WebhooksWebhookIdDollarAnd1: PatchV2WebhooksWebhookIdDollarAnd1,
+export function patchV2WebhooksWebhookIdDollarAndEqualsRequestToJSON(
+  patchV2WebhooksWebhookIdDollarAndEqualsRequest:
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarAnd1,
+    PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndEqualsRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarAnd1FromJSON(
+export function patchV2WebhooksWebhookIdDollarAndEqualsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdDollarAnd1, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarAndEqualsRequest,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAnd1' from JSON`,
+      PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndEqualsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const FilterDollarAnd$inboundSchema: z.ZodType<
-  FilterDollarAnd,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarAndRequestUnion$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema
+    ),
+  ]);
 
 /** @internal */
-export type FilterDollarAnd$Outbound =
-  | PatchV2WebhooksWebhookIdDollarAnd1$Outbound
-  | PatchV2WebhooksWebhookIdDollarAnd2$Outbound;
+export type PatchV2WebhooksWebhookIdDollarAndRequestUnion$Outbound =
+  | PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound
+  | PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound;
 
 /** @internal */
-export const FilterDollarAnd$outboundSchema: z.ZodType<
-  FilterDollarAnd$Outbound,
-  z.ZodTypeDef,
-  FilterDollarAnd
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarAndRequestUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema
+    ),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FilterDollarAnd$ {
-  /** @deprecated use `FilterDollarAnd$inboundSchema` instead. */
-  export const inboundSchema = FilterDollarAnd$inboundSchema;
-  /** @deprecated use `FilterDollarAnd$outboundSchema` instead. */
-  export const outboundSchema = FilterDollarAnd$outboundSchema;
-  /** @deprecated use `FilterDollarAnd$Outbound` instead. */
-  export type Outbound = FilterDollarAnd$Outbound;
+export namespace PatchV2WebhooksWebhookIdDollarAndRequestUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndRequestUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndRequestUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndRequestUnion$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDollarAndRequestUnion$Outbound;
 }
 
-export function filterDollarAndToJSON(
-  filterDollarAnd: FilterDollarAnd,
+export function patchV2WebhooksWebhookIdDollarAndRequestUnionToJSON(
+  patchV2WebhooksWebhookIdDollarAndRequestUnion:
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion,
 ): string {
-  return JSON.stringify(FilterDollarAnd$outboundSchema.parse(filterDollarAnd));
+  return JSON.stringify(
+    PatchV2WebhooksWebhookIdDollarAndRequestUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndRequestUnion,
+    ),
+  );
 }
 
-export function filterDollarAndFromJSON(
+export function patchV2WebhooksWebhookIdDollarAndRequestUnionFromJSON(
   jsonString: string,
-): SafeParseResult<FilterDollarAnd, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarAndRequestUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => FilterDollarAnd$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FilterDollarAnd' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdDollarAndRequestUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndRequestUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter2$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter2,
+export const PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterRequest2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $and: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd1$inboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd2$inboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndEqualsRequest$inboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$inboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -613,23 +664,27 @@ export const PatchV2WebhooksWebhookIdFilter2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilter2$Outbound = {
+export type PatchV2WebhooksWebhookIdFilterRequest2$Outbound = {
   $and: Array<
-    | PatchV2WebhooksWebhookIdDollarAnd1$Outbound
-    | PatchV2WebhooksWebhookIdDollarAnd2$Outbound
+    | PatchV2WebhooksWebhookIdDollarAndEqualsRequest$Outbound
+    | PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$Outbound
   >;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter2$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter2$Outbound,
+export const PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterRequest2$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilter2
+  PatchV2WebhooksWebhookIdFilterRequest2
 > = z.object({
   dollarAnd: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd1$outboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAnd2$outboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndEqualsRequest$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndNotEqualsRequest$outboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -642,269 +697,325 @@ export const PatchV2WebhooksWebhookIdFilter2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilter2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter2$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdFilter2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter2$outboundSchema` instead. */
-  export const outboundSchema = PatchV2WebhooksWebhookIdFilter2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilter2$Outbound;
+export namespace PatchV2WebhooksWebhookIdFilterRequest2$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest2$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterRequest2$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilter2ToJSON(
-  patchV2WebhooksWebhookIdFilter2: PatchV2WebhooksWebhookIdFilter2,
+export function patchV2WebhooksWebhookIdFilterRequest2ToJSON(
+  patchV2WebhooksWebhookIdFilterRequest2:
+    PatchV2WebhooksWebhookIdFilterRequest2,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilter2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilter2,
+    PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterRequest2,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilter2FromJSON(
+export function patchV2WebhooksWebhookIdFilterRequest2FromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdFilter2, SDKValidationError> {
+): SafeParseResult<PatchV2WebhooksWebhookIdFilterRequest2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdFilter2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilter2' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterRequest2' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarOrWebhooksOperator> = z
-    .nativeEnum(PatchV2WebhooksWebhookIdDollarOrWebhooksOperator);
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarOrWebhooksOperator> =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$inboundSchema;
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest
+  > = PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOr2$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOr2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarOr2$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOr2$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOr2$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdDollarOr2
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarOrWebhooksOperator$outboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsRequest$outboundSchema,
+    value: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOr2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr2$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdDollarOr2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr2$outboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOr2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarOr2$Outbound;
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarOr2ToJSON(
-  patchV2WebhooksWebhookIdDollarOr2: PatchV2WebhooksWebhookIdDollarOr2,
+export function patchV2WebhooksWebhookIdDollarOrNotEqualsRequestToJSON(
+  patchV2WebhooksWebhookIdDollarOrNotEqualsRequest:
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarOr2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarOr2,
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrNotEqualsRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarOr2FromJSON(
+export function patchV2WebhooksWebhookIdDollarOrNotEqualsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdDollarOr2, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdDollarOr2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOr2' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarOrOperator> = z
-    .nativeEnum(PatchV2WebhooksWebhookIdDollarOrOperator);
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdDollarOrOperator> =
-    PatchV2WebhooksWebhookIdDollarOrOperator$inboundSchema;
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest
+  > = PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOr1$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOr1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarOrOperator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarOr1$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOr1$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOr1$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdDollarOr1
-> = z.object({
-  field: z.string(),
-  operator: PatchV2WebhooksWebhookIdDollarOrOperator$outboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorEqualsRequest$outboundSchema,
+    value: z.string(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOr1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr1$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdDollarOr1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr1$outboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrEqualsRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOr1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOr1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarOr1$Outbound;
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarOr1ToJSON(
-  patchV2WebhooksWebhookIdDollarOr1: PatchV2WebhooksWebhookIdDollarOr1,
+export function patchV2WebhooksWebhookIdDollarOrEqualsRequestToJSON(
+  patchV2WebhooksWebhookIdDollarOrEqualsRequest:
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarOr1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarOr1,
+    PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrEqualsRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarOr1FromJSON(
+export function patchV2WebhooksWebhookIdDollarOrEqualsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdDollarOr1, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarOrEqualsRequest,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdDollarOr1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOr1' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrEqualsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const FilterDollarOr$inboundSchema: z.ZodType<
-  FilterDollarOr,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOr1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOr2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarOrRequestUnion$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema
+    ),
+  ]);
 
 /** @internal */
-export type FilterDollarOr$Outbound =
-  | PatchV2WebhooksWebhookIdDollarOr1$Outbound
-  | PatchV2WebhooksWebhookIdDollarOr2$Outbound;
+export type PatchV2WebhooksWebhookIdDollarOrRequestUnion$Outbound =
+  | PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound
+  | PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound;
 
 /** @internal */
-export const FilterDollarOr$outboundSchema: z.ZodType<
-  FilterDollarOr$Outbound,
-  z.ZodTypeDef,
-  FilterDollarOr
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOr1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOr2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarOrRequestUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema
+    ),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace FilterDollarOr$ {
-  /** @deprecated use `FilterDollarOr$inboundSchema` instead. */
-  export const inboundSchema = FilterDollarOr$inboundSchema;
-  /** @deprecated use `FilterDollarOr$outboundSchema` instead. */
-  export const outboundSchema = FilterDollarOr$outboundSchema;
-  /** @deprecated use `FilterDollarOr$Outbound` instead. */
-  export type Outbound = FilterDollarOr$Outbound;
+export namespace PatchV2WebhooksWebhookIdDollarOrRequestUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrRequestUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrRequestUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrRequestUnion$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDollarOrRequestUnion$Outbound;
 }
 
-export function filterDollarOrToJSON(filterDollarOr: FilterDollarOr): string {
-  return JSON.stringify(FilterDollarOr$outboundSchema.parse(filterDollarOr));
+export function patchV2WebhooksWebhookIdDollarOrRequestUnionToJSON(
+  patchV2WebhooksWebhookIdDollarOrRequestUnion:
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion,
+): string {
+  return JSON.stringify(
+    PatchV2WebhooksWebhookIdDollarOrRequestUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrRequestUnion,
+    ),
+  );
 }
 
-export function filterDollarOrFromJSON(
+export function patchV2WebhooksWebhookIdDollarOrRequestUnionFromJSON(
   jsonString: string,
-): SafeParseResult<FilterDollarOr, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarOrRequestUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => FilterDollarOr$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FilterDollarOr' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdDollarOrRequestUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrRequestUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter1$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter1,
+export const PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterRequest1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $or: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOr1$inboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOr2$inboundSchema),
+      z.lazy(() => PatchV2WebhooksWebhookIdDollarOrEqualsRequest$inboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$inboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -914,23 +1025,27 @@ export const PatchV2WebhooksWebhookIdFilter1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilter1$Outbound = {
+export type PatchV2WebhooksWebhookIdFilterRequest1$Outbound = {
   $or: Array<
-    | PatchV2WebhooksWebhookIdDollarOr1$Outbound
-    | PatchV2WebhooksWebhookIdDollarOr2$Outbound
+    | PatchV2WebhooksWebhookIdDollarOrEqualsRequest$Outbound
+    | PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$Outbound
   >;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter1$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter1$Outbound,
+export const PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterRequest1$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilter1
+  PatchV2WebhooksWebhookIdFilterRequest1
 > = z.object({
   dollarOr: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOr1$outboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOr2$outboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrEqualsRequest$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrNotEqualsRequest$outboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -943,185 +1058,205 @@ export const PatchV2WebhooksWebhookIdFilter1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilter1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter1$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdFilter1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter1$outboundSchema` instead. */
-  export const outboundSchema = PatchV2WebhooksWebhookIdFilter1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilter1$Outbound;
+export namespace PatchV2WebhooksWebhookIdFilterRequest1$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequest1$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterRequest1$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilter1ToJSON(
-  patchV2WebhooksWebhookIdFilter1: PatchV2WebhooksWebhookIdFilter1,
+export function patchV2WebhooksWebhookIdFilterRequest1ToJSON(
+  patchV2WebhooksWebhookIdFilterRequest1:
+    PatchV2WebhooksWebhookIdFilterRequest1,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilter1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilter1,
+    PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterRequest1,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilter1FromJSON(
+export function patchV2WebhooksWebhookIdFilterRequest1FromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdFilter1, SDKValidationError> {
+): SafeParseResult<PatchV2WebhooksWebhookIdFilterRequest1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdFilter1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilter1' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterRequest1' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdFilter1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdFilter2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdFilterRequestUnion$inboundSchema:
+  z.ZodType<PatchV2WebhooksWebhookIdFilterRequestUnion, z.ZodTypeDef, unknown> =
+    z.union([
+      z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema),
+      z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema),
+    ]);
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilter$Outbound =
-  | PatchV2WebhooksWebhookIdFilter1$Outbound
-  | PatchV2WebhooksWebhookIdFilter2$Outbound;
+export type PatchV2WebhooksWebhookIdFilterRequestUnion$Outbound =
+  | PatchV2WebhooksWebhookIdFilterRequest1$Outbound
+  | PatchV2WebhooksWebhookIdFilterRequest2$Outbound;
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilter$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilter$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilter
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdFilter1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdFilter2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdFilterRequestUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdFilterRequestUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdFilterRequestUnion
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilter$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdFilter$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter$outboundSchema` instead. */
-  export const outboundSchema = PatchV2WebhooksWebhookIdFilter$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilter$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilter$Outbound;
+export namespace PatchV2WebhooksWebhookIdFilterRequestUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequestUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequestUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequestUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdFilterRequestUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterRequestUnion$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterRequestUnion$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilterToJSON(
-  patchV2WebhooksWebhookIdFilter: PatchV2WebhooksWebhookIdFilter,
+export function patchV2WebhooksWebhookIdFilterRequestUnionToJSON(
+  patchV2WebhooksWebhookIdFilterRequestUnion:
+    PatchV2WebhooksWebhookIdFilterRequestUnion,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilter$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilter,
+    PatchV2WebhooksWebhookIdFilterRequestUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterRequestUnion,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilterFromJSON(
+export function patchV2WebhooksWebhookIdFilterRequestUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdFilter, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdFilterRequestUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilter' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdFilterRequestUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterRequestUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdSubscriptions$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdSubscriptions,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  event_type: PatchV2WebhooksWebhookIdEventType$inboundSchema,
-  filter: z.nullable(
-    z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdFilter1$inboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdFilter2$inboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "event_type": "eventType",
+export const PatchV2WebhooksWebhookIdSubscriptionRequest$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdSubscriptionRequest,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    event_type: PatchV2WebhooksWebhookIdEventTypeRequest$inboundSchema,
+    filter: z.nullable(
+      z.union([
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest1$inboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest2$inboundSchema),
+      ]),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "event_type": "eventType",
+    });
   });
-});
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdSubscriptions$Outbound = {
+export type PatchV2WebhooksWebhookIdSubscriptionRequest$Outbound = {
   event_type: string;
   filter:
-    | PatchV2WebhooksWebhookIdFilter1$Outbound
-    | PatchV2WebhooksWebhookIdFilter2$Outbound
+    | PatchV2WebhooksWebhookIdFilterRequest1$Outbound
+    | PatchV2WebhooksWebhookIdFilterRequest2$Outbound
     | null;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdSubscriptions$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdSubscriptions$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdSubscriptions
-> = z.object({
-  eventType: PatchV2WebhooksWebhookIdEventType$outboundSchema,
-  filter: z.nullable(
-    z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdFilter1$outboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdFilter2$outboundSchema),
-    ]),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    eventType: "event_type",
+export const PatchV2WebhooksWebhookIdSubscriptionRequest$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdSubscriptionRequest$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdSubscriptionRequest
+  > = z.object({
+    eventType: PatchV2WebhooksWebhookIdEventTypeRequest$outboundSchema,
+    filter: z.nullable(
+      z.union([
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest1$outboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterRequest2$outboundSchema),
+      ]),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      eventType: "event_type",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdSubscriptions$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptions$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdSubscriptionRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionRequest$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdSubscriptions$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptions$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdSubscriptionRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionRequest$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdSubscriptions$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptions$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdSubscriptions$Outbound;
+    PatchV2WebhooksWebhookIdSubscriptionRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionRequest$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdSubscriptionRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdSubscriptionsToJSON(
-  patchV2WebhooksWebhookIdSubscriptions: PatchV2WebhooksWebhookIdSubscriptions,
+export function patchV2WebhooksWebhookIdSubscriptionRequestToJSON(
+  patchV2WebhooksWebhookIdSubscriptionRequest:
+    PatchV2WebhooksWebhookIdSubscriptionRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdSubscriptions$outboundSchema.parse(
-      patchV2WebhooksWebhookIdSubscriptions,
+    PatchV2WebhooksWebhookIdSubscriptionRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdSubscriptionRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdSubscriptionsFromJSON(
+export function patchV2WebhooksWebhookIdSubscriptionRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdSubscriptions, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdSubscriptionRequest,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdSubscriptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdSubscriptions' from JSON`,
+      PatchV2WebhooksWebhookIdSubscriptionRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdSubscriptionRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdData$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdData,
+export const PatchV2WebhooksWebhookIdDataRequest$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
   target_url: z.string().optional(),
   subscriptions: z.array(
-    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptions$inboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptionRequest$inboundSchema),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1130,22 +1265,22 @@ export const PatchV2WebhooksWebhookIdData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdData$Outbound = {
+export type PatchV2WebhooksWebhookIdDataRequest$Outbound = {
   target_url?: string | undefined;
   subscriptions?:
-    | Array<PatchV2WebhooksWebhookIdSubscriptions$Outbound>
+    | Array<PatchV2WebhooksWebhookIdSubscriptionRequest$Outbound>
     | undefined;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdData$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdData$Outbound,
+export const PatchV2WebhooksWebhookIdDataRequest$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdDataRequest$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdData
+  PatchV2WebhooksWebhookIdDataRequest
 > = z.object({
   targetUrl: z.string().optional(),
   subscriptions: z.array(
-    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptions$outboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptionRequest$outboundSchema),
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1157,32 +1292,35 @@ export const PatchV2WebhooksWebhookIdData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdData$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdData$inboundSchema` instead. */
-  export const inboundSchema = PatchV2WebhooksWebhookIdData$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdData$outboundSchema` instead. */
-  export const outboundSchema = PatchV2WebhooksWebhookIdData$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdData$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdData$Outbound;
+export namespace PatchV2WebhooksWebhookIdDataRequest$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PatchV2WebhooksWebhookIdDataRequest$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PatchV2WebhooksWebhookIdDataRequest$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataRequest$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDataRequest$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDataToJSON(
-  patchV2WebhooksWebhookIdData: PatchV2WebhooksWebhookIdData,
+export function patchV2WebhooksWebhookIdDataRequestToJSON(
+  patchV2WebhooksWebhookIdDataRequest: PatchV2WebhooksWebhookIdDataRequest,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdData$outboundSchema.parse(
-      patchV2WebhooksWebhookIdData,
+    PatchV2WebhooksWebhookIdDataRequest$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDataRequest,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDataFromJSON(
+export function patchV2WebhooksWebhookIdDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdData, SDKValidationError> {
+): SafeParseResult<PatchV2WebhooksWebhookIdDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2WebhooksWebhookIdData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdData' from JSON`,
+    (x) =>
+      PatchV2WebhooksWebhookIdDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDataRequest' from JSON`,
   );
 }
 
@@ -1192,12 +1330,12 @@ export const PatchV2WebhooksWebhookIdRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PatchV2WebhooksWebhookIdData$inboundSchema),
+  data: z.lazy(() => PatchV2WebhooksWebhookIdDataRequest$inboundSchema),
 });
 
 /** @internal */
 export type PatchV2WebhooksWebhookIdRequestBody$Outbound = {
-  data: PatchV2WebhooksWebhookIdData$Outbound;
+  data: PatchV2WebhooksWebhookIdDataRequest$Outbound;
 };
 
 /** @internal */
@@ -1206,7 +1344,7 @@ export const PatchV2WebhooksWebhookIdRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchV2WebhooksWebhookIdRequestBody
 > = z.object({
-  data: z.lazy(() => PatchV2WebhooksWebhookIdData$outboundSchema),
+  data: z.lazy(() => PatchV2WebhooksWebhookIdDataRequest$outboundSchema),
 });
 
 /**
@@ -1315,83 +1453,83 @@ export function patchV2WebhooksWebhookIdRequestFromJSON(
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksEventType$inboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdWebhooksEventType> = z
-    .nativeEnum(PatchV2WebhooksWebhookIdWebhooksEventType);
+export const PatchV2WebhooksWebhookIdEventTypeResponse$inboundSchema:
+  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdEventTypeResponse> = z
+    .nativeEnum(PatchV2WebhooksWebhookIdEventTypeResponse);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksEventType$outboundSchema:
-  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdWebhooksEventType> =
-    PatchV2WebhooksWebhookIdWebhooksEventType$inboundSchema;
+export const PatchV2WebhooksWebhookIdEventTypeResponse$outboundSchema:
+  z.ZodNativeEnum<typeof PatchV2WebhooksWebhookIdEventTypeResponse> =
+    PatchV2WebhooksWebhookIdEventTypeResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdWebhooksEventType$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksEventType$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdEventTypeResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdEventTypeResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksEventType$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksEventType$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdEventTypeResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdEventTypeResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksEventType$outboundSchema;
+    PatchV2WebhooksWebhookIdEventTypeResponse$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$inboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator
-  > = z.nativeEnum(
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator,
-  );
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator
-  > =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$inboundSchema;
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse
+  > = PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema:
-  z.ZodType<PatchV2WebhooksWebhookIdDollarAndWebhooks2, z.ZodTypeDef, unknown> =
-    z.object({
-      field: z.string(),
-      operator:
-        PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$inboundSchema,
-      value: z.string(),
-    });
+export const PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound,
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse
   > = z.object({
     field: z.string(),
     operator:
-      PatchV2WebhooksWebhookIdDollarAndWebhooksResponse200Operator$outboundSchema,
+      PatchV2WebhooksWebhookIdDollarAndOperatorNotEqualsResponse$outboundSchema,
     value: z.string(),
   });
 
@@ -1399,96 +1537,100 @@ export const PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAndWebhooks2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound;
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarAndWebhooks2ToJSON(
-  patchV2WebhooksWebhookIdDollarAndWebhooks2:
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2,
+export function patchV2WebhooksWebhookIdDollarAndNotEqualsResponseToJSON(
+  patchV2WebhooksWebhookIdDollarAndNotEqualsResponse:
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarAndWebhooks2,
+    PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndNotEqualsResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarAndWebhooks2FromJSON(
+export function patchV2WebhooksWebhookIdDollarAndNotEqualsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdDollarAndWebhooks2,
+  PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndWebhooks2' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$inboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator
-  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator);
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator
-  > = PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$inboundSchema;
+    typeof PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse
+  > = PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema:
-  z.ZodType<PatchV2WebhooksWebhookIdDollarAndWebhooks1, z.ZodTypeDef, unknown> =
-    z.object({
-      field: z.string(),
-      operator:
-        PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$inboundSchema,
-      value: z.string(),
-    });
+export const PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound,
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse
   > = z.object({
     field: z.string(),
     operator:
-      PatchV2WebhooksWebhookIdDollarAndWebhooksResponseOperator$outboundSchema,
+      PatchV2WebhooksWebhookIdDollarAndOperatorEqualsResponse$outboundSchema,
     value: z.string(),
   });
 
@@ -1496,121 +1638,135 @@ export const PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarAndWebhooks1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound;
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarAndWebhooks1ToJSON(
-  patchV2WebhooksWebhookIdDollarAndWebhooks1:
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1,
+export function patchV2WebhooksWebhookIdDollarAndEqualsResponseToJSON(
+  patchV2WebhooksWebhookIdDollarAndEqualsResponse:
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarAndWebhooks1,
+    PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndEqualsResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarAndWebhooks1FromJSON(
+export function patchV2WebhooksWebhookIdDollarAndEqualsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdDollarAndWebhooks1,
+  PatchV2WebhooksWebhookIdDollarAndEqualsResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndWebhooks1' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndEqualsResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterDollarAnd$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterDollarAnd,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarAndResponseUnion$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema
+    ),
+  ]);
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilterDollarAnd$Outbound =
-  | PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound
-  | PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound;
+export type PatchV2WebhooksWebhookIdDollarAndResponseUnion$Outbound =
+  | PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound
+  | PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound;
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterDollarAnd$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterDollarAnd$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilterDollarAnd
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarAndResponseUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion
+  > = z.union([
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema
+    ),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema
+    ),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilterDollarAnd$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarAnd$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarAndResponseUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndResponseUnion$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdFilterDollarAnd$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarAnd$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndResponseUnion$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdFilterDollarAnd$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarAnd$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilterDollarAnd$Outbound;
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarAndResponseUnion$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilterDollarAndToJSON(
-  patchV2WebhooksWebhookIdFilterDollarAnd:
-    PatchV2WebhooksWebhookIdFilterDollarAnd,
+export function patchV2WebhooksWebhookIdDollarAndResponseUnionToJSON(
+  patchV2WebhooksWebhookIdDollarAndResponseUnion:
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilterDollarAnd$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilterDollarAnd,
+    PatchV2WebhooksWebhookIdDollarAndResponseUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarAndResponseUnion,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilterDollarAndFromJSON(
+export function patchV2WebhooksWebhookIdDollarAndResponseUnionFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdFilterDollarAnd,
+  PatchV2WebhooksWebhookIdDollarAndResponseUnion,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdFilterDollarAnd$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdDollarAndResponseUnion$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilterDollarAnd' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarAndResponseUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterWebhooks2,
+export const PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterResponse2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $and: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks1$inboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks2$inboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndEqualsResponse$inboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$inboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -1620,23 +1776,27 @@ export const PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound = {
+export type PatchV2WebhooksWebhookIdFilterResponse2$Outbound = {
   $and: Array<
-    | PatchV2WebhooksWebhookIdDollarAndWebhooks1$Outbound
-    | PatchV2WebhooksWebhookIdDollarAndWebhooks2$Outbound
+    | PatchV2WebhooksWebhookIdDollarAndEqualsResponse$Outbound
+    | PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$Outbound
   >;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound,
+export const PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterResponse2$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilterWebhooks2
+  PatchV2WebhooksWebhookIdFilterResponse2
 > = z.object({
   dollarAnd: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks1$outboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarAndWebhooks2$outboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndEqualsResponse$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarAndNotEqualsResponse$outboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -1649,98 +1809,99 @@ export const PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilterWebhooks2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdFilterResponse2$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound;
+    PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse2$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterResponse2$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilterWebhooks2ToJSON(
-  patchV2WebhooksWebhookIdFilterWebhooks2:
-    PatchV2WebhooksWebhookIdFilterWebhooks2,
+export function patchV2WebhooksWebhookIdFilterResponse2ToJSON(
+  patchV2WebhooksWebhookIdFilterResponse2:
+    PatchV2WebhooksWebhookIdFilterResponse2,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilterWebhooks2,
+    PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterResponse2,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilterWebhooks2FromJSON(
+export function patchV2WebhooksWebhookIdFilterResponse2FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdFilterWebhooks2,
+  PatchV2WebhooksWebhookIdFilterResponse2,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilterWebhooks2' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterResponse2' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$inboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator
-  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator);
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator
-  > = PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$inboundSchema;
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse
+  > = PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOrWebhooks2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator:
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound,
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse
   > = z.object({
     field: z.string(),
     operator:
-      PatchV2WebhooksWebhookIdDollarOrWebhooksResponse200Operator$outboundSchema,
+      PatchV2WebhooksWebhookIdDollarOrOperatorNotEqualsResponse$outboundSchema,
     value: z.string(),
   });
 
@@ -1748,98 +1909,100 @@ export const PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrWebhooks2$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound;
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarOrWebhooks2ToJSON(
-  patchV2WebhooksWebhookIdDollarOrWebhooks2:
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2,
+export function patchV2WebhooksWebhookIdDollarOrNotEqualsResponseToJSON(
+  patchV2WebhooksWebhookIdDollarOrNotEqualsResponse:
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarOrWebhooks2,
+    PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrNotEqualsResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarOrWebhooks2FromJSON(
+export function patchV2WebhooksWebhookIdDollarOrNotEqualsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdDollarOrWebhooks2,
+  PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrWebhooks2' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$inboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator
-  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator);
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse
+  > = z.nativeEnum(PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse);
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator
-  > = PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$inboundSchema;
+    typeof PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse
+  > = PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$outboundSchema;
+    PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$outboundSchema;
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdDollarOrWebhooks1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator:
-    PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$inboundSchema,
-  value: z.string(),
-});
+export const PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    field: z.string(),
+    operator:
+      PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$inboundSchema,
+    value: z.string(),
+  });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound = {
+export type PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema:
+export const PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound,
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse
   > = z.object({
     field: z.string(),
     operator:
-      PatchV2WebhooksWebhookIdDollarOrWebhooksResponseOperator$outboundSchema,
+      PatchV2WebhooksWebhookIdDollarOrOperatorEqualsResponse$outboundSchema,
     value: z.string(),
   });
 
@@ -1847,116 +2010,132 @@ export const PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdDollarOrWebhooks1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrEqualsResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound;
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound` instead. */
+  export type Outbound =
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdDollarOrWebhooks1ToJSON(
-  patchV2WebhooksWebhookIdDollarOrWebhooks1:
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1,
+export function patchV2WebhooksWebhookIdDollarOrEqualsResponseToJSON(
+  patchV2WebhooksWebhookIdDollarOrEqualsResponse:
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdDollarOrWebhooks1,
+    PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrEqualsResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdDollarOrWebhooks1FromJSON(
+export function patchV2WebhooksWebhookIdDollarOrEqualsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdDollarOrWebhooks1,
+  PatchV2WebhooksWebhookIdDollarOrEqualsResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrWebhooks1' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrEqualsResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterDollarOr$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterDollarOr,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarOrResponseUnion$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema
+    ),
+  ]);
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilterDollarOr$Outbound =
-  | PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound
-  | PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound;
+export type PatchV2WebhooksWebhookIdDollarOrResponseUnion$Outbound =
+  | PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound
+  | PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound;
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterDollarOr$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterDollarOr$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilterDollarOr
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdDollarOrResponseUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema),
+    z.lazy(() =>
+      PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema
+    ),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilterDollarOr$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarOr$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDollarOrResponseUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrResponseUnion$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdFilterDollarOr$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarOr$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrResponseUnion$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdFilterDollarOr$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterDollarOr$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilterDollarOr$Outbound;
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDollarOrResponseUnion$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDollarOrResponseUnion$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilterDollarOrToJSON(
-  patchV2WebhooksWebhookIdFilterDollarOr:
-    PatchV2WebhooksWebhookIdFilterDollarOr,
+export function patchV2WebhooksWebhookIdDollarOrResponseUnionToJSON(
+  patchV2WebhooksWebhookIdDollarOrResponseUnion:
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilterDollarOr$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilterDollarOr,
+    PatchV2WebhooksWebhookIdDollarOrResponseUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDollarOrResponseUnion,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilterDollarOrFromJSON(
+export function patchV2WebhooksWebhookIdDollarOrResponseUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdFilterDollarOr, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdDollarOrResponseUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdFilterDollarOr$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilterDollarOr' from JSON`,
+      PatchV2WebhooksWebhookIdDollarOrResponseUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDollarOrResponseUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterWebhooks1,
+export const PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterResponse1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $or: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks1$inboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks2$inboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrEqualsResponse$inboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$inboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -1966,23 +2145,27 @@ export const PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound = {
+export type PatchV2WebhooksWebhookIdFilterResponse1$Outbound = {
   $or: Array<
-    | PatchV2WebhooksWebhookIdDollarOrWebhooks1$Outbound
-    | PatchV2WebhooksWebhookIdDollarOrWebhooks2$Outbound
+    | PatchV2WebhooksWebhookIdDollarOrEqualsResponse$Outbound
+    | PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$Outbound
   >;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound,
+export const PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdFilterResponse1$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdFilterWebhooks1
+  PatchV2WebhooksWebhookIdFilterResponse1
 > = z.object({
   dollarOr: z.array(
     z.union([
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks1$outboundSchema),
-      z.lazy(() => PatchV2WebhooksWebhookIdDollarOrWebhooks2$outboundSchema),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrEqualsResponse$outboundSchema
+      ),
+      z.lazy(() =>
+        PatchV2WebhooksWebhookIdDollarOrNotEqualsResponse$outboundSchema
+      ),
     ]),
   ),
 }).transform((v) => {
@@ -1995,118 +2178,125 @@ export const PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdFilterWebhooks1$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdFilterResponse1$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound;
+    PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponse1$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterResponse1$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdFilterWebhooks1ToJSON(
-  patchV2WebhooksWebhookIdFilterWebhooks1:
-    PatchV2WebhooksWebhookIdFilterWebhooks1,
+export function patchV2WebhooksWebhookIdFilterResponse1ToJSON(
+  patchV2WebhooksWebhookIdFilterResponse1:
+    PatchV2WebhooksWebhookIdFilterResponse1,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema.parse(
-      patchV2WebhooksWebhookIdFilterWebhooks1,
+    PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterResponse1,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdFilterWebhooks1FromJSON(
+export function patchV2WebhooksWebhookIdFilterResponse1FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdFilterWebhooks1,
+  PatchV2WebhooksWebhookIdFilterResponse1,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdFilterWebhooks1' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterResponse1' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksFilter$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdWebhooksFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdFilterResponseUnion$inboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdFilterResponseUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema),
+  ]);
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdWebhooksFilter$Outbound =
-  | PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound
-  | PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound;
+export type PatchV2WebhooksWebhookIdFilterResponseUnion$Outbound =
+  | PatchV2WebhooksWebhookIdFilterResponse1$Outbound
+  | PatchV2WebhooksWebhookIdFilterResponse2$Outbound;
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksFilter$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdWebhooksFilter$Outbound,
-  z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdWebhooksFilter
-> = z.union([
-  z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema),
-  z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema),
-]);
+export const PatchV2WebhooksWebhookIdFilterResponseUnion$outboundSchema:
+  z.ZodType<
+    PatchV2WebhooksWebhookIdFilterResponseUnion$Outbound,
+    z.ZodTypeDef,
+    PatchV2WebhooksWebhookIdFilterResponseUnion
+  > = z.union([
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdWebhooksFilter$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksFilter$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdFilterResponseUnion$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponseUnion$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksFilter$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksFilter$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdFilterResponseUnion$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponseUnion$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksFilter$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksFilter$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdWebhooksFilter$Outbound;
+    PatchV2WebhooksWebhookIdFilterResponseUnion$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdFilterResponseUnion$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdFilterResponseUnion$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdWebhooksFilterToJSON(
-  patchV2WebhooksWebhookIdWebhooksFilter:
-    PatchV2WebhooksWebhookIdWebhooksFilter,
+export function patchV2WebhooksWebhookIdFilterResponseUnionToJSON(
+  patchV2WebhooksWebhookIdFilterResponseUnion:
+    PatchV2WebhooksWebhookIdFilterResponseUnion,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdWebhooksFilter$outboundSchema.parse(
-      patchV2WebhooksWebhookIdWebhooksFilter,
+    PatchV2WebhooksWebhookIdFilterResponseUnion$outboundSchema.parse(
+      patchV2WebhooksWebhookIdFilterResponseUnion,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdWebhooksFilterFromJSON(
+export function patchV2WebhooksWebhookIdFilterResponseUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdWebhooksFilter, SDKValidationError> {
+): SafeParseResult<
+  PatchV2WebhooksWebhookIdFilterResponseUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdWebhooksFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdWebhooksFilter' from JSON`,
+      PatchV2WebhooksWebhookIdFilterResponseUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchV2WebhooksWebhookIdFilterResponseUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema:
+export const PatchV2WebhooksWebhookIdSubscriptionResponse$inboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions,
+    PatchV2WebhooksWebhookIdSubscriptionResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    event_type: PatchV2WebhooksWebhookIdWebhooksEventType$inboundSchema,
+    event_type: PatchV2WebhooksWebhookIdEventTypeResponse$inboundSchema,
     filter: z.nullable(
       z.union([
-        z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks1$inboundSchema),
-        z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks2$inboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse1$inboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse2$inboundSchema),
       ]),
     ),
   }).transform((v) => {
@@ -2116,26 +2306,26 @@ export const PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema:
   });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdWebhooksSubscriptions$Outbound = {
+export type PatchV2WebhooksWebhookIdSubscriptionResponse$Outbound = {
   event_type: string;
   filter:
-    | PatchV2WebhooksWebhookIdFilterWebhooks1$Outbound
-    | PatchV2WebhooksWebhookIdFilterWebhooks2$Outbound
+    | PatchV2WebhooksWebhookIdFilterResponse1$Outbound
+    | PatchV2WebhooksWebhookIdFilterResponse2$Outbound
     | null;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema:
+export const PatchV2WebhooksWebhookIdSubscriptionResponse$outboundSchema:
   z.ZodType<
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions$Outbound,
+    PatchV2WebhooksWebhookIdSubscriptionResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions
+    PatchV2WebhooksWebhookIdSubscriptionResponse
   > = z.object({
-    eventType: PatchV2WebhooksWebhookIdWebhooksEventType$outboundSchema,
+    eventType: PatchV2WebhooksWebhookIdEventTypeResponse$outboundSchema,
     filter: z.nullable(
       z.union([
-        z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks1$outboundSchema),
-        z.lazy(() => PatchV2WebhooksWebhookIdFilterWebhooks2$outboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse1$outboundSchema),
+        z.lazy(() => PatchV2WebhooksWebhookIdFilterResponse2$outboundSchema),
       ]),
     ),
   }).transform((v) => {
@@ -2148,41 +2338,41 @@ export const PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdWebhooksSubscriptions$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdSubscriptionResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdSubscriptionResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksSubscriptions$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdWebhooksSubscriptions$Outbound;
+    PatchV2WebhooksWebhookIdSubscriptionResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdSubscriptionResponse$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdSubscriptionResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdWebhooksSubscriptionsToJSON(
-  patchV2WebhooksWebhookIdWebhooksSubscriptions:
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions,
+export function patchV2WebhooksWebhookIdSubscriptionResponseToJSON(
+  patchV2WebhooksWebhookIdSubscriptionResponse:
+    PatchV2WebhooksWebhookIdSubscriptionResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema.parse(
-      patchV2WebhooksWebhookIdWebhooksSubscriptions,
+    PatchV2WebhooksWebhookIdSubscriptionResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdSubscriptionResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdWebhooksSubscriptionsFromJSON(
+export function patchV2WebhooksWebhookIdSubscriptionResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2WebhooksWebhookIdWebhooksSubscriptions,
+  PatchV2WebhooksWebhookIdSubscriptionResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema.parse(
+      PatchV2WebhooksWebhookIdSubscriptionResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PatchV2WebhooksWebhookIdWebhooksSubscriptions' from JSON`,
+    `Failed to parse 'PatchV2WebhooksWebhookIdSubscriptionResponse' from JSON`,
   );
 }
 
@@ -2275,14 +2465,14 @@ export namespace PatchV2WebhooksWebhookIdStatus$ {
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksData$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdWebhooksData,
+export const PatchV2WebhooksWebhookIdDataResponse$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
   target_url: z.string(),
   subscriptions: z.array(
-    z.lazy(() => PatchV2WebhooksWebhookIdWebhooksSubscriptions$inboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptionResponse$inboundSchema),
   ),
   id: z.lazy(() => PatchV2WebhooksWebhookIdId$inboundSchema),
   status: PatchV2WebhooksWebhookIdStatus$inboundSchema,
@@ -2295,23 +2485,23 @@ export const PatchV2WebhooksWebhookIdWebhooksData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdWebhooksData$Outbound = {
+export type PatchV2WebhooksWebhookIdDataResponse$Outbound = {
   target_url: string;
-  subscriptions: Array<PatchV2WebhooksWebhookIdWebhooksSubscriptions$Outbound>;
+  subscriptions: Array<PatchV2WebhooksWebhookIdSubscriptionResponse$Outbound>;
   id: PatchV2WebhooksWebhookIdId$Outbound;
   status: string;
   created_at: string;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdWebhooksData$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdWebhooksData$Outbound,
+export const PatchV2WebhooksWebhookIdDataResponse$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdDataResponse$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdWebhooksData
+  PatchV2WebhooksWebhookIdDataResponse
 > = z.object({
   targetUrl: z.string(),
   subscriptions: z.array(
-    z.lazy(() => PatchV2WebhooksWebhookIdWebhooksSubscriptions$outboundSchema),
+    z.lazy(() => PatchV2WebhooksWebhookIdSubscriptionResponse$outboundSchema),
   ),
   id: z.lazy(() => PatchV2WebhooksWebhookIdId$outboundSchema),
   status: PatchV2WebhooksWebhookIdStatus$outboundSchema,
@@ -2327,93 +2517,90 @@ export const PatchV2WebhooksWebhookIdWebhooksData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdWebhooksData$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksData$inboundSchema` instead. */
+export namespace PatchV2WebhooksWebhookIdDataResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksData$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksData$outboundSchema` instead. */
+    PatchV2WebhooksWebhookIdDataResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2WebhooksWebhookIdWebhooksData$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdWebhooksData$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdWebhooksData$Outbound;
+    PatchV2WebhooksWebhookIdDataResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdDataResponse$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdDataResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdWebhooksDataToJSON(
-  patchV2WebhooksWebhookIdWebhooksData: PatchV2WebhooksWebhookIdWebhooksData,
+export function patchV2WebhooksWebhookIdDataResponseToJSON(
+  patchV2WebhooksWebhookIdDataResponse: PatchV2WebhooksWebhookIdDataResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdWebhooksData$outboundSchema.parse(
-      patchV2WebhooksWebhookIdWebhooksData,
+    PatchV2WebhooksWebhookIdDataResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdDataResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdWebhooksDataFromJSON(
+export function patchV2WebhooksWebhookIdDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdWebhooksData, SDKValidationError> {
+): SafeParseResult<PatchV2WebhooksWebhookIdDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2WebhooksWebhookIdWebhooksData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdWebhooksData' from JSON`,
+      PatchV2WebhooksWebhookIdDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2WebhooksWebhookIdDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdResponseBody$inboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdResponseBody,
+export const PatchV2WebhooksWebhookIdResponse$inboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PatchV2WebhooksWebhookIdWebhooksData$inboundSchema),
+  data: z.lazy(() => PatchV2WebhooksWebhookIdDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PatchV2WebhooksWebhookIdResponseBody$Outbound = {
-  data: PatchV2WebhooksWebhookIdWebhooksData$Outbound;
+export type PatchV2WebhooksWebhookIdResponse$Outbound = {
+  data: PatchV2WebhooksWebhookIdDataResponse$Outbound;
 };
 
 /** @internal */
-export const PatchV2WebhooksWebhookIdResponseBody$outboundSchema: z.ZodType<
-  PatchV2WebhooksWebhookIdResponseBody$Outbound,
+export const PatchV2WebhooksWebhookIdResponse$outboundSchema: z.ZodType<
+  PatchV2WebhooksWebhookIdResponse$Outbound,
   z.ZodTypeDef,
-  PatchV2WebhooksWebhookIdResponseBody
+  PatchV2WebhooksWebhookIdResponse
 > = z.object({
-  data: z.lazy(() => PatchV2WebhooksWebhookIdWebhooksData$outboundSchema),
+  data: z.lazy(() => PatchV2WebhooksWebhookIdDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2WebhooksWebhookIdResponseBody$ {
-  /** @deprecated use `PatchV2WebhooksWebhookIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchV2WebhooksWebhookIdResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchV2WebhooksWebhookIdResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2WebhooksWebhookIdResponseBody$Outbound` instead. */
-  export type Outbound = PatchV2WebhooksWebhookIdResponseBody$Outbound;
+export namespace PatchV2WebhooksWebhookIdResponse$ {
+  /** @deprecated use `PatchV2WebhooksWebhookIdResponse$inboundSchema` instead. */
+  export const inboundSchema = PatchV2WebhooksWebhookIdResponse$inboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdResponse$outboundSchema` instead. */
+  export const outboundSchema = PatchV2WebhooksWebhookIdResponse$outboundSchema;
+  /** @deprecated use `PatchV2WebhooksWebhookIdResponse$Outbound` instead. */
+  export type Outbound = PatchV2WebhooksWebhookIdResponse$Outbound;
 }
 
-export function patchV2WebhooksWebhookIdResponseBodyToJSON(
-  patchV2WebhooksWebhookIdResponseBody: PatchV2WebhooksWebhookIdResponseBody,
+export function patchV2WebhooksWebhookIdResponseToJSON(
+  patchV2WebhooksWebhookIdResponse: PatchV2WebhooksWebhookIdResponse,
 ): string {
   return JSON.stringify(
-    PatchV2WebhooksWebhookIdResponseBody$outboundSchema.parse(
-      patchV2WebhooksWebhookIdResponseBody,
+    PatchV2WebhooksWebhookIdResponse$outboundSchema.parse(
+      patchV2WebhooksWebhookIdResponse,
     ),
   );
 }
 
-export function patchV2WebhooksWebhookIdResponseBodyFromJSON(
+export function patchV2WebhooksWebhookIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2WebhooksWebhookIdResponseBody, SDKValidationError> {
+): SafeParseResult<PatchV2WebhooksWebhookIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      PatchV2WebhooksWebhookIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2WebhooksWebhookIdResponseBody' from JSON`,
+    (x) => PatchV2WebhooksWebhookIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2WebhooksWebhookIdResponse' from JSON`,
   );
 }

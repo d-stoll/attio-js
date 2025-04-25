@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2ObjectsObjectRecordsRecordIdRequestBody } from "attio-js/models/operations";
+import { PatchV2ObjectsObjectRecordsRecordIdRequestBody } from "attio-js/models/operations/patchv2objectsobjectrecordsrecordid.js";
 
 let value: PatchV2ObjectsObjectRecordsRecordIdRequestBody = {
   data: {
@@ -20,6 +20,6 @@ let value: PatchV2ObjectsObjectRecordsRecordIdRequestBody = {
 
 ## Fields
 
-| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| `data`                                                                                                                   | [operations.PatchV2ObjectsObjectRecordsRecordIdData](../../models/operations/patchv2objectsobjectrecordsrecordiddata.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                                                 | [operations.PatchV2ObjectsObjectRecordsRecordIdDataRequest](../../models/operations/patchv2objectsobjectrecordsrecordiddatarequest.md) | :heavy_check_mark:                                                                                                                     | N/A                                                                                                                                    |

@@ -113,14 +113,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2ListsListEntriesQueryResponseBody](../../models/operations/postv2listslistentriesqueryresponsebody.md)\>**
+**Promise\<[operations.PostV2ListsListEntriesQueryResponse](../../models/operations/postv2listslistentriesqueryresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## create
 
@@ -218,14 +218,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2ListsListEntriesResponseBody](../../models/operations/postv2listslistentriesresponsebody.md)\>**
+**Promise\<[operations.PostV2ListsListEntriesResponse](../../models/operations/postv2listslistentriesresponse.md)\>**
 
 ### Errors
 
 | Error Type                                       | Status Code                                      | Content Type                                     |
 | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| errors.PostV2ListsListEntriesResponseBody        | 400                                              | application/json                                 |
-| errors.PostV2ListsListEntriesEntriesResponseBody | 404                                              | application/json                                 |
+| errors.PostV2ListsListEntriesInvalidRequestError | 400                                              | application/json                                 |
+| errors.PostV2ListsListEntriesNotFoundError       | 404                                              | application/json                                 |
 | errors.APIError                                  | 4XX, 5XX                                         | \*/\*                                            |
 
 ## assert
@@ -324,15 +324,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PutV2ListsListEntriesResponseBody](../../models/operations/putv2listslistentriesresponsebody.md)\>**
+**Promise\<[operations.PutV2ListsListEntriesResponse](../../models/operations/putv2listslistentriesresponse.md)\>**
 
 ### Errors
 
-| Error Type                                      | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| errors.PutV2ListsListEntriesResponseBody        | 400                                             | application/json                                |
-| errors.PutV2ListsListEntriesEntriesResponseBody | 404                                             | application/json                                |
-| errors.APIError                                 | 4XX, 5XX                                        | \*/\*                                           |
+| Error Type                                | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| errors.MultipleMatchResultsError          | 400                                       | application/json                          |
+| errors.PutV2ListsListEntriesNotFoundError | 404                                       | application/json                          |
+| errors.APIError                           | 4XX, 5XX                                  | \*/\*                                     |
 
 ## getEntry
 
@@ -406,14 +406,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ListsListEntriesEntryIdResponseBody](../../models/operations/getv2listslistentriesentryidresponsebody.md)\>**
+**Promise\<[operations.GetV2ListsListEntriesEntryIdResponse](../../models/operations/getv2listslistentriesentryidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## update
 
@@ -509,15 +509,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2ListsListEntriesEntryIdResponseBody](../../models/operations/patchv2listslistentriesentryidresponsebody.md)\>**
+**Promise\<[operations.PatchV2ListsListEntriesEntryIdResponse](../../models/operations/patchv2listslistentriesentryidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.EntriesResponseBody     | 400                            | application/json               |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.ImmutableValueError         | 400                                | application/json                   |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## overwrite
 
@@ -613,15 +613,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PutV2ListsListEntriesEntryIdResponseBody](../../models/operations/putv2listslistentriesentryidresponsebody.md)\>**
+**Promise\<[operations.PutV2ListsListEntriesEntryIdResponse](../../models/operations/putv2listslistentriesentryidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.EntriesResponseBody     | 400                            | application/json               |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.ImmutableValueError         | 400                                | application/json                   |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## delete
 
@@ -695,11 +695,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteV2ListsListEntriesEntryIdResponseBody](../../models/operations/deletev2listslistentriesentryidresponsebody.md)\>**
+**Promise\<[operations.DeleteV2ListsListEntriesEntryIdResponse](../../models/operations/deletev2listslistentriesentryidresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |

@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2TargetIdentifierAttributesResponseBody](../../models/operations/getv2targetidentifierattributesresponsebody.md)\>**
+**Promise\<[operations.GetV2TargetIdentifierAttributesResponse](../../models/operations/getv2targetidentifierattributesresponse.md)\>**
 
 ### Errors
 
@@ -236,16 +236,16 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2TargetIdentifierAttributesResponseBody](../../models/operations/postv2targetidentifierattributesresponsebody.md)\>**
+**Promise\<[operations.PostV2TargetIdentifierAttributesResponse](../../models/operations/postv2targetidentifierattributesresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                            | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| errors.PostV2TargetIdentifierAttributesResponseBody                   | 400                                                                   | application/json                                                      |
-| errors.PostV2TargetIdentifierAttributesAttributesResponseBody         | 404                                                                   | application/json                                                      |
-| errors.PostV2TargetIdentifierAttributesAttributesResponseResponseBody | 409                                                                   | application/json                                                      |
-| errors.APIError                                                       | 4XX, 5XX                                                              | \*/\*                                                                 |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.PostV2TargetIdentifierAttributesValidationTypeError | 400                                                        | application/json                                           |
+| errors.PostV2TargetIdentifierAttributesNotFoundError       | 404                                                        | application/json                                           |
+| errors.PostV2TargetIdentifierAttributesSlugConflictError   | 409                                                        | application/json                                           |
+| errors.APIError                                            | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## get
 
@@ -321,14 +321,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeResponseBody](../../models/operations/getv2targetidentifierattributesattributeresponsebody.md)\>**
+**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeResponse](../../models/operations/getv2targetidentifierattributesattributeresponse.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ResponseResponseBody | 404                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError | 404                                                          | application/json                                             |
+| errors.APIError                                              | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## update
 
@@ -462,15 +462,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2TargetIdentifierAttributesAttributeResponseBody](../../models/operations/patchv2targetidentifierattributesattributeresponsebody.md)\>**
+**Promise\<[operations.PatchV2TargetIdentifierAttributesAttributeResponse](../../models/operations/patchv2targetidentifierattributesattributeresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                    | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| errors.PatchV2TargetIdentifierAttributesAttributeResponseBody | 400                                                           | application/json                                              |
-| errors.ResponseResponseBody                                   | 404                                                           | application/json                                              |
-| errors.APIError                                               | 4XX, 5XX                                                      | \*/\*                                                         |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| errors.SystemEditUnauthorizedError                           | 400                                                          | application/json                                             |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError | 404                                                          | application/json                                             |
+| errors.APIError                                              | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## listSelectOptions
 
@@ -548,14 +548,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeOptionsResponseBody](../../models/operations/getv2targetidentifierattributesattributeoptionsresponsebody.md)\>**
+**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeOptionsResponse](../../models/operations/getv2targetidentifierattributesattributeoptionsresponse.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ResponseResponseBody | 404                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError | 404                                                          | application/json                                             |
+| errors.APIError                                              | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## createSelectOption
 
@@ -641,16 +641,16 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2TargetIdentifierAttributesAttributeOptionsResponseBody](../../models/operations/postv2targetidentifierattributesattributeoptionsresponsebody.md)\>**
+**Promise\<[operations.PostV2TargetIdentifierAttributesAttributeOptionsResponse](../../models/operations/postv2targetidentifierattributesattributeoptionsresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                          | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| errors.PostV2TargetIdentifierAttributesAttributeOptionsResponseBody | 400                                                                 | application/json                                                    |
-| errors.ResponseResponseBody                                         | 404                                                                 | application/json                                                    |
-| errors.AttributesResponseBody                                       | 409                                                                 | application/json                                                    |
-| errors.APIError                                                     | 4XX, 5XX                                                            | \*/\*                                                               |
+| Error Type                                                                 | Status Code                                                                | Content Type                                                               |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| errors.PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError | 400                                                                        | application/json                                                           |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError               | 404                                                                        | application/json                                                           |
+| errors.PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError   | 409                                                                        | application/json                                                           |
+| errors.APIError                                                            | 4XX, 5XX                                                                   | \*/\*                                                                      |
 
 ## updateOption
 
@@ -740,16 +740,16 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody](../../models/operations/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.md)\>**
+**Promise\<[operations.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponse](../../models/operations/patchv2targetidentifierattributesattributeoptionsoptionresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                                 | Status Code                                                                | Content Type                                                               |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionResponseBody | 400                                                                        | application/json                                                           |
-| errors.ResponseResponseBody                                                | 404                                                                        | application/json                                                           |
-| errors.AttributesResponseBody                                              | 409                                                                        | application/json                                                           |
-| errors.APIError                                                            | 4XX, 5XX                                                                   | \*/\*                                                                      |
+| Error Type                                                                        | Status Code                                                                       | Content Type                                                                      |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| errors.PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidRequestError | 400                                                                               | application/json                                                                  |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError                      | 404                                                                               | application/json                                                                  |
+| errors.PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError          | 409                                                                               | application/json                                                                  |
+| errors.APIError                                                                   | 4XX, 5XX                                                                          | \*/\*                                                                             |
 
 ## listStatuses
 
@@ -825,11 +825,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody](../../models/operations/getv2targetidentifierattributesattributestatusesresponsebody.md)\>**
+**Promise\<[operations.GetV2TargetIdentifierAttributesAttributeStatusesResponse](../../models/operations/getv2targetidentifierattributesattributestatusesresponse.md)\>**
 
 ### Errors
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| errors.ResponseResponseBody | 404                         | application/json            |
-| errors.APIError             | 4XX, 5XX                    | \*/\*                       |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError | 404                                                          | application/json                                             |
+| errors.APIError                                              | 4XX, 5XX                                                     | \*/\*                                                        |

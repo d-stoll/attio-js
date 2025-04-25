@@ -7,20 +7,25 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Note,
+  Note$inboundSchema,
+  Note$Outbound,
+  Note$outboundSchema,
+} from "../components/note.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
  */
-export const Format = {
+export const PostV2NotesFormat = {
   Plaintext: "plaintext",
   Markdown: "markdown",
 } as const;
 /**
  * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
  */
-export type Format = ClosedEnum<typeof Format>;
+export type PostV2NotesFormat = ClosedEnum<typeof PostV2NotesFormat>;
 
 export type PostV2NotesData = {
   /**
@@ -38,7 +43,7 @@ export type PostV2NotesData = {
   /**
    * The format of the note content to be created. The `plaintext` format uses the line feed character `\n` to create new lines within the note content. The `markdown` format supports rich text formatting, and links.
    */
-  format: Format;
+  format: PostV2NotesFormat;
   /**
    * The representation of the note content in the specified format.
    */
@@ -49,34 +54,36 @@ export type PostV2NotesData = {
   createdAt?: string | undefined;
 };
 
-export type PostV2NotesRequestBody = {
+export type PostV2NotesRequest = {
   data: PostV2NotesData;
 };
 
 /**
  * Success
  */
-export type PostV2NotesResponseBody = {
-  data: components.Note;
+export type PostV2NotesResponse = {
+  data: Note;
 };
 
 /** @internal */
-export const Format$inboundSchema: z.ZodNativeEnum<typeof Format> = z
-  .nativeEnum(Format);
+export const PostV2NotesFormat$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2NotesFormat
+> = z.nativeEnum(PostV2NotesFormat);
 
 /** @internal */
-export const Format$outboundSchema: z.ZodNativeEnum<typeof Format> =
-  Format$inboundSchema;
+export const PostV2NotesFormat$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2NotesFormat
+> = PostV2NotesFormat$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Format$ {
-  /** @deprecated use `Format$inboundSchema` instead. */
-  export const inboundSchema = Format$inboundSchema;
-  /** @deprecated use `Format$outboundSchema` instead. */
-  export const outboundSchema = Format$outboundSchema;
+export namespace PostV2NotesFormat$ {
+  /** @deprecated use `PostV2NotesFormat$inboundSchema` instead. */
+  export const inboundSchema = PostV2NotesFormat$inboundSchema;
+  /** @deprecated use `PostV2NotesFormat$outboundSchema` instead. */
+  export const outboundSchema = PostV2NotesFormat$outboundSchema;
 }
 
 /** @internal */
@@ -88,7 +95,7 @@ export const PostV2NotesData$inboundSchema: z.ZodType<
   parent_object: z.string(),
   parent_record_id: z.string(),
   title: z.string(),
-  format: Format$inboundSchema,
+  format: PostV2NotesFormat$inboundSchema,
   content: z.string(),
   created_at: z.string().optional(),
 }).transform((v) => {
@@ -118,7 +125,7 @@ export const PostV2NotesData$outboundSchema: z.ZodType<
   parentObject: z.string(),
   parentRecordId: z.string(),
   title: z.string(),
-  format: Format$outboundSchema,
+  format: PostV2NotesFormat$outboundSchema,
   content: z.string(),
   createdAt: z.string().optional(),
 }).transform((v) => {
@@ -159,8 +166,8 @@ export function postV2NotesDataFromJSON(
 }
 
 /** @internal */
-export const PostV2NotesRequestBody$inboundSchema: z.ZodType<
-  PostV2NotesRequestBody,
+export const PostV2NotesRequest$inboundSchema: z.ZodType<
+  PostV2NotesRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -168,15 +175,15 @@ export const PostV2NotesRequestBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2NotesRequestBody$Outbound = {
+export type PostV2NotesRequest$Outbound = {
   data: PostV2NotesData$Outbound;
 };
 
 /** @internal */
-export const PostV2NotesRequestBody$outboundSchema: z.ZodType<
-  PostV2NotesRequestBody$Outbound,
+export const PostV2NotesRequest$outboundSchema: z.ZodType<
+  PostV2NotesRequest$Outbound,
   z.ZodTypeDef,
-  PostV2NotesRequestBody
+  PostV2NotesRequest
 > = z.object({
   data: z.lazy(() => PostV2NotesData$outboundSchema),
 });
@@ -185,83 +192,83 @@ export const PostV2NotesRequestBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2NotesRequestBody$ {
-  /** @deprecated use `PostV2NotesRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2NotesRequestBody$inboundSchema;
-  /** @deprecated use `PostV2NotesRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2NotesRequestBody$outboundSchema;
-  /** @deprecated use `PostV2NotesRequestBody$Outbound` instead. */
-  export type Outbound = PostV2NotesRequestBody$Outbound;
+export namespace PostV2NotesRequest$ {
+  /** @deprecated use `PostV2NotesRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2NotesRequest$inboundSchema;
+  /** @deprecated use `PostV2NotesRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2NotesRequest$outboundSchema;
+  /** @deprecated use `PostV2NotesRequest$Outbound` instead. */
+  export type Outbound = PostV2NotesRequest$Outbound;
 }
 
-export function postV2NotesRequestBodyToJSON(
-  postV2NotesRequestBody: PostV2NotesRequestBody,
+export function postV2NotesRequestToJSON(
+  postV2NotesRequest: PostV2NotesRequest,
 ): string {
   return JSON.stringify(
-    PostV2NotesRequestBody$outboundSchema.parse(postV2NotesRequestBody),
+    PostV2NotesRequest$outboundSchema.parse(postV2NotesRequest),
   );
 }
 
-export function postV2NotesRequestBodyFromJSON(
+export function postV2NotesRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2NotesRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2NotesRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2NotesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2NotesRequestBody' from JSON`,
+    (x) => PostV2NotesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2NotesRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2NotesResponseBody$inboundSchema: z.ZodType<
-  PostV2NotesResponseBody,
+export const PostV2NotesResponse$inboundSchema: z.ZodType<
+  PostV2NotesResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Note$inboundSchema,
+  data: Note$inboundSchema,
 });
 
 /** @internal */
-export type PostV2NotesResponseBody$Outbound = {
-  data: components.Note$Outbound;
+export type PostV2NotesResponse$Outbound = {
+  data: Note$Outbound;
 };
 
 /** @internal */
-export const PostV2NotesResponseBody$outboundSchema: z.ZodType<
-  PostV2NotesResponseBody$Outbound,
+export const PostV2NotesResponse$outboundSchema: z.ZodType<
+  PostV2NotesResponse$Outbound,
   z.ZodTypeDef,
-  PostV2NotesResponseBody
+  PostV2NotesResponse
 > = z.object({
-  data: components.Note$outboundSchema,
+  data: Note$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2NotesResponseBody$ {
-  /** @deprecated use `PostV2NotesResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2NotesResponseBody$inboundSchema;
-  /** @deprecated use `PostV2NotesResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2NotesResponseBody$outboundSchema;
-  /** @deprecated use `PostV2NotesResponseBody$Outbound` instead. */
-  export type Outbound = PostV2NotesResponseBody$Outbound;
+export namespace PostV2NotesResponse$ {
+  /** @deprecated use `PostV2NotesResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2NotesResponse$inboundSchema;
+  /** @deprecated use `PostV2NotesResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2NotesResponse$outboundSchema;
+  /** @deprecated use `PostV2NotesResponse$Outbound` instead. */
+  export type Outbound = PostV2NotesResponse$Outbound;
 }
 
-export function postV2NotesResponseBodyToJSON(
-  postV2NotesResponseBody: PostV2NotesResponseBody,
+export function postV2NotesResponseToJSON(
+  postV2NotesResponse: PostV2NotesResponse,
 ): string {
   return JSON.stringify(
-    PostV2NotesResponseBody$outboundSchema.parse(postV2NotesResponseBody),
+    PostV2NotesResponse$outboundSchema.parse(postV2NotesResponse),
   );
 }
 
-export function postV2NotesResponseBodyFromJSON(
+export function postV2NotesResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2NotesResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2NotesResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2NotesResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2NotesResponseBody' from JSON`,
+    (x) => PostV2NotesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2NotesResponse' from JSON`,
   );
 }

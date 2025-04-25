@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { InputValue6 } from "attio-js/models/components";
+import { InputValue6 } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValue6 = {
-  domain: "app.attio.com",
+  emailAddress: "alice@app.attio.com",
 };
 ```
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     | Example                         |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `domain`                        | *string*                        | :heavy_minus_sign:              | The full domain of the website. | app.attio.com                   |
+| Field                   | Type                    | Required                | Description             | Example                 |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `emailAddress`          | *string*                | :heavy_minus_sign:      | An email address string | alice@app.attio.com     |

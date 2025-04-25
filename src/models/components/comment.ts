@@ -51,7 +51,7 @@ export type RecordT = {
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const CommentType = {
+export const ResolvedByType = {
   ApiToken: "api-token",
   WorkspaceMember: "workspace-member",
   System: "system",
@@ -60,7 +60,7 @@ export const CommentType = {
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type CommentType = ClosedEnum<typeof CommentType>;
+export type ResolvedByType = ClosedEnum<typeof ResolvedByType>;
 
 /**
  * The actor that resolved this comment.
@@ -73,13 +73,13 @@ export type ResolvedBy = {
   /**
    * The type of actor. [Read more information on actor types here](/docs/actors).
    */
-  type?: CommentType | null | undefined;
+  type?: ResolvedByType | null | undefined;
 };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const CommentAuthorType = {
+export const AuthorType = {
   ApiToken: "api-token",
   WorkspaceMember: "workspace-member",
   System: "system",
@@ -88,7 +88,7 @@ export const CommentAuthorType = {
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type CommentAuthorType = ClosedEnum<typeof CommentAuthorType>;
+export type AuthorType = ClosedEnum<typeof AuthorType>;
 
 /**
  * Who wrote this comment. Note that the API provides the ability for API tokens to write comments on behalf of other actors.
@@ -101,7 +101,7 @@ export type Author = {
   /**
    * The type of actor. [Read more information on actor types here](/docs/actors).
    */
-  type?: CommentAuthorType | null | undefined;
+  type?: AuthorType | null | undefined;
 };
 
 export type Comment = {
@@ -324,22 +324,24 @@ export function recordFromJSON(
 }
 
 /** @internal */
-export const CommentType$inboundSchema: z.ZodNativeEnum<typeof CommentType> = z
-  .nativeEnum(CommentType);
+export const ResolvedByType$inboundSchema: z.ZodNativeEnum<
+  typeof ResolvedByType
+> = z.nativeEnum(ResolvedByType);
 
 /** @internal */
-export const CommentType$outboundSchema: z.ZodNativeEnum<typeof CommentType> =
-  CommentType$inboundSchema;
+export const ResolvedByType$outboundSchema: z.ZodNativeEnum<
+  typeof ResolvedByType
+> = ResolvedByType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CommentType$ {
-  /** @deprecated use `CommentType$inboundSchema` instead. */
-  export const inboundSchema = CommentType$inboundSchema;
-  /** @deprecated use `CommentType$outboundSchema` instead. */
-  export const outboundSchema = CommentType$outboundSchema;
+export namespace ResolvedByType$ {
+  /** @deprecated use `ResolvedByType$inboundSchema` instead. */
+  export const inboundSchema = ResolvedByType$inboundSchema;
+  /** @deprecated use `ResolvedByType$outboundSchema` instead. */
+  export const outboundSchema = ResolvedByType$outboundSchema;
 }
 
 /** @internal */
@@ -349,7 +351,7 @@ export const ResolvedBy$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.nullable(z.string()).optional(),
-  type: z.nullable(CommentType$inboundSchema).optional(),
+  type: z.nullable(ResolvedByType$inboundSchema).optional(),
 });
 
 /** @internal */
@@ -365,7 +367,7 @@ export const ResolvedBy$outboundSchema: z.ZodType<
   ResolvedBy
 > = z.object({
   id: z.nullable(z.string()).optional(),
-  type: z.nullable(CommentType$outboundSchema).optional(),
+  type: z.nullable(ResolvedByType$outboundSchema).optional(),
 });
 
 /**
@@ -396,31 +398,29 @@ export function resolvedByFromJSON(
 }
 
 /** @internal */
-export const CommentAuthorType$inboundSchema: z.ZodNativeEnum<
-  typeof CommentAuthorType
-> = z.nativeEnum(CommentAuthorType);
+export const AuthorType$inboundSchema: z.ZodNativeEnum<typeof AuthorType> = z
+  .nativeEnum(AuthorType);
 
 /** @internal */
-export const CommentAuthorType$outboundSchema: z.ZodNativeEnum<
-  typeof CommentAuthorType
-> = CommentAuthorType$inboundSchema;
+export const AuthorType$outboundSchema: z.ZodNativeEnum<typeof AuthorType> =
+  AuthorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CommentAuthorType$ {
-  /** @deprecated use `CommentAuthorType$inboundSchema` instead. */
-  export const inboundSchema = CommentAuthorType$inboundSchema;
-  /** @deprecated use `CommentAuthorType$outboundSchema` instead. */
-  export const outboundSchema = CommentAuthorType$outboundSchema;
+export namespace AuthorType$ {
+  /** @deprecated use `AuthorType$inboundSchema` instead. */
+  export const inboundSchema = AuthorType$inboundSchema;
+  /** @deprecated use `AuthorType$outboundSchema` instead. */
+  export const outboundSchema = AuthorType$outboundSchema;
 }
 
 /** @internal */
 export const Author$inboundSchema: z.ZodType<Author, z.ZodTypeDef, unknown> = z
   .object({
     id: z.nullable(z.string()).optional(),
-    type: z.nullable(CommentAuthorType$inboundSchema).optional(),
+    type: z.nullable(AuthorType$inboundSchema).optional(),
   });
 
 /** @internal */
@@ -436,7 +436,7 @@ export const Author$outboundSchema: z.ZodType<
   Author
 > = z.object({
   id: z.nullable(z.string()).optional(),
-  type: z.nullable(CommentAuthorType$outboundSchema).optional(),
+  type: z.nullable(AuthorType$outboundSchema).optional(),
 });
 
 /**

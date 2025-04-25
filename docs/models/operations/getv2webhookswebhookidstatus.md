@@ -5,7 +5,7 @@ The state of the webhook. Webhooks marked as active and degraded will receive ev
 ## Example Usage
 
 ```typescript
-import { GetV2WebhooksWebhookIdStatus } from "attio-js/models/operations";
+import { GetV2WebhooksWebhookIdStatus } from "attio-js/models/operations/getv2webhookswebhookid.js";
 
 let value: GetV2WebhooksWebhookIdStatus = "active";
 ```

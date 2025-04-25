@@ -5,7 +5,7 @@ The type of actor. [Read more information on actor types here](/docs/actors).
 ## Example Usage
 
 ```typescript
-import { InputValueType } from "attio-js/models/components";
+import { InputValueType } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValueType = "system";
 ```

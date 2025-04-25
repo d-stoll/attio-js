@@ -5,7 +5,7 @@ The ISO4217 code representing the currency that values for this attribute should
 ## Example Usage
 
 ```typescript
-import { DefaultCurrencyCode } from "attio-js/models/components";
+import { DefaultCurrencyCode } from "attio-js/models/components/attribute.js";
 
 let value: DefaultCurrencyCode = "USD";
 ```

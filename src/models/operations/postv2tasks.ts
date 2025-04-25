@@ -7,7 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Task,
+  Task$inboundSchema,
+  Task$Outbound,
+  Task$outboundSchema,
+} from "../components/task.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -21,7 +26,7 @@ export const PostV2TasksFormat = {
  */
 export type PostV2TasksFormat = ClosedEnum<typeof PostV2TasksFormat>;
 
-export type Five = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute5 = {
   /**
    * A raw text field. Values are limited to 10MB.
    */
@@ -31,7 +36,7 @@ export type Five = {
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export const CountryCode = {
+export const PostV2TasksCountryCode = {
   Af: "AF",
   Ax: "AX",
   Al: "AL",
@@ -283,9 +288,9 @@ export const CountryCode = {
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export type CountryCode = ClosedEnum<typeof CountryCode>;
+export type PostV2TasksCountryCode = ClosedEnum<typeof PostV2TasksCountryCode>;
 
-export type Four = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute4 = {
   /**
    * The raw, original phone number, as inputted.
    */
@@ -293,38 +298,38 @@ export type Four = {
   /**
    * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
    */
-  countryCode?: CountryCode | null | undefined;
+  countryCode?: PostV2TasksCountryCode | null | undefined;
 };
 
-export type Three = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute3 = {
   /**
    * Numbers are persisted as 64 bit floats.
    */
   value?: number | undefined;
 };
 
-export type SlugOrIdOfMatchingAttribute2 = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute2 = {
   /**
    * An email address string
    */
   emailAddress?: string | undefined;
 };
 
-export type SlugOrIdOfMatchingAttribute1 = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute1 = {
   /**
    * The full domain of the website.
    */
   domain?: string | undefined;
 };
 
-export type SlugOrIdOfMatchingAttribute =
-  | SlugOrIdOfMatchingAttribute1
-  | SlugOrIdOfMatchingAttribute2
-  | Three
-  | Five
-  | Four;
+export type PostV2TasksSlugOrIdOfMatchingAttributeUnion =
+  | PostV2TasksSlugOrIdOfMatchingAttribute1
+  | PostV2TasksSlugOrIdOfMatchingAttribute2
+  | PostV2TasksSlugOrIdOfMatchingAttribute3
+  | PostV2TasksSlugOrIdOfMatchingAttribute5
+  | PostV2TasksSlugOrIdOfMatchingAttribute4;
 
-export type LinkedRecords2 = {
+export type PostV2TasksLinkedRecord2 = {
   /**
    * A UUID or slug to identify the object that the referenced record belongs to.
    */
@@ -333,15 +338,15 @@ export type LinkedRecords2 = {
    * In addition to referencing records directly by record ID, you may also reference by a matching attribute of your choice. For example, if you want to add a reference to the person record with email "alice@website.com", you should pass a value with `target_object` set to `"people"` and `email_addresses` set to `[{email_address:"alice@website.com"}]`. The key should be the slug or ID of the matching attribute you would like to use and the value should be an array containing a single value of the appropriate attribute type (as specified below). Matching on multiple values is not currently supported. Matching attributes must be unique. This process is similar to how you use the `matching_attribute` query param in Attio's [assert endpoints](/reference/put_v2-objects-object-records).
    */
   slugOrIdOfMatchingAttribute: Array<
-    | SlugOrIdOfMatchingAttribute1
-    | SlugOrIdOfMatchingAttribute2
-    | Three
-    | Five
-    | Four
+    | PostV2TasksSlugOrIdOfMatchingAttribute1
+    | PostV2TasksSlugOrIdOfMatchingAttribute2
+    | PostV2TasksSlugOrIdOfMatchingAttribute3
+    | PostV2TasksSlugOrIdOfMatchingAttribute5
+    | PostV2TasksSlugOrIdOfMatchingAttribute4
   >;
 };
 
-export type LinkedRecords1 = {
+export type PostV2TasksLinkedRecord1 = {
   /**
    * The ID or slug of the parent object the tasks refers to. This can reference both standard and custom objects.`
    */
@@ -352,9 +357,11 @@ export type LinkedRecords1 = {
   targetRecordId: string;
 };
 
-export type LinkedRecords = LinkedRecords1 | LinkedRecords2;
+export type PostV2TasksLinkedRecordUnion =
+  | PostV2TasksLinkedRecord1
+  | PostV2TasksLinkedRecord2;
 
-export type Assignees2 = {
+export type PostV2TasksAssignee = {
   /**
    * Workspace member actors can be referenced by email address as well as actor ID.
    */
@@ -364,26 +371,30 @@ export type Assignees2 = {
 /**
  * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
  */
-export const ReferencedActorType = {
+export const PostV2TasksReferencedActorType = {
   WorkspaceMember: "workspace-member",
 } as const;
 /**
  * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
  */
-export type ReferencedActorType = ClosedEnum<typeof ReferencedActorType>;
+export type PostV2TasksReferencedActorType = ClosedEnum<
+  typeof PostV2TasksReferencedActorType
+>;
 
-export type Assignees1 = {
+export type PostV2TasksAssigneeWorkspaceMember = {
   /**
    * The actor type of the task assignee. Only `workspace-member` actors can be assigned to tasks. [Read more information on actor types here](/docs/actors).
    */
-  referencedActorType: ReferencedActorType;
+  referencedActorType: PostV2TasksReferencedActorType;
   /**
    * The ID of the actor assigned to this task.
    */
   referencedActorId: string;
 };
 
-export type Assignees = Assignees2 | Assignees1;
+export type PostV2TasksAssigneeUnion =
+  | PostV2TasksAssignee
+  | PostV2TasksAssigneeWorkspaceMember;
 
 export type PostV2TasksData = {
   /**
@@ -405,22 +416,22 @@ export type PostV2TasksData = {
   /**
    * Records linked to the task. Creating record links within task content text is not possible via the API at present.
    */
-  linkedRecords: Array<LinkedRecords1 | LinkedRecords2>;
+  linkedRecords: Array<PostV2TasksLinkedRecord1 | PostV2TasksLinkedRecord2>;
   /**
    * Workspace members assigned to this task.
    */
-  assignees: Array<Assignees2 | Assignees1>;
+  assignees: Array<PostV2TasksAssignee | PostV2TasksAssigneeWorkspaceMember>;
 };
 
-export type PostV2TasksRequestBody = {
+export type PostV2TasksRequest = {
   data: PostV2TasksData;
 };
 
 /**
  * Success
  */
-export type PostV2TasksResponseBody = {
-  data: components.Task;
+export type PostV2TasksResponse = {
+  data: Task;
 };
 
 /** @internal */
@@ -445,141 +456,188 @@ export namespace PostV2TasksFormat$ {
 }
 
 /** @internal */
-export const Five$inboundSchema: z.ZodType<Five, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.string().optional(),
-  });
+export const PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.string().optional(),
+});
 
 /** @internal */
-export type Five$Outbound = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound = {
   value?: string | undefined;
 };
 
 /** @internal */
-export const Five$outboundSchema: z.ZodType<Five$Outbound, z.ZodTypeDef, Five> =
-  z.object({
-    value: z.string().optional(),
-  });
+export const PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound,
+  z.ZodTypeDef,
+  PostV2TasksSlugOrIdOfMatchingAttribute5
+> = z.object({
+  value: z.string().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Five$ {
-  /** @deprecated use `Five$inboundSchema` instead. */
-  export const inboundSchema = Five$inboundSchema;
-  /** @deprecated use `Five$outboundSchema` instead. */
-  export const outboundSchema = Five$outboundSchema;
-  /** @deprecated use `Five$Outbound` instead. */
-  export type Outbound = Five$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttribute5$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound;
 }
 
-export function fiveToJSON(five: Five): string {
-  return JSON.stringify(Five$outboundSchema.parse(five));
+export function postV2TasksSlugOrIdOfMatchingAttribute5ToJSON(
+  postV2TasksSlugOrIdOfMatchingAttribute5:
+    PostV2TasksSlugOrIdOfMatchingAttribute5,
+): string {
+  return JSON.stringify(
+    PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttribute5,
+    ),
+  );
 }
 
-export function fiveFromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttribute5FromJSON(
   jsonString: string,
-): SafeParseResult<Five, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttribute5,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Five$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Five' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttribute5' from JSON`,
   );
 }
 
 /** @internal */
-export const CountryCode$inboundSchema: z.ZodNativeEnum<typeof CountryCode> = z
-  .nativeEnum(CountryCode);
+export const PostV2TasksCountryCode$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2TasksCountryCode
+> = z.nativeEnum(PostV2TasksCountryCode);
 
 /** @internal */
-export const CountryCode$outboundSchema: z.ZodNativeEnum<typeof CountryCode> =
-  CountryCode$inboundSchema;
+export const PostV2TasksCountryCode$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2TasksCountryCode
+> = PostV2TasksCountryCode$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CountryCode$ {
-  /** @deprecated use `CountryCode$inboundSchema` instead. */
-  export const inboundSchema = CountryCode$inboundSchema;
-  /** @deprecated use `CountryCode$outboundSchema` instead. */
-  export const outboundSchema = CountryCode$outboundSchema;
+export namespace PostV2TasksCountryCode$ {
+  /** @deprecated use `PostV2TasksCountryCode$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksCountryCode$inboundSchema;
+  /** @deprecated use `PostV2TasksCountryCode$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksCountryCode$outboundSchema;
 }
 
 /** @internal */
-export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
-  .object({
-    original_phone_number: z.string().optional(),
-    country_code: z.nullable(CountryCode$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "original_phone_number": "originalPhoneNumber",
-      "country_code": "countryCode",
-    });
+export const PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  original_phone_number: z.string().optional(),
+  country_code: z.nullable(PostV2TasksCountryCode$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "original_phone_number": "originalPhoneNumber",
+    "country_code": "countryCode",
   });
+});
 
 /** @internal */
-export type Four$Outbound = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound = {
   original_phone_number?: string | undefined;
   country_code?: string | null | undefined;
 };
 
 /** @internal */
-export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
-  z.object({
-    originalPhoneNumber: z.string().optional(),
-    countryCode: z.nullable(CountryCode$outboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      originalPhoneNumber: "original_phone_number",
-      countryCode: "country_code",
-    });
+export const PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound,
+  z.ZodTypeDef,
+  PostV2TasksSlugOrIdOfMatchingAttribute4
+> = z.object({
+  originalPhoneNumber: z.string().optional(),
+  countryCode: z.nullable(PostV2TasksCountryCode$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    originalPhoneNumber: "original_phone_number",
+    countryCode: "country_code",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Four$ {
-  /** @deprecated use `Four$inboundSchema` instead. */
-  export const inboundSchema = Four$inboundSchema;
-  /** @deprecated use `Four$outboundSchema` instead. */
-  export const outboundSchema = Four$outboundSchema;
-  /** @deprecated use `Four$Outbound` instead. */
-  export type Outbound = Four$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttribute4$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound;
 }
 
-export function fourToJSON(four: Four): string {
-  return JSON.stringify(Four$outboundSchema.parse(four));
+export function postV2TasksSlugOrIdOfMatchingAttribute4ToJSON(
+  postV2TasksSlugOrIdOfMatchingAttribute4:
+    PostV2TasksSlugOrIdOfMatchingAttribute4,
+): string {
+  return JSON.stringify(
+    PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttribute4,
+    ),
+  );
 }
 
-export function fourFromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttribute4FromJSON(
   jsonString: string,
-): SafeParseResult<Four, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttribute4,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Four$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Four' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttribute4' from JSON`,
   );
 }
 
 /** @internal */
-export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.number().optional(),
-  });
+export const PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  value: z.number().optional(),
+});
 
 /** @internal */
-export type Three$Outbound = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound = {
   value?: number | undefined;
 };
 
 /** @internal */
-export const Three$outboundSchema: z.ZodType<
-  Three$Outbound,
+export const PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound,
   z.ZodTypeDef,
-  Three
+  PostV2TasksSlugOrIdOfMatchingAttribute3
 > = z.object({
   value: z.number().optional(),
 });
@@ -588,32 +646,47 @@ export const Three$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Three$ {
-  /** @deprecated use `Three$inboundSchema` instead. */
-  export const inboundSchema = Three$inboundSchema;
-  /** @deprecated use `Three$outboundSchema` instead. */
-  export const outboundSchema = Three$outboundSchema;
-  /** @deprecated use `Three$Outbound` instead. */
-  export type Outbound = Three$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttribute3$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound;
 }
 
-export function threeToJSON(three: Three): string {
-  return JSON.stringify(Three$outboundSchema.parse(three));
+export function postV2TasksSlugOrIdOfMatchingAttribute3ToJSON(
+  postV2TasksSlugOrIdOfMatchingAttribute3:
+    PostV2TasksSlugOrIdOfMatchingAttribute3,
+): string {
+  return JSON.stringify(
+    PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttribute3,
+    ),
+  );
 }
 
-export function threeFromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttribute3FromJSON(
   jsonString: string,
-): SafeParseResult<Three, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttribute3,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Three$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Three' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttribute3' from JSON`,
   );
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute2$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute2,
+export const PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -625,15 +698,15 @@ export const SlugOrIdOfMatchingAttribute2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute2$Outbound = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound = {
   email_address?: string | undefined;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute2$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute2$Outbound,
+export const PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound,
   z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute2
+  PostV2TasksSlugOrIdOfMatchingAttribute2
 > = z.object({
   emailAddress: z.string().optional(),
 }).transform((v) => {
@@ -646,38 +719,47 @@ export const SlugOrIdOfMatchingAttribute2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute2$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute2$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute2$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute2$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute2$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute2$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute2$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttribute2$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound;
 }
 
-export function slugOrIdOfMatchingAttribute2ToJSON(
-  slugOrIdOfMatchingAttribute2: SlugOrIdOfMatchingAttribute2,
+export function postV2TasksSlugOrIdOfMatchingAttribute2ToJSON(
+  postV2TasksSlugOrIdOfMatchingAttribute2:
+    PostV2TasksSlugOrIdOfMatchingAttribute2,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute2$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute2,
+    PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttribute2,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttribute2FromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttribute2FromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute2, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttribute2,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute2' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttribute2' from JSON`,
   );
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute1$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute1,
+export const PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -685,15 +767,15 @@ export const SlugOrIdOfMatchingAttribute1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute1$Outbound = {
+export type PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound = {
   domain?: string | undefined;
 };
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute1$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute1$Outbound,
+export const PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema: z.ZodType<
+  PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound,
   z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute1
+  PostV2TasksSlugOrIdOfMatchingAttribute1
 > = z.object({
   domain: z.string().optional(),
 });
@@ -702,116 +784,136 @@ export const SlugOrIdOfMatchingAttribute1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute1$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute1$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute1$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute1$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute1$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute1$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute1$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttribute1$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound;
 }
 
-export function slugOrIdOfMatchingAttribute1ToJSON(
-  slugOrIdOfMatchingAttribute1: SlugOrIdOfMatchingAttribute1,
+export function postV2TasksSlugOrIdOfMatchingAttribute1ToJSON(
+  postV2TasksSlugOrIdOfMatchingAttribute1:
+    PostV2TasksSlugOrIdOfMatchingAttribute1,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute1$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute1,
+    PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttribute1,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttribute1FromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttribute1FromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute1, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttribute1,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute1' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttribute1' from JSON`,
   );
 }
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute$inboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => SlugOrIdOfMatchingAttribute1$inboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute2$inboundSchema),
-  z.lazy(() => Three$inboundSchema),
-  z.lazy(() => Five$inboundSchema),
-  z.lazy(() => Four$inboundSchema),
-]);
+export const PostV2TasksSlugOrIdOfMatchingAttributeUnion$inboundSchema:
+  z.ZodType<
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema),
+  ]);
 
 /** @internal */
-export type SlugOrIdOfMatchingAttribute$Outbound =
-  | SlugOrIdOfMatchingAttribute1$Outbound
-  | SlugOrIdOfMatchingAttribute2$Outbound
-  | Three$Outbound
-  | Five$Outbound
-  | Four$Outbound;
+export type PostV2TasksSlugOrIdOfMatchingAttributeUnion$Outbound =
+  | PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound
+  | PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound
+  | PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound
+  | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound
+  | PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound;
 
 /** @internal */
-export const SlugOrIdOfMatchingAttribute$outboundSchema: z.ZodType<
-  SlugOrIdOfMatchingAttribute$Outbound,
-  z.ZodTypeDef,
-  SlugOrIdOfMatchingAttribute
-> = z.union([
-  z.lazy(() => SlugOrIdOfMatchingAttribute1$outboundSchema),
-  z.lazy(() => SlugOrIdOfMatchingAttribute2$outboundSchema),
-  z.lazy(() => Three$outboundSchema),
-  z.lazy(() => Five$outboundSchema),
-  z.lazy(() => Four$outboundSchema),
-]);
+export const PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema:
+  z.ZodType<
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion$Outbound,
+    z.ZodTypeDef,
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion
+  > = z.union([
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SlugOrIdOfMatchingAttribute$ {
-  /** @deprecated use `SlugOrIdOfMatchingAttribute$inboundSchema` instead. */
-  export const inboundSchema = SlugOrIdOfMatchingAttribute$inboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute$outboundSchema` instead. */
-  export const outboundSchema = SlugOrIdOfMatchingAttribute$outboundSchema;
-  /** @deprecated use `SlugOrIdOfMatchingAttribute$Outbound` instead. */
-  export type Outbound = SlugOrIdOfMatchingAttribute$Outbound;
+export namespace PostV2TasksSlugOrIdOfMatchingAttributeUnion$ {
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttributeUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion$inboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema;
+  /** @deprecated use `PostV2TasksSlugOrIdOfMatchingAttributeUnion$Outbound` instead. */
+  export type Outbound = PostV2TasksSlugOrIdOfMatchingAttributeUnion$Outbound;
 }
 
-export function slugOrIdOfMatchingAttributeToJSON(
-  slugOrIdOfMatchingAttribute: SlugOrIdOfMatchingAttribute,
+export function postV2TasksSlugOrIdOfMatchingAttributeUnionToJSON(
+  postV2TasksSlugOrIdOfMatchingAttributeUnion:
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion,
 ): string {
   return JSON.stringify(
-    SlugOrIdOfMatchingAttribute$outboundSchema.parse(
-      slugOrIdOfMatchingAttribute,
+    PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema.parse(
+      postV2TasksSlugOrIdOfMatchingAttributeUnion,
     ),
   );
 }
 
-export function slugOrIdOfMatchingAttributeFromJSON(
+export function postV2TasksSlugOrIdOfMatchingAttributeUnionFromJSON(
   jsonString: string,
-): SafeParseResult<SlugOrIdOfMatchingAttribute, SDKValidationError> {
+): SafeParseResult<
+  PostV2TasksSlugOrIdOfMatchingAttributeUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => SlugOrIdOfMatchingAttribute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SlugOrIdOfMatchingAttribute' from JSON`,
+    (x) =>
+      PostV2TasksSlugOrIdOfMatchingAttributeUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TasksSlugOrIdOfMatchingAttributeUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const LinkedRecords2$inboundSchema: z.ZodType<
-  LinkedRecords2,
+export const PostV2TasksLinkedRecord2$inboundSchema: z.ZodType<
+  PostV2TasksLinkedRecord2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   target_object: z.string(),
   "[slug_or_id_of_matching_attribute]": z.array(
     z.union([
-      z.lazy(() => SlugOrIdOfMatchingAttribute1$inboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute2$inboundSchema),
-      z.lazy(() => Three$inboundSchema),
-      z.lazy(() => Five$inboundSchema),
-      z.lazy(() => Four$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -822,31 +924,31 @@ export const LinkedRecords2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LinkedRecords2$Outbound = {
+export type PostV2TasksLinkedRecord2$Outbound = {
   target_object: string;
   "[slug_or_id_of_matching_attribute]": Array<
-    | SlugOrIdOfMatchingAttribute1$Outbound
-    | SlugOrIdOfMatchingAttribute2$Outbound
-    | Three$Outbound
-    | Five$Outbound
-    | Four$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound
   >;
 };
 
 /** @internal */
-export const LinkedRecords2$outboundSchema: z.ZodType<
-  LinkedRecords2$Outbound,
+export const PostV2TasksLinkedRecord2$outboundSchema: z.ZodType<
+  PostV2TasksLinkedRecord2$Outbound,
   z.ZodTypeDef,
-  LinkedRecords2
+  PostV2TasksLinkedRecord2
 > = z.object({
   targetObject: z.string(),
   slugOrIdOfMatchingAttribute: z.array(
     z.union([
-      z.lazy(() => SlugOrIdOfMatchingAttribute1$outboundSchema),
-      z.lazy(() => SlugOrIdOfMatchingAttribute2$outboundSchema),
-      z.lazy(() => Three$outboundSchema),
-      z.lazy(() => Five$outboundSchema),
-      z.lazy(() => Four$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -860,32 +962,36 @@ export const LinkedRecords2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkedRecords2$ {
-  /** @deprecated use `LinkedRecords2$inboundSchema` instead. */
-  export const inboundSchema = LinkedRecords2$inboundSchema;
-  /** @deprecated use `LinkedRecords2$outboundSchema` instead. */
-  export const outboundSchema = LinkedRecords2$outboundSchema;
-  /** @deprecated use `LinkedRecords2$Outbound` instead. */
-  export type Outbound = LinkedRecords2$Outbound;
+export namespace PostV2TasksLinkedRecord2$ {
+  /** @deprecated use `PostV2TasksLinkedRecord2$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksLinkedRecord2$inboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecord2$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksLinkedRecord2$outboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecord2$Outbound` instead. */
+  export type Outbound = PostV2TasksLinkedRecord2$Outbound;
 }
 
-export function linkedRecords2ToJSON(linkedRecords2: LinkedRecords2): string {
-  return JSON.stringify(LinkedRecords2$outboundSchema.parse(linkedRecords2));
+export function postV2TasksLinkedRecord2ToJSON(
+  postV2TasksLinkedRecord2: PostV2TasksLinkedRecord2,
+): string {
+  return JSON.stringify(
+    PostV2TasksLinkedRecord2$outboundSchema.parse(postV2TasksLinkedRecord2),
+  );
 }
 
-export function linkedRecords2FromJSON(
+export function postV2TasksLinkedRecord2FromJSON(
   jsonString: string,
-): SafeParseResult<LinkedRecords2, SDKValidationError> {
+): SafeParseResult<PostV2TasksLinkedRecord2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkedRecords2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkedRecords2' from JSON`,
+    (x) => PostV2TasksLinkedRecord2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksLinkedRecord2' from JSON`,
   );
 }
 
 /** @internal */
-export const LinkedRecords1$inboundSchema: z.ZodType<
-  LinkedRecords1,
+export const PostV2TasksLinkedRecord1$inboundSchema: z.ZodType<
+  PostV2TasksLinkedRecord1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -899,16 +1005,16 @@ export const LinkedRecords1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LinkedRecords1$Outbound = {
+export type PostV2TasksLinkedRecord1$Outbound = {
   target_object: string;
   target_record_id: string;
 };
 
 /** @internal */
-export const LinkedRecords1$outboundSchema: z.ZodType<
-  LinkedRecords1$Outbound,
+export const PostV2TasksLinkedRecord1$outboundSchema: z.ZodType<
+  PostV2TasksLinkedRecord1$Outbound,
   z.ZodTypeDef,
-  LinkedRecords1
+  PostV2TasksLinkedRecord1
 > = z.object({
   targetObject: z.string(),
   targetRecordId: z.string(),
@@ -923,84 +1029,94 @@ export const LinkedRecords1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkedRecords1$ {
-  /** @deprecated use `LinkedRecords1$inboundSchema` instead. */
-  export const inboundSchema = LinkedRecords1$inboundSchema;
-  /** @deprecated use `LinkedRecords1$outboundSchema` instead. */
-  export const outboundSchema = LinkedRecords1$outboundSchema;
-  /** @deprecated use `LinkedRecords1$Outbound` instead. */
-  export type Outbound = LinkedRecords1$Outbound;
+export namespace PostV2TasksLinkedRecord1$ {
+  /** @deprecated use `PostV2TasksLinkedRecord1$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksLinkedRecord1$inboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecord1$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksLinkedRecord1$outboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecord1$Outbound` instead. */
+  export type Outbound = PostV2TasksLinkedRecord1$Outbound;
 }
 
-export function linkedRecords1ToJSON(linkedRecords1: LinkedRecords1): string {
-  return JSON.stringify(LinkedRecords1$outboundSchema.parse(linkedRecords1));
+export function postV2TasksLinkedRecord1ToJSON(
+  postV2TasksLinkedRecord1: PostV2TasksLinkedRecord1,
+): string {
+  return JSON.stringify(
+    PostV2TasksLinkedRecord1$outboundSchema.parse(postV2TasksLinkedRecord1),
+  );
 }
 
-export function linkedRecords1FromJSON(
+export function postV2TasksLinkedRecord1FromJSON(
   jsonString: string,
-): SafeParseResult<LinkedRecords1, SDKValidationError> {
+): SafeParseResult<PostV2TasksLinkedRecord1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkedRecords1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkedRecords1' from JSON`,
+    (x) => PostV2TasksLinkedRecord1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksLinkedRecord1' from JSON`,
   );
 }
 
 /** @internal */
-export const LinkedRecords$inboundSchema: z.ZodType<
-  LinkedRecords,
+export const PostV2TasksLinkedRecordUnion$inboundSchema: z.ZodType<
+  PostV2TasksLinkedRecordUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => LinkedRecords1$inboundSchema),
-  z.lazy(() => LinkedRecords2$inboundSchema),
+  z.lazy(() => PostV2TasksLinkedRecord1$inboundSchema),
+  z.lazy(() => PostV2TasksLinkedRecord2$inboundSchema),
 ]);
 
 /** @internal */
-export type LinkedRecords$Outbound =
-  | LinkedRecords1$Outbound
-  | LinkedRecords2$Outbound;
+export type PostV2TasksLinkedRecordUnion$Outbound =
+  | PostV2TasksLinkedRecord1$Outbound
+  | PostV2TasksLinkedRecord2$Outbound;
 
 /** @internal */
-export const LinkedRecords$outboundSchema: z.ZodType<
-  LinkedRecords$Outbound,
+export const PostV2TasksLinkedRecordUnion$outboundSchema: z.ZodType<
+  PostV2TasksLinkedRecordUnion$Outbound,
   z.ZodTypeDef,
-  LinkedRecords
+  PostV2TasksLinkedRecordUnion
 > = z.union([
-  z.lazy(() => LinkedRecords1$outboundSchema),
-  z.lazy(() => LinkedRecords2$outboundSchema),
+  z.lazy(() => PostV2TasksLinkedRecord1$outboundSchema),
+  z.lazy(() => PostV2TasksLinkedRecord2$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkedRecords$ {
-  /** @deprecated use `LinkedRecords$inboundSchema` instead. */
-  export const inboundSchema = LinkedRecords$inboundSchema;
-  /** @deprecated use `LinkedRecords$outboundSchema` instead. */
-  export const outboundSchema = LinkedRecords$outboundSchema;
-  /** @deprecated use `LinkedRecords$Outbound` instead. */
-  export type Outbound = LinkedRecords$Outbound;
+export namespace PostV2TasksLinkedRecordUnion$ {
+  /** @deprecated use `PostV2TasksLinkedRecordUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksLinkedRecordUnion$inboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecordUnion$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksLinkedRecordUnion$outboundSchema;
+  /** @deprecated use `PostV2TasksLinkedRecordUnion$Outbound` instead. */
+  export type Outbound = PostV2TasksLinkedRecordUnion$Outbound;
 }
 
-export function linkedRecordsToJSON(linkedRecords: LinkedRecords): string {
-  return JSON.stringify(LinkedRecords$outboundSchema.parse(linkedRecords));
+export function postV2TasksLinkedRecordUnionToJSON(
+  postV2TasksLinkedRecordUnion: PostV2TasksLinkedRecordUnion,
+): string {
+  return JSON.stringify(
+    PostV2TasksLinkedRecordUnion$outboundSchema.parse(
+      postV2TasksLinkedRecordUnion,
+    ),
+  );
 }
 
-export function linkedRecordsFromJSON(
+export function postV2TasksLinkedRecordUnionFromJSON(
   jsonString: string,
-): SafeParseResult<LinkedRecords, SDKValidationError> {
+): SafeParseResult<PostV2TasksLinkedRecordUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkedRecords$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkedRecords' from JSON`,
+    (x) => PostV2TasksLinkedRecordUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksLinkedRecordUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const Assignees2$inboundSchema: z.ZodType<
-  Assignees2,
+export const PostV2TasksAssignee$inboundSchema: z.ZodType<
+  PostV2TasksAssignee,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1012,15 +1128,15 @@ export const Assignees2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Assignees2$Outbound = {
+export type PostV2TasksAssignee$Outbound = {
   workspace_member_email_address: string;
 };
 
 /** @internal */
-export const Assignees2$outboundSchema: z.ZodType<
-  Assignees2$Outbound,
+export const PostV2TasksAssignee$outboundSchema: z.ZodType<
+  PostV2TasksAssignee$Outbound,
   z.ZodTypeDef,
-  Assignees2
+  PostV2TasksAssignee
 > = z.object({
   workspaceMemberEmailAddress: z.string(),
 }).transform((v) => {
@@ -1033,57 +1149,61 @@ export const Assignees2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Assignees2$ {
-  /** @deprecated use `Assignees2$inboundSchema` instead. */
-  export const inboundSchema = Assignees2$inboundSchema;
-  /** @deprecated use `Assignees2$outboundSchema` instead. */
-  export const outboundSchema = Assignees2$outboundSchema;
-  /** @deprecated use `Assignees2$Outbound` instead. */
-  export type Outbound = Assignees2$Outbound;
+export namespace PostV2TasksAssignee$ {
+  /** @deprecated use `PostV2TasksAssignee$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksAssignee$inboundSchema;
+  /** @deprecated use `PostV2TasksAssignee$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksAssignee$outboundSchema;
+  /** @deprecated use `PostV2TasksAssignee$Outbound` instead. */
+  export type Outbound = PostV2TasksAssignee$Outbound;
 }
 
-export function assignees2ToJSON(assignees2: Assignees2): string {
-  return JSON.stringify(Assignees2$outboundSchema.parse(assignees2));
+export function postV2TasksAssigneeToJSON(
+  postV2TasksAssignee: PostV2TasksAssignee,
+): string {
+  return JSON.stringify(
+    PostV2TasksAssignee$outboundSchema.parse(postV2TasksAssignee),
+  );
 }
 
-export function assignees2FromJSON(
+export function postV2TasksAssigneeFromJSON(
   jsonString: string,
-): SafeParseResult<Assignees2, SDKValidationError> {
+): SafeParseResult<PostV2TasksAssignee, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Assignees2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Assignees2' from JSON`,
+    (x) => PostV2TasksAssignee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksAssignee' from JSON`,
   );
 }
 
 /** @internal */
-export const ReferencedActorType$inboundSchema: z.ZodNativeEnum<
-  typeof ReferencedActorType
-> = z.nativeEnum(ReferencedActorType);
+export const PostV2TasksReferencedActorType$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2TasksReferencedActorType
+> = z.nativeEnum(PostV2TasksReferencedActorType);
 
 /** @internal */
-export const ReferencedActorType$outboundSchema: z.ZodNativeEnum<
-  typeof ReferencedActorType
-> = ReferencedActorType$inboundSchema;
+export const PostV2TasksReferencedActorType$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2TasksReferencedActorType
+> = PostV2TasksReferencedActorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ReferencedActorType$ {
-  /** @deprecated use `ReferencedActorType$inboundSchema` instead. */
-  export const inboundSchema = ReferencedActorType$inboundSchema;
-  /** @deprecated use `ReferencedActorType$outboundSchema` instead. */
-  export const outboundSchema = ReferencedActorType$outboundSchema;
+export namespace PostV2TasksReferencedActorType$ {
+  /** @deprecated use `PostV2TasksReferencedActorType$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksReferencedActorType$inboundSchema;
+  /** @deprecated use `PostV2TasksReferencedActorType$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksReferencedActorType$outboundSchema;
 }
 
 /** @internal */
-export const Assignees1$inboundSchema: z.ZodType<
-  Assignees1,
+export const PostV2TasksAssigneeWorkspaceMember$inboundSchema: z.ZodType<
+  PostV2TasksAssigneeWorkspaceMember,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  referenced_actor_type: ReferencedActorType$inboundSchema,
+  referenced_actor_type: PostV2TasksReferencedActorType$inboundSchema,
   referenced_actor_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -1093,18 +1213,18 @@ export const Assignees1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Assignees1$Outbound = {
+export type PostV2TasksAssigneeWorkspaceMember$Outbound = {
   referenced_actor_type: string;
   referenced_actor_id: string;
 };
 
 /** @internal */
-export const Assignees1$outboundSchema: z.ZodType<
-  Assignees1$Outbound,
+export const PostV2TasksAssigneeWorkspaceMember$outboundSchema: z.ZodType<
+  PostV2TasksAssigneeWorkspaceMember$Outbound,
   z.ZodTypeDef,
-  Assignees1
+  PostV2TasksAssigneeWorkspaceMember
 > = z.object({
-  referencedActorType: ReferencedActorType$outboundSchema,
+  referencedActorType: PostV2TasksReferencedActorType$outboundSchema,
   referencedActorId: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -1117,76 +1237,90 @@ export const Assignees1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Assignees1$ {
-  /** @deprecated use `Assignees1$inboundSchema` instead. */
-  export const inboundSchema = Assignees1$inboundSchema;
-  /** @deprecated use `Assignees1$outboundSchema` instead. */
-  export const outboundSchema = Assignees1$outboundSchema;
-  /** @deprecated use `Assignees1$Outbound` instead. */
-  export type Outbound = Assignees1$Outbound;
+export namespace PostV2TasksAssigneeWorkspaceMember$ {
+  /** @deprecated use `PostV2TasksAssigneeWorkspaceMember$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksAssigneeWorkspaceMember$inboundSchema;
+  /** @deprecated use `PostV2TasksAssigneeWorkspaceMember$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TasksAssigneeWorkspaceMember$outboundSchema;
+  /** @deprecated use `PostV2TasksAssigneeWorkspaceMember$Outbound` instead. */
+  export type Outbound = PostV2TasksAssigneeWorkspaceMember$Outbound;
 }
 
-export function assignees1ToJSON(assignees1: Assignees1): string {
-  return JSON.stringify(Assignees1$outboundSchema.parse(assignees1));
+export function postV2TasksAssigneeWorkspaceMemberToJSON(
+  postV2TasksAssigneeWorkspaceMember: PostV2TasksAssigneeWorkspaceMember,
+): string {
+  return JSON.stringify(
+    PostV2TasksAssigneeWorkspaceMember$outboundSchema.parse(
+      postV2TasksAssigneeWorkspaceMember,
+    ),
+  );
 }
 
-export function assignees1FromJSON(
+export function postV2TasksAssigneeWorkspaceMemberFromJSON(
   jsonString: string,
-): SafeParseResult<Assignees1, SDKValidationError> {
+): SafeParseResult<PostV2TasksAssigneeWorkspaceMember, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Assignees1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Assignees1' from JSON`,
+    (x) =>
+      PostV2TasksAssigneeWorkspaceMember$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksAssigneeWorkspaceMember' from JSON`,
   );
 }
 
 /** @internal */
-export const Assignees$inboundSchema: z.ZodType<
-  Assignees,
+export const PostV2TasksAssigneeUnion$inboundSchema: z.ZodType<
+  PostV2TasksAssigneeUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Assignees2$inboundSchema),
-  z.lazy(() => Assignees1$inboundSchema),
+  z.lazy(() => PostV2TasksAssignee$inboundSchema),
+  z.lazy(() => PostV2TasksAssigneeWorkspaceMember$inboundSchema),
 ]);
 
 /** @internal */
-export type Assignees$Outbound = Assignees2$Outbound | Assignees1$Outbound;
+export type PostV2TasksAssigneeUnion$Outbound =
+  | PostV2TasksAssignee$Outbound
+  | PostV2TasksAssigneeWorkspaceMember$Outbound;
 
 /** @internal */
-export const Assignees$outboundSchema: z.ZodType<
-  Assignees$Outbound,
+export const PostV2TasksAssigneeUnion$outboundSchema: z.ZodType<
+  PostV2TasksAssigneeUnion$Outbound,
   z.ZodTypeDef,
-  Assignees
+  PostV2TasksAssigneeUnion
 > = z.union([
-  z.lazy(() => Assignees2$outboundSchema),
-  z.lazy(() => Assignees1$outboundSchema),
+  z.lazy(() => PostV2TasksAssignee$outboundSchema),
+  z.lazy(() => PostV2TasksAssigneeWorkspaceMember$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Assignees$ {
-  /** @deprecated use `Assignees$inboundSchema` instead. */
-  export const inboundSchema = Assignees$inboundSchema;
-  /** @deprecated use `Assignees$outboundSchema` instead. */
-  export const outboundSchema = Assignees$outboundSchema;
-  /** @deprecated use `Assignees$Outbound` instead. */
-  export type Outbound = Assignees$Outbound;
+export namespace PostV2TasksAssigneeUnion$ {
+  /** @deprecated use `PostV2TasksAssigneeUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksAssigneeUnion$inboundSchema;
+  /** @deprecated use `PostV2TasksAssigneeUnion$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksAssigneeUnion$outboundSchema;
+  /** @deprecated use `PostV2TasksAssigneeUnion$Outbound` instead. */
+  export type Outbound = PostV2TasksAssigneeUnion$Outbound;
 }
 
-export function assigneesToJSON(assignees: Assignees): string {
-  return JSON.stringify(Assignees$outboundSchema.parse(assignees));
+export function postV2TasksAssigneeUnionToJSON(
+  postV2TasksAssigneeUnion: PostV2TasksAssigneeUnion,
+): string {
+  return JSON.stringify(
+    PostV2TasksAssigneeUnion$outboundSchema.parse(postV2TasksAssigneeUnion),
+  );
 }
 
-export function assigneesFromJSON(
+export function postV2TasksAssigneeUnionFromJSON(
   jsonString: string,
-): SafeParseResult<Assignees, SDKValidationError> {
+): SafeParseResult<PostV2TasksAssigneeUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Assignees$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Assignees' from JSON`,
+    (x) => PostV2TasksAssigneeUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksAssigneeUnion' from JSON`,
   );
 }
 
@@ -1202,14 +1336,14 @@ export const PostV2TasksData$inboundSchema: z.ZodType<
   is_completed: z.boolean(),
   linked_records: z.array(
     z.union([
-      z.lazy(() => LinkedRecords1$inboundSchema),
-      z.lazy(() => LinkedRecords2$inboundSchema),
+      z.lazy(() => PostV2TasksLinkedRecord1$inboundSchema),
+      z.lazy(() => PostV2TasksLinkedRecord2$inboundSchema),
     ]),
   ),
   assignees: z.array(
     z.union([
-      z.lazy(() => Assignees2$inboundSchema),
-      z.lazy(() => Assignees1$inboundSchema),
+      z.lazy(() => PostV2TasksAssignee$inboundSchema),
+      z.lazy(() => PostV2TasksAssigneeWorkspaceMember$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1226,8 +1360,12 @@ export type PostV2TasksData$Outbound = {
   format: string;
   deadline_at: string | null;
   is_completed: boolean;
-  linked_records: Array<LinkedRecords1$Outbound | LinkedRecords2$Outbound>;
-  assignees: Array<Assignees2$Outbound | Assignees1$Outbound>;
+  linked_records: Array<
+    PostV2TasksLinkedRecord1$Outbound | PostV2TasksLinkedRecord2$Outbound
+  >;
+  assignees: Array<
+    PostV2TasksAssignee$Outbound | PostV2TasksAssigneeWorkspaceMember$Outbound
+  >;
 };
 
 /** @internal */
@@ -1242,14 +1380,14 @@ export const PostV2TasksData$outboundSchema: z.ZodType<
   isCompleted: z.boolean(),
   linkedRecords: z.array(
     z.union([
-      z.lazy(() => LinkedRecords1$outboundSchema),
-      z.lazy(() => LinkedRecords2$outboundSchema),
+      z.lazy(() => PostV2TasksLinkedRecord1$outboundSchema),
+      z.lazy(() => PostV2TasksLinkedRecord2$outboundSchema),
     ]),
   ),
   assignees: z.array(
     z.union([
-      z.lazy(() => Assignees2$outboundSchema),
-      z.lazy(() => Assignees1$outboundSchema),
+      z.lazy(() => PostV2TasksAssignee$outboundSchema),
+      z.lazy(() => PostV2TasksAssigneeWorkspaceMember$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1290,8 +1428,8 @@ export function postV2TasksDataFromJSON(
 }
 
 /** @internal */
-export const PostV2TasksRequestBody$inboundSchema: z.ZodType<
-  PostV2TasksRequestBody,
+export const PostV2TasksRequest$inboundSchema: z.ZodType<
+  PostV2TasksRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1299,15 +1437,15 @@ export const PostV2TasksRequestBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2TasksRequestBody$Outbound = {
+export type PostV2TasksRequest$Outbound = {
   data: PostV2TasksData$Outbound;
 };
 
 /** @internal */
-export const PostV2TasksRequestBody$outboundSchema: z.ZodType<
-  PostV2TasksRequestBody$Outbound,
+export const PostV2TasksRequest$outboundSchema: z.ZodType<
+  PostV2TasksRequest$Outbound,
   z.ZodTypeDef,
-  PostV2TasksRequestBody
+  PostV2TasksRequest
 > = z.object({
   data: z.lazy(() => PostV2TasksData$outboundSchema),
 });
@@ -1316,83 +1454,83 @@ export const PostV2TasksRequestBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2TasksRequestBody$ {
-  /** @deprecated use `PostV2TasksRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2TasksRequestBody$inboundSchema;
-  /** @deprecated use `PostV2TasksRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2TasksRequestBody$outboundSchema;
-  /** @deprecated use `PostV2TasksRequestBody$Outbound` instead. */
-  export type Outbound = PostV2TasksRequestBody$Outbound;
+export namespace PostV2TasksRequest$ {
+  /** @deprecated use `PostV2TasksRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksRequest$inboundSchema;
+  /** @deprecated use `PostV2TasksRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksRequest$outboundSchema;
+  /** @deprecated use `PostV2TasksRequest$Outbound` instead. */
+  export type Outbound = PostV2TasksRequest$Outbound;
 }
 
-export function postV2TasksRequestBodyToJSON(
-  postV2TasksRequestBody: PostV2TasksRequestBody,
+export function postV2TasksRequestToJSON(
+  postV2TasksRequest: PostV2TasksRequest,
 ): string {
   return JSON.stringify(
-    PostV2TasksRequestBody$outboundSchema.parse(postV2TasksRequestBody),
+    PostV2TasksRequest$outboundSchema.parse(postV2TasksRequest),
   );
 }
 
-export function postV2TasksRequestBodyFromJSON(
+export function postV2TasksRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2TasksRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2TasksRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2TasksRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2TasksRequestBody' from JSON`,
+    (x) => PostV2TasksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2TasksResponseBody$inboundSchema: z.ZodType<
-  PostV2TasksResponseBody,
+export const PostV2TasksResponse$inboundSchema: z.ZodType<
+  PostV2TasksResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Task$inboundSchema,
+  data: Task$inboundSchema,
 });
 
 /** @internal */
-export type PostV2TasksResponseBody$Outbound = {
-  data: components.Task$Outbound;
+export type PostV2TasksResponse$Outbound = {
+  data: Task$Outbound;
 };
 
 /** @internal */
-export const PostV2TasksResponseBody$outboundSchema: z.ZodType<
-  PostV2TasksResponseBody$Outbound,
+export const PostV2TasksResponse$outboundSchema: z.ZodType<
+  PostV2TasksResponse$Outbound,
   z.ZodTypeDef,
-  PostV2TasksResponseBody
+  PostV2TasksResponse
 > = z.object({
-  data: components.Task$outboundSchema,
+  data: Task$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2TasksResponseBody$ {
-  /** @deprecated use `PostV2TasksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2TasksResponseBody$inboundSchema;
-  /** @deprecated use `PostV2TasksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2TasksResponseBody$outboundSchema;
-  /** @deprecated use `PostV2TasksResponseBody$Outbound` instead. */
-  export type Outbound = PostV2TasksResponseBody$Outbound;
+export namespace PostV2TasksResponse$ {
+  /** @deprecated use `PostV2TasksResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2TasksResponse$inboundSchema;
+  /** @deprecated use `PostV2TasksResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2TasksResponse$outboundSchema;
+  /** @deprecated use `PostV2TasksResponse$Outbound` instead. */
+  export type Outbound = PostV2TasksResponse$Outbound;
 }
 
-export function postV2TasksResponseBodyToJSON(
-  postV2TasksResponseBody: PostV2TasksResponseBody,
+export function postV2TasksResponseToJSON(
+  postV2TasksResponse: PostV2TasksResponse,
 ): string {
   return JSON.stringify(
-    PostV2TasksResponseBody$outboundSchema.parse(postV2TasksResponseBody),
+    PostV2TasksResponse$outboundSchema.parse(postV2TasksResponse),
   );
 }
 
-export function postV2TasksResponseBodyFromJSON(
+export function postV2TasksResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2TasksResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2TasksResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2TasksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2TasksResponseBody' from JSON`,
+    (x) => PostV2TasksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TasksResponse' from JSON`,
   );
 }

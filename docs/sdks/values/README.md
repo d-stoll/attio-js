@@ -85,12 +85,12 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody](../../models/operations/getv2listslistentriesentryidattributesattributevaluesresponsebody.md)\>**
+**Promise\<[operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse](../../models/operations/getv2listslistentriesentryidattributesattributevaluesresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response400ResponseBody | 400                            | application/json               |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                                                                           | Status Code                                                                          | Content Type                                                                         |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| errors.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError | 400                                                                                  | application/json                                                                     |
+| errors.GetV2ListsListNotFoundError                                                   | 404                                                                                  | application/json                                                                     |
+| errors.APIError                                                                      | 4XX, 5XX                                                                             | \*/\*                                                                                |

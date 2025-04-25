@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2ThreadsRequest } from "attio-js/models/operations";
+import { GetV2ThreadsRequest } from "attio-js/models/operations/getv2threads.js";
 
 let value: GetV2ThreadsRequest = {
   recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",

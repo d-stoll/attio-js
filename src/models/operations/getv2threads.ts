@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Thread,
+  Thread$inboundSchema,
+  Thread$Outbound,
+  Thread$outboundSchema,
+} from "../components/thread.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2ThreadsRequest = {
@@ -21,8 +26,8 @@ export type GetV2ThreadsRequest = {
 /**
  * Success
  */
-export type GetV2ThreadsResponseBody = {
-  data: Array<components.Thread>;
+export type GetV2ThreadsResponse = {
+  data: Array<Thread>;
 };
 
 /** @internal */
@@ -105,55 +110,55 @@ export function getV2ThreadsRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2ThreadsResponseBody$inboundSchema: z.ZodType<
-  GetV2ThreadsResponseBody,
+export const GetV2ThreadsResponse$inboundSchema: z.ZodType<
+  GetV2ThreadsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(components.Thread$inboundSchema),
+  data: z.array(Thread$inboundSchema),
 });
 
 /** @internal */
-export type GetV2ThreadsResponseBody$Outbound = {
-  data: Array<components.Thread$Outbound>;
+export type GetV2ThreadsResponse$Outbound = {
+  data: Array<Thread$Outbound>;
 };
 
 /** @internal */
-export const GetV2ThreadsResponseBody$outboundSchema: z.ZodType<
-  GetV2ThreadsResponseBody$Outbound,
+export const GetV2ThreadsResponse$outboundSchema: z.ZodType<
+  GetV2ThreadsResponse$Outbound,
   z.ZodTypeDef,
-  GetV2ThreadsResponseBody
+  GetV2ThreadsResponse
 > = z.object({
-  data: z.array(components.Thread$outboundSchema),
+  data: z.array(Thread$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ThreadsResponseBody$ {
-  /** @deprecated use `GetV2ThreadsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2ThreadsResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ThreadsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2ThreadsResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ThreadsResponseBody$Outbound` instead. */
-  export type Outbound = GetV2ThreadsResponseBody$Outbound;
+export namespace GetV2ThreadsResponse$ {
+  /** @deprecated use `GetV2ThreadsResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2ThreadsResponse$inboundSchema;
+  /** @deprecated use `GetV2ThreadsResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2ThreadsResponse$outboundSchema;
+  /** @deprecated use `GetV2ThreadsResponse$Outbound` instead. */
+  export type Outbound = GetV2ThreadsResponse$Outbound;
 }
 
-export function getV2ThreadsResponseBodyToJSON(
-  getV2ThreadsResponseBody: GetV2ThreadsResponseBody,
+export function getV2ThreadsResponseToJSON(
+  getV2ThreadsResponse: GetV2ThreadsResponse,
 ): string {
   return JSON.stringify(
-    GetV2ThreadsResponseBody$outboundSchema.parse(getV2ThreadsResponseBody),
+    GetV2ThreadsResponse$outboundSchema.parse(getV2ThreadsResponse),
   );
 }
 
-export function getV2ThreadsResponseBodyFromJSON(
+export function getV2ThreadsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2ThreadsResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2ThreadsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2ThreadsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ThreadsResponseBody' from JSON`,
+    (x) => GetV2ThreadsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ThreadsResponse' from JSON`,
   );
 }

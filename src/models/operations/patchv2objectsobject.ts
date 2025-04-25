@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  ObjectT,
+  ObjectT$inboundSchema,
+  ObjectT$Outbound,
+  ObjectT$outboundSchema,
+} from "../components/object.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchV2ObjectsObjectData = {
@@ -36,8 +41,8 @@ export type PatchV2ObjectsObjectRequest = {
 /**
  * Success
  */
-export type PatchV2ObjectsObjectResponseBody = {
-  data: components.ObjectT;
+export type PatchV2ObjectsObjectResponse = {
+  data: ObjectT;
 };
 
 /** @internal */
@@ -236,57 +241,57 @@ export function patchV2ObjectsObjectRequestFromJSON(
 }
 
 /** @internal */
-export const PatchV2ObjectsObjectResponseBody$inboundSchema: z.ZodType<
-  PatchV2ObjectsObjectResponseBody,
+export const PatchV2ObjectsObjectResponse$inboundSchema: z.ZodType<
+  PatchV2ObjectsObjectResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.ObjectT$inboundSchema,
+  data: ObjectT$inboundSchema,
 });
 
 /** @internal */
-export type PatchV2ObjectsObjectResponseBody$Outbound = {
-  data: components.ObjectT$Outbound;
+export type PatchV2ObjectsObjectResponse$Outbound = {
+  data: ObjectT$Outbound;
 };
 
 /** @internal */
-export const PatchV2ObjectsObjectResponseBody$outboundSchema: z.ZodType<
-  PatchV2ObjectsObjectResponseBody$Outbound,
+export const PatchV2ObjectsObjectResponse$outboundSchema: z.ZodType<
+  PatchV2ObjectsObjectResponse$Outbound,
   z.ZodTypeDef,
-  PatchV2ObjectsObjectResponseBody
+  PatchV2ObjectsObjectResponse
 > = z.object({
-  data: components.ObjectT$outboundSchema,
+  data: ObjectT$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2ObjectsObjectResponseBody$ {
-  /** @deprecated use `PatchV2ObjectsObjectResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchV2ObjectsObjectResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PatchV2ObjectsObjectResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2ObjectsObjectResponseBody$Outbound` instead. */
-  export type Outbound = PatchV2ObjectsObjectResponseBody$Outbound;
+export namespace PatchV2ObjectsObjectResponse$ {
+  /** @deprecated use `PatchV2ObjectsObjectResponse$inboundSchema` instead. */
+  export const inboundSchema = PatchV2ObjectsObjectResponse$inboundSchema;
+  /** @deprecated use `PatchV2ObjectsObjectResponse$outboundSchema` instead. */
+  export const outboundSchema = PatchV2ObjectsObjectResponse$outboundSchema;
+  /** @deprecated use `PatchV2ObjectsObjectResponse$Outbound` instead. */
+  export type Outbound = PatchV2ObjectsObjectResponse$Outbound;
 }
 
-export function patchV2ObjectsObjectResponseBodyToJSON(
-  patchV2ObjectsObjectResponseBody: PatchV2ObjectsObjectResponseBody,
+export function patchV2ObjectsObjectResponseToJSON(
+  patchV2ObjectsObjectResponse: PatchV2ObjectsObjectResponse,
 ): string {
   return JSON.stringify(
-    PatchV2ObjectsObjectResponseBody$outboundSchema.parse(
-      patchV2ObjectsObjectResponseBody,
+    PatchV2ObjectsObjectResponse$outboundSchema.parse(
+      patchV2ObjectsObjectResponse,
     ),
   );
 }
 
-export function patchV2ObjectsObjectResponseBodyFromJSON(
+export function patchV2ObjectsObjectResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2ObjectsObjectResponseBody, SDKValidationError> {
+): SafeParseResult<PatchV2ObjectsObjectResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2ObjectsObjectResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2ObjectsObjectResponseBody' from JSON`,
+    (x) => PatchV2ObjectsObjectResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2ObjectsObjectResponse' from JSON`,
   );
 }

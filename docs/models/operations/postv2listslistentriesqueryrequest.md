@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV2ListsListEntriesQueryRequest } from "attio-js/models/operations";
+import { PostV2ListsListEntriesQueryRequest } from "attio-js/models/operations/postv2listslistentriesquery.js";
 
 let value: PostV2ListsListEntriesQueryRequest = {
   list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",

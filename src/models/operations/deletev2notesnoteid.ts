@@ -15,7 +15,7 @@ export type DeleteV2NotesNoteIdRequest = {
 /**
  * Success
  */
-export type DeleteV2NotesNoteIdResponseBody = {};
+export type DeleteV2NotesNoteIdResponse = {};
 
 /** @internal */
 export const DeleteV2NotesNoteIdRequest$inboundSchema: z.ZodType<
@@ -80,51 +80,51 @@ export function deleteV2NotesNoteIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2NotesNoteIdResponseBody$inboundSchema: z.ZodType<
-  DeleteV2NotesNoteIdResponseBody,
+export const DeleteV2NotesNoteIdResponse$inboundSchema: z.ZodType<
+  DeleteV2NotesNoteIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type DeleteV2NotesNoteIdResponseBody$Outbound = {};
+export type DeleteV2NotesNoteIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2NotesNoteIdResponseBody$outboundSchema: z.ZodType<
-  DeleteV2NotesNoteIdResponseBody$Outbound,
+export const DeleteV2NotesNoteIdResponse$outboundSchema: z.ZodType<
+  DeleteV2NotesNoteIdResponse$Outbound,
   z.ZodTypeDef,
-  DeleteV2NotesNoteIdResponseBody
+  DeleteV2NotesNoteIdResponse
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2NotesNoteIdResponseBody$ {
-  /** @deprecated use `DeleteV2NotesNoteIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteV2NotesNoteIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2NotesNoteIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteV2NotesNoteIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2NotesNoteIdResponseBody$Outbound` instead. */
-  export type Outbound = DeleteV2NotesNoteIdResponseBody$Outbound;
+export namespace DeleteV2NotesNoteIdResponse$ {
+  /** @deprecated use `DeleteV2NotesNoteIdResponse$inboundSchema` instead. */
+  export const inboundSchema = DeleteV2NotesNoteIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2NotesNoteIdResponse$outboundSchema` instead. */
+  export const outboundSchema = DeleteV2NotesNoteIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2NotesNoteIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2NotesNoteIdResponse$Outbound;
 }
 
-export function deleteV2NotesNoteIdResponseBodyToJSON(
-  deleteV2NotesNoteIdResponseBody: DeleteV2NotesNoteIdResponseBody,
+export function deleteV2NotesNoteIdResponseToJSON(
+  deleteV2NotesNoteIdResponse: DeleteV2NotesNoteIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2NotesNoteIdResponseBody$outboundSchema.parse(
-      deleteV2NotesNoteIdResponseBody,
+    DeleteV2NotesNoteIdResponse$outboundSchema.parse(
+      deleteV2NotesNoteIdResponse,
     ),
   );
 }
 
-export function deleteV2NotesNoteIdResponseBodyFromJSON(
+export function deleteV2NotesNoteIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<DeleteV2NotesNoteIdResponseBody, SDKValidationError> {
+): SafeParseResult<DeleteV2NotesNoteIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeleteV2NotesNoteIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteV2NotesNoteIdResponseBody' from JSON`,
+    (x) => DeleteV2NotesNoteIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteV2NotesNoteIdResponse' from JSON`,
   );
 }

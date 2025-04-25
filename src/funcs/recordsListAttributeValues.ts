@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError$inboundSchema,
+  GetV2TargetIdentifierAttributesAttributeNotFoundError,
+  GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest$outboundSchema,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema,
+} from "../models/operations/getv2objectsobjectrecordsrecordidattributesattributevalues.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,14 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function recordsListAttributeValues(
   client: AttioCore,
-  request:
-    operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
+  request: GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
-    | errors.Response400ResponseBody
-    | errors.ResponseResponseBody
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -60,15 +69,14 @@ export function recordsListAttributeValues(
 
 async function $do(
   client: AttioCore,
-  request:
-    operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
+  request: GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
-      | errors.Response400ResponseBody
-      | errors.ResponseResponseBody
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+      | GetV2TargetIdentifierAttributesAttributeNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -83,8 +91,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations
-        .GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -173,9 +180,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
-    | errors.Response400ResponseBody
-    | errors.ResponseResponseBody
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -186,11 +193,16 @@ async function $do(
   >(
     M.json(
       200,
-      operations
-        .GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema,
     ),
-    M.jsonErr(400, errors.Response400ResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseResponseBody$inboundSchema),
+    M.jsonErr(
+      400,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError$inboundSchema,
+    ),
+    M.jsonErr(
+      404,
+      GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
+    ),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

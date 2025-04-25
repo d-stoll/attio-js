@@ -7,7 +7,12 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  List,
+  List$inboundSchema,
+  List$Outbound,
+  List$outboundSchema,
+} from "../components/list.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
@@ -82,8 +87,8 @@ export type PatchV2ListsListRequest = {
 /**
  * Success
  */
-export type PatchV2ListsListResponseBody = {
-  data: components.List;
+export type PatchV2ListsListResponse = {
+  data: List;
 };
 
 /** @internal */
@@ -403,57 +408,55 @@ export function patchV2ListsListRequestFromJSON(
 }
 
 /** @internal */
-export const PatchV2ListsListResponseBody$inboundSchema: z.ZodType<
-  PatchV2ListsListResponseBody,
+export const PatchV2ListsListResponse$inboundSchema: z.ZodType<
+  PatchV2ListsListResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.List$inboundSchema,
+  data: List$inboundSchema,
 });
 
 /** @internal */
-export type PatchV2ListsListResponseBody$Outbound = {
-  data: components.List$Outbound;
+export type PatchV2ListsListResponse$Outbound = {
+  data: List$Outbound;
 };
 
 /** @internal */
-export const PatchV2ListsListResponseBody$outboundSchema: z.ZodType<
-  PatchV2ListsListResponseBody$Outbound,
+export const PatchV2ListsListResponse$outboundSchema: z.ZodType<
+  PatchV2ListsListResponse$Outbound,
   z.ZodTypeDef,
-  PatchV2ListsListResponseBody
+  PatchV2ListsListResponse
 > = z.object({
-  data: components.List$outboundSchema,
+  data: List$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2ListsListResponseBody$ {
-  /** @deprecated use `PatchV2ListsListResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PatchV2ListsListResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2ListsListResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PatchV2ListsListResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2ListsListResponseBody$Outbound` instead. */
-  export type Outbound = PatchV2ListsListResponseBody$Outbound;
+export namespace PatchV2ListsListResponse$ {
+  /** @deprecated use `PatchV2ListsListResponse$inboundSchema` instead. */
+  export const inboundSchema = PatchV2ListsListResponse$inboundSchema;
+  /** @deprecated use `PatchV2ListsListResponse$outboundSchema` instead. */
+  export const outboundSchema = PatchV2ListsListResponse$outboundSchema;
+  /** @deprecated use `PatchV2ListsListResponse$Outbound` instead. */
+  export type Outbound = PatchV2ListsListResponse$Outbound;
 }
 
-export function patchV2ListsListResponseBodyToJSON(
-  patchV2ListsListResponseBody: PatchV2ListsListResponseBody,
+export function patchV2ListsListResponseToJSON(
+  patchV2ListsListResponse: PatchV2ListsListResponse,
 ): string {
   return JSON.stringify(
-    PatchV2ListsListResponseBody$outboundSchema.parse(
-      patchV2ListsListResponseBody,
-    ),
+    PatchV2ListsListResponse$outboundSchema.parse(patchV2ListsListResponse),
   );
 }
 
-export function patchV2ListsListResponseBodyFromJSON(
+export function patchV2ListsListResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PatchV2ListsListResponseBody, SDKValidationError> {
+): SafeParseResult<PatchV2ListsListResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PatchV2ListsListResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2ListsListResponseBody' from JSON`,
+    (x) => PatchV2ListsListResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchV2ListsListResponse' from JSON`,
   );
 }

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PutV2ObjectsObjectRecordsRecordIdId } from "attio-js/models/operations";
+import { PutV2ObjectsObjectRecordsRecordIdId } from "attio-js/models/operations/putv2objectsobjectrecordsrecordid.js";
 
 let value: PutV2ObjectsObjectRecordsRecordIdId = {
   workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",

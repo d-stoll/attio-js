@@ -5,7 +5,7 @@ The level of access granted to all members of the workspace for this list. `null
 ## Example Usage
 
 ```typescript
-import { WorkspaceAccess } from "attio-js/models/components";
+import { WorkspaceAccess } from "attio-js/models/components/list.js";
 
 let value: WorkspaceAccess = "read-and-write";
 ```

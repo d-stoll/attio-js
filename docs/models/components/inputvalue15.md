@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { InputValue15 } from "attio-js/models/components";
+import { InputValue15 } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValue15 = {
-  status: "In Progress",
+  value: 3,
 };
 ```
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `status`                                                  | *string*                                                  | :heavy_check_mark:                                        | The UUID or status title identifying the selected status. | In Progress                                               |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `value`                                                          | *number*                                                         | :heavy_check_mark:                                               | A number between 0 and 5 (inclusive) to represent a star rating. | 3                                                                |

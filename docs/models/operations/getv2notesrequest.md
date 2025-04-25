@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2NotesRequest } from "attio-js/models/operations";
+import { GetV2NotesRequest } from "attio-js/models/operations/getv2notes.js";
 
 let value: GetV2NotesRequest = {
   limit: 10,

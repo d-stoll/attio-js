@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SlugOrIdOfMatchingAttribute2 } from "attio-js/models/components";
+import { SlugOrIdOfMatchingAttribute2 } from "attio-js/models/components/inputvalueunion.js";
 
 let value: SlugOrIdOfMatchingAttribute2 = {
   emailAddress: "alice@app.attio.com",

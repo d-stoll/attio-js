@@ -88,14 +88,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2NotesResponseBody](../../models/operations/getv2notesresponsebody.md)\>**
+**Promise\<[operations.GetV2NotesResponse](../../models/operations/getv2notesresponse.md)\>**
 
 ### Errors
 
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ResponseBody | 404                 | application/json    |
-| errors.APIError     | 4XX, 5XX            | \*/\*               |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GetV2ObjectsObjectNotFoundError | 404                                    | application/json                       |
+| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## create
 
@@ -188,21 +188,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostV2NotesRequestBody](../../models/operations/postv2notesrequestbody.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV2NotesRequest](../../models/operations/postv2notesrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.PostV2NotesResponseBody](../../models/operations/postv2notesresponsebody.md)\>**
+**Promise\<[operations.PostV2NotesResponse](../../models/operations/postv2notesresponse.md)\>**
 
 ### Errors
 
-| Error Type          | Status Code         | Content Type        |
-| ------------------- | ------------------- | ------------------- |
-| errors.ResponseBody | 404                 | application/json    |
-| errors.APIError     | 4XX, 5XX            | \*/\*               |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.GetV2ObjectsObjectNotFoundError | 404                                    | application/json                       |
+| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## get
 
@@ -274,14 +274,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2NotesNoteIdResponseBody](../../models/operations/getv2notesnoteidresponsebody.md)\>**
+**Promise\<[operations.GetV2NotesNoteIdResponse](../../models/operations/getv2notesnoteidresponse.md)\>**
 
 ### Errors
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.NotesResponseBody | 404                      | application/json         |
-| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.GetV2NotesNoteIdNotFoundError | 404                                  | application/json                     |
+| errors.APIError                      | 4XX, 5XX                             | \*/\*                                |
 
 ## delete
 
@@ -353,11 +353,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteV2NotesNoteIdResponseBody](../../models/operations/deletev2notesnoteidresponsebody.md)\>**
+**Promise\<[operations.DeleteV2NotesNoteIdResponse](../../models/operations/deletev2notesnoteidresponse.md)\>**
 
 ### Errors
 
-| Error Type               | Status Code              | Content Type             |
-| ------------------------ | ------------------------ | ------------------------ |
-| errors.NotesResponseBody | 404                      | application/json         |
-| errors.APIError          | 4XX, 5XX                 | \*/\*                    |
+| Error Type                           | Status Code                          | Content Type                         |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| errors.GetV2NotesNoteIdNotFoundError | 404                                  | application/json                     |
+| errors.APIError                      | 4XX, 5XX                             | \*/\*                                |

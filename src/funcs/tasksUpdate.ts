@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  PatchV2TasksTaskIdNotFoundError,
+  PatchV2TasksTaskIdNotFoundError$inboundSchema,
+  PostV2TasksValidationTypeError,
+  PostV2TasksValidationTypeError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2TasksTaskIdRequest,
+  PatchV2TasksTaskIdRequest$outboundSchema,
+  PatchV2TasksTaskIdResponse,
+  PatchV2TasksTaskIdResponse$inboundSchema,
+} from "../models/operations/patchv2taskstaskid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,13 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function tasksUpdate(
   client: AttioCore,
-  request: operations.PatchV2TasksTaskIdRequest,
+  request: PatchV2TasksTaskIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2TasksTaskIdResponseBody,
-    | errors.TasksResponseBody
-    | errors.PatchV2TasksTaskIdResponseBody
+    PatchV2TasksTaskIdResponse,
+    | PostV2TasksValidationTypeError
+    | PatchV2TasksTaskIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,14 +69,14 @@ export function tasksUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2TasksTaskIdRequest,
+  request: PatchV2TasksTaskIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2TasksTaskIdResponseBody,
-      | errors.TasksResponseBody
-      | errors.PatchV2TasksTaskIdResponseBody
+      PatchV2TasksTaskIdResponse,
+      | PostV2TasksValidationTypeError
+      | PatchV2TasksTaskIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -80,7 +90,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.PatchV2TasksTaskIdRequest$outboundSchema.parse(value),
+    (value) => PatchV2TasksTaskIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -151,9 +161,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2TasksTaskIdResponseBody,
-    | errors.TasksResponseBody
-    | errors.PatchV2TasksTaskIdResponseBody
+    PatchV2TasksTaskIdResponse,
+    | PostV2TasksValidationTypeError
+    | PatchV2TasksTaskIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -162,9 +172,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PatchV2TasksTaskIdResponseBody$inboundSchema),
-    M.jsonErr(400, errors.TasksResponseBody$inboundSchema),
-    M.jsonErr(404, errors.PatchV2TasksTaskIdResponseBody$inboundSchema),
+    M.json(200, PatchV2TasksTaskIdResponse$inboundSchema),
+    M.jsonErr(400, PostV2TasksValidationTypeError$inboundSchema),
+    M.jsonErr(404, PatchV2TasksTaskIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

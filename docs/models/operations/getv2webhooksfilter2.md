@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2WebhooksFilter2 } from "attio-js/models/operations";
+import { GetV2WebhooksFilter2 } from "attio-js/models/operations/getv2webhooks.js";
 
 let value: GetV2WebhooksFilter2 = {
   dollarAnd: [
@@ -18,6 +18,6 @@ let value: GetV2WebhooksFilter2 = {
 
 ## Fields
 
-| Field                                       | Type                                        | Required                                    | Description                                 |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `dollarAnd`                                 | *operations.GetV2WebhooksFilterDollarAnd*[] | :heavy_check_mark:                          | N/A                                         |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `dollarAnd`                                | *operations.GetV2WebhooksDollarAndUnion*[] | :heavy_check_mark:                         | N/A                                        |

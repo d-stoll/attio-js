@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2TargetIdentifierAttributesAttributeNotFoundError,
+  GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2TargetIdentifierAttributesAttributeStatusesRequest,
+  GetV2TargetIdentifierAttributesAttributeStatusesRequest$outboundSchema,
+  GetV2TargetIdentifierAttributesAttributeStatusesResponse,
+  GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema,
+} from "../models/operations/getv2targetidentifierattributesattributestatuses.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function attributesListStatuses(
   client: AttioCore,
-  request: operations.GetV2TargetIdentifierAttributesAttributeStatusesRequest,
+  request: GetV2TargetIdentifierAttributesAttributeStatusesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
-    | errors.ResponseResponseBody
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse,
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function attributesListStatuses(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2TargetIdentifierAttributesAttributeStatusesRequest,
+  request: GetV2TargetIdentifierAttributesAttributeStatusesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
-      | errors.ResponseResponseBody
+      GetV2TargetIdentifierAttributesAttributeStatusesResponse,
+      | GetV2TargetIdentifierAttributesAttributeNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -79,8 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations
-        .GetV2TargetIdentifierAttributesAttributeStatusesRequest$outboundSchema
+      GetV2TargetIdentifierAttributesAttributeStatusesRequest$outboundSchema
         .parse(value),
     "Input validation failed",
   );
@@ -167,8 +174,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2TargetIdentifierAttributesAttributeStatusesResponseBody,
-    | errors.ResponseResponseBody
+    GetV2TargetIdentifierAttributesAttributeStatusesResponse,
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -179,10 +186,12 @@ async function $do(
   >(
     M.json(
       200,
-      operations
-        .GetV2TargetIdentifierAttributesAttributeStatusesResponseBody$inboundSchema,
+      GetV2TargetIdentifierAttributesAttributeStatusesResponse$inboundSchema,
     ),
-    M.jsonErr(404, errors.ResponseResponseBody$inboundSchema),
+    M.jsonErr(
+      404,
+      GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
+    ),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

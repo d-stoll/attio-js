@@ -5,7 +5,7 @@ If this attribute is related to another attribute, this is an object that includ
 ## Example Usage
 
 ```typescript
-import { Relationship } from "attio-js/models/components";
+import { Relationship } from "attio-js/models/components/attribute.js";
 
 let value: Relationship = {
   id: {
@@ -18,6 +18,6 @@ let value: Relationship = {
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `id`                                                                                     | [components.AttributeRelationshipId](../../models/components/attributerelationshipid.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | [components.RelationshipId](../../models/components/relationshipid.md) | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -5,19 +5,19 @@ The default value for this attribute. Static values are used to directly populat
 
 ## Supported Types
 
-### `components.One`
+### `components.DefaultValueDynamic`
 
 ```typescript
-const value: components.One = {
+const value: components.DefaultValueDynamic = {
   type: "dynamic",
-  template: "current-user",
+  template: "P1M",
 };
 ```
 
-### `components.Two`
+### `components.DefaultValueStatic`
 
 ```typescript
-const value: components.Two = {
+const value: components.DefaultValueStatic = {
   type: "static",
   template: [
     {

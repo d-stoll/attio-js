@@ -5,7 +5,7 @@ How the currency should be displayed across the app. "code" will display the ISO
 ## Example Usage
 
 ```typescript
-import { DisplayType } from "attio-js/models/components";
+import { DisplayType } from "attio-js/models/components/attribute.js";
 
 let value: DisplayType = "code";
 ```

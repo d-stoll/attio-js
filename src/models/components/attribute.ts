@@ -33,7 +33,7 @@ export type AttributeId = {
 /**
  * The type of the attribute.
  */
-export const Type = {
+export const AttributeType = {
   Text: "text",
   Number: "number",
   Checkbox: "checkbox",
@@ -55,47 +55,45 @@ export const Type = {
 /**
  * The type of the attribute.
  */
-export type Type = ClosedEnum<typeof Type>;
+export type AttributeType = ClosedEnum<typeof AttributeType>;
 
-export const AttributeDefaultValueType = {
+export const TypeStatic = {
   Static: "static",
 } as const;
-export type AttributeDefaultValueType = ClosedEnum<
-  typeof AttributeDefaultValueType
->;
+export type TypeStatic = ClosedEnum<typeof TypeStatic>;
 
-export type Two = {
-  type: AttributeDefaultValueType;
+export type DefaultValueStatic = {
+  type: TypeStatic;
   template: Array<OutputValue>;
 };
 
-export const DefaultValueType = {
+export const TypeDynamic = {
   Dynamic: "dynamic",
 } as const;
-export type DefaultValueType = ClosedEnum<typeof DefaultValueType>;
+export type TypeDynamic = ClosedEnum<typeof TypeDynamic>;
 
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export const Template1 = {
+export const Template = {
   CurrentUser: "current-user",
 } as const;
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export type Template1 = ClosedEnum<typeof Template1>;
+export type Template = ClosedEnum<typeof Template>;
 
-export type One = {
-  type: DefaultValueType;
+export type DefaultValueDynamic = {
+  type: TypeDynamic;
   template?: any | undefined;
 };
 
 /**
  * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute.
  */
-export type DefaultValue = One | Two;
+export type DefaultValue = DefaultValueDynamic | DefaultValueStatic;
 
-export type AttributeRelationshipId = {
+export type RelationshipId = {
   /**
    * A UUID representing the workspace this attribute belongs to.
    */
@@ -114,7 +112,7 @@ export type AttributeRelationshipId = {
  * If this attribute is related to another attribute, this is an object that includes an `id` property that identifies the other attribute. `null` means no relationship exists. See [the help center](https://attio.com/help/reference/managing-your-data/attributes#relationship-attributes) for more details about relationship attributes.
  */
 export type Relationship = {
-  id: AttributeRelationshipId;
+  id: RelationshipId;
 };
 
 /**
@@ -229,7 +227,7 @@ export type Attribute = {
   /**
    * The type of the attribute.
    */
-  type: Type;
+  type: AttributeType;
   /**
    * `true` if this is an Attio system-defined attribute, `false` if defined by a user or non-Attio system.
    */
@@ -261,7 +259,7 @@ export type Attribute = {
   /**
    * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute.
    */
-  defaultValue: One | Two | null;
+  defaultValue: DefaultValueDynamic | DefaultValueStatic | null;
   /**
    * If this attribute is related to another attribute, this is an object that includes an `id` property that identifies the other attribute. `null` means no relationship exists. See [the help center](https://attio.com/help/reference/managing-your-data/attributes#relationship-attributes) for more details about relationship attributes.
    */
@@ -345,177 +343,194 @@ export function attributeIdFromJSON(
 }
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const AttributeType$inboundSchema: z.ZodNativeEnum<
+  typeof AttributeType
+> = z.nativeEnum(AttributeType);
 
 /** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
+export const AttributeType$outboundSchema: z.ZodNativeEnum<
+  typeof AttributeType
+> = AttributeType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
+export namespace AttributeType$ {
+  /** @deprecated use `AttributeType$inboundSchema` instead. */
+  export const inboundSchema = AttributeType$inboundSchema;
+  /** @deprecated use `AttributeType$outboundSchema` instead. */
+  export const outboundSchema = AttributeType$outboundSchema;
 }
 
 /** @internal */
-export const AttributeDefaultValueType$inboundSchema: z.ZodNativeEnum<
-  typeof AttributeDefaultValueType
-> = z.nativeEnum(AttributeDefaultValueType);
+export const TypeStatic$inboundSchema: z.ZodNativeEnum<typeof TypeStatic> = z
+  .nativeEnum(TypeStatic);
 
 /** @internal */
-export const AttributeDefaultValueType$outboundSchema: z.ZodNativeEnum<
-  typeof AttributeDefaultValueType
-> = AttributeDefaultValueType$inboundSchema;
+export const TypeStatic$outboundSchema: z.ZodNativeEnum<typeof TypeStatic> =
+  TypeStatic$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AttributeDefaultValueType$ {
-  /** @deprecated use `AttributeDefaultValueType$inboundSchema` instead. */
-  export const inboundSchema = AttributeDefaultValueType$inboundSchema;
-  /** @deprecated use `AttributeDefaultValueType$outboundSchema` instead. */
-  export const outboundSchema = AttributeDefaultValueType$outboundSchema;
+export namespace TypeStatic$ {
+  /** @deprecated use `TypeStatic$inboundSchema` instead. */
+  export const inboundSchema = TypeStatic$inboundSchema;
+  /** @deprecated use `TypeStatic$outboundSchema` instead. */
+  export const outboundSchema = TypeStatic$outboundSchema;
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    type: AttributeDefaultValueType$inboundSchema,
-    template: z.array(OutputValue$inboundSchema),
-  });
+export const DefaultValueStatic$inboundSchema: z.ZodType<
+  DefaultValueStatic,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: TypeStatic$inboundSchema,
+  template: z.array(OutputValue$inboundSchema),
+});
 
 /** @internal */
-export type Two$Outbound = {
+export type DefaultValueStatic$Outbound = {
   type: string;
   template: Array<OutputValue$Outbound>;
 };
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({
-    type: AttributeDefaultValueType$outboundSchema,
-    template: z.array(OutputValue$outboundSchema),
-  });
+export const DefaultValueStatic$outboundSchema: z.ZodType<
+  DefaultValueStatic$Outbound,
+  z.ZodTypeDef,
+  DefaultValueStatic
+> = z.object({
+  type: TypeStatic$outboundSchema,
+  template: z.array(OutputValue$outboundSchema),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-  /** @deprecated use `Two$Outbound` instead. */
-  export type Outbound = Two$Outbound;
+export namespace DefaultValueStatic$ {
+  /** @deprecated use `DefaultValueStatic$inboundSchema` instead. */
+  export const inboundSchema = DefaultValueStatic$inboundSchema;
+  /** @deprecated use `DefaultValueStatic$outboundSchema` instead. */
+  export const outboundSchema = DefaultValueStatic$outboundSchema;
+  /** @deprecated use `DefaultValueStatic$Outbound` instead. */
+  export type Outbound = DefaultValueStatic$Outbound;
 }
 
-export function twoToJSON(two: Two): string {
-  return JSON.stringify(Two$outboundSchema.parse(two));
+export function defaultValueStaticToJSON(
+  defaultValueStatic: DefaultValueStatic,
+): string {
+  return JSON.stringify(
+    DefaultValueStatic$outboundSchema.parse(defaultValueStatic),
+  );
 }
 
-export function twoFromJSON(
+export function defaultValueStaticFromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<DefaultValueStatic, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) => DefaultValueStatic$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultValueStatic' from JSON`,
   );
 }
 
 /** @internal */
-export const DefaultValueType$inboundSchema: z.ZodNativeEnum<
-  typeof DefaultValueType
-> = z.nativeEnum(DefaultValueType);
+export const TypeDynamic$inboundSchema: z.ZodNativeEnum<typeof TypeDynamic> = z
+  .nativeEnum(TypeDynamic);
 
 /** @internal */
-export const DefaultValueType$outboundSchema: z.ZodNativeEnum<
-  typeof DefaultValueType
-> = DefaultValueType$inboundSchema;
+export const TypeDynamic$outboundSchema: z.ZodNativeEnum<typeof TypeDynamic> =
+  TypeDynamic$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DefaultValueType$ {
-  /** @deprecated use `DefaultValueType$inboundSchema` instead. */
-  export const inboundSchema = DefaultValueType$inboundSchema;
-  /** @deprecated use `DefaultValueType$outboundSchema` instead. */
-  export const outboundSchema = DefaultValueType$outboundSchema;
+export namespace TypeDynamic$ {
+  /** @deprecated use `TypeDynamic$inboundSchema` instead. */
+  export const inboundSchema = TypeDynamic$inboundSchema;
+  /** @deprecated use `TypeDynamic$outboundSchema` instead. */
+  export const outboundSchema = TypeDynamic$outboundSchema;
 }
 
 /** @internal */
-export const Template1$inboundSchema: z.ZodNativeEnum<typeof Template1> = z
-  .nativeEnum(Template1);
+export const Template$inboundSchema: z.ZodNativeEnum<typeof Template> = z
+  .nativeEnum(Template);
 
 /** @internal */
-export const Template1$outboundSchema: z.ZodNativeEnum<typeof Template1> =
-  Template1$inboundSchema;
+export const Template$outboundSchema: z.ZodNativeEnum<typeof Template> =
+  Template$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Template1$ {
-  /** @deprecated use `Template1$inboundSchema` instead. */
-  export const inboundSchema = Template1$inboundSchema;
-  /** @deprecated use `Template1$outboundSchema` instead. */
-  export const outboundSchema = Template1$outboundSchema;
+export namespace Template$ {
+  /** @deprecated use `Template$inboundSchema` instead. */
+  export const inboundSchema = Template$inboundSchema;
+  /** @deprecated use `Template$outboundSchema` instead. */
+  export const outboundSchema = Template$outboundSchema;
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    type: DefaultValueType$inboundSchema,
-    template: z.any().optional(),
-  });
+export const DefaultValueDynamic$inboundSchema: z.ZodType<
+  DefaultValueDynamic,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: TypeDynamic$inboundSchema,
+  template: z.any().optional(),
+});
 
 /** @internal */
-export type One$Outbound = {
+export type DefaultValueDynamic$Outbound = {
   type: string;
   template?: any | undefined;
 };
 
 /** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({
-    type: DefaultValueType$outboundSchema,
-    template: z.any().optional(),
-  });
+export const DefaultValueDynamic$outboundSchema: z.ZodType<
+  DefaultValueDynamic$Outbound,
+  z.ZodTypeDef,
+  DefaultValueDynamic
+> = z.object({
+  type: TypeDynamic$outboundSchema,
+  template: z.any().optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
+export namespace DefaultValueDynamic$ {
+  /** @deprecated use `DefaultValueDynamic$inboundSchema` instead. */
+  export const inboundSchema = DefaultValueDynamic$inboundSchema;
+  /** @deprecated use `DefaultValueDynamic$outboundSchema` instead. */
+  export const outboundSchema = DefaultValueDynamic$outboundSchema;
+  /** @deprecated use `DefaultValueDynamic$Outbound` instead. */
+  export type Outbound = DefaultValueDynamic$Outbound;
 }
 
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
+export function defaultValueDynamicToJSON(
+  defaultValueDynamic: DefaultValueDynamic,
+): string {
+  return JSON.stringify(
+    DefaultValueDynamic$outboundSchema.parse(defaultValueDynamic),
+  );
 }
 
-export function oneFromJSON(
+export function defaultValueDynamicFromJSON(
   jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
+): SafeParseResult<DefaultValueDynamic, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
+    (x) => DefaultValueDynamic$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultValueDynamic' from JSON`,
   );
 }
 
@@ -524,10 +539,15 @@ export const DefaultValue$inboundSchema: z.ZodType<
   DefaultValue,
   z.ZodTypeDef,
   unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+> = z.union([
+  z.lazy(() => DefaultValueDynamic$inboundSchema),
+  z.lazy(() => DefaultValueStatic$inboundSchema),
+]);
 
 /** @internal */
-export type DefaultValue$Outbound = One$Outbound | Two$Outbound;
+export type DefaultValue$Outbound =
+  | DefaultValueDynamic$Outbound
+  | DefaultValueStatic$Outbound;
 
 /** @internal */
 export const DefaultValue$outboundSchema: z.ZodType<
@@ -535,8 +555,8 @@ export const DefaultValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DefaultValue
 > = z.union([
-  z.lazy(() => One$outboundSchema),
-  z.lazy(() => Two$outboundSchema),
+  z.lazy(() => DefaultValueDynamic$outboundSchema),
+  z.lazy(() => DefaultValueStatic$outboundSchema),
 ]);
 
 /**
@@ -567,8 +587,8 @@ export function defaultValueFromJSON(
 }
 
 /** @internal */
-export const AttributeRelationshipId$inboundSchema: z.ZodType<
-  AttributeRelationshipId,
+export const RelationshipId$inboundSchema: z.ZodType<
+  RelationshipId,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -584,17 +604,17 @@ export const AttributeRelationshipId$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type AttributeRelationshipId$Outbound = {
+export type RelationshipId$Outbound = {
   workspace_id: string;
   object_id: string;
   attribute_id: string;
 };
 
 /** @internal */
-export const AttributeRelationshipId$outboundSchema: z.ZodType<
-  AttributeRelationshipId$Outbound,
+export const RelationshipId$outboundSchema: z.ZodType<
+  RelationshipId$Outbound,
   z.ZodTypeDef,
-  AttributeRelationshipId
+  RelationshipId
 > = z.object({
   workspaceId: z.string(),
   objectId: z.string(),
@@ -611,30 +631,26 @@ export const AttributeRelationshipId$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AttributeRelationshipId$ {
-  /** @deprecated use `AttributeRelationshipId$inboundSchema` instead. */
-  export const inboundSchema = AttributeRelationshipId$inboundSchema;
-  /** @deprecated use `AttributeRelationshipId$outboundSchema` instead. */
-  export const outboundSchema = AttributeRelationshipId$outboundSchema;
-  /** @deprecated use `AttributeRelationshipId$Outbound` instead. */
-  export type Outbound = AttributeRelationshipId$Outbound;
+export namespace RelationshipId$ {
+  /** @deprecated use `RelationshipId$inboundSchema` instead. */
+  export const inboundSchema = RelationshipId$inboundSchema;
+  /** @deprecated use `RelationshipId$outboundSchema` instead. */
+  export const outboundSchema = RelationshipId$outboundSchema;
+  /** @deprecated use `RelationshipId$Outbound` instead. */
+  export type Outbound = RelationshipId$Outbound;
 }
 
-export function attributeRelationshipIdToJSON(
-  attributeRelationshipId: AttributeRelationshipId,
-): string {
-  return JSON.stringify(
-    AttributeRelationshipId$outboundSchema.parse(attributeRelationshipId),
-  );
+export function relationshipIdToJSON(relationshipId: RelationshipId): string {
+  return JSON.stringify(RelationshipId$outboundSchema.parse(relationshipId));
 }
 
-export function attributeRelationshipIdFromJSON(
+export function relationshipIdFromJSON(
   jsonString: string,
-): SafeParseResult<AttributeRelationshipId, SDKValidationError> {
+): SafeParseResult<RelationshipId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AttributeRelationshipId$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AttributeRelationshipId' from JSON`,
+    (x) => RelationshipId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RelationshipId' from JSON`,
   );
 }
 
@@ -644,12 +660,12 @@ export const Relationship$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.lazy(() => AttributeRelationshipId$inboundSchema),
+  id: z.lazy(() => RelationshipId$inboundSchema),
 });
 
 /** @internal */
 export type Relationship$Outbound = {
-  id: AttributeRelationshipId$Outbound;
+  id: RelationshipId$Outbound;
 };
 
 /** @internal */
@@ -658,7 +674,7 @@ export const Relationship$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Relationship
 > = z.object({
-  id: z.lazy(() => AttributeRelationshipId$outboundSchema),
+  id: z.lazy(() => RelationshipId$outboundSchema),
 });
 
 /**
@@ -919,7 +935,7 @@ export const Attribute$inboundSchema: z.ZodType<
   title: z.string(),
   description: z.nullable(z.string()),
   api_slug: z.string(),
-  type: Type$inboundSchema,
+  type: AttributeType$inboundSchema,
   is_system_attribute: z.boolean(),
   is_writable: z.boolean(),
   is_required: z.boolean(),
@@ -928,7 +944,10 @@ export const Attribute$inboundSchema: z.ZodType<
   is_default_value_enabled: z.boolean(),
   is_archived: z.boolean(),
   default_value: z.nullable(
-    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
+    z.union([
+      z.lazy(() => DefaultValueDynamic$inboundSchema),
+      z.lazy(() => DefaultValueStatic$inboundSchema),
+    ]),
   ),
   relationship: z.nullable(z.lazy(() => Relationship$inboundSchema)),
   created_at: z.string(),
@@ -962,7 +981,10 @@ export type Attribute$Outbound = {
   is_multiselect: boolean;
   is_default_value_enabled: boolean;
   is_archived: boolean;
-  default_value: One$Outbound | Two$Outbound | null;
+  default_value:
+    | DefaultValueDynamic$Outbound
+    | DefaultValueStatic$Outbound
+    | null;
   relationship: Relationship$Outbound | null;
   created_at: string;
   config: Config$Outbound;
@@ -978,7 +1000,7 @@ export const Attribute$outboundSchema: z.ZodType<
   title: z.string(),
   description: z.nullable(z.string()),
   apiSlug: z.string(),
-  type: Type$outboundSchema,
+  type: AttributeType$outboundSchema,
   isSystemAttribute: z.boolean(),
   isWritable: z.boolean(),
   isRequired: z.boolean(),
@@ -988,8 +1010,8 @@ export const Attribute$outboundSchema: z.ZodType<
   isArchived: z.boolean(),
   defaultValue: z.nullable(
     z.union([
-      z.lazy(() => One$outboundSchema),
-      z.lazy(() => Two$outboundSchema),
+      z.lazy(() => DefaultValueDynamic$outboundSchema),
+      z.lazy(() => DefaultValueStatic$outboundSchema),
     ]),
   ),
   relationship: z.nullable(z.lazy(() => Relationship$outboundSchema)),

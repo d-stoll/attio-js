@@ -3,10 +3,10 @@ id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
   docChecksum: 3a151204a8b049335a929c6301361686
   docVersion: 2.0.0
-  speakeasyVersion: 1.539.2
-  generationVersion: 2.591.1
-  releaseVersion: 0.1.0
-  configChecksum: 84837a8759c27c072498c263b81a0a65
+  speakeasyVersion: 1.540.0
+  generationVersion: 2.593.3
+  releaseVersion: 0.1.1
+  configChecksum: 7502695fd6f4d730f1275f340698ecfb
   published: true
 features:
   typescript:
@@ -35,48 +35,52 @@ generatedFiles:
   - USAGE.md
   - docs/lib/utils/retryconfig.md
   - docs/models/components/accesslevel.md
-  - docs/models/components/assignees.md
+  - docs/models/components/assignee.md
   - docs/models/components/attribute.md
-  - docs/models/components/attributedefaultvaluetype.md
   - docs/models/components/attributeid.md
-  - docs/models/components/attributerelationshipid.md
   - docs/models/components/attributetype.md
+  - docs/models/components/attributetypeactorreference.md
+  - docs/models/components/attributetypecheckbox.md
+  - docs/models/components/attributetypecurrency.md
+  - docs/models/components/attributetypedate.md
+  - docs/models/components/attributetypedomain.md
+  - docs/models/components/attributetypeemailaddress.md
+  - docs/models/components/attributetypeinteraction.md
+  - docs/models/components/attributetypelocation.md
+  - docs/models/components/attributetypenumber.md
+  - docs/models/components/attributetypepersonalname.md
+  - docs/models/components/attributetypephonenumber.md
+  - docs/models/components/attributetyperating.md
+  - docs/models/components/attributetyperecordreference.md
+  - docs/models/components/attributetypeselect1.md
+  - docs/models/components/attributetypeselect2.md
+  - docs/models/components/attributetypestatus1.md
+  - docs/models/components/attributetypestatus2.md
+  - docs/models/components/attributetypetext.md
+  - docs/models/components/attributetypetimestamp.md
   - docs/models/components/author.md
+  - docs/models/components/authortype.md
   - docs/models/components/comment.md
-  - docs/models/components/commentauthortype.md
   - docs/models/components/commentid.md
-  - docs/models/components/commenttype.md
   - docs/models/components/config.md
-  - docs/models/components/countrycode.md
-  - docs/models/components/createdbyactor.md
   - docs/models/components/currency.md
   - docs/models/components/currencycode.md
   - docs/models/components/defaultcurrencycode.md
   - docs/models/components/defaultvalue.md
-  - docs/models/components/defaultvaluetype.md
+  - docs/models/components/defaultvaluedynamic.md
+  - docs/models/components/defaultvaluestatic.md
   - docs/models/components/displaytype.md
-  - docs/models/components/eight.md
-  - docs/models/components/eighteen.md
-  - docs/models/components/eleven.md
   - docs/models/components/entry.md
-  - docs/models/components/fifteen.md
-  - docs/models/components/five.md
-  - docs/models/components/four.md
-  - docs/models/components/fourteen.md
-  - docs/models/components/id.md
-  - docs/models/components/inputvalue.md
   - docs/models/components/inputvalue1.md
   - docs/models/components/inputvalue10.md
   - docs/models/components/inputvalue11.md
   - docs/models/components/inputvalue12.md
   - docs/models/components/inputvalue13.md
   - docs/models/components/inputvalue14.md
-  - docs/models/components/inputvalue14countrycode.md
   - docs/models/components/inputvalue15.md
   - docs/models/components/inputvalue16.md
   - docs/models/components/inputvalue17.md
   - docs/models/components/inputvalue18.md
-  - docs/models/components/inputvalue19.md
   - docs/models/components/inputvalue2.md
   - docs/models/components/inputvalue3.md
   - docs/models/components/inputvalue4.md
@@ -85,687 +89,683 @@ generatedFiles:
   - docs/models/components/inputvalue7.md
   - docs/models/components/inputvalue8.md
   - docs/models/components/inputvalue9.md
-  - docs/models/components/inputvaluecountrycode.md
+  - docs/models/components/inputvaluecountrycode1.md
+  - docs/models/components/inputvaluecountrycode2.md
   - docs/models/components/inputvalueinteractiontype.md
   - docs/models/components/inputvalueowneractor.md
   - docs/models/components/inputvaluereferencedactortype.md
   - docs/models/components/inputvaluetype.md
-  - docs/models/components/interactiontype.md
+  - docs/models/components/inputvalueunion.md
+  - docs/models/components/inputvalueworkspacemember.md
   - docs/models/components/level.md
-  - docs/models/components/linkedrecords.md
+  - docs/models/components/linkedrecord.md
   - docs/models/components/list.md
+  - docs/models/components/listcreatedbyactor.md
   - docs/models/components/listid.md
   - docs/models/components/listtype.md
-  - docs/models/components/nine.md
-  - docs/models/components/nineteen.md
   - docs/models/components/note.md
   - docs/models/components/notecreatedbyactor.md
   - docs/models/components/noteid.md
   - docs/models/components/notetype.md
+  - docs/models/components/objectid.md
   - docs/models/components/objectt.md
-  - docs/models/components/one.md
   - docs/models/components/outputvalue.md
-  - docs/models/components/outputvalue1.md
-  - docs/models/components/outputvalue10attributetype.md
-  - docs/models/components/outputvalue11attributetype.md
-  - docs/models/components/outputvalue12attributetype.md
-  - docs/models/components/outputvalue13attributetype.md
-  - docs/models/components/outputvalue14attributetype.md
-  - docs/models/components/outputvalue15attributetype.md
-  - docs/models/components/outputvalue16attributetype.md
-  - docs/models/components/outputvalue17attributetype.md
-  - docs/models/components/outputvalue18attributetype.md
-  - docs/models/components/outputvalue19attributetype.md
-  - docs/models/components/outputvalue2.md
-  - docs/models/components/outputvalue3attributetype.md
-  - docs/models/components/outputvalue4attributetype.md
-  - docs/models/components/outputvalue5attributetype.md
-  - docs/models/components/outputvalue6attributetype.md
-  - docs/models/components/outputvalue7attributetype.md
-  - docs/models/components/outputvalue8attributetype.md
-  - docs/models/components/outputvalue9attributetype.md
-  - docs/models/components/outputvalueattributetype.md
-  - docs/models/components/outputvaluecountrycode.md
+  - docs/models/components/outputvalueactorreference.md
+  - docs/models/components/outputvaluecheckbox.md
+  - docs/models/components/outputvaluecountrycode1.md
+  - docs/models/components/outputvaluecountrycode2.md
+  - docs/models/components/outputvaluecurrency.md
+  - docs/models/components/outputvaluedate.md
+  - docs/models/components/outputvaluedomain.md
+  - docs/models/components/outputvalueemailaddress.md
+  - docs/models/components/outputvalueinteraction.md
+  - docs/models/components/outputvalueinteractiontype.md
+  - docs/models/components/outputvaluelocation.md
+  - docs/models/components/outputvaluenumber.md
+  - docs/models/components/outputvalueowneractor.md
+  - docs/models/components/outputvaluepersonalname.md
+  - docs/models/components/outputvaluephonenumber.md
+  - docs/models/components/outputvaluerating.md
+  - docs/models/components/outputvaluerecordreference.md
   - docs/models/components/outputvaluereferencedactortype.md
+  - docs/models/components/outputvalueselect1.md
+  - docs/models/components/outputvalueselect2.md
+  - docs/models/components/outputvaluestatus1.md
+  - docs/models/components/outputvaluestatus2.md
+  - docs/models/components/outputvaluetext.md
+  - docs/models/components/outputvaluetimestamp.md
   - docs/models/components/outputvaluetype.md
-  - docs/models/components/owneractor.md
   - docs/models/components/recordreference.md
   - docs/models/components/recordt.md
-  - docs/models/components/referencedactortype.md
   - docs/models/components/relationship.md
+  - docs/models/components/relationshipid.md
   - docs/models/components/resolvedby.md
+  - docs/models/components/resolvedbytype.md
   - docs/models/components/security.md
   - docs/models/components/selectoption.md
   - docs/models/components/selectoptionid.md
-  - docs/models/components/seven.md
-  - docs/models/components/seventeen.md
-  - docs/models/components/six.md
-  - docs/models/components/sixteen.md
-  - docs/models/components/slugoridofmatchingattribute.md
   - docs/models/components/slugoridofmatchingattribute1.md
   - docs/models/components/slugoridofmatchingattribute2.md
   - docs/models/components/slugoridofmatchingattribute3.md
   - docs/models/components/slugoridofmatchingattribute4.md
   - docs/models/components/slugoridofmatchingattribute5.md
   - docs/models/components/slugoridofmatchingattributecountrycode.md
+  - docs/models/components/slugoridofmatchingattributeunion.md
   - docs/models/components/status.md
   - docs/models/components/statusid.md
   - docs/models/components/task.md
   - docs/models/components/taskcreatedbyactor.md
   - docs/models/components/taskid.md
+  - docs/models/components/taskreferencedactortype.md
   - docs/models/components/tasktype.md
-  - docs/models/components/template1.md
-  - docs/models/components/ten.md
-  - docs/models/components/thirteen.md
+  - docs/models/components/template.md
   - docs/models/components/thread.md
   - docs/models/components/threadid.md
-  - docs/models/components/three.md
-  - docs/models/components/twelve.md
-  - docs/models/components/two.md
-  - docs/models/components/type.md
+  - docs/models/components/typedynamic.md
+  - docs/models/components/typestatic.md
   - docs/models/components/workspaceaccess.md
   - docs/models/components/workspacemember.md
   - docs/models/components/workspacememberaccess.md
   - docs/models/components/workspacememberid.md
-  - docs/models/errors/attributesresponsebody.md
-  - docs/models/errors/attributesstatusesresponsebody.md
-  - docs/models/errors/code.md
-  - docs/models/errors/deletev2commentscommentidresponsebody.md
-  - docs/models/errors/deletev2webhookswebhookidresponsebody.md
-  - docs/models/errors/entriescode.md
-  - docs/models/errors/entriesresponsebody.md
-  - docs/models/errors/getv2commentscommentidresponsebody.md
-  - docs/models/errors/getv2threadsthreadidresponsebody.md
-  - docs/models/errors/getv2workspacemembersworkspacememberidresponsebody.md
-  - docs/models/errors/listsresponsebody.md
-  - docs/models/errors/notesresponsebody.md
-  - docs/models/errors/patchv2objectsobjectobjectsresponsebody.md
-  - docs/models/errors/patchv2objectsobjectresponsebody.md
+  - docs/models/errors/badrequestcode.md
+  - docs/models/errors/badrequesttype.md
+  - docs/models/errors/billingerror.md
+  - docs/models/errors/codeimmutablevalue.md
+  - docs/models/errors/codemissingvalue.md
+  - docs/models/errors/codevalidationtype.md
+  - docs/models/errors/conflictcode.md
+  - docs/models/errors/conflicttype.md
+  - docs/models/errors/deletev2commentscommentidnotfounderror.md
+  - docs/models/errors/deletev2webhookswebhookidnotfounderror.md
+  - docs/models/errors/filtererror.md
+  - docs/models/errors/getv2commentscommentidnotfounderror.md
+  - docs/models/errors/getv2listslistnotfounderror.md
+  - docs/models/errors/getv2notesnoteidnotfounderror.md
+  - docs/models/errors/getv2objectsobjectnotfounderror.md
+  - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesvalidationtypeerror.md
+  - docs/models/errors/getv2objectsobjectrecordsrecordidinvalidrequesterror.md
+  - docs/models/errors/getv2targetidentifierattributesattributenotfounderror.md
+  - docs/models/errors/getv2taskstaskidnotfounderror.md
+  - docs/models/errors/getv2threadsthreadidnotfounderror.md
+  - docs/models/errors/getv2webhookswebhookidnotfounderror.md
+  - docs/models/errors/getv2workspacemembersworkspacememberidinvalidrequesterror.md
+  - docs/models/errors/immutablevalueerror.md
+  - docs/models/errors/missingvalueerror.md
+  - docs/models/errors/multiplematchresultserror.md
+  - docs/models/errors/notfoundcode.md
+  - docs/models/errors/notfoundtype.md
+  - docs/models/errors/patchv2objectsobjectslugconflicterror.md
+  - docs/models/errors/patchv2objectsobjectvalidationtypeerror.md
   - docs/models/errors/patchv2targetidentifierattributesattributecode.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributeresponsebody.md
-  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusresponsebody.md
-  - docs/models/errors/patchv2taskstaskidresponsebody.md
-  - docs/models/errors/postv2commentsresponsebody.md
+  - docs/models/errors/patchv2targetidentifierattributesattributeoptionsoptioninvalidrequesterror.md
+  - docs/models/errors/patchv2targetidentifierattributesattributestatusesstatusinvalidrequesterror.md
+  - docs/models/errors/patchv2taskstaskidnotfounderror.md
+  - docs/models/errors/postv2commentsinvalidrequesterror.md
   - docs/models/errors/postv2listscode.md
-  - docs/models/errors/postv2listslistentriesentriesresponsebody.md
-  - docs/models/errors/postv2listslistentriesresponsebody.md
-  - docs/models/errors/postv2listslistsresponsebody.md
-  - docs/models/errors/postv2listsresponsebody.md
+  - docs/models/errors/postv2listsinvalidrequesterror.md
+  - docs/models/errors/postv2listslistentriesinvalidrequesterror.md
+  - docs/models/errors/postv2listslistentriesnotfounderror.md
+  - docs/models/errors/postv2listsnotfounderror.md
   - docs/models/errors/postv2liststype.md
+  - docs/models/errors/postv2objectsobjectrecordsinvalidrequesterror.md
   - docs/models/errors/postv2objectsobjectrecordsquerycode.md
-  - docs/models/errors/postv2objectsobjectrecordsqueryrecordsresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordsqueryresponsebody.md
-  - docs/models/errors/postv2objectsobjectrecordsresponsebody.md
-  - docs/models/errors/postv2objectsresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributeoptionsresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributesresponseresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesattributestatusesresponsebody.md
-  - docs/models/errors/postv2targetidentifierattributesresponsebody.md
-  - docs/models/errors/postv2webhooksresponsebody.md
+  - docs/models/errors/postv2objectsobjectrecordsquerynotfounderror.md
+  - docs/models/errors/postv2objectsslugconflicterror.md
+  - docs/models/errors/postv2targetidentifierattributesattributeoptionsslugconflicterror.md
+  - docs/models/errors/postv2targetidentifierattributesattributeoptionsvalidationtypeerror.md
+  - docs/models/errors/postv2targetidentifierattributesattributestatusesslugconflicterror.md
+  - docs/models/errors/postv2targetidentifierattributesattributestatusesvalidationtypeerror.md
+  - docs/models/errors/postv2targetidentifierattributesnotfounderror.md
+  - docs/models/errors/postv2targetidentifierattributesslugconflicterror.md
+  - docs/models/errors/postv2targetidentifierattributesvalidationtypeerror.md
+  - docs/models/errors/postv2tasksvalidationtypeerror.md
+  - docs/models/errors/postv2webhooksvalidationtypeerror.md
   - docs/models/errors/putv2listslistentriescode.md
-  - docs/models/errors/putv2listslistentriesentriesresponsebody.md
-  - docs/models/errors/putv2listslistentriesresponsebody.md
-  - docs/models/errors/putv2objectsobjectrecordsresponsebody.md
-  - docs/models/errors/recordscode.md
-  - docs/models/errors/recordsresponsebody.md
-  - docs/models/errors/recordsresponseresponsebody.md
-  - docs/models/errors/response400400code.md
-  - docs/models/errors/response400code.md
-  - docs/models/errors/response400responsebody.md
-  - docs/models/errors/response400type.md
-  - docs/models/errors/response404responsebody.md
-  - docs/models/errors/responsebody.md
-  - docs/models/errors/responsecode.md
-  - docs/models/errors/responseresponsebody.md
-  - docs/models/errors/responsetype.md
-  - docs/models/errors/tasksresponsebody.md
-  - docs/models/errors/tasksresponseresponsebody.md
-  - docs/models/errors/type.md
-  - docs/models/errors/webhooksresponsebody.md
-  - docs/models/operations/assignees.md
-  - docs/models/operations/assignees1.md
-  - docs/models/operations/assignees2.md
-  - docs/models/operations/assigneesreferencedactortype.md
-  - docs/models/operations/attributetype.md
-  - docs/models/operations/author.md
-  - docs/models/operations/config.md
-  - docs/models/operations/countrycode.md
-  - docs/models/operations/createdbyactor.md
-  - docs/models/operations/currency.md
-  - docs/models/operations/currencycode.md
-  - docs/models/operations/data.md
-  - docs/models/operations/data1.md
-  - docs/models/operations/data10.md
-  - docs/models/operations/data11.md
-  - docs/models/operations/data12.md
-  - docs/models/operations/data13.md
-  - docs/models/operations/data14.md
-  - docs/models/operations/data15.md
-  - docs/models/operations/data16.md
-  - docs/models/operations/data17.md
-  - docs/models/operations/data2.md
-  - docs/models/operations/data3.md
-  - docs/models/operations/data4.md
-  - docs/models/operations/data5.md
-  - docs/models/operations/data6.md
-  - docs/models/operations/data7.md
-  - docs/models/operations/data8.md
-  - docs/models/operations/data9.md
-  - docs/models/operations/dataattributetype.md
-  - docs/models/operations/dataauthor.md
-  - docs/models/operations/datacountrycode.md
-  - docs/models/operations/datacreatedbyactor.md
-  - docs/models/operations/datacurrencycode.md
-  - docs/models/operations/dataformat.md
-  - docs/models/operations/datainteractiontype.md
-  - docs/models/operations/dataowneractor.md
-  - docs/models/operations/datareferencedactortype.md
-  - docs/models/operations/datatype.md
-  - docs/models/operations/defaultcurrencycode.md
-  - docs/models/operations/defaultvalue.md
-  - docs/models/operations/defaultvalue1.md
-  - docs/models/operations/defaultvalue2.md
-  - docs/models/operations/defaultvaluetype.md
+  - docs/models/errors/putv2listslistentriesnotfounderror.md
+  - docs/models/errors/putv2objectsobjectrecordsinvalidrequesterror.md
+  - docs/models/errors/systemeditunauthorizederror.md
+  - docs/models/operations/author1.md
+  - docs/models/operations/author2.md
+  - docs/models/operations/author3.md
+  - docs/models/operations/bearer.md
   - docs/models/operations/deletev2commentscommentidrequest.md
-  - docs/models/operations/deletev2commentscommentidresponsebody.md
+  - docs/models/operations/deletev2commentscommentidresponse.md
   - docs/models/operations/deletev2listslistentriesentryidrequest.md
-  - docs/models/operations/deletev2listslistentriesentryidresponsebody.md
+  - docs/models/operations/deletev2listslistentriesentryidresponse.md
   - docs/models/operations/deletev2notesnoteidrequest.md
-  - docs/models/operations/deletev2notesnoteidresponsebody.md
+  - docs/models/operations/deletev2notesnoteidresponse.md
   - docs/models/operations/deletev2objectsobjectrecordsrecordidrequest.md
-  - docs/models/operations/deletev2objectsobjectrecordsrecordidresponsebody.md
+  - docs/models/operations/deletev2objectsobjectrecordsrecordidresponse.md
   - docs/models/operations/deletev2taskstaskidrequest.md
-  - docs/models/operations/deletev2taskstaskidresponsebody.md
+  - docs/models/operations/deletev2taskstaskidresponse.md
   - docs/models/operations/deletev2webhookswebhookidrequest.md
-  - docs/models/operations/deletev2webhookswebhookidresponsebody.md
-  - docs/models/operations/direction.md
-  - docs/models/operations/displaytype.md
-  - docs/models/operations/dollarand.md
-  - docs/models/operations/dollarand1.md
-  - docs/models/operations/dollarand2.md
-  - docs/models/operations/dollarandoperator.md
-  - docs/models/operations/dollaror.md
-  - docs/models/operations/dollaror1.md
-  - docs/models/operations/dollaror2.md
-  - docs/models/operations/dollaroroperator.md
-  - docs/models/operations/eight.md
-  - docs/models/operations/eleven.md
+  - docs/models/operations/deletev2webhookswebhookidresponse.md
   - docs/models/operations/entry.md
-  - docs/models/operations/entryvalues.md
-  - docs/models/operations/eventtype.md
-  - docs/models/operations/fifteen.md
-  - docs/models/operations/filter.md
-  - docs/models/operations/filter1.md
-  - docs/models/operations/filter2.md
-  - docs/models/operations/filterdollarand.md
-  - docs/models/operations/filterdollaror.md
-  - docs/models/operations/five.md
-  - docs/models/operations/format.md
-  - docs/models/operations/four.md
-  - docs/models/operations/fourteen.md
   - docs/models/operations/getv2commentscommentidrequest.md
-  - docs/models/operations/getv2commentscommentidresponsebody.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdata.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdata1.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdata2.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdata3.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacountrycode.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluescountrycode.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluescreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody10type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody11type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody12type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody13type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody14type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody15type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody16type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody17type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody7type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8owneractortype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody8type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebody9type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200applicationjsontype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200attributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200createdbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponse200type.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponseattributetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponsecreatedbyactor.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluesresponsetype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataentriesattributesvaluestype.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatatype.md
+  - docs/models/operations/getv2commentscommentidresponse.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypeactorreference.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypecheckbox.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypecurrency.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypedate.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypedomain.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypeemailaddress.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypeinteraction.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypelocation.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypenumber.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypepersonalname.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypephonenumber.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetyperating.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetyperecordreference.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypeselect.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypestatus.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypetext.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesattributetypetimestamp.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescountrycode1.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescountrycode2.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor1.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor10.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor11.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor12.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor13.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor14.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor15.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor16.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor17.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor2.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor3.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor4.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor5.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor6.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor7.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor8.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactor9.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype1.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype10.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype11.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype12.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype13.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype14.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype15.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype16.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype17.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype2.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype3.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype4.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype5.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype6.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype7.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype8.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescreatedbyactortype9.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluescurrencycode.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataactorreference.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacheckbox.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatacurrency.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatadate.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatadomain.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataemailaddress.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatainteraction.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatalocation.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatanumber.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatapersonalname.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataphonenumber.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatarating.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatarecordreference.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataselect.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatastatus.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatatext.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdatatimestamp.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesdataunion.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesinteractiontype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesowneractor.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesowneractortype.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesreferencedactortype.md
   - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesrequest.md
-  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesresponsebody.md
+  - docs/models/operations/getv2listslistentriesentryidattributesattributevaluesresponse.md
   - docs/models/operations/getv2listslistentriesentryiddata.md
   - docs/models/operations/getv2listslistentriesentryidentryvalues.md
   - docs/models/operations/getv2listslistentriesentryidid.md
   - docs/models/operations/getv2listslistentriesentryidrequest.md
-  - docs/models/operations/getv2listslistentriesentryidresponsebody.md
+  - docs/models/operations/getv2listslistentriesentryidresponse.md
   - docs/models/operations/getv2listslistrequest.md
-  - docs/models/operations/getv2listslistresponsebody.md
-  - docs/models/operations/getv2listsresponsebody.md
+  - docs/models/operations/getv2listslistresponse.md
+  - docs/models/operations/getv2listsresponse.md
   - docs/models/operations/getv2notesnoteidrequest.md
-  - docs/models/operations/getv2notesnoteidresponsebody.md
+  - docs/models/operations/getv2notesnoteidresponse.md
   - docs/models/operations/getv2notesrequest.md
-  - docs/models/operations/getv2notesresponsebody.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata1.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata2.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata3.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata4.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdata5.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatacountrycode.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatacreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordscreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsoncreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody10attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody10createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody10type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody11attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody11createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody11type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody12attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody12createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody12type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody13attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody13createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody13type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody14attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody14createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody14type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody15attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody15createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody15type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody16attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody16createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody16type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody17attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody17createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody17type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody1type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody8owneractortype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody8type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody9attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody9createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebody9type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebodyattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebodycreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsonresponsebodytype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200applicationjsontype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200attributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200createdbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponse200type.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponseattributetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponsecreatedbyactor.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordsresponsetype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordstype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatareferencedactortype.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatatype.md
+  - docs/models/operations/getv2notesresponse.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypeactorreference.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypecheckbox.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypecurrency.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypedate.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypedomain.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypeemailaddress.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypeinteraction.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypelocation.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypenumber.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypepersonalname.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypephonenumber.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetyperating.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetyperecordreference.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypeselect.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypestatus.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypetext.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypetimestamp.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescountrycode1.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescountrycode2.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor1.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor10.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor11.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor12.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor13.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor14.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor15.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor16.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor17.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor2.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor3.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor4.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor5.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor6.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor7.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor8.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor9.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype1.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype10.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype11.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype12.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype13.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype14.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype15.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype16.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype17.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype2.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype3.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype4.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype5.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype6.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype7.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype8.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactortype9.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescurrencycode.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataactorreference.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatacheckbox.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatacurrency.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatadate.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatadomain.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataemailaddress.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatainteraction.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatalocation.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatanumber.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatapersonalname.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataphonenumber.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarating.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatarecordreference.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataselect.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatastatus.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatatext.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdatatimestamp.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesdataunion.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesinteractiontype.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesowneractor.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesowneractortype.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesreferencedactortype.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesrequest.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesresponsebody.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesresponse.md
   - docs/models/operations/getv2objectsobjectrecordsrecordiddata.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidentriesdata.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidentriesrequest.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidentriesresponsebody.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidentriesresponse.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidid.md
   - docs/models/operations/getv2objectsobjectrecordsrecordidrequest.md
-  - docs/models/operations/getv2objectsobjectrecordsrecordidresponsebody.md
+  - docs/models/operations/getv2objectsobjectrecordsrecordidresponse.md
   - docs/models/operations/getv2objectsobjectrequest.md
-  - docs/models/operations/getv2objectsobjectresponsebody.md
-  - docs/models/operations/getv2objectsresponsebody.md
-  - docs/models/operations/getv2selfresponsebody.md
-  - docs/models/operations/getv2targetidentifierattributesattributeoptionspathparamtarget.md
+  - docs/models/operations/getv2objectsobjectresponse.md
+  - docs/models/operations/getv2objectsresponse.md
+  - docs/models/operations/getv2selfresponse.md
   - docs/models/operations/getv2targetidentifierattributesattributeoptionsrequest.md
-  - docs/models/operations/getv2targetidentifierattributesattributeoptionsresponsebody.md
-  - docs/models/operations/getv2targetidentifierattributesattributepathparamtarget.md
+  - docs/models/operations/getv2targetidentifierattributesattributeoptionsresponse.md
+  - docs/models/operations/getv2targetidentifierattributesattributeoptionstarget.md
   - docs/models/operations/getv2targetidentifierattributesattributerequest.md
-  - docs/models/operations/getv2targetidentifierattributesattributeresponsebody.md
-  - docs/models/operations/getv2targetidentifierattributesattributestatusespathparamtarget.md
+  - docs/models/operations/getv2targetidentifierattributesattributeresponse.md
   - docs/models/operations/getv2targetidentifierattributesattributestatusesrequest.md
-  - docs/models/operations/getv2targetidentifierattributesattributestatusesresponsebody.md
+  - docs/models/operations/getv2targetidentifierattributesattributestatusesresponse.md
+  - docs/models/operations/getv2targetidentifierattributesattributestatusestarget.md
+  - docs/models/operations/getv2targetidentifierattributesattributetarget.md
   - docs/models/operations/getv2targetidentifierattributesrequest.md
-  - docs/models/operations/getv2targetidentifierattributesresponsebody.md
+  - docs/models/operations/getv2targetidentifierattributesresponse.md
+  - docs/models/operations/getv2targetidentifierattributestarget.md
   - docs/models/operations/getv2tasksrequest.md
-  - docs/models/operations/getv2tasksresponsebody.md
+  - docs/models/operations/getv2tasksresponse.md
+  - docs/models/operations/getv2taskssort.md
   - docs/models/operations/getv2taskstaskidrequest.md
-  - docs/models/operations/getv2taskstaskidresponsebody.md
+  - docs/models/operations/getv2taskstaskidresponse.md
   - docs/models/operations/getv2threadsrequest.md
-  - docs/models/operations/getv2threadsresponsebody.md
+  - docs/models/operations/getv2threadsresponse.md
   - docs/models/operations/getv2threadsthreadidrequest.md
-  - docs/models/operations/getv2threadsthreadidresponsebody.md
+  - docs/models/operations/getv2threadsthreadidresponse.md
   - docs/models/operations/getv2webhooksdata.md
-  - docs/models/operations/getv2webhooksdollarand1.md
-  - docs/models/operations/getv2webhooksdollarand2.md
-  - docs/models/operations/getv2webhooksdollarandoperator.md
-  - docs/models/operations/getv2webhooksdollarandwebhooksoperator.md
-  - docs/models/operations/getv2webhooksdollaror1.md
-  - docs/models/operations/getv2webhooksdollaror2.md
-  - docs/models/operations/getv2webhooksdollaroroperator.md
-  - docs/models/operations/getv2webhooksdollarorwebhooksoperator.md
+  - docs/models/operations/getv2webhooksdollarandequals.md
+  - docs/models/operations/getv2webhooksdollarandnotequals.md
+  - docs/models/operations/getv2webhooksdollarandoperatorequals.md
+  - docs/models/operations/getv2webhooksdollarandoperatornotequals.md
+  - docs/models/operations/getv2webhooksdollarandunion.md
+  - docs/models/operations/getv2webhooksdollarorequals.md
+  - docs/models/operations/getv2webhooksdollarornotequals.md
+  - docs/models/operations/getv2webhooksdollaroroperatorequals.md
+  - docs/models/operations/getv2webhooksdollaroroperatornotequals.md
+  - docs/models/operations/getv2webhooksdollarorunion.md
   - docs/models/operations/getv2webhookseventtype.md
-  - docs/models/operations/getv2webhooksfilter.md
   - docs/models/operations/getv2webhooksfilter1.md
   - docs/models/operations/getv2webhooksfilter2.md
-  - docs/models/operations/getv2webhooksfilterdollarand.md
-  - docs/models/operations/getv2webhooksfilterdollaror.md
+  - docs/models/operations/getv2webhooksfilterunion.md
   - docs/models/operations/getv2webhooksid.md
   - docs/models/operations/getv2webhooksrequest.md
-  - docs/models/operations/getv2webhooksresponsebody.md
-  - docs/models/operations/getv2webhookssubscriptions.md
+  - docs/models/operations/getv2webhooksresponse.md
+  - docs/models/operations/getv2webhooksstatus.md
+  - docs/models/operations/getv2webhookssubscription.md
   - docs/models/operations/getv2webhookswebhookiddata.md
-  - docs/models/operations/getv2webhookswebhookiddollarand1.md
-  - docs/models/operations/getv2webhookswebhookiddollarand2.md
-  - docs/models/operations/getv2webhookswebhookiddollarandoperator.md
-  - docs/models/operations/getv2webhookswebhookiddollarandwebhooksoperator.md
-  - docs/models/operations/getv2webhookswebhookiddollaror1.md
-  - docs/models/operations/getv2webhookswebhookiddollaror2.md
-  - docs/models/operations/getv2webhookswebhookiddollaroroperator.md
-  - docs/models/operations/getv2webhookswebhookiddollarorwebhooksoperator.md
+  - docs/models/operations/getv2webhookswebhookiddollarandequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarandnotequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarandoperatorequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarandoperatornotequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarandunion.md
+  - docs/models/operations/getv2webhookswebhookiddollarorequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarornotequals.md
+  - docs/models/operations/getv2webhookswebhookiddollaroroperatorequals.md
+  - docs/models/operations/getv2webhookswebhookiddollaroroperatornotequals.md
+  - docs/models/operations/getv2webhookswebhookiddollarorunion.md
   - docs/models/operations/getv2webhookswebhookideventtype.md
-  - docs/models/operations/getv2webhookswebhookidfilter.md
   - docs/models/operations/getv2webhookswebhookidfilter1.md
   - docs/models/operations/getv2webhookswebhookidfilter2.md
-  - docs/models/operations/getv2webhookswebhookidfilterdollarand.md
-  - docs/models/operations/getv2webhookswebhookidfilterdollaror.md
+  - docs/models/operations/getv2webhookswebhookidfilterunion.md
   - docs/models/operations/getv2webhookswebhookidid.md
   - docs/models/operations/getv2webhookswebhookidrequest.md
-  - docs/models/operations/getv2webhookswebhookidresponsebody.md
+  - docs/models/operations/getv2webhookswebhookidresponse.md
   - docs/models/operations/getv2webhookswebhookidstatus.md
-  - docs/models/operations/getv2webhookswebhookidsubscriptions.md
-  - docs/models/operations/getv2workspacemembersresponsebody.md
+  - docs/models/operations/getv2webhookswebhookidsubscription.md
+  - docs/models/operations/getv2workspacemembersresponse.md
   - docs/models/operations/getv2workspacemembersworkspacememberidrequest.md
-  - docs/models/operations/getv2workspacemembersworkspacememberidresponsebody.md
-  - docs/models/operations/id.md
-  - docs/models/operations/interactiontype.md
+  - docs/models/operations/getv2workspacemembersworkspacememberidresponse.md
   - docs/models/operations/iss.md
-  - docs/models/operations/level.md
-  - docs/models/operations/linkedrecords.md
-  - docs/models/operations/linkedrecords1.md
-  - docs/models/operations/linkedrecords2.md
-  - docs/models/operations/linkedrecordsslugoridofmatchingattribute.md
-  - docs/models/operations/nine.md
-  - docs/models/operations/one.md
-  - docs/models/operations/operator.md
-  - docs/models/operations/owneractor.md
   - docs/models/operations/patchv2listslistdata.md
-  - docs/models/operations/patchv2listslistentriesentryiddata.md
-  - docs/models/operations/patchv2listslistentriesentryidentriesdata.md
+  - docs/models/operations/patchv2listslistentriesentryiddatarequest.md
+  - docs/models/operations/patchv2listslistentriesentryiddataresponse.md
   - docs/models/operations/patchv2listslistentriesentryidentryvalues.md
   - docs/models/operations/patchv2listslistentriesentryidid.md
   - docs/models/operations/patchv2listslistentriesentryidrequest.md
   - docs/models/operations/patchv2listslistentriesentryidrequestbody.md
-  - docs/models/operations/patchv2listslistentriesentryidresponsebody.md
+  - docs/models/operations/patchv2listslistentriesentryidresponse.md
   - docs/models/operations/patchv2listslistlevel.md
   - docs/models/operations/patchv2listslistrequest.md
   - docs/models/operations/patchv2listslistrequestbody.md
-  - docs/models/operations/patchv2listslistresponsebody.md
+  - docs/models/operations/patchv2listslistresponse.md
   - docs/models/operations/patchv2listslistworkspaceaccess.md
   - docs/models/operations/patchv2listslistworkspacememberaccess.md
   - docs/models/operations/patchv2objectsobjectdata.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordiddata.md
+  - docs/models/operations/patchv2objectsobjectrecordsrecordiddatarequest.md
+  - docs/models/operations/patchv2objectsobjectrecordsrecordiddataresponse.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidid.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidrecordsdata.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/patchv2objectsobjectrecordsrecordidrequestbody.md
-  - docs/models/operations/patchv2objectsobjectrecordsrecordidresponsebody.md
+  - docs/models/operations/patchv2objectsobjectrecordsrecordidresponse.md
   - docs/models/operations/patchv2objectsobjectrequest.md
   - docs/models/operations/patchv2objectsobjectrequestbody.md
-  - docs/models/operations/patchv2objectsobjectresponsebody.md
+  - docs/models/operations/patchv2objectsobjectresponse.md
   - docs/models/operations/patchv2targetidentifierattributesattributeconfig.md
   - docs/models/operations/patchv2targetidentifierattributesattributecurrency.md
   - docs/models/operations/patchv2targetidentifierattributesattributedata.md
   - docs/models/operations/patchv2targetidentifierattributesattributedefaultcurrencycode.md
-  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalue.md
-  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalueattributestype.md
-  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvaluetype.md
+  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvaluedynamic.md
+  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvaluestatic.md
+  - docs/models/operations/patchv2targetidentifierattributesattributedefaultvalueunion.md
   - docs/models/operations/patchv2targetidentifierattributesattributedisplaytype.md
   - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptiondata.md
-  - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptionpathparamtarget.md
   - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptionrequest.md
   - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptionrequestbody.md
-  - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.md
-  - docs/models/operations/patchv2targetidentifierattributesattributepathparamtarget.md
+  - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptionresponse.md
+  - docs/models/operations/patchv2targetidentifierattributesattributeoptionsoptiontarget.md
   - docs/models/operations/patchv2targetidentifierattributesattributerecordreference.md
   - docs/models/operations/patchv2targetidentifierattributesattributerequest.md
   - docs/models/operations/patchv2targetidentifierattributesattributerequestbody.md
-  - docs/models/operations/patchv2targetidentifierattributesattributeresponsebody.md
+  - docs/models/operations/patchv2targetidentifierattributesattributeresponse.md
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusdata.md
-  - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatuspathparamtarget.md
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusrequest.md
   - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusrequestbody.md
-  - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusresponsebody.md
-  - docs/models/operations/patchv2targetidentifierattributesattributetemplate1.md
-  - docs/models/operations/patchv2taskstaskidassignees.md
-  - docs/models/operations/patchv2taskstaskidassignees1.md
-  - docs/models/operations/patchv2taskstaskidassignees2.md
+  - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatusresponse.md
+  - docs/models/operations/patchv2targetidentifierattributesattributestatusesstatustarget.md
+  - docs/models/operations/patchv2targetidentifierattributesattributetarget.md
+  - docs/models/operations/patchv2targetidentifierattributesattributetemplate.md
+  - docs/models/operations/patchv2targetidentifierattributesattributetypedynamic.md
+  - docs/models/operations/patchv2targetidentifierattributesattributetypestatic.md
+  - docs/models/operations/patchv2taskstaskidassignee.md
+  - docs/models/operations/patchv2taskstaskidassigneeunion.md
+  - docs/models/operations/patchv2taskstaskidassigneeworkspacemember.md
+  - docs/models/operations/patchv2taskstaskidcountrycode.md
   - docs/models/operations/patchv2taskstaskiddata.md
-  - docs/models/operations/patchv2taskstaskidlinkedrecords.md
-  - docs/models/operations/patchv2taskstaskidlinkedrecords1.md
-  - docs/models/operations/patchv2taskstaskidlinkedrecords2.md
+  - docs/models/operations/patchv2taskstaskidlinkedrecord1.md
+  - docs/models/operations/patchv2taskstaskidlinkedrecord2.md
+  - docs/models/operations/patchv2taskstaskidlinkedrecordunion.md
+  - docs/models/operations/patchv2taskstaskidreferencedactortype.md
   - docs/models/operations/patchv2taskstaskidrequest.md
   - docs/models/operations/patchv2taskstaskidrequestbody.md
-  - docs/models/operations/patchv2taskstaskidresponsebody.md
+  - docs/models/operations/patchv2taskstaskidresponse.md
   - docs/models/operations/patchv2taskstaskidslugoridofmatchingattribute1.md
   - docs/models/operations/patchv2taskstaskidslugoridofmatchingattribute2.md
-  - docs/models/operations/patchv2webhookswebhookiddata.md
-  - docs/models/operations/patchv2webhookswebhookiddollarand1.md
-  - docs/models/operations/patchv2webhookswebhookiddollarand2.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandoperator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandwebhooks1.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandwebhooks2.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandwebhooksoperator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandwebhooksresponse200operator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarandwebhooksresponseoperator.md
-  - docs/models/operations/patchv2webhookswebhookiddollaror1.md
-  - docs/models/operations/patchv2webhookswebhookiddollaror2.md
-  - docs/models/operations/patchv2webhookswebhookiddollaroroperator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarorwebhooks1.md
-  - docs/models/operations/patchv2webhookswebhookiddollarorwebhooks2.md
-  - docs/models/operations/patchv2webhookswebhookiddollarorwebhooksoperator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarorwebhooksresponse200operator.md
-  - docs/models/operations/patchv2webhookswebhookiddollarorwebhooksresponseoperator.md
-  - docs/models/operations/patchv2webhookswebhookideventtype.md
-  - docs/models/operations/patchv2webhookswebhookidfilter.md
-  - docs/models/operations/patchv2webhookswebhookidfilter1.md
-  - docs/models/operations/patchv2webhookswebhookidfilter2.md
-  - docs/models/operations/patchv2webhookswebhookidfilterdollarand.md
-  - docs/models/operations/patchv2webhookswebhookidfilterdollaror.md
-  - docs/models/operations/patchv2webhookswebhookidfilterwebhooks1.md
-  - docs/models/operations/patchv2webhookswebhookidfilterwebhooks2.md
+  - docs/models/operations/patchv2taskstaskidslugoridofmatchingattribute3.md
+  - docs/models/operations/patchv2taskstaskidslugoridofmatchingattribute4.md
+  - docs/models/operations/patchv2taskstaskidslugoridofmatchingattribute5.md
+  - docs/models/operations/patchv2taskstaskidslugoridofmatchingattributeunion.md
+  - docs/models/operations/patchv2webhookswebhookiddatarequest.md
+  - docs/models/operations/patchv2webhookswebhookiddataresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandnotequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandnotequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandoperatorequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandoperatorequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandoperatornotequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandoperatornotequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandrequestunion.md
+  - docs/models/operations/patchv2webhookswebhookiddollarandresponseunion.md
+  - docs/models/operations/patchv2webhookswebhookiddollarorequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarorequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarornotequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollarornotequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollaroroperatorequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollaroroperatorequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollaroroperatornotequalsrequest.md
+  - docs/models/operations/patchv2webhookswebhookiddollaroroperatornotequalsresponse.md
+  - docs/models/operations/patchv2webhookswebhookiddollarorrequestunion.md
+  - docs/models/operations/patchv2webhookswebhookiddollarorresponseunion.md
+  - docs/models/operations/patchv2webhookswebhookideventtyperequest.md
+  - docs/models/operations/patchv2webhookswebhookideventtyperesponse.md
+  - docs/models/operations/patchv2webhookswebhookidfilterrequest1.md
+  - docs/models/operations/patchv2webhookswebhookidfilterrequest2.md
+  - docs/models/operations/patchv2webhookswebhookidfilterrequestunion.md
+  - docs/models/operations/patchv2webhookswebhookidfilterresponse1.md
+  - docs/models/operations/patchv2webhookswebhookidfilterresponse2.md
+  - docs/models/operations/patchv2webhookswebhookidfilterresponseunion.md
   - docs/models/operations/patchv2webhookswebhookidid.md
   - docs/models/operations/patchv2webhookswebhookidrequest.md
   - docs/models/operations/patchv2webhookswebhookidrequestbody.md
-  - docs/models/operations/patchv2webhookswebhookidresponsebody.md
+  - docs/models/operations/patchv2webhookswebhookidresponse.md
   - docs/models/operations/patchv2webhookswebhookidstatus.md
-  - docs/models/operations/patchv2webhookswebhookidsubscriptions.md
-  - docs/models/operations/patchv2webhookswebhookidwebhooksdata.md
-  - docs/models/operations/patchv2webhookswebhookidwebhookseventtype.md
-  - docs/models/operations/patchv2webhookswebhookidwebhooksfilter.md
-  - docs/models/operations/patchv2webhookswebhookidwebhookssubscriptions.md
-  - docs/models/operations/pathparamtarget.md
-  - docs/models/operations/postv2commentsdata.md
-  - docs/models/operations/postv2commentsdataauthor.md
-  - docs/models/operations/postv2commentsdatacommentsformat.md
-  - docs/models/operations/postv2commentsdatacommentstype.md
-  - docs/models/operations/postv2commentsdataformat.md
-  - docs/models/operations/postv2commentsdatatype.md
-  - docs/models/operations/postv2commentsrequestbody.md
-  - docs/models/operations/postv2commentsresponsebody.md
+  - docs/models/operations/patchv2webhookswebhookidsubscriptionrequest.md
+  - docs/models/operations/patchv2webhookswebhookidsubscriptionresponse.md
+  - docs/models/operations/postv2commentsdataplaintext1.md
+  - docs/models/operations/postv2commentsdataplaintext2.md
+  - docs/models/operations/postv2commentsdataplaintext3.md
+  - docs/models/operations/postv2commentsdataunion.md
+  - docs/models/operations/postv2commentsformat1.md
+  - docs/models/operations/postv2commentsformat2.md
+  - docs/models/operations/postv2commentsformat3.md
+  - docs/models/operations/postv2commentsrequest.md
+  - docs/models/operations/postv2commentsresponse.md
+  - docs/models/operations/postv2commentstype1.md
+  - docs/models/operations/postv2commentstype2.md
+  - docs/models/operations/postv2commentstype3.md
   - docs/models/operations/postv2listsdata.md
-  - docs/models/operations/postv2listslistentriesdata.md
-  - docs/models/operations/postv2listslistentriesentriesdata.md
+  - docs/models/operations/postv2listslevel.md
+  - docs/models/operations/postv2listslistentriesdatarequest.md
+  - docs/models/operations/postv2listslistentriesdataresponse.md
   - docs/models/operations/postv2listslistentriesentryvalues.md
   - docs/models/operations/postv2listslistentriesid.md
   - docs/models/operations/postv2listslistentriesquerydata.md
+  - docs/models/operations/postv2listslistentriesquerydirection1.md
+  - docs/models/operations/postv2listslistentriesquerydirection2.md
+  - docs/models/operations/postv2listslistentriesqueryentryvalues.md
   - docs/models/operations/postv2listslistentriesqueryid.md
   - docs/models/operations/postv2listslistentriesqueryrequest.md
   - docs/models/operations/postv2listslistentriesqueryrequestbody.md
-  - docs/models/operations/postv2listslistentriesqueryresponsebody.md
-  - docs/models/operations/postv2listslistentriesquerysorts.md
-  - docs/models/operations/postv2listslistentriesquerysorts1.md
-  - docs/models/operations/postv2listslistentriesquerysorts2.md
-  - docs/models/operations/postv2listslistentriesquerysortsdirection.md
-  - docs/models/operations/postv2listslistentriesquerysortsentriesdirection.md
+  - docs/models/operations/postv2listslistentriesqueryresponse.md
+  - docs/models/operations/postv2listslistentriesquerysort1.md
+  - docs/models/operations/postv2listslistentriesquerysort2.md
+  - docs/models/operations/postv2listslistentriesquerysortunion.md
   - docs/models/operations/postv2listslistentriesrequest.md
   - docs/models/operations/postv2listslistentriesrequestbody.md
-  - docs/models/operations/postv2listslistentriesresponsebody.md
-  - docs/models/operations/postv2listsrequestbody.md
-  - docs/models/operations/postv2listsresponsebody.md
+  - docs/models/operations/postv2listslistentriesresponse.md
+  - docs/models/operations/postv2listsrequest.md
+  - docs/models/operations/postv2listsresponse.md
+  - docs/models/operations/postv2listsworkspaceaccess.md
+  - docs/models/operations/postv2listsworkspacememberaccess.md
   - docs/models/operations/postv2notesdata.md
-  - docs/models/operations/postv2notesrequestbody.md
-  - docs/models/operations/postv2notesresponsebody.md
-  - docs/models/operations/postv2objectsobjectrecordsdata.md
+  - docs/models/operations/postv2notesformat.md
+  - docs/models/operations/postv2notesrequest.md
+  - docs/models/operations/postv2notesresponse.md
+  - docs/models/operations/postv2objectsdata.md
+  - docs/models/operations/postv2objectsobjectrecordsdatarequest.md
+  - docs/models/operations/postv2objectsobjectrecordsdataresponse.md
   - docs/models/operations/postv2objectsobjectrecordsid.md
   - docs/models/operations/postv2objectsobjectrecordsquerydata.md
+  - docs/models/operations/postv2objectsobjectrecordsquerydirection1.md
+  - docs/models/operations/postv2objectsobjectrecordsquerydirection2.md
+  - docs/models/operations/postv2objectsobjectrecordsqueryid.md
   - docs/models/operations/postv2objectsobjectrecordsqueryrequest.md
   - docs/models/operations/postv2objectsobjectrecordsqueryrequestbody.md
-  - docs/models/operations/postv2objectsobjectrecordsqueryresponsebody.md
-  - docs/models/operations/postv2objectsobjectrecordsrecordsdata.md
+  - docs/models/operations/postv2objectsobjectrecordsqueryresponse.md
+  - docs/models/operations/postv2objectsobjectrecordsquerysort1.md
+  - docs/models/operations/postv2objectsobjectrecordsquerysort2.md
+  - docs/models/operations/postv2objectsobjectrecordsquerysortunion.md
   - docs/models/operations/postv2objectsobjectrecordsrequest.md
   - docs/models/operations/postv2objectsobjectrecordsrequestbody.md
-  - docs/models/operations/postv2objectsobjectrecordsresponsebody.md
-  - docs/models/operations/postv2objectsrequestbody.md
-  - docs/models/operations/postv2objectsresponsebody.md
+  - docs/models/operations/postv2objectsobjectrecordsresponse.md
+  - docs/models/operations/postv2objectsrequest.md
+  - docs/models/operations/postv2objectsresponse.md
   - docs/models/operations/postv2targetidentifierattributesattributeoptionsdata.md
-  - docs/models/operations/postv2targetidentifierattributesattributeoptionspathparamtarget.md
   - docs/models/operations/postv2targetidentifierattributesattributeoptionsrequest.md
   - docs/models/operations/postv2targetidentifierattributesattributeoptionsrequestbody.md
-  - docs/models/operations/postv2targetidentifierattributesattributeoptionsresponsebody.md
+  - docs/models/operations/postv2targetidentifierattributesattributeoptionsresponse.md
+  - docs/models/operations/postv2targetidentifierattributesattributeoptionstarget.md
   - docs/models/operations/postv2targetidentifierattributesattributestatusesdata.md
-  - docs/models/operations/postv2targetidentifierattributesattributestatusespathparamtarget.md
   - docs/models/operations/postv2targetidentifierattributesattributestatusesrequest.md
   - docs/models/operations/postv2targetidentifierattributesattributestatusesrequestbody.md
-  - docs/models/operations/postv2targetidentifierattributesattributestatusesresponsebody.md
+  - docs/models/operations/postv2targetidentifierattributesattributestatusesresponse.md
+  - docs/models/operations/postv2targetidentifierattributesattributestatusestarget.md
+  - docs/models/operations/postv2targetidentifierattributesconfig.md
+  - docs/models/operations/postv2targetidentifierattributescurrency.md
   - docs/models/operations/postv2targetidentifierattributesdata.md
-  - docs/models/operations/postv2targetidentifierattributesdefaultvaluetype.md
+  - docs/models/operations/postv2targetidentifierattributesdefaultcurrencycode.md
+  - docs/models/operations/postv2targetidentifierattributesdefaultvaluedynamic.md
+  - docs/models/operations/postv2targetidentifierattributesdefaultvaluestatic.md
+  - docs/models/operations/postv2targetidentifierattributesdefaultvalueunion.md
+  - docs/models/operations/postv2targetidentifierattributesdisplaytype.md
+  - docs/models/operations/postv2targetidentifierattributesrecordreference.md
   - docs/models/operations/postv2targetidentifierattributesrequest.md
   - docs/models/operations/postv2targetidentifierattributesrequestbody.md
-  - docs/models/operations/postv2targetidentifierattributesresponsebody.md
+  - docs/models/operations/postv2targetidentifierattributesresponse.md
+  - docs/models/operations/postv2targetidentifierattributestarget.md
+  - docs/models/operations/postv2targetidentifierattributestemplate.md
+  - docs/models/operations/postv2targetidentifierattributestype.md
+  - docs/models/operations/postv2targetidentifierattributestypedynamic.md
+  - docs/models/operations/postv2targetidentifierattributestypestatic.md
+  - docs/models/operations/postv2tasksassignee.md
+  - docs/models/operations/postv2tasksassigneeunion.md
+  - docs/models/operations/postv2tasksassigneeworkspacemember.md
+  - docs/models/operations/postv2taskscountrycode.md
   - docs/models/operations/postv2tasksdata.md
   - docs/models/operations/postv2tasksformat.md
-  - docs/models/operations/postv2tasksrequestbody.md
-  - docs/models/operations/postv2tasksresponsebody.md
-  - docs/models/operations/postv2webhooksdata.md
-  - docs/models/operations/postv2webhooksdollarand1.md
-  - docs/models/operations/postv2webhooksdollarand2.md
-  - docs/models/operations/postv2webhooksdollarandoperator.md
-  - docs/models/operations/postv2webhooksdollarandwebhooksoperator.md
-  - docs/models/operations/postv2webhooksdollarandwebhooksresponseoperator.md
-  - docs/models/operations/postv2webhooksdollaror1.md
-  - docs/models/operations/postv2webhooksdollaror2.md
-  - docs/models/operations/postv2webhooksdollaroroperator.md
-  - docs/models/operations/postv2webhooksdollarorwebhooksoperator.md
-  - docs/models/operations/postv2webhookseventtype.md
-  - docs/models/operations/postv2webhooksfilter.md
-  - docs/models/operations/postv2webhooksfilter1.md
-  - docs/models/operations/postv2webhooksfilter2.md
-  - docs/models/operations/postv2webhooksfilterdollarand.md
-  - docs/models/operations/postv2webhooksfilterdollaror.md
+  - docs/models/operations/postv2taskslinkedrecord1.md
+  - docs/models/operations/postv2taskslinkedrecord2.md
+  - docs/models/operations/postv2taskslinkedrecordunion.md
+  - docs/models/operations/postv2tasksreferencedactortype.md
+  - docs/models/operations/postv2tasksrequest.md
+  - docs/models/operations/postv2tasksresponse.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattribute1.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattribute2.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattribute3.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattribute4.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattribute5.md
+  - docs/models/operations/postv2tasksslugoridofmatchingattributeunion.md
+  - docs/models/operations/postv2webhooksdatarequest.md
+  - docs/models/operations/postv2webhooksdataresponse.md
+  - docs/models/operations/postv2webhooksdollarandequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarandequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarandnotequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarandnotequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarandoperatorequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarandoperatorequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarandoperatornotequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarandoperatornotequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarandrequestunion.md
+  - docs/models/operations/postv2webhooksdollarandresponseunion.md
+  - docs/models/operations/postv2webhooksdollarorequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarorequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarornotequalsrequest.md
+  - docs/models/operations/postv2webhooksdollarornotequalsresponse.md
+  - docs/models/operations/postv2webhooksdollaroroperatorequalsrequest.md
+  - docs/models/operations/postv2webhooksdollaroroperatorequalsresponse.md
+  - docs/models/operations/postv2webhooksdollaroroperatornotequalsrequest.md
+  - docs/models/operations/postv2webhooksdollaroroperatornotequalsresponse.md
+  - docs/models/operations/postv2webhooksdollarorrequestunion.md
+  - docs/models/operations/postv2webhooksdollarorresponseunion.md
+  - docs/models/operations/postv2webhookseventtyperequest.md
+  - docs/models/operations/postv2webhookseventtyperesponse.md
+  - docs/models/operations/postv2webhooksfilterrequest1.md
+  - docs/models/operations/postv2webhooksfilterrequest2.md
+  - docs/models/operations/postv2webhooksfilterrequestunion.md
+  - docs/models/operations/postv2webhooksfilterresponse1.md
+  - docs/models/operations/postv2webhooksfilterresponse2.md
+  - docs/models/operations/postv2webhooksfilterresponseunion.md
   - docs/models/operations/postv2webhooksid.md
-  - docs/models/operations/postv2webhooksrequestbody.md
-  - docs/models/operations/postv2webhooksresponsebody.md
+  - docs/models/operations/postv2webhooksrequest.md
+  - docs/models/operations/postv2webhooksresponse.md
   - docs/models/operations/postv2webhooksstatus.md
-  - docs/models/operations/postv2webhookssubscriptions.md
-  - docs/models/operations/postv2webhookswebhooksdata.md
-  - docs/models/operations/putv2listslistentriesdata.md
-  - docs/models/operations/putv2listslistentriesentriesdata.md
-  - docs/models/operations/putv2listslistentriesentryiddata.md
-  - docs/models/operations/putv2listslistentriesentryidentriesdata.md
+  - docs/models/operations/postv2webhookssubscriptionrequest.md
+  - docs/models/operations/postv2webhookssubscriptionresponse.md
+  - docs/models/operations/putv2listslistentriesdatarequest.md
+  - docs/models/operations/putv2listslistentriesdataresponse.md
+  - docs/models/operations/putv2listslistentriesentryiddatarequest.md
+  - docs/models/operations/putv2listslistentriesentryiddataresponse.md
   - docs/models/operations/putv2listslistentriesentryidentryvalues.md
   - docs/models/operations/putv2listslistentriesentryidid.md
   - docs/models/operations/putv2listslistentriesentryidrequest.md
   - docs/models/operations/putv2listslistentriesentryidrequestbody.md
-  - docs/models/operations/putv2listslistentriesentryidresponsebody.md
+  - docs/models/operations/putv2listslistentriesentryidresponse.md
   - docs/models/operations/putv2listslistentriesentryvalues.md
   - docs/models/operations/putv2listslistentriesid.md
   - docs/models/operations/putv2listslistentriesrequest.md
   - docs/models/operations/putv2listslistentriesrequestbody.md
-  - docs/models/operations/putv2listslistentriesresponsebody.md
-  - docs/models/operations/putv2objectsobjectrecordsdata.md
+  - docs/models/operations/putv2listslistentriesresponse.md
+  - docs/models/operations/putv2objectsobjectrecordsdatarequest.md
+  - docs/models/operations/putv2objectsobjectrecordsdataresponse.md
   - docs/models/operations/putv2objectsobjectrecordsid.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordiddata.md
+  - docs/models/operations/putv2objectsobjectrecordsrecordiddatarequest.md
+  - docs/models/operations/putv2objectsobjectrecordsrecordiddataresponse.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidid.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidrecordsdata.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrecordidrequestbody.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordidresponsebody.md
-  - docs/models/operations/putv2objectsobjectrecordsrecordsdata.md
+  - docs/models/operations/putv2objectsobjectrecordsrecordidresponse.md
   - docs/models/operations/putv2objectsobjectrecordsrequest.md
   - docs/models/operations/putv2objectsobjectrecordsrequestbody.md
-  - docs/models/operations/putv2objectsobjectrecordsresponsebody.md
-  - docs/models/operations/recordreference.md
+  - docs/models/operations/putv2objectsobjectrecordsresponse.md
   - docs/models/operations/recordt.md
-  - docs/models/operations/referencedactortype.md
-  - docs/models/operations/responsebody1.md
-  - docs/models/operations/responsebody2.md
-  - docs/models/operations/seven.md
-  - docs/models/operations/seventeen.md
-  - docs/models/operations/six.md
-  - docs/models/operations/sixteen.md
-  - docs/models/operations/slugoridofmatchingattribute.md
-  - docs/models/operations/slugoridofmatchingattribute1.md
-  - docs/models/operations/slugoridofmatchingattribute2.md
-  - docs/models/operations/slugoridofmatchingattribute3.md
-  - docs/models/operations/slugoridofmatchingattribute4.md
-  - docs/models/operations/slugoridofmatchingattribute5.md
-  - docs/models/operations/slugoridofmatchingattributecountrycode.md
-  - docs/models/operations/sort.md
-  - docs/models/operations/sorts.md
-  - docs/models/operations/sorts1.md
-  - docs/models/operations/sorts2.md
-  - docs/models/operations/sortsdirection.md
-  - docs/models/operations/status.md
-  - docs/models/operations/subscriptions.md
-  - docs/models/operations/target.md
-  - docs/models/operations/template1.md
-  - docs/models/operations/ten.md
-  - docs/models/operations/thirteen.md
-  - docs/models/operations/three.md
+  - docs/models/operations/responsebody.md
   - docs/models/operations/tokentype.md
-  - docs/models/operations/twelve.md
-  - docs/models/operations/two.md
-  - docs/models/operations/type.md
-  - docs/models/operations/workspaceaccess.md
-  - docs/models/operations/workspacememberaccess.md
   - docs/sdks/attio/README.md
-  - docs/sdks/attioentriesattributes/README.md
   - docs/sdks/attributes/README.md
   - docs/sdks/comments/README.md
   - docs/sdks/entries/README.md
+  - docs/sdks/entriesattributes/README.md
   - docs/sdks/lists/README.md
   - docs/sdks/meta/README.md
   - docs/sdks/notes/README.md
@@ -839,7 +839,6 @@ generatedFiles:
   - src/funcs/workspaceMembersGet.ts
   - src/funcs/workspaceMembersList.ts
   - src/hooks/hooks.ts
-  - src/hooks/index.ts
   - src/hooks/types.ts
   - src/index.ts
   - src/lib/base64.ts
@@ -860,8 +859,7 @@ generatedFiles:
   - src/lib/url.ts
   - src/models/components/attribute.ts
   - src/models/components/comment.ts
-  - src/models/components/index.ts
-  - src/models/components/inputvalue.ts
+  - src/models/components/inputvalueunion.ts
   - src/models/components/list.ts
   - src/models/components/note.ts
   - src/models/components/object.ts
@@ -873,66 +871,9 @@ generatedFiles:
   - src/models/components/thread.ts
   - src/models/components/workspacemember.ts
   - src/models/errors/apierror.ts
-  - src/models/errors/attributesresponsebody.ts
-  - src/models/errors/attributesstatusesresponsebody.ts
-  - src/models/errors/code.ts
-  - src/models/errors/deletev2commentscommentidresponsebody.ts
-  - src/models/errors/deletev2webhookswebhookidresponsebody.ts
-  - src/models/errors/entriescode.ts
-  - src/models/errors/entriesresponsebody.ts
-  - src/models/errors/getv2commentscommentidresponsebody.ts
-  - src/models/errors/getv2threadsthreadidresponsebody.ts
-  - src/models/errors/getv2workspacemembersworkspacememberidresponsebody.ts
+  - src/models/errors/getv2objectsobject.ts
   - src/models/errors/httpclienterrors.ts
-  - src/models/errors/index.ts
-  - src/models/errors/listsresponsebody.ts
-  - src/models/errors/notesresponsebody.ts
-  - src/models/errors/patchv2objectsobjectobjectsresponsebody.ts
-  - src/models/errors/patchv2objectsobjectresponsebody.ts
-  - src/models/errors/patchv2targetidentifierattributesattributecode.ts
-  - src/models/errors/patchv2targetidentifierattributesattributeoptionsoptionresponsebody.ts
-  - src/models/errors/patchv2targetidentifierattributesattributeresponsebody.ts
-  - src/models/errors/patchv2targetidentifierattributesattributestatusesstatusresponsebody.ts
-  - src/models/errors/patchv2taskstaskidresponsebody.ts
-  - src/models/errors/postv2commentsresponsebody.ts
-  - src/models/errors/postv2listscode.ts
-  - src/models/errors/postv2listslistentriesentriesresponsebody.ts
-  - src/models/errors/postv2listslistentriesresponsebody.ts
-  - src/models/errors/postv2listslistsresponsebody.ts
-  - src/models/errors/postv2listsresponsebody.ts
-  - src/models/errors/postv2liststype.ts
-  - src/models/errors/postv2objectsobjectrecordsquerycode.ts
-  - src/models/errors/postv2objectsobjectrecordsqueryrecordsresponsebody.ts
-  - src/models/errors/postv2objectsobjectrecordsqueryresponsebody.ts
-  - src/models/errors/postv2objectsobjectrecordsresponsebody.ts
-  - src/models/errors/postv2objectsresponsebody.ts
-  - src/models/errors/postv2targetidentifierattributesattributeoptionsresponsebody.ts
-  - src/models/errors/postv2targetidentifierattributesattributesresponsebody.ts
-  - src/models/errors/postv2targetidentifierattributesattributesresponseresponsebody.ts
-  - src/models/errors/postv2targetidentifierattributesattributestatusesresponsebody.ts
-  - src/models/errors/postv2targetidentifierattributesresponsebody.ts
-  - src/models/errors/postv2webhooksresponsebody.ts
-  - src/models/errors/putv2listslistentriescode.ts
-  - src/models/errors/putv2listslistentriesentriesresponsebody.ts
-  - src/models/errors/putv2listslistentriesresponsebody.ts
-  - src/models/errors/putv2objectsobjectrecordsresponsebody.ts
-  - src/models/errors/recordscode.ts
-  - src/models/errors/recordsresponsebody.ts
-  - src/models/errors/recordsresponseresponsebody.ts
-  - src/models/errors/response400400code.ts
-  - src/models/errors/response400code.ts
-  - src/models/errors/response400responsebody.ts
-  - src/models/errors/response400type.ts
-  - src/models/errors/response404responsebody.ts
-  - src/models/errors/responsebody.ts
-  - src/models/errors/responsecode.ts
-  - src/models/errors/responseresponsebody.ts
-  - src/models/errors/responsetype.ts
   - src/models/errors/sdkvalidationerror.ts
-  - src/models/errors/tasksresponsebody.ts
-  - src/models/errors/tasksresponseresponsebody.ts
-  - src/models/errors/type.ts
-  - src/models/errors/webhooksresponsebody.ts
   - src/models/operations/deletev2commentscommentid.ts
   - src/models/operations/deletev2listslistentriesentryid.ts
   - src/models/operations/deletev2notesnoteid.ts
@@ -964,7 +905,6 @@ generatedFiles:
   - src/models/operations/getv2webhookswebhookid.ts
   - src/models/operations/getv2workspacemembers.ts
   - src/models/operations/getv2workspacemembersworkspacememberid.ts
-  - src/models/operations/index.ts
   - src/models/operations/patchv2listslist.ts
   - src/models/operations/patchv2listslistentriesentryid.ts
   - src/models/operations/patchv2objectsobject.ts
@@ -991,11 +931,10 @@ generatedFiles:
   - src/models/operations/putv2listslistentriesentryid.ts
   - src/models/operations/putv2objectsobjectrecords.ts
   - src/models/operations/putv2objectsobjectrecordsrecordid.ts
-  - src/sdk/attioentriesattributes.ts
   - src/sdk/attributes.ts
   - src/sdk/comments.ts
   - src/sdk/entries.ts
-  - src/sdk/index.ts
+  - src/sdk/entriesattributes.ts
   - src/sdk/lists.ts
   - src/sdk/meta.ts
   - src/sdk/notes.ts
@@ -1013,7 +952,6 @@ generatedFiles:
   - src/types/constdatetime.ts
   - src/types/enums.ts
   - src/types/fp.ts
-  - src/types/index.ts
   - src/types/operations.ts
   - src/types/rfcdate.ts
   - src/types/streams.ts

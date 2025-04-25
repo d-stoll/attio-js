@@ -5,7 +5,7 @@ The type of actor. [Read more information on actor types here](/docs/actors).
 ## Example Usage
 
 ```typescript
-import { ListType } from "attio-js/models/components";
+import { ListType } from "attio-js/models/components/list.js";
 
 let value: ListType = "api-token";
 ```

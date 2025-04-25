@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV2ListsListEntriesRequestBody } from "attio-js/models/operations";
+import { PostV2ListsListEntriesRequestBody } from "attio-js/models/operations/postv2listslistentries.js";
 
 let value: PostV2ListsListEntriesRequestBody = {
   data: {
@@ -22,6 +22,6 @@ let value: PostV2ListsListEntriesRequestBody = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `data`                                                                                         | [operations.PostV2ListsListEntriesData](../../models/operations/postv2listslistentriesdata.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `data`                                                                                                       | [operations.PostV2ListsListEntriesDataRequest](../../models/operations/postv2listslistentriesdatarequest.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

@@ -15,7 +15,7 @@ export type DeleteV2TasksTaskIdRequest = {
 /**
  * Success
  */
-export type DeleteV2TasksTaskIdResponseBody = {};
+export type DeleteV2TasksTaskIdResponse = {};
 
 /** @internal */
 export const DeleteV2TasksTaskIdRequest$inboundSchema: z.ZodType<
@@ -80,51 +80,51 @@ export function deleteV2TasksTaskIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2TasksTaskIdResponseBody$inboundSchema: z.ZodType<
-  DeleteV2TasksTaskIdResponseBody,
+export const DeleteV2TasksTaskIdResponse$inboundSchema: z.ZodType<
+  DeleteV2TasksTaskIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type DeleteV2TasksTaskIdResponseBody$Outbound = {};
+export type DeleteV2TasksTaskIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2TasksTaskIdResponseBody$outboundSchema: z.ZodType<
-  DeleteV2TasksTaskIdResponseBody$Outbound,
+export const DeleteV2TasksTaskIdResponse$outboundSchema: z.ZodType<
+  DeleteV2TasksTaskIdResponse$Outbound,
   z.ZodTypeDef,
-  DeleteV2TasksTaskIdResponseBody
+  DeleteV2TasksTaskIdResponse
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2TasksTaskIdResponseBody$ {
-  /** @deprecated use `DeleteV2TasksTaskIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = DeleteV2TasksTaskIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2TasksTaskIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = DeleteV2TasksTaskIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2TasksTaskIdResponseBody$Outbound` instead. */
-  export type Outbound = DeleteV2TasksTaskIdResponseBody$Outbound;
+export namespace DeleteV2TasksTaskIdResponse$ {
+  /** @deprecated use `DeleteV2TasksTaskIdResponse$inboundSchema` instead. */
+  export const inboundSchema = DeleteV2TasksTaskIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2TasksTaskIdResponse$outboundSchema` instead. */
+  export const outboundSchema = DeleteV2TasksTaskIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2TasksTaskIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2TasksTaskIdResponse$Outbound;
 }
 
-export function deleteV2TasksTaskIdResponseBodyToJSON(
-  deleteV2TasksTaskIdResponseBody: DeleteV2TasksTaskIdResponseBody,
+export function deleteV2TasksTaskIdResponseToJSON(
+  deleteV2TasksTaskIdResponse: DeleteV2TasksTaskIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2TasksTaskIdResponseBody$outboundSchema.parse(
-      deleteV2TasksTaskIdResponseBody,
+    DeleteV2TasksTaskIdResponse$outboundSchema.parse(
+      deleteV2TasksTaskIdResponse,
     ),
   );
 }
 
-export function deleteV2TasksTaskIdResponseBodyFromJSON(
+export function deleteV2TasksTaskIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<DeleteV2TasksTaskIdResponseBody, SDKValidationError> {
+): SafeParseResult<DeleteV2TasksTaskIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => DeleteV2TasksTaskIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteV2TasksTaskIdResponseBody' from JSON`,
+    (x) => DeleteV2TasksTaskIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteV2TasksTaskIdResponse' from JSON`,
   );
 }

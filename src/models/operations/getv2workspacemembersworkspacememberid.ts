@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  WorkspaceMember,
+  WorkspaceMember$inboundSchema,
+  WorkspaceMember$Outbound,
+  WorkspaceMember$outboundSchema,
+} from "../components/workspacemember.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2WorkspaceMembersWorkspaceMemberIdRequest = {
@@ -16,8 +21,8 @@ export type GetV2WorkspaceMembersWorkspaceMemberIdRequest = {
 /**
  * Success
  */
-export type GetV2WorkspaceMembersWorkspaceMemberIdResponseBody = {
-  data: components.WorkspaceMember;
+export type GetV2WorkspaceMembersWorkspaceMemberIdResponse = {
+  data: WorkspaceMember;
 };
 
 /** @internal */
@@ -96,69 +101,69 @@ export function getV2WorkspaceMembersWorkspaceMemberIdRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema:
+export const GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema:
   z.ZodType<
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: components.WorkspaceMember$inboundSchema,
+    data: WorkspaceMember$inboundSchema,
   });
 
 /** @internal */
-export type GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$Outbound = {
-  data: components.WorkspaceMember$Outbound;
+export type GetV2WorkspaceMembersWorkspaceMemberIdResponse$Outbound = {
+  data: WorkspaceMember$Outbound;
 };
 
 /** @internal */
-export const GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$outboundSchema:
+export const GetV2WorkspaceMembersWorkspaceMemberIdResponse$outboundSchema:
   z.ZodType<
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$Outbound,
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse$Outbound,
     z.ZodTypeDef,
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse
   > = z.object({
-    data: components.WorkspaceMember$outboundSchema,
+    data: WorkspaceMember$outboundSchema,
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$ {
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema` instead. */
+export namespace GetV2WorkspaceMembersWorkspaceMemberIdResponse$ {
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$outboundSchema` instead. */
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$Outbound` instead. */
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse$outboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdResponse$Outbound` instead. */
   export type Outbound =
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$Outbound;
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse$Outbound;
 }
 
-export function getV2WorkspaceMembersWorkspaceMemberIdResponseBodyToJSON(
-  getV2WorkspaceMembersWorkspaceMemberIdResponseBody:
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
+export function getV2WorkspaceMembersWorkspaceMemberIdResponseToJSON(
+  getV2WorkspaceMembersWorkspaceMemberIdResponse:
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$outboundSchema.parse(
-      getV2WorkspaceMembersWorkspaceMemberIdResponseBody,
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse$outboundSchema.parse(
+      getV2WorkspaceMembersWorkspaceMemberIdResponse,
     ),
   );
 }
 
-export function getV2WorkspaceMembersWorkspaceMemberIdResponseBodyFromJSON(
+export function getV2WorkspaceMembersWorkspaceMemberIdResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
+  GetV2WorkspaceMembersWorkspaceMemberIdResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema.parse(
+      GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetV2WorkspaceMembersWorkspaceMemberIdResponseBody' from JSON`,
+    `Failed to parse 'GetV2WorkspaceMembersWorkspaceMemberIdResponse' from JSON`,
   );
 }

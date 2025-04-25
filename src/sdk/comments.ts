@@ -6,7 +6,18 @@ import { commentsCreate } from "../funcs/commentsCreate.js";
 import { commentsDelete } from "../funcs/commentsDelete.js";
 import { commentsGet } from "../funcs/commentsGet.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2CommentsCommentIdRequest,
+  DeleteV2CommentsCommentIdResponse,
+} from "../models/operations/deletev2commentscommentid.js";
+import {
+  GetV2CommentsCommentIdRequest,
+  GetV2CommentsCommentIdResponse,
+} from "../models/operations/getv2commentscommentid.js";
+import {
+  PostV2CommentsRequest,
+  PostV2CommentsResponse,
+} from "../models/operations/postv2comments.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Comments extends ClientSDK {
@@ -23,9 +34,9 @@ export class Comments extends ClientSDK {
    * Required scopes: `comment:read-write`.
    */
   async create(
-    request: operations.PostV2CommentsRequestBody,
+    request: PostV2CommentsRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2CommentsResponseBody> {
+  ): Promise<PostV2CommentsResponse> {
     return unwrapAsync(commentsCreate(
       this,
       request,
@@ -46,9 +57,9 @@ export class Comments extends ClientSDK {
    * Required scopes: `comment:read`.
    */
   async get(
-    request: operations.GetV2CommentsCommentIdRequest,
+    request: GetV2CommentsCommentIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2CommentsCommentIdResponseBody> {
+  ): Promise<GetV2CommentsCommentIdResponse> {
     return unwrapAsync(commentsGet(
       this,
       request,
@@ -65,9 +76,9 @@ export class Comments extends ClientSDK {
    * Required scopes: `comment:read-write`.
    */
   async delete(
-    request: operations.DeleteV2CommentsCommentIdRequest,
+    request: DeleteV2CommentsCommentIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2CommentsCommentIdResponseBody> {
+  ): Promise<DeleteV2CommentsCommentIdResponse> {
     return unwrapAsync(commentsDelete(
       this,
       request,

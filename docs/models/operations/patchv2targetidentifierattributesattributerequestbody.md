@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeRequestBody } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeRequestBody } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeRequestBody = {
   data: {

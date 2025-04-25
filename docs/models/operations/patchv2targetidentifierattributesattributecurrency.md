@@ -5,7 +5,7 @@ Configuration available for attributes of type "currency".
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeCurrency } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeCurrency } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeCurrency = {
   defaultCurrencyCode: "USD",

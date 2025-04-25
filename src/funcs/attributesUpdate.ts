@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2TargetIdentifierAttributesAttributeNotFoundError,
+  GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
+  SystemEditUnauthorizedError,
+  SystemEditUnauthorizedError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2TargetIdentifierAttributesAttributeRequest,
+  PatchV2TargetIdentifierAttributesAttributeRequest$outboundSchema,
+  PatchV2TargetIdentifierAttributesAttributeResponse,
+  PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema,
+} from "../models/operations/patchv2targetidentifierattributesattribute.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,13 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function attributesUpdate(
   client: AttioCore,
-  request: operations.PatchV2TargetIdentifierAttributesAttributeRequest,
+  request: PatchV2TargetIdentifierAttributesAttributeRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2TargetIdentifierAttributesAttributeResponseBody,
-    | errors.PatchV2TargetIdentifierAttributesAttributeResponseBody
-    | errors.ResponseResponseBody
+    PatchV2TargetIdentifierAttributesAttributeResponse,
+    | SystemEditUnauthorizedError
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,14 +69,14 @@ export function attributesUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2TargetIdentifierAttributesAttributeRequest,
+  request: PatchV2TargetIdentifierAttributesAttributeRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2TargetIdentifierAttributesAttributeResponseBody,
-      | errors.PatchV2TargetIdentifierAttributesAttributeResponseBody
-      | errors.ResponseResponseBody
+      PatchV2TargetIdentifierAttributesAttributeResponse,
+      | SystemEditUnauthorizedError
+      | GetV2TargetIdentifierAttributesAttributeNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -81,10 +91,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations
-        .PatchV2TargetIdentifierAttributesAttributeRequest$outboundSchema.parse(
-          value,
-        ),
+      PatchV2TargetIdentifierAttributesAttributeRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -165,9 +174,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2TargetIdentifierAttributesAttributeResponseBody,
-    | errors.PatchV2TargetIdentifierAttributesAttributeResponseBody
-    | errors.ResponseResponseBody
+    PatchV2TargetIdentifierAttributesAttributeResponse,
+    | SystemEditUnauthorizedError
+    | GetV2TargetIdentifierAttributesAttributeNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -178,15 +187,13 @@ async function $do(
   >(
     M.json(
       200,
-      operations
-        .PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema,
+      PatchV2TargetIdentifierAttributesAttributeResponse$inboundSchema,
     ),
+    M.jsonErr(400, SystemEditUnauthorizedError$inboundSchema),
     M.jsonErr(
-      400,
-      errors
-        .PatchV2TargetIdentifierAttributesAttributeResponseBody$inboundSchema,
+      404,
+      GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema,
     ),
-    M.jsonErr(404, errors.ResponseResponseBody$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

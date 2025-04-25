@@ -4,7 +4,7 @@
 
 import { metaIdentify } from "../funcs/metaIdentify.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import { GetV2SelfResponse } from "../models/operations/getv2self.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Meta extends ClientSDK {
@@ -16,7 +16,7 @@ export class Meta extends ClientSDK {
    */
   async identify(
     options?: RequestOptions,
-  ): Promise<operations.GetV2SelfResponseBody> {
+  ): Promise<GetV2SelfResponse> {
     return unwrapAsync(metaIdentify(
       this,
       options,

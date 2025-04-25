@@ -5,7 +5,7 @@ Additional, type-dependent configuration for the attribute.
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeConfig } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeConfig } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeConfig = {
   currency: {

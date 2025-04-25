@@ -5,69 +5,73 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  WorkspaceMember,
+  WorkspaceMember$inboundSchema,
+  WorkspaceMember$Outbound,
+  WorkspaceMember$outboundSchema,
+} from "../components/workspacemember.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Success
  */
-export type GetV2WorkspaceMembersResponseBody = {
-  data: Array<components.WorkspaceMember>;
+export type GetV2WorkspaceMembersResponse = {
+  data: Array<WorkspaceMember>;
 };
 
 /** @internal */
-export const GetV2WorkspaceMembersResponseBody$inboundSchema: z.ZodType<
-  GetV2WorkspaceMembersResponseBody,
+export const GetV2WorkspaceMembersResponse$inboundSchema: z.ZodType<
+  GetV2WorkspaceMembersResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(components.WorkspaceMember$inboundSchema),
+  data: z.array(WorkspaceMember$inboundSchema),
 });
 
 /** @internal */
-export type GetV2WorkspaceMembersResponseBody$Outbound = {
-  data: Array<components.WorkspaceMember$Outbound>;
+export type GetV2WorkspaceMembersResponse$Outbound = {
+  data: Array<WorkspaceMember$Outbound>;
 };
 
 /** @internal */
-export const GetV2WorkspaceMembersResponseBody$outboundSchema: z.ZodType<
-  GetV2WorkspaceMembersResponseBody$Outbound,
+export const GetV2WorkspaceMembersResponse$outboundSchema: z.ZodType<
+  GetV2WorkspaceMembersResponse$Outbound,
   z.ZodTypeDef,
-  GetV2WorkspaceMembersResponseBody
+  GetV2WorkspaceMembersResponse
 > = z.object({
-  data: z.array(components.WorkspaceMember$outboundSchema),
+  data: z.array(WorkspaceMember$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WorkspaceMembersResponseBody$ {
-  /** @deprecated use `GetV2WorkspaceMembersResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2WorkspaceMembersResponseBody$inboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2WorkspaceMembersResponseBody$outboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersResponseBody$Outbound` instead. */
-  export type Outbound = GetV2WorkspaceMembersResponseBody$Outbound;
+export namespace GetV2WorkspaceMembersResponse$ {
+  /** @deprecated use `GetV2WorkspaceMembersResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2WorkspaceMembersResponse$inboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2WorkspaceMembersResponse$outboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersResponse$Outbound` instead. */
+  export type Outbound = GetV2WorkspaceMembersResponse$Outbound;
 }
 
-export function getV2WorkspaceMembersResponseBodyToJSON(
-  getV2WorkspaceMembersResponseBody: GetV2WorkspaceMembersResponseBody,
+export function getV2WorkspaceMembersResponseToJSON(
+  getV2WorkspaceMembersResponse: GetV2WorkspaceMembersResponse,
 ): string {
   return JSON.stringify(
-    GetV2WorkspaceMembersResponseBody$outboundSchema.parse(
-      getV2WorkspaceMembersResponseBody,
+    GetV2WorkspaceMembersResponse$outboundSchema.parse(
+      getV2WorkspaceMembersResponse,
     ),
   );
 }
 
-export function getV2WorkspaceMembersResponseBodyFromJSON(
+export function getV2WorkspaceMembersResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WorkspaceMembersResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2WorkspaceMembersResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WorkspaceMembersResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WorkspaceMembersResponseBody' from JSON`,
+    (x) => GetV2WorkspaceMembersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WorkspaceMembersResponse' from JSON`,
   );
 }

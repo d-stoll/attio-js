@@ -12,7 +12,42 @@ import { recordsPartialUpdate } from "../funcs/recordsPartialUpdate.js";
 import { recordsQuery } from "../funcs/recordsQuery.js";
 import { recordsUpdate } from "../funcs/recordsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2ObjectsObjectRecordsRecordIdRequest,
+  DeleteV2ObjectsObjectRecordsRecordIdResponse,
+} from "../models/operations/deletev2objectsobjectrecordsrecordid.js";
+import {
+  GetV2ObjectsObjectRecordsRecordIdRequest,
+  GetV2ObjectsObjectRecordsRecordIdResponse,
+} from "../models/operations/getv2objectsobjectrecordsrecordid.js";
+import {
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+} from "../models/operations/getv2objectsobjectrecordsrecordidattributesattributevalues.js";
+import {
+  GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
+  GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
+} from "../models/operations/getv2objectsobjectrecordsrecordidentries.js";
+import {
+  PatchV2ObjectsObjectRecordsRecordIdRequest,
+  PatchV2ObjectsObjectRecordsRecordIdResponse,
+} from "../models/operations/patchv2objectsobjectrecordsrecordid.js";
+import {
+  PostV2ObjectsObjectRecordsRequest,
+  PostV2ObjectsObjectRecordsResponse,
+} from "../models/operations/postv2objectsobjectrecords.js";
+import {
+  PostV2ObjectsObjectRecordsQueryRequest,
+  PostV2ObjectsObjectRecordsQueryResponse,
+} from "../models/operations/postv2objectsobjectrecordsquery.js";
+import {
+  PutV2ObjectsObjectRecordsRequest,
+  PutV2ObjectsObjectRecordsResponse,
+} from "../models/operations/putv2objectsobjectrecords.js";
+import {
+  PutV2ObjectsObjectRecordsRecordIdRequest,
+  PutV2ObjectsObjectRecordsRecordIdResponse,
+} from "../models/operations/putv2objectsobjectrecordsrecordid.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Records extends ClientSDK {
@@ -25,9 +60,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read`, `object_configuration:read`.
    */
   async query(
-    request: operations.PostV2ObjectsObjectRecordsQueryRequest,
+    request: PostV2ObjectsObjectRecordsQueryRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ObjectsObjectRecordsQueryResponseBody> {
+  ): Promise<PostV2ObjectsObjectRecordsQueryResponse> {
     return unwrapAsync(recordsQuery(
       this,
       request,
@@ -44,9 +79,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read-write`, `object_configuration:read`.
    */
   async create(
-    request: operations.PostV2ObjectsObjectRecordsRequest,
+    request: PostV2ObjectsObjectRecordsRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ObjectsObjectRecordsResponseBody> {
+  ): Promise<PostV2ObjectsObjectRecordsResponse> {
     return unwrapAsync(recordsCreate(
       this,
       request,
@@ -65,9 +100,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read-write`, `object_configuration:read`.
    */
   async assert(
-    request: operations.PutV2ObjectsObjectRecordsRequest,
+    request: PutV2ObjectsObjectRecordsRequest,
     options?: RequestOptions,
-  ): Promise<operations.PutV2ObjectsObjectRecordsResponseBody> {
+  ): Promise<PutV2ObjectsObjectRecordsResponse> {
     return unwrapAsync(recordsAssert(
       this,
       request,
@@ -84,9 +119,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read`, `object_configuration:read`.
    */
   async get(
-    request: operations.GetV2ObjectsObjectRecordsRecordIdRequest,
+    request: GetV2ObjectsObjectRecordsRecordIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ObjectsObjectRecordsRecordIdResponseBody> {
+  ): Promise<GetV2ObjectsObjectRecordsRecordIdResponse> {
     return unwrapAsync(recordsGet(
       this,
       request,
@@ -103,9 +138,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read-write`, `object_configuration:read`.
    */
   async partialUpdate(
-    request: operations.PatchV2ObjectsObjectRecordsRecordIdRequest,
+    request: PatchV2ObjectsObjectRecordsRecordIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody> {
+  ): Promise<PatchV2ObjectsObjectRecordsRecordIdResponse> {
     return unwrapAsync(recordsPartialUpdate(
       this,
       request,
@@ -122,9 +157,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read-write`, `object_configuration:read`.
    */
   async update(
-    request: operations.PutV2ObjectsObjectRecordsRecordIdRequest,
+    request: PutV2ObjectsObjectRecordsRecordIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PutV2ObjectsObjectRecordsRecordIdResponseBody> {
+  ): Promise<PutV2ObjectsObjectRecordsRecordIdResponse> {
     return unwrapAsync(recordsUpdate(
       this,
       request,
@@ -141,9 +176,9 @@ export class Records extends ClientSDK {
    * Required scopes: `object_configuration:read`, `record_permission:read-write`.
    */
   async delete(
-    request: operations.DeleteV2ObjectsObjectRecordsRecordIdRequest,
+    request: DeleteV2ObjectsObjectRecordsRecordIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody> {
+  ): Promise<DeleteV2ObjectsObjectRecordsRecordIdResponse> {
     return unwrapAsync(recordsDelete(
       this,
       request,
@@ -160,11 +195,10 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read`, `object_configuration:read`.
    */
   async listAttributeValues(
-    request:
-      operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
+    request: GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest,
     options?: RequestOptions,
   ): Promise<
-    operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse
   > {
     return unwrapAsync(recordsListAttributeValues(
       this,
@@ -182,9 +216,9 @@ export class Records extends ClientSDK {
    * Required scopes: `record_permission:read`, `object_configuration:read`, `list_entry:read`.
    */
   async listEntries(
-    request: operations.GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
+    request: GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody> {
+  ): Promise<GetV2ObjectsObjectRecordsRecordIdEntriesResponse> {
     return unwrapAsync(recordsListEntries(
       this,
       request,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2ListsListRequestBody } from "attio-js/models/operations";
+import { PatchV2ListsListRequestBody } from "attio-js/models/operations/patchv2listslist.js";
 
 let value: PatchV2ListsListRequestBody = {
   data: {

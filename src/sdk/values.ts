@@ -4,7 +4,10 @@
 
 import { entriesAttributesValuesList } from "../funcs/entriesAttributesValuesList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
+  GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse,
+} from "../models/operations/getv2listslistentriesentryidattributesattributevalues.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Values extends ClientSDK {
@@ -17,12 +20,9 @@ export class Values extends ClientSDK {
    * Required scopes: `list_entry:read`, `list_configuration:read`.
    */
   async list(
-    request:
-      operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
+    request: GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest,
     options?: RequestOptions,
-  ): Promise<
-    operations.GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponseBody
-  > {
+  ): Promise<GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse> {
     return unwrapAsync(entriesAttributesValuesList(
       this,
       request,

@@ -16,7 +16,7 @@ export type DeleteV2ObjectsObjectRecordsRecordIdRequest = {
 /**
  * Success
  */
-export type DeleteV2ObjectsObjectRecordsRecordIdResponseBody = {};
+export type DeleteV2ObjectsObjectRecordsRecordIdResponse = {};
 
 /** @internal */
 export const DeleteV2ObjectsObjectRecordsRecordIdRequest$inboundSchema:
@@ -97,63 +97,62 @@ export function deleteV2ObjectsObjectRecordsRecordIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema:
+export const DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema:
   z.ZodType<
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
+    DeleteV2ObjectsObjectRecordsRecordIdResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({});
 
 /** @internal */
-export type DeleteV2ObjectsObjectRecordsRecordIdResponseBody$Outbound = {};
+export type DeleteV2ObjectsObjectRecordsRecordIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2ObjectsObjectRecordsRecordIdResponseBody$outboundSchema:
+export const DeleteV2ObjectsObjectRecordsRecordIdResponse$outboundSchema:
   z.ZodType<
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody$Outbound,
+    DeleteV2ObjectsObjectRecordsRecordIdResponse$Outbound,
     z.ZodTypeDef,
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody
+    DeleteV2ObjectsObjectRecordsRecordIdResponse
   > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2ObjectsObjectRecordsRecordIdResponseBody$ {
-  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema` instead. */
+export namespace DeleteV2ObjectsObjectRecordsRecordIdResponse$ {
+  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema` instead. */
   export const inboundSchema =
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponseBody$outboundSchema` instead. */
+    DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponseBody$Outbound` instead. */
-  export type Outbound =
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody$Outbound;
+    DeleteV2ObjectsObjectRecordsRecordIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2ObjectsObjectRecordsRecordIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2ObjectsObjectRecordsRecordIdResponse$Outbound;
 }
 
-export function deleteV2ObjectsObjectRecordsRecordIdResponseBodyToJSON(
-  deleteV2ObjectsObjectRecordsRecordIdResponseBody:
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
+export function deleteV2ObjectsObjectRecordsRecordIdResponseToJSON(
+  deleteV2ObjectsObjectRecordsRecordIdResponse:
+    DeleteV2ObjectsObjectRecordsRecordIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2ObjectsObjectRecordsRecordIdResponseBody$outboundSchema.parse(
-      deleteV2ObjectsObjectRecordsRecordIdResponseBody,
+    DeleteV2ObjectsObjectRecordsRecordIdResponse$outboundSchema.parse(
+      deleteV2ObjectsObjectRecordsRecordIdResponse,
     ),
   );
 }
 
-export function deleteV2ObjectsObjectRecordsRecordIdResponseBodyFromJSON(
+export function deleteV2ObjectsObjectRecordsRecordIdResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
+  DeleteV2ObjectsObjectRecordsRecordIdResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      DeleteV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema.parse(
+      DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'DeleteV2ObjectsObjectRecordsRecordIdResponseBody' from JSON`,
+    `Failed to parse 'DeleteV2ObjectsObjectRecordsRecordIdResponse' from JSON`,
   );
 }

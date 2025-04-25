@@ -49,80 +49,84 @@ export const GetV2WebhooksEventType = {
  */
 export type GetV2WebhooksEventType = ClosedEnum<typeof GetV2WebhooksEventType>;
 
-export const GetV2WebhooksDollarAndOperator = {
+export const GetV2WebhooksDollarAndOperatorNotEquals = {
   NotEquals: "not_equals",
 } as const;
-export type GetV2WebhooksDollarAndOperator = ClosedEnum<
-  typeof GetV2WebhooksDollarAndOperator
+export type GetV2WebhooksDollarAndOperatorNotEquals = ClosedEnum<
+  typeof GetV2WebhooksDollarAndOperatorNotEquals
 >;
 
-export type GetV2WebhooksDollarAnd2 = {
+export type GetV2WebhooksDollarAndNotEquals = {
   field: string;
-  operator: GetV2WebhooksDollarAndOperator;
+  operator: GetV2WebhooksDollarAndOperatorNotEquals;
   value: string;
 };
 
-export const GetV2WebhooksDollarAndWebhooksOperator = {
+export const GetV2WebhooksDollarAndOperatorEquals = {
   Equals: "equals",
 } as const;
-export type GetV2WebhooksDollarAndWebhooksOperator = ClosedEnum<
-  typeof GetV2WebhooksDollarAndWebhooksOperator
+export type GetV2WebhooksDollarAndOperatorEquals = ClosedEnum<
+  typeof GetV2WebhooksDollarAndOperatorEquals
 >;
 
-export type GetV2WebhooksDollarAnd1 = {
+export type GetV2WebhooksDollarAndEquals = {
   field: string;
-  operator: GetV2WebhooksDollarAndWebhooksOperator;
+  operator: GetV2WebhooksDollarAndOperatorEquals;
   value: string;
 };
 
-export type GetV2WebhooksFilterDollarAnd =
-  | GetV2WebhooksDollarAnd1
-  | GetV2WebhooksDollarAnd2;
+export type GetV2WebhooksDollarAndUnion =
+  | GetV2WebhooksDollarAndEquals
+  | GetV2WebhooksDollarAndNotEquals;
 
 export type GetV2WebhooksFilter2 = {
-  dollarAnd: Array<GetV2WebhooksDollarAnd1 | GetV2WebhooksDollarAnd2>;
+  dollarAnd: Array<
+    GetV2WebhooksDollarAndEquals | GetV2WebhooksDollarAndNotEquals
+  >;
 };
 
-export const GetV2WebhooksDollarOrWebhooksOperator = {
+export const GetV2WebhooksDollarOrOperatorNotEquals = {
   NotEquals: "not_equals",
 } as const;
-export type GetV2WebhooksDollarOrWebhooksOperator = ClosedEnum<
-  typeof GetV2WebhooksDollarOrWebhooksOperator
+export type GetV2WebhooksDollarOrOperatorNotEquals = ClosedEnum<
+  typeof GetV2WebhooksDollarOrOperatorNotEquals
 >;
 
-export type GetV2WebhooksDollarOr2 = {
+export type GetV2WebhooksDollarOrNotEquals = {
   field: string;
-  operator: GetV2WebhooksDollarOrWebhooksOperator;
+  operator: GetV2WebhooksDollarOrOperatorNotEquals;
   value: string;
 };
 
-export const GetV2WebhooksDollarOrOperator = {
+export const GetV2WebhooksDollarOrOperatorEquals = {
   Equals: "equals",
 } as const;
-export type GetV2WebhooksDollarOrOperator = ClosedEnum<
-  typeof GetV2WebhooksDollarOrOperator
+export type GetV2WebhooksDollarOrOperatorEquals = ClosedEnum<
+  typeof GetV2WebhooksDollarOrOperatorEquals
 >;
 
-export type GetV2WebhooksDollarOr1 = {
+export type GetV2WebhooksDollarOrEquals = {
   field: string;
-  operator: GetV2WebhooksDollarOrOperator;
+  operator: GetV2WebhooksDollarOrOperatorEquals;
   value: string;
 };
 
-export type GetV2WebhooksFilterDollarOr =
-  | GetV2WebhooksDollarOr1
-  | GetV2WebhooksDollarOr2;
+export type GetV2WebhooksDollarOrUnion =
+  | GetV2WebhooksDollarOrEquals
+  | GetV2WebhooksDollarOrNotEquals;
 
 export type GetV2WebhooksFilter1 = {
-  dollarOr: Array<GetV2WebhooksDollarOr1 | GetV2WebhooksDollarOr2>;
+  dollarOr: Array<GetV2WebhooksDollarOrEquals | GetV2WebhooksDollarOrNotEquals>;
 };
 
 /**
  * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
  */
-export type GetV2WebhooksFilter = GetV2WebhooksFilter1 | GetV2WebhooksFilter2;
+export type GetV2WebhooksFilterUnion =
+  | GetV2WebhooksFilter1
+  | GetV2WebhooksFilter2;
 
-export type GetV2WebhooksSubscriptions = {
+export type GetV2WebhooksSubscription = {
   /**
    * Type of event the webhook is subscribed to.
    */
@@ -147,7 +151,7 @@ export type GetV2WebhooksId = {
 /**
  * The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
  */
-export const Status = {
+export const GetV2WebhooksStatus = {
   Active: "active",
   Degraded: "degraded",
   Inactive: "inactive",
@@ -155,7 +159,7 @@ export const Status = {
 /**
  * The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
  */
-export type Status = ClosedEnum<typeof Status>;
+export type GetV2WebhooksStatus = ClosedEnum<typeof GetV2WebhooksStatus>;
 
 export type GetV2WebhooksData = {
   /**
@@ -165,12 +169,12 @@ export type GetV2WebhooksData = {
   /**
    * One or more events the webhook is subscribed to.
    */
-  subscriptions: Array<GetV2WebhooksSubscriptions>;
+  subscriptions: Array<GetV2WebhooksSubscription>;
   id: GetV2WebhooksId;
   /**
    * The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
    */
-  status: Status;
+  status: GetV2WebhooksStatus;
   /**
    * When the webhook was created.
    */
@@ -180,7 +184,7 @@ export type GetV2WebhooksData = {
 /**
  * Success
  */
-export type GetV2WebhooksResponseBody = {
+export type GetV2WebhooksResponse = {
   data: Array<GetV2WebhooksData>;
 };
 
@@ -263,136 +267,54 @@ export namespace GetV2WebhooksEventType$ {
 }
 
 /** @internal */
-export const GetV2WebhooksDollarAndOperator$inboundSchema: z.ZodNativeEnum<
-  typeof GetV2WebhooksDollarAndOperator
-> = z.nativeEnum(GetV2WebhooksDollarAndOperator);
+export const GetV2WebhooksDollarAndOperatorNotEquals$inboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndOperatorNotEquals> = z
+    .nativeEnum(GetV2WebhooksDollarAndOperatorNotEquals);
 
 /** @internal */
-export const GetV2WebhooksDollarAndOperator$outboundSchema: z.ZodNativeEnum<
-  typeof GetV2WebhooksDollarAndOperator
-> = GetV2WebhooksDollarAndOperator$inboundSchema;
+export const GetV2WebhooksDollarAndOperatorNotEquals$outboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndOperatorNotEquals> =
+    GetV2WebhooksDollarAndOperatorNotEquals$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksDollarAndOperator$ {
-  /** @deprecated use `GetV2WebhooksDollarAndOperator$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarAndOperator$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAndOperator$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarAndOperator$outboundSchema;
-}
-
-/** @internal */
-export const GetV2WebhooksDollarAnd2$inboundSchema: z.ZodType<
-  GetV2WebhooksDollarAnd2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: GetV2WebhooksDollarAndOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type GetV2WebhooksDollarAnd2$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const GetV2WebhooksDollarAnd2$outboundSchema: z.ZodType<
-  GetV2WebhooksDollarAnd2$Outbound,
-  z.ZodTypeDef,
-  GetV2WebhooksDollarAnd2
-> = z.object({
-  field: z.string(),
-  operator: GetV2WebhooksDollarAndOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksDollarAnd2$ {
-  /** @deprecated use `GetV2WebhooksDollarAnd2$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarAnd2$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAnd2$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarAnd2$outboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAnd2$Outbound` instead. */
-  export type Outbound = GetV2WebhooksDollarAnd2$Outbound;
-}
-
-export function getV2WebhooksDollarAnd2ToJSON(
-  getV2WebhooksDollarAnd2: GetV2WebhooksDollarAnd2,
-): string {
-  return JSON.stringify(
-    GetV2WebhooksDollarAnd2$outboundSchema.parse(getV2WebhooksDollarAnd2),
-  );
-}
-
-export function getV2WebhooksDollarAnd2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetV2WebhooksDollarAnd2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetV2WebhooksDollarAnd2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksDollarAnd2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2WebhooksDollarAndWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndWebhooksOperator> = z.nativeEnum(
-    GetV2WebhooksDollarAndWebhooksOperator,
-  );
-
-/** @internal */
-export const GetV2WebhooksDollarAndWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndWebhooksOperator> =
-    GetV2WebhooksDollarAndWebhooksOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksDollarAndWebhooksOperator$ {
-  /** @deprecated use `GetV2WebhooksDollarAndWebhooksOperator$inboundSchema` instead. */
+export namespace GetV2WebhooksDollarAndOperatorNotEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarAndOperatorNotEquals$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2WebhooksDollarAndWebhooksOperator$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAndWebhooksOperator$outboundSchema` instead. */
+    GetV2WebhooksDollarAndOperatorNotEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndOperatorNotEquals$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2WebhooksDollarAndWebhooksOperator$outboundSchema;
+    GetV2WebhooksDollarAndOperatorNotEquals$outboundSchema;
 }
 
 /** @internal */
-export const GetV2WebhooksDollarAnd1$inboundSchema: z.ZodType<
-  GetV2WebhooksDollarAnd1,
+export const GetV2WebhooksDollarAndNotEquals$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndNotEquals,
   z.ZodTypeDef,
   unknown
 > = z.object({
   field: z.string(),
-  operator: GetV2WebhooksDollarAndWebhooksOperator$inboundSchema,
+  operator: GetV2WebhooksDollarAndOperatorNotEquals$inboundSchema,
   value: z.string(),
 });
 
 /** @internal */
-export type GetV2WebhooksDollarAnd1$Outbound = {
+export type GetV2WebhooksDollarAndNotEquals$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const GetV2WebhooksDollarAnd1$outboundSchema: z.ZodType<
-  GetV2WebhooksDollarAnd1$Outbound,
+export const GetV2WebhooksDollarAndNotEquals$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndNotEquals$Outbound,
   z.ZodTypeDef,
-  GetV2WebhooksDollarAnd1
+  GetV2WebhooksDollarAndNotEquals
 > = z.object({
   field: z.string(),
-  operator: GetV2WebhooksDollarAndWebhooksOperator$outboundSchema,
+  operator: GetV2WebhooksDollarAndOperatorNotEquals$outboundSchema,
   value: z.string(),
 });
 
@@ -400,88 +322,176 @@ export const GetV2WebhooksDollarAnd1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksDollarAnd1$ {
-  /** @deprecated use `GetV2WebhooksDollarAnd1$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarAnd1$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAnd1$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarAnd1$outboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarAnd1$Outbound` instead. */
-  export type Outbound = GetV2WebhooksDollarAnd1$Outbound;
+export namespace GetV2WebhooksDollarAndNotEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarAndNotEquals$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarAndNotEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndNotEquals$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarAndNotEquals$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndNotEquals$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarAndNotEquals$Outbound;
 }
 
-export function getV2WebhooksDollarAnd1ToJSON(
-  getV2WebhooksDollarAnd1: GetV2WebhooksDollarAnd1,
+export function getV2WebhooksDollarAndNotEqualsToJSON(
+  getV2WebhooksDollarAndNotEquals: GetV2WebhooksDollarAndNotEquals,
 ): string {
   return JSON.stringify(
-    GetV2WebhooksDollarAnd1$outboundSchema.parse(getV2WebhooksDollarAnd1),
-  );
-}
-
-export function getV2WebhooksDollarAnd1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetV2WebhooksDollarAnd1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetV2WebhooksDollarAnd1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksDollarAnd1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2WebhooksFilterDollarAnd$inboundSchema: z.ZodType<
-  GetV2WebhooksFilterDollarAnd,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetV2WebhooksDollarAnd1$inboundSchema),
-  z.lazy(() => GetV2WebhooksDollarAnd2$inboundSchema),
-]);
-
-/** @internal */
-export type GetV2WebhooksFilterDollarAnd$Outbound =
-  | GetV2WebhooksDollarAnd1$Outbound
-  | GetV2WebhooksDollarAnd2$Outbound;
-
-/** @internal */
-export const GetV2WebhooksFilterDollarAnd$outboundSchema: z.ZodType<
-  GetV2WebhooksFilterDollarAnd$Outbound,
-  z.ZodTypeDef,
-  GetV2WebhooksFilterDollarAnd
-> = z.union([
-  z.lazy(() => GetV2WebhooksDollarAnd1$outboundSchema),
-  z.lazy(() => GetV2WebhooksDollarAnd2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksFilterDollarAnd$ {
-  /** @deprecated use `GetV2WebhooksFilterDollarAnd$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksFilterDollarAnd$inboundSchema;
-  /** @deprecated use `GetV2WebhooksFilterDollarAnd$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksFilterDollarAnd$outboundSchema;
-  /** @deprecated use `GetV2WebhooksFilterDollarAnd$Outbound` instead. */
-  export type Outbound = GetV2WebhooksFilterDollarAnd$Outbound;
-}
-
-export function getV2WebhooksFilterDollarAndToJSON(
-  getV2WebhooksFilterDollarAnd: GetV2WebhooksFilterDollarAnd,
-): string {
-  return JSON.stringify(
-    GetV2WebhooksFilterDollarAnd$outboundSchema.parse(
-      getV2WebhooksFilterDollarAnd,
+    GetV2WebhooksDollarAndNotEquals$outboundSchema.parse(
+      getV2WebhooksDollarAndNotEquals,
     ),
   );
 }
 
-export function getV2WebhooksFilterDollarAndFromJSON(
+export function getV2WebhooksDollarAndNotEqualsFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WebhooksFilterDollarAnd, SDKValidationError> {
+): SafeParseResult<GetV2WebhooksDollarAndNotEquals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WebhooksFilterDollarAnd$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksFilterDollarAnd' from JSON`,
+    (x) => GetV2WebhooksDollarAndNotEquals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarAndNotEquals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2WebhooksDollarAndOperatorEquals$inboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndOperatorEquals> = z.nativeEnum(
+    GetV2WebhooksDollarAndOperatorEquals,
+  );
+
+/** @internal */
+export const GetV2WebhooksDollarAndOperatorEquals$outboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarAndOperatorEquals> =
+    GetV2WebhooksDollarAndOperatorEquals$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarAndOperatorEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarAndOperatorEquals$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2WebhooksDollarAndOperatorEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndOperatorEquals$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2WebhooksDollarAndOperatorEquals$outboundSchema;
+}
+
+/** @internal */
+export const GetV2WebhooksDollarAndEquals$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndEquals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: GetV2WebhooksDollarAndOperatorEquals$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type GetV2WebhooksDollarAndEquals$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const GetV2WebhooksDollarAndEquals$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndEquals$Outbound,
+  z.ZodTypeDef,
+  GetV2WebhooksDollarAndEquals
+> = z.object({
+  field: z.string(),
+  operator: GetV2WebhooksDollarAndOperatorEquals$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarAndEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarAndEquals$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarAndEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndEquals$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarAndEquals$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndEquals$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarAndEquals$Outbound;
+}
+
+export function getV2WebhooksDollarAndEqualsToJSON(
+  getV2WebhooksDollarAndEquals: GetV2WebhooksDollarAndEquals,
+): string {
+  return JSON.stringify(
+    GetV2WebhooksDollarAndEquals$outboundSchema.parse(
+      getV2WebhooksDollarAndEquals,
+    ),
+  );
+}
+
+export function getV2WebhooksDollarAndEqualsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetV2WebhooksDollarAndEquals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetV2WebhooksDollarAndEquals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarAndEquals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2WebhooksDollarAndUnion$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetV2WebhooksDollarAndEquals$inboundSchema),
+  z.lazy(() => GetV2WebhooksDollarAndNotEquals$inboundSchema),
+]);
+
+/** @internal */
+export type GetV2WebhooksDollarAndUnion$Outbound =
+  | GetV2WebhooksDollarAndEquals$Outbound
+  | GetV2WebhooksDollarAndNotEquals$Outbound;
+
+/** @internal */
+export const GetV2WebhooksDollarAndUnion$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarAndUnion$Outbound,
+  z.ZodTypeDef,
+  GetV2WebhooksDollarAndUnion
+> = z.union([
+  z.lazy(() => GetV2WebhooksDollarAndEquals$outboundSchema),
+  z.lazy(() => GetV2WebhooksDollarAndNotEquals$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarAndUnion$ {
+  /** @deprecated use `GetV2WebhooksDollarAndUnion$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarAndUnion$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndUnion$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarAndUnion$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarAndUnion$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarAndUnion$Outbound;
+}
+
+export function getV2WebhooksDollarAndUnionToJSON(
+  getV2WebhooksDollarAndUnion: GetV2WebhooksDollarAndUnion,
+): string {
+  return JSON.stringify(
+    GetV2WebhooksDollarAndUnion$outboundSchema.parse(
+      getV2WebhooksDollarAndUnion,
+    ),
+  );
+}
+
+export function getV2WebhooksDollarAndUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetV2WebhooksDollarAndUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetV2WebhooksDollarAndUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarAndUnion' from JSON`,
   );
 }
 
@@ -493,8 +503,8 @@ export const GetV2WebhooksFilter2$inboundSchema: z.ZodType<
 > = z.object({
   $and: z.array(
     z.union([
-      z.lazy(() => GetV2WebhooksDollarAnd1$inboundSchema),
-      z.lazy(() => GetV2WebhooksDollarAnd2$inboundSchema),
+      z.lazy(() => GetV2WebhooksDollarAndEquals$inboundSchema),
+      z.lazy(() => GetV2WebhooksDollarAndNotEquals$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -506,7 +516,8 @@ export const GetV2WebhooksFilter2$inboundSchema: z.ZodType<
 /** @internal */
 export type GetV2WebhooksFilter2$Outbound = {
   $and: Array<
-    GetV2WebhooksDollarAnd1$Outbound | GetV2WebhooksDollarAnd2$Outbound
+    | GetV2WebhooksDollarAndEquals$Outbound
+    | GetV2WebhooksDollarAndNotEquals$Outbound
   >;
 };
 
@@ -518,8 +529,8 @@ export const GetV2WebhooksFilter2$outboundSchema: z.ZodType<
 > = z.object({
   dollarAnd: z.array(
     z.union([
-      z.lazy(() => GetV2WebhooksDollarAnd1$outboundSchema),
-      z.lazy(() => GetV2WebhooksDollarAnd2$outboundSchema),
+      z.lazy(() => GetV2WebhooksDollarAndEquals$outboundSchema),
+      z.lazy(() => GetV2WebhooksDollarAndNotEquals$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -560,55 +571,55 @@ export function getV2WebhooksFilter2FromJSON(
 }
 
 /** @internal */
-export const GetV2WebhooksDollarOrWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof GetV2WebhooksDollarOrWebhooksOperator> = z.nativeEnum(
-    GetV2WebhooksDollarOrWebhooksOperator,
+export const GetV2WebhooksDollarOrOperatorNotEquals$inboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarOrOperatorNotEquals> = z.nativeEnum(
+    GetV2WebhooksDollarOrOperatorNotEquals,
   );
 
 /** @internal */
-export const GetV2WebhooksDollarOrWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof GetV2WebhooksDollarOrWebhooksOperator> =
-    GetV2WebhooksDollarOrWebhooksOperator$inboundSchema;
+export const GetV2WebhooksDollarOrOperatorNotEquals$outboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarOrOperatorNotEquals> =
+    GetV2WebhooksDollarOrOperatorNotEquals$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksDollarOrWebhooksOperator$ {
-  /** @deprecated use `GetV2WebhooksDollarOrWebhooksOperator$inboundSchema` instead. */
+export namespace GetV2WebhooksDollarOrOperatorNotEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarOrOperatorNotEquals$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2WebhooksDollarOrWebhooksOperator$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOrWebhooksOperator$outboundSchema` instead. */
+    GetV2WebhooksDollarOrOperatorNotEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrOperatorNotEquals$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2WebhooksDollarOrWebhooksOperator$outboundSchema;
+    GetV2WebhooksDollarOrOperatorNotEquals$outboundSchema;
 }
 
 /** @internal */
-export const GetV2WebhooksDollarOr2$inboundSchema: z.ZodType<
-  GetV2WebhooksDollarOr2,
+export const GetV2WebhooksDollarOrNotEquals$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrNotEquals,
   z.ZodTypeDef,
   unknown
 > = z.object({
   field: z.string(),
-  operator: GetV2WebhooksDollarOrWebhooksOperator$inboundSchema,
+  operator: GetV2WebhooksDollarOrOperatorNotEquals$inboundSchema,
   value: z.string(),
 });
 
 /** @internal */
-export type GetV2WebhooksDollarOr2$Outbound = {
+export type GetV2WebhooksDollarOrNotEquals$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const GetV2WebhooksDollarOr2$outboundSchema: z.ZodType<
-  GetV2WebhooksDollarOr2$Outbound,
+export const GetV2WebhooksDollarOrNotEquals$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrNotEquals$Outbound,
   z.ZodTypeDef,
-  GetV2WebhooksDollarOr2
+  GetV2WebhooksDollarOrNotEquals
 > = z.object({
   field: z.string(),
-  operator: GetV2WebhooksDollarOrWebhooksOperator$outboundSchema,
+  operator: GetV2WebhooksDollarOrOperatorNotEquals$outboundSchema,
   value: z.string(),
 });
 
@@ -616,169 +627,173 @@ export const GetV2WebhooksDollarOr2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksDollarOr2$ {
-  /** @deprecated use `GetV2WebhooksDollarOr2$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarOr2$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOr2$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarOr2$outboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOr2$Outbound` instead. */
-  export type Outbound = GetV2WebhooksDollarOr2$Outbound;
+export namespace GetV2WebhooksDollarOrNotEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarOrNotEquals$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarOrNotEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrNotEquals$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarOrNotEquals$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrNotEquals$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarOrNotEquals$Outbound;
 }
 
-export function getV2WebhooksDollarOr2ToJSON(
-  getV2WebhooksDollarOr2: GetV2WebhooksDollarOr2,
+export function getV2WebhooksDollarOrNotEqualsToJSON(
+  getV2WebhooksDollarOrNotEquals: GetV2WebhooksDollarOrNotEquals,
 ): string {
   return JSON.stringify(
-    GetV2WebhooksDollarOr2$outboundSchema.parse(getV2WebhooksDollarOr2),
-  );
-}
-
-export function getV2WebhooksDollarOr2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetV2WebhooksDollarOr2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetV2WebhooksDollarOr2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksDollarOr2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2WebhooksDollarOrOperator$inboundSchema: z.ZodNativeEnum<
-  typeof GetV2WebhooksDollarOrOperator
-> = z.nativeEnum(GetV2WebhooksDollarOrOperator);
-
-/** @internal */
-export const GetV2WebhooksDollarOrOperator$outboundSchema: z.ZodNativeEnum<
-  typeof GetV2WebhooksDollarOrOperator
-> = GetV2WebhooksDollarOrOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksDollarOrOperator$ {
-  /** @deprecated use `GetV2WebhooksDollarOrOperator$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarOrOperator$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOrOperator$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarOrOperator$outboundSchema;
-}
-
-/** @internal */
-export const GetV2WebhooksDollarOr1$inboundSchema: z.ZodType<
-  GetV2WebhooksDollarOr1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: GetV2WebhooksDollarOrOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type GetV2WebhooksDollarOr1$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const GetV2WebhooksDollarOr1$outboundSchema: z.ZodType<
-  GetV2WebhooksDollarOr1$Outbound,
-  z.ZodTypeDef,
-  GetV2WebhooksDollarOr1
-> = z.object({
-  field: z.string(),
-  operator: GetV2WebhooksDollarOrOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksDollarOr1$ {
-  /** @deprecated use `GetV2WebhooksDollarOr1$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksDollarOr1$inboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOr1$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksDollarOr1$outboundSchema;
-  /** @deprecated use `GetV2WebhooksDollarOr1$Outbound` instead. */
-  export type Outbound = GetV2WebhooksDollarOr1$Outbound;
-}
-
-export function getV2WebhooksDollarOr1ToJSON(
-  getV2WebhooksDollarOr1: GetV2WebhooksDollarOr1,
-): string {
-  return JSON.stringify(
-    GetV2WebhooksDollarOr1$outboundSchema.parse(getV2WebhooksDollarOr1),
-  );
-}
-
-export function getV2WebhooksDollarOr1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetV2WebhooksDollarOr1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetV2WebhooksDollarOr1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksDollarOr1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2WebhooksFilterDollarOr$inboundSchema: z.ZodType<
-  GetV2WebhooksFilterDollarOr,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetV2WebhooksDollarOr1$inboundSchema),
-  z.lazy(() => GetV2WebhooksDollarOr2$inboundSchema),
-]);
-
-/** @internal */
-export type GetV2WebhooksFilterDollarOr$Outbound =
-  | GetV2WebhooksDollarOr1$Outbound
-  | GetV2WebhooksDollarOr2$Outbound;
-
-/** @internal */
-export const GetV2WebhooksFilterDollarOr$outboundSchema: z.ZodType<
-  GetV2WebhooksFilterDollarOr$Outbound,
-  z.ZodTypeDef,
-  GetV2WebhooksFilterDollarOr
-> = z.union([
-  z.lazy(() => GetV2WebhooksDollarOr1$outboundSchema),
-  z.lazy(() => GetV2WebhooksDollarOr2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2WebhooksFilterDollarOr$ {
-  /** @deprecated use `GetV2WebhooksFilterDollarOr$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksFilterDollarOr$inboundSchema;
-  /** @deprecated use `GetV2WebhooksFilterDollarOr$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksFilterDollarOr$outboundSchema;
-  /** @deprecated use `GetV2WebhooksFilterDollarOr$Outbound` instead. */
-  export type Outbound = GetV2WebhooksFilterDollarOr$Outbound;
-}
-
-export function getV2WebhooksFilterDollarOrToJSON(
-  getV2WebhooksFilterDollarOr: GetV2WebhooksFilterDollarOr,
-): string {
-  return JSON.stringify(
-    GetV2WebhooksFilterDollarOr$outboundSchema.parse(
-      getV2WebhooksFilterDollarOr,
+    GetV2WebhooksDollarOrNotEquals$outboundSchema.parse(
+      getV2WebhooksDollarOrNotEquals,
     ),
   );
 }
 
-export function getV2WebhooksFilterDollarOrFromJSON(
+export function getV2WebhooksDollarOrNotEqualsFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WebhooksFilterDollarOr, SDKValidationError> {
+): SafeParseResult<GetV2WebhooksDollarOrNotEquals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WebhooksFilterDollarOr$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksFilterDollarOr' from JSON`,
+    (x) => GetV2WebhooksDollarOrNotEquals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarOrNotEquals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2WebhooksDollarOrOperatorEquals$inboundSchema: z.ZodNativeEnum<
+  typeof GetV2WebhooksDollarOrOperatorEquals
+> = z.nativeEnum(GetV2WebhooksDollarOrOperatorEquals);
+
+/** @internal */
+export const GetV2WebhooksDollarOrOperatorEquals$outboundSchema:
+  z.ZodNativeEnum<typeof GetV2WebhooksDollarOrOperatorEquals> =
+    GetV2WebhooksDollarOrOperatorEquals$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarOrOperatorEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarOrOperatorEquals$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2WebhooksDollarOrOperatorEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrOperatorEquals$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2WebhooksDollarOrOperatorEquals$outboundSchema;
+}
+
+/** @internal */
+export const GetV2WebhooksDollarOrEquals$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrEquals,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: GetV2WebhooksDollarOrOperatorEquals$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type GetV2WebhooksDollarOrEquals$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const GetV2WebhooksDollarOrEquals$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrEquals$Outbound,
+  z.ZodTypeDef,
+  GetV2WebhooksDollarOrEquals
+> = z.object({
+  field: z.string(),
+  operator: GetV2WebhooksDollarOrOperatorEquals$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarOrEquals$ {
+  /** @deprecated use `GetV2WebhooksDollarOrEquals$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarOrEquals$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrEquals$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarOrEquals$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrEquals$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarOrEquals$Outbound;
+}
+
+export function getV2WebhooksDollarOrEqualsToJSON(
+  getV2WebhooksDollarOrEquals: GetV2WebhooksDollarOrEquals,
+): string {
+  return JSON.stringify(
+    GetV2WebhooksDollarOrEquals$outboundSchema.parse(
+      getV2WebhooksDollarOrEquals,
+    ),
+  );
+}
+
+export function getV2WebhooksDollarOrEqualsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetV2WebhooksDollarOrEquals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetV2WebhooksDollarOrEquals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarOrEquals' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2WebhooksDollarOrUnion$inboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => GetV2WebhooksDollarOrEquals$inboundSchema),
+  z.lazy(() => GetV2WebhooksDollarOrNotEquals$inboundSchema),
+]);
+
+/** @internal */
+export type GetV2WebhooksDollarOrUnion$Outbound =
+  | GetV2WebhooksDollarOrEquals$Outbound
+  | GetV2WebhooksDollarOrNotEquals$Outbound;
+
+/** @internal */
+export const GetV2WebhooksDollarOrUnion$outboundSchema: z.ZodType<
+  GetV2WebhooksDollarOrUnion$Outbound,
+  z.ZodTypeDef,
+  GetV2WebhooksDollarOrUnion
+> = z.union([
+  z.lazy(() => GetV2WebhooksDollarOrEquals$outboundSchema),
+  z.lazy(() => GetV2WebhooksDollarOrNotEquals$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2WebhooksDollarOrUnion$ {
+  /** @deprecated use `GetV2WebhooksDollarOrUnion$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksDollarOrUnion$inboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrUnion$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksDollarOrUnion$outboundSchema;
+  /** @deprecated use `GetV2WebhooksDollarOrUnion$Outbound` instead. */
+  export type Outbound = GetV2WebhooksDollarOrUnion$Outbound;
+}
+
+export function getV2WebhooksDollarOrUnionToJSON(
+  getV2WebhooksDollarOrUnion: GetV2WebhooksDollarOrUnion,
+): string {
+  return JSON.stringify(
+    GetV2WebhooksDollarOrUnion$outboundSchema.parse(getV2WebhooksDollarOrUnion),
+  );
+}
+
+export function getV2WebhooksDollarOrUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<GetV2WebhooksDollarOrUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetV2WebhooksDollarOrUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksDollarOrUnion' from JSON`,
   );
 }
 
@@ -790,8 +805,8 @@ export const GetV2WebhooksFilter1$inboundSchema: z.ZodType<
 > = z.object({
   $or: z.array(
     z.union([
-      z.lazy(() => GetV2WebhooksDollarOr1$inboundSchema),
-      z.lazy(() => GetV2WebhooksDollarOr2$inboundSchema),
+      z.lazy(() => GetV2WebhooksDollarOrEquals$inboundSchema),
+      z.lazy(() => GetV2WebhooksDollarOrNotEquals$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -802,7 +817,10 @@ export const GetV2WebhooksFilter1$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetV2WebhooksFilter1$Outbound = {
-  $or: Array<GetV2WebhooksDollarOr1$Outbound | GetV2WebhooksDollarOr2$Outbound>;
+  $or: Array<
+    | GetV2WebhooksDollarOrEquals$Outbound
+    | GetV2WebhooksDollarOrNotEquals$Outbound
+  >;
 };
 
 /** @internal */
@@ -813,8 +831,8 @@ export const GetV2WebhooksFilter1$outboundSchema: z.ZodType<
 > = z.object({
   dollarOr: z.array(
     z.union([
-      z.lazy(() => GetV2WebhooksDollarOr1$outboundSchema),
-      z.lazy(() => GetV2WebhooksDollarOr2$outboundSchema),
+      z.lazy(() => GetV2WebhooksDollarOrEquals$outboundSchema),
+      z.lazy(() => GetV2WebhooksDollarOrNotEquals$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -855,8 +873,8 @@ export function getV2WebhooksFilter1FromJSON(
 }
 
 /** @internal */
-export const GetV2WebhooksFilter$inboundSchema: z.ZodType<
-  GetV2WebhooksFilter,
+export const GetV2WebhooksFilterUnion$inboundSchema: z.ZodType<
+  GetV2WebhooksFilterUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -865,15 +883,15 @@ export const GetV2WebhooksFilter$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type GetV2WebhooksFilter$Outbound =
+export type GetV2WebhooksFilterUnion$Outbound =
   | GetV2WebhooksFilter1$Outbound
   | GetV2WebhooksFilter2$Outbound;
 
 /** @internal */
-export const GetV2WebhooksFilter$outboundSchema: z.ZodType<
-  GetV2WebhooksFilter$Outbound,
+export const GetV2WebhooksFilterUnion$outboundSchema: z.ZodType<
+  GetV2WebhooksFilterUnion$Outbound,
   z.ZodTypeDef,
-  GetV2WebhooksFilter
+  GetV2WebhooksFilterUnion
 > = z.union([
   z.lazy(() => GetV2WebhooksFilter1$outboundSchema),
   z.lazy(() => GetV2WebhooksFilter2$outboundSchema),
@@ -883,36 +901,36 @@ export const GetV2WebhooksFilter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksFilter$ {
-  /** @deprecated use `GetV2WebhooksFilter$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksFilter$inboundSchema;
-  /** @deprecated use `GetV2WebhooksFilter$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksFilter$outboundSchema;
-  /** @deprecated use `GetV2WebhooksFilter$Outbound` instead. */
-  export type Outbound = GetV2WebhooksFilter$Outbound;
+export namespace GetV2WebhooksFilterUnion$ {
+  /** @deprecated use `GetV2WebhooksFilterUnion$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksFilterUnion$inboundSchema;
+  /** @deprecated use `GetV2WebhooksFilterUnion$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksFilterUnion$outboundSchema;
+  /** @deprecated use `GetV2WebhooksFilterUnion$Outbound` instead. */
+  export type Outbound = GetV2WebhooksFilterUnion$Outbound;
 }
 
-export function getV2WebhooksFilterToJSON(
-  getV2WebhooksFilter: GetV2WebhooksFilter,
+export function getV2WebhooksFilterUnionToJSON(
+  getV2WebhooksFilterUnion: GetV2WebhooksFilterUnion,
 ): string {
   return JSON.stringify(
-    GetV2WebhooksFilter$outboundSchema.parse(getV2WebhooksFilter),
+    GetV2WebhooksFilterUnion$outboundSchema.parse(getV2WebhooksFilterUnion),
   );
 }
 
-export function getV2WebhooksFilterFromJSON(
+export function getV2WebhooksFilterUnionFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WebhooksFilter, SDKValidationError> {
+): SafeParseResult<GetV2WebhooksFilterUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WebhooksFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksFilter' from JSON`,
+    (x) => GetV2WebhooksFilterUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksFilterUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2WebhooksSubscriptions$inboundSchema: z.ZodType<
-  GetV2WebhooksSubscriptions,
+export const GetV2WebhooksSubscription$inboundSchema: z.ZodType<
+  GetV2WebhooksSubscription,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -930,16 +948,16 @@ export const GetV2WebhooksSubscriptions$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetV2WebhooksSubscriptions$Outbound = {
+export type GetV2WebhooksSubscription$Outbound = {
   event_type: string;
   filter: GetV2WebhooksFilter1$Outbound | GetV2WebhooksFilter2$Outbound | null;
 };
 
 /** @internal */
-export const GetV2WebhooksSubscriptions$outboundSchema: z.ZodType<
-  GetV2WebhooksSubscriptions$Outbound,
+export const GetV2WebhooksSubscription$outboundSchema: z.ZodType<
+  GetV2WebhooksSubscription$Outbound,
   z.ZodTypeDef,
-  GetV2WebhooksSubscriptions
+  GetV2WebhooksSubscription
 > = z.object({
   eventType: GetV2WebhooksEventType$outboundSchema,
   filter: z.nullable(
@@ -958,30 +976,30 @@ export const GetV2WebhooksSubscriptions$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksSubscriptions$ {
-  /** @deprecated use `GetV2WebhooksSubscriptions$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksSubscriptions$inboundSchema;
-  /** @deprecated use `GetV2WebhooksSubscriptions$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksSubscriptions$outboundSchema;
-  /** @deprecated use `GetV2WebhooksSubscriptions$Outbound` instead. */
-  export type Outbound = GetV2WebhooksSubscriptions$Outbound;
+export namespace GetV2WebhooksSubscription$ {
+  /** @deprecated use `GetV2WebhooksSubscription$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksSubscription$inboundSchema;
+  /** @deprecated use `GetV2WebhooksSubscription$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksSubscription$outboundSchema;
+  /** @deprecated use `GetV2WebhooksSubscription$Outbound` instead. */
+  export type Outbound = GetV2WebhooksSubscription$Outbound;
 }
 
-export function getV2WebhooksSubscriptionsToJSON(
-  getV2WebhooksSubscriptions: GetV2WebhooksSubscriptions,
+export function getV2WebhooksSubscriptionToJSON(
+  getV2WebhooksSubscription: GetV2WebhooksSubscription,
 ): string {
   return JSON.stringify(
-    GetV2WebhooksSubscriptions$outboundSchema.parse(getV2WebhooksSubscriptions),
+    GetV2WebhooksSubscription$outboundSchema.parse(getV2WebhooksSubscription),
   );
 }
 
-export function getV2WebhooksSubscriptionsFromJSON(
+export function getV2WebhooksSubscriptionFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WebhooksSubscriptions, SDKValidationError> {
+): SafeParseResult<GetV2WebhooksSubscription, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WebhooksSubscriptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksSubscriptions' from JSON`,
+    (x) => GetV2WebhooksSubscription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksSubscription' from JSON`,
   );
 }
 
@@ -1051,22 +1069,24 @@ export function getV2WebhooksIdFromJSON(
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const GetV2WebhooksStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetV2WebhooksStatus
+> = z.nativeEnum(GetV2WebhooksStatus);
 
 /** @internal */
-export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
-  Status$inboundSchema;
+export const GetV2WebhooksStatus$outboundSchema: z.ZodNativeEnum<
+  typeof GetV2WebhooksStatus
+> = GetV2WebhooksStatus$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
+export namespace GetV2WebhooksStatus$ {
+  /** @deprecated use `GetV2WebhooksStatus$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksStatus$inboundSchema;
+  /** @deprecated use `GetV2WebhooksStatus$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksStatus$outboundSchema;
 }
 
 /** @internal */
@@ -1076,11 +1096,9 @@ export const GetV2WebhooksData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   target_url: z.string(),
-  subscriptions: z.array(
-    z.lazy(() => GetV2WebhooksSubscriptions$inboundSchema),
-  ),
+  subscriptions: z.array(z.lazy(() => GetV2WebhooksSubscription$inboundSchema)),
   id: z.lazy(() => GetV2WebhooksId$inboundSchema),
-  status: Status$inboundSchema,
+  status: GetV2WebhooksStatus$inboundSchema,
   created_at: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -1092,7 +1110,7 @@ export const GetV2WebhooksData$inboundSchema: z.ZodType<
 /** @internal */
 export type GetV2WebhooksData$Outbound = {
   target_url: string;
-  subscriptions: Array<GetV2WebhooksSubscriptions$Outbound>;
+  subscriptions: Array<GetV2WebhooksSubscription$Outbound>;
   id: GetV2WebhooksId$Outbound;
   status: string;
   created_at: string;
@@ -1106,10 +1124,10 @@ export const GetV2WebhooksData$outboundSchema: z.ZodType<
 > = z.object({
   targetUrl: z.string(),
   subscriptions: z.array(
-    z.lazy(() => GetV2WebhooksSubscriptions$outboundSchema),
+    z.lazy(() => GetV2WebhooksSubscription$outboundSchema),
   ),
   id: z.lazy(() => GetV2WebhooksId$outboundSchema),
-  status: Status$outboundSchema,
+  status: GetV2WebhooksStatus$outboundSchema,
   createdAt: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -1150,8 +1168,8 @@ export function getV2WebhooksDataFromJSON(
 }
 
 /** @internal */
-export const GetV2WebhooksResponseBody$inboundSchema: z.ZodType<
-  GetV2WebhooksResponseBody,
+export const GetV2WebhooksResponse$inboundSchema: z.ZodType<
+  GetV2WebhooksResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1159,15 +1177,15 @@ export const GetV2WebhooksResponseBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetV2WebhooksResponseBody$Outbound = {
+export type GetV2WebhooksResponse$Outbound = {
   data: Array<GetV2WebhooksData$Outbound>;
 };
 
 /** @internal */
-export const GetV2WebhooksResponseBody$outboundSchema: z.ZodType<
-  GetV2WebhooksResponseBody$Outbound,
+export const GetV2WebhooksResponse$outboundSchema: z.ZodType<
+  GetV2WebhooksResponse$Outbound,
   z.ZodTypeDef,
-  GetV2WebhooksResponseBody
+  GetV2WebhooksResponse
 > = z.object({
   data: z.array(z.lazy(() => GetV2WebhooksData$outboundSchema)),
 });
@@ -1176,29 +1194,29 @@ export const GetV2WebhooksResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WebhooksResponseBody$ {
-  /** @deprecated use `GetV2WebhooksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2WebhooksResponseBody$inboundSchema;
-  /** @deprecated use `GetV2WebhooksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2WebhooksResponseBody$outboundSchema;
-  /** @deprecated use `GetV2WebhooksResponseBody$Outbound` instead. */
-  export type Outbound = GetV2WebhooksResponseBody$Outbound;
+export namespace GetV2WebhooksResponse$ {
+  /** @deprecated use `GetV2WebhooksResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2WebhooksResponse$inboundSchema;
+  /** @deprecated use `GetV2WebhooksResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2WebhooksResponse$outboundSchema;
+  /** @deprecated use `GetV2WebhooksResponse$Outbound` instead. */
+  export type Outbound = GetV2WebhooksResponse$Outbound;
 }
 
-export function getV2WebhooksResponseBodyToJSON(
-  getV2WebhooksResponseBody: GetV2WebhooksResponseBody,
+export function getV2WebhooksResponseToJSON(
+  getV2WebhooksResponse: GetV2WebhooksResponse,
 ): string {
   return JSON.stringify(
-    GetV2WebhooksResponseBody$outboundSchema.parse(getV2WebhooksResponseBody),
+    GetV2WebhooksResponse$outboundSchema.parse(getV2WebhooksResponse),
   );
 }
 
-export function getV2WebhooksResponseBodyFromJSON(
+export function getV2WebhooksResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2WebhooksResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2WebhooksResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2WebhooksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2WebhooksResponseBody' from JSON`,
+    (x) => GetV2WebhooksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2WebhooksResponse' from JSON`,
   );
 }

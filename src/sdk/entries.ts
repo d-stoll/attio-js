@@ -10,14 +10,41 @@ import { entriesOverwrite } from "../funcs/entriesOverwrite.js";
 import { entriesQuery } from "../funcs/entriesQuery.js";
 import { entriesUpdate } from "../funcs/entriesUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2ListsListEntriesEntryIdRequest,
+  DeleteV2ListsListEntriesEntryIdResponse,
+} from "../models/operations/deletev2listslistentriesentryid.js";
+import {
+  GetV2ListsListEntriesEntryIdRequest,
+  GetV2ListsListEntriesEntryIdResponse,
+} from "../models/operations/getv2listslistentriesentryid.js";
+import {
+  PatchV2ListsListEntriesEntryIdRequest,
+  PatchV2ListsListEntriesEntryIdResponse,
+} from "../models/operations/patchv2listslistentriesentryid.js";
+import {
+  PostV2ListsListEntriesRequest,
+  PostV2ListsListEntriesResponse,
+} from "../models/operations/postv2listslistentries.js";
+import {
+  PostV2ListsListEntriesQueryRequest,
+  PostV2ListsListEntriesQueryResponse,
+} from "../models/operations/postv2listslistentriesquery.js";
+import {
+  PutV2ListsListEntriesRequest,
+  PutV2ListsListEntriesResponse,
+} from "../models/operations/putv2listslistentries.js";
+import {
+  PutV2ListsListEntriesEntryIdRequest,
+  PutV2ListsListEntriesEntryIdResponse,
+} from "../models/operations/putv2listslistentriesentryid.js";
 import { unwrapAsync } from "../types/fp.js";
-import { AttioEntriesAttributes } from "./attioentriesattributes.js";
+import { EntriesAttributes } from "./entriesattributes.js";
 
 export class Entries extends ClientSDK {
-  private _attributes?: AttioEntriesAttributes;
-  get attributes(): AttioEntriesAttributes {
-    return (this._attributes ??= new AttioEntriesAttributes(this._options));
+  private _attributes?: EntriesAttributes;
+  get attributes(): EntriesAttributes {
+    return (this._attributes ??= new EntriesAttributes(this._options));
   }
 
   /**
@@ -29,9 +56,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read`, `list_configuration:read`.
    */
   async query(
-    request: operations.PostV2ListsListEntriesQueryRequest,
+    request: PostV2ListsListEntriesQueryRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ListsListEntriesQueryResponseBody> {
+  ): Promise<PostV2ListsListEntriesQueryResponse> {
     return unwrapAsync(entriesQuery(
       this,
       request,
@@ -48,9 +75,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read-write`, `list_configuration:read`.
    */
   async create(
-    request: operations.PostV2ListsListEntriesRequest,
+    request: PostV2ListsListEntriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ListsListEntriesResponseBody> {
+  ): Promise<PostV2ListsListEntriesResponse> {
     return unwrapAsync(entriesCreate(
       this,
       request,
@@ -67,9 +94,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read-write`, `list_configuration:read`.
    */
   async assert(
-    request: operations.PutV2ListsListEntriesRequest,
+    request: PutV2ListsListEntriesRequest,
     options?: RequestOptions,
-  ): Promise<operations.PutV2ListsListEntriesResponseBody> {
+  ): Promise<PutV2ListsListEntriesResponse> {
     return unwrapAsync(entriesAssert(
       this,
       request,
@@ -86,9 +113,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read`, `list_configuration:read`.
    */
   async getEntry(
-    request: operations.GetV2ListsListEntriesEntryIdRequest,
+    request: GetV2ListsListEntriesEntryIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ListsListEntriesEntryIdResponseBody> {
+  ): Promise<GetV2ListsListEntriesEntryIdResponse> {
     return unwrapAsync(entriesGetEntry(
       this,
       request,
@@ -105,9 +132,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read-write`, `list_configuration:read`.
    */
   async update(
-    request: operations.PatchV2ListsListEntriesEntryIdRequest,
+    request: PatchV2ListsListEntriesEntryIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2ListsListEntriesEntryIdResponseBody> {
+  ): Promise<PatchV2ListsListEntriesEntryIdResponse> {
     return unwrapAsync(entriesUpdate(
       this,
       request,
@@ -124,9 +151,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read-write`, `list_configuration:read`.
    */
   async overwrite(
-    request: operations.PutV2ListsListEntriesEntryIdRequest,
+    request: PutV2ListsListEntriesEntryIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PutV2ListsListEntriesEntryIdResponseBody> {
+  ): Promise<PutV2ListsListEntriesEntryIdResponse> {
     return unwrapAsync(entriesOverwrite(
       this,
       request,
@@ -143,9 +170,9 @@ export class Entries extends ClientSDK {
    * Required scopes: `list_entry:read-write`, `list_configuration:read`.
    */
   async delete(
-    request: operations.DeleteV2ListsListEntriesEntryIdRequest,
+    request: DeleteV2ListsListEntriesEntryIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2ListsListEntriesEntryIdResponseBody> {
+  ): Promise<DeleteV2ListsListEntriesEntryIdResponse> {
     return unwrapAsync(entriesDelete(
       this,
       request,

@@ -165,7 +165,7 @@ run();
 * [overwrite](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
 * [delete](docs/sdks/entries/README.md#delete) - Delete a list entry
 
-#### [entries.attributes](docs/sdks/attioentriesattributes/README.md)
+#### [entries.attributes](docs/sdks/entriesattributes/README.md)
 
 
 #### [entries.attributes.values](docs/sdks/values/README.md)
@@ -384,19 +384,17 @@ run();
 
 Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `create` method may throw the following errors:
 
-| Error Type                       | Status Code | Content Type     |
-| -------------------------------- | ----------- | ---------------- |
-| errors.PostV2ObjectsResponseBody | 409         | application/json |
-| errors.APIError                  | 4XX, 5XX    | \*/\*            |
+| Error Type                            | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| errors.PostV2ObjectsSlugConflictError | 409         | application/json |
+| errors.APIError                       | 4XX, 5XX    | \*/\*            |
 
 If the method throws an error and it is not captured by the known errors, it will default to throwing a `APIError`.
 
 ```typescript
 import { Attio } from "attio-js";
-import {
-  PostV2ObjectsResponseBody,
-  SDKValidationError,
-} from "attio-js/models/errors";
+import { PostV2ObjectsSlugConflictError } from "attio-js/models/errors/getv2objectsobject.js";
+import { SDKValidationError } from "attio-js/models/errors/sdkvalidationerror.js";
 
 const attio = new Attio({
   apiKey: process.env["ATTIO_API_KEY"] ?? "",
@@ -425,8 +423,8 @@ async function run() {
         console.error(err.rawValue);
         return;
       }
-      case (err instanceof PostV2ObjectsResponseBody): {
-        // Handle err.data$: PostV2ObjectsResponseBodyData
+      case (err instanceof PostV2ObjectsSlugConflictError): {
+        // Handle err.data$: PostV2ObjectsSlugConflictErrorData
         console.error(err);
         return;
       }

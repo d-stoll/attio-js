@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Comment,
+  Comment$inboundSchema,
+  Comment$Outbound,
+  Comment$outboundSchema,
+} from "../components/comment.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2CommentsCommentIdRequest = {
@@ -16,8 +21,8 @@ export type GetV2CommentsCommentIdRequest = {
 /**
  * Success
  */
-export type GetV2CommentsCommentIdResponseBody = {
-  data: components.Comment;
+export type GetV2CommentsCommentIdResponse = {
+  data: Comment;
 };
 
 /** @internal */
@@ -85,59 +90,57 @@ export function getV2CommentsCommentIdRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2CommentsCommentIdResponseBody$inboundSchema: z.ZodType<
-  GetV2CommentsCommentIdResponseBody,
+export const GetV2CommentsCommentIdResponse$inboundSchema: z.ZodType<
+  GetV2CommentsCommentIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Comment$inboundSchema,
+  data: Comment$inboundSchema,
 });
 
 /** @internal */
-export type GetV2CommentsCommentIdResponseBody$Outbound = {
-  data: components.Comment$Outbound;
+export type GetV2CommentsCommentIdResponse$Outbound = {
+  data: Comment$Outbound;
 };
 
 /** @internal */
-export const GetV2CommentsCommentIdResponseBody$outboundSchema: z.ZodType<
-  GetV2CommentsCommentIdResponseBody$Outbound,
+export const GetV2CommentsCommentIdResponse$outboundSchema: z.ZodType<
+  GetV2CommentsCommentIdResponse$Outbound,
   z.ZodTypeDef,
-  GetV2CommentsCommentIdResponseBody
+  GetV2CommentsCommentIdResponse
 > = z.object({
-  data: components.Comment$outboundSchema,
+  data: Comment$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2CommentsCommentIdResponseBody$ {
-  /** @deprecated use `GetV2CommentsCommentIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2CommentsCommentIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2CommentsCommentIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2CommentsCommentIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2CommentsCommentIdResponseBody$Outbound` instead. */
-  export type Outbound = GetV2CommentsCommentIdResponseBody$Outbound;
+export namespace GetV2CommentsCommentIdResponse$ {
+  /** @deprecated use `GetV2CommentsCommentIdResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2CommentsCommentIdResponse$inboundSchema;
+  /** @deprecated use `GetV2CommentsCommentIdResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2CommentsCommentIdResponse$outboundSchema;
+  /** @deprecated use `GetV2CommentsCommentIdResponse$Outbound` instead. */
+  export type Outbound = GetV2CommentsCommentIdResponse$Outbound;
 }
 
-export function getV2CommentsCommentIdResponseBodyToJSON(
-  getV2CommentsCommentIdResponseBody: GetV2CommentsCommentIdResponseBody,
+export function getV2CommentsCommentIdResponseToJSON(
+  getV2CommentsCommentIdResponse: GetV2CommentsCommentIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2CommentsCommentIdResponseBody$outboundSchema.parse(
-      getV2CommentsCommentIdResponseBody,
+    GetV2CommentsCommentIdResponse$outboundSchema.parse(
+      getV2CommentsCommentIdResponse,
     ),
   );
 }
 
-export function getV2CommentsCommentIdResponseBodyFromJSON(
+export function getV2CommentsCommentIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2CommentsCommentIdResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2CommentsCommentIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetV2CommentsCommentIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2CommentsCommentIdResponseBody' from JSON`,
+    (x) => GetV2CommentsCommentIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2CommentsCommentIdResponse' from JSON`,
   );
 }

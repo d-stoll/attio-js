@@ -8,7 +8,26 @@ import { tasksGet } from "../funcs/tasksGet.js";
 import { tasksList } from "../funcs/tasksList.js";
 import { tasksUpdate } from "../funcs/tasksUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2TasksTaskIdRequest,
+  DeleteV2TasksTaskIdResponse,
+} from "../models/operations/deletev2taskstaskid.js";
+import {
+  GetV2TasksRequest,
+  GetV2TasksResponse,
+} from "../models/operations/getv2tasks.js";
+import {
+  GetV2TasksTaskIdRequest,
+  GetV2TasksTaskIdResponse,
+} from "../models/operations/getv2taskstaskid.js";
+import {
+  PatchV2TasksTaskIdRequest,
+  PatchV2TasksTaskIdResponse,
+} from "../models/operations/patchv2taskstaskid.js";
+import {
+  PostV2TasksRequest,
+  PostV2TasksResponse,
+} from "../models/operations/postv2tasks.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Tasks extends ClientSDK {
@@ -21,9 +40,9 @@ export class Tasks extends ClientSDK {
    * Required scopes: `task:read`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
    */
   async list(
-    request: operations.GetV2TasksRequest,
+    request: GetV2TasksRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2TasksResponseBody> {
+  ): Promise<GetV2TasksResponse> {
     return unwrapAsync(tasksList(
       this,
       request,
@@ -42,9 +61,9 @@ export class Tasks extends ClientSDK {
    * Required scopes: `task:read-write`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
    */
   async create(
-    request: operations.PostV2TasksRequestBody,
+    request: PostV2TasksRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2TasksResponseBody> {
+  ): Promise<PostV2TasksResponse> {
     return unwrapAsync(tasksCreate(
       this,
       request,
@@ -61,9 +80,9 @@ export class Tasks extends ClientSDK {
    * Required scopes: `task:read`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
    */
   async get(
-    request: operations.GetV2TasksTaskIdRequest,
+    request: GetV2TasksTaskIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2TasksTaskIdResponseBody> {
+  ): Promise<GetV2TasksTaskIdResponse> {
     return unwrapAsync(tasksGet(
       this,
       request,
@@ -80,9 +99,9 @@ export class Tasks extends ClientSDK {
    * Required scopes: `task:read-write`, `object_configuration:read`, `record_permission:read`, `user_management:read`.
    */
   async update(
-    request: operations.PatchV2TasksTaskIdRequest,
+    request: PatchV2TasksTaskIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2TasksTaskIdResponseBody> {
+  ): Promise<PatchV2TasksTaskIdResponse> {
     return unwrapAsync(tasksUpdate(
       this,
       request,
@@ -99,9 +118,9 @@ export class Tasks extends ClientSDK {
    * Required scopes: `task:read-write`.
    */
   async delete(
-    request: operations.DeleteV2TasksTaskIdRequest,
+    request: DeleteV2TasksTaskIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2TasksTaskIdResponseBody> {
+  ): Promise<DeleteV2TasksTaskIdResponse> {
     return unwrapAsync(tasksDelete(
       this,
       request,

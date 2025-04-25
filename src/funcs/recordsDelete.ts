@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectRecordsRecordIdInvalidRequestError,
+  GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2ObjectsObjectRecordsRecordIdRequest,
+  DeleteV2ObjectsObjectRecordsRecordIdRequest$outboundSchema,
+  DeleteV2ObjectsObjectRecordsRecordIdResponse,
+  DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema,
+} from "../models/operations/deletev2objectsobjectrecordsrecordid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function recordsDelete(
   client: AttioCore,
-  request: operations.DeleteV2ObjectsObjectRecordsRecordIdRequest,
+  request: DeleteV2ObjectsObjectRecordsRecordIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
-    | errors.RecordsResponseBody
+    DeleteV2ObjectsObjectRecordsRecordIdResponse,
+    | GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function recordsDelete(
 
 async function $do(
   client: AttioCore,
-  request: operations.DeleteV2ObjectsObjectRecordsRecordIdRequest,
+  request: DeleteV2ObjectsObjectRecordsRecordIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
-      | errors.RecordsResponseBody
+      DeleteV2ObjectsObjectRecordsRecordIdResponse,
+      | GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -79,8 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.DeleteV2ObjectsObjectRecordsRecordIdRequest$outboundSchema
-        .parse(value),
+      DeleteV2ObjectsObjectRecordsRecordIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -156,8 +163,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody,
-    | errors.RecordsResponseBody
+    DeleteV2ObjectsObjectRecordsRecordIdResponse,
+    | GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -166,11 +173,11 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema,
+    M.json(200, DeleteV2ObjectsObjectRecordsRecordIdResponse$inboundSchema),
+    M.jsonErr(
+      404,
+      GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema,
     ),
-    M.jsonErr(404, errors.RecordsResponseBody$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

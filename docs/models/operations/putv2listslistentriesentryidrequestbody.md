@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PutV2ListsListEntriesEntryIdRequestBody } from "attio-js/models/operations";
+import { PutV2ListsListEntriesEntryIdRequestBody } from "attio-js/models/operations/putv2listslistentriesentryid.js";
 
 let value: PutV2ListsListEntriesEntryIdRequestBody = {
   data: {
@@ -20,6 +20,6 @@ let value: PutV2ListsListEntriesEntryIdRequestBody = {
 
 ## Fields
 
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `data`                                                                                                     | [operations.PutV2ListsListEntriesEntryIdData](../../models/operations/putv2listslistentriesentryiddata.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `data`                                                                                                                   | [operations.PutV2ListsListEntriesEntryIdDataRequest](../../models/operations/putv2listslistentriesentryiddatarequest.md) | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |

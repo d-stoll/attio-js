@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+  MissingValueError,
+  MissingValueError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2ObjectsObjectRecordsRecordIdRequest,
+  PatchV2ObjectsObjectRecordsRecordIdRequest$outboundSchema,
+  PatchV2ObjectsObjectRecordsRecordIdResponse,
+  PatchV2ObjectsObjectRecordsRecordIdResponse$inboundSchema,
+} from "../models/operations/patchv2objectsobjectrecordsrecordid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,13 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function recordsPartialUpdate(
   client: AttioCore,
-  request: operations.PatchV2ObjectsObjectRecordsRecordIdRequest,
+  request: PatchV2ObjectsObjectRecordsRecordIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody,
-    | errors.RecordsResponseResponseBody
-    | errors.ResponseBody
+    PatchV2ObjectsObjectRecordsRecordIdResponse,
+    | MissingValueError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,14 +69,14 @@ export function recordsPartialUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2ObjectsObjectRecordsRecordIdRequest,
+  request: PatchV2ObjectsObjectRecordsRecordIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody,
-      | errors.RecordsResponseResponseBody
-      | errors.ResponseBody
+      PatchV2ObjectsObjectRecordsRecordIdResponse,
+      | MissingValueError
+      | GetV2ObjectsObjectNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -81,8 +91,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PatchV2ObjectsObjectRecordsRecordIdRequest$outboundSchema
-        .parse(value),
+      PatchV2ObjectsObjectRecordsRecordIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -159,9 +168,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody,
-    | errors.RecordsResponseResponseBody
-    | errors.ResponseBody
+    PatchV2ObjectsObjectRecordsRecordIdResponse,
+    | MissingValueError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -170,12 +179,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody$inboundSchema,
-    ),
-    M.jsonErr(400, errors.RecordsResponseResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
+    M.json(200, PatchV2ObjectsObjectRecordsRecordIdResponse$inboundSchema),
+    M.jsonErr(400, MissingValueError$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

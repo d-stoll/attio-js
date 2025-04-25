@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2TasksTaskIdNotFoundError,
+  GetV2TasksTaskIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2TasksTaskIdRequest,
+  DeleteV2TasksTaskIdRequest$outboundSchema,
+  DeleteV2TasksTaskIdResponse,
+  DeleteV2TasksTaskIdResponse$inboundSchema,
+} from "../models/operations/deletev2taskstaskid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function tasksDelete(
   client: AttioCore,
-  request: operations.DeleteV2TasksTaskIdRequest,
+  request: DeleteV2TasksTaskIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteV2TasksTaskIdResponseBody,
-    | errors.TasksResponseResponseBody
+    DeleteV2TasksTaskIdResponse,
+    | GetV2TasksTaskIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function tasksDelete(
 
 async function $do(
   client: AttioCore,
-  request: operations.DeleteV2TasksTaskIdRequest,
+  request: DeleteV2TasksTaskIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeleteV2TasksTaskIdResponseBody,
-      | errors.TasksResponseResponseBody
+      DeleteV2TasksTaskIdResponse,
+      | GetV2TasksTaskIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,8 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.DeleteV2TasksTaskIdRequest$outboundSchema.parse(value),
+    (value) => DeleteV2TasksTaskIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -149,8 +156,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteV2TasksTaskIdResponseBody,
-    | errors.TasksResponseResponseBody
+    DeleteV2TasksTaskIdResponse,
+    | GetV2TasksTaskIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -159,8 +166,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.DeleteV2TasksTaskIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.TasksResponseResponseBody$inboundSchema),
+    M.json(200, DeleteV2TasksTaskIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2TasksTaskIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

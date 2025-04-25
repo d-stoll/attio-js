@@ -7,25 +7,38 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Attribute,
+  Attribute$inboundSchema,
+  Attribute$Outbound,
+  Attribute$outboundSchema,
+} from "../components/attribute.js";
+import {
+  InputValueUnion,
+  InputValueUnion$inboundSchema,
+  InputValueUnion$Outbound,
+  InputValueUnion$outboundSchema,
+} from "../components/inputvalueunion.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is to be created on an object or a list.
  */
-export const PathParamTarget = {
+export const PostV2TargetIdentifierAttributesTarget = {
   Objects: "objects",
   Lists: "lists",
 } as const;
 /**
  * Whether the attribute is to be created on an object or a list.
  */
-export type PathParamTarget = ClosedEnum<typeof PathParamTarget>;
+export type PostV2TargetIdentifierAttributesTarget = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesTarget
+>;
 
 /**
  * The type of the attribute. This value affects the possible `config` values. Attributes of type "status" are not supported on objects.
  */
-export const Type = {
+export const PostV2TargetIdentifierAttributesType = {
   Text: "text",
   Number: "number",
   Checkbox: "checkbox",
@@ -45,50 +58,58 @@ export const Type = {
 /**
  * The type of the attribute. This value affects the possible `config` values. Attributes of type "status" are not supported on objects.
  */
-export type Type = ClosedEnum<typeof Type>;
-
-export const PostV2TargetIdentifierAttributesDefaultValueType = {
-  Static: "static",
-} as const;
-export type PostV2TargetIdentifierAttributesDefaultValueType = ClosedEnum<
-  typeof PostV2TargetIdentifierAttributesDefaultValueType
+export type PostV2TargetIdentifierAttributesType = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesType
 >;
 
-export type Two = {
-  type: PostV2TargetIdentifierAttributesDefaultValueType;
-  template: Array<components.InputValue>;
+export const PostV2TargetIdentifierAttributesTypeStatic = {
+  Static: "static",
+} as const;
+export type PostV2TargetIdentifierAttributesTypeStatic = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesTypeStatic
+>;
+
+export type PostV2TargetIdentifierAttributesDefaultValueStatic = {
+  type: PostV2TargetIdentifierAttributesTypeStatic;
+  template: Array<InputValueUnion>;
 };
 
-export const DefaultValueType = {
+export const PostV2TargetIdentifierAttributesTypeDynamic = {
   Dynamic: "dynamic",
 } as const;
-export type DefaultValueType = ClosedEnum<typeof DefaultValueType>;
+export type PostV2TargetIdentifierAttributesTypeDynamic = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesTypeDynamic
+>;
 
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export const Template1 = {
+export const PostV2TargetIdentifierAttributesTemplate = {
   CurrentUser: "current-user",
 } as const;
 /**
  * For actor reference attributes, you may pass a dynamic value of `"current-user"`. When creating new records or entries, this will cause the actor reference value to be populated with either the workspace member or API token that created the record/entry.
  */
-export type Template1 = ClosedEnum<typeof Template1>;
+export type PostV2TargetIdentifierAttributesTemplate = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesTemplate
+>;
 
-export type One = {
-  type: DefaultValueType;
+export type PostV2TargetIdentifierAttributesDefaultValueDynamic = {
+  type: PostV2TargetIdentifierAttributesTypeDynamic;
   template?: any | undefined;
 };
 
 /**
  * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
  */
-export type DefaultValue = One | Two;
+export type PostV2TargetIdentifierAttributesDefaultValueUnion =
+  | PostV2TargetIdentifierAttributesDefaultValueDynamic
+  | PostV2TargetIdentifierAttributesDefaultValueStatic;
 
 /**
  * The ISO4217 code representing the currency that values for this attribute should be stored in.
  */
-export const DefaultCurrencyCode = {
+export const PostV2TargetIdentifierAttributesDefaultCurrencyCode = {
   Aud: "AUD",
   Brl: "BRL",
   Bel: "BEL",
@@ -126,12 +147,14 @@ export const DefaultCurrencyCode = {
 /**
  * The ISO4217 code representing the currency that values for this attribute should be stored in.
  */
-export type DefaultCurrencyCode = ClosedEnum<typeof DefaultCurrencyCode>;
+export type PostV2TargetIdentifierAttributesDefaultCurrencyCode = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesDefaultCurrencyCode
+>;
 
 /**
  * How the currency should be displayed across the app. "code" will display the ISO currency code e.g. "USD", "name" will display the localized currency name e.g. "British pound", "narrowSymbol" will display "$1" instead of "US$1" and "symbol" will display a localized currency symbol such as "$".
  */
-export const DisplayType = {
+export const PostV2TargetIdentifierAttributesDisplayType = {
   Code: "code",
   Name: "name",
   NarrowSymbol: "narrowSymbol",
@@ -140,41 +163,43 @@ export const DisplayType = {
 /**
  * How the currency should be displayed across the app. "code" will display the ISO currency code e.g. "USD", "name" will display the localized currency name e.g. "British pound", "narrowSymbol" will display "$1" instead of "US$1" and "symbol" will display a localized currency symbol such as "$".
  */
-export type DisplayType = ClosedEnum<typeof DisplayType>;
+export type PostV2TargetIdentifierAttributesDisplayType = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesDisplayType
+>;
 
 /**
  * Configuration available for attributes of type "currency".
  */
-export type Currency = {
+export type PostV2TargetIdentifierAttributesCurrency = {
   /**
    * The ISO4217 code representing the currency that values for this attribute should be stored in.
    */
-  defaultCurrencyCode: DefaultCurrencyCode;
+  defaultCurrencyCode: PostV2TargetIdentifierAttributesDefaultCurrencyCode;
   /**
    * How the currency should be displayed across the app. "code" will display the ISO currency code e.g. "USD", "name" will display the localized currency name e.g. "British pound", "narrowSymbol" will display "$1" instead of "US$1" and "symbol" will display a localized currency symbol such as "$".
    */
-  displayType: DisplayType;
+  displayType: PostV2TargetIdentifierAttributesDisplayType;
 };
 
 /**
  * Configuration available for attributes of type "record-reference".
  */
-export type RecordReference = {
+export type PostV2TargetIdentifierAttributesRecordReference = {
   /**
    * A list of slugs or UUIDs to indicate which objects records are allowed to belong to. Leave empty to to allow records from all object types.
    */
   allowedObjects: Array<string>;
 };
 
-export type Config = {
+export type PostV2TargetIdentifierAttributesConfig = {
   /**
    * Configuration available for attributes of type "currency".
    */
-  currency?: Currency | undefined;
+  currency?: PostV2TargetIdentifierAttributesCurrency | undefined;
   /**
    * Configuration available for attributes of type "record-reference".
    */
-  recordReference?: RecordReference | undefined;
+  recordReference?: PostV2TargetIdentifierAttributesRecordReference | undefined;
 };
 
 export type PostV2TargetIdentifierAttributesData = {
@@ -193,7 +218,7 @@ export type PostV2TargetIdentifierAttributesData = {
   /**
    * The type of the attribute. This value affects the possible `config` values. Attributes of type "status" are not supported on objects.
    */
-  type: Type;
+  type: PostV2TargetIdentifierAttributesType;
   /**
    * When `is_required` is `true`, new records/entries must have a value for this attribute. If `false`, values may be `null`. This value does not affect existing data and you do not need to backfill `null` values if changing `is_required` from `false` to `true`.
    */
@@ -209,8 +234,12 @@ export type PostV2TargetIdentifierAttributesData = {
   /**
    * The default value for this attribute. Static values are used to directly populate values using their contents. Dynamic values are used to lookup data at the point of creation. For example, you could use a dynamic value to insert a value for the currently logged in user. Which default values are available is dependent on the type of the attribute. Default values are not currently supported on people or company objects.
    */
-  defaultValue?: One | Two | null | undefined;
-  config: Config;
+  defaultValue?:
+    | PostV2TargetIdentifierAttributesDefaultValueDynamic
+    | PostV2TargetIdentifierAttributesDefaultValueStatic
+    | null
+    | undefined;
+  config: PostV2TargetIdentifierAttributesConfig;
 };
 
 export type PostV2TargetIdentifierAttributesRequestBody = {
@@ -221,7 +250,7 @@ export type PostV2TargetIdentifierAttributesRequest = {
   /**
    * Whether the attribute is to be created on an object or a list.
    */
-  target: PathParamTarget;
+  target: PostV2TargetIdentifierAttributesTarget;
   identifier: string;
   requestBody: PostV2TargetIdentifierAttributesRequestBody;
 };
@@ -229,178 +258,223 @@ export type PostV2TargetIdentifierAttributesRequest = {
 /**
  * Success
  */
-export type PostV2TargetIdentifierAttributesResponseBody = {
-  data: components.Attribute;
+export type PostV2TargetIdentifierAttributesResponse = {
+  data: Attribute;
 };
 
 /** @internal */
-export const PathParamTarget$inboundSchema: z.ZodNativeEnum<
-  typeof PathParamTarget
-> = z.nativeEnum(PathParamTarget);
+export const PostV2TargetIdentifierAttributesTarget$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTarget> = z.nativeEnum(
+    PostV2TargetIdentifierAttributesTarget,
+  );
 
 /** @internal */
-export const PathParamTarget$outboundSchema: z.ZodNativeEnum<
-  typeof PathParamTarget
-> = PathParamTarget$inboundSchema;
+export const PostV2TargetIdentifierAttributesTarget$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTarget> =
+    PostV2TargetIdentifierAttributesTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PathParamTarget$ {
-  /** @deprecated use `PathParamTarget$inboundSchema` instead. */
-  export const inboundSchema = PathParamTarget$inboundSchema;
-  /** @deprecated use `PathParamTarget$outboundSchema` instead. */
-  export const outboundSchema = PathParamTarget$outboundSchema;
-}
-
-/** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
-
-/** @internal */
-export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
-  Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Type$ {
-  /** @deprecated use `Type$inboundSchema` instead. */
-  export const inboundSchema = Type$inboundSchema;
-  /** @deprecated use `Type$outboundSchema` instead. */
-  export const outboundSchema = Type$outboundSchema;
-}
-
-/** @internal */
-export const PostV2TargetIdentifierAttributesDefaultValueType$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDefaultValueType> = z
-    .nativeEnum(PostV2TargetIdentifierAttributesDefaultValueType);
-
-/** @internal */
-export const PostV2TargetIdentifierAttributesDefaultValueType$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDefaultValueType> =
-    PostV2TargetIdentifierAttributesDefaultValueType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2TargetIdentifierAttributesDefaultValueType$ {
-  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueType$inboundSchema` instead. */
+export namespace PostV2TargetIdentifierAttributesTarget$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesTarget$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2TargetIdentifierAttributesDefaultValueType$inboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueType$outboundSchema` instead. */
+    PostV2TargetIdentifierAttributesTarget$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesTarget$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2TargetIdentifierAttributesDefaultValueType$outboundSchema;
+    PostV2TargetIdentifierAttributesTarget$outboundSchema;
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    type: PostV2TargetIdentifierAttributesDefaultValueType$inboundSchema,
-    template: z.array(components.InputValue$inboundSchema),
+export const PostV2TargetIdentifierAttributesType$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesType> = z.nativeEnum(
+    PostV2TargetIdentifierAttributesType,
+  );
+
+/** @internal */
+export const PostV2TargetIdentifierAttributesType$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesType> =
+    PostV2TargetIdentifierAttributesType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2TargetIdentifierAttributesType$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesType$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesType$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesType$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesType$outboundSchema;
+}
+
+/** @internal */
+export const PostV2TargetIdentifierAttributesTypeStatic$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTypeStatic> = z
+    .nativeEnum(PostV2TargetIdentifierAttributesTypeStatic);
+
+/** @internal */
+export const PostV2TargetIdentifierAttributesTypeStatic$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTypeStatic> =
+    PostV2TargetIdentifierAttributesTypeStatic$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2TargetIdentifierAttributesTypeStatic$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesTypeStatic$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesTypeStatic$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesTypeStatic$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesTypeStatic$outboundSchema;
+}
+
+/** @internal */
+export const PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueStatic,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: PostV2TargetIdentifierAttributesTypeStatic$inboundSchema,
+    template: z.array(InputValueUnion$inboundSchema),
   });
 
 /** @internal */
-export type Two$Outbound = {
+export type PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound = {
   type: string;
-  template: Array<components.InputValue$Outbound>;
+  template: Array<InputValueUnion$Outbound>;
 };
 
 /** @internal */
-export const Two$outboundSchema: z.ZodType<Two$Outbound, z.ZodTypeDef, Two> = z
-  .object({
-    type: PostV2TargetIdentifierAttributesDefaultValueType$outboundSchema,
-    template: z.array(components.InputValue$outboundSchema),
+export const PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound,
+    z.ZodTypeDef,
+    PostV2TargetIdentifierAttributesDefaultValueStatic
+  > = z.object({
+    type: PostV2TargetIdentifierAttributesTypeStatic$outboundSchema,
+    template: z.array(InputValueUnion$outboundSchema),
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Two$ {
-  /** @deprecated use `Two$inboundSchema` instead. */
-  export const inboundSchema = Two$inboundSchema;
-  /** @deprecated use `Two$outboundSchema` instead. */
-  export const outboundSchema = Two$outboundSchema;
-  /** @deprecated use `Two$Outbound` instead. */
-  export type Outbound = Two$Outbound;
+export namespace PostV2TargetIdentifierAttributesDefaultValueStatic$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound` instead. */
+  export type Outbound =
+    PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound;
 }
 
-export function twoToJSON(two: Two): string {
-  return JSON.stringify(Two$outboundSchema.parse(two));
+export function postV2TargetIdentifierAttributesDefaultValueStaticToJSON(
+  postV2TargetIdentifierAttributesDefaultValueStatic:
+    PostV2TargetIdentifierAttributesDefaultValueStatic,
+): string {
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema.parse(
+      postV2TargetIdentifierAttributesDefaultValueStatic,
+    ),
+  );
 }
 
-export function twoFromJSON(
+export function postV2TargetIdentifierAttributesDefaultValueStaticFromJSON(
   jsonString: string,
-): SafeParseResult<Two, SDKValidationError> {
+): SafeParseResult<
+  PostV2TargetIdentifierAttributesDefaultValueStatic,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Two$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Two' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TargetIdentifierAttributesDefaultValueStatic' from JSON`,
   );
 }
 
 /** @internal */
-export const DefaultValueType$inboundSchema: z.ZodNativeEnum<
-  typeof DefaultValueType
-> = z.nativeEnum(DefaultValueType);
+export const PostV2TargetIdentifierAttributesTypeDynamic$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTypeDynamic> = z
+    .nativeEnum(PostV2TargetIdentifierAttributesTypeDynamic);
 
 /** @internal */
-export const DefaultValueType$outboundSchema: z.ZodNativeEnum<
-  typeof DefaultValueType
-> = DefaultValueType$inboundSchema;
+export const PostV2TargetIdentifierAttributesTypeDynamic$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTypeDynamic> =
+    PostV2TargetIdentifierAttributesTypeDynamic$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DefaultValueType$ {
-  /** @deprecated use `DefaultValueType$inboundSchema` instead. */
-  export const inboundSchema = DefaultValueType$inboundSchema;
-  /** @deprecated use `DefaultValueType$outboundSchema` instead. */
-  export const outboundSchema = DefaultValueType$outboundSchema;
+export namespace PostV2TargetIdentifierAttributesTypeDynamic$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesTypeDynamic$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesTypeDynamic$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesTypeDynamic$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesTypeDynamic$outboundSchema;
 }
 
 /** @internal */
-export const Template1$inboundSchema: z.ZodNativeEnum<typeof Template1> = z
-  .nativeEnum(Template1);
+export const PostV2TargetIdentifierAttributesTemplate$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTemplate> = z
+    .nativeEnum(PostV2TargetIdentifierAttributesTemplate);
 
 /** @internal */
-export const Template1$outboundSchema: z.ZodNativeEnum<typeof Template1> =
-  Template1$inboundSchema;
+export const PostV2TargetIdentifierAttributesTemplate$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesTemplate> =
+    PostV2TargetIdentifierAttributesTemplate$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Template1$ {
-  /** @deprecated use `Template1$inboundSchema` instead. */
-  export const inboundSchema = Template1$inboundSchema;
-  /** @deprecated use `Template1$outboundSchema` instead. */
-  export const outboundSchema = Template1$outboundSchema;
+export namespace PostV2TargetIdentifierAttributesTemplate$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesTemplate$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesTemplate$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesTemplate$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesTemplate$outboundSchema;
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    type: DefaultValueType$inboundSchema,
+export const PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueDynamic,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: PostV2TargetIdentifierAttributesTypeDynamic$inboundSchema,
     template: z.any().optional(),
   });
 
 /** @internal */
-export type One$Outbound = {
+export type PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound = {
   type: string;
   template?: any | undefined;
 };
 
 /** @internal */
-export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
-  .object({
-    type: DefaultValueType$outboundSchema,
+export const PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound,
+    z.ZodTypeDef,
+    PostV2TargetIdentifierAttributesDefaultValueDynamic
+  > = z.object({
+    type: PostV2TargetIdentifierAttributesTypeDynamic$outboundSchema,
     template: z.any().optional(),
   });
 
@@ -408,124 +482,178 @@ export const One$outboundSchema: z.ZodType<One$Outbound, z.ZodTypeDef, One> = z
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace One$ {
-  /** @deprecated use `One$inboundSchema` instead. */
-  export const inboundSchema = One$inboundSchema;
-  /** @deprecated use `One$outboundSchema` instead. */
-  export const outboundSchema = One$outboundSchema;
-  /** @deprecated use `One$Outbound` instead. */
-  export type Outbound = One$Outbound;
+export namespace PostV2TargetIdentifierAttributesDefaultValueDynamic$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound` instead. */
+  export type Outbound =
+    PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound;
 }
 
-export function oneToJSON(one: One): string {
-  return JSON.stringify(One$outboundSchema.parse(one));
+export function postV2TargetIdentifierAttributesDefaultValueDynamicToJSON(
+  postV2TargetIdentifierAttributesDefaultValueDynamic:
+    PostV2TargetIdentifierAttributesDefaultValueDynamic,
+): string {
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema.parse(
+      postV2TargetIdentifierAttributesDefaultValueDynamic,
+    ),
+  );
 }
 
-export function oneFromJSON(
+export function postV2TargetIdentifierAttributesDefaultValueDynamicFromJSON(
   jsonString: string,
-): SafeParseResult<One, SDKValidationError> {
+): SafeParseResult<
+  PostV2TargetIdentifierAttributesDefaultValueDynamic,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => One$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'One' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TargetIdentifierAttributesDefaultValueDynamic' from JSON`,
   );
 }
 
 /** @internal */
-export const DefaultValue$inboundSchema: z.ZodType<
-  DefaultValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]);
+export const PostV2TargetIdentifierAttributesDefaultValueUnion$inboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() =>
+      PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema
+    ),
+    z.lazy(() =>
+      PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema
+    ),
+  ]);
 
 /** @internal */
-export type DefaultValue$Outbound = One$Outbound | Two$Outbound;
+export type PostV2TargetIdentifierAttributesDefaultValueUnion$Outbound =
+  | PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound
+  | PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound;
 
 /** @internal */
-export const DefaultValue$outboundSchema: z.ZodType<
-  DefaultValue$Outbound,
-  z.ZodTypeDef,
-  DefaultValue
-> = z.union([
-  z.lazy(() => One$outboundSchema),
-  z.lazy(() => Two$outboundSchema),
-]);
+export const PostV2TargetIdentifierAttributesDefaultValueUnion$outboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesDefaultValueUnion$Outbound,
+    z.ZodTypeDef,
+    PostV2TargetIdentifierAttributesDefaultValueUnion
+  > = z.union([
+    z.lazy(() =>
+      PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema
+    ),
+    z.lazy(() =>
+      PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema
+    ),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DefaultValue$ {
-  /** @deprecated use `DefaultValue$inboundSchema` instead. */
-  export const inboundSchema = DefaultValue$inboundSchema;
-  /** @deprecated use `DefaultValue$outboundSchema` instead. */
-  export const outboundSchema = DefaultValue$outboundSchema;
-  /** @deprecated use `DefaultValue$Outbound` instead. */
-  export type Outbound = DefaultValue$Outbound;
+export namespace PostV2TargetIdentifierAttributesDefaultValueUnion$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueUnion$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesDefaultValueUnion$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultValueUnion$Outbound` instead. */
+  export type Outbound =
+    PostV2TargetIdentifierAttributesDefaultValueUnion$Outbound;
 }
 
-export function defaultValueToJSON(defaultValue: DefaultValue): string {
-  return JSON.stringify(DefaultValue$outboundSchema.parse(defaultValue));
+export function postV2TargetIdentifierAttributesDefaultValueUnionToJSON(
+  postV2TargetIdentifierAttributesDefaultValueUnion:
+    PostV2TargetIdentifierAttributesDefaultValueUnion,
+): string {
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesDefaultValueUnion$outboundSchema.parse(
+      postV2TargetIdentifierAttributesDefaultValueUnion,
+    ),
+  );
 }
 
-export function defaultValueFromJSON(
+export function postV2TargetIdentifierAttributesDefaultValueUnionFromJSON(
   jsonString: string,
-): SafeParseResult<DefaultValue, SDKValidationError> {
+): SafeParseResult<
+  PostV2TargetIdentifierAttributesDefaultValueUnion,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => DefaultValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DefaultValue' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesDefaultValueUnion$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TargetIdentifierAttributesDefaultValueUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const DefaultCurrencyCode$inboundSchema: z.ZodNativeEnum<
-  typeof DefaultCurrencyCode
-> = z.nativeEnum(DefaultCurrencyCode);
+export const PostV2TargetIdentifierAttributesDefaultCurrencyCode$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDefaultCurrencyCode> =
+    z.nativeEnum(PostV2TargetIdentifierAttributesDefaultCurrencyCode);
 
 /** @internal */
-export const DefaultCurrencyCode$outboundSchema: z.ZodNativeEnum<
-  typeof DefaultCurrencyCode
-> = DefaultCurrencyCode$inboundSchema;
+export const PostV2TargetIdentifierAttributesDefaultCurrencyCode$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDefaultCurrencyCode> =
+    PostV2TargetIdentifierAttributesDefaultCurrencyCode$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DefaultCurrencyCode$ {
-  /** @deprecated use `DefaultCurrencyCode$inboundSchema` instead. */
-  export const inboundSchema = DefaultCurrencyCode$inboundSchema;
-  /** @deprecated use `DefaultCurrencyCode$outboundSchema` instead. */
-  export const outboundSchema = DefaultCurrencyCode$outboundSchema;
+export namespace PostV2TargetIdentifierAttributesDefaultCurrencyCode$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultCurrencyCode$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesDefaultCurrencyCode$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDefaultCurrencyCode$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesDefaultCurrencyCode$outboundSchema;
 }
 
 /** @internal */
-export const DisplayType$inboundSchema: z.ZodNativeEnum<typeof DisplayType> = z
-  .nativeEnum(DisplayType);
+export const PostV2TargetIdentifierAttributesDisplayType$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDisplayType> = z
+    .nativeEnum(PostV2TargetIdentifierAttributesDisplayType);
 
 /** @internal */
-export const DisplayType$outboundSchema: z.ZodNativeEnum<typeof DisplayType> =
-  DisplayType$inboundSchema;
+export const PostV2TargetIdentifierAttributesDisplayType$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2TargetIdentifierAttributesDisplayType> =
+    PostV2TargetIdentifierAttributesDisplayType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DisplayType$ {
-  /** @deprecated use `DisplayType$inboundSchema` instead. */
-  export const inboundSchema = DisplayType$inboundSchema;
-  /** @deprecated use `DisplayType$outboundSchema` instead. */
-  export const outboundSchema = DisplayType$outboundSchema;
+export namespace PostV2TargetIdentifierAttributesDisplayType$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesDisplayType$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesDisplayType$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesDisplayType$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesDisplayType$outboundSchema;
 }
 
 /** @internal */
-export const Currency$inboundSchema: z.ZodType<
-  Currency,
+export const PostV2TargetIdentifierAttributesCurrency$inboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesCurrency,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  default_currency_code: DefaultCurrencyCode$inboundSchema,
-  display_type: DisplayType$inboundSchema,
+  default_currency_code:
+    PostV2TargetIdentifierAttributesDefaultCurrencyCode$inboundSchema,
+  display_type: PostV2TargetIdentifierAttributesDisplayType$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "default_currency_code": "defaultCurrencyCode",
@@ -534,19 +662,20 @@ export const Currency$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Currency$Outbound = {
+export type PostV2TargetIdentifierAttributesCurrency$Outbound = {
   default_currency_code: string;
   display_type: string;
 };
 
 /** @internal */
-export const Currency$outboundSchema: z.ZodType<
-  Currency$Outbound,
+export const PostV2TargetIdentifierAttributesCurrency$outboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesCurrency$Outbound,
   z.ZodTypeDef,
-  Currency
+  PostV2TargetIdentifierAttributesCurrency
 > = z.object({
-  defaultCurrencyCode: DefaultCurrencyCode$outboundSchema,
-  displayType: DisplayType$outboundSchema,
+  defaultCurrencyCode:
+    PostV2TargetIdentifierAttributesDefaultCurrencyCode$outboundSchema,
+  displayType: PostV2TargetIdentifierAttributesDisplayType$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     defaultCurrencyCode: "default_currency_code",
@@ -558,114 +687,157 @@ export const Currency$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Currency$ {
-  /** @deprecated use `Currency$inboundSchema` instead. */
-  export const inboundSchema = Currency$inboundSchema;
-  /** @deprecated use `Currency$outboundSchema` instead. */
-  export const outboundSchema = Currency$outboundSchema;
-  /** @deprecated use `Currency$Outbound` instead. */
-  export type Outbound = Currency$Outbound;
+export namespace PostV2TargetIdentifierAttributesCurrency$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesCurrency$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesCurrency$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesCurrency$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesCurrency$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesCurrency$Outbound` instead. */
+  export type Outbound = PostV2TargetIdentifierAttributesCurrency$Outbound;
 }
 
-export function currencyToJSON(currency: Currency): string {
-  return JSON.stringify(Currency$outboundSchema.parse(currency));
+export function postV2TargetIdentifierAttributesCurrencyToJSON(
+  postV2TargetIdentifierAttributesCurrency:
+    PostV2TargetIdentifierAttributesCurrency,
+): string {
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesCurrency$outboundSchema.parse(
+      postV2TargetIdentifierAttributesCurrency,
+    ),
+  );
 }
 
-export function currencyFromJSON(
+export function postV2TargetIdentifierAttributesCurrencyFromJSON(
   jsonString: string,
-): SafeParseResult<Currency, SDKValidationError> {
+): SafeParseResult<
+  PostV2TargetIdentifierAttributesCurrency,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Currency$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Currency' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesCurrency$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TargetIdentifierAttributesCurrency' from JSON`,
   );
 }
 
 /** @internal */
-export const RecordReference$inboundSchema: z.ZodType<
-  RecordReference,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  allowed_objects: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "allowed_objects": "allowedObjects",
+export const PostV2TargetIdentifierAttributesRecordReference$inboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesRecordReference,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    allowed_objects: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "allowed_objects": "allowedObjects",
+    });
   });
-});
 
 /** @internal */
-export type RecordReference$Outbound = {
+export type PostV2TargetIdentifierAttributesRecordReference$Outbound = {
   allowed_objects: Array<string>;
 };
 
 /** @internal */
-export const RecordReference$outboundSchema: z.ZodType<
-  RecordReference$Outbound,
-  z.ZodTypeDef,
-  RecordReference
-> = z.object({
-  allowedObjects: z.array(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    allowedObjects: "allowed_objects",
+export const PostV2TargetIdentifierAttributesRecordReference$outboundSchema:
+  z.ZodType<
+    PostV2TargetIdentifierAttributesRecordReference$Outbound,
+    z.ZodTypeDef,
+    PostV2TargetIdentifierAttributesRecordReference
+  > = z.object({
+    allowedObjects: z.array(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      allowedObjects: "allowed_objects",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace RecordReference$ {
-  /** @deprecated use `RecordReference$inboundSchema` instead. */
-  export const inboundSchema = RecordReference$inboundSchema;
-  /** @deprecated use `RecordReference$outboundSchema` instead. */
-  export const outboundSchema = RecordReference$outboundSchema;
-  /** @deprecated use `RecordReference$Outbound` instead. */
-  export type Outbound = RecordReference$Outbound;
+export namespace PostV2TargetIdentifierAttributesRecordReference$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesRecordReference$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesRecordReference$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesRecordReference$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesRecordReference$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesRecordReference$Outbound` instead. */
+  export type Outbound =
+    PostV2TargetIdentifierAttributesRecordReference$Outbound;
 }
 
-export function recordReferenceToJSON(
-  recordReference: RecordReference,
+export function postV2TargetIdentifierAttributesRecordReferenceToJSON(
+  postV2TargetIdentifierAttributesRecordReference:
+    PostV2TargetIdentifierAttributesRecordReference,
 ): string {
-  return JSON.stringify(RecordReference$outboundSchema.parse(recordReference));
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesRecordReference$outboundSchema.parse(
+      postV2TargetIdentifierAttributesRecordReference,
+    ),
+  );
 }
 
-export function recordReferenceFromJSON(
+export function postV2TargetIdentifierAttributesRecordReferenceFromJSON(
   jsonString: string,
-): SafeParseResult<RecordReference, SDKValidationError> {
+): SafeParseResult<
+  PostV2TargetIdentifierAttributesRecordReference,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => RecordReference$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'RecordReference' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesRecordReference$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2TargetIdentifierAttributesRecordReference' from JSON`,
   );
 }
 
 /** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({
-    currency: z.lazy(() => Currency$inboundSchema).optional(),
-    record_reference: z.lazy(() => RecordReference$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "record_reference": "recordReference",
-    });
+export const PostV2TargetIdentifierAttributesConfig$inboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesConfig,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.lazy(() => PostV2TargetIdentifierAttributesCurrency$inboundSchema)
+    .optional(),
+  record_reference: z.lazy(() =>
+    PostV2TargetIdentifierAttributesRecordReference$inboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "record_reference": "recordReference",
   });
+});
 
 /** @internal */
-export type Config$Outbound = {
-  currency?: Currency$Outbound | undefined;
-  record_reference?: RecordReference$Outbound | undefined;
+export type PostV2TargetIdentifierAttributesConfig$Outbound = {
+  currency?: PostV2TargetIdentifierAttributesCurrency$Outbound | undefined;
+  record_reference?:
+    | PostV2TargetIdentifierAttributesRecordReference$Outbound
+    | undefined;
 };
 
 /** @internal */
-export const Config$outboundSchema: z.ZodType<
-  Config$Outbound,
+export const PostV2TargetIdentifierAttributesConfig$outboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesConfig$Outbound,
   z.ZodTypeDef,
-  Config
+  PostV2TargetIdentifierAttributesConfig
 > = z.object({
-  currency: z.lazy(() => Currency$outboundSchema).optional(),
-  recordReference: z.lazy(() => RecordReference$outboundSchema).optional(),
+  currency: z.lazy(() =>
+    PostV2TargetIdentifierAttributesCurrency$outboundSchema
+  ).optional(),
+  recordReference: z.lazy(() =>
+    PostV2TargetIdentifierAttributesRecordReference$outboundSchema
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     recordReference: "record_reference",
@@ -676,26 +848,36 @@ export const Config$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Config$ {
-  /** @deprecated use `Config$inboundSchema` instead. */
-  export const inboundSchema = Config$inboundSchema;
-  /** @deprecated use `Config$outboundSchema` instead. */
-  export const outboundSchema = Config$outboundSchema;
-  /** @deprecated use `Config$Outbound` instead. */
-  export type Outbound = Config$Outbound;
+export namespace PostV2TargetIdentifierAttributesConfig$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesConfig$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2TargetIdentifierAttributesConfig$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesConfig$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2TargetIdentifierAttributesConfig$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesConfig$Outbound` instead. */
+  export type Outbound = PostV2TargetIdentifierAttributesConfig$Outbound;
 }
 
-export function configToJSON(config: Config): string {
-  return JSON.stringify(Config$outboundSchema.parse(config));
+export function postV2TargetIdentifierAttributesConfigToJSON(
+  postV2TargetIdentifierAttributesConfig:
+    PostV2TargetIdentifierAttributesConfig,
+): string {
+  return JSON.stringify(
+    PostV2TargetIdentifierAttributesConfig$outboundSchema.parse(
+      postV2TargetIdentifierAttributesConfig,
+    ),
+  );
 }
 
-export function configFromJSON(
+export function postV2TargetIdentifierAttributesConfigFromJSON(
   jsonString: string,
-): SafeParseResult<Config, SDKValidationError> {
+): SafeParseResult<PostV2TargetIdentifierAttributesConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Config$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Config' from JSON`,
+    (x) =>
+      PostV2TargetIdentifierAttributesConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2TargetIdentifierAttributesConfig' from JSON`,
   );
 }
 
@@ -708,14 +890,21 @@ export const PostV2TargetIdentifierAttributesData$inboundSchema: z.ZodType<
   title: z.string(),
   description: z.nullable(z.string()),
   api_slug: z.string(),
-  type: Type$inboundSchema,
+  type: PostV2TargetIdentifierAttributesType$inboundSchema,
   is_required: z.boolean(),
   is_unique: z.boolean(),
   is_multiselect: z.boolean(),
   default_value: z.nullable(
-    z.union([z.lazy(() => One$inboundSchema), z.lazy(() => Two$inboundSchema)]),
+    z.union([
+      z.lazy(() =>
+        PostV2TargetIdentifierAttributesDefaultValueDynamic$inboundSchema
+      ),
+      z.lazy(() =>
+        PostV2TargetIdentifierAttributesDefaultValueStatic$inboundSchema
+      ),
+    ]),
   ).optional(),
-  config: z.lazy(() => Config$inboundSchema),
+  config: z.lazy(() => PostV2TargetIdentifierAttributesConfig$inboundSchema),
 }).transform((v) => {
   return remap$(v, {
     "api_slug": "apiSlug",
@@ -735,8 +924,12 @@ export type PostV2TargetIdentifierAttributesData$Outbound = {
   is_required: boolean;
   is_unique: boolean;
   is_multiselect: boolean;
-  default_value?: One$Outbound | Two$Outbound | null | undefined;
-  config: Config$Outbound;
+  default_value?:
+    | PostV2TargetIdentifierAttributesDefaultValueDynamic$Outbound
+    | PostV2TargetIdentifierAttributesDefaultValueStatic$Outbound
+    | null
+    | undefined;
+  config: PostV2TargetIdentifierAttributesConfig$Outbound;
 };
 
 /** @internal */
@@ -748,17 +941,21 @@ export const PostV2TargetIdentifierAttributesData$outboundSchema: z.ZodType<
   title: z.string(),
   description: z.nullable(z.string()),
   apiSlug: z.string(),
-  type: Type$outboundSchema,
+  type: PostV2TargetIdentifierAttributesType$outboundSchema,
   isRequired: z.boolean(),
   isUnique: z.boolean(),
   isMultiselect: z.boolean(),
   defaultValue: z.nullable(
     z.union([
-      z.lazy(() => One$outboundSchema),
-      z.lazy(() => Two$outboundSchema),
+      z.lazy(() =>
+        PostV2TargetIdentifierAttributesDefaultValueDynamic$outboundSchema
+      ),
+      z.lazy(() =>
+        PostV2TargetIdentifierAttributesDefaultValueStatic$outboundSchema
+      ),
     ]),
   ).optional(),
-  config: z.lazy(() => Config$outboundSchema),
+  config: z.lazy(() => PostV2TargetIdentifierAttributesConfig$outboundSchema),
 }).transform((v) => {
   return remap$(v, {
     apiSlug: "api_slug",
@@ -878,7 +1075,7 @@ export const PostV2TargetIdentifierAttributesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: PathParamTarget$inboundSchema,
+  target: PostV2TargetIdentifierAttributesTarget$inboundSchema,
   identifier: z.string(),
   RequestBody: z.lazy(() =>
     PostV2TargetIdentifierAttributesRequestBody$inboundSchema
@@ -902,7 +1099,7 @@ export const PostV2TargetIdentifierAttributesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV2TargetIdentifierAttributesRequest
 > = z.object({
-  target: PathParamTarget$outboundSchema,
+  target: PostV2TargetIdentifierAttributesTarget$outboundSchema,
   identifier: z.string(),
   requestBody: z.lazy(() =>
     PostV2TargetIdentifierAttributesRequestBody$outboundSchema
@@ -956,68 +1153,66 @@ export function postV2TargetIdentifierAttributesRequestFromJSON(
 }
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesResponseBody$inboundSchema:
-  z.ZodType<
-    PostV2TargetIdentifierAttributesResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    data: components.Attribute$inboundSchema,
-  });
+export const PostV2TargetIdentifierAttributesResponse$inboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  data: Attribute$inboundSchema,
+});
 
 /** @internal */
-export type PostV2TargetIdentifierAttributesResponseBody$Outbound = {
-  data: components.Attribute$Outbound;
+export type PostV2TargetIdentifierAttributesResponse$Outbound = {
+  data: Attribute$Outbound;
 };
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesResponseBody$outboundSchema:
-  z.ZodType<
-    PostV2TargetIdentifierAttributesResponseBody$Outbound,
-    z.ZodTypeDef,
-    PostV2TargetIdentifierAttributesResponseBody
-  > = z.object({
-    data: components.Attribute$outboundSchema,
-  });
+export const PostV2TargetIdentifierAttributesResponse$outboundSchema: z.ZodType<
+  PostV2TargetIdentifierAttributesResponse$Outbound,
+  z.ZodTypeDef,
+  PostV2TargetIdentifierAttributesResponse
+> = z.object({
+  data: Attribute$outboundSchema,
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2TargetIdentifierAttributesResponseBody$ {
-  /** @deprecated use `PostV2TargetIdentifierAttributesResponseBody$inboundSchema` instead. */
+export namespace PostV2TargetIdentifierAttributesResponse$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2TargetIdentifierAttributesResponseBody$inboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesResponseBody$outboundSchema` instead. */
+    PostV2TargetIdentifierAttributesResponse$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2TargetIdentifierAttributesResponseBody$outboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesResponseBody$Outbound` instead. */
-  export type Outbound = PostV2TargetIdentifierAttributesResponseBody$Outbound;
+    PostV2TargetIdentifierAttributesResponse$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesResponse$Outbound` instead. */
+  export type Outbound = PostV2TargetIdentifierAttributesResponse$Outbound;
 }
 
-export function postV2TargetIdentifierAttributesResponseBodyToJSON(
-  postV2TargetIdentifierAttributesResponseBody:
-    PostV2TargetIdentifierAttributesResponseBody,
+export function postV2TargetIdentifierAttributesResponseToJSON(
+  postV2TargetIdentifierAttributesResponse:
+    PostV2TargetIdentifierAttributesResponse,
 ): string {
   return JSON.stringify(
-    PostV2TargetIdentifierAttributesResponseBody$outboundSchema.parse(
-      postV2TargetIdentifierAttributesResponseBody,
+    PostV2TargetIdentifierAttributesResponse$outboundSchema.parse(
+      postV2TargetIdentifierAttributesResponse,
     ),
   );
 }
 
-export function postV2TargetIdentifierAttributesResponseBodyFromJSON(
+export function postV2TargetIdentifierAttributesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PostV2TargetIdentifierAttributesResponseBody,
+  PostV2TargetIdentifierAttributesResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PostV2TargetIdentifierAttributesResponseBody$inboundSchema.parse(
+      PostV2TargetIdentifierAttributesResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'PostV2TargetIdentifierAttributesResponseBody' from JSON`,
+    `Failed to parse 'PostV2TargetIdentifierAttributesResponse' from JSON`,
   );
 }

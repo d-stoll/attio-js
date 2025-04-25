@@ -5,7 +5,7 @@ The type of the referenced actor. Currently, only workspace members can be writt
 ## Example Usage
 
 ```typescript
-import { InputValueReferencedActorType } from "attio-js/models/components";
+import { InputValueReferencedActorType } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValueReferencedActorType = "workspace-member";
 ```

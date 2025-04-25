@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2CommentsCommentIdNotFoundError,
+  GetV2CommentsCommentIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2CommentsCommentIdRequest,
+  GetV2CommentsCommentIdRequest$outboundSchema,
+  GetV2CommentsCommentIdResponse,
+  GetV2CommentsCommentIdResponse$inboundSchema,
+} from "../models/operations/getv2commentscommentid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -38,12 +46,12 @@ import { Result } from "../types/fp.js";
  */
 export function commentsGet(
   client: AttioCore,
-  request: operations.GetV2CommentsCommentIdRequest,
+  request: GetV2CommentsCommentIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2CommentsCommentIdResponseBody,
-    | errors.GetV2CommentsCommentIdResponseBody
+    GetV2CommentsCommentIdResponse,
+    | GetV2CommentsCommentIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -62,13 +70,13 @@ export function commentsGet(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2CommentsCommentIdRequest,
+  request: GetV2CommentsCommentIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2CommentsCommentIdResponseBody,
-      | errors.GetV2CommentsCommentIdResponseBody
+      GetV2CommentsCommentIdResponse,
+      | GetV2CommentsCommentIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -82,8 +90,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.GetV2CommentsCommentIdRequest$outboundSchema.parse(value),
+    (value) => GetV2CommentsCommentIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -153,8 +160,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2CommentsCommentIdResponseBody,
-    | errors.GetV2CommentsCommentIdResponseBody
+    GetV2CommentsCommentIdResponse,
+    | GetV2CommentsCommentIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -163,8 +170,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2CommentsCommentIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.GetV2CommentsCommentIdResponseBody$inboundSchema),
+    M.json(200, GetV2CommentsCommentIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2CommentsCommentIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

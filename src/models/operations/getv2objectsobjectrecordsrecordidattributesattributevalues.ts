@@ -7,7 +7,18 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  SelectOption,
+  SelectOption$inboundSchema,
+  SelectOption$Outbound,
+  SelectOption$outboundSchema,
+} from "../components/selectoption.js";
+import {
+  Status,
+  Status$inboundSchema,
+  Status$Outbound,
+  Status$outboundSchema,
+} from "../components/status.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest =
@@ -23,7 +34,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest =
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -33,15 +44,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17 =
   {
     /**
      * An ID to identify the actor.
@@ -51,7 +62,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17
       | null
       | undefined;
   };
@@ -59,47 +70,48 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp =
   {
     Timestamp: "timestamp",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp
   >;
 
-export type Seventeen = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType;
-  /**
-   * A timestamp value represents a single, universal moment in time using an ISO 8601 formatted string. This means that a timestamp consists of a date, a time (with nanosecond precision), and a time zone. Attio will coerce timestamps which do not provide full nanosecond precision and UTC is assumed if no time zone is provided. For example, "2023", "2023-01", "2023-01-02", "2023-01-02T13:00", "2023-01-02T13:00:00", and "2023-01-02T13:00:00.000000000" will all be coerced to "2023-01-02T13:00:00.000000000Z". Timestamps are always returned in UTC. For example, writing a timestamp value using the string "2023-01-02T13:00:00.000000000+02:00" will result in the value "2023-01-02T11:00:00.000000000Z" being returned. The maximum date is "9999-12-31T23:59:59.999999999Z".
-   */
-  value: Date;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp;
+    /**
+     * A timestamp value represents a single, universal moment in time using an ISO 8601 formatted string. This means that a timestamp consists of a date, a time (with nanosecond precision), and a time zone. Attio will coerce timestamps which do not provide full nanosecond precision and UTC is assumed if no time zone is provided. For example, "2023", "2023-01", "2023-01-02", "2023-01-02T13:00", "2023-01-02T13:00:00", and "2023-01-02T13:00:00.000000000" will all be coerced to "2023-01-02T13:00:00.000000000Z". Timestamps are always returned in UTC. For example, writing a timestamp value using the string "2023-01-02T13:00:00.000000000+02:00" will result in the value "2023-01-02T11:00:00.000000000Z" being returned. The maximum date is "9999-12-31T23:59:59.999999999Z".
+     */
+    value: Date;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -109,15 +121,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16 =
   {
     /**
      * An ID to identify the actor.
@@ -127,7 +139,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16
       | null
       | undefined;
   };
@@ -135,47 +147,48 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText =
   {
     Text: "text",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText
   >;
 
-export type Sixteen = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor;
-  /**
-   * A raw text field. Values are limited to 10MB.
-   */
-  value: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16;
+    /**
+     * A raw text field. Values are limited to 10MB.
+     */
+    value: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -185,15 +198,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15 =
   {
     /**
      * An ID to identify the actor.
@@ -203,7 +216,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15
       | null
       | undefined;
   };
@@ -211,44 +224,45 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect =
   {
     Select: "select",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect
   >;
 
-export type Fifteen = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor;
-  option: components.SelectOption;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15;
+    option: SelectOption;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -258,15 +272,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14 =
   {
     /**
      * An ID to identify the actor.
@@ -276,7 +290,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14
       | null
       | undefined;
   };
@@ -284,47 +298,48 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating =
   {
     Rating: "rating",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating
   >;
 
-export type Fourteen = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor;
-  /**
-   * A number between 0 and 5 (inclusive) to represent a star rating.
-   */
-  value: number;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14;
+    /**
+     * A number between 0 and 5 (inclusive) to represent a star rating.
+     */
+    value: number;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -334,15 +349,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13 =
   {
     /**
      * An ID to identify the actor.
@@ -352,7 +367,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13
       | null
       | undefined;
   };
@@ -360,44 +375,45 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus =
   {
     Status: "status",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus
   >;
 
-export type Thirteen = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor;
-  status: components.Status;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13;
+    status: Status;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -407,15 +423,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12 =
   {
     /**
      * An ID to identify the actor.
@@ -425,7 +441,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12
       | null
       | undefined;
   };
@@ -433,309 +449,315 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export const DataCountryCode = {
-  Af: "AF",
-  Ax: "AX",
-  Al: "AL",
-  Dz: "DZ",
-  As: "AS",
-  Ad: "AD",
-  Ao: "AO",
-  Ai: "AI",
-  Aq: "AQ",
-  Ag: "AG",
-  Ar: "AR",
-  Am: "AM",
-  Aw: "AW",
-  Au: "AU",
-  At: "AT",
-  Az: "AZ",
-  Bs: "BS",
-  Bh: "BH",
-  Bd: "BD",
-  Bb: "BB",
-  By: "BY",
-  Be: "BE",
-  Bz: "BZ",
-  Bj: "BJ",
-  Bm: "BM",
-  Bt: "BT",
-  Bo: "BO",
-  Ba: "BA",
-  Bw: "BW",
-  Bv: "BV",
-  Br: "BR",
-  Io: "IO",
-  Bn: "BN",
-  Bg: "BG",
-  Bf: "BF",
-  Bi: "BI",
-  Kh: "KH",
-  Cm: "CM",
-  Ca: "CA",
-  Cv: "CV",
-  Ky: "KY",
-  Cf: "CF",
-  Td: "TD",
-  Cl: "CL",
-  Cn: "CN",
-  Cx: "CX",
-  Cc: "CC",
-  Co: "CO",
-  Km: "KM",
-  Cg: "CG",
-  Cd: "CD",
-  Ck: "CK",
-  Cr: "CR",
-  Ci: "CI",
-  Hr: "HR",
-  Cu: "CU",
-  Cw: "CW",
-  Cy: "CY",
-  Cz: "CZ",
-  Dk: "DK",
-  Dj: "DJ",
-  Dm: "DM",
-  Do: "DO",
-  Ec: "EC",
-  Eg: "EG",
-  Sv: "SV",
-  Gq: "GQ",
-  Er: "ER",
-  Ee: "EE",
-  Et: "ET",
-  Fk: "FK",
-  Fo: "FO",
-  Fj: "FJ",
-  Fi: "FI",
-  Fr: "FR",
-  Gf: "GF",
-  Pf: "PF",
-  Tf: "TF",
-  Ga: "GA",
-  Gm: "GM",
-  Ge: "GE",
-  De: "DE",
-  Gh: "GH",
-  Gi: "GI",
-  Gr: "GR",
-  Gl: "GL",
-  Gd: "GD",
-  Gp: "GP",
-  Gu: "GU",
-  Gt: "GT",
-  Gg: "GG",
-  Gn: "GN",
-  Gw: "GW",
-  Gy: "GY",
-  Ht: "HT",
-  Hm: "HM",
-  Va: "VA",
-  Hn: "HN",
-  Hk: "HK",
-  Hu: "HU",
-  Is: "IS",
-  In: "IN",
-  Id: "ID",
-  Ir: "IR",
-  Iq: "IQ",
-  Ie: "IE",
-  Im: "IM",
-  Il: "IL",
-  It: "IT",
-  Jm: "JM",
-  Jp: "JP",
-  Je: "JE",
-  Jo: "JO",
-  Kz: "KZ",
-  Ke: "KE",
-  Ki: "KI",
-  Kr: "KR",
-  Kw: "KW",
-  Kg: "KG",
-  La: "LA",
-  Lv: "LV",
-  Lb: "LB",
-  Ls: "LS",
-  Lr: "LR",
-  Ly: "LY",
-  Li: "LI",
-  Lt: "LT",
-  Lu: "LU",
-  Mo: "MO",
-  Mk: "MK",
-  Mg: "MG",
-  Mw: "MW",
-  My: "MY",
-  Mv: "MV",
-  Ml: "ML",
-  Mt: "MT",
-  Mh: "MH",
-  Mq: "MQ",
-  Mr: "MR",
-  Mu: "MU",
-  Yt: "YT",
-  Mx: "MX",
-  Fm: "FM",
-  Md: "MD",
-  Mc: "MC",
-  Mn: "MN",
-  Me: "ME",
-  Ms: "MS",
-  Ma: "MA",
-  Mz: "MZ",
-  Mm: "MM",
-  Na: "NA",
-  Nr: "NR",
-  Np: "NP",
-  Nl: "NL",
-  An: "AN",
-  Nc: "NC",
-  Nz: "NZ",
-  Ni: "NI",
-  Ne: "NE",
-  Ng: "NG",
-  Nu: "NU",
-  Nf: "NF",
-  Mp: "MP",
-  No: "NO",
-  Om: "OM",
-  Pk: "PK",
-  Pw: "PW",
-  Ps: "PS",
-  Pa: "PA",
-  Pg: "PG",
-  Py: "PY",
-  Pe: "PE",
-  Ph: "PH",
-  Pn: "PN",
-  Pl: "PL",
-  Pt: "PT",
-  Pr: "PR",
-  Qa: "QA",
-  Re: "RE",
-  Ro: "RO",
-  Ru: "RU",
-  Rw: "RW",
-  Bl: "BL",
-  Sh: "SH",
-  Kn: "KN",
-  Lc: "LC",
-  Mf: "MF",
-  Pm: "PM",
-  Vc: "VC",
-  Ws: "WS",
-  Sm: "SM",
-  St: "ST",
-  Sa: "SA",
-  Sn: "SN",
-  Ss: "SS",
-  Rs: "RS",
-  Sc: "SC",
-  Sl: "SL",
-  Sg: "SG",
-  Sk: "SK",
-  Si: "SI",
-  Sb: "SB",
-  So: "SO",
-  Za: "ZA",
-  Gs: "GS",
-  Es: "ES",
-  Lk: "LK",
-  Sd: "SD",
-  Sr: "SR",
-  Sj: "SJ",
-  Sz: "SZ",
-  Se: "SE",
-  Ch: "CH",
-  Sy: "SY",
-  Tw: "TW",
-  Tj: "TJ",
-  Tz: "TZ",
-  Th: "TH",
-  Tl: "TL",
-  Tg: "TG",
-  Tk: "TK",
-  To: "TO",
-  Tt: "TT",
-  Tn: "TN",
-  Tr: "TR",
-  Tm: "TM",
-  Tc: "TC",
-  Tv: "TV",
-  Ug: "UG",
-  Ua: "UA",
-  Ae: "AE",
-  Gb: "GB",
-  Us: "US",
-  Um: "UM",
-  Uy: "UY",
-  Uz: "UZ",
-  Vu: "VU",
-  Ve: "VE",
-  Vn: "VN",
-  Vg: "VG",
-  Vi: "VI",
-  Wf: "WF",
-  Eh: "EH",
-  Ye: "YE",
-  Zm: "ZM",
-  Zw: "ZW",
-} as const;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2 =
+  {
+    Af: "AF",
+    Ax: "AX",
+    Al: "AL",
+    Dz: "DZ",
+    As: "AS",
+    Ad: "AD",
+    Ao: "AO",
+    Ai: "AI",
+    Aq: "AQ",
+    Ag: "AG",
+    Ar: "AR",
+    Am: "AM",
+    Aw: "AW",
+    Au: "AU",
+    At: "AT",
+    Az: "AZ",
+    Bs: "BS",
+    Bh: "BH",
+    Bd: "BD",
+    Bb: "BB",
+    By: "BY",
+    Be: "BE",
+    Bz: "BZ",
+    Bj: "BJ",
+    Bm: "BM",
+    Bt: "BT",
+    Bo: "BO",
+    Ba: "BA",
+    Bw: "BW",
+    Bv: "BV",
+    Br: "BR",
+    Io: "IO",
+    Bn: "BN",
+    Bg: "BG",
+    Bf: "BF",
+    Bi: "BI",
+    Kh: "KH",
+    Cm: "CM",
+    Ca: "CA",
+    Cv: "CV",
+    Ky: "KY",
+    Cf: "CF",
+    Td: "TD",
+    Cl: "CL",
+    Cn: "CN",
+    Cx: "CX",
+    Cc: "CC",
+    Co: "CO",
+    Km: "KM",
+    Cg: "CG",
+    Cd: "CD",
+    Ck: "CK",
+    Cr: "CR",
+    Ci: "CI",
+    Hr: "HR",
+    Cu: "CU",
+    Cw: "CW",
+    Cy: "CY",
+    Cz: "CZ",
+    Dk: "DK",
+    Dj: "DJ",
+    Dm: "DM",
+    Do: "DO",
+    Ec: "EC",
+    Eg: "EG",
+    Sv: "SV",
+    Gq: "GQ",
+    Er: "ER",
+    Ee: "EE",
+    Et: "ET",
+    Fk: "FK",
+    Fo: "FO",
+    Fj: "FJ",
+    Fi: "FI",
+    Fr: "FR",
+    Gf: "GF",
+    Pf: "PF",
+    Tf: "TF",
+    Ga: "GA",
+    Gm: "GM",
+    Ge: "GE",
+    De: "DE",
+    Gh: "GH",
+    Gi: "GI",
+    Gr: "GR",
+    Gl: "GL",
+    Gd: "GD",
+    Gp: "GP",
+    Gu: "GU",
+    Gt: "GT",
+    Gg: "GG",
+    Gn: "GN",
+    Gw: "GW",
+    Gy: "GY",
+    Ht: "HT",
+    Hm: "HM",
+    Va: "VA",
+    Hn: "HN",
+    Hk: "HK",
+    Hu: "HU",
+    Is: "IS",
+    In: "IN",
+    Id: "ID",
+    Ir: "IR",
+    Iq: "IQ",
+    Ie: "IE",
+    Im: "IM",
+    Il: "IL",
+    It: "IT",
+    Jm: "JM",
+    Jp: "JP",
+    Je: "JE",
+    Jo: "JO",
+    Kz: "KZ",
+    Ke: "KE",
+    Ki: "KI",
+    Kr: "KR",
+    Kw: "KW",
+    Kg: "KG",
+    La: "LA",
+    Lv: "LV",
+    Lb: "LB",
+    Ls: "LS",
+    Lr: "LR",
+    Ly: "LY",
+    Li: "LI",
+    Lt: "LT",
+    Lu: "LU",
+    Mo: "MO",
+    Mk: "MK",
+    Mg: "MG",
+    Mw: "MW",
+    My: "MY",
+    Mv: "MV",
+    Ml: "ML",
+    Mt: "MT",
+    Mh: "MH",
+    Mq: "MQ",
+    Mr: "MR",
+    Mu: "MU",
+    Yt: "YT",
+    Mx: "MX",
+    Fm: "FM",
+    Md: "MD",
+    Mc: "MC",
+    Mn: "MN",
+    Me: "ME",
+    Ms: "MS",
+    Ma: "MA",
+    Mz: "MZ",
+    Mm: "MM",
+    Na: "NA",
+    Nr: "NR",
+    Np: "NP",
+    Nl: "NL",
+    An: "AN",
+    Nc: "NC",
+    Nz: "NZ",
+    Ni: "NI",
+    Ne: "NE",
+    Ng: "NG",
+    Nu: "NU",
+    Nf: "NF",
+    Mp: "MP",
+    No: "NO",
+    Om: "OM",
+    Pk: "PK",
+    Pw: "PW",
+    Ps: "PS",
+    Pa: "PA",
+    Pg: "PG",
+    Py: "PY",
+    Pe: "PE",
+    Ph: "PH",
+    Pn: "PN",
+    Pl: "PL",
+    Pt: "PT",
+    Pr: "PR",
+    Qa: "QA",
+    Re: "RE",
+    Ro: "RO",
+    Ru: "RU",
+    Rw: "RW",
+    Bl: "BL",
+    Sh: "SH",
+    Kn: "KN",
+    Lc: "LC",
+    Mf: "MF",
+    Pm: "PM",
+    Vc: "VC",
+    Ws: "WS",
+    Sm: "SM",
+    St: "ST",
+    Sa: "SA",
+    Sn: "SN",
+    Ss: "SS",
+    Rs: "RS",
+    Sc: "SC",
+    Sl: "SL",
+    Sg: "SG",
+    Sk: "SK",
+    Si: "SI",
+    Sb: "SB",
+    So: "SO",
+    Za: "ZA",
+    Gs: "GS",
+    Es: "ES",
+    Lk: "LK",
+    Sd: "SD",
+    Sr: "SR",
+    Sj: "SJ",
+    Sz: "SZ",
+    Se: "SE",
+    Ch: "CH",
+    Sy: "SY",
+    Tw: "TW",
+    Tj: "TJ",
+    Tz: "TZ",
+    Th: "TH",
+    Tl: "TL",
+    Tg: "TG",
+    Tk: "TK",
+    To: "TO",
+    Tt: "TT",
+    Tn: "TN",
+    Tr: "TR",
+    Tm: "TM",
+    Tc: "TC",
+    Tv: "TV",
+    Ug: "UG",
+    Ua: "UA",
+    Ae: "AE",
+    Gb: "GB",
+    Us: "US",
+    Um: "UM",
+    Uy: "UY",
+    Uz: "UZ",
+    Vu: "VU",
+    Ve: "VE",
+    Vn: "VN",
+    Vg: "VG",
+    Vi: "VI",
+    Wf: "WF",
+    Eh: "EH",
+    Ye: "YE",
+    Zm: "ZM",
+    Zw: "ZW",
+  } as const;
 /**
  * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
  */
-export type DataCountryCode = ClosedEnum<typeof DataCountryCode>;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2 =
+  ClosedEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2
+  >;
 
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber =
   {
     PhoneNumber: "phone-number",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber
   >;
 
-export type Twelve = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor;
-  /**
-   * The raw, original phone number, as inputted.
-   */
-  originalPhoneNumber: string;
-  /**
-   * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
-   */
-  countryCode: DataCountryCode;
-  phoneNumber: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12;
+    /**
+     * The raw, original phone number, as inputted.
+     */
+    originalPhoneNumber: string;
+    /**
+     * The ISO 3166-1 alpha-2 country code representing the country that this phone number belongs to.
+     */
+    countryCode:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2;
+    phoneNumber: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -745,15 +767,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11 =
   {
     /**
      * An ID to identify the actor.
@@ -763,7 +785,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11
       | null
       | undefined;
   };
@@ -771,55 +793,56 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName =
   {
     PersonalName: "personal-name",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName
   >;
 
-export type Eleven = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor;
-  /**
-   * The first name.
-   */
-  firstName: string;
-  /**
-   * The last name.
-   */
-  lastName: string;
-  /**
-   * The full name.
-   */
-  fullName: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11;
+    /**
+     * The first name.
+     */
+    firstName: string;
+    /**
+     * The last name.
+     */
+    lastName: string;
+    /**
+     * The full name.
+     */
+    fullName: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -829,15 +852,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10 =
   {
     /**
      * An ID to identify the actor.
@@ -847,7 +870,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10
       | null
       | undefined;
   };
@@ -855,47 +878,48 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber =
   {
     Number: "number",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber
   >;
 
-export type Ten = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor;
-  /**
-   * Numbers are persisted as 64 bit floats.
-   */
-  value: number;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10;
+    /**
+     * Numbers are persisted as 64 bit floats.
+     */
+    value: number;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -905,15 +929,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9 =
   {
     /**
      * An ID to identify the actor.
@@ -923,7 +947,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9
       | null
       | undefined;
   };
@@ -931,7 +955,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The ISO 3166-1 alpha-2 country code for the country this location is in.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1 =
   {
     Af: "AF",
     Ax: "AX",
@@ -1184,93 +1208,94 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCount
 /**
  * The ISO 3166-1 alpha-2 country code for the country this location is in.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1
   >;
 
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation =
   {
     Location: "location",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation
   >;
 
-export type Nine = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor;
-  /**
-   * The first line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
-   */
-  line1: string | null;
-  /**
-   * The second line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
-   */
-  line2: string | null;
-  /**
-   * The third line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
-   */
-  line3: string | null;
-  /**
-   * The fourth line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
-   */
-  line4: string | null;
-  /**
-   * The town, neighborhood or area the location is in.
-   */
-  locality: string | null;
-  /**
-   * The state, county, province or region that the location is in.
-   */
-  region: string | null;
-  /**
-   * The postcode or zip code for the location. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.}
-   */
-  postcode: string | null;
-  /**
-   * The ISO 3166-1 alpha-2 country code for the country this location is in.
-   */
-  countryCode:
-    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode
-    | null;
-  /**
-   * The latitude of the location. Validated by the regular expression `/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/`. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.}
-   */
-  latitude: string | null;
-  /**
-   * The longitude of the location. Validated by the regular expression `/^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/`
-   */
-  longitude: string | null;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9;
+    /**
+     * The first line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
+     */
+    line1: string | null;
+    /**
+     * The second line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
+     */
+    line2: string | null;
+    /**
+     * The third line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
+     */
+    line3: string | null;
+    /**
+     * The fourth line of the address. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.
+     */
+    line4: string | null;
+    /**
+     * The town, neighborhood or area the location is in.
+     */
+    locality: string | null;
+    /**
+     * The state, county, province or region that the location is in.
+     */
+    region: string | null;
+    /**
+     * The postcode or zip code for the location. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.}
+     */
+    postcode: string | null;
+    /**
+     * The ISO 3166-1 alpha-2 country code for the country this location is in.
+     */
+    countryCode:
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1
+      | null;
+    /**
+     * The latitude of the location. Validated by the regular expression `/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/`. Note that this value is not currently represented in the UI but will be persisted and readable through API calls.}
+     */
+    latitude: string | null;
+    /**
+     * The longitude of the location. Validated by the regular expression `/^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/`
+     */
+    longitude: string | null;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1280,15 +1305,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8 =
   {
     /**
      * An ID to identify the actor.
@@ -1298,7 +1323,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8
       | null
       | undefined;
   };
@@ -1306,23 +1331,27 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The type of interaction e.g. calendar or email.
  */
-export const InteractionType = {
-  CalendarEvent: "calendar-event",
-  Call: "call",
-  ChatThread: "chat-thread",
-  Email: "email",
-  InPersonMeeting: "in-person-meeting",
-  Meeting: "meeting",
-} as const;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType =
+  {
+    CalendarEvent: "calendar-event",
+    Call: "call",
+    ChatThread: "chat-thread",
+    Email: "email",
+    InPersonMeeting: "in-person-meeting",
+    Meeting: "meeting",
+  } as const;
 /**
  * The type of interaction e.g. calendar or email.
  */
-export type InteractionType = ClosedEnum<typeof InteractionType>;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType =
+  ClosedEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType
+  >;
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1332,80 +1361,84 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType
   >;
 
 /**
  * The actor that created this value.
  */
-export type OwnerActor = {
-  /**
-   * An ID to identify the actor.
-   */
-  id?: string | null | undefined;
-  /**
-   * The type of actor. [Read more information on actor types here](/docs/actors).
-   */
-  type?:
-    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType
-    | null
-    | undefined;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor =
+  {
+    /**
+     * An ID to identify the actor.
+     */
+    id?: string | null | undefined;
+    /**
+     * The type of actor. [Read more information on actor types here](/docs/actors).
+     */
+    type?:
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType
+      | null
+      | undefined;
+  };
 
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction =
   {
     Interaction: "interaction",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction
   >;
 
-export type Eight = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor;
-  /**
-   * The type of interaction e.g. calendar or email.
-   */
-  interactionType: InteractionType;
-  /**
-   * When the interaction occurred.
-   */
-  interactedAt: Date;
-  /**
-   * The actor that created this value.
-   */
-  ownerActor: OwnerActor;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8;
+    /**
+     * The type of interaction e.g. calendar or email.
+     */
+    interactionType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType;
+    /**
+     * When the interaction occurred.
+     */
+    interactedAt: Date;
+    /**
+     * The actor that created this value.
+     */
+    ownerActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1415,15 +1448,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7 =
   {
     /**
      * An ID to identify the actor.
@@ -1433,7 +1466,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7
       | null
       | undefined;
   };
@@ -1441,51 +1474,52 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference =
   {
     RecordReference: "record-reference",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference
   >;
 
-export type Seven = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor;
-  /**
-   * A slug identifying the object that the referenced record belongs to.
-   */
-  targetObject: string;
-  /**
-   * A UUID to identify the referenced record.
-   */
-  targetRecordId: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7;
+    /**
+     * A slug identifying the object that the referenced record belongs to.
+     */
+    targetObject: string;
+    /**
+     * A UUID to identify the referenced record.
+     */
+    targetRecordId: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1495,15 +1529,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6 =
   {
     /**
      * An ID to identify the actor.
@@ -1513,7 +1547,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6
       | null
       | undefined;
   };
@@ -1521,48 +1555,49 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress =
   {
     EmailAddress: "email-address",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress
   >;
 
-export type Six = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor;
-  originalEmailAddress: string;
-  emailAddress: string;
-  emailDomain: string;
-  emailRootDomain: string;
-  emailLocalSpecifier: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6;
+    originalEmailAddress: string;
+    emailAddress: string;
+    emailDomain: string;
+    emailRootDomain: string;
+    emailLocalSpecifier: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1572,15 +1607,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5 =
   {
     /**
      * An ID to identify the actor.
@@ -1590,7 +1625,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5
       | null
       | undefined;
   };
@@ -1598,45 +1633,46 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain =
   {
     Domain: "domain",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain
   >;
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5 = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor;
-  domain: string;
-  rootDomain: string;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5;
+    domain: string;
+    rootDomain: string;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1646,15 +1682,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4 =
   {
     /**
      * An ID to identify the actor.
@@ -1664,7 +1700,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4
       | null
       | undefined;
   };
@@ -1672,47 +1708,48 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecord
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate =
   {
     Date: "date",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate
   >;
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4 = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType;
-  /**
-   * A date represents a single calendar year, month and day, independent of timezone. If hours, months, seconds or timezones are provided, they will be trimmed. For example, "2023" and "2023-01" will be coerced into "2023-01-01", and "2023-01-02", "2023-01-02T13:00", "2023-01-02T14:00:00", "2023-01-02T15:00:00.000000000", and "2023-01-02T15:00:00.000000000+02:00" will all be coerced to "2023-01-02". If a timezone is provided that would result in a different calendar date in UTC, the date will be coerced to UTC and then the timezone component will be trimmed. For example, the value "2023-01-02T23:00:00-10:00" will be returned as "2023-01-03". The maximum date is "9999-12-31".
-   */
-  value: string;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate;
+    /**
+     * A date represents a single calendar year, month and day, independent of timezone. If hours, months, seconds or timezones are provided, they will be trimmed. For example, "2023" and "2023-01" will be coerced into "2023-01-01", and "2023-01-02", "2023-01-02T13:00", "2023-01-02T14:00:00", "2023-01-02T15:00:00.000000000", and "2023-01-02T15:00:00.000000000+02:00" will all be coerced to "2023-01-02". If a timezone is provided that would result in a different calendar date in UTC, the date will be coerced to UTC and then the timezone component will be trimmed. For example, the value "2023-01-02T23:00:00-10:00" will be returned as "2023-01-03". The maximum date is "9999-12-31".
+     */
+    value: string;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1722,15 +1759,15 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3
   >;
 
 /**
  * The actor that created this value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3 =
   {
     /**
      * An ID to identify the actor.
@@ -1740,7 +1777,7 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreate
      * The type of actor. [Read more information on actor types here](/docs/actors).
      */
     type?:
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3
       | null
       | undefined;
   };
@@ -1748,94 +1785,102 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreate
 /**
  * The ISO4217 currency code representing the currency that the value is stored in.
  */
-export const CurrencyCode = {
-  Aud: "AUD",
-  Brl: "BRL",
-  Bel: "BEL",
-  Cad: "CAD",
-  Cny: "CNY",
-  Cop: "COP",
-  Czk: "CZK",
-  Dkk: "DKK",
-  Eur: "EUR",
-  Hkd: "HKD",
-  Isk: "ISK",
-  Inr: "INR",
-  Ils: "ILS",
-  Jpy: "JPY",
-  Krw: "KRW",
-  Myr: "MYR",
-  Mxn: "MXN",
-  Ntd: "NTD",
-  Nzd: "NZD",
-  Ngn: "NGN",
-  Nok: "NOK",
-  Xpf: "XPF",
-  Pen: "PEN",
-  Php: "PHP",
-  Pln: "PLN",
-  Gbp: "GBP",
-  Sar: "SAR",
-  Sgd: "SGD",
-  Zar: "ZAR",
-  Sek: "SEK",
-  Chf: "CHF",
-  Aed: "AED",
-  Usd: "USD",
-} as const;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode =
+  {
+    Aud: "AUD",
+    Brl: "BRL",
+    Bel: "BEL",
+    Cad: "CAD",
+    Cny: "CNY",
+    Cop: "COP",
+    Czk: "CZK",
+    Dkk: "DKK",
+    Eur: "EUR",
+    Hkd: "HKD",
+    Isk: "ISK",
+    Inr: "INR",
+    Ils: "ILS",
+    Jpy: "JPY",
+    Krw: "KRW",
+    Myr: "MYR",
+    Mxn: "MXN",
+    Ntd: "NTD",
+    Nzd: "NZD",
+    Ngn: "NGN",
+    Nok: "NOK",
+    Xpf: "XPF",
+    Pen: "PEN",
+    Php: "PHP",
+    Pln: "PLN",
+    Gbp: "GBP",
+    Sar: "SAR",
+    Sgd: "SGD",
+    Zar: "ZAR",
+    Sek: "SEK",
+    Chf: "CHF",
+    Aed: "AED",
+    Usd: "USD",
+  } as const;
 /**
  * The ISO4217 currency code representing the currency that the value is stored in.
  */
-export type CurrencyCode = ClosedEnum<typeof CurrencyCode>;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode =
+  ClosedEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode
+  >;
 
 /**
  * The attribute type of the value.
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency =
   {
     Currency: "currency",
   } as const;
 /**
  * The attribute type of the value.
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency
   >;
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3 = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor;
-  /**
-   * A numerical representation of the currency value. A decimal with a max of 4 decimal places.
-   */
-  currencyValue: number;
-  /**
-   * The ISO4217 currency code representing the currency that the value is stored in.
-   */
-  currencyCode?: CurrencyCode | null | undefined;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3;
+    /**
+     * A numerical representation of the currency value. A decimal with a max of 4 decimal places.
+     */
+    currencyValue: number;
+    /**
+     * The ISO4217 currency code representing the currency that the value is stored in.
+     */
+    currencyCode?:
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode
+      | null
+      | undefined;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1845,66 +1890,74 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2
   >;
 
 /**
  * The actor that created this value.
  */
-export type DataCreatedByActor = {
-  /**
-   * An ID to identify the actor.
-   */
-  id?: string | null | undefined;
-  /**
-   * The type of actor. [Read more information on actor types here](/docs/actors).
-   */
-  type?:
-    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType
-    | null
-    | undefined;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2 =
+  {
+    /**
+     * An ID to identify the actor.
+     */
+    id?: string | null | undefined;
+    /**
+     * The type of actor. [Read more information on actor types here](/docs/actors).
+     */
+    type?:
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2
+      | null
+      | undefined;
+  };
 
 /**
  * The attribute type of the value.
  */
-export const DataAttributeType = {
-  Checkbox: "checkbox",
-} as const;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox =
+  {
+    Checkbox: "checkbox",
+  } as const;
 /**
  * The attribute type of the value.
  */
-export type DataAttributeType = ClosedEnum<typeof DataAttributeType>;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox =
+  ClosedEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox
+  >;
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2 = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor: DataCreatedByActor;
-  /**
-   * A boolean representing whether the checkbox is checked or not. The string values 'true' and 'false' are also accepted.
-   */
-  value: boolean;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType: DataAttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2;
+    /**
+     * A boolean representing whether the checkbox is checked or not. The string values 'true' and 'false' are also accepted.
+     */
+    value: boolean;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox;
+  };
 
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1 =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1914,32 +1967,33 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1 =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1
   >;
 
 /**
  * The actor that created this value.
  */
-export type CreatedByActor = {
-  /**
-   * An ID to identify the actor.
-   */
-  id?: string | null | undefined;
-  /**
-   * The type of actor. [Read more information on actor types here](/docs/actors).
-   */
-  type?:
-    | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type
-    | null
-    | undefined;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1 =
+  {
+    /**
+     * An ID to identify the actor.
+     */
+    id?: string | null | undefined;
+    /**
+     * The type of actor. [Read more information on actor types here](/docs/actors).
+     */
+    type?:
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1
+      | null
+      | undefined;
+  };
 
 /**
  * The type of the referenced actor. [Read more information on actor types here](/docs/actors).
  */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType =
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType =
   {
     ApiToken: "api-token",
     WorkspaceMember: "workspace-member",
@@ -1949,92 +2003,99 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRefer
 /**
  * The type of the referenced actor. [Read more information on actor types here](/docs/actors).
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType =
   ClosedEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType
   >;
 
 /**
  * The attribute type of the value.
  */
-export const AttributeType = {
-  ActorReference: "actor-reference",
-} as const;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference =
+  {
+    ActorReference: "actor-reference",
+  } as const;
 /**
  * The attribute type of the value.
  */
-export type AttributeType = ClosedEnum<typeof AttributeType>;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference =
+  ClosedEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference
+  >;
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1 = {
-  /**
-   * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
-   */
-  activeFrom: Date;
-  /**
-   * The point in time at which this value was deactivated. If `null`, the value is active.
-   */
-  activeUntil: Date | null;
-  /**
-   * The actor that created this value.
-   */
-  createdByActor: CreatedByActor;
-  /**
-   * The type of the referenced actor. [Read more information on actor types here](/docs/actors).
-   */
-  referencedActorType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType;
-  /**
-   * The ID of the referenced actor.
-   */
-  referencedActorId: string | null;
-  /**
-   * The attribute type of the value.
-   */
-  attributeType: AttributeType;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference =
+  {
+    /**
+     * The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.
+     */
+    activeFrom: Date;
+    /**
+     * The point in time at which this value was deactivated. If `null`, the value is active.
+     */
+    activeUntil: Date | null;
+    /**
+     * The actor that created this value.
+     */
+    createdByActor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1;
+    /**
+     * The type of the referenced actor. [Read more information on actor types here](/docs/actors).
+     */
+    referencedActorType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType;
+    /**
+     * The ID of the referenced actor.
+     */
+    referencedActorId: string | null;
+    /**
+     * The attribute type of the value.
+     */
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference;
+  };
 
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData =
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4
-  | Ten
-  | Thirteen
-  | Fourteen
-  | Fifteen
-  | Sixteen
-  | Seventeen
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5
-  | Seven
-  | Eight
-  | Eleven
-  | Twelve
-  | Six
-  | Nine;
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion =
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation;
 
 /**
  * Success
  */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse =
   {
     data: Array<
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4
-      | Ten
-      | Thirteen
-      | Fourteen
-      | Fifteen
-      | Sixteen
-      | Seventeen
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5
-      | Seven
-      | Eight
-      | Eleven
-      | Twelve
-      | Six
-      | Nine
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation
     >;
   };
 
@@ -2131,63 +2192,63 @@ export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReques
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17Type$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType17$outboundSchema,
     ).optional(),
   });
 
@@ -2195,295 +2256,80 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$outboundSchema;
 }
 
 /** @internal */
-export const Seventeen$inboundSchema: z.ZodType<
-  Seventeen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active_from: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  active_until: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  created_by_actor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$inboundSchema
-  ),
-  attribute_type:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$inboundSchema,
-  value: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-}).transform((v) => {
-  return remap$(v, {
-    "active_from": "activeFrom",
-    "active_until": "activeUntil",
-    "created_by_actor": "createdByActor",
-    "attribute_type": "attributeType",
-  });
-});
-
-/** @internal */
-export type Seventeen$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$Outbound;
-  attribute_type: string;
-  value: string;
-};
-
-/** @internal */
-export const Seventeen$outboundSchema: z.ZodType<
-  Seventeen$Outbound,
-  z.ZodTypeDef,
-  Seventeen
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17CreatedByActor$outboundSchema
-  ),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody17AttributeType$outboundSchema,
-  value: z.date().transform(v => v.toISOString()),
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Seventeen$ {
-  /** @deprecated use `Seventeen$inboundSchema` instead. */
-  export const inboundSchema = Seventeen$inboundSchema;
-  /** @deprecated use `Seventeen$outboundSchema` instead. */
-  export const outboundSchema = Seventeen$outboundSchema;
-  /** @deprecated use `Seventeen$Outbound` instead. */
-  export type Outbound = Seventeen$Outbound;
-}
-
-export function seventeenToJSON(seventeen: Seventeen): string {
-  return JSON.stringify(Seventeen$outboundSchema.parse(seventeen));
-}
-
-export function seventeenFromJSON(
-  jsonString: string,
-): SafeParseResult<Seventeen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Seventeen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seventeen' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
-  z.object({
     active_from: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -2491,11 +2337,11 @@ export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$inboundSchema
     ),
-    value: z.string(),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$inboundSchema,
+    value: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -2506,1373 +2352,31 @@ export const Sixteen$inboundSchema: z.ZodType<Sixteen, z.ZodTypeDef, unknown> =
   });
 
 /** @internal */
-export type Sixteen$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$Outbound;
-  value: string;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Sixteen$outboundSchema: z.ZodType<
-  Sixteen$Outbound,
-  z.ZodTypeDef,
-  Sixteen
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16CreatedByActor$outboundSchema
-  ),
-  value: z.string(),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody16AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Sixteen$ {
-  /** @deprecated use `Sixteen$inboundSchema` instead. */
-  export const inboundSchema = Sixteen$inboundSchema;
-  /** @deprecated use `Sixteen$outboundSchema` instead. */
-  export const outboundSchema = Sixteen$outboundSchema;
-  /** @deprecated use `Sixteen$Outbound` instead. */
-  export type Outbound = Sixteen$Outbound;
-}
-
-export function sixteenToJSON(sixteen: Sixteen): string {
-  return JSON.stringify(Sixteen$outboundSchema.parse(sixteen));
-}
-
-export function sixteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Sixteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sixteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sixteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound =
   {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$Outbound;
+    attribute_type: string;
+    value: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp
   > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Fifteen$inboundSchema: z.ZodType<Fifteen, z.ZodTypeDef, unknown> =
-  z.object({
-    active_from: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    active_until: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$inboundSchema
-    ),
-    option: components.SelectOption$inboundSchema,
-    attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "active_from": "activeFrom",
-      "active_until": "activeUntil",
-      "created_by_actor": "createdByActor",
-      "attribute_type": "attributeType",
-    });
-  });
-
-/** @internal */
-export type Fifteen$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$Outbound;
-  option: components.SelectOption$Outbound;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Fifteen$outboundSchema: z.ZodType<
-  Fifteen$Outbound,
-  z.ZodTypeDef,
-  Fifteen
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15CreatedByActor$outboundSchema
-  ),
-  option: components.SelectOption$outboundSchema,
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody15AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Fifteen$ {
-  /** @deprecated use `Fifteen$inboundSchema` instead. */
-  export const inboundSchema = Fifteen$inboundSchema;
-  /** @deprecated use `Fifteen$outboundSchema` instead. */
-  export const outboundSchema = Fifteen$outboundSchema;
-  /** @deprecated use `Fifteen$Outbound` instead. */
-  export type Outbound = Fifteen$Outbound;
-}
-
-export function fifteenToJSON(fifteen: Fifteen): string {
-  return JSON.stringify(Fifteen$outboundSchema.parse(fifteen));
-}
-
-export function fifteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Fifteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fifteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fifteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Fourteen$inboundSchema: z.ZodType<
-  Fourteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active_from: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  active_until: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  created_by_actor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$inboundSchema
-  ),
-  value: z.number(),
-  attribute_type:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "active_from": "activeFrom",
-    "active_until": "activeUntil",
-    "created_by_actor": "createdByActor",
-    "attribute_type": "attributeType",
-  });
-});
-
-/** @internal */
-export type Fourteen$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$Outbound;
-  value: number;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Fourteen$outboundSchema: z.ZodType<
-  Fourteen$Outbound,
-  z.ZodTypeDef,
-  Fourteen
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14CreatedByActor$outboundSchema
-  ),
-  value: z.number(),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody14AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Fourteen$ {
-  /** @deprecated use `Fourteen$inboundSchema` instead. */
-  export const inboundSchema = Fourteen$inboundSchema;
-  /** @deprecated use `Fourteen$outboundSchema` instead. */
-  export const outboundSchema = Fourteen$outboundSchema;
-  /** @deprecated use `Fourteen$Outbound` instead. */
-  export type Outbound = Fourteen$Outbound;
-}
-
-export function fourteenToJSON(fourteen: Fourteen): string {
-  return JSON.stringify(Fourteen$outboundSchema.parse(fourteen));
-}
-
-export function fourteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Fourteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fourteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fourteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Thirteen$inboundSchema: z.ZodType<
-  Thirteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active_from: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  active_until: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  created_by_actor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$inboundSchema
-  ),
-  status: components.Status$inboundSchema,
-  attribute_type:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "active_from": "activeFrom",
-    "active_until": "activeUntil",
-    "created_by_actor": "createdByActor",
-    "attribute_type": "attributeType",
-  });
-});
-
-/** @internal */
-export type Thirteen$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$Outbound;
-  status: components.Status$Outbound;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Thirteen$outboundSchema: z.ZodType<
-  Thirteen$Outbound,
-  z.ZodTypeDef,
-  Thirteen
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13CreatedByActor$outboundSchema
-  ),
-  status: components.Status$outboundSchema,
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody13AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Thirteen$ {
-  /** @deprecated use `Thirteen$inboundSchema` instead. */
-  export const inboundSchema = Thirteen$inboundSchema;
-  /** @deprecated use `Thirteen$outboundSchema` instead. */
-  export const outboundSchema = Thirteen$outboundSchema;
-  /** @deprecated use `Thirteen$Outbound` instead. */
-  export type Outbound = Thirteen$Outbound;
-}
-
-export function thirteenToJSON(thirteen: Thirteen): string {
-  return JSON.stringify(Thirteen$outboundSchema.parse(thirteen));
-}
-
-export function thirteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Thirteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Thirteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const DataCountryCode$inboundSchema: z.ZodNativeEnum<
-  typeof DataCountryCode
-> = z.nativeEnum(DataCountryCode);
-
-/** @internal */
-export const DataCountryCode$outboundSchema: z.ZodNativeEnum<
-  typeof DataCountryCode
-> = DataCountryCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataCountryCode$ {
-  /** @deprecated use `DataCountryCode$inboundSchema` instead. */
-  export const inboundSchema = DataCountryCode$inboundSchema;
-  /** @deprecated use `DataCountryCode$outboundSchema` instead. */
-  export const outboundSchema = DataCountryCode$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Twelve$inboundSchema: z.ZodType<Twelve, z.ZodTypeDef, unknown> = z
-  .object({
-    active_from: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    active_until: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$inboundSchema
-    ),
-    original_phone_number: z.string(),
-    country_code: DataCountryCode$inboundSchema,
-    phone_number: z.string(),
-    attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "active_from": "activeFrom",
-      "active_until": "activeUntil",
-      "created_by_actor": "createdByActor",
-      "original_phone_number": "originalPhoneNumber",
-      "country_code": "countryCode",
-      "phone_number": "phoneNumber",
-      "attribute_type": "attributeType",
-    });
-  });
-
-/** @internal */
-export type Twelve$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$Outbound;
-  original_phone_number: string;
-  country_code: string;
-  phone_number: string;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Twelve$outboundSchema: z.ZodType<
-  Twelve$Outbound,
-  z.ZodTypeDef,
-  Twelve
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12CreatedByActor$outboundSchema
-  ),
-  originalPhoneNumber: z.string(),
-  countryCode: DataCountryCode$outboundSchema,
-  phoneNumber: z.string(),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody12AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    originalPhoneNumber: "original_phone_number",
-    countryCode: "country_code",
-    phoneNumber: "phone_number",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Twelve$ {
-  /** @deprecated use `Twelve$inboundSchema` instead. */
-  export const inboundSchema = Twelve$inboundSchema;
-  /** @deprecated use `Twelve$outboundSchema` instead. */
-  export const outboundSchema = Twelve$outboundSchema;
-  /** @deprecated use `Twelve$Outbound` instead. */
-  export type Outbound = Twelve$Outbound;
-}
-
-export function twelveToJSON(twelve: Twelve): string {
-  return JSON.stringify(Twelve$outboundSchema.parse(twelve));
-}
-
-export function twelveFromJSON(
-  jsonString: string,
-): SafeParseResult<Twelve, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Twelve$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Twelve' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Eleven$inboundSchema: z.ZodType<Eleven, z.ZodTypeDef, unknown> = z
-  .object({
-    active_from: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    active_until: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$inboundSchema
-    ),
-    first_name: z.string(),
-    last_name: z.string(),
-    full_name: z.string(),
-    attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "active_from": "activeFrom",
-      "active_until": "activeUntil",
-      "created_by_actor": "createdByActor",
-      "first_name": "firstName",
-      "last_name": "lastName",
-      "full_name": "fullName",
-      "attribute_type": "attributeType",
-    });
-  });
-
-/** @internal */
-export type Eleven$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$Outbound;
-  first_name: string;
-  last_name: string;
-  full_name: string;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Eleven$outboundSchema: z.ZodType<
-  Eleven$Outbound,
-  z.ZodTypeDef,
-  Eleven
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11CreatedByActor$outboundSchema
-  ),
-  firstName: z.string(),
-  lastName: z.string(),
-  fullName: z.string(),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody11AttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    firstName: "first_name",
-    lastName: "last_name",
-    fullName: "full_name",
-    attributeType: "attribute_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Eleven$ {
-  /** @deprecated use `Eleven$inboundSchema` instead. */
-  export const inboundSchema = Eleven$inboundSchema;
-  /** @deprecated use `Eleven$outboundSchema` instead. */
-  export const outboundSchema = Eleven$outboundSchema;
-  /** @deprecated use `Eleven$Outbound` instead. */
-  export type Outbound = Eleven$Outbound;
-}
-
-export function elevenToJSON(eleven: Eleven): string {
-  return JSON.stringify(Eleven$outboundSchema.parse(eleven));
-}
-
-export function elevenFromJSON(
-  jsonString: string,
-): SafeParseResult<Eleven, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Eleven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eleven' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$inboundSchema,
-    ).optional(),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$Outbound =
-  {
-    id?: string | null | undefined;
-    type?: string | null | undefined;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor
-  > = z.object({
-    id: z.nullable(z.string()).optional(),
-    type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10Type$outboundSchema,
-    ).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$outboundSchema
-      .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor,
-      ),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Ten$inboundSchema: z.ZodType<Ten, z.ZodTypeDef, unknown> = z
-  .object({
-    active_from: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    active_until: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$inboundSchema
-    ),
-    value: z.number(),
-    attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "active_from": "activeFrom",
-      "active_until": "activeUntil",
-      "created_by_actor": "createdByActor",
-      "attribute_type": "attributeType",
-    });
-  });
-
-/** @internal */
-export type Ten$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$Outbound;
-  value: number;
-  attribute_type: string;
-};
-
-/** @internal */
-export const Ten$outboundSchema: z.ZodType<Ten$Outbound, z.ZodTypeDef, Ten> = z
-  .object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10CreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor17$outboundSchema
     ),
-    value: z.number(),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody10AttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeTimestamp$outboundSchema,
+    value: z.date().transform(v => v.toISOString()),
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -3886,87 +2390,103 @@ export const Ten$outboundSchema: z.ZodType<Ten$Outbound, z.ZodTypeDef, Ten> = z
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Ten$ {
-  /** @deprecated use `Ten$inboundSchema` instead. */
-  export const inboundSchema = Ten$inboundSchema;
-  /** @deprecated use `Ten$outboundSchema` instead. */
-  export const outboundSchema = Ten$outboundSchema;
-  /** @deprecated use `Ten$Outbound` instead. */
-  export type Outbound = Ten$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound;
 }
 
-export function tenToJSON(ten: Ten): string {
-  return JSON.stringify(Ten$outboundSchema.parse(ten));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestampToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp,
+      ),
+  );
 }
 
-export function tenFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestampFromJSON(
   jsonString: string,
-): SafeParseResult<Ten, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Ten$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Ten' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9Type$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType16$outboundSchema,
     ).optional(),
   });
 
@@ -3974,104 +2494,80 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType
-  > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType,
-  );
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType
-  > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$outboundSchema;
-}
-
-/** @internal */
-export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
-  .object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
     active_from: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -4079,7 +2575,1755 @@ export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$inboundSchema
+    ),
+    value: z.string(),
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$Outbound;
+    value: string;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor16$outboundSchema
+    ),
+    value: z.string(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeText$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTextToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTextFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType15$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$inboundSchema
+    ),
+    option: SelectOption$inboundSchema,
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$Outbound;
+    option: SelectOption$Outbound;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor15$outboundSchema
+    ),
+    option: SelectOption$outboundSchema,
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeSelect$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelectToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelectFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType14$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$inboundSchema
+    ),
+    value: z.number(),
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$Outbound;
+    value: number;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor14$outboundSchema
+    ),
+    value: z.number(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRating$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRatingToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRatingFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType13$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$inboundSchema
+    ),
+    status: Status$inboundSchema,
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$Outbound;
+    status: Status$Outbound;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13$outboundSchema
+    ),
+    status: Status$outboundSchema,
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatusToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType12$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$inboundSchema
+    ),
+    original_phone_number: z.string(),
+    country_code:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$inboundSchema,
+    phone_number: z.string(),
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "original_phone_number": "originalPhoneNumber",
+      "country_code": "countryCode",
+      "phone_number": "phoneNumber",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$Outbound;
+    original_phone_number: string;
+    country_code: string;
+    phone_number: string;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor12$outboundSchema
+    ),
+    originalPhoneNumber: z.string(),
+    countryCode:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode2$outboundSchema,
+    phoneNumber: z.string(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePhoneNumber$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      originalPhoneNumber: "original_phone_number",
+      countryCode: "country_code",
+      phoneNumber: "phone_number",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumberToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType11$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$inboundSchema
+    ),
+    first_name: z.string(),
+    last_name: z.string(),
+    full_name: z.string(),
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "first_name": "firstName",
+      "last_name": "lastName",
+      "full_name": "fullName",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$Outbound;
+    first_name: string;
+    last_name: string;
+    full_name: string;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor11$outboundSchema
+    ),
+    firstName: z.string(),
+    lastName: z.string(),
+    fullName: z.string(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypePersonalName$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      firstName: "first_name",
+      lastName: "last_name",
+      fullName: "full_name",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalNameToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalNameFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType10$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$inboundSchema
+    ),
+    value: z.number(),
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "active_from": "activeFrom",
+      "active_until": "activeUntil",
+      "created_by_actor": "createdByActor",
+      "attribute_type": "attributeType",
+    });
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$Outbound;
+    value: number;
+    attribute_type: string;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor10$outboundSchema
+    ),
+    value: z.number(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeNumber$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      attributeType: "attribute_type",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumberToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType9$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    active_from: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    active_until: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$inboundSchema
     ),
     line_1: z.nullable(z.string()),
     line_2: z.nullable(z.string()),
@@ -4089,12 +4333,12 @@ export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
     region: z.nullable(z.string()),
     postcode: z.nullable(z.string()),
     country_code: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$inboundSchema,
     ),
     latitude: z.nullable(z.string()),
     longitude: z.nullable(z.string()),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -4110,31 +4354,36 @@ export const Nine$inboundSchema: z.ZodType<Nine, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Nine$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$Outbound;
-  line_1: string | null;
-  line_2: string | null;
-  line_3: string | null;
-  line_4: string | null;
-  locality: string | null;
-  region: string | null;
-  postcode: string | null;
-  country_code: string | null;
-  latitude: string | null;
-  longitude: string | null;
-  attribute_type: string;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$Outbound;
+    line_1: string | null;
+    line_2: string | null;
+    line_3: string | null;
+    line_4: string | null;
+    locality: string | null;
+    region: string | null;
+    postcode: string | null;
+    country_code: string | null;
+    latitude: string | null;
+    longitude: string | null;
+    attribute_type: string;
+  };
 
 /** @internal */
-export const Nine$outboundSchema: z.ZodType<Nine$Outbound, z.ZodTypeDef, Nine> =
-  z.object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation
+  > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9CreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor9$outboundSchema
     ),
     line1: z.nullable(z.string()),
     line2: z.nullable(z.string()),
@@ -4144,12 +4393,12 @@ export const Nine$outboundSchema: z.ZodType<Nine$Outbound, z.ZodTypeDef, Nine> =
     region: z.nullable(z.string()),
     postcode: z.nullable(z.string()),
     countryCode: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCountryCode$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCountryCode1$outboundSchema,
     ),
     latitude: z.nullable(z.string()),
     longitude: z.nullable(z.string()),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody9AttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeLocation$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -4168,87 +4417,103 @@ export const Nine$outboundSchema: z.ZodType<Nine$Outbound, z.ZodTypeDef, Nine> =
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Nine$ {
-  /** @deprecated use `Nine$inboundSchema` instead. */
-  export const inboundSchema = Nine$inboundSchema;
-  /** @deprecated use `Nine$outboundSchema` instead. */
-  export const outboundSchema = Nine$outboundSchema;
-  /** @deprecated use `Nine$Outbound` instead. */
-  export type Outbound = Nine$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound;
 }
 
-export function nineToJSON(nine: Nine): string {
-  return JSON.stringify(Nine$outboundSchema.parse(nine));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocationToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation,
+      ),
+  );
 }
 
-export function nineFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocationFromJSON(
   jsonString: string,
-): SafeParseResult<Nine, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Nine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Nine' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8Type$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType8$outboundSchema,
     ).optional(),
   });
 
@@ -4256,182 +4521,212 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8' from JSON`,
   );
 }
 
 /** @internal */
-export const InteractionType$inboundSchema: z.ZodNativeEnum<
-  typeof InteractionType
-> = z.nativeEnum(InteractionType);
-
-/** @internal */
-export const InteractionType$outboundSchema: z.ZodNativeEnum<
-  typeof InteractionType
-> = InteractionType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace InteractionType$ {
-  /** @deprecated use `InteractionType$inboundSchema` instead. */
-  export const inboundSchema = InteractionType$inboundSchema;
-  /** @deprecated use `InteractionType$outboundSchema` instead. */
-  export const outboundSchema = InteractionType$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$outboundSchema;
 }
 
 /** @internal */
-export const OwnerActor$inboundSchema: z.ZodType<
-  OwnerActor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$inboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType,
+  );
 
 /** @internal */
-export type OwnerActor$Outbound = {
-  id?: string | null | undefined;
-  type?: string | null | undefined;
-};
-
-/** @internal */
-export const OwnerActor$outboundSchema: z.ZodType<
-  OwnerActor$Outbound,
-  z.ZodTypeDef,
-  OwnerActor
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody8OwnerActorType$outboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace OwnerActor$ {
-  /** @deprecated use `OwnerActor$inboundSchema` instead. */
-  export const inboundSchema = OwnerActor$inboundSchema;
-  /** @deprecated use `OwnerActor$outboundSchema` instead. */
-  export const outboundSchema = OwnerActor$outboundSchema;
-  /** @deprecated use `OwnerActor$Outbound` instead. */
-  export type Outbound = OwnerActor$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$outboundSchema;
 }
 
-export function ownerActorToJSON(ownerActor: OwnerActor): string {
-  return JSON.stringify(OwnerActor$outboundSchema.parse(ownerActor));
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$inboundSchema,
+    ).optional(),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorType$outboundSchema,
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$Outbound;
 }
 
-export function ownerActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActorFromJSON(
   jsonString: string,
-): SafeParseResult<OwnerActor, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => OwnerActor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'OwnerActor' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$outboundSchema;
 }
 
 /** @internal */
-export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
-  .object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
     active_from: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -4439,15 +4734,18 @@ export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$inboundSchema
     ),
-    interaction_type: InteractionType$inboundSchema,
+    interaction_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$inboundSchema,
     interacted_at: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
-    owner_actor: z.lazy(() => OwnerActor$inboundSchema),
+    owner_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$inboundSchema
+    ),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -4461,130 +4759,152 @@ export const Eight$inboundSchema: z.ZodType<Eight, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Eight$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$Outbound;
-  interaction_type: string;
-  interacted_at: string;
-  owner_actor: OwnerActor$Outbound;
-  attribute_type: string;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$Outbound;
+    interaction_type: string;
+    interacted_at: string;
+    owner_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$Outbound;
+    attribute_type: string;
+  };
 
 /** @internal */
-export const Eight$outboundSchema: z.ZodType<
-  Eight$Outbound,
-  z.ZodTypeDef,
-  Eight
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyCreatedByActor$outboundSchema
-  ),
-  interactionType: InteractionType$outboundSchema,
-  interactedAt: z.date().transform(v => v.toISOString()),
-  ownerActor: z.lazy(() => OwnerActor$outboundSchema),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyAttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    interactionType: "interaction_type",
-    interactedAt: "interacted_at",
-    ownerActor: "owner_actor",
-    attributeType: "attribute_type",
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor8$outboundSchema
+    ),
+    interactionType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesInteractionType$outboundSchema,
+    interactedAt: z.date().transform(v => v.toISOString()),
+    ownerActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesOwnerActor$outboundSchema
+    ),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeInteraction$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      interactionType: "interaction_type",
+      interactedAt: "interacted_at",
+      ownerActor: "owner_actor",
+      attributeType: "attribute_type",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Eight$ {
-  /** @deprecated use `Eight$inboundSchema` instead. */
-  export const inboundSchema = Eight$inboundSchema;
-  /** @deprecated use `Eight$outboundSchema` instead. */
-  export const outboundSchema = Eight$outboundSchema;
-  /** @deprecated use `Eight$Outbound` instead. */
-  export type Outbound = Eight$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound;
 }
 
-export function eightToJSON(eight: Eight): string {
-  return JSON.stringify(Eight$outboundSchema.parse(eight));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteractionToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction,
+      ),
+  );
 }
 
-export function eightFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteractionFromJSON(
   jsonString: string,
-): SafeParseResult<Eight, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Eight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Eight' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBodyType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType7$outboundSchema,
     ).optional(),
   });
 
@@ -4592,76 +4912,80 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$outboundSchema;
 }
 
 /** @internal */
-export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
-  .object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
     active_from: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -4669,12 +4993,12 @@ export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$inboundSchema
     ),
     target_object: z.string(),
     target_record_id: z.string(),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -4687,127 +5011,145 @@ export const Seven$inboundSchema: z.ZodType<Seven, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Seven$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$Outbound;
-  target_object: string;
-  target_record_id: string;
-  attribute_type: string;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$Outbound;
+    target_object: string;
+    target_record_id: string;
+    attribute_type: string;
+  };
 
 /** @internal */
-export const Seven$outboundSchema: z.ZodType<
-  Seven$Outbound,
-  z.ZodTypeDef,
-  Seven
-> = z.object({
-  activeFrom: z.date().transform(v => v.toISOString()),
-  activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-  createdByActor: z.lazy(() =>
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONCreatedByActor$outboundSchema
-  ),
-  targetObject: z.string(),
-  targetRecordId: z.string(),
-  attributeType:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONAttributeType$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    activeFrom: "active_from",
-    activeUntil: "active_until",
-    createdByActor: "created_by_actor",
-    targetObject: "target_object",
-    targetRecordId: "target_record_id",
-    attributeType: "attribute_type",
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
+  > = z.object({
+    activeFrom: z.date().transform(v => v.toISOString()),
+    activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor7$outboundSchema
+    ),
+    targetObject: z.string(),
+    targetRecordId: z.string(),
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeRecordReference$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      activeFrom: "active_from",
+      activeUntil: "active_until",
+      createdByActor: "created_by_actor",
+      targetObject: "target_object",
+      targetRecordId: "target_record_id",
+      attributeType: "attribute_type",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Seven$ {
-  /** @deprecated use `Seven$inboundSchema` instead. */
-  export const inboundSchema = Seven$inboundSchema;
-  /** @deprecated use `Seven$outboundSchema` instead. */
-  export const outboundSchema = Seven$outboundSchema;
-  /** @deprecated use `Seven$Outbound` instead. */
-  export type Outbound = Seven$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound;
 }
 
-export function sevenToJSON(seven: Seven): string {
-  return JSON.stringify(Seven$outboundSchema.parse(seven));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReferenceToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference,
+      ),
+  );
 }
 
-export function sevenFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReferenceFromJSON(
   jsonString: string,
-): SafeParseResult<Seven, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Seven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Seven' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType6$outboundSchema,
     ).optional(),
   });
 
@@ -4815,76 +5157,80 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$outboundSchema;
 }
 
 /** @internal */
-export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
-  .object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
     active_from: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),
@@ -4892,7 +5238,7 @@ export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$inboundSchema
     ),
     original_email_address: z.string(),
     email_address: z.string(),
@@ -4900,7 +5246,7 @@ export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
     email_root_domain: z.string(),
     email_local_specifier: z.string(),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -4916,26 +5262,31 @@ export const Six$inboundSchema: z.ZodType<Six, z.ZodTypeDef, unknown> = z
   });
 
 /** @internal */
-export type Six$Outbound = {
-  active_from: string;
-  active_until: string | null;
-  created_by_actor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$Outbound;
-  original_email_address: string;
-  email_address: string;
-  email_domain: string;
-  email_root_domain: string;
-  email_local_specifier: string;
-  attribute_type: string;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound =
+  {
+    active_from: string;
+    active_until: string | null;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$Outbound;
+    original_email_address: string;
+    email_address: string;
+    email_domain: string;
+    email_root_domain: string;
+    email_local_specifier: string;
+    attribute_type: string;
+  };
 
 /** @internal */
-export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
-  .object({
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
+  > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200CreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor6$outboundSchema
     ),
     originalEmailAddress: z.string(),
     emailAddress: z.string(),
@@ -4943,7 +5294,7 @@ export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
     emailRootDomain: z.string(),
     emailLocalSpecifier: z.string(),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200AttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeEmailAddress$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -4962,87 +5313,103 @@ export const Six$outboundSchema: z.ZodType<Six$Outbound, z.ZodTypeDef, Six> = z
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Six$ {
-  /** @deprecated use `Six$inboundSchema` instead. */
-  export const inboundSchema = Six$inboundSchema;
-  /** @deprecated use `Six$outboundSchema` instead. */
-  export const outboundSchema = Six$outboundSchema;
-  /** @deprecated use `Six$Outbound` instead. */
-  export type Outbound = Six$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound;
 }
 
-export function sixToJSON(six: Six): string {
-  return JSON.stringify(Six$outboundSchema.parse(six));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddressToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress,
+      ),
+  );
 }
 
-export function sixFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddressFromJSON(
   jsonString: string,
-): SafeParseResult<Six, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => Six$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Six' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200Type$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType5$outboundSchema,
     ).optional(),
   });
 
@@ -5050,77 +5417,77 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -5131,12 +5498,12 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inb
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$inboundSchema
     ),
     domain: z.string(),
     root_domain: z.string(),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -5148,33 +5515,33 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inb
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound =
   {
     active_from: string;
     active_until: string | null;
     created_by_actor:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$Outbound;
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$Outbound;
     domain: string;
     root_domain: string;
     attribute_type: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
   > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseCreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor5$outboundSchema
     ),
     domain: z.string(),
     rootDomain: z.string(),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseAttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDomain$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -5189,101 +5556,103 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$out
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5ToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomainToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5),
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain,
+      ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5FromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomainFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponseType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType4$outboundSchema,
     ).optional(),
   });
 
@@ -5291,77 +5660,77 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecor
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -5372,10 +5741,10 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inb
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$inboundSchema
     ),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$inboundSchema,
     value: z.string(),
   }).transform((v) => {
     return remap$(v, {
@@ -5387,30 +5756,30 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inb
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound =
   {
     active_from: string;
     active_until: string | null;
     created_by_actor:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$Outbound;
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$Outbound;
     attribute_type: string;
     value: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate
   > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsCreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor4$outboundSchema
     ),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsAttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeDate$outboundSchema,
     value: z.string(),
   }).transform((v) => {
     return remap$(v, {
@@ -5425,101 +5794,103 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$out
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4ToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDateToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4),
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate,
+      ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4FromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDateFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$inboundSchema,
     ).optional(),
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$Outbound =
   {
     id?: string | null | undefined;
     type?: string | null | undefined;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3
   > = z.object({
     id: z.nullable(z.string()).optional(),
     type: z.nullable(
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType3$outboundSchema,
     ).optional(),
   });
 
@@ -5527,96 +5898,105 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreat
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActorToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3FromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3' from JSON`,
   );
 }
 
 /** @internal */
-export const CurrencyCode$inboundSchema: z.ZodNativeEnum<typeof CurrencyCode> =
-  z.nativeEnum(CurrencyCode);
-
-/** @internal */
-export const CurrencyCode$outboundSchema: z.ZodNativeEnum<typeof CurrencyCode> =
-  CurrencyCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CurrencyCode$ {
-  /** @deprecated use `CurrencyCode$inboundSchema` instead. */
-  export const inboundSchema = CurrencyCode$inboundSchema;
-  /** @deprecated use `CurrencyCode$outboundSchema` instead. */
-  export const outboundSchema = CurrencyCode$outboundSchema;
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency,
+  );
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$outboundSchema;
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -5627,12 +6007,14 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inb
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
     created_by_actor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$inboundSchema
     ),
     currency_value: z.number(),
-    currency_code: z.nullable(CurrencyCode$inboundSchema).optional(),
+    currency_code: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$inboundSchema,
+    ).optional(),
     attribute_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -5645,33 +6027,35 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inb
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound =
   {
     active_from: string;
     active_until: string | null;
     created_by_actor:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$Outbound;
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$Outbound;
     currency_value: number;
     currency_code?: string | null | undefined;
     attribute_type: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
   > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
     createdByActor: z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCreatedByActor$outboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor3$outboundSchema
     ),
     currencyValue: z.number(),
-    currencyCode: z.nullable(CurrencyCode$outboundSchema).optional(),
+    currencyCode: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCurrencyCode$outboundSchema,
+    ).optional(),
     attributeType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataAttributeType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCurrency$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -5687,157 +6071,181 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$out
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3ToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrencyToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3),
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency,
+      ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3FromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrencyFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$outboundSchema;
 }
 
 /** @internal */
-export const DataCreatedByActor$inboundSchema: z.ZodType<
-  DataCreatedByActor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$inboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$inboundSchema,
+    ).optional(),
+  });
 
 /** @internal */
-export type DataCreatedByActor$Outbound = {
-  id?: string | null | undefined;
-  type?: string | null | undefined;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
 
 /** @internal */
-export const DataCreatedByActor$outboundSchema: z.ZodType<
-  DataCreatedByActor$Outbound,
-  z.ZodTypeDef,
-  DataCreatedByActor
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataType$outboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType2$outboundSchema,
+    ).optional(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DataCreatedByActor$ {
-  /** @deprecated use `DataCreatedByActor$inboundSchema` instead. */
-  export const inboundSchema = DataCreatedByActor$inboundSchema;
-  /** @deprecated use `DataCreatedByActor$outboundSchema` instead. */
-  export const outboundSchema = DataCreatedByActor$outboundSchema;
-  /** @deprecated use `DataCreatedByActor$Outbound` instead. */
-  export type Outbound = DataCreatedByActor$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$Outbound;
 }
 
-export function dataCreatedByActorToJSON(
-  dataCreatedByActor: DataCreatedByActor,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2,
 ): string {
   return JSON.stringify(
-    DataCreatedByActor$outboundSchema.parse(dataCreatedByActor),
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2,
+      ),
   );
 }
 
-export function dataCreatedByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2FromJSON(
   jsonString: string,
-): SafeParseResult<DataCreatedByActor, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => DataCreatedByActor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DataCreatedByActor' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2' from JSON`,
   );
 }
 
 /** @internal */
-export const DataAttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof DataAttributeType
-> = z.nativeEnum(DataAttributeType);
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox,
+  );
 
 /** @internal */
-export const DataAttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof DataAttributeType
-> = DataAttributeType$inboundSchema;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DataAttributeType$ {
-  /** @deprecated use `DataAttributeType$inboundSchema` instead. */
-  export const inboundSchema = DataAttributeType$inboundSchema;
-  /** @deprecated use `DataAttributeType$outboundSchema` instead. */
-  export const outboundSchema = DataAttributeType$outboundSchema;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -5847,9 +6255,12 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inb
     active_until: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
-    created_by_actor: z.lazy(() => DataCreatedByActor$inboundSchema),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$inboundSchema
+    ),
     value: z.boolean(),
-    attribute_type: DataAttributeType$inboundSchema,
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -5860,27 +6271,31 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inb
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound =
   {
     active_from: string;
     active_until: string | null;
-    created_by_actor: DataCreatedByActor$Outbound;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$Outbound;
     value: boolean;
     attribute_type: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox
   > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-    createdByActor: z.lazy(() => DataCreatedByActor$outboundSchema),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor2$outboundSchema
+    ),
     value: z.boolean(),
-    attributeType: DataAttributeType$outboundSchema,
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeCheckbox$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -5894,181 +6309,209 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$out
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2ToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckboxToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2),
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox,
+      ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2FromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckboxFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$outboundSchema;
 }
 
 /** @internal */
-export const CreatedByActor$inboundSchema: z.ZodType<
-  CreatedByActor,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$inboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$inboundSchema,
+    ).optional(),
+  });
 
 /** @internal */
-export type CreatedByActor$Outbound = {
-  id?: string | null | undefined;
-  type?: string | null | undefined;
-};
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$Outbound =
+  {
+    id?: string | null | undefined;
+    type?: string | null | undefined;
+  };
 
 /** @internal */
-export const CreatedByActor$outboundSchema: z.ZodType<
-  CreatedByActor$Outbound,
-  z.ZodTypeDef,
-  CreatedByActor
-> = z.object({
-  id: z.nullable(z.string()).optional(),
-  type: z.nullable(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordsResponse200ApplicationJSONResponseBody1Type$outboundSchema,
-  ).optional(),
-});
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1
+  > = z.object({
+    id: z.nullable(z.string()).optional(),
+    type: z.nullable(
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActorType1$outboundSchema,
+    ).optional(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CreatedByActor$ {
-  /** @deprecated use `CreatedByActor$inboundSchema` instead. */
-  export const inboundSchema = CreatedByActor$inboundSchema;
-  /** @deprecated use `CreatedByActor$outboundSchema` instead. */
-  export const outboundSchema = CreatedByActor$outboundSchema;
-  /** @deprecated use `CreatedByActor$Outbound` instead. */
-  export type Outbound = CreatedByActor$Outbound;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$Outbound;
 }
 
-export function createdByActorToJSON(createdByActor: CreatedByActor): string {
-  return JSON.stringify(CreatedByActor$outboundSchema.parse(createdByActor));
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1ToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1,
+      ),
+  );
 }
 
-export function createdByActorFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1FromJSON(
   jsonString: string,
-): SafeParseResult<CreatedByActor, SDKValidationError> {
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => CreatedByActor$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreatedByActor' from JSON`,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType
   > = z.nativeEnum(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType,
   );
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$outboundSchema:
   z.ZodNativeEnum<
-    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType
   > =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$inboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$outboundSchema;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$outboundSchema;
 }
 
 /** @internal */
-export const AttributeType$inboundSchema: z.ZodNativeEnum<
-  typeof AttributeType
-> = z.nativeEnum(AttributeType);
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference
+  > = z.nativeEnum(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference,
+  );
 
 /** @internal */
-export const AttributeType$outboundSchema: z.ZodNativeEnum<
-  typeof AttributeType
-> = AttributeType$inboundSchema;
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$outboundSchema:
+  z.ZodNativeEnum<
+    typeof GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference
+  > =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AttributeType$ {
-  /** @deprecated use `AttributeType$inboundSchema` instead. */
-  export const inboundSchema = AttributeType$inboundSchema;
-  /** @deprecated use `AttributeType$outboundSchema` instead. */
-  export const outboundSchema = AttributeType$outboundSchema;
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$outboundSchema;
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -6078,11 +6521,14 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inb
     active_until: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
-    created_by_actor: z.lazy(() => CreatedByActor$inboundSchema),
+    created_by_actor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$inboundSchema
+    ),
     referenced_actor_type:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$inboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$inboundSchema,
     referenced_actor_id: z.nullable(z.string()),
-    attribute_type: AttributeType$inboundSchema,
+    attribute_type:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "active_from": "activeFrom",
@@ -6095,30 +6541,34 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inb
   });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound =
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound =
   {
     active_from: string;
     active_until: string | null;
-    created_by_actor: CreatedByActor$Outbound;
+    created_by_actor:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$Outbound;
     referenced_actor_type: string;
     referenced_actor_id: string | null;
     attribute_type: string;
   };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
   > = z.object({
     activeFrom: z.date().transform(v => v.toISOString()),
     activeUntil: z.nullable(z.date().transform(v => v.toISOString())),
-    createdByActor: z.lazy(() => CreatedByActor$outboundSchema),
+    createdByActor: z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor1$outboundSchema
+    ),
     referencedActorType:
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataReferencedActorType$outboundSchema,
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesReferencedActorType$outboundSchema,
     referencedActorId: z.nullable(z.string()),
-    attributeType: AttributeType$outboundSchema,
+    attributeType:
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeActorReference$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       activeFrom: "active_from",
@@ -6134,319 +6584,419 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$out
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound;
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1ToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1,
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReferenceToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData,
-    z.ZodTypeDef,
-    unknown
-  > = z.union([
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema
-    ),
-    z.lazy(() => Ten$inboundSchema),
-    z.lazy(() => Thirteen$inboundSchema),
-    z.lazy(() => Fourteen$inboundSchema),
-    z.lazy(() => Fifteen$inboundSchema),
-    z.lazy(() => Sixteen$inboundSchema),
-    z.lazy(() => Seventeen$inboundSchema),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema
-    ),
-    z.lazy(() => Seven$inboundSchema),
-    z.lazy(() => Eight$inboundSchema),
-    z.lazy(() => Eleven$inboundSchema),
-    z.lazy(() => Twelve$inboundSchema),
-    z.lazy(() => Six$inboundSchema),
-    z.lazy(() => Nine$inboundSchema),
-  ]);
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$Outbound =
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound
-  | Ten$Outbound
-  | Thirteen$Outbound
-  | Fourteen$Outbound
-  | Fifteen$Outbound
-  | Sixteen$Outbound
-  | Seventeen$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound
-  | Seven$Outbound
-  | Eight$Outbound
-  | Eleven$Outbound
-  | Twelve$Outbound
-  | Six$Outbound
-  | Nine$Outbound;
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData
-  > = z.union([
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema
-    ),
-    z.lazy(() => Ten$outboundSchema),
-    z.lazy(() => Thirteen$outboundSchema),
-    z.lazy(() => Fourteen$outboundSchema),
-    z.lazy(() => Fifteen$outboundSchema),
-    z.lazy(() => Sixteen$outboundSchema),
-    z.lazy(() => Seventeen$outboundSchema),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema
-    ),
-    z.lazy(() => Seven$outboundSchema),
-    z.lazy(() => Eight$outboundSchema),
-    z.lazy(() => Eleven$outboundSchema),
-    z.lazy(() => Twelve$outboundSchema),
-    z.lazy(() => Six$outboundSchema),
-    z.lazy(() => Nine$outboundSchema),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$outboundSchema
-      .parse(getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData),
-  );
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$inboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    data: z.array(
-      z.union([
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$inboundSchema
-        ),
-        z.lazy(() => Ten$inboundSchema),
-        z.lazy(() => Thirteen$inboundSchema),
-        z.lazy(() => Fourteen$inboundSchema),
-        z.lazy(() => Fifteen$inboundSchema),
-        z.lazy(() => Sixteen$inboundSchema),
-        z.lazy(() => Seventeen$inboundSchema),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$inboundSchema
-        ),
-        z.lazy(() => Seven$inboundSchema),
-        z.lazy(() => Eight$inboundSchema),
-        z.lazy(() => Eleven$inboundSchema),
-        z.lazy(() => Twelve$inboundSchema),
-        z.lazy(() => Six$inboundSchema),
-        z.lazy(() => Nine$inboundSchema),
-      ]),
-    ),
-  });
-
-/** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$Outbound =
-  {
-    data: Array<
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$Outbound
-      | Ten$Outbound
-      | Thirteen$Outbound
-      | Fourteen$Outbound
-      | Fifteen$Outbound
-      | Sixteen$Outbound
-      | Seventeen$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$Outbound
-      | Seven$Outbound
-      | Eight$Outbound
-      | Eleven$Outbound
-      | Twelve$Outbound
-      | Six$Outbound
-      | Nine$Outbound
-    >;
-  };
-
-/** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$outboundSchema:
-  z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody
-  > = z.object({
-    data: z.array(
-      z.union([
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData2$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData4$outboundSchema
-        ),
-        z.lazy(() => Ten$outboundSchema),
-        z.lazy(() => Thirteen$outboundSchema),
-        z.lazy(() => Fourteen$outboundSchema),
-        z.lazy(() => Fifteen$outboundSchema),
-        z.lazy(() => Sixteen$outboundSchema),
-        z.lazy(() => Seventeen$outboundSchema),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData1$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData3$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesData5$outboundSchema
-        ),
-        z.lazy(() => Seven$outboundSchema),
-        z.lazy(() => Eight$outboundSchema),
-        z.lazy(() => Eleven$outboundSchema),
-        z.lazy(() => Twelve$outboundSchema),
-        z.lazy(() => Six$outboundSchema),
-        z.lazy(() => Nine$outboundSchema),
-      ]),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$Outbound` instead. */
-  export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$Outbound;
-}
-
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBodyToJSON(
-  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody:
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
-): string {
-  return JSON.stringify(
-    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$outboundSchema
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
       .parse(
-        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference,
       ),
   );
 }
 
-export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBodyFromJSON(
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReferenceFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody,
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody$inboundSchema
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody' from JSON`,
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
+    ),
+  ]);
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$Outbound =
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound;
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
+  > = z.union([
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
+    ),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnionToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    data: z.array(
+      z.union([
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
+        ),
+      ]),
+    ),
+  });
+
+/** @internal */
+export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$Outbound =
+  {
+    data: Array<
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound
+    >;
+  };
+
+/** @internal */
+export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$outboundSchema:
+  z.ZodType<
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$Outbound,
+    z.ZodTypeDef,
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse
+  > = z.object({
+    data: z.array(
+      z.union([
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
+        ),
+      ]),
+    ),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$Outbound` instead. */
+  export type Outbound =
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$Outbound;
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseToJSON(
+  getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse:
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+): string {
+  return JSON.stringify(
+    GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$outboundSchema
+      .parse(
+        getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+      ),
+  );
+}
+
+export function getV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse' from JSON`,
   );
 }

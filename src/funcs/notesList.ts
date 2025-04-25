@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2NotesRequest,
+  GetV2NotesRequest$outboundSchema,
+  GetV2NotesResponse,
+  GetV2NotesResponse$inboundSchema,
+} from "../models/operations/getv2notes.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function notesList(
   client: AttioCore,
-  request: operations.GetV2NotesRequest,
+  request: GetV2NotesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2NotesResponseBody,
-    | errors.ResponseBody
+    GetV2NotesResponse,
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function notesList(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2NotesRequest,
+  request: GetV2NotesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2NotesResponseBody,
-      | errors.ResponseBody
+      GetV2NotesResponse,
+      | GetV2ObjectsObjectNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,7 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetV2NotesRequest$outboundSchema.parse(value),
+    (value) => GetV2NotesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -149,8 +157,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2NotesResponseBody,
-    | errors.ResponseBody
+    GetV2NotesResponse,
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -159,8 +167,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2NotesResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
+    M.json(200, GetV2NotesResponse$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

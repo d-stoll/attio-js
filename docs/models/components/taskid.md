@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TaskId } from "attio-js/models/components";
+import { TaskId } from "attio-js/models/components/task.js";
 
 let value: TaskId = {
   workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",

@@ -5,66 +5,71 @@
 import * as z from "zod";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  ObjectT,
+  ObjectT$inboundSchema,
+  ObjectT$Outbound,
+  ObjectT$outboundSchema,
+} from "../components/object.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Success
  */
-export type GetV2ObjectsResponseBody = {
-  data: Array<components.ObjectT>;
+export type GetV2ObjectsResponse = {
+  data: Array<ObjectT>;
 };
 
 /** @internal */
-export const GetV2ObjectsResponseBody$inboundSchema: z.ZodType<
-  GetV2ObjectsResponseBody,
+export const GetV2ObjectsResponse$inboundSchema: z.ZodType<
+  GetV2ObjectsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(components.ObjectT$inboundSchema),
+  data: z.array(ObjectT$inboundSchema),
 });
 
 /** @internal */
-export type GetV2ObjectsResponseBody$Outbound = {
-  data: Array<components.ObjectT$Outbound>;
+export type GetV2ObjectsResponse$Outbound = {
+  data: Array<ObjectT$Outbound>;
 };
 
 /** @internal */
-export const GetV2ObjectsResponseBody$outboundSchema: z.ZodType<
-  GetV2ObjectsResponseBody$Outbound,
+export const GetV2ObjectsResponse$outboundSchema: z.ZodType<
+  GetV2ObjectsResponse$Outbound,
   z.ZodTypeDef,
-  GetV2ObjectsResponseBody
+  GetV2ObjectsResponse
 > = z.object({
-  data: z.array(components.ObjectT$outboundSchema),
+  data: z.array(ObjectT$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsResponseBody$ {
-  /** @deprecated use `GetV2ObjectsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2ObjectsResponseBody$inboundSchema;
-  /** @deprecated use `GetV2ObjectsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2ObjectsResponseBody$outboundSchema;
-  /** @deprecated use `GetV2ObjectsResponseBody$Outbound` instead. */
-  export type Outbound = GetV2ObjectsResponseBody$Outbound;
+export namespace GetV2ObjectsResponse$ {
+  /** @deprecated use `GetV2ObjectsResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2ObjectsResponse$inboundSchema;
+  /** @deprecated use `GetV2ObjectsResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2ObjectsResponse$outboundSchema;
+  /** @deprecated use `GetV2ObjectsResponse$Outbound` instead. */
+  export type Outbound = GetV2ObjectsResponse$Outbound;
 }
 
-export function getV2ObjectsResponseBodyToJSON(
-  getV2ObjectsResponseBody: GetV2ObjectsResponseBody,
+export function getV2ObjectsResponseToJSON(
+  getV2ObjectsResponse: GetV2ObjectsResponse,
 ): string {
   return JSON.stringify(
-    GetV2ObjectsResponseBody$outboundSchema.parse(getV2ObjectsResponseBody),
+    GetV2ObjectsResponse$outboundSchema.parse(getV2ObjectsResponse),
   );
 }
 
-export function getV2ObjectsResponseBodyFromJSON(
+export function getV2ObjectsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2ObjectsResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2ObjectsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2ObjectsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2ObjectsResponseBody' from JSON`,
+    (x) => GetV2ObjectsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2ObjectsResponse' from JSON`,
   );
 }

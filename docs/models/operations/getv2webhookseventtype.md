@@ -5,7 +5,7 @@ Type of event the webhook is subscribed to.
 ## Example Usage
 
 ```typescript
-import { GetV2WebhooksEventType } from "attio-js/models/operations";
+import { GetV2WebhooksEventType } from "attio-js/models/operations/getv2webhooks.js";
 
 let value: GetV2WebhooksEventType = "note.created";
 ```

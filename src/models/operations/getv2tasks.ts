@@ -7,20 +7,25 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Task,
+  Task$inboundSchema,
+  Task$Outbound,
+  Task$outboundSchema,
+} from "../components/task.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Optionally sort the results. "created_at:asc" returns oldest results first, "created_at:desc" returns the newest results first. If unspecified, defaults to "created_at:asc" (oldest results first).
  */
-export const Sort = {
+export const GetV2TasksSort = {
   CreatedAtAsc: "created_at:asc",
   CreatedAtDesc: "created_at:desc",
 } as const;
 /**
  * Optionally sort the results. "created_at:asc" returns oldest results first, "created_at:desc" returns the newest results first. If unspecified, defaults to "created_at:asc" (oldest results first).
  */
-export type Sort = ClosedEnum<typeof Sort>;
+export type GetV2TasksSort = ClosedEnum<typeof GetV2TasksSort>;
 
 export type GetV2TasksRequest = {
   limit?: number | undefined;
@@ -28,7 +33,7 @@ export type GetV2TasksRequest = {
   /**
    * Optionally sort the results. "created_at:asc" returns oldest results first, "created_at:desc" returns the newest results first. If unspecified, defaults to "created_at:asc" (oldest results first).
    */
-  sort?: Sort | undefined;
+  sort?: GetV2TasksSort | undefined;
   linkedObject?: string | undefined;
   linkedRecordId?: string | undefined;
   assignee?: string | null | undefined;
@@ -38,28 +43,29 @@ export type GetV2TasksRequest = {
 /**
  * Success
  */
-export type GetV2TasksResponseBody = {
-  data: Array<components.Task>;
+export type GetV2TasksResponse = {
+  data: Array<Task>;
 };
 
 /** @internal */
-export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
-  Sort,
-);
+export const GetV2TasksSort$inboundSchema: z.ZodNativeEnum<
+  typeof GetV2TasksSort
+> = z.nativeEnum(GetV2TasksSort);
 
 /** @internal */
-export const Sort$outboundSchema: z.ZodNativeEnum<typeof Sort> =
-  Sort$inboundSchema;
+export const GetV2TasksSort$outboundSchema: z.ZodNativeEnum<
+  typeof GetV2TasksSort
+> = GetV2TasksSort$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Sort$ {
-  /** @deprecated use `Sort$inboundSchema` instead. */
-  export const inboundSchema = Sort$inboundSchema;
-  /** @deprecated use `Sort$outboundSchema` instead. */
-  export const outboundSchema = Sort$outboundSchema;
+export namespace GetV2TasksSort$ {
+  /** @deprecated use `GetV2TasksSort$inboundSchema` instead. */
+  export const inboundSchema = GetV2TasksSort$inboundSchema;
+  /** @deprecated use `GetV2TasksSort$outboundSchema` instead. */
+  export const outboundSchema = GetV2TasksSort$outboundSchema;
 }
 
 /** @internal */
@@ -70,7 +76,7 @@ export const GetV2TasksRequest$inboundSchema: z.ZodType<
 > = z.object({
   limit: z.number().int().optional(),
   offset: z.number().int().optional(),
-  sort: Sort$inboundSchema.optional(),
+  sort: GetV2TasksSort$inboundSchema.optional(),
   linked_object: z.string().optional(),
   linked_record_id: z.string().optional(),
   assignee: z.nullable(z.string()).optional(),
@@ -102,7 +108,7 @@ export const GetV2TasksRequest$outboundSchema: z.ZodType<
 > = z.object({
   limit: z.number().int().optional(),
   offset: z.number().int().optional(),
-  sort: Sort$outboundSchema.optional(),
+  sort: GetV2TasksSort$outboundSchema.optional(),
   linkedObject: z.string().optional(),
   linkedRecordId: z.string().optional(),
   assignee: z.nullable(z.string()).optional(),
@@ -147,55 +153,55 @@ export function getV2TasksRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2TasksResponseBody$inboundSchema: z.ZodType<
-  GetV2TasksResponseBody,
+export const GetV2TasksResponse$inboundSchema: z.ZodType<
+  GetV2TasksResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.array(components.Task$inboundSchema),
+  data: z.array(Task$inboundSchema),
 });
 
 /** @internal */
-export type GetV2TasksResponseBody$Outbound = {
-  data: Array<components.Task$Outbound>;
+export type GetV2TasksResponse$Outbound = {
+  data: Array<Task$Outbound>;
 };
 
 /** @internal */
-export const GetV2TasksResponseBody$outboundSchema: z.ZodType<
-  GetV2TasksResponseBody$Outbound,
+export const GetV2TasksResponse$outboundSchema: z.ZodType<
+  GetV2TasksResponse$Outbound,
   z.ZodTypeDef,
-  GetV2TasksResponseBody
+  GetV2TasksResponse
 > = z.object({
-  data: z.array(components.Task$outboundSchema),
+  data: z.array(Task$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2TasksResponseBody$ {
-  /** @deprecated use `GetV2TasksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2TasksResponseBody$inboundSchema;
-  /** @deprecated use `GetV2TasksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2TasksResponseBody$outboundSchema;
-  /** @deprecated use `GetV2TasksResponseBody$Outbound` instead. */
-  export type Outbound = GetV2TasksResponseBody$Outbound;
+export namespace GetV2TasksResponse$ {
+  /** @deprecated use `GetV2TasksResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2TasksResponse$inboundSchema;
+  /** @deprecated use `GetV2TasksResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2TasksResponse$outboundSchema;
+  /** @deprecated use `GetV2TasksResponse$Outbound` instead. */
+  export type Outbound = GetV2TasksResponse$Outbound;
 }
 
-export function getV2TasksResponseBodyToJSON(
-  getV2TasksResponseBody: GetV2TasksResponseBody,
+export function getV2TasksResponseToJSON(
+  getV2TasksResponse: GetV2TasksResponse,
 ): string {
   return JSON.stringify(
-    GetV2TasksResponseBody$outboundSchema.parse(getV2TasksResponseBody),
+    GetV2TasksResponse$outboundSchema.parse(getV2TasksResponse),
   );
 }
 
-export function getV2TasksResponseBodyFromJSON(
+export function getV2TasksResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2TasksResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2TasksResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2TasksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2TasksResponseBody' from JSON`,
+    (x) => GetV2TasksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2TasksResponse' from JSON`,
   );
 }

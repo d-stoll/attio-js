@@ -20,7 +20,7 @@ export type TaskId = {
   taskId: string;
 };
 
-export type LinkedRecords = {
+export type LinkedRecord = {
   /**
    * The ID of the parent object the task refers to. At present, only `people` and `companies` are supported.
    */
@@ -34,7 +34,7 @@ export type LinkedRecords = {
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export const ReferencedActorType = {
+export const TaskReferencedActorType = {
   ApiToken: "api-token",
   WorkspaceMember: "workspace-member",
   System: "system",
@@ -43,13 +43,15 @@ export const ReferencedActorType = {
 /**
  * The type of actor. [Read more information on actor types here](/docs/actors).
  */
-export type ReferencedActorType = ClosedEnum<typeof ReferencedActorType>;
+export type TaskReferencedActorType = ClosedEnum<
+  typeof TaskReferencedActorType
+>;
 
-export type Assignees = {
+export type Assignee = {
   /**
    * The type of actor. [Read more information on actor types here](/docs/actors).
    */
-  referencedActorType: ReferencedActorType;
+  referencedActorType: TaskReferencedActorType;
   /**
    * The ID of the workspace member actor assigned to this task.
    */
@@ -101,11 +103,11 @@ export type Task = {
   /**
    * Records linked to the task. Creating record links within task content text is not possible via the API at present.
    */
-  linkedRecords: Array<LinkedRecords>;
+  linkedRecords: Array<LinkedRecord>;
   /**
    * Workspace members assigned to this task.
    */
-  assignees: Array<Assignees>;
+  assignees: Array<Assignee>;
   /**
    * The actor that created this task.
    */
@@ -177,8 +179,8 @@ export function taskIdFromJSON(
 }
 
 /** @internal */
-export const LinkedRecords$inboundSchema: z.ZodType<
-  LinkedRecords,
+export const LinkedRecord$inboundSchema: z.ZodType<
+  LinkedRecord,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -192,16 +194,16 @@ export const LinkedRecords$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type LinkedRecords$Outbound = {
+export type LinkedRecord$Outbound = {
   target_object_id: string;
   target_record_id: string;
 };
 
 /** @internal */
-export const LinkedRecords$outboundSchema: z.ZodType<
-  LinkedRecords$Outbound,
+export const LinkedRecord$outboundSchema: z.ZodType<
+  LinkedRecord$Outbound,
   z.ZodTypeDef,
-  LinkedRecords
+  LinkedRecord
 > = z.object({
   targetObjectId: z.string(),
   targetRecordId: z.string(),
@@ -216,57 +218,57 @@ export const LinkedRecords$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LinkedRecords$ {
-  /** @deprecated use `LinkedRecords$inboundSchema` instead. */
-  export const inboundSchema = LinkedRecords$inboundSchema;
-  /** @deprecated use `LinkedRecords$outboundSchema` instead. */
-  export const outboundSchema = LinkedRecords$outboundSchema;
-  /** @deprecated use `LinkedRecords$Outbound` instead. */
-  export type Outbound = LinkedRecords$Outbound;
+export namespace LinkedRecord$ {
+  /** @deprecated use `LinkedRecord$inboundSchema` instead. */
+  export const inboundSchema = LinkedRecord$inboundSchema;
+  /** @deprecated use `LinkedRecord$outboundSchema` instead. */
+  export const outboundSchema = LinkedRecord$outboundSchema;
+  /** @deprecated use `LinkedRecord$Outbound` instead. */
+  export type Outbound = LinkedRecord$Outbound;
 }
 
-export function linkedRecordsToJSON(linkedRecords: LinkedRecords): string {
-  return JSON.stringify(LinkedRecords$outboundSchema.parse(linkedRecords));
+export function linkedRecordToJSON(linkedRecord: LinkedRecord): string {
+  return JSON.stringify(LinkedRecord$outboundSchema.parse(linkedRecord));
 }
 
-export function linkedRecordsFromJSON(
+export function linkedRecordFromJSON(
   jsonString: string,
-): SafeParseResult<LinkedRecords, SDKValidationError> {
+): SafeParseResult<LinkedRecord, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => LinkedRecords$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'LinkedRecords' from JSON`,
+    (x) => LinkedRecord$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkedRecord' from JSON`,
   );
 }
 
 /** @internal */
-export const ReferencedActorType$inboundSchema: z.ZodNativeEnum<
-  typeof ReferencedActorType
-> = z.nativeEnum(ReferencedActorType);
+export const TaskReferencedActorType$inboundSchema: z.ZodNativeEnum<
+  typeof TaskReferencedActorType
+> = z.nativeEnum(TaskReferencedActorType);
 
 /** @internal */
-export const ReferencedActorType$outboundSchema: z.ZodNativeEnum<
-  typeof ReferencedActorType
-> = ReferencedActorType$inboundSchema;
+export const TaskReferencedActorType$outboundSchema: z.ZodNativeEnum<
+  typeof TaskReferencedActorType
+> = TaskReferencedActorType$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ReferencedActorType$ {
-  /** @deprecated use `ReferencedActorType$inboundSchema` instead. */
-  export const inboundSchema = ReferencedActorType$inboundSchema;
-  /** @deprecated use `ReferencedActorType$outboundSchema` instead. */
-  export const outboundSchema = ReferencedActorType$outboundSchema;
+export namespace TaskReferencedActorType$ {
+  /** @deprecated use `TaskReferencedActorType$inboundSchema` instead. */
+  export const inboundSchema = TaskReferencedActorType$inboundSchema;
+  /** @deprecated use `TaskReferencedActorType$outboundSchema` instead. */
+  export const outboundSchema = TaskReferencedActorType$outboundSchema;
 }
 
 /** @internal */
-export const Assignees$inboundSchema: z.ZodType<
-  Assignees,
+export const Assignee$inboundSchema: z.ZodType<
+  Assignee,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  referenced_actor_type: ReferencedActorType$inboundSchema,
+  referenced_actor_type: TaskReferencedActorType$inboundSchema,
   referenced_actor_id: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -276,18 +278,18 @@ export const Assignees$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Assignees$Outbound = {
+export type Assignee$Outbound = {
   referenced_actor_type: string;
   referenced_actor_id: string;
 };
 
 /** @internal */
-export const Assignees$outboundSchema: z.ZodType<
-  Assignees$Outbound,
+export const Assignee$outboundSchema: z.ZodType<
+  Assignee$Outbound,
   z.ZodTypeDef,
-  Assignees
+  Assignee
 > = z.object({
-  referencedActorType: ReferencedActorType$outboundSchema,
+  referencedActorType: TaskReferencedActorType$outboundSchema,
   referencedActorId: z.string(),
 }).transform((v) => {
   return remap$(v, {
@@ -300,26 +302,26 @@ export const Assignees$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Assignees$ {
-  /** @deprecated use `Assignees$inboundSchema` instead. */
-  export const inboundSchema = Assignees$inboundSchema;
-  /** @deprecated use `Assignees$outboundSchema` instead. */
-  export const outboundSchema = Assignees$outboundSchema;
-  /** @deprecated use `Assignees$Outbound` instead. */
-  export type Outbound = Assignees$Outbound;
+export namespace Assignee$ {
+  /** @deprecated use `Assignee$inboundSchema` instead. */
+  export const inboundSchema = Assignee$inboundSchema;
+  /** @deprecated use `Assignee$outboundSchema` instead. */
+  export const outboundSchema = Assignee$outboundSchema;
+  /** @deprecated use `Assignee$Outbound` instead. */
+  export type Outbound = Assignee$Outbound;
 }
 
-export function assigneesToJSON(assignees: Assignees): string {
-  return JSON.stringify(Assignees$outboundSchema.parse(assignees));
+export function assigneeToJSON(assignee: Assignee): string {
+  return JSON.stringify(Assignee$outboundSchema.parse(assignee));
 }
 
-export function assigneesFromJSON(
+export function assigneeFromJSON(
   jsonString: string,
-): SafeParseResult<Assignees, SDKValidationError> {
+): SafeParseResult<Assignee, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Assignees$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Assignees' from JSON`,
+    (x) => Assignee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Assignee' from JSON`,
   );
 }
 
@@ -406,8 +408,8 @@ export const Task$inboundSchema: z.ZodType<Task, z.ZodTypeDef, unknown> = z
     content_plaintext: z.string(),
     deadline_at: z.nullable(z.string()),
     is_completed: z.boolean(),
-    linked_records: z.array(z.lazy(() => LinkedRecords$inboundSchema)),
-    assignees: z.array(z.lazy(() => Assignees$inboundSchema)),
+    linked_records: z.array(z.lazy(() => LinkedRecord$inboundSchema)),
+    assignees: z.array(z.lazy(() => Assignee$inboundSchema)),
     created_by_actor: z.lazy(() => TaskCreatedByActor$inboundSchema),
     created_at: z.string(),
   }).transform((v) => {
@@ -427,8 +429,8 @@ export type Task$Outbound = {
   content_plaintext: string;
   deadline_at: string | null;
   is_completed: boolean;
-  linked_records: Array<LinkedRecords$Outbound>;
-  assignees: Array<Assignees$Outbound>;
+  linked_records: Array<LinkedRecord$Outbound>;
+  assignees: Array<Assignee$Outbound>;
   created_by_actor: TaskCreatedByActor$Outbound;
   created_at: string;
 };
@@ -440,8 +442,8 @@ export const Task$outboundSchema: z.ZodType<Task$Outbound, z.ZodTypeDef, Task> =
     contentPlaintext: z.string(),
     deadlineAt: z.nullable(z.string()),
     isCompleted: z.boolean(),
-    linkedRecords: z.array(z.lazy(() => LinkedRecords$outboundSchema)),
-    assignees: z.array(z.lazy(() => Assignees$outboundSchema)),
+    linkedRecords: z.array(z.lazy(() => LinkedRecord$outboundSchema)),
+    assignees: z.array(z.lazy(() => Assignee$outboundSchema)),
     createdByActor: z.lazy(() => TaskCreatedByActor$outboundSchema),
     createdAt: z.string(),
   }).transform((v) => {

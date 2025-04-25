@@ -7,23 +7,27 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  SelectOption,
+  SelectOption$inboundSchema,
+  SelectOption$Outbound,
+  SelectOption$outboundSchema,
+} from "../components/selectoption.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is on an object or a list.
  */
-export const PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget = {
+export const PostV2TargetIdentifierAttributesAttributeOptionsTarget = {
   Objects: "objects",
   Lists: "lists",
 } as const;
 /**
  * Whether the attribute is on an object or a list.
  */
-export type PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget =
-  ClosedEnum<
-    typeof PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget
-  >;
+export type PostV2TargetIdentifierAttributesAttributeOptionsTarget = ClosedEnum<
+  typeof PostV2TargetIdentifierAttributesAttributeOptionsTarget
+>;
 
 export type PostV2TargetIdentifierAttributesAttributeOptionsData = {
   /**
@@ -40,7 +44,7 @@ export type PostV2TargetIdentifierAttributesAttributeOptionsRequest = {
   /**
    * Whether the attribute is on an object or a list.
    */
-  target: PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget;
+  target: PostV2TargetIdentifierAttributesAttributeOptionsTarget;
   identifier: string;
   attribute: string;
   requestBody: PostV2TargetIdentifierAttributesAttributeOptionsRequestBody;
@@ -49,36 +53,33 @@ export type PostV2TargetIdentifierAttributesAttributeOptionsRequest = {
 /**
  * Success
  */
-export type PostV2TargetIdentifierAttributesAttributeOptionsResponseBody = {
-  data: components.SelectOption;
+export type PostV2TargetIdentifierAttributesAttributeOptionsResponse = {
+  data: SelectOption;
 };
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$inboundSchema:
+export const PostV2TargetIdentifierAttributesAttributeOptionsTarget$inboundSchema:
   z.ZodNativeEnum<
-    typeof PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget
-  > = z.nativeEnum(
-    PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget,
-  );
+    typeof PostV2TargetIdentifierAttributesAttributeOptionsTarget
+  > = z.nativeEnum(PostV2TargetIdentifierAttributesAttributeOptionsTarget);
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$outboundSchema:
+export const PostV2TargetIdentifierAttributesAttributeOptionsTarget$outboundSchema:
   z.ZodNativeEnum<
-    typeof PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget
-  > =
-    PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$inboundSchema;
+    typeof PostV2TargetIdentifierAttributesAttributeOptionsTarget
+  > = PostV2TargetIdentifierAttributesAttributeOptionsTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$ {
-  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$inboundSchema` instead. */
+export namespace PostV2TargetIdentifierAttributesAttributeOptionsTarget$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsTarget$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$inboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$outboundSchema` instead. */
+    PostV2TargetIdentifierAttributesAttributeOptionsTarget$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsTarget$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$outboundSchema;
+    PostV2TargetIdentifierAttributesAttributeOptionsTarget$outboundSchema;
 }
 
 /** @internal */
@@ -228,7 +229,7 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsRequest$inboundSche
     unknown
   > = z.object({
     target:
-      PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$inboundSchema,
+      PostV2TargetIdentifierAttributesAttributeOptionsTarget$inboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     RequestBody: z.lazy(() =>
@@ -257,7 +258,7 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsRequest$outboundSch
     PostV2TargetIdentifierAttributesAttributeOptionsRequest
   > = z.object({
     target:
-      PostV2TargetIdentifierAttributesAttributeOptionsPathParamTarget$outboundSchema,
+      PostV2TargetIdentifierAttributesAttributeOptionsTarget$outboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     requestBody: z.lazy(() =>
@@ -311,68 +312,68 @@ export function postV2TargetIdentifierAttributesAttributeOptionsRequestFromJSON(
 }
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$inboundSchema:
+export const PostV2TargetIdentifierAttributesAttributeOptionsResponse$inboundSchema:
   z.ZodType<
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody,
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: components.SelectOption$inboundSchema,
+    data: SelectOption$inboundSchema,
   });
 
 /** @internal */
-export type PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$Outbound =
+export type PostV2TargetIdentifierAttributesAttributeOptionsResponse$Outbound =
   {
-    data: components.SelectOption$Outbound;
+    data: SelectOption$Outbound;
   };
 
 /** @internal */
-export const PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$outboundSchema:
+export const PostV2TargetIdentifierAttributesAttributeOptionsResponse$outboundSchema:
   z.ZodType<
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$Outbound,
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse$Outbound,
     z.ZodTypeDef,
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse
   > = z.object({
-    data: components.SelectOption$outboundSchema,
+    data: SelectOption$outboundSchema,
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$ {
-  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$inboundSchema` instead. */
+export namespace PostV2TargetIdentifierAttributesAttributeOptionsResponse$ {
+  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$inboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$outboundSchema` instead. */
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse$inboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$outboundSchema;
-  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$Outbound` instead. */
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse$outboundSchema;
+  /** @deprecated use `PostV2TargetIdentifierAttributesAttributeOptionsResponse$Outbound` instead. */
   export type Outbound =
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$Outbound;
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse$Outbound;
 }
 
-export function postV2TargetIdentifierAttributesAttributeOptionsResponseBodyToJSON(
-  postV2TargetIdentifierAttributesAttributeOptionsResponseBody:
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody,
+export function postV2TargetIdentifierAttributesAttributeOptionsResponseToJSON(
+  postV2TargetIdentifierAttributesAttributeOptionsResponse:
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse,
 ): string {
   return JSON.stringify(
-    PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$outboundSchema
-      .parse(postV2TargetIdentifierAttributesAttributeOptionsResponseBody),
+    PostV2TargetIdentifierAttributesAttributeOptionsResponse$outboundSchema
+      .parse(postV2TargetIdentifierAttributesAttributeOptionsResponse),
   );
 }
 
-export function postV2TargetIdentifierAttributesAttributeOptionsResponseBodyFromJSON(
+export function postV2TargetIdentifierAttributesAttributeOptionsResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PostV2TargetIdentifierAttributesAttributeOptionsResponseBody,
+  PostV2TargetIdentifierAttributesAttributeOptionsResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PostV2TargetIdentifierAttributesAttributeOptionsResponseBody$inboundSchema
+      PostV2TargetIdentifierAttributesAttributeOptionsResponse$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'PostV2TargetIdentifierAttributesAttributeOptionsResponseBody' from JSON`,
+    `Failed to parse 'PostV2TargetIdentifierAttributesAttributeOptionsResponse' from JSON`,
   );
 }

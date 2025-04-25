@@ -19,7 +19,12 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
+  GetV2ObjectsObjectRecordsRecordIdEntriesRequest$outboundSchema,
+  GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
+  GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema,
+} from "../models/operations/getv2objectsobjectrecordsrecordidentries.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,11 +38,11 @@ import { Result } from "../types/fp.js";
  */
 export function recordsListEntries(
   client: AttioCore,
-  request: operations.GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
+  request: GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -56,12 +61,12 @@ export function recordsListEntries(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
+  request: GetV2ObjectsObjectRecordsRecordIdEntriesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+      GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -76,8 +81,9 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetV2ObjectsObjectRecordsRecordIdEntriesRequest$outboundSchema
-        .parse(value),
+      GetV2ObjectsObjectRecordsRecordIdEntriesRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -155,7 +161,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody,
+    GetV2ObjectsObjectRecordsRecordIdEntriesResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -164,11 +170,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations
-        .GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody$inboundSchema,
-    ),
+    M.json(200, GetV2ObjectsObjectRecordsRecordIdEntriesResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

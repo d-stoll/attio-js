@@ -5,58 +5,58 @@ A union of possible value types, as returned in response bodies.
 
 ## Supported Types
 
-### `components.OutputValue1`
+### `components.OutputValueActorReference`
 
 ```typescript
-const value: components.OutputValue1 = {
+const value: components.OutputValueActorReference = {
   referencedActorType: "workspace-member",
   referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
   attributeType: "actor-reference",
 };
 ```
 
-### `components.OutputValue2`
+### `components.OutputValueCheckbox`
 
 ```typescript
-const value: components.OutputValue2 = {
+const value: components.OutputValueCheckbox = {
   value: true,
   attributeType: "checkbox",
 };
 ```
 
-### `components.Three`
+### `components.OutputValueCurrency`
 
 ```typescript
-const value: components.Three = {
+const value: components.OutputValueCurrency = {
   currencyValue: 99,
   currencyCode: "USD",
   attributeType: "currency",
 };
 ```
 
-### `components.Four`
+### `components.OutputValueDate`
 
 ```typescript
-const value: components.Four = {
+const value: components.OutputValueDate = {
   attributeType: "date",
   value: "2023-01-01",
 };
 ```
 
-### `components.Five`
+### `components.OutputValueDomain`
 
 ```typescript
-const value: components.Five = {
+const value: components.OutputValueDomain = {
   domain: "app.attio.com",
   rootDomain: "attio.com",
   attributeType: "domain",
 };
 ```
 
-### `components.Six`
+### `components.OutputValueEmailAddress`
 
 ```typescript
-const value: components.Six = {
+const value: components.OutputValueEmailAddress = {
   originalEmailAddress: "alice@app.attio.com",
   emailAddress: "alice@app.attio.com",
   emailDomain: "app.attio.com",
@@ -66,20 +66,20 @@ const value: components.Six = {
 };
 ```
 
-### `components.Seven`
+### `components.OutputValueRecordReference`
 
 ```typescript
-const value: components.Seven = {
+const value: components.OutputValueRecordReference = {
   targetObject: "people",
   targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   attributeType: "record-reference",
 };
 ```
 
-### `components.Eight`
+### `components.OutputValueInteraction`
 
 ```typescript
-const value: components.Eight = {
+const value: components.OutputValueInteraction = {
   interactionType: "email",
   interactedAt: new Date("2023-01-01T15:00:00.000000000Z"),
   ownerActor: {
@@ -90,10 +90,10 @@ const value: components.Eight = {
 };
 ```
 
-### `components.Nine`
+### `components.OutputValueLocation`
 
 ```typescript
-const value: components.Nine = {
+const value: components.OutputValueLocation = {
   line1: "1 Infinite Loop",
   line2: "Block 1",
   line3: "Hilldrop Estate",
@@ -108,19 +108,19 @@ const value: components.Nine = {
 };
 ```
 
-### `components.Ten`
+### `components.OutputValueNumber`
 
 ```typescript
-const value: components.Ten = {
+const value: components.OutputValueNumber = {
   value: 42,
   attributeType: "number",
 };
 ```
 
-### `components.Eleven`
+### `components.OutputValuePersonalName`
 
 ```typescript
-const value: components.Eleven = {
+const value: components.OutputValuePersonalName = {
   firstName: "Ada",
   lastName: "Lovelace",
   fullName: "Ada Lovelace",
@@ -128,10 +128,10 @@ const value: components.Eleven = {
 };
 ```
 
-### `components.Twelve`
+### `components.OutputValuePhoneNumber`
 
 ```typescript
-const value: components.Twelve = {
+const value: components.OutputValuePhoneNumber = {
   originalPhoneNumber: "5558675309",
   countryCode: "US",
   phoneNumber: "+15558675309",
@@ -139,19 +139,19 @@ const value: components.Twelve = {
 };
 ```
 
-### `components.Thirteen`
+### `components.OutputValueStatus1`
 
 ```typescript
-const value: components.Thirteen = {
+const value: components.OutputValueStatus1 = {
   status: "11f07f01-c10f-4e05-a522-33e050bc52ee",
   attributeType: "status",
 };
 ```
 
-### `components.Fourteen`
+### `components.OutputValueStatus2`
 
 ```typescript
-const value: components.Fourteen = {
+const value: components.OutputValueStatus2 = {
   status: {
     id: {
       workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",
@@ -168,28 +168,28 @@ const value: components.Fourteen = {
 };
 ```
 
-### `components.Fifteen`
+### `components.OutputValueRating`
 
 ```typescript
-const value: components.Fifteen = {
+const value: components.OutputValueRating = {
   value: 3,
   attributeType: "rating",
 };
 ```
 
-### `components.Sixteen`
+### `components.OutputValueSelect1`
 
 ```typescript
-const value: components.Sixteen = {
+const value: components.OutputValueSelect1 = {
   option: "08c2c59a-c18e-40c6-8dc4-95415313b2ea",
   attributeType: "select",
 };
 ```
 
-### `components.Seventeen`
+### `components.OutputValueSelect2`
 
 ```typescript
-const value: components.Seventeen = {
+const value: components.OutputValueSelect2 = {
   option: {
     id: {
       workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",
@@ -204,20 +204,20 @@ const value: components.Seventeen = {
 };
 ```
 
-### `components.Eighteen`
+### `components.OutputValueText`
 
 ```typescript
-const value: components.Eighteen = {
+const value: components.OutputValueText = {
   value:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   attributeType: "text",
 };
 ```
 
-### `components.Nineteen`
+### `components.OutputValueTimestamp`
 
 ```typescript
-const value: components.Nineteen = {
+const value: components.OutputValueTimestamp = {
   attributeType: "timestamp",
   value: new Date("2023-01-01T15:00:00.000000000Z"),
 };

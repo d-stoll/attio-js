@@ -12,15 +12,27 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  PostV2TargetIdentifierAttributesNotFoundError,
+  PostV2TargetIdentifierAttributesNotFoundError$inboundSchema,
+  PostV2TargetIdentifierAttributesSlugConflictError,
+  PostV2TargetIdentifierAttributesSlugConflictError$inboundSchema,
+  PostV2TargetIdentifierAttributesValidationTypeError,
+  PostV2TargetIdentifierAttributesValidationTypeError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PostV2TargetIdentifierAttributesRequest,
+  PostV2TargetIdentifierAttributesRequest$outboundSchema,
+  PostV2TargetIdentifierAttributesResponse,
+  PostV2TargetIdentifierAttributesResponse$inboundSchema,
+} from "../models/operations/postv2targetidentifierattributes.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -36,14 +48,14 @@ import { Result } from "../types/fp.js";
  */
 export function attributesCreate(
   client: AttioCore,
-  request: operations.PostV2TargetIdentifierAttributesRequest,
+  request: PostV2TargetIdentifierAttributesRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PostV2TargetIdentifierAttributesResponseBody,
-    | errors.PostV2TargetIdentifierAttributesResponseBody
-    | errors.PostV2TargetIdentifierAttributesAttributesResponseBody
-    | errors.PostV2TargetIdentifierAttributesAttributesResponseResponseBody
+    PostV2TargetIdentifierAttributesResponse,
+    | PostV2TargetIdentifierAttributesValidationTypeError
+    | PostV2TargetIdentifierAttributesNotFoundError
+    | PostV2TargetIdentifierAttributesSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -62,15 +74,15 @@ export function attributesCreate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PostV2TargetIdentifierAttributesRequest,
+  request: PostV2TargetIdentifierAttributesRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PostV2TargetIdentifierAttributesResponseBody,
-      | errors.PostV2TargetIdentifierAttributesResponseBody
-      | errors.PostV2TargetIdentifierAttributesAttributesResponseBody
-      | errors.PostV2TargetIdentifierAttributesAttributesResponseResponseBody
+      PostV2TargetIdentifierAttributesResponse,
+      | PostV2TargetIdentifierAttributesValidationTypeError
+      | PostV2TargetIdentifierAttributesNotFoundError
+      | PostV2TargetIdentifierAttributesSlugConflictError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -85,9 +97,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostV2TargetIdentifierAttributesRequest$outboundSchema.parse(
-        value,
-      ),
+      PostV2TargetIdentifierAttributesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -162,10 +172,10 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PostV2TargetIdentifierAttributesResponseBody,
-    | errors.PostV2TargetIdentifierAttributesResponseBody
-    | errors.PostV2TargetIdentifierAttributesAttributesResponseBody
-    | errors.PostV2TargetIdentifierAttributesAttributesResponseResponseBody
+    PostV2TargetIdentifierAttributesResponse,
+    | PostV2TargetIdentifierAttributesValidationTypeError
+    | PostV2TargetIdentifierAttributesNotFoundError
+    | PostV2TargetIdentifierAttributesSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -174,23 +184,15 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.PostV2TargetIdentifierAttributesResponseBody$inboundSchema,
-    ),
+    M.json(200, PostV2TargetIdentifierAttributesResponse$inboundSchema),
     M.jsonErr(
       400,
-      errors.PostV2TargetIdentifierAttributesResponseBody$inboundSchema,
+      PostV2TargetIdentifierAttributesValidationTypeError$inboundSchema,
     ),
-    M.jsonErr(
-      404,
-      errors
-        .PostV2TargetIdentifierAttributesAttributesResponseBody$inboundSchema,
-    ),
+    M.jsonErr(404, PostV2TargetIdentifierAttributesNotFoundError$inboundSchema),
     M.jsonErr(
       409,
-      errors
-        .PostV2TargetIdentifierAttributesAttributesResponseResponseBody$inboundSchema,
+      PostV2TargetIdentifierAttributesSlugConflictError$inboundSchema,
     ),
     M.fail("4XX"),
     M.fail("5XX"),

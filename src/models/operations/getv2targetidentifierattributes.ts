@@ -7,26 +7,33 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Attribute,
+  Attribute$inboundSchema,
+  Attribute$Outbound,
+  Attribute$outboundSchema,
+} from "../components/attribute.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attributes are on an object or a list.
  */
-export const Target = {
+export const GetV2TargetIdentifierAttributesTarget = {
   Objects: "objects",
   Lists: "lists",
 } as const;
 /**
  * Whether the attributes are on an object or a list.
  */
-export type Target = ClosedEnum<typeof Target>;
+export type GetV2TargetIdentifierAttributesTarget = ClosedEnum<
+  typeof GetV2TargetIdentifierAttributesTarget
+>;
 
 export type GetV2TargetIdentifierAttributesRequest = {
   /**
    * Whether the attributes are on an object or a list.
    */
-  target: Target;
+  target: GetV2TargetIdentifierAttributesTarget;
   identifier: string;
   limit?: number | undefined;
   offset?: number | undefined;
@@ -36,27 +43,32 @@ export type GetV2TargetIdentifierAttributesRequest = {
 /**
  * Success
  */
-export type GetV2TargetIdentifierAttributesResponseBody = {
-  data: Array<components.Attribute>;
+export type GetV2TargetIdentifierAttributesResponse = {
+  data: Array<Attribute>;
 };
 
 /** @internal */
-export const Target$inboundSchema: z.ZodNativeEnum<typeof Target> = z
-  .nativeEnum(Target);
+export const GetV2TargetIdentifierAttributesTarget$inboundSchema:
+  z.ZodNativeEnum<typeof GetV2TargetIdentifierAttributesTarget> = z.nativeEnum(
+    GetV2TargetIdentifierAttributesTarget,
+  );
 
 /** @internal */
-export const Target$outboundSchema: z.ZodNativeEnum<typeof Target> =
-  Target$inboundSchema;
+export const GetV2TargetIdentifierAttributesTarget$outboundSchema:
+  z.ZodNativeEnum<typeof GetV2TargetIdentifierAttributesTarget> =
+    GetV2TargetIdentifierAttributesTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Target$ {
-  /** @deprecated use `Target$inboundSchema` instead. */
-  export const inboundSchema = Target$inboundSchema;
-  /** @deprecated use `Target$outboundSchema` instead. */
-  export const outboundSchema = Target$outboundSchema;
+export namespace GetV2TargetIdentifierAttributesTarget$ {
+  /** @deprecated use `GetV2TargetIdentifierAttributesTarget$inboundSchema` instead. */
+  export const inboundSchema =
+    GetV2TargetIdentifierAttributesTarget$inboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesTarget$outboundSchema` instead. */
+  export const outboundSchema =
+    GetV2TargetIdentifierAttributesTarget$outboundSchema;
 }
 
 /** @internal */
@@ -65,7 +77,7 @@ export const GetV2TargetIdentifierAttributesRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: Target$inboundSchema,
+  target: GetV2TargetIdentifierAttributesTarget$inboundSchema,
   identifier: z.string(),
   limit: z.number().int().optional(),
   offset: z.number().int().optional(),
@@ -91,7 +103,7 @@ export const GetV2TargetIdentifierAttributesRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetV2TargetIdentifierAttributesRequest
 > = z.object({
-  target: Target$outboundSchema,
+  target: GetV2TargetIdentifierAttributesTarget$outboundSchema,
   identifier: z.string(),
   limit: z.number().int().optional(),
   offset: z.number().int().optional(),
@@ -140,68 +152,66 @@ export function getV2TargetIdentifierAttributesRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesResponseBody$inboundSchema:
-  z.ZodType<
-    GetV2TargetIdentifierAttributesResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    data: z.array(components.Attribute$inboundSchema),
-  });
+export const GetV2TargetIdentifierAttributesResponse$inboundSchema: z.ZodType<
+  GetV2TargetIdentifierAttributesResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  data: z.array(Attribute$inboundSchema),
+});
 
 /** @internal */
-export type GetV2TargetIdentifierAttributesResponseBody$Outbound = {
-  data: Array<components.Attribute$Outbound>;
+export type GetV2TargetIdentifierAttributesResponse$Outbound = {
+  data: Array<Attribute$Outbound>;
 };
 
 /** @internal */
-export const GetV2TargetIdentifierAttributesResponseBody$outboundSchema:
-  z.ZodType<
-    GetV2TargetIdentifierAttributesResponseBody$Outbound,
-    z.ZodTypeDef,
-    GetV2TargetIdentifierAttributesResponseBody
-  > = z.object({
-    data: z.array(components.Attribute$outboundSchema),
-  });
+export const GetV2TargetIdentifierAttributesResponse$outboundSchema: z.ZodType<
+  GetV2TargetIdentifierAttributesResponse$Outbound,
+  z.ZodTypeDef,
+  GetV2TargetIdentifierAttributesResponse
+> = z.object({
+  data: z.array(Attribute$outboundSchema),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2TargetIdentifierAttributesResponseBody$ {
-  /** @deprecated use `GetV2TargetIdentifierAttributesResponseBody$inboundSchema` instead. */
+export namespace GetV2TargetIdentifierAttributesResponse$ {
+  /** @deprecated use `GetV2TargetIdentifierAttributesResponse$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2TargetIdentifierAttributesResponseBody$inboundSchema;
-  /** @deprecated use `GetV2TargetIdentifierAttributesResponseBody$outboundSchema` instead. */
+    GetV2TargetIdentifierAttributesResponse$inboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesResponse$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2TargetIdentifierAttributesResponseBody$outboundSchema;
-  /** @deprecated use `GetV2TargetIdentifierAttributesResponseBody$Outbound` instead. */
-  export type Outbound = GetV2TargetIdentifierAttributesResponseBody$Outbound;
+    GetV2TargetIdentifierAttributesResponse$outboundSchema;
+  /** @deprecated use `GetV2TargetIdentifierAttributesResponse$Outbound` instead. */
+  export type Outbound = GetV2TargetIdentifierAttributesResponse$Outbound;
 }
 
-export function getV2TargetIdentifierAttributesResponseBodyToJSON(
-  getV2TargetIdentifierAttributesResponseBody:
-    GetV2TargetIdentifierAttributesResponseBody,
+export function getV2TargetIdentifierAttributesResponseToJSON(
+  getV2TargetIdentifierAttributesResponse:
+    GetV2TargetIdentifierAttributesResponse,
 ): string {
   return JSON.stringify(
-    GetV2TargetIdentifierAttributesResponseBody$outboundSchema.parse(
-      getV2TargetIdentifierAttributesResponseBody,
+    GetV2TargetIdentifierAttributesResponse$outboundSchema.parse(
+      getV2TargetIdentifierAttributesResponse,
     ),
   );
 }
 
-export function getV2TargetIdentifierAttributesResponseBodyFromJSON(
+export function getV2TargetIdentifierAttributesResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetV2TargetIdentifierAttributesResponseBody,
+  GetV2TargetIdentifierAttributesResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetV2TargetIdentifierAttributesResponseBody$inboundSchema.parse(
+      GetV2TargetIdentifierAttributesResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetV2TargetIdentifierAttributesResponseBody' from JSON`,
+    `Failed to parse 'GetV2TargetIdentifierAttributesResponse' from JSON`,
   );
 }

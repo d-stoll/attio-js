@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+  PostV2TasksValidationTypeError,
+  PostV2TasksValidationTypeError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PostV2TasksRequest,
+  PostV2TasksRequest$outboundSchema,
+  PostV2TasksResponse,
+  PostV2TasksResponse$inboundSchema,
+} from "../models/operations/postv2tasks.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -36,13 +46,13 @@ import { Result } from "../types/fp.js";
  */
 export function tasksCreate(
   client: AttioCore,
-  request: operations.PostV2TasksRequestBody,
+  request: PostV2TasksRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PostV2TasksResponseBody,
-    | errors.TasksResponseBody
-    | errors.ResponseBody
+    PostV2TasksResponse,
+    | PostV2TasksValidationTypeError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -61,14 +71,14 @@ export function tasksCreate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PostV2TasksRequestBody,
+  request: PostV2TasksRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PostV2TasksResponseBody,
-      | errors.TasksResponseBody
-      | errors.ResponseBody
+      PostV2TasksResponse,
+      | PostV2TasksValidationTypeError
+      | GetV2ObjectsObjectNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -82,7 +92,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.PostV2TasksRequestBody$outboundSchema.parse(value),
+    (value) => PostV2TasksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -146,9 +156,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PostV2TasksResponseBody,
-    | errors.TasksResponseBody
-    | errors.ResponseBody
+    PostV2TasksResponse,
+    | PostV2TasksValidationTypeError
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -157,9 +167,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PostV2TasksResponseBody$inboundSchema),
-    M.jsonErr(400, errors.TasksResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
+    M.json(200, PostV2TasksResponse$inboundSchema),
+    M.jsonErr(400, PostV2TasksValidationTypeError$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

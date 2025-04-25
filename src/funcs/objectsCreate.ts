@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  PostV2ObjectsSlugConflictError,
+  PostV2ObjectsSlugConflictError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PostV2ObjectsRequest,
+  PostV2ObjectsRequest$outboundSchema,
+  PostV2ObjectsResponse,
+  PostV2ObjectsResponse$inboundSchema,
+} from "../models/operations/postv2objects.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function objectsCreate(
   client: AttioCore,
-  request: operations.PostV2ObjectsRequestBody,
+  request: PostV2ObjectsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PostV2ObjectsResponseBody,
-    | errors.PostV2ObjectsResponseBody
+    PostV2ObjectsResponse,
+    | PostV2ObjectsSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function objectsCreate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PostV2ObjectsRequestBody,
+  request: PostV2ObjectsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PostV2ObjectsResponseBody,
-      | errors.PostV2ObjectsResponseBody
+      PostV2ObjectsResponse,
+      | PostV2ObjectsSlugConflictError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,7 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.PostV2ObjectsRequestBody$outboundSchema.parse(value),
+    (value) => PostV2ObjectsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -142,8 +150,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PostV2ObjectsResponseBody,
-    | errors.PostV2ObjectsResponseBody
+    PostV2ObjectsResponse,
+    | PostV2ObjectsSlugConflictError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -152,8 +160,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PostV2ObjectsResponseBody$inboundSchema),
-    M.jsonErr(409, errors.PostV2ObjectsResponseBody$inboundSchema),
+    M.json(200, PostV2ObjectsResponse$inboundSchema),
+    M.jsonErr(409, PostV2ObjectsSlugConflictError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

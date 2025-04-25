@@ -16,7 +16,7 @@ export type DeleteV2ListsListEntriesEntryIdRequest = {
 /**
  * Success
  */
-export type DeleteV2ListsListEntriesEntryIdResponseBody = {};
+export type DeleteV2ListsListEntriesEntryIdResponse = {};
 
 /** @internal */
 export const DeleteV2ListsListEntriesEntryIdRequest$inboundSchema: z.ZodType<
@@ -90,62 +90,60 @@ export function deleteV2ListsListEntriesEntryIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2ListsListEntriesEntryIdResponseBody$inboundSchema:
-  z.ZodType<
-    DeleteV2ListsListEntriesEntryIdResponseBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
+export const DeleteV2ListsListEntriesEntryIdResponse$inboundSchema: z.ZodType<
+  DeleteV2ListsListEntriesEntryIdResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
 /** @internal */
-export type DeleteV2ListsListEntriesEntryIdResponseBody$Outbound = {};
+export type DeleteV2ListsListEntriesEntryIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2ListsListEntriesEntryIdResponseBody$outboundSchema:
-  z.ZodType<
-    DeleteV2ListsListEntriesEntryIdResponseBody$Outbound,
-    z.ZodTypeDef,
-    DeleteV2ListsListEntriesEntryIdResponseBody
-  > = z.object({});
+export const DeleteV2ListsListEntriesEntryIdResponse$outboundSchema: z.ZodType<
+  DeleteV2ListsListEntriesEntryIdResponse$Outbound,
+  z.ZodTypeDef,
+  DeleteV2ListsListEntriesEntryIdResponse
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2ListsListEntriesEntryIdResponseBody$ {
-  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponseBody$inboundSchema` instead. */
+export namespace DeleteV2ListsListEntriesEntryIdResponse$ {
+  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponse$inboundSchema` instead. */
   export const inboundSchema =
-    DeleteV2ListsListEntriesEntryIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponseBody$outboundSchema` instead. */
+    DeleteV2ListsListEntriesEntryIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    DeleteV2ListsListEntriesEntryIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponseBody$Outbound` instead. */
-  export type Outbound = DeleteV2ListsListEntriesEntryIdResponseBody$Outbound;
+    DeleteV2ListsListEntriesEntryIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2ListsListEntriesEntryIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2ListsListEntriesEntryIdResponse$Outbound;
 }
 
-export function deleteV2ListsListEntriesEntryIdResponseBodyToJSON(
-  deleteV2ListsListEntriesEntryIdResponseBody:
-    DeleteV2ListsListEntriesEntryIdResponseBody,
+export function deleteV2ListsListEntriesEntryIdResponseToJSON(
+  deleteV2ListsListEntriesEntryIdResponse:
+    DeleteV2ListsListEntriesEntryIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2ListsListEntriesEntryIdResponseBody$outboundSchema.parse(
-      deleteV2ListsListEntriesEntryIdResponseBody,
+    DeleteV2ListsListEntriesEntryIdResponse$outboundSchema.parse(
+      deleteV2ListsListEntriesEntryIdResponse,
     ),
   );
 }
 
-export function deleteV2ListsListEntriesEntryIdResponseBodyFromJSON(
+export function deleteV2ListsListEntriesEntryIdResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  DeleteV2ListsListEntriesEntryIdResponseBody,
+  DeleteV2ListsListEntriesEntryIdResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      DeleteV2ListsListEntriesEntryIdResponseBody$inboundSchema.parse(
+      DeleteV2ListsListEntriesEntryIdResponse$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'DeleteV2ListsListEntriesEntryIdResponseBody' from JSON`,
+    `Failed to parse 'DeleteV2ListsListEntriesEntryIdResponse' from JSON`,
   );
 }

@@ -17,7 +17,10 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2SelfResponse,
+  GetV2SelfResponse$inboundSchema,
+} from "../models/operations/getv2self.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -32,7 +35,7 @@ export function metaIdentify(
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2SelfResponseBody,
+    GetV2SelfResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -54,7 +57,7 @@ async function $do(
 ): Promise<
   [
     Result<
-      operations.GetV2SelfResponseBody,
+      GetV2SelfResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -115,7 +118,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2SelfResponseBody,
+    GetV2SelfResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -124,7 +127,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2SelfResponseBody$inboundSchema),
+    M.json(200, GetV2SelfResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

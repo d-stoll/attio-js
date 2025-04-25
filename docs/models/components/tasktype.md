@@ -5,7 +5,7 @@ The type of actor. [Read more information on actor types here](/docs/actors).
 ## Example Usage
 
 ```typescript
-import { TaskType } from "attio-js/models/components";
+import { TaskType } from "attio-js/models/components/task.js";
 
 let value: TaskType = "app";
 ```

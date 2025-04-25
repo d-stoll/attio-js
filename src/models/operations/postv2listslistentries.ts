@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PostV2ListsListEntriesData = {
+export type PostV2ListsListEntriesDataRequest = {
   /**
    * A UUID identifying the record you want to add to the list. The record will become the 'parent' of the created list entry.
    */
@@ -24,7 +24,7 @@ export type PostV2ListsListEntriesData = {
 };
 
 export type PostV2ListsListEntriesRequestBody = {
-  data: PostV2ListsListEntriesData;
+  data: PostV2ListsListEntriesDataRequest;
 };
 
 export type PostV2ListsListEntriesRequest = {
@@ -52,7 +52,7 @@ export type PostV2ListsListEntriesId = {
  */
 export type PostV2ListsListEntriesEntryValues = {};
 
-export type PostV2ListsListEntriesEntriesData = {
+export type PostV2ListsListEntriesDataResponse = {
   id: PostV2ListsListEntriesId;
   /**
    * A UUID identifying the record that is parent of the list entry.
@@ -75,13 +75,13 @@ export type PostV2ListsListEntriesEntriesData = {
 /**
  * Success
  */
-export type PostV2ListsListEntriesResponseBody = {
-  data: PostV2ListsListEntriesEntriesData;
+export type PostV2ListsListEntriesResponse = {
+  data: PostV2ListsListEntriesDataResponse;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesData$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesData,
+export const PostV2ListsListEntriesDataRequest$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -97,17 +97,17 @@ export const PostV2ListsListEntriesData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ListsListEntriesData$Outbound = {
+export type PostV2ListsListEntriesDataRequest$Outbound = {
   parent_record_id: string;
   parent_object: string;
   entry_values: { [k: string]: any };
 };
 
 /** @internal */
-export const PostV2ListsListEntriesData$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesData$Outbound,
+export const PostV2ListsListEntriesDataRequest$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesDataRequest$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesData
+  PostV2ListsListEntriesDataRequest
 > = z.object({
   parentRecordId: z.string(),
   parentObject: z.string(),
@@ -124,30 +124,33 @@ export const PostV2ListsListEntriesData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesData$ {
-  /** @deprecated use `PostV2ListsListEntriesData$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesData$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesData$outboundSchema` instead. */
-  export const outboundSchema = PostV2ListsListEntriesData$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesData$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesData$Outbound;
+export namespace PostV2ListsListEntriesDataRequest$ {
+  /** @deprecated use `PostV2ListsListEntriesDataRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsListEntriesDataRequest$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesDataRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2ListsListEntriesDataRequest$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesDataRequest$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesDataRequest$Outbound;
 }
 
-export function postV2ListsListEntriesDataToJSON(
-  postV2ListsListEntriesData: PostV2ListsListEntriesData,
+export function postV2ListsListEntriesDataRequestToJSON(
+  postV2ListsListEntriesDataRequest: PostV2ListsListEntriesDataRequest,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesData$outboundSchema.parse(postV2ListsListEntriesData),
+    PostV2ListsListEntriesDataRequest$outboundSchema.parse(
+      postV2ListsListEntriesDataRequest,
+    ),
   );
 }
 
-export function postV2ListsListEntriesDataFromJSON(
+export function postV2ListsListEntriesDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesData, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsListEntriesData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesData' from JSON`,
+    (x) => PostV2ListsListEntriesDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesDataRequest' from JSON`,
   );
 }
 
@@ -157,12 +160,12 @@ export const PostV2ListsListEntriesRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2ListsListEntriesData$inboundSchema),
+  data: z.lazy(() => PostV2ListsListEntriesDataRequest$inboundSchema),
 });
 
 /** @internal */
 export type PostV2ListsListEntriesRequestBody$Outbound = {
-  data: PostV2ListsListEntriesData$Outbound;
+  data: PostV2ListsListEntriesDataRequest$Outbound;
 };
 
 /** @internal */
@@ -171,7 +174,7 @@ export const PostV2ListsListEntriesRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV2ListsListEntriesRequestBody
 > = z.object({
-  data: z.lazy(() => PostV2ListsListEntriesData$outboundSchema),
+  data: z.lazy(() => PostV2ListsListEntriesDataRequest$outboundSchema),
 });
 
 /**
@@ -399,8 +402,8 @@ export function postV2ListsListEntriesEntryValuesFromJSON(
 }
 
 /** @internal */
-export const PostV2ListsListEntriesEntriesData$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesEntriesData,
+export const PostV2ListsListEntriesDataResponse$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -419,7 +422,7 @@ export const PostV2ListsListEntriesEntriesData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ListsListEntriesEntriesData$Outbound = {
+export type PostV2ListsListEntriesDataResponse$Outbound = {
   id: PostV2ListsListEntriesId$Outbound;
   parent_record_id: string;
   parent_object: string;
@@ -428,10 +431,10 @@ export type PostV2ListsListEntriesEntriesData$Outbound = {
 };
 
 /** @internal */
-export const PostV2ListsListEntriesEntriesData$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesEntriesData$Outbound,
+export const PostV2ListsListEntriesDataResponse$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesDataResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesEntriesData
+  PostV2ListsListEntriesDataResponse
 > = z.object({
   id: z.lazy(() => PostV2ListsListEntriesId$outboundSchema),
   parentRecordId: z.string(),
@@ -451,90 +454,89 @@ export const PostV2ListsListEntriesEntriesData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesEntriesData$ {
-  /** @deprecated use `PostV2ListsListEntriesEntriesData$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesEntriesData$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesEntriesData$outboundSchema` instead. */
+export namespace PostV2ListsListEntriesDataResponse$ {
+  /** @deprecated use `PostV2ListsListEntriesDataResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsListEntriesDataResponse$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesDataResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ListsListEntriesEntriesData$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesEntriesData$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesEntriesData$Outbound;
+    PostV2ListsListEntriesDataResponse$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesDataResponse$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesDataResponse$Outbound;
 }
 
-export function postV2ListsListEntriesEntriesDataToJSON(
-  postV2ListsListEntriesEntriesData: PostV2ListsListEntriesEntriesData,
+export function postV2ListsListEntriesDataResponseToJSON(
+  postV2ListsListEntriesDataResponse: PostV2ListsListEntriesDataResponse,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesEntriesData$outboundSchema.parse(
-      postV2ListsListEntriesEntriesData,
+    PostV2ListsListEntriesDataResponse$outboundSchema.parse(
+      postV2ListsListEntriesDataResponse,
     ),
   );
 }
 
-export function postV2ListsListEntriesEntriesDataFromJSON(
+export function postV2ListsListEntriesDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesEntriesData, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsListEntriesEntriesData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesEntriesData' from JSON`,
+    (x) =>
+      PostV2ListsListEntriesDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ListsListEntriesResponseBody$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesResponseBody,
+export const PostV2ListsListEntriesResponse$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2ListsListEntriesEntriesData$inboundSchema),
+  data: z.lazy(() => PostV2ListsListEntriesDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PostV2ListsListEntriesResponseBody$Outbound = {
-  data: PostV2ListsListEntriesEntriesData$Outbound;
+export type PostV2ListsListEntriesResponse$Outbound = {
+  data: PostV2ListsListEntriesDataResponse$Outbound;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesResponseBody$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesResponseBody$Outbound,
+export const PostV2ListsListEntriesResponse$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesResponseBody
+  PostV2ListsListEntriesResponse
 > = z.object({
-  data: z.lazy(() => PostV2ListsListEntriesEntriesData$outboundSchema),
+  data: z.lazy(() => PostV2ListsListEntriesDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesResponseBody$ {
-  /** @deprecated use `PostV2ListsListEntriesResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesResponseBody$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2ListsListEntriesResponseBody$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesResponseBody$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesResponseBody$Outbound;
+export namespace PostV2ListsListEntriesResponse$ {
+  /** @deprecated use `PostV2ListsListEntriesResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsListEntriesResponse$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsListEntriesResponse$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesResponse$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesResponse$Outbound;
 }
 
-export function postV2ListsListEntriesResponseBodyToJSON(
-  postV2ListsListEntriesResponseBody: PostV2ListsListEntriesResponseBody,
+export function postV2ListsListEntriesResponseToJSON(
+  postV2ListsListEntriesResponse: PostV2ListsListEntriesResponse,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesResponseBody$outboundSchema.parse(
-      postV2ListsListEntriesResponseBody,
+    PostV2ListsListEntriesResponse$outboundSchema.parse(
+      postV2ListsListEntriesResponse,
     ),
   );
 }
 
-export function postV2ListsListEntriesResponseBodyFromJSON(
+export function postV2ListsListEntriesResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      PostV2ListsListEntriesResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesResponseBody' from JSON`,
+    (x) => PostV2ListsListEntriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesResponse' from JSON`,
   );
 }

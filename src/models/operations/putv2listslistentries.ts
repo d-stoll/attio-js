@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PutV2ListsListEntriesData = {
+export type PutV2ListsListEntriesDataRequest = {
   /**
    * A UUID identifying the record you want to add to the list. The record will become the 'parent' of the created list entry.
    */
@@ -24,7 +24,7 @@ export type PutV2ListsListEntriesData = {
 };
 
 export type PutV2ListsListEntriesRequestBody = {
-  data: PutV2ListsListEntriesData;
+  data: PutV2ListsListEntriesDataRequest;
 };
 
 export type PutV2ListsListEntriesRequest = {
@@ -52,7 +52,7 @@ export type PutV2ListsListEntriesId = {
  */
 export type PutV2ListsListEntriesEntryValues = {};
 
-export type PutV2ListsListEntriesEntriesData = {
+export type PutV2ListsListEntriesDataResponse = {
   id: PutV2ListsListEntriesId;
   /**
    * A UUID identifying the record that is parent of the list entry.
@@ -75,13 +75,13 @@ export type PutV2ListsListEntriesEntriesData = {
 /**
  * Success
  */
-export type PutV2ListsListEntriesResponseBody = {
-  data: PutV2ListsListEntriesEntriesData;
+export type PutV2ListsListEntriesResponse = {
+  data: PutV2ListsListEntriesDataResponse;
 };
 
 /** @internal */
-export const PutV2ListsListEntriesData$inboundSchema: z.ZodType<
-  PutV2ListsListEntriesData,
+export const PutV2ListsListEntriesDataRequest$inboundSchema: z.ZodType<
+  PutV2ListsListEntriesDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -97,17 +97,17 @@ export const PutV2ListsListEntriesData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PutV2ListsListEntriesData$Outbound = {
+export type PutV2ListsListEntriesDataRequest$Outbound = {
   parent_record_id: string;
   parent_object: string;
   entry_values: { [k: string]: any };
 };
 
 /** @internal */
-export const PutV2ListsListEntriesData$outboundSchema: z.ZodType<
-  PutV2ListsListEntriesData$Outbound,
+export const PutV2ListsListEntriesDataRequest$outboundSchema: z.ZodType<
+  PutV2ListsListEntriesDataRequest$Outbound,
   z.ZodTypeDef,
-  PutV2ListsListEntriesData
+  PutV2ListsListEntriesDataRequest
 > = z.object({
   parentRecordId: z.string(),
   parentObject: z.string(),
@@ -124,30 +124,32 @@ export const PutV2ListsListEntriesData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ListsListEntriesData$ {
-  /** @deprecated use `PutV2ListsListEntriesData$inboundSchema` instead. */
-  export const inboundSchema = PutV2ListsListEntriesData$inboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesData$outboundSchema` instead. */
-  export const outboundSchema = PutV2ListsListEntriesData$outboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesData$Outbound` instead. */
-  export type Outbound = PutV2ListsListEntriesData$Outbound;
+export namespace PutV2ListsListEntriesDataRequest$ {
+  /** @deprecated use `PutV2ListsListEntriesDataRequest$inboundSchema` instead. */
+  export const inboundSchema = PutV2ListsListEntriesDataRequest$inboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesDataRequest$outboundSchema` instead. */
+  export const outboundSchema = PutV2ListsListEntriesDataRequest$outboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesDataRequest$Outbound` instead. */
+  export type Outbound = PutV2ListsListEntriesDataRequest$Outbound;
 }
 
-export function putV2ListsListEntriesDataToJSON(
-  putV2ListsListEntriesData: PutV2ListsListEntriesData,
+export function putV2ListsListEntriesDataRequestToJSON(
+  putV2ListsListEntriesDataRequest: PutV2ListsListEntriesDataRequest,
 ): string {
   return JSON.stringify(
-    PutV2ListsListEntriesData$outboundSchema.parse(putV2ListsListEntriesData),
+    PutV2ListsListEntriesDataRequest$outboundSchema.parse(
+      putV2ListsListEntriesDataRequest,
+    ),
   );
 }
 
-export function putV2ListsListEntriesDataFromJSON(
+export function putV2ListsListEntriesDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ListsListEntriesData, SDKValidationError> {
+): SafeParseResult<PutV2ListsListEntriesDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PutV2ListsListEntriesData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ListsListEntriesData' from JSON`,
+    (x) => PutV2ListsListEntriesDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ListsListEntriesDataRequest' from JSON`,
   );
 }
 
@@ -157,12 +159,12 @@ export const PutV2ListsListEntriesRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PutV2ListsListEntriesData$inboundSchema),
+  data: z.lazy(() => PutV2ListsListEntriesDataRequest$inboundSchema),
 });
 
 /** @internal */
 export type PutV2ListsListEntriesRequestBody$Outbound = {
-  data: PutV2ListsListEntriesData$Outbound;
+  data: PutV2ListsListEntriesDataRequest$Outbound;
 };
 
 /** @internal */
@@ -171,7 +173,7 @@ export const PutV2ListsListEntriesRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PutV2ListsListEntriesRequestBody
 > = z.object({
-  data: z.lazy(() => PutV2ListsListEntriesData$outboundSchema),
+  data: z.lazy(() => PutV2ListsListEntriesDataRequest$outboundSchema),
 });
 
 /**
@@ -397,8 +399,8 @@ export function putV2ListsListEntriesEntryValuesFromJSON(
 }
 
 /** @internal */
-export const PutV2ListsListEntriesEntriesData$inboundSchema: z.ZodType<
-  PutV2ListsListEntriesEntriesData,
+export const PutV2ListsListEntriesDataResponse$inboundSchema: z.ZodType<
+  PutV2ListsListEntriesDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -417,7 +419,7 @@ export const PutV2ListsListEntriesEntriesData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PutV2ListsListEntriesEntriesData$Outbound = {
+export type PutV2ListsListEntriesDataResponse$Outbound = {
   id: PutV2ListsListEntriesId$Outbound;
   parent_record_id: string;
   parent_object: string;
@@ -426,10 +428,10 @@ export type PutV2ListsListEntriesEntriesData$Outbound = {
 };
 
 /** @internal */
-export const PutV2ListsListEntriesEntriesData$outboundSchema: z.ZodType<
-  PutV2ListsListEntriesEntriesData$Outbound,
+export const PutV2ListsListEntriesDataResponse$outboundSchema: z.ZodType<
+  PutV2ListsListEntriesDataResponse$Outbound,
   z.ZodTypeDef,
-  PutV2ListsListEntriesEntriesData
+  PutV2ListsListEntriesDataResponse
 > = z.object({
   id: z.lazy(() => PutV2ListsListEntriesId$outboundSchema),
   parentRecordId: z.string(),
@@ -449,88 +451,88 @@ export const PutV2ListsListEntriesEntriesData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ListsListEntriesEntriesData$ {
-  /** @deprecated use `PutV2ListsListEntriesEntriesData$inboundSchema` instead. */
-  export const inboundSchema = PutV2ListsListEntriesEntriesData$inboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesEntriesData$outboundSchema` instead. */
-  export const outboundSchema = PutV2ListsListEntriesEntriesData$outboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesEntriesData$Outbound` instead. */
-  export type Outbound = PutV2ListsListEntriesEntriesData$Outbound;
+export namespace PutV2ListsListEntriesDataResponse$ {
+  /** @deprecated use `PutV2ListsListEntriesDataResponse$inboundSchema` instead. */
+  export const inboundSchema = PutV2ListsListEntriesDataResponse$inboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesDataResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PutV2ListsListEntriesDataResponse$outboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesDataResponse$Outbound` instead. */
+  export type Outbound = PutV2ListsListEntriesDataResponse$Outbound;
 }
 
-export function putV2ListsListEntriesEntriesDataToJSON(
-  putV2ListsListEntriesEntriesData: PutV2ListsListEntriesEntriesData,
+export function putV2ListsListEntriesDataResponseToJSON(
+  putV2ListsListEntriesDataResponse: PutV2ListsListEntriesDataResponse,
 ): string {
   return JSON.stringify(
-    PutV2ListsListEntriesEntriesData$outboundSchema.parse(
-      putV2ListsListEntriesEntriesData,
+    PutV2ListsListEntriesDataResponse$outboundSchema.parse(
+      putV2ListsListEntriesDataResponse,
     ),
   );
 }
 
-export function putV2ListsListEntriesEntriesDataFromJSON(
+export function putV2ListsListEntriesDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ListsListEntriesEntriesData, SDKValidationError> {
+): SafeParseResult<PutV2ListsListEntriesDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PutV2ListsListEntriesEntriesData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ListsListEntriesEntriesData' from JSON`,
+    (x) => PutV2ListsListEntriesDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ListsListEntriesDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PutV2ListsListEntriesResponseBody$inboundSchema: z.ZodType<
-  PutV2ListsListEntriesResponseBody,
+export const PutV2ListsListEntriesResponse$inboundSchema: z.ZodType<
+  PutV2ListsListEntriesResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PutV2ListsListEntriesEntriesData$inboundSchema),
+  data: z.lazy(() => PutV2ListsListEntriesDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PutV2ListsListEntriesResponseBody$Outbound = {
-  data: PutV2ListsListEntriesEntriesData$Outbound;
+export type PutV2ListsListEntriesResponse$Outbound = {
+  data: PutV2ListsListEntriesDataResponse$Outbound;
 };
 
 /** @internal */
-export const PutV2ListsListEntriesResponseBody$outboundSchema: z.ZodType<
-  PutV2ListsListEntriesResponseBody$Outbound,
+export const PutV2ListsListEntriesResponse$outboundSchema: z.ZodType<
+  PutV2ListsListEntriesResponse$Outbound,
   z.ZodTypeDef,
-  PutV2ListsListEntriesResponseBody
+  PutV2ListsListEntriesResponse
 > = z.object({
-  data: z.lazy(() => PutV2ListsListEntriesEntriesData$outboundSchema),
+  data: z.lazy(() => PutV2ListsListEntriesDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ListsListEntriesResponseBody$ {
-  /** @deprecated use `PutV2ListsListEntriesResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PutV2ListsListEntriesResponseBody$inboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesResponseBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutV2ListsListEntriesResponseBody$outboundSchema;
-  /** @deprecated use `PutV2ListsListEntriesResponseBody$Outbound` instead. */
-  export type Outbound = PutV2ListsListEntriesResponseBody$Outbound;
+export namespace PutV2ListsListEntriesResponse$ {
+  /** @deprecated use `PutV2ListsListEntriesResponse$inboundSchema` instead. */
+  export const inboundSchema = PutV2ListsListEntriesResponse$inboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesResponse$outboundSchema` instead. */
+  export const outboundSchema = PutV2ListsListEntriesResponse$outboundSchema;
+  /** @deprecated use `PutV2ListsListEntriesResponse$Outbound` instead. */
+  export type Outbound = PutV2ListsListEntriesResponse$Outbound;
 }
 
-export function putV2ListsListEntriesResponseBodyToJSON(
-  putV2ListsListEntriesResponseBody: PutV2ListsListEntriesResponseBody,
+export function putV2ListsListEntriesResponseToJSON(
+  putV2ListsListEntriesResponse: PutV2ListsListEntriesResponse,
 ): string {
   return JSON.stringify(
-    PutV2ListsListEntriesResponseBody$outboundSchema.parse(
-      putV2ListsListEntriesResponseBody,
+    PutV2ListsListEntriesResponse$outboundSchema.parse(
+      putV2ListsListEntriesResponse,
     ),
   );
 }
 
-export function putV2ListsListEntriesResponseBodyFromJSON(
+export function putV2ListsListEntriesResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ListsListEntriesResponseBody, SDKValidationError> {
+): SafeParseResult<PutV2ListsListEntriesResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PutV2ListsListEntriesResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ListsListEntriesResponseBody' from JSON`,
+    (x) => PutV2ListsListEntriesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ListsListEntriesResponse' from JSON`,
   );
 }

@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ListsListNotFoundError,
+  GetV2ListsListNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2ListsListEntriesEntryIdRequest,
+  DeleteV2ListsListEntriesEntryIdRequest$outboundSchema,
+  DeleteV2ListsListEntriesEntryIdResponse,
+  DeleteV2ListsListEntriesEntryIdResponse$inboundSchema,
+} from "../models/operations/deletev2listslistentriesentryid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function entriesDelete(
   client: AttioCore,
-  request: operations.DeleteV2ListsListEntriesEntryIdRequest,
+  request: DeleteV2ListsListEntriesEntryIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteV2ListsListEntriesEntryIdResponseBody,
-    | errors.Response404ResponseBody
+    DeleteV2ListsListEntriesEntryIdResponse,
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function entriesDelete(
 
 async function $do(
   client: AttioCore,
-  request: operations.DeleteV2ListsListEntriesEntryIdRequest,
+  request: DeleteV2ListsListEntriesEntryIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeleteV2ListsListEntriesEntryIdResponseBody,
-      | errors.Response404ResponseBody
+      DeleteV2ListsListEntriesEntryIdResponse,
+      | GetV2ListsListNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -79,9 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.DeleteV2ListsListEntriesEntryIdRequest$outboundSchema.parse(
-        value,
-      ),
+      DeleteV2ListsListEntriesEntryIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -155,8 +161,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteV2ListsListEntriesEntryIdResponseBody,
-    | errors.Response404ResponseBody
+    DeleteV2ListsListEntriesEntryIdResponse,
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -165,11 +171,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.DeleteV2ListsListEntriesEntryIdResponseBody$inboundSchema,
-    ),
-    M.jsonErr(404, errors.Response404ResponseBody$inboundSchema),
+    M.json(200, DeleteV2ListsListEntriesEntryIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2ListsListNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

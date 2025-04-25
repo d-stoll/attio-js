@@ -7,7 +7,19 @@ import { listsGet } from "../funcs/listsGet.js";
 import { listsListAll } from "../funcs/listsListAll.js";
 import { listsUpdate } from "../funcs/listsUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import { GetV2ListsResponse } from "../models/operations/getv2lists.js";
+import {
+  GetV2ListsListRequest,
+  GetV2ListsListResponse,
+} from "../models/operations/getv2listslist.js";
+import {
+  PatchV2ListsListRequest,
+  PatchV2ListsListResponse,
+} from "../models/operations/patchv2listslist.js";
+import {
+  PostV2ListsRequest,
+  PostV2ListsResponse,
+} from "../models/operations/postv2lists.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Lists extends ClientSDK {
@@ -21,7 +33,7 @@ export class Lists extends ClientSDK {
    */
   async listAll(
     options?: RequestOptions,
-  ): Promise<operations.GetV2ListsResponseBody> {
+  ): Promise<GetV2ListsResponse> {
     return unwrapAsync(listsListAll(
       this,
       options,
@@ -43,9 +55,9 @@ export class Lists extends ClientSDK {
    * Required scopes: `list_configuration:read-write`.
    */
   async create(
-    request: operations.PostV2ListsRequestBody,
+    request: PostV2ListsRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ListsResponseBody> {
+  ): Promise<PostV2ListsResponse> {
     return unwrapAsync(listsCreate(
       this,
       request,
@@ -62,9 +74,9 @@ export class Lists extends ClientSDK {
    * Required scopes: `list_configuration:read`.
    */
   async get(
-    request: operations.GetV2ListsListRequest,
+    request: GetV2ListsListRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ListsListResponseBody> {
+  ): Promise<GetV2ListsListResponse> {
     return unwrapAsync(listsGet(
       this,
       request,
@@ -81,9 +93,9 @@ export class Lists extends ClientSDK {
    * Required scopes: `list_configuration:read-write`.
    */
   async update(
-    request: operations.PatchV2ListsListRequest,
+    request: PatchV2ListsListRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2ListsListResponseBody> {
+  ): Promise<PatchV2ListsListResponse> {
     return unwrapAsync(listsUpdate(
       this,
       request,

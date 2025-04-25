@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2WebhooksWebhookIdRequestBody } from "attio-js/models/operations";
+import { PatchV2WebhooksWebhookIdRequestBody } from "attio-js/models/operations/patchv2webhookswebhookid.js";
 
 let value: PatchV2WebhooksWebhookIdRequestBody = {
   data: {
@@ -28,6 +28,6 @@ let value: PatchV2WebhooksWebhookIdRequestBody = {
 
 ## Fields
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `data`                                                                                             | [operations.PatchV2WebhooksWebhookIdData](../../models/operations/patchv2webhookswebhookiddata.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                           | [operations.PatchV2WebhooksWebhookIdDataRequest](../../models/operations/patchv2webhookswebhookiddatarequest.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

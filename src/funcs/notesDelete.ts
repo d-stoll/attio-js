@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2NotesNoteIdNotFoundError,
+  GetV2NotesNoteIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2NotesNoteIdRequest,
+  DeleteV2NotesNoteIdRequest$outboundSchema,
+  DeleteV2NotesNoteIdResponse,
+  DeleteV2NotesNoteIdResponse$inboundSchema,
+} from "../models/operations/deletev2notesnoteid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function notesDelete(
   client: AttioCore,
-  request: operations.DeleteV2NotesNoteIdRequest,
+  request: DeleteV2NotesNoteIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteV2NotesNoteIdResponseBody,
-    | errors.NotesResponseBody
+    DeleteV2NotesNoteIdResponse,
+    | GetV2NotesNoteIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function notesDelete(
 
 async function $do(
   client: AttioCore,
-  request: operations.DeleteV2NotesNoteIdRequest,
+  request: DeleteV2NotesNoteIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeleteV2NotesNoteIdResponseBody,
-      | errors.NotesResponseBody
+      DeleteV2NotesNoteIdResponse,
+      | GetV2NotesNoteIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,8 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.DeleteV2NotesNoteIdRequest$outboundSchema.parse(value),
+    (value) => DeleteV2NotesNoteIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -149,8 +156,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteV2NotesNoteIdResponseBody,
-    | errors.NotesResponseBody
+    DeleteV2NotesNoteIdResponse,
+    | GetV2NotesNoteIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -159,8 +166,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.DeleteV2NotesNoteIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.NotesResponseBody$inboundSchema),
+    M.json(200, DeleteV2NotesNoteIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2NotesNoteIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

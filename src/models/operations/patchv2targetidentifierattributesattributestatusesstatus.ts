@@ -7,23 +7,27 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Status,
+  Status$inboundSchema,
+  Status$Outbound,
+  Status$outboundSchema,
+} from "../components/status.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Whether the attribute is on an object or a list. Please note that company and person objects do not support status attributes at this time.
  */
-export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget =
-  {
-    Lists: "lists",
-    Objects: "objects",
-  } as const;
+export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget = {
+  Lists: "lists",
+  Objects: "objects",
+} as const;
 /**
  * Whether the attribute is on an object or a list. Please note that company and person objects do not support status attributes at this time.
  */
-export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget =
+export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget =
   ClosedEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget
   >;
 
 export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusData = {
@@ -54,8 +58,7 @@ export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest = {
   /**
    * Whether the attribute is on an object or a list. Please note that company and person objects do not support status attributes at this time.
    */
-  target:
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget;
+  target: PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget;
   identifier: string;
   attribute: string;
   status: string;
@@ -66,37 +69,36 @@ export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest = {
 /**
  * Success
  */
-export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody =
-  {
-    data: components.Status;
-  };
+export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse = {
+  data: Status;
+};
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$inboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget
   > = z.nativeEnum(
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget,
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget,
   );
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$outboundSchema:
   z.ZodNativeEnum<
-    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget
+    typeof PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget
   > =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$inboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$outboundSchema;
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$outboundSchema;
 }
 
 /** @internal */
@@ -268,7 +270,7 @@ export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest$inb
     unknown
   > = z.object({
     target:
-      PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$inboundSchema,
+      PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$inboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     status: z.string(),
@@ -300,7 +302,7 @@ export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest$out
     PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest
   > = z.object({
     target:
-      PatchV2TargetIdentifierAttributesAttributeStatusesStatusPathParamTarget$outboundSchema,
+      PatchV2TargetIdentifierAttributesAttributeStatusesStatusTarget$outboundSchema,
     identifier: z.string(),
     attribute: z.string(),
     status: z.string(),
@@ -355,70 +357,68 @@ export function patchV2TargetIdentifierAttributesAttributeStatusesStatusRequestF
 }
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$inboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$inboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody,
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    data: components.Status$inboundSchema,
+    data: Status$inboundSchema,
   });
 
 /** @internal */
-export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$Outbound =
+export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$Outbound =
   {
-    data: components.Status$Outbound;
+    data: Status$Outbound;
   };
 
 /** @internal */
-export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$outboundSchema:
+export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$outboundSchema:
   z.ZodType<
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$Outbound,
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$Outbound,
     z.ZodTypeDef,
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse
   > = z.object({
-    data: components.Status$outboundSchema,
+    data: Status$outboundSchema,
   });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$ {
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$inboundSchema` instead. */
+export namespace PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$ {
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$inboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$outboundSchema` instead. */
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$inboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$outboundSchema;
-  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$Outbound` instead. */
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$outboundSchema;
+  /** @deprecated use `PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$Outbound` instead. */
   export type Outbound =
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$Outbound;
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$Outbound;
 }
 
-export function patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBodyToJSON(
-  patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody:
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody,
+export function patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseToJSON(
+  patchV2TargetIdentifierAttributesAttributeStatusesStatusResponse:
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse,
 ): string {
   return JSON.stringify(
-    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$outboundSchema
-      .parse(
-        patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody,
-      ),
+    PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$outboundSchema
+      .parse(patchV2TargetIdentifierAttributesAttributeStatusesStatusResponse),
   );
 }
 
-export function patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBodyFromJSON(
+export function patchV2TargetIdentifierAttributesAttributeStatusesStatusResponseFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody,
+  PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody$inboundSchema
+      PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponseBody' from JSON`,
+    `Failed to parse 'PatchV2TargetIdentifierAttributesAttributeStatusesStatusResponse' from JSON`,
   );
 }

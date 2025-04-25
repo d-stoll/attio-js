@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  FilterError,
+  FilterError$inboundSchema,
+  PostV2ObjectsObjectRecordsQueryNotFoundError,
+  PostV2ObjectsObjectRecordsQueryNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PostV2ObjectsObjectRecordsQueryRequest,
+  PostV2ObjectsObjectRecordsQueryRequest$outboundSchema,
+  PostV2ObjectsObjectRecordsQueryResponse,
+  PostV2ObjectsObjectRecordsQueryResponse$inboundSchema,
+} from "../models/operations/postv2objectsobjectrecordsquery.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,13 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function recordsQuery(
   client: AttioCore,
-  request: operations.PostV2ObjectsObjectRecordsQueryRequest,
+  request: PostV2ObjectsObjectRecordsQueryRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PostV2ObjectsObjectRecordsQueryResponseBody,
-    | errors.PostV2ObjectsObjectRecordsQueryResponseBody
-    | errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody
+    PostV2ObjectsObjectRecordsQueryResponse,
+    | FilterError
+    | PostV2ObjectsObjectRecordsQueryNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,14 +69,14 @@ export function recordsQuery(
 
 async function $do(
   client: AttioCore,
-  request: operations.PostV2ObjectsObjectRecordsQueryRequest,
+  request: PostV2ObjectsObjectRecordsQueryRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PostV2ObjectsObjectRecordsQueryResponseBody,
-      | errors.PostV2ObjectsObjectRecordsQueryResponseBody
-      | errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody
+      PostV2ObjectsObjectRecordsQueryResponse,
+      | FilterError
+      | PostV2ObjectsObjectRecordsQueryNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -81,9 +91,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostV2ObjectsObjectRecordsQueryRequest$outboundSchema.parse(
-        value,
-      ),
+      PostV2ObjectsObjectRecordsQueryRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -154,9 +162,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PostV2ObjectsObjectRecordsQueryResponseBody,
-    | errors.PostV2ObjectsObjectRecordsQueryResponseBody
-    | errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody
+    PostV2ObjectsObjectRecordsQueryResponse,
+    | FilterError
+    | PostV2ObjectsObjectRecordsQueryNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -165,18 +173,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.PostV2ObjectsObjectRecordsQueryResponseBody$inboundSchema,
-    ),
-    M.jsonErr(
-      400,
-      errors.PostV2ObjectsObjectRecordsQueryResponseBody$inboundSchema,
-    ),
-    M.jsonErr(
-      404,
-      errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody$inboundSchema,
-    ),
+    M.json(200, PostV2ObjectsObjectRecordsQueryResponse$inboundSchema),
+    M.jsonErr(400, FilterError$inboundSchema),
+    M.jsonErr(404, PostV2ObjectsObjectRecordsQueryNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

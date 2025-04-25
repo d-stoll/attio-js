@@ -1,0 +1,40 @@
+# GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
+
+## Example Usage
+
+```typescript
+import { GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus } from "attio-js/models/operations/getv2objectsobjectrecordsrecordidattributesattributevalues.js";
+
+let value:
+  GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus = {
+    activeFrom: new Date("2023-01-01T15:00:00.000000000Z"),
+    activeUntil: new Date("2023-01-01T15:00:00.000000000Z"),
+    createdByActor: {
+      id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+      type: "workspace-member",
+    },
+    status: {
+      id: {
+        workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",
+        objectId: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
+        attributeId: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+        statusId: "11f07f01-c10f-4e05-a522-33e050bc52ee",
+      },
+      title: "In Progress",
+      isArchived: false,
+      celebrationEnabled: false,
+      targetTimeInStatus: "P0Y0M1DT0H0M0S",
+    },
+    attributeType: "status",
+  };
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          | Example                                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `activeFrom`                                                                                                                                                                                         | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                        | :heavy_check_mark:                                                                                                                                                                                   | The point in time at which this value was made "active". `active_from` can be considered roughly analogous to `created_at`.                                                                          | 2023-01-01T15:00:00.000000000Z                                                                                                                                                                       |
+| `activeUntil`                                                                                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                        | :heavy_check_mark:                                                                                                                                                                                   | The point in time at which this value was deactivated. If `null`, the value is active.                                                                                                               | 2023-01-01T15:00:00.000000000Z                                                                                                                                                                       |
+| `createdByActor`                                                                                                                                                                                     | [operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesCreatedByActor13](../../models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluescreatedbyactor13.md)       | :heavy_check_mark:                                                                                                                                                                                   | The actor that created this value.                                                                                                                                                                   | {<br/>"type": "workspace-member",<br/>"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"<br/>}                                                                                                             |
+| `status`                                                                                                                                                                                             | [components.Status](../../models/components/status.md)                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                   | N/A                                                                                                                                                                                                  |                                                                                                                                                                                                      |
+| `attributeType`                                                                                                                                                                                      | [operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesAttributeTypeStatus](../../models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesattributetypestatus.md) | :heavy_check_mark:                                                                                                                                                                                   | The attribute type of the value.                                                                                                                                                                     | status                                                                                                                                                                                               |

@@ -5,7 +5,7 @@ Whether the workspace member is suspended or not and what level of privileges th
 ## Example Usage
 
 ```typescript
-import { AccessLevel } from "attio-js/models/components";
+import { AccessLevel } from "attio-js/models/components/workspacemember.js";
 
 let value: AccessLevel = "member";
 ```

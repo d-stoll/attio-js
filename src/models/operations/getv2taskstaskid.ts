@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Task,
+  Task$inboundSchema,
+  Task$Outbound,
+  Task$outboundSchema,
+} from "../components/task.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2TasksTaskIdRequest = {
@@ -16,8 +21,8 @@ export type GetV2TasksTaskIdRequest = {
 /**
  * Success
  */
-export type GetV2TasksTaskIdResponseBody = {
-  data: components.Task;
+export type GetV2TasksTaskIdResponse = {
+  data: Task;
 };
 
 /** @internal */
@@ -83,57 +88,55 @@ export function getV2TasksTaskIdRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2TasksTaskIdResponseBody$inboundSchema: z.ZodType<
-  GetV2TasksTaskIdResponseBody,
+export const GetV2TasksTaskIdResponse$inboundSchema: z.ZodType<
+  GetV2TasksTaskIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Task$inboundSchema,
+  data: Task$inboundSchema,
 });
 
 /** @internal */
-export type GetV2TasksTaskIdResponseBody$Outbound = {
-  data: components.Task$Outbound;
+export type GetV2TasksTaskIdResponse$Outbound = {
+  data: Task$Outbound;
 };
 
 /** @internal */
-export const GetV2TasksTaskIdResponseBody$outboundSchema: z.ZodType<
-  GetV2TasksTaskIdResponseBody$Outbound,
+export const GetV2TasksTaskIdResponse$outboundSchema: z.ZodType<
+  GetV2TasksTaskIdResponse$Outbound,
   z.ZodTypeDef,
-  GetV2TasksTaskIdResponseBody
+  GetV2TasksTaskIdResponse
 > = z.object({
-  data: components.Task$outboundSchema,
+  data: Task$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2TasksTaskIdResponseBody$ {
-  /** @deprecated use `GetV2TasksTaskIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2TasksTaskIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2TasksTaskIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2TasksTaskIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2TasksTaskIdResponseBody$Outbound` instead. */
-  export type Outbound = GetV2TasksTaskIdResponseBody$Outbound;
+export namespace GetV2TasksTaskIdResponse$ {
+  /** @deprecated use `GetV2TasksTaskIdResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2TasksTaskIdResponse$inboundSchema;
+  /** @deprecated use `GetV2TasksTaskIdResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2TasksTaskIdResponse$outboundSchema;
+  /** @deprecated use `GetV2TasksTaskIdResponse$Outbound` instead. */
+  export type Outbound = GetV2TasksTaskIdResponse$Outbound;
 }
 
-export function getV2TasksTaskIdResponseBodyToJSON(
-  getV2TasksTaskIdResponseBody: GetV2TasksTaskIdResponseBody,
+export function getV2TasksTaskIdResponseToJSON(
+  getV2TasksTaskIdResponse: GetV2TasksTaskIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2TasksTaskIdResponseBody$outboundSchema.parse(
-      getV2TasksTaskIdResponseBody,
-    ),
+    GetV2TasksTaskIdResponse$outboundSchema.parse(getV2TasksTaskIdResponse),
   );
 }
 
-export function getV2TasksTaskIdResponseBodyFromJSON(
+export function getV2TasksTaskIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2TasksTaskIdResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2TasksTaskIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2TasksTaskIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2TasksTaskIdResponseBody' from JSON`,
+    (x) => GetV2TasksTaskIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2TasksTaskIdResponse' from JSON`,
   );
 }

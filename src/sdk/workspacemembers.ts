@@ -5,7 +5,11 @@
 import { workspaceMembersGet } from "../funcs/workspaceMembersGet.js";
 import { workspaceMembersList } from "../funcs/workspaceMembersList.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import { GetV2WorkspaceMembersResponse } from "../models/operations/getv2workspacemembers.js";
+import {
+  GetV2WorkspaceMembersWorkspaceMemberIdRequest,
+  GetV2WorkspaceMembersWorkspaceMemberIdResponse,
+} from "../models/operations/getv2workspacemembersworkspacememberid.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class WorkspaceMembers extends ClientSDK {
@@ -19,7 +23,7 @@ export class WorkspaceMembers extends ClientSDK {
    */
   async list(
     options?: RequestOptions,
-  ): Promise<operations.GetV2WorkspaceMembersResponseBody> {
+  ): Promise<GetV2WorkspaceMembersResponse> {
     return unwrapAsync(workspaceMembersList(
       this,
       options,
@@ -35,9 +39,9 @@ export class WorkspaceMembers extends ClientSDK {
    * Required scopes: `user_management:read`.
    */
   async get(
-    request: operations.GetV2WorkspaceMembersWorkspaceMemberIdRequest,
+    request: GetV2WorkspaceMembersWorkspaceMemberIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody> {
+  ): Promise<GetV2WorkspaceMembersWorkspaceMemberIdResponse> {
     return unwrapAsync(workspaceMembersGet(
       this,
       request,

@@ -1,17 +1,17 @@
 # AttributeType
 
-The attribute type of the value.
+The type of the attribute.
 
 ## Example Usage
 
 ```typescript
-import { AttributeType } from "attio-js/models/components";
+import { AttributeType } from "attio-js/models/components/attribute.js";
 
-let value: AttributeType = "actor-reference";
+let value: AttributeType = "text";
 ```
 
 ## Values
 
 ```typescript
-"actor-reference"
+"text" | "number" | "checkbox" | "currency" | "date" | "timestamp" | "rating" | "status" | "select" | "record-reference" | "actor-reference" | "location" | "domain" | "email-address" | "phone-number" | "interaction" | "personal-name"
 ```

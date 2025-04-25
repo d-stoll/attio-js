@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Id = {
+export type ObjectId = {
   /**
    * A UUID to identify the workspace this object belongs to.
    */
@@ -20,7 +20,7 @@ export type Id = {
 };
 
 export type ObjectT = {
-  id: Id;
+  id: ObjectId;
   /**
    * A unique, human-readable slug to access the object through URLs and API calls. Formatted in snake case.
    */
@@ -40,7 +40,11 @@ export type ObjectT = {
 };
 
 /** @internal */
-export const Id$inboundSchema: z.ZodType<Id, z.ZodTypeDef, unknown> = z.object({
+export const ObjectId$inboundSchema: z.ZodType<
+  ObjectId,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
   workspace_id: z.string(),
   object_id: z.string(),
 }).transform((v) => {
@@ -51,54 +55,57 @@ export const Id$inboundSchema: z.ZodType<Id, z.ZodTypeDef, unknown> = z.object({
 });
 
 /** @internal */
-export type Id$Outbound = {
+export type ObjectId$Outbound = {
   workspace_id: string;
   object_id: string;
 };
 
 /** @internal */
-export const Id$outboundSchema: z.ZodType<Id$Outbound, z.ZodTypeDef, Id> = z
-  .object({
-    workspaceId: z.string(),
-    objectId: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      workspaceId: "workspace_id",
-      objectId: "object_id",
-    });
+export const ObjectId$outboundSchema: z.ZodType<
+  ObjectId$Outbound,
+  z.ZodTypeDef,
+  ObjectId
+> = z.object({
+  workspaceId: z.string(),
+  objectId: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    workspaceId: "workspace_id",
+    objectId: "object_id",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Id$ {
-  /** @deprecated use `Id$inboundSchema` instead. */
-  export const inboundSchema = Id$inboundSchema;
-  /** @deprecated use `Id$outboundSchema` instead. */
-  export const outboundSchema = Id$outboundSchema;
-  /** @deprecated use `Id$Outbound` instead. */
-  export type Outbound = Id$Outbound;
+export namespace ObjectId$ {
+  /** @deprecated use `ObjectId$inboundSchema` instead. */
+  export const inboundSchema = ObjectId$inboundSchema;
+  /** @deprecated use `ObjectId$outboundSchema` instead. */
+  export const outboundSchema = ObjectId$outboundSchema;
+  /** @deprecated use `ObjectId$Outbound` instead. */
+  export type Outbound = ObjectId$Outbound;
 }
 
-export function idToJSON(id: Id): string {
-  return JSON.stringify(Id$outboundSchema.parse(id));
+export function objectIdToJSON(objectId: ObjectId): string {
+  return JSON.stringify(ObjectId$outboundSchema.parse(objectId));
 }
 
-export function idFromJSON(
+export function objectIdFromJSON(
   jsonString: string,
-): SafeParseResult<Id, SDKValidationError> {
+): SafeParseResult<ObjectId, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Id$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Id' from JSON`,
+    (x) => ObjectId$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ObjectId' from JSON`,
   );
 }
 
 /** @internal */
 export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> =
   z.object({
-    id: z.lazy(() => Id$inboundSchema),
+    id: z.lazy(() => ObjectId$inboundSchema),
     api_slug: z.nullable(z.string()),
     singular_noun: z.nullable(z.string()),
     plural_noun: z.nullable(z.string()),
@@ -114,7 +121,7 @@ export const ObjectT$inboundSchema: z.ZodType<ObjectT, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type ObjectT$Outbound = {
-  id: Id$Outbound;
+  id: ObjectId$Outbound;
   api_slug: string | null;
   singular_noun: string | null;
   plural_noun: string | null;
@@ -127,7 +134,7 @@ export const ObjectT$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ObjectT
 > = z.object({
-  id: z.lazy(() => Id$outboundSchema),
+  id: z.lazy(() => ObjectId$outboundSchema),
   apiSlug: z.nullable(z.string()),
   singularNoun: z.nullable(z.string()),
   pluralNoun: z.nullable(z.string()),

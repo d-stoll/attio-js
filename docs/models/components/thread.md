@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Thread } from "attio-js/models/components";
+import { Thread } from "attio-js/models/components/thread.js";
 
 let value: Thread = {
   id: {

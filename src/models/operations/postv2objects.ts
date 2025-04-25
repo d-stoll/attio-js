@@ -6,10 +6,15 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  ObjectT,
+  ObjectT$inboundSchema,
+  ObjectT$Outbound,
+  ObjectT$outboundSchema,
+} from "../components/object.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type Data = {
+export type PostV2ObjectsData = {
   /**
    * A unique, human-readable slug to access the object through URLs and API calls. Should be formatted in snake case.
    */
@@ -24,183 +29,193 @@ export type Data = {
   pluralNoun: string;
 };
 
-export type PostV2ObjectsRequestBody = {
-  data: Data;
+export type PostV2ObjectsRequest = {
+  data: PostV2ObjectsData;
 };
 
 /**
  * Success
  */
-export type PostV2ObjectsResponseBody = {
-  data: components.ObjectT;
+export type PostV2ObjectsResponse = {
+  data: ObjectT;
 };
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    api_slug: z.string(),
-    singular_noun: z.string(),
-    plural_noun: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "api_slug": "apiSlug",
-      "singular_noun": "singularNoun",
-      "plural_noun": "pluralNoun",
-    });
+export const PostV2ObjectsData$inboundSchema: z.ZodType<
+  PostV2ObjectsData,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  api_slug: z.string(),
+  singular_noun: z.string(),
+  plural_noun: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "api_slug": "apiSlug",
+    "singular_noun": "singularNoun",
+    "plural_noun": "pluralNoun",
   });
+});
 
 /** @internal */
-export type Data$Outbound = {
+export type PostV2ObjectsData$Outbound = {
   api_slug: string;
   singular_noun: string;
   plural_noun: string;
 };
 
 /** @internal */
-export const Data$outboundSchema: z.ZodType<Data$Outbound, z.ZodTypeDef, Data> =
-  z.object({
-    apiSlug: z.string(),
-    singularNoun: z.string(),
-    pluralNoun: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      apiSlug: "api_slug",
-      singularNoun: "singular_noun",
-      pluralNoun: "plural_noun",
-    });
+export const PostV2ObjectsData$outboundSchema: z.ZodType<
+  PostV2ObjectsData$Outbound,
+  z.ZodTypeDef,
+  PostV2ObjectsData
+> = z.object({
+  apiSlug: z.string(),
+  singularNoun: z.string(),
+  pluralNoun: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    apiSlug: "api_slug",
+    singularNoun: "singular_noun",
+    pluralNoun: "plural_noun",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Data$ {
-  /** @deprecated use `Data$inboundSchema` instead. */
-  export const inboundSchema = Data$inboundSchema;
-  /** @deprecated use `Data$outboundSchema` instead. */
-  export const outboundSchema = Data$outboundSchema;
-  /** @deprecated use `Data$Outbound` instead. */
-  export type Outbound = Data$Outbound;
+export namespace PostV2ObjectsData$ {
+  /** @deprecated use `PostV2ObjectsData$inboundSchema` instead. */
+  export const inboundSchema = PostV2ObjectsData$inboundSchema;
+  /** @deprecated use `PostV2ObjectsData$outboundSchema` instead. */
+  export const outboundSchema = PostV2ObjectsData$outboundSchema;
+  /** @deprecated use `PostV2ObjectsData$Outbound` instead. */
+  export type Outbound = PostV2ObjectsData$Outbound;
 }
 
-export function dataToJSON(data: Data): string {
-  return JSON.stringify(Data$outboundSchema.parse(data));
+export function postV2ObjectsDataToJSON(
+  postV2ObjectsData: PostV2ObjectsData,
+): string {
+  return JSON.stringify(
+    PostV2ObjectsData$outboundSchema.parse(postV2ObjectsData),
+  );
 }
 
-export function dataFromJSON(
+export function postV2ObjectsDataFromJSON(
   jsonString: string,
-): SafeParseResult<Data, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsData, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data' from JSON`,
+    (x) => PostV2ObjectsData$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsData' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ObjectsRequestBody$inboundSchema: z.ZodType<
-  PostV2ObjectsRequestBody,
+export const PostV2ObjectsRequest$inboundSchema: z.ZodType<
+  PostV2ObjectsRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => Data$inboundSchema),
+  data: z.lazy(() => PostV2ObjectsData$inboundSchema),
 });
 
 /** @internal */
-export type PostV2ObjectsRequestBody$Outbound = {
-  data: Data$Outbound;
+export type PostV2ObjectsRequest$Outbound = {
+  data: PostV2ObjectsData$Outbound;
 };
 
 /** @internal */
-export const PostV2ObjectsRequestBody$outboundSchema: z.ZodType<
-  PostV2ObjectsRequestBody$Outbound,
+export const PostV2ObjectsRequest$outboundSchema: z.ZodType<
+  PostV2ObjectsRequest$Outbound,
   z.ZodTypeDef,
-  PostV2ObjectsRequestBody
+  PostV2ObjectsRequest
 > = z.object({
-  data: z.lazy(() => Data$outboundSchema),
+  data: z.lazy(() => PostV2ObjectsData$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ObjectsRequestBody$ {
-  /** @deprecated use `PostV2ObjectsRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2ObjectsRequestBody$inboundSchema;
-  /** @deprecated use `PostV2ObjectsRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2ObjectsRequestBody$outboundSchema;
-  /** @deprecated use `PostV2ObjectsRequestBody$Outbound` instead. */
-  export type Outbound = PostV2ObjectsRequestBody$Outbound;
+export namespace PostV2ObjectsRequest$ {
+  /** @deprecated use `PostV2ObjectsRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2ObjectsRequest$inboundSchema;
+  /** @deprecated use `PostV2ObjectsRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2ObjectsRequest$outboundSchema;
+  /** @deprecated use `PostV2ObjectsRequest$Outbound` instead. */
+  export type Outbound = PostV2ObjectsRequest$Outbound;
 }
 
-export function postV2ObjectsRequestBodyToJSON(
-  postV2ObjectsRequestBody: PostV2ObjectsRequestBody,
+export function postV2ObjectsRequestToJSON(
+  postV2ObjectsRequest: PostV2ObjectsRequest,
 ): string {
   return JSON.stringify(
-    PostV2ObjectsRequestBody$outboundSchema.parse(postV2ObjectsRequestBody),
+    PostV2ObjectsRequest$outboundSchema.parse(postV2ObjectsRequest),
   );
 }
 
-export function postV2ObjectsRequestBodyFromJSON(
+export function postV2ObjectsRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ObjectsRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ObjectsRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsRequestBody' from JSON`,
+    (x) => PostV2ObjectsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ObjectsResponseBody$inboundSchema: z.ZodType<
-  PostV2ObjectsResponseBody,
+export const PostV2ObjectsResponse$inboundSchema: z.ZodType<
+  PostV2ObjectsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.ObjectT$inboundSchema,
+  data: ObjectT$inboundSchema,
 });
 
 /** @internal */
-export type PostV2ObjectsResponseBody$Outbound = {
-  data: components.ObjectT$Outbound;
+export type PostV2ObjectsResponse$Outbound = {
+  data: ObjectT$Outbound;
 };
 
 /** @internal */
-export const PostV2ObjectsResponseBody$outboundSchema: z.ZodType<
-  PostV2ObjectsResponseBody$Outbound,
+export const PostV2ObjectsResponse$outboundSchema: z.ZodType<
+  PostV2ObjectsResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ObjectsResponseBody
+  PostV2ObjectsResponse
 > = z.object({
-  data: components.ObjectT$outboundSchema,
+  data: ObjectT$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ObjectsResponseBody$ {
-  /** @deprecated use `PostV2ObjectsResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2ObjectsResponseBody$inboundSchema;
-  /** @deprecated use `PostV2ObjectsResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2ObjectsResponseBody$outboundSchema;
-  /** @deprecated use `PostV2ObjectsResponseBody$Outbound` instead. */
-  export type Outbound = PostV2ObjectsResponseBody$Outbound;
+export namespace PostV2ObjectsResponse$ {
+  /** @deprecated use `PostV2ObjectsResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2ObjectsResponse$inboundSchema;
+  /** @deprecated use `PostV2ObjectsResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2ObjectsResponse$outboundSchema;
+  /** @deprecated use `PostV2ObjectsResponse$Outbound` instead. */
+  export type Outbound = PostV2ObjectsResponse$Outbound;
 }
 
-export function postV2ObjectsResponseBodyToJSON(
-  postV2ObjectsResponseBody: PostV2ObjectsResponseBody,
+export function postV2ObjectsResponseToJSON(
+  postV2ObjectsResponse: PostV2ObjectsResponse,
 ): string {
   return JSON.stringify(
-    PostV2ObjectsResponseBody$outboundSchema.parse(postV2ObjectsResponseBody),
+    PostV2ObjectsResponse$outboundSchema.parse(postV2ObjectsResponse),
   );
 }
 
-export function postV2ObjectsResponseBodyFromJSON(
+export function postV2ObjectsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ObjectsResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2ObjectsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ObjectsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ObjectsResponseBody' from JSON`,
+    (x) => PostV2ObjectsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ObjectsResponse' from JSON`,
   );
 }

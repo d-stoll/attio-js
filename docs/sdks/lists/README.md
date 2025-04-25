@@ -77,7 +77,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ListsResponseBody](../../models/operations/getv2listsresponsebody.md)\>**
+**Promise\<[operations.GetV2ListsResponse](../../models/operations/getv2listsresponse.md)\>**
 
 ### Errors
 
@@ -192,23 +192,23 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostV2ListsRequestBody](../../models/operations/postv2listsrequestbody.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV2ListsRequest](../../models/operations/postv2listsrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.PostV2ListsResponseBody](../../models/operations/postv2listsresponsebody.md)\>**
+**Promise\<[operations.PostV2ListsResponse](../../models/operations/postv2listsresponse.md)\>**
 
 ### Errors
 
-| Error Type                          | Status Code                         | Content Type                        |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| errors.ListsResponseBody            | 400                                 | application/json                    |
-| errors.PostV2ListsResponseBody      | 403                                 | application/json                    |
-| errors.PostV2ListsListsResponseBody | 404                                 | application/json                    |
-| errors.APIError                     | 4XX, 5XX                            | \*/\*                               |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.PostV2ListsInvalidRequestError | 400                                   | application/json                      |
+| errors.BillingError                   | 403                                   | application/json                      |
+| errors.PostV2ListsNotFoundError       | 404                                   | application/json                      |
+| errors.APIError                       | 4XX, 5XX                              | \*/\*                                 |
 
 ## get
 
@@ -280,14 +280,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ListsListResponseBody](../../models/operations/getv2listslistresponsebody.md)\>**
+**Promise\<[operations.GetV2ListsListResponse](../../models/operations/getv2listslistresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                         | Status Code                        | Content Type                       |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| errors.GetV2ListsListNotFoundError | 404                                | application/json                   |
+| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
 
 ## update
 
@@ -385,12 +385,12 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2ListsListResponseBody](../../models/operations/patchv2listslistresponsebody.md)\>**
+**Promise\<[operations.PatchV2ListsListResponse](../../models/operations/patchv2listslistresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.ListsResponseBody       | 400                            | application/json               |
-| errors.Response404ResponseBody | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                            | Status Code                           | Content Type                          |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| errors.PostV2ListsInvalidRequestError | 400                                   | application/json                      |
+| errors.GetV2ListsListNotFoundError    | 404                                   | application/json                      |
+| errors.APIError                       | 4XX, 5XX                              | \*/\*                                 |

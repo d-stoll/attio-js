@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteV2ListsListEntriesEntryIdRequest } from "attio-js/models/operations";
+import { DeleteV2ListsListEntriesEntryIdRequest } from "attio-js/models/operations/deletev2listslistentriesentryid.js";
 
 let value: DeleteV2ListsListEntriesEntryIdRequest = {
   list: "enterprise_sales",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2WebhooksRequest } from "attio-js/models/operations";
+import { GetV2WebhooksRequest } from "attio-js/models/operations/getv2webhooks.js";
 
 let value: GetV2WebhooksRequest = {
   limit: 10,

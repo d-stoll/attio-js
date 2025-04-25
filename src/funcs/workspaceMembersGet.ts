@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError,
+  GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2WorkspaceMembersWorkspaceMemberIdRequest,
+  GetV2WorkspaceMembersWorkspaceMemberIdRequest$outboundSchema,
+  GetV2WorkspaceMembersWorkspaceMemberIdResponse,
+  GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema,
+} from "../models/operations/getv2workspacemembersworkspacememberid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function workspaceMembersGet(
   client: AttioCore,
-  request: operations.GetV2WorkspaceMembersWorkspaceMemberIdRequest,
+  request: GetV2WorkspaceMembersWorkspaceMemberIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
-    | errors.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse,
+    | GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function workspaceMembersGet(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2WorkspaceMembersWorkspaceMemberIdRequest,
+  request: GetV2WorkspaceMembersWorkspaceMemberIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
-      | errors.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody
+      GetV2WorkspaceMembersWorkspaceMemberIdResponse,
+      | GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -79,8 +87,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetV2WorkspaceMembersWorkspaceMemberIdRequest$outboundSchema
-        .parse(value),
+      GetV2WorkspaceMembersWorkspaceMemberIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -153,8 +160,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody,
-    | errors.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody
+    GetV2WorkspaceMembersWorkspaceMemberIdResponse,
+    | GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -163,14 +170,10 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations
-        .GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema,
-    ),
+    M.json(200, GetV2WorkspaceMembersWorkspaceMemberIdResponse$inboundSchema),
     M.jsonErr(
       404,
-      errors.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody$inboundSchema,
+      GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSchema,
     ),
     M.fail("4XX"),
     M.fail("5XX"),

@@ -5,7 +5,7 @@ The format of the task content to be created. Rich text formatting, links and @r
 ## Example Usage
 
 ```typescript
-import { PostV2TasksFormat } from "attio-js/models/operations";
+import { PostV2TasksFormat } from "attio-js/models/operations/postv2tasks.js";
 
 let value: PostV2TasksFormat = "plaintext";
 ```

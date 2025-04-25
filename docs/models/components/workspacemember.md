@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { WorkspaceMember } from "attio-js/models/components";
+import { WorkspaceMember } from "attio-js/models/components/workspacemember.js";
 
 let value: WorkspaceMember = {
   id: {

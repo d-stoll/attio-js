@@ -5,7 +5,7 @@ Configuration available for attributes of type "record-reference".
 ## Example Usage
 
 ```typescript
-import { RecordReference } from "attio-js/models/components";
+import { RecordReference } from "attio-js/models/components/attribute.js";
 
 let value: RecordReference = {
   allowedObjectIds: [

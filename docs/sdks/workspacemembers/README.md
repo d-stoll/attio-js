@@ -73,7 +73,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2WorkspaceMembersResponseBody](../../models/operations/getv2workspacemembersresponsebody.md)\>**
+**Promise\<[operations.GetV2WorkspaceMembersResponse](../../models/operations/getv2workspacemembersresponse.md)\>**
 
 ### Errors
 
@@ -151,11 +151,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody](../../models/operations/getv2workspacemembersworkspacememberidresponsebody.md)\>**
+**Promise\<[operations.GetV2WorkspaceMembersWorkspaceMemberIdResponse](../../models/operations/getv2workspacemembersworkspacememberidresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| errors.GetV2WorkspaceMembersWorkspaceMemberIdResponseBody | 404                                                       | application/json                                          |
-| errors.APIError                                           | 4XX, 5XX                                                  | \*/\*                                                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| errors.GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError | 404                                                              | application/json                                                 |
+| errors.APIError                                                  | 4XX, 5XX                                                         | \*/\*                                                            |

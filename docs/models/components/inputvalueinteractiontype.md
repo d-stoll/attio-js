@@ -5,7 +5,7 @@ The type of interaction e.g. calendar or email.
 ## Example Usage
 
 ```typescript
-import { InputValueInteractionType } from "attio-js/models/components";
+import { InputValueInteractionType } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValueInteractionType = "email";
 ```

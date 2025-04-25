@@ -12,25 +12,25 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * The direction to sort the results by.
  */
-export const PostV2ListsListEntriesQuerySortsEntriesDirection = {
+export const PostV2ListsListEntriesQueryDirection2 = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * The direction to sort the results by.
  */
-export type PostV2ListsListEntriesQuerySortsEntriesDirection = ClosedEnum<
-  typeof PostV2ListsListEntriesQuerySortsEntriesDirection
+export type PostV2ListsListEntriesQueryDirection2 = ClosedEnum<
+  typeof PostV2ListsListEntriesQueryDirection2
 >;
 
 /**
  * Sort by path
  */
-export type PostV2ListsListEntriesQuerySorts2 = {
+export type PostV2ListsListEntriesQuerySort2 = {
   /**
    * The direction to sort the results by.
    */
-  direction: PostV2ListsListEntriesQuerySortsEntriesDirection;
+  direction: PostV2ListsListEntriesQueryDirection2;
   /**
    * You may use the `path` property to traverse record reference attributes and parent records on list entries. `path` accepts an array of tuples where the first element of each tuple is the slug or ID of a list/object, and the second element is the slug or ID of an attribute on that list/object. The first element of the first tuple must correspond to the list or object that you are querying. For example, if you wanted to sort by the name of the parent record (a company) on a list with the slug "sales", you would pass the value `[['sales', 'parent_record'], ['companies', 'name']]`.
    */
@@ -44,25 +44,25 @@ export type PostV2ListsListEntriesQuerySorts2 = {
 /**
  * The direction to sort the results by.
  */
-export const PostV2ListsListEntriesQuerySortsDirection = {
+export const PostV2ListsListEntriesQueryDirection1 = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * The direction to sort the results by.
  */
-export type PostV2ListsListEntriesQuerySortsDirection = ClosedEnum<
-  typeof PostV2ListsListEntriesQuerySortsDirection
+export type PostV2ListsListEntriesQueryDirection1 = ClosedEnum<
+  typeof PostV2ListsListEntriesQueryDirection1
 >;
 
 /**
  * Sort by attribute
  */
-export type PostV2ListsListEntriesQuerySorts1 = {
+export type PostV2ListsListEntriesQuerySort1 = {
   /**
    * The direction to sort the results by.
    */
-  direction: PostV2ListsListEntriesQuerySortsDirection;
+  direction: PostV2ListsListEntriesQueryDirection1;
   /**
    * A slug or ID to identify the attribute to sort by.
    */
@@ -73,9 +73,9 @@ export type PostV2ListsListEntriesQuerySorts1 = {
   field?: string | undefined;
 };
 
-export type PostV2ListsListEntriesQuerySorts =
-  | PostV2ListsListEntriesQuerySorts1
-  | PostV2ListsListEntriesQuerySorts2;
+export type PostV2ListsListEntriesQuerySortUnion =
+  | PostV2ListsListEntriesQuerySort1
+  | PostV2ListsListEntriesQuerySort2;
 
 export type PostV2ListsListEntriesQueryRequestBody = {
   /**
@@ -86,9 +86,7 @@ export type PostV2ListsListEntriesQueryRequestBody = {
    * An object used to sort results. See the [full guide to filtering and sorting here](/docs/filtering-and-sorting).
    */
   sorts?:
-    | Array<
-      PostV2ListsListEntriesQuerySorts1 | PostV2ListsListEntriesQuerySorts2
-    >
+    | Array<PostV2ListsListEntriesQuerySort1 | PostV2ListsListEntriesQuerySort2>
     | undefined;
   /**
    * The maximum number of results to return. Defaults to 500. See the [full guide to pagination here](/docs/pagination).
@@ -123,7 +121,7 @@ export type PostV2ListsListEntriesQueryId = {
 /**
  * A list of attribute values for the list entry (not attribute values for its parent record).
  */
-export type EntryValues = {};
+export type PostV2ListsListEntriesQueryEntryValues = {};
 
 export type PostV2ListsListEntriesQueryData = {
   id: PostV2ListsListEntriesQueryId;
@@ -142,64 +140,65 @@ export type PostV2ListsListEntriesQueryData = {
   /**
    * A list of attribute values for the list entry (not attribute values for its parent record).
    */
-  entryValues: EntryValues;
+  entryValues: PostV2ListsListEntriesQueryEntryValues;
 };
 
 /**
  * Success
  */
-export type PostV2ListsListEntriesQueryResponseBody = {
+export type PostV2ListsListEntriesQueryResponse = {
   data: Array<PostV2ListsListEntriesQueryData>;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySortsEntriesDirection$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2ListsListEntriesQuerySortsEntriesDirection> = z
-    .nativeEnum(PostV2ListsListEntriesQuerySortsEntriesDirection);
+export const PostV2ListsListEntriesQueryDirection2$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2ListsListEntriesQueryDirection2> = z.nativeEnum(
+    PostV2ListsListEntriesQueryDirection2,
+  );
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySortsEntriesDirection$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2ListsListEntriesQuerySortsEntriesDirection> =
-    PostV2ListsListEntriesQuerySortsEntriesDirection$inboundSchema;
+export const PostV2ListsListEntriesQueryDirection2$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2ListsListEntriesQueryDirection2> =
+    PostV2ListsListEntriesQueryDirection2$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQuerySortsEntriesDirection$ {
-  /** @deprecated use `PostV2ListsListEntriesQuerySortsEntriesDirection$inboundSchema` instead. */
+export namespace PostV2ListsListEntriesQueryDirection2$ {
+  /** @deprecated use `PostV2ListsListEntriesQueryDirection2$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2ListsListEntriesQuerySortsEntriesDirection$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySortsEntriesDirection$outboundSchema` instead. */
+    PostV2ListsListEntriesQueryDirection2$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryDirection2$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ListsListEntriesQuerySortsEntriesDirection$outboundSchema;
+    PostV2ListsListEntriesQueryDirection2$outboundSchema;
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts2$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts2,
+export const PostV2ListsListEntriesQuerySort2$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySort2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  direction: PostV2ListsListEntriesQuerySortsEntriesDirection$inboundSchema,
+  direction: PostV2ListsListEntriesQueryDirection2$inboundSchema,
   path: z.array(z.array(z.string())),
   field: z.string().optional(),
 });
 
 /** @internal */
-export type PostV2ListsListEntriesQuerySorts2$Outbound = {
+export type PostV2ListsListEntriesQuerySort2$Outbound = {
   direction: string;
   path: Array<Array<string>>;
   field?: string | undefined;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts2$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts2$Outbound,
+export const PostV2ListsListEntriesQuerySort2$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySort2$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesQuerySorts2
+  PostV2ListsListEntriesQuerySort2
 > = z.object({
-  direction: PostV2ListsListEntriesQuerySortsEntriesDirection$outboundSchema,
+  direction: PostV2ListsListEntriesQueryDirection2$outboundSchema,
   path: z.array(z.array(z.string())),
   field: z.string().optional(),
 });
@@ -208,84 +207,84 @@ export const PostV2ListsListEntriesQuerySorts2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQuerySorts2$ {
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts2$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesQuerySorts2$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts2$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2ListsListEntriesQuerySorts2$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts2$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesQuerySorts2$Outbound;
+export namespace PostV2ListsListEntriesQuerySort2$ {
+  /** @deprecated use `PostV2ListsListEntriesQuerySort2$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsListEntriesQuerySort2$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySort2$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsListEntriesQuerySort2$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySort2$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesQuerySort2$Outbound;
 }
 
-export function postV2ListsListEntriesQuerySorts2ToJSON(
-  postV2ListsListEntriesQuerySorts2: PostV2ListsListEntriesQuerySorts2,
+export function postV2ListsListEntriesQuerySort2ToJSON(
+  postV2ListsListEntriesQuerySort2: PostV2ListsListEntriesQuerySort2,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesQuerySorts2$outboundSchema.parse(
-      postV2ListsListEntriesQuerySorts2,
+    PostV2ListsListEntriesQuerySort2$outboundSchema.parse(
+      postV2ListsListEntriesQuerySort2,
     ),
   );
 }
 
-export function postV2ListsListEntriesQuerySorts2FromJSON(
+export function postV2ListsListEntriesQuerySort2FromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesQuerySorts2, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesQuerySort2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsListEntriesQuerySorts2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesQuerySorts2' from JSON`,
+    (x) => PostV2ListsListEntriesQuerySort2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesQuerySort2' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySortsDirection$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2ListsListEntriesQuerySortsDirection> = z
-    .nativeEnum(PostV2ListsListEntriesQuerySortsDirection);
+export const PostV2ListsListEntriesQueryDirection1$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2ListsListEntriesQueryDirection1> = z.nativeEnum(
+    PostV2ListsListEntriesQueryDirection1,
+  );
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySortsDirection$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2ListsListEntriesQuerySortsDirection> =
-    PostV2ListsListEntriesQuerySortsDirection$inboundSchema;
+export const PostV2ListsListEntriesQueryDirection1$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2ListsListEntriesQueryDirection1> =
+    PostV2ListsListEntriesQueryDirection1$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQuerySortsDirection$ {
-  /** @deprecated use `PostV2ListsListEntriesQuerySortsDirection$inboundSchema` instead. */
+export namespace PostV2ListsListEntriesQueryDirection1$ {
+  /** @deprecated use `PostV2ListsListEntriesQueryDirection1$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2ListsListEntriesQuerySortsDirection$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySortsDirection$outboundSchema` instead. */
+    PostV2ListsListEntriesQueryDirection1$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryDirection1$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ListsListEntriesQuerySortsDirection$outboundSchema;
+    PostV2ListsListEntriesQueryDirection1$outboundSchema;
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts1$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts1,
+export const PostV2ListsListEntriesQuerySort1$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySort1,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  direction: PostV2ListsListEntriesQuerySortsDirection$inboundSchema,
+  direction: PostV2ListsListEntriesQueryDirection1$inboundSchema,
   attribute: z.string(),
   field: z.string().optional(),
 });
 
 /** @internal */
-export type PostV2ListsListEntriesQuerySorts1$Outbound = {
+export type PostV2ListsListEntriesQuerySort1$Outbound = {
   direction: string;
   attribute: string;
   field?: string | undefined;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts1$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts1$Outbound,
+export const PostV2ListsListEntriesQuerySort1$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySort1$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesQuerySorts1
+  PostV2ListsListEntriesQuerySort1
 > = z.object({
-  direction: PostV2ListsListEntriesQuerySortsDirection$outboundSchema,
+  direction: PostV2ListsListEntriesQueryDirection1$outboundSchema,
   attribute: z.string(),
   field: z.string().optional(),
 });
@@ -294,91 +293,93 @@ export const PostV2ListsListEntriesQuerySorts1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQuerySorts1$ {
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts1$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesQuerySorts1$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts1$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2ListsListEntriesQuerySorts1$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts1$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesQuerySorts1$Outbound;
+export namespace PostV2ListsListEntriesQuerySort1$ {
+  /** @deprecated use `PostV2ListsListEntriesQuerySort1$inboundSchema` instead. */
+  export const inboundSchema = PostV2ListsListEntriesQuerySort1$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySort1$outboundSchema` instead. */
+  export const outboundSchema = PostV2ListsListEntriesQuerySort1$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySort1$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesQuerySort1$Outbound;
 }
 
-export function postV2ListsListEntriesQuerySorts1ToJSON(
-  postV2ListsListEntriesQuerySorts1: PostV2ListsListEntriesQuerySorts1,
+export function postV2ListsListEntriesQuerySort1ToJSON(
+  postV2ListsListEntriesQuerySort1: PostV2ListsListEntriesQuerySort1,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesQuerySorts1$outboundSchema.parse(
-      postV2ListsListEntriesQuerySorts1,
+    PostV2ListsListEntriesQuerySort1$outboundSchema.parse(
+      postV2ListsListEntriesQuerySort1,
     ),
   );
 }
 
-export function postV2ListsListEntriesQuerySorts1FromJSON(
+export function postV2ListsListEntriesQuerySort1FromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesQuerySorts1, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesQuerySort1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsListEntriesQuerySorts1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesQuerySorts1' from JSON`,
+    (x) => PostV2ListsListEntriesQuerySort1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesQuerySort1' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts,
+export const PostV2ListsListEntriesQuerySortUnion$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySortUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PostV2ListsListEntriesQuerySorts1$inboundSchema),
-  z.lazy(() => PostV2ListsListEntriesQuerySorts2$inboundSchema),
+  z.lazy(() => PostV2ListsListEntriesQuerySort1$inboundSchema),
+  z.lazy(() => PostV2ListsListEntriesQuerySort2$inboundSchema),
 ]);
 
 /** @internal */
-export type PostV2ListsListEntriesQuerySorts$Outbound =
-  | PostV2ListsListEntriesQuerySorts1$Outbound
-  | PostV2ListsListEntriesQuerySorts2$Outbound;
+export type PostV2ListsListEntriesQuerySortUnion$Outbound =
+  | PostV2ListsListEntriesQuerySort1$Outbound
+  | PostV2ListsListEntriesQuerySort2$Outbound;
 
 /** @internal */
-export const PostV2ListsListEntriesQuerySorts$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesQuerySorts$Outbound,
+export const PostV2ListsListEntriesQuerySortUnion$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesQuerySortUnion$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesQuerySorts
+  PostV2ListsListEntriesQuerySortUnion
 > = z.union([
-  z.lazy(() => PostV2ListsListEntriesQuerySorts1$outboundSchema),
-  z.lazy(() => PostV2ListsListEntriesQuerySorts2$outboundSchema),
+  z.lazy(() => PostV2ListsListEntriesQuerySort1$outboundSchema),
+  z.lazy(() => PostV2ListsListEntriesQuerySort2$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQuerySorts$ {
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts$inboundSchema` instead. */
-  export const inboundSchema = PostV2ListsListEntriesQuerySorts$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts$outboundSchema` instead. */
-  export const outboundSchema = PostV2ListsListEntriesQuerySorts$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQuerySorts$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesQuerySorts$Outbound;
+export namespace PostV2ListsListEntriesQuerySortUnion$ {
+  /** @deprecated use `PostV2ListsListEntriesQuerySortUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2ListsListEntriesQuerySortUnion$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySortUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2ListsListEntriesQuerySortUnion$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQuerySortUnion$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesQuerySortUnion$Outbound;
 }
 
-export function postV2ListsListEntriesQuerySortsToJSON(
-  postV2ListsListEntriesQuerySorts: PostV2ListsListEntriesQuerySorts,
+export function postV2ListsListEntriesQuerySortUnionToJSON(
+  postV2ListsListEntriesQuerySortUnion: PostV2ListsListEntriesQuerySortUnion,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesQuerySorts$outboundSchema.parse(
-      postV2ListsListEntriesQuerySorts,
+    PostV2ListsListEntriesQuerySortUnion$outboundSchema.parse(
+      postV2ListsListEntriesQuerySortUnion,
     ),
   );
 }
 
-export function postV2ListsListEntriesQuerySortsFromJSON(
+export function postV2ListsListEntriesQuerySortUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2ListsListEntriesQuerySorts, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesQuerySortUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2ListsListEntriesQuerySorts$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2ListsListEntriesQuerySorts' from JSON`,
+    (x) =>
+      PostV2ListsListEntriesQuerySortUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesQuerySortUnion' from JSON`,
   );
 }
 
@@ -391,8 +392,8 @@ export const PostV2ListsListEntriesQueryRequestBody$inboundSchema: z.ZodType<
   filter: z.record(z.any()).optional(),
   sorts: z.array(
     z.union([
-      z.lazy(() => PostV2ListsListEntriesQuerySorts1$inboundSchema),
-      z.lazy(() => PostV2ListsListEntriesQuerySorts2$inboundSchema),
+      z.lazy(() => PostV2ListsListEntriesQuerySort1$inboundSchema),
+      z.lazy(() => PostV2ListsListEntriesQuerySort2$inboundSchema),
     ]),
   ).optional(),
   limit: z.number().optional(),
@@ -404,8 +405,8 @@ export type PostV2ListsListEntriesQueryRequestBody$Outbound = {
   filter?: { [k: string]: any } | undefined;
   sorts?:
     | Array<
-      | PostV2ListsListEntriesQuerySorts1$Outbound
-      | PostV2ListsListEntriesQuerySorts2$Outbound
+      | PostV2ListsListEntriesQuerySort1$Outbound
+      | PostV2ListsListEntriesQuerySort2$Outbound
     >
     | undefined;
   limit?: number | undefined;
@@ -421,8 +422,8 @@ export const PostV2ListsListEntriesQueryRequestBody$outboundSchema: z.ZodType<
   filter: z.record(z.any()).optional(),
   sorts: z.array(
     z.union([
-      z.lazy(() => PostV2ListsListEntriesQuerySorts1$outboundSchema),
-      z.lazy(() => PostV2ListsListEntriesQuerySorts2$outboundSchema),
+      z.lazy(() => PostV2ListsListEntriesQuerySort1$outboundSchema),
+      z.lazy(() => PostV2ListsListEntriesQuerySort2$outboundSchema),
     ]),
   ).optional(),
   limit: z.number().optional(),
@@ -614,46 +615,56 @@ export function postV2ListsListEntriesQueryIdFromJSON(
 }
 
 /** @internal */
-export const EntryValues$inboundSchema: z.ZodType<
-  EntryValues,
+export const PostV2ListsListEntriesQueryEntryValues$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesQueryEntryValues,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type EntryValues$Outbound = {};
+export type PostV2ListsListEntriesQueryEntryValues$Outbound = {};
 
 /** @internal */
-export const EntryValues$outboundSchema: z.ZodType<
-  EntryValues$Outbound,
+export const PostV2ListsListEntriesQueryEntryValues$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesQueryEntryValues$Outbound,
   z.ZodTypeDef,
-  EntryValues
+  PostV2ListsListEntriesQueryEntryValues
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EntryValues$ {
-  /** @deprecated use `EntryValues$inboundSchema` instead. */
-  export const inboundSchema = EntryValues$inboundSchema;
-  /** @deprecated use `EntryValues$outboundSchema` instead. */
-  export const outboundSchema = EntryValues$outboundSchema;
-  /** @deprecated use `EntryValues$Outbound` instead. */
-  export type Outbound = EntryValues$Outbound;
+export namespace PostV2ListsListEntriesQueryEntryValues$ {
+  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2ListsListEntriesQueryEntryValues$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2ListsListEntriesQueryEntryValues$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryEntryValues$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesQueryEntryValues$Outbound;
 }
 
-export function entryValuesToJSON(entryValues: EntryValues): string {
-  return JSON.stringify(EntryValues$outboundSchema.parse(entryValues));
+export function postV2ListsListEntriesQueryEntryValuesToJSON(
+  postV2ListsListEntriesQueryEntryValues:
+    PostV2ListsListEntriesQueryEntryValues,
+): string {
+  return JSON.stringify(
+    PostV2ListsListEntriesQueryEntryValues$outboundSchema.parse(
+      postV2ListsListEntriesQueryEntryValues,
+    ),
+  );
 }
 
-export function entryValuesFromJSON(
+export function postV2ListsListEntriesQueryEntryValuesFromJSON(
   jsonString: string,
-): SafeParseResult<EntryValues, SDKValidationError> {
+): SafeParseResult<PostV2ListsListEntriesQueryEntryValues, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => EntryValues$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EntryValues' from JSON`,
+    (x) =>
+      PostV2ListsListEntriesQueryEntryValues$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesQueryEntryValues' from JSON`,
   );
 }
 
@@ -667,7 +678,9 @@ export const PostV2ListsListEntriesQueryData$inboundSchema: z.ZodType<
   parent_record_id: z.string(),
   parent_object: z.string(),
   created_at: z.string(),
-  entry_values: z.lazy(() => EntryValues$inboundSchema),
+  entry_values: z.lazy(() =>
+    PostV2ListsListEntriesQueryEntryValues$inboundSchema
+  ),
 }).transform((v) => {
   return remap$(v, {
     "parent_record_id": "parentRecordId",
@@ -683,7 +696,7 @@ export type PostV2ListsListEntriesQueryData$Outbound = {
   parent_record_id: string;
   parent_object: string;
   created_at: string;
-  entry_values: EntryValues$Outbound;
+  entry_values: PostV2ListsListEntriesQueryEntryValues$Outbound;
 };
 
 /** @internal */
@@ -696,7 +709,9 @@ export const PostV2ListsListEntriesQueryData$outboundSchema: z.ZodType<
   parentRecordId: z.string(),
   parentObject: z.string(),
   createdAt: z.string(),
-  entryValues: z.lazy(() => EntryValues$outboundSchema),
+  entryValues: z.lazy(() =>
+    PostV2ListsListEntriesQueryEntryValues$outboundSchema
+  ),
 }).transform((v) => {
   return remap$(v, {
     parentRecordId: "parent_record_id",
@@ -740,8 +755,8 @@ export function postV2ListsListEntriesQueryDataFromJSON(
 }
 
 /** @internal */
-export const PostV2ListsListEntriesQueryResponseBody$inboundSchema: z.ZodType<
-  PostV2ListsListEntriesQueryResponseBody,
+export const PostV2ListsListEntriesQueryResponse$inboundSchema: z.ZodType<
+  PostV2ListsListEntriesQueryResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -749,15 +764,15 @@ export const PostV2ListsListEntriesQueryResponseBody$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2ListsListEntriesQueryResponseBody$Outbound = {
+export type PostV2ListsListEntriesQueryResponse$Outbound = {
   data: Array<PostV2ListsListEntriesQueryData$Outbound>;
 };
 
 /** @internal */
-export const PostV2ListsListEntriesQueryResponseBody$outboundSchema: z.ZodType<
-  PostV2ListsListEntriesQueryResponseBody$Outbound,
+export const PostV2ListsListEntriesQueryResponse$outboundSchema: z.ZodType<
+  PostV2ListsListEntriesQueryResponse$Outbound,
   z.ZodTypeDef,
-  PostV2ListsListEntriesQueryResponseBody
+  PostV2ListsListEntriesQueryResponse
 > = z.object({
   data: z.array(z.lazy(() => PostV2ListsListEntriesQueryData$outboundSchema)),
 });
@@ -766,40 +781,34 @@ export const PostV2ListsListEntriesQueryResponseBody$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2ListsListEntriesQueryResponseBody$ {
-  /** @deprecated use `PostV2ListsListEntriesQueryResponseBody$inboundSchema` instead. */
+export namespace PostV2ListsListEntriesQueryResponse$ {
+  /** @deprecated use `PostV2ListsListEntriesQueryResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2ListsListEntriesQueryResponseBody$inboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQueryResponseBody$outboundSchema` instead. */
+    PostV2ListsListEntriesQueryResponse$inboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2ListsListEntriesQueryResponseBody$outboundSchema;
-  /** @deprecated use `PostV2ListsListEntriesQueryResponseBody$Outbound` instead. */
-  export type Outbound = PostV2ListsListEntriesQueryResponseBody$Outbound;
+    PostV2ListsListEntriesQueryResponse$outboundSchema;
+  /** @deprecated use `PostV2ListsListEntriesQueryResponse$Outbound` instead. */
+  export type Outbound = PostV2ListsListEntriesQueryResponse$Outbound;
 }
 
-export function postV2ListsListEntriesQueryResponseBodyToJSON(
-  postV2ListsListEntriesQueryResponseBody:
-    PostV2ListsListEntriesQueryResponseBody,
+export function postV2ListsListEntriesQueryResponseToJSON(
+  postV2ListsListEntriesQueryResponse: PostV2ListsListEntriesQueryResponse,
 ): string {
   return JSON.stringify(
-    PostV2ListsListEntriesQueryResponseBody$outboundSchema.parse(
-      postV2ListsListEntriesQueryResponseBody,
+    PostV2ListsListEntriesQueryResponse$outboundSchema.parse(
+      postV2ListsListEntriesQueryResponse,
     ),
   );
 }
 
-export function postV2ListsListEntriesQueryResponseBodyFromJSON(
+export function postV2ListsListEntriesQueryResponseFromJSON(
   jsonString: string,
-): SafeParseResult<
-  PostV2ListsListEntriesQueryResponseBody,
-  SDKValidationError
-> {
+): SafeParseResult<PostV2ListsListEntriesQueryResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PostV2ListsListEntriesQueryResponseBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostV2ListsListEntriesQueryResponseBody' from JSON`,
+      PostV2ListsListEntriesQueryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2ListsListEntriesQueryResponse' from JSON`,
   );
 }

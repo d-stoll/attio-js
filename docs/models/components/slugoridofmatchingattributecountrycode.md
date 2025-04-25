@@ -5,7 +5,7 @@ The ISO 3166-1 alpha-2 country code representing the country that this phone num
 ## Example Usage
 
 ```typescript
-import { SlugOrIdOfMatchingAttributeCountryCode } from "attio-js/models/components";
+import { SlugOrIdOfMatchingAttributeCountryCode } from "attio-js/models/components/inputvalueunion.js";
 
 let value: SlugOrIdOfMatchingAttributeCountryCode = "GB";
 ```

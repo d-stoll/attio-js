@@ -5,7 +5,7 @@ The type of actor. [Read more information on actor types here](/docs/actors).
 ## Example Usage
 
 ```typescript
-import { NoteType } from "attio-js/models/components";
+import { NoteType } from "attio-js/models/components/note.js";
 
 let value: NoteType = "workspace-member";
 ```

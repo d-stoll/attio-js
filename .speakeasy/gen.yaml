@@ -11,7 +11,7 @@ generation:
   useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: true
-    nameResolutionFeb2025: false
+    nameResolutionFeb2025: true
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
@@ -19,12 +19,22 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.1.0
+  version: 0.1.1
   additionalDependencies:
     dependencies: {}
-    devDependencies: {}
+    devDependencies:
+      vitest: ^3.1.2
     peerDependencies: {}
   additionalPackageJSON:
+    keywords:
+      - attio
+      - sdk
+      - crm
+      - attio ts
+      - attio js
+      - attio typescript
+      - attio javascript
+      - attio api
     license: MIT
   author: Daniel Stoll
   clientServerStatusCodesAsErrors: true
@@ -53,4 +63,4 @@ typescript:
   packageName: attio-js
   responseFormat: flat
   templateVersion: v2
-  useIndexModules: true
+  useIndexModules: false

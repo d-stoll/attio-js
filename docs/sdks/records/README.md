@@ -115,15 +115,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2ObjectsObjectRecordsQueryResponseBody](../../models/operations/postv2objectsobjectrecordsqueryresponsebody.md)\>**
+**Promise\<[operations.PostV2ObjectsObjectRecordsQueryResponse](../../models/operations/postv2objectsobjectrecordsqueryresponse.md)\>**
 
 ### Errors
 
-| Error Type                                                | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| errors.PostV2ObjectsObjectRecordsQueryResponseBody        | 400                                                       | application/json                                          |
-| errors.PostV2ObjectsObjectRecordsQueryRecordsResponseBody | 404                                                       | application/json                                          |
-| errors.APIError                                           | 4XX, 5XX                                                  | \*/\*                                                     |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| errors.FilterError                                  | 400                                                 | application/json                                    |
+| errors.PostV2ObjectsObjectRecordsQueryNotFoundError | 404                                                 | application/json                                    |
+| errors.APIError                                     | 4XX, 5XX                                            | \*/\*                                               |
 
 ## create
 
@@ -217,15 +217,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PostV2ObjectsObjectRecordsResponseBody](../../models/operations/postv2objectsobjectrecordsresponsebody.md)\>**
+**Promise\<[operations.PostV2ObjectsObjectRecordsResponse](../../models/operations/postv2objectsobjectrecordsresponse.md)\>**
 
 ### Errors
 
-| Error Type                                    | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| errors.PostV2ObjectsObjectRecordsResponseBody | 400                                           | application/json                              |
-| errors.ResponseBody                           | 404                                           | application/json                              |
-| errors.APIError                               | 4XX, 5XX                                      | \*/\*                                         |
+| Error Type                                           | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| errors.PostV2ObjectsObjectRecordsInvalidRequestError | 400                                                  | application/json                                     |
+| errors.GetV2ObjectsObjectNotFoundError               | 404                                                  | application/json                                     |
+| errors.APIError                                      | 4XX, 5XX                                             | \*/\*                                                |
 
 ## assert
 
@@ -323,15 +323,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PutV2ObjectsObjectRecordsResponseBody](../../models/operations/putv2objectsobjectrecordsresponsebody.md)\>**
+**Promise\<[operations.PutV2ObjectsObjectRecordsResponse](../../models/operations/putv2objectsobjectrecordsresponse.md)\>**
 
 ### Errors
 
-| Error Type                                   | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| errors.PutV2ObjectsObjectRecordsResponseBody | 400                                          | application/json                             |
-| errors.ResponseBody                          | 404                                          | application/json                             |
-| errors.APIError                              | 4XX, 5XX                                     | \*/\*                                        |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| errors.PutV2ObjectsObjectRecordsInvalidRequestError | 400                                                 | application/json                                    |
+| errors.GetV2ObjectsObjectNotFoundError              | 404                                                 | application/json                                    |
+| errors.APIError                                     | 4XX, 5XX                                            | \*/\*                                               |
 
 ## get
 
@@ -405,14 +405,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdResponseBody](../../models/operations/getv2objectsobjectrecordsrecordidresponsebody.md)\>**
+**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdResponse](../../models/operations/getv2objectsobjectrecordsrecordidresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.RecordsResponseBody | 404                        | application/json           |
-| errors.APIError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| errors.GetV2ObjectsObjectRecordsRecordIdInvalidRequestError | 404                                                         | application/json                                            |
+| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## partialUpdate
 
@@ -508,15 +508,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PatchV2ObjectsObjectRecordsRecordIdResponseBody](../../models/operations/patchv2objectsobjectrecordsrecordidresponsebody.md)\>**
+**Promise\<[operations.PatchV2ObjectsObjectRecordsRecordIdResponse](../../models/operations/patchv2objectsobjectrecordsrecordidresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.RecordsResponseResponseBody | 400                                | application/json                   |
-| errors.ResponseBody                | 404                                | application/json                   |
-| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.MissingValueError               | 400                                    | application/json                       |
+| errors.GetV2ObjectsObjectNotFoundError | 404                                    | application/json                       |
+| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## update
 
@@ -612,15 +612,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.PutV2ObjectsObjectRecordsRecordIdResponseBody](../../models/operations/putv2objectsobjectrecordsrecordidresponsebody.md)\>**
+**Promise\<[operations.PutV2ObjectsObjectRecordsRecordIdResponse](../../models/operations/putv2objectsobjectrecordsrecordidresponse.md)\>**
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| errors.RecordsResponseResponseBody | 400                                | application/json                   |
-| errors.ResponseBody                | 404                                | application/json                   |
-| errors.APIError                    | 4XX, 5XX                           | \*/\*                              |
+| Error Type                             | Status Code                            | Content Type                           |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| errors.MissingValueError               | 400                                    | application/json                       |
+| errors.GetV2ObjectsObjectNotFoundError | 404                                    | application/json                       |
+| errors.APIError                        | 4XX, 5XX                               | \*/\*                                  |
 
 ## delete
 
@@ -694,14 +694,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteV2ObjectsObjectRecordsRecordIdResponseBody](../../models/operations/deletev2objectsobjectrecordsrecordidresponsebody.md)\>**
+**Promise\<[operations.DeleteV2ObjectsObjectRecordsRecordIdResponse](../../models/operations/deletev2objectsobjectrecordsrecordidresponse.md)\>**
 
 ### Errors
 
-| Error Type                 | Status Code                | Content Type               |
-| -------------------------- | -------------------------- | -------------------------- |
-| errors.RecordsResponseBody | 404                        | application/json           |
-| errors.APIError            | 4XX, 5XX                   | \*/\*                      |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| errors.GetV2ObjectsObjectRecordsRecordIdInvalidRequestError | 404                                                         | application/json                                            |
+| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## listAttributeValues
 
@@ -781,15 +781,15 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponseBody](../../models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesresponsebody.md)\>**
+**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse](../../models/operations/getv2objectsobjectrecordsrecordidattributesattributevaluesresponse.md)\>**
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.Response400ResponseBody | 400                            | application/json               |
-| errors.ResponseResponseBody    | 404                            | application/json               |
-| errors.APIError                | 4XX, 5XX                       | \*/\*                          |
+| Error Type                                                                           | Status Code                                                                          | Content Type                                                                         |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| errors.GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError | 400                                                                                  | application/json                                                                     |
+| errors.GetV2TargetIdentifierAttributesAttributeNotFoundError                         | 404                                                                                  | application/json                                                                     |
+| errors.APIError                                                                      | 4XX, 5XX                                                                             | \*/\*                                                                                |
 
 ## listEntries
 
@@ -867,7 +867,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponseBody](../../models/operations/getv2objectsobjectrecordsrecordidentriesresponsebody.md)\>**
+**Promise\<[operations.GetV2ObjectsObjectRecordsRecordIdEntriesResponse](../../models/operations/getv2objectsobjectrecordsrecordidentriesresponse.md)\>**
 
 ### Errors
 

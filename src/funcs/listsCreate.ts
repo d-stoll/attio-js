@@ -12,15 +12,27 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  BillingError,
+  BillingError$inboundSchema,
+  PostV2ListsInvalidRequestError,
+  PostV2ListsInvalidRequestError$inboundSchema,
+  PostV2ListsNotFoundError,
+  PostV2ListsNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PostV2ListsRequest,
+  PostV2ListsRequest$outboundSchema,
+  PostV2ListsResponse,
+  PostV2ListsResponse$inboundSchema,
+} from "../models/operations/postv2lists.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -40,14 +52,14 @@ import { Result } from "../types/fp.js";
  */
 export function listsCreate(
   client: AttioCore,
-  request: operations.PostV2ListsRequestBody,
+  request: PostV2ListsRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PostV2ListsResponseBody,
-    | errors.ListsResponseBody
-    | errors.PostV2ListsResponseBody
-    | errors.PostV2ListsListsResponseBody
+    PostV2ListsResponse,
+    | PostV2ListsInvalidRequestError
+    | BillingError
+    | PostV2ListsNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -66,15 +78,15 @@ export function listsCreate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PostV2ListsRequestBody,
+  request: PostV2ListsRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PostV2ListsResponseBody,
-      | errors.ListsResponseBody
-      | errors.PostV2ListsResponseBody
-      | errors.PostV2ListsListsResponseBody
+      PostV2ListsResponse,
+      | PostV2ListsInvalidRequestError
+      | BillingError
+      | PostV2ListsNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -88,7 +100,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.PostV2ListsRequestBody$outboundSchema.parse(value),
+    (value) => PostV2ListsRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -152,10 +164,10 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PostV2ListsResponseBody,
-    | errors.ListsResponseBody
-    | errors.PostV2ListsResponseBody
-    | errors.PostV2ListsListsResponseBody
+    PostV2ListsResponse,
+    | PostV2ListsInvalidRequestError
+    | BillingError
+    | PostV2ListsNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -164,10 +176,10 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PostV2ListsResponseBody$inboundSchema),
-    M.jsonErr(400, errors.ListsResponseBody$inboundSchema),
-    M.jsonErr(403, errors.PostV2ListsResponseBody$inboundSchema),
-    M.jsonErr(404, errors.PostV2ListsListsResponseBody$inboundSchema),
+    M.json(200, PostV2ListsResponse$inboundSchema),
+    M.jsonErr(400, PostV2ListsInvalidRequestError$inboundSchema),
+    M.jsonErr(403, BillingError$inboundSchema),
+    M.jsonErr(404, PostV2ListsNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

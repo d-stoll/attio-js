@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeStatusesStatusData } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeStatusesStatusData } from "attio-js/models/operations/patchv2targetidentifierattributesattributestatusesstatus.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeStatusesStatusData = {
   title: "In Progress",

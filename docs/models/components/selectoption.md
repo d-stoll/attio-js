@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SelectOption } from "attio-js/models/components";
+import { SelectOption } from "attio-js/models/components/selectoption.js";
 
 let value: SelectOption = {
   id: {

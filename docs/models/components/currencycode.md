@@ -5,7 +5,7 @@ The ISO4217 currency code representing the currency that the value is stored in.
 ## Example Usage
 
 ```typescript
-import { CurrencyCode } from "attio-js/models/components";
+import { CurrencyCode } from "attio-js/models/components/outputvalue.js";
 
 let value: CurrencyCode = "USD";
 ```

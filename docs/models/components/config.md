@@ -5,7 +5,7 @@ Additional, type-dependent configuration for the attribute.
 ## Example Usage
 
 ```typescript
-import { Config } from "attio-js/models/components";
+import { Config } from "attio-js/models/components/attribute.js";
 
 let value: Config = {
   currency: {

@@ -8,7 +8,7 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PutV2ObjectsObjectRecordsData = {
+export type PutV2ObjectsObjectRecordsDataRequest = {
   /**
    * An object with an attribute `api_slug` or `attribute_id` as the key, and a single value (for single-select attributes), or an array of values (for single or multi-select attributes) as the values. For complete documentation on values for all attribute types, please see our [attribute type docs](/docs/attribute-types).
    */
@@ -16,7 +16,7 @@ export type PutV2ObjectsObjectRecordsData = {
 };
 
 export type PutV2ObjectsObjectRecordsRequestBody = {
-  data: PutV2ObjectsObjectRecordsData;
+  data: PutV2ObjectsObjectRecordsDataRequest;
 };
 
 export type PutV2ObjectsObjectRecordsRequest = {
@@ -40,7 +40,7 @@ export type PutV2ObjectsObjectRecordsId = {
   recordId: string;
 };
 
-export type PutV2ObjectsObjectRecordsRecordsData = {
+export type PutV2ObjectsObjectRecordsDataResponse = {
   id: PutV2ObjectsObjectRecordsId;
   /**
    * When this record was created.
@@ -55,13 +55,13 @@ export type PutV2ObjectsObjectRecordsRecordsData = {
 /**
  * Success
  */
-export type PutV2ObjectsObjectRecordsResponseBody = {
-  data: PutV2ObjectsObjectRecordsRecordsData;
+export type PutV2ObjectsObjectRecordsResponse = {
+  data: PutV2ObjectsObjectRecordsDataResponse;
 };
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsData,
+export const PutV2ObjectsObjectRecordsDataRequest$inboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -69,15 +69,15 @@ export const PutV2ObjectsObjectRecordsData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PutV2ObjectsObjectRecordsData$Outbound = {
+export type PutV2ObjectsObjectRecordsDataRequest$Outbound = {
   values: { [k: string]: any };
 };
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsData$Outbound,
+export const PutV2ObjectsObjectRecordsDataRequest$outboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsDataRequest$Outbound,
   z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsData
+  PutV2ObjectsObjectRecordsDataRequest
 > = z.object({
   values: z.record(z.any()),
 });
@@ -86,32 +86,35 @@ export const PutV2ObjectsObjectRecordsData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ObjectsObjectRecordsData$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsData$inboundSchema` instead. */
-  export const inboundSchema = PutV2ObjectsObjectRecordsData$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsData$outboundSchema` instead. */
-  export const outboundSchema = PutV2ObjectsObjectRecordsData$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsData$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsData$Outbound;
+export namespace PutV2ObjectsObjectRecordsDataRequest$ {
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PutV2ObjectsObjectRecordsDataRequest$inboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PutV2ObjectsObjectRecordsDataRequest$outboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataRequest$Outbound` instead. */
+  export type Outbound = PutV2ObjectsObjectRecordsDataRequest$Outbound;
 }
 
-export function putV2ObjectsObjectRecordsDataToJSON(
-  putV2ObjectsObjectRecordsData: PutV2ObjectsObjectRecordsData,
+export function putV2ObjectsObjectRecordsDataRequestToJSON(
+  putV2ObjectsObjectRecordsDataRequest: PutV2ObjectsObjectRecordsDataRequest,
 ): string {
   return JSON.stringify(
-    PutV2ObjectsObjectRecordsData$outboundSchema.parse(
-      putV2ObjectsObjectRecordsData,
+    PutV2ObjectsObjectRecordsDataRequest$outboundSchema.parse(
+      putV2ObjectsObjectRecordsDataRequest,
     ),
   );
 }
 
-export function putV2ObjectsObjectRecordsDataFromJSON(
+export function putV2ObjectsObjectRecordsDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ObjectsObjectRecordsData, SDKValidationError> {
+): SafeParseResult<PutV2ObjectsObjectRecordsDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PutV2ObjectsObjectRecordsData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ObjectsObjectRecordsData' from JSON`,
+    (x) =>
+      PutV2ObjectsObjectRecordsDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ObjectsObjectRecordsDataRequest' from JSON`,
   );
 }
 
@@ -121,12 +124,12 @@ export const PutV2ObjectsObjectRecordsRequestBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PutV2ObjectsObjectRecordsData$inboundSchema),
+  data: z.lazy(() => PutV2ObjectsObjectRecordsDataRequest$inboundSchema),
 });
 
 /** @internal */
 export type PutV2ObjectsObjectRecordsRequestBody$Outbound = {
-  data: PutV2ObjectsObjectRecordsData$Outbound;
+  data: PutV2ObjectsObjectRecordsDataRequest$Outbound;
 };
 
 /** @internal */
@@ -135,7 +138,7 @@ export const PutV2ObjectsObjectRecordsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PutV2ObjectsObjectRecordsRequestBody
 > = z.object({
-  data: z.lazy(() => PutV2ObjectsObjectRecordsData$outboundSchema),
+  data: z.lazy(() => PutV2ObjectsObjectRecordsDataRequest$outboundSchema),
 });
 
 /**
@@ -323,8 +326,8 @@ export function putV2ObjectsObjectRecordsIdFromJSON(
 }
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordsData,
+export const PutV2ObjectsObjectRecordsDataResponse$inboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -338,17 +341,17 @@ export const PutV2ObjectsObjectRecordsRecordsData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PutV2ObjectsObjectRecordsRecordsData$Outbound = {
+export type PutV2ObjectsObjectRecordsDataResponse$Outbound = {
   id: PutV2ObjectsObjectRecordsId$Outbound;
   created_at: string;
   values: { [k: string]: any };
 };
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsRecordsData$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsRecordsData$Outbound,
+export const PutV2ObjectsObjectRecordsDataResponse$outboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsDataResponse$Outbound,
   z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsRecordsData
+  PutV2ObjectsObjectRecordsDataResponse
 > = z.object({
   id: z.lazy(() => PutV2ObjectsObjectRecordsId$outboundSchema),
   createdAt: z.string(),
@@ -363,93 +366,91 @@ export const PutV2ObjectsObjectRecordsRecordsData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ObjectsObjectRecordsRecordsData$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsData$inboundSchema` instead. */
+export namespace PutV2ObjectsObjectRecordsDataResponse$ {
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PutV2ObjectsObjectRecordsRecordsData$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsData$outboundSchema` instead. */
+    PutV2ObjectsObjectRecordsDataResponse$inboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PutV2ObjectsObjectRecordsRecordsData$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsRecordsData$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsRecordsData$Outbound;
+    PutV2ObjectsObjectRecordsDataResponse$outboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsDataResponse$Outbound` instead. */
+  export type Outbound = PutV2ObjectsObjectRecordsDataResponse$Outbound;
 }
 
-export function putV2ObjectsObjectRecordsRecordsDataToJSON(
-  putV2ObjectsObjectRecordsRecordsData: PutV2ObjectsObjectRecordsRecordsData,
+export function putV2ObjectsObjectRecordsDataResponseToJSON(
+  putV2ObjectsObjectRecordsDataResponse: PutV2ObjectsObjectRecordsDataResponse,
 ): string {
   return JSON.stringify(
-    PutV2ObjectsObjectRecordsRecordsData$outboundSchema.parse(
-      putV2ObjectsObjectRecordsRecordsData,
+    PutV2ObjectsObjectRecordsDataResponse$outboundSchema.parse(
+      putV2ObjectsObjectRecordsDataResponse,
     ),
   );
 }
 
-export function putV2ObjectsObjectRecordsRecordsDataFromJSON(
+export function putV2ObjectsObjectRecordsDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ObjectsObjectRecordsRecordsData, SDKValidationError> {
+): SafeParseResult<PutV2ObjectsObjectRecordsDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      PutV2ObjectsObjectRecordsRecordsData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ObjectsObjectRecordsRecordsData' from JSON`,
+      PutV2ObjectsObjectRecordsDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ObjectsObjectRecordsDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsResponseBody$inboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsResponseBody,
+export const PutV2ObjectsObjectRecordsResponse$inboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PutV2ObjectsObjectRecordsRecordsData$inboundSchema),
+  data: z.lazy(() => PutV2ObjectsObjectRecordsDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PutV2ObjectsObjectRecordsResponseBody$Outbound = {
-  data: PutV2ObjectsObjectRecordsRecordsData$Outbound;
+export type PutV2ObjectsObjectRecordsResponse$Outbound = {
+  data: PutV2ObjectsObjectRecordsDataResponse$Outbound;
 };
 
 /** @internal */
-export const PutV2ObjectsObjectRecordsResponseBody$outboundSchema: z.ZodType<
-  PutV2ObjectsObjectRecordsResponseBody$Outbound,
+export const PutV2ObjectsObjectRecordsResponse$outboundSchema: z.ZodType<
+  PutV2ObjectsObjectRecordsResponse$Outbound,
   z.ZodTypeDef,
-  PutV2ObjectsObjectRecordsResponseBody
+  PutV2ObjectsObjectRecordsResponse
 > = z.object({
-  data: z.lazy(() => PutV2ObjectsObjectRecordsRecordsData$outboundSchema),
+  data: z.lazy(() => PutV2ObjectsObjectRecordsDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PutV2ObjectsObjectRecordsResponseBody$ {
-  /** @deprecated use `PutV2ObjectsObjectRecordsResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutV2ObjectsObjectRecordsResponseBody$inboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsResponseBody$outboundSchema` instead. */
+export namespace PutV2ObjectsObjectRecordsResponse$ {
+  /** @deprecated use `PutV2ObjectsObjectRecordsResponse$inboundSchema` instead. */
+  export const inboundSchema = PutV2ObjectsObjectRecordsResponse$inboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PutV2ObjectsObjectRecordsResponseBody$outboundSchema;
-  /** @deprecated use `PutV2ObjectsObjectRecordsResponseBody$Outbound` instead. */
-  export type Outbound = PutV2ObjectsObjectRecordsResponseBody$Outbound;
+    PutV2ObjectsObjectRecordsResponse$outboundSchema;
+  /** @deprecated use `PutV2ObjectsObjectRecordsResponse$Outbound` instead. */
+  export type Outbound = PutV2ObjectsObjectRecordsResponse$Outbound;
 }
 
-export function putV2ObjectsObjectRecordsResponseBodyToJSON(
-  putV2ObjectsObjectRecordsResponseBody: PutV2ObjectsObjectRecordsResponseBody,
+export function putV2ObjectsObjectRecordsResponseToJSON(
+  putV2ObjectsObjectRecordsResponse: PutV2ObjectsObjectRecordsResponse,
 ): string {
   return JSON.stringify(
-    PutV2ObjectsObjectRecordsResponseBody$outboundSchema.parse(
-      putV2ObjectsObjectRecordsResponseBody,
+    PutV2ObjectsObjectRecordsResponse$outboundSchema.parse(
+      putV2ObjectsObjectRecordsResponse,
     ),
   );
 }
 
-export function putV2ObjectsObjectRecordsResponseBodyFromJSON(
+export function putV2ObjectsObjectRecordsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PutV2ObjectsObjectRecordsResponseBody, SDKValidationError> {
+): SafeParseResult<PutV2ObjectsObjectRecordsResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      PutV2ObjectsObjectRecordsResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutV2ObjectsObjectRecordsResponseBody' from JSON`,
+    (x) => PutV2ObjectsObjectRecordsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PutV2ObjectsObjectRecordsResponse' from JSON`,
   );
 }

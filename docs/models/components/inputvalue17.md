@@ -3,15 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { InputValue17 } from "attio-js/models/components";
+import { InputValue17 } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValue17 = {
-  option: "Medium",
+  value:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `option`                                                                | *string*                                                                | :heavy_check_mark:                                                      | The UUID or select option title identifying the selected select option. | Medium                                                                  |
+| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 | Example                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `value`                                                                                                                     | *string*                                                                                                                    | :heavy_check_mark:                                                                                                          | A raw text field. Values are limited to 10MB.                                                                               | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Security } from "attio-js/models/components";
+import { Security } from "attio-js/models/components/security.js";
 
 let value: Security = {};
 ```

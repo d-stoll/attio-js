@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2WebhooksWebhookIdNotFoundError,
+  GetV2WebhooksWebhookIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2WebhooksWebhookIdRequest,
+  PatchV2WebhooksWebhookIdRequest$outboundSchema,
+  PatchV2WebhooksWebhookIdResponse,
+  PatchV2WebhooksWebhookIdResponse$inboundSchema,
+} from "../models/operations/patchv2webhookswebhookid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function webhooksPartialUpdate(
   client: AttioCore,
-  request: operations.PatchV2WebhooksWebhookIdRequest,
+  request: PatchV2WebhooksWebhookIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2WebhooksWebhookIdResponseBody,
-    | errors.WebhooksResponseBody
+    PatchV2WebhooksWebhookIdResponse,
+    | GetV2WebhooksWebhookIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function webhooksPartialUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2WebhooksWebhookIdRequest,
+  request: PatchV2WebhooksWebhookIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2WebhooksWebhookIdResponseBody,
-      | errors.WebhooksResponseBody
+      PatchV2WebhooksWebhookIdResponse,
+      | GetV2WebhooksWebhookIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,8 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.PatchV2WebhooksWebhookIdRequest$outboundSchema.parse(value),
+    (value) => PatchV2WebhooksWebhookIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -150,8 +157,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2WebhooksWebhookIdResponseBody,
-    | errors.WebhooksResponseBody
+    PatchV2WebhooksWebhookIdResponse,
+    | GetV2WebhooksWebhookIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -160,8 +167,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.PatchV2WebhooksWebhookIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.WebhooksResponseBody$inboundSchema),
+    M.json(200, PatchV2WebhooksWebhookIdResponse$inboundSchema),
+    M.jsonErr(404, GetV2WebhooksWebhookIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

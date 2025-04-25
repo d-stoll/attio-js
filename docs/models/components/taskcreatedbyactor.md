@@ -5,7 +5,7 @@ The actor that created this task.
 ## Example Usage
 
 ```typescript
-import { TaskCreatedByActor } from "attio-js/models/components";
+import { TaskCreatedByActor } from "attio-js/models/components/task.js";
 
 let value: TaskCreatedByActor = {
   id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",

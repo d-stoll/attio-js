@@ -7,7 +7,19 @@ import { objectsGet } from "../funcs/objectsGet.js";
 import { objectsList } from "../funcs/objectsList.js";
 import { objectsPartialUpdate } from "../funcs/objectsPartialUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import { GetV2ObjectsResponse } from "../models/operations/getv2objects.js";
+import {
+  GetV2ObjectsObjectRequest,
+  GetV2ObjectsObjectResponse,
+} from "../models/operations/getv2objectsobject.js";
+import {
+  PatchV2ObjectsObjectRequest,
+  PatchV2ObjectsObjectResponse,
+} from "../models/operations/patchv2objectsobject.js";
+import {
+  PostV2ObjectsRequest,
+  PostV2ObjectsResponse,
+} from "../models/operations/postv2objects.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Objects extends ClientSDK {
@@ -21,7 +33,7 @@ export class Objects extends ClientSDK {
    */
   async list(
     options?: RequestOptions,
-  ): Promise<operations.GetV2ObjectsResponseBody> {
+  ): Promise<GetV2ObjectsResponse> {
     return unwrapAsync(objectsList(
       this,
       options,
@@ -37,9 +49,9 @@ export class Objects extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async create(
-    request: operations.PostV2ObjectsRequestBody,
+    request: PostV2ObjectsRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2ObjectsResponseBody> {
+  ): Promise<PostV2ObjectsResponse> {
     return unwrapAsync(objectsCreate(
       this,
       request,
@@ -56,9 +68,9 @@ export class Objects extends ClientSDK {
    * Required scopes: `object_configuration:read`.
    */
   async get(
-    request: operations.GetV2ObjectsObjectRequest,
+    request: GetV2ObjectsObjectRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2ObjectsObjectResponseBody> {
+  ): Promise<GetV2ObjectsObjectResponse> {
     return unwrapAsync(objectsGet(
       this,
       request,
@@ -75,9 +87,9 @@ export class Objects extends ClientSDK {
    * Required scopes: `object_configuration:read-write`.
    */
   async partialUpdate(
-    request: operations.PatchV2ObjectsObjectRequest,
+    request: PatchV2ObjectsObjectRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2ObjectsObjectResponseBody> {
+  ): Promise<PatchV2ObjectsObjectResponse> {
     return unwrapAsync(objectsPartialUpdate(
       this,
       request,

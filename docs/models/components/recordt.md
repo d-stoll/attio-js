@@ -5,7 +5,7 @@ The record the comment belongs to.
 ## Example Usage
 
 ```typescript
-import { RecordT } from "attio-js/models/components";
+import { RecordT } from "attio-js/models/components/comment.js";
 
 let value: RecordT = {
   recordId: "bf071e1f-6035-429d-b874-d83ea64ea13b",

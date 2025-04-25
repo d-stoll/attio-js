@@ -5,7 +5,7 @@ Configuration available for attributes of type "record-reference".
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeRecordReference } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeRecordReference } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeRecordReference = {
   allowedObjects: [

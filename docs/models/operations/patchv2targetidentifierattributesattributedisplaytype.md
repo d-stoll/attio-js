@@ -5,7 +5,7 @@ How the currency should be displayed across the app. "code" will display the ISO
 ## Example Usage
 
 ```typescript
-import { PatchV2TargetIdentifierAttributesAttributeDisplayType } from "attio-js/models/operations";
+import { PatchV2TargetIdentifierAttributesAttributeDisplayType } from "attio-js/models/operations/patchv2targetidentifierattributesattribute.js";
 
 let value: PatchV2TargetIdentifierAttributesAttributeDisplayType = "symbol";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2ListsListEntriesEntryIdId } from "attio-js/models/operations";
+import { PatchV2ListsListEntriesEntryIdId } from "attio-js/models/operations/patchv2listslistentriesentryid.js";
 
 let value: PatchV2ListsListEntriesEntryIdId = {
   workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV2ObjectsObjectRequest } from "attio-js/models/operations";
+import { GetV2ObjectsObjectRequest } from "attio-js/models/operations/getv2objectsobject.js";
 
 let value: GetV2ObjectsObjectRequest = {
   object: "people",

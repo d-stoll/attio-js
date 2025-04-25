@@ -72,7 +72,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2SelfResponseBody](../../models/operations/getv2selfresponsebody.md)\>**
+**Promise\<[operations.GetV2SelfResponse](../../models/operations/getv2selfresponse.md)\>**
 
 ### Errors
 

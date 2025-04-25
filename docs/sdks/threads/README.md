@@ -94,7 +94,7 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ThreadsResponseBody](../../models/operations/getv2threadsresponsebody.md)\>**
+**Promise\<[operations.GetV2ThreadsResponse](../../models/operations/getv2threadsresponse.md)\>**
 
 ### Errors
 
@@ -176,11 +176,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2ThreadsThreadIdResponseBody](../../models/operations/getv2threadsthreadidresponsebody.md)\>**
+**Promise\<[operations.GetV2ThreadsThreadIdResponse](../../models/operations/getv2threadsthreadidresponse.md)\>**
 
 ### Errors
 
-| Error Type                              | Status Code                             | Content Type                            |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| errors.GetV2ThreadsThreadIdResponseBody | 404                                     | application/json                        |
-| errors.APIError                         | 4XX, 5XX                                | \*/\*                                   |
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| errors.GetV2ThreadsThreadIdNotFoundError | 404                                      | application/json                         |
+| errors.APIError                          | 4XX, 5XX                                 | \*/\*                                    |

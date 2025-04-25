@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AttributeId } from "attio-js/models/components";
+import { AttributeId } from "attio-js/models/components/attribute.js";
 
 let value: AttributeId = {
   workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",

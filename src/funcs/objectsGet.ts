@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ObjectsObjectNotFoundError,
+  GetV2ObjectsObjectNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2ObjectsObjectRequest,
+  GetV2ObjectsObjectRequest$outboundSchema,
+  GetV2ObjectsObjectResponse,
+  GetV2ObjectsObjectResponse$inboundSchema,
+} from "../models/operations/getv2objectsobject.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function objectsGet(
   client: AttioCore,
-  request: operations.GetV2ObjectsObjectRequest,
+  request: GetV2ObjectsObjectRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2ObjectsObjectResponseBody,
-    | errors.ResponseBody
+    GetV2ObjectsObjectResponse,
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function objectsGet(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2ObjectsObjectRequest,
+  request: GetV2ObjectsObjectRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2ObjectsObjectResponseBody,
-      | errors.ResponseBody
+      GetV2ObjectsObjectResponse,
+      | GetV2ObjectsObjectNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,7 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetV2ObjectsObjectRequest$outboundSchema.parse(value),
+    (value) => GetV2ObjectsObjectRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -148,8 +156,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.GetV2ObjectsObjectResponseBody,
-    | errors.ResponseBody
+    GetV2ObjectsObjectResponse,
+    | GetV2ObjectsObjectNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -158,8 +166,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2ObjectsObjectResponseBody$inboundSchema),
-    M.jsonErr(404, errors.ResponseBody$inboundSchema),
+    M.json(200, GetV2ObjectsObjectResponse$inboundSchema),
+    M.jsonErr(404, GetV2ObjectsObjectNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

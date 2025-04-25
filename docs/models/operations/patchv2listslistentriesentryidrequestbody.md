@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV2ListsListEntriesEntryIdRequestBody } from "attio-js/models/operations";
+import { PatchV2ListsListEntriesEntryIdRequestBody } from "attio-js/models/operations/patchv2listslistentriesentryid.js";
 
 let value: PatchV2ListsListEntriesEntryIdRequestBody = {
   data: {
@@ -20,6 +20,6 @@ let value: PatchV2ListsListEntriesEntryIdRequestBody = {
 
 ## Fields
 
-| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `data`                                                                                                         | [operations.PatchV2ListsListEntriesEntryIdData](../../models/operations/patchv2listslistentriesentryiddata.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                                       | [operations.PatchV2ListsListEntriesEntryIdDataRequest](../../models/operations/patchv2listslistentriesentryiddatarequest.md) | :heavy_check_mark:                                                                                                           | N/A                                                                                                                          |

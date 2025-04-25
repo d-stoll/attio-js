@@ -12,15 +12,25 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  GetV2ListsListNotFoundError,
+  GetV2ListsListNotFoundError$inboundSchema,
+  ImmutableValueError,
+  ImmutableValueError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  PatchV2ListsListEntriesEntryIdRequest,
+  PatchV2ListsListEntriesEntryIdRequest$outboundSchema,
+  PatchV2ListsListEntriesEntryIdResponse,
+  PatchV2ListsListEntriesEntryIdResponse$inboundSchema,
+} from "../models/operations/patchv2listslistentriesentryid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,13 +44,13 @@ import { Result } from "../types/fp.js";
  */
 export function entriesUpdate(
   client: AttioCore,
-  request: operations.PatchV2ListsListEntriesEntryIdRequest,
+  request: PatchV2ListsListEntriesEntryIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.PatchV2ListsListEntriesEntryIdResponseBody,
-    | errors.EntriesResponseBody
-    | errors.Response404ResponseBody
+    PatchV2ListsListEntriesEntryIdResponse,
+    | ImmutableValueError
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -59,14 +69,14 @@ export function entriesUpdate(
 
 async function $do(
   client: AttioCore,
-  request: operations.PatchV2ListsListEntriesEntryIdRequest,
+  request: PatchV2ListsListEntriesEntryIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.PatchV2ListsListEntriesEntryIdResponseBody,
-      | errors.EntriesResponseBody
-      | errors.Response404ResponseBody
+      PatchV2ListsListEntriesEntryIdResponse,
+      | ImmutableValueError
+      | GetV2ListsListNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -81,9 +91,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PatchV2ListsListEntriesEntryIdRequest$outboundSchema.parse(
-        value,
-      ),
+      PatchV2ListsListEntriesEntryIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -158,9 +166,9 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.PatchV2ListsListEntriesEntryIdResponseBody,
-    | errors.EntriesResponseBody
-    | errors.Response404ResponseBody
+    PatchV2ListsListEntriesEntryIdResponse,
+    | ImmutableValueError
+    | GetV2ListsListNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -169,12 +177,9 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(
-      200,
-      operations.PatchV2ListsListEntriesEntryIdResponseBody$inboundSchema,
-    ),
-    M.jsonErr(400, errors.EntriesResponseBody$inboundSchema),
-    M.jsonErr(404, errors.Response404ResponseBody$inboundSchema),
+    M.json(200, PatchV2ListsListEntriesEntryIdResponse$inboundSchema),
+    M.jsonErr(400, ImmutableValueError$inboundSchema),
+    M.jsonErr(404, GetV2ListsListNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

@@ -102,21 +102,21 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.PostV2CommentsRequestBody](../../models/operations/postv2commentsrequestbody.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.PostV2CommentsRequest](../../models/operations/postv2commentsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.PostV2CommentsResponseBody](../../models/operations/postv2commentsresponsebody.md)\>**
+**Promise\<[operations.PostV2CommentsResponse](../../models/operations/postv2commentsresponse.md)\>**
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.PostV2CommentsResponseBody | 400                               | application/json                  |
-| errors.APIError                   | 4XX, 5XX                          | \*/\*                             |
+| Error Type                               | Status Code                              | Content Type                             |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| errors.PostV2CommentsInvalidRequestError | 400                                      | application/json                         |
+| errors.APIError                          | 4XX, 5XX                                 | \*/\*                                    |
 
 ## get
 
@@ -192,14 +192,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetV2CommentsCommentIdResponseBody](../../models/operations/getv2commentscommentidresponsebody.md)\>**
+**Promise\<[operations.GetV2CommentsCommentIdResponse](../../models/operations/getv2commentscommentidresponse.md)\>**
 
 ### Errors
 
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| errors.GetV2CommentsCommentIdResponseBody | 404                                       | application/json                          |
-| errors.APIError                           | 4XX, 5XX                                  | \*/\*                                     |
+| Error Type                                 | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| errors.GetV2CommentsCommentIdNotFoundError | 404                                        | application/json                           |
+| errors.APIError                            | 4XX, 5XX                                   | \*/\*                                      |
 
 ## delete
 
@@ -271,11 +271,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.DeleteV2CommentsCommentIdResponseBody](../../models/operations/deletev2commentscommentidresponsebody.md)\>**
+**Promise\<[operations.DeleteV2CommentsCommentIdResponse](../../models/operations/deletev2commentscommentidresponse.md)\>**
 
 ### Errors
 
-| Error Type                                   | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| errors.DeleteV2CommentsCommentIdResponseBody | 404                                          | application/json                             |
-| errors.APIError                              | 4XX, 5XX                                     | \*/\*                                        |
+| Error Type                                    | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| errors.DeleteV2CommentsCommentIdNotFoundError | 404                                           | application/json                              |
+| errors.APIError                               | 4XX, 5XX                                      | \*/\*                                         |

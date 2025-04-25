@@ -6,7 +6,12 @@ import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
-import * as components from "../components/index.js";
+import {
+  Note,
+  Note$inboundSchema,
+  Note$Outbound,
+  Note$outboundSchema,
+} from "../components/note.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetV2NotesNoteIdRequest = {
@@ -16,8 +21,8 @@ export type GetV2NotesNoteIdRequest = {
 /**
  * Success
  */
-export type GetV2NotesNoteIdResponseBody = {
-  data: components.Note;
+export type GetV2NotesNoteIdResponse = {
+  data: Note;
 };
 
 /** @internal */
@@ -83,57 +88,55 @@ export function getV2NotesNoteIdRequestFromJSON(
 }
 
 /** @internal */
-export const GetV2NotesNoteIdResponseBody$inboundSchema: z.ZodType<
-  GetV2NotesNoteIdResponseBody,
+export const GetV2NotesNoteIdResponse$inboundSchema: z.ZodType<
+  GetV2NotesNoteIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: components.Note$inboundSchema,
+  data: Note$inboundSchema,
 });
 
 /** @internal */
-export type GetV2NotesNoteIdResponseBody$Outbound = {
-  data: components.Note$Outbound;
+export type GetV2NotesNoteIdResponse$Outbound = {
+  data: Note$Outbound;
 };
 
 /** @internal */
-export const GetV2NotesNoteIdResponseBody$outboundSchema: z.ZodType<
-  GetV2NotesNoteIdResponseBody$Outbound,
+export const GetV2NotesNoteIdResponse$outboundSchema: z.ZodType<
+  GetV2NotesNoteIdResponse$Outbound,
   z.ZodTypeDef,
-  GetV2NotesNoteIdResponseBody
+  GetV2NotesNoteIdResponse
 > = z.object({
-  data: components.Note$outboundSchema,
+  data: Note$outboundSchema,
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2NotesNoteIdResponseBody$ {
-  /** @deprecated use `GetV2NotesNoteIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2NotesNoteIdResponseBody$inboundSchema;
-  /** @deprecated use `GetV2NotesNoteIdResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2NotesNoteIdResponseBody$outboundSchema;
-  /** @deprecated use `GetV2NotesNoteIdResponseBody$Outbound` instead. */
-  export type Outbound = GetV2NotesNoteIdResponseBody$Outbound;
+export namespace GetV2NotesNoteIdResponse$ {
+  /** @deprecated use `GetV2NotesNoteIdResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2NotesNoteIdResponse$inboundSchema;
+  /** @deprecated use `GetV2NotesNoteIdResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2NotesNoteIdResponse$outboundSchema;
+  /** @deprecated use `GetV2NotesNoteIdResponse$Outbound` instead. */
+  export type Outbound = GetV2NotesNoteIdResponse$Outbound;
 }
 
-export function getV2NotesNoteIdResponseBodyToJSON(
-  getV2NotesNoteIdResponseBody: GetV2NotesNoteIdResponseBody,
+export function getV2NotesNoteIdResponseToJSON(
+  getV2NotesNoteIdResponse: GetV2NotesNoteIdResponse,
 ): string {
   return JSON.stringify(
-    GetV2NotesNoteIdResponseBody$outboundSchema.parse(
-      getV2NotesNoteIdResponseBody,
-    ),
+    GetV2NotesNoteIdResponse$outboundSchema.parse(getV2NotesNoteIdResponse),
   );
 }
 
-export function getV2NotesNoteIdResponseBodyFromJSON(
+export function getV2NotesNoteIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2NotesNoteIdResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2NotesNoteIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2NotesNoteIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2NotesNoteIdResponseBody' from JSON`,
+    (x) => GetV2NotesNoteIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2NotesNoteIdResponse' from JSON`,
   );
 }

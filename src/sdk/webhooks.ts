@@ -8,7 +8,26 @@ import { webhooksGet } from "../funcs/webhooksGet.js";
 import { webhooksList } from "../funcs/webhooksList.js";
 import { webhooksPartialUpdate } from "../funcs/webhooksPartialUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2WebhooksWebhookIdRequest,
+  DeleteV2WebhooksWebhookIdResponse,
+} from "../models/operations/deletev2webhookswebhookid.js";
+import {
+  GetV2WebhooksRequest,
+  GetV2WebhooksResponse,
+} from "../models/operations/getv2webhooks.js";
+import {
+  GetV2WebhooksWebhookIdRequest,
+  GetV2WebhooksWebhookIdResponse,
+} from "../models/operations/getv2webhookswebhookid.js";
+import {
+  PatchV2WebhooksWebhookIdRequest,
+  PatchV2WebhooksWebhookIdResponse,
+} from "../models/operations/patchv2webhookswebhookid.js";
+import {
+  PostV2WebhooksRequest,
+  PostV2WebhooksResponse,
+} from "../models/operations/postv2webhooks.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Webhooks extends ClientSDK {
@@ -21,9 +40,9 @@ export class Webhooks extends ClientSDK {
    * Required scopes: `webhook:read`.
    */
   async list(
-    request: operations.GetV2WebhooksRequest,
+    request: GetV2WebhooksRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2WebhooksResponseBody> {
+  ): Promise<GetV2WebhooksResponse> {
     return unwrapAsync(webhooksList(
       this,
       request,
@@ -40,9 +59,9 @@ export class Webhooks extends ClientSDK {
    * Required scopes: `webhook:read-write`.
    */
   async create(
-    request: operations.PostV2WebhooksRequestBody,
+    request: PostV2WebhooksRequest,
     options?: RequestOptions,
-  ): Promise<operations.PostV2WebhooksResponseBody> {
+  ): Promise<PostV2WebhooksResponse> {
     return unwrapAsync(webhooksCreate(
       this,
       request,
@@ -59,9 +78,9 @@ export class Webhooks extends ClientSDK {
    * Required scopes: `webhook:read`.
    */
   async get(
-    request: operations.GetV2WebhooksWebhookIdRequest,
+    request: GetV2WebhooksWebhookIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.GetV2WebhooksWebhookIdResponseBody> {
+  ): Promise<GetV2WebhooksWebhookIdResponse> {
     return unwrapAsync(webhooksGet(
       this,
       request,
@@ -78,9 +97,9 @@ export class Webhooks extends ClientSDK {
    * Required scopes: `webhook:read-write`.
    */
   async partialUpdate(
-    request: operations.PatchV2WebhooksWebhookIdRequest,
+    request: PatchV2WebhooksWebhookIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.PatchV2WebhooksWebhookIdResponseBody> {
+  ): Promise<PatchV2WebhooksWebhookIdResponse> {
     return unwrapAsync(webhooksPartialUpdate(
       this,
       request,
@@ -97,9 +116,9 @@ export class Webhooks extends ClientSDK {
    * Required scopes: `webhook:read-write`.
    */
   async delete(
-    request: operations.DeleteV2WebhooksWebhookIdRequest,
+    request: DeleteV2WebhooksWebhookIdRequest,
     options?: RequestOptions,
-  ): Promise<operations.DeleteV2WebhooksWebhookIdResponseBody> {
+  ): Promise<DeleteV2WebhooksWebhookIdResponse> {
     return unwrapAsync(webhooksDelete(
       this,
       request,

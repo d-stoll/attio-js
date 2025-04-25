@@ -15,7 +15,7 @@ export type DeleteV2WebhooksWebhookIdRequest = {
 /**
  * Success
  */
-export type DeleteV2WebhooksWebhookIdResponseBody = {};
+export type DeleteV2WebhooksWebhookIdResponse = {};
 
 /** @internal */
 export const DeleteV2WebhooksWebhookIdRequest$inboundSchema: z.ZodType<
@@ -82,54 +82,52 @@ export function deleteV2WebhooksWebhookIdRequestFromJSON(
 }
 
 /** @internal */
-export const DeleteV2WebhooksWebhookIdResponseBody$inboundSchema: z.ZodType<
-  DeleteV2WebhooksWebhookIdResponseBody,
+export const DeleteV2WebhooksWebhookIdResponse$inboundSchema: z.ZodType<
+  DeleteV2WebhooksWebhookIdResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type DeleteV2WebhooksWebhookIdResponseBody$Outbound = {};
+export type DeleteV2WebhooksWebhookIdResponse$Outbound = {};
 
 /** @internal */
-export const DeleteV2WebhooksWebhookIdResponseBody$outboundSchema: z.ZodType<
-  DeleteV2WebhooksWebhookIdResponseBody$Outbound,
+export const DeleteV2WebhooksWebhookIdResponse$outboundSchema: z.ZodType<
+  DeleteV2WebhooksWebhookIdResponse$Outbound,
   z.ZodTypeDef,
-  DeleteV2WebhooksWebhookIdResponseBody
+  DeleteV2WebhooksWebhookIdResponse
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DeleteV2WebhooksWebhookIdResponseBody$ {
-  /** @deprecated use `DeleteV2WebhooksWebhookIdResponseBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteV2WebhooksWebhookIdResponseBody$inboundSchema;
-  /** @deprecated use `DeleteV2WebhooksWebhookIdResponseBody$outboundSchema` instead. */
+export namespace DeleteV2WebhooksWebhookIdResponse$ {
+  /** @deprecated use `DeleteV2WebhooksWebhookIdResponse$inboundSchema` instead. */
+  export const inboundSchema = DeleteV2WebhooksWebhookIdResponse$inboundSchema;
+  /** @deprecated use `DeleteV2WebhooksWebhookIdResponse$outboundSchema` instead. */
   export const outboundSchema =
-    DeleteV2WebhooksWebhookIdResponseBody$outboundSchema;
-  /** @deprecated use `DeleteV2WebhooksWebhookIdResponseBody$Outbound` instead. */
-  export type Outbound = DeleteV2WebhooksWebhookIdResponseBody$Outbound;
+    DeleteV2WebhooksWebhookIdResponse$outboundSchema;
+  /** @deprecated use `DeleteV2WebhooksWebhookIdResponse$Outbound` instead. */
+  export type Outbound = DeleteV2WebhooksWebhookIdResponse$Outbound;
 }
 
-export function deleteV2WebhooksWebhookIdResponseBodyToJSON(
-  deleteV2WebhooksWebhookIdResponseBody: DeleteV2WebhooksWebhookIdResponseBody,
+export function deleteV2WebhooksWebhookIdResponseToJSON(
+  deleteV2WebhooksWebhookIdResponse: DeleteV2WebhooksWebhookIdResponse,
 ): string {
   return JSON.stringify(
-    DeleteV2WebhooksWebhookIdResponseBody$outboundSchema.parse(
-      deleteV2WebhooksWebhookIdResponseBody,
+    DeleteV2WebhooksWebhookIdResponse$outboundSchema.parse(
+      deleteV2WebhooksWebhookIdResponse,
     ),
   );
 }
 
-export function deleteV2WebhooksWebhookIdResponseBodyFromJSON(
+export function deleteV2WebhooksWebhookIdResponseFromJSON(
   jsonString: string,
-): SafeParseResult<DeleteV2WebhooksWebhookIdResponseBody, SDKValidationError> {
+): SafeParseResult<DeleteV2WebhooksWebhookIdResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      DeleteV2WebhooksWebhookIdResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteV2WebhooksWebhookIdResponseBody' from JSON`,
+    (x) => DeleteV2WebhooksWebhookIdResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteV2WebhooksWebhookIdResponse' from JSON`,
   );
 }

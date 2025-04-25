@@ -31,7 +31,7 @@ export const Iss = {
  */
 export type Iss = ClosedEnum<typeof Iss>;
 
-export type ResponseBody2 = {
+export type Bearer = {
   /**
    * Whether the token is currently active and usable.
    */
@@ -90,14 +90,14 @@ export type ResponseBody2 = {
   workspaceLogoUrl: string | null;
 };
 
-export type ResponseBody1 = {
+export type ResponseBody = {
   active: boolean;
 };
 
 /**
  * Success
  */
-export type GetV2SelfResponseBody = ResponseBody1 | ResponseBody2;
+export type GetV2SelfResponse = ResponseBody | Bearer;
 
 /** @internal */
 export const TokenType$inboundSchema: z.ZodNativeEnum<typeof TokenType> = z
@@ -137,39 +137,36 @@ export namespace Iss$ {
 }
 
 /** @internal */
-export const ResponseBody2$inboundSchema: z.ZodType<
-  ResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  active: z.boolean(),
-  scope: z.string(),
-  client_id: z.string(),
-  token_type: TokenType$inboundSchema,
-  exp: z.nullable(z.number()),
-  iat: z.number(),
-  sub: z.string(),
-  aud: z.string(),
-  iss: Iss$inboundSchema,
-  authorized_by_workspace_member_id: z.nullable(z.string()),
-  workspace_id: z.string(),
-  workspace_name: z.string(),
-  workspace_slug: z.string(),
-  workspace_logo_url: z.nullable(z.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "client_id": "clientId",
-    "token_type": "tokenType",
-    "authorized_by_workspace_member_id": "authorizedByWorkspaceMemberId",
-    "workspace_id": "workspaceId",
-    "workspace_name": "workspaceName",
-    "workspace_slug": "workspaceSlug",
-    "workspace_logo_url": "workspaceLogoUrl",
+export const Bearer$inboundSchema: z.ZodType<Bearer, z.ZodTypeDef, unknown> = z
+  .object({
+    active: z.boolean(),
+    scope: z.string(),
+    client_id: z.string(),
+    token_type: TokenType$inboundSchema,
+    exp: z.nullable(z.number()),
+    iat: z.number(),
+    sub: z.string(),
+    aud: z.string(),
+    iss: Iss$inboundSchema,
+    authorized_by_workspace_member_id: z.nullable(z.string()),
+    workspace_id: z.string(),
+    workspace_name: z.string(),
+    workspace_slug: z.string(),
+    workspace_logo_url: z.nullable(z.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "client_id": "clientId",
+      "token_type": "tokenType",
+      "authorized_by_workspace_member_id": "authorizedByWorkspaceMemberId",
+      "workspace_id": "workspaceId",
+      "workspace_name": "workspaceName",
+      "workspace_slug": "workspaceSlug",
+      "workspace_logo_url": "workspaceLogoUrl",
+    });
   });
-});
 
 /** @internal */
-export type ResponseBody2$Outbound = {
+export type Bearer$Outbound = {
   active: boolean;
   scope: string;
   client_id: string;
@@ -187,10 +184,10 @@ export type ResponseBody2$Outbound = {
 };
 
 /** @internal */
-export const ResponseBody2$outboundSchema: z.ZodType<
-  ResponseBody2$Outbound,
+export const Bearer$outboundSchema: z.ZodType<
+  Bearer$Outbound,
   z.ZodTypeDef,
-  ResponseBody2
+  Bearer
 > = z.object({
   active: z.boolean(),
   scope: z.string(),
@@ -222,32 +219,32 @@ export const ResponseBody2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBody2$ {
-  /** @deprecated use `ResponseBody2$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody2$inboundSchema;
-  /** @deprecated use `ResponseBody2$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody2$outboundSchema;
-  /** @deprecated use `ResponseBody2$Outbound` instead. */
-  export type Outbound = ResponseBody2$Outbound;
+export namespace Bearer$ {
+  /** @deprecated use `Bearer$inboundSchema` instead. */
+  export const inboundSchema = Bearer$inboundSchema;
+  /** @deprecated use `Bearer$outboundSchema` instead. */
+  export const outboundSchema = Bearer$outboundSchema;
+  /** @deprecated use `Bearer$Outbound` instead. */
+  export type Outbound = Bearer$Outbound;
 }
 
-export function responseBody2ToJSON(responseBody2: ResponseBody2): string {
-  return JSON.stringify(ResponseBody2$outboundSchema.parse(responseBody2));
+export function bearerToJSON(bearer: Bearer): string {
+  return JSON.stringify(Bearer$outboundSchema.parse(bearer));
 }
 
-export function responseBody2FromJSON(
+export function bearerFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody2, SDKValidationError> {
+): SafeParseResult<Bearer, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody2' from JSON`,
+    (x) => Bearer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Bearer' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBody1$inboundSchema: z.ZodType<
-  ResponseBody1,
+export const ResponseBody$inboundSchema: z.ZodType<
+  ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -255,15 +252,15 @@ export const ResponseBody1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ResponseBody1$Outbound = {
+export type ResponseBody$Outbound = {
   active: boolean;
 };
 
 /** @internal */
-export const ResponseBody1$outboundSchema: z.ZodType<
-  ResponseBody1$Outbound,
+export const ResponseBody$outboundSchema: z.ZodType<
+  ResponseBody$Outbound,
   z.ZodTypeDef,
-  ResponseBody1
+  ResponseBody
 > = z.object({
   active: z.boolean(),
 });
@@ -272,81 +269,81 @@ export const ResponseBody1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ResponseBody1$ {
-  /** @deprecated use `ResponseBody1$inboundSchema` instead. */
-  export const inboundSchema = ResponseBody1$inboundSchema;
-  /** @deprecated use `ResponseBody1$outboundSchema` instead. */
-  export const outboundSchema = ResponseBody1$outboundSchema;
-  /** @deprecated use `ResponseBody1$Outbound` instead. */
-  export type Outbound = ResponseBody1$Outbound;
+export namespace ResponseBody$ {
+  /** @deprecated use `ResponseBody$inboundSchema` instead. */
+  export const inboundSchema = ResponseBody$inboundSchema;
+  /** @deprecated use `ResponseBody$outboundSchema` instead. */
+  export const outboundSchema = ResponseBody$outboundSchema;
+  /** @deprecated use `ResponseBody$Outbound` instead. */
+  export type Outbound = ResponseBody$Outbound;
 }
 
-export function responseBody1ToJSON(responseBody1: ResponseBody1): string {
-  return JSON.stringify(ResponseBody1$outboundSchema.parse(responseBody1));
+export function responseBodyToJSON(responseBody: ResponseBody): string {
+  return JSON.stringify(ResponseBody$outboundSchema.parse(responseBody));
 }
 
-export function responseBody1FromJSON(
+export function responseBodyFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody1, SDKValidationError> {
+): SafeParseResult<ResponseBody, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody1' from JSON`,
+    (x) => ResponseBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody' from JSON`,
   );
 }
 
 /** @internal */
-export const GetV2SelfResponseBody$inboundSchema: z.ZodType<
-  GetV2SelfResponseBody,
+export const GetV2SelfResponse$inboundSchema: z.ZodType<
+  GetV2SelfResponse,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ResponseBody1$inboundSchema),
-  z.lazy(() => ResponseBody2$inboundSchema),
+  z.lazy(() => ResponseBody$inboundSchema),
+  z.lazy(() => Bearer$inboundSchema),
 ]);
 
 /** @internal */
-export type GetV2SelfResponseBody$Outbound =
-  | ResponseBody1$Outbound
-  | ResponseBody2$Outbound;
+export type GetV2SelfResponse$Outbound =
+  | ResponseBody$Outbound
+  | Bearer$Outbound;
 
 /** @internal */
-export const GetV2SelfResponseBody$outboundSchema: z.ZodType<
-  GetV2SelfResponseBody$Outbound,
+export const GetV2SelfResponse$outboundSchema: z.ZodType<
+  GetV2SelfResponse$Outbound,
   z.ZodTypeDef,
-  GetV2SelfResponseBody
+  GetV2SelfResponse
 > = z.union([
-  z.lazy(() => ResponseBody1$outboundSchema),
-  z.lazy(() => ResponseBody2$outboundSchema),
+  z.lazy(() => ResponseBody$outboundSchema),
+  z.lazy(() => Bearer$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2SelfResponseBody$ {
-  /** @deprecated use `GetV2SelfResponseBody$inboundSchema` instead. */
-  export const inboundSchema = GetV2SelfResponseBody$inboundSchema;
-  /** @deprecated use `GetV2SelfResponseBody$outboundSchema` instead. */
-  export const outboundSchema = GetV2SelfResponseBody$outboundSchema;
-  /** @deprecated use `GetV2SelfResponseBody$Outbound` instead. */
-  export type Outbound = GetV2SelfResponseBody$Outbound;
+export namespace GetV2SelfResponse$ {
+  /** @deprecated use `GetV2SelfResponse$inboundSchema` instead. */
+  export const inboundSchema = GetV2SelfResponse$inboundSchema;
+  /** @deprecated use `GetV2SelfResponse$outboundSchema` instead. */
+  export const outboundSchema = GetV2SelfResponse$outboundSchema;
+  /** @deprecated use `GetV2SelfResponse$Outbound` instead. */
+  export type Outbound = GetV2SelfResponse$Outbound;
 }
 
-export function getV2SelfResponseBodyToJSON(
-  getV2SelfResponseBody: GetV2SelfResponseBody,
+export function getV2SelfResponseToJSON(
+  getV2SelfResponse: GetV2SelfResponse,
 ): string {
   return JSON.stringify(
-    GetV2SelfResponseBody$outboundSchema.parse(getV2SelfResponseBody),
+    GetV2SelfResponse$outboundSchema.parse(getV2SelfResponse),
   );
 }
 
-export function getV2SelfResponseBodyFromJSON(
+export function getV2SelfResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetV2SelfResponseBody, SDKValidationError> {
+): SafeParseResult<GetV2SelfResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetV2SelfResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetV2SelfResponseBody' from JSON`,
+    (x) => GetV2SelfResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetV2SelfResponse' from JSON`,
   );
 }

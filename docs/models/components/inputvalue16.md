@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { InputValue16 } from "attio-js/models/components";
+import { InputValue16 } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValue16 = {
-  value: 3,
+  option: "Medium",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `value`                                                          | *number*                                                         | :heavy_check_mark:                                               | A number between 0 and 5 (inclusive) to represent a star rating. | 3                                                                |
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `option`                                                                | *string*                                                                | :heavy_check_mark:                                                      | The UUID or select option title identifying the selected select option. | Medium                                                                  |

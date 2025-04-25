@@ -19,7 +19,12 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2WebhooksRequest,
+  GetV2WebhooksRequest$outboundSchema,
+  GetV2WebhooksResponse,
+  GetV2WebhooksResponse$inboundSchema,
+} from "../models/operations/getv2webhooks.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,11 +38,11 @@ import { Result } from "../types/fp.js";
  */
 export function webhooksList(
   client: AttioCore,
-  request: operations.GetV2WebhooksRequest,
+  request: GetV2WebhooksRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2WebhooksResponseBody,
+    GetV2WebhooksResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -56,12 +61,12 @@ export function webhooksList(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2WebhooksRequest,
+  request: GetV2WebhooksRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2WebhooksResponseBody,
+      GetV2WebhooksResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -75,7 +80,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetV2WebhooksRequest$outboundSchema.parse(value),
+    (value) => GetV2WebhooksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -140,7 +145,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2WebhooksResponseBody,
+    GetV2WebhooksResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -149,7 +154,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2WebhooksResponseBody$inboundSchema),
+    M.json(200, GetV2WebhooksResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

@@ -5,7 +5,7 @@ Configuration available for attributes of type "currency".
 ## Example Usage
 
 ```typescript
-import { Currency } from "attio-js/models/components";
+import { Currency } from "attio-js/models/components/attribute.js";
 
 let value: Currency = {
   defaultCurrencyCode: "USD",

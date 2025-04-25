@@ -5,7 +5,7 @@ The actor that created this value.
 ## Example Usage
 
 ```typescript
-import { InputValueOwnerActor } from "attio-js/models/components";
+import { InputValueOwnerActor } from "attio-js/models/components/inputvalueunion.js";
 
 let value: InputValueOwnerActor = {
   id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",

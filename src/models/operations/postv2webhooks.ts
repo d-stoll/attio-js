@@ -12,7 +12,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 /**
  * Type of event the webhook is subscribed to.
  */
-export const EventType = {
+export const PostV2WebhooksEventTypeRequest = {
   CommentCreated: "comment.created",
   CommentResolved: "comment.resolved",
   CommentUnresolved: "comment.unresolved",
@@ -42,83 +42,102 @@ export const EventType = {
 /**
  * Type of event the webhook is subscribed to.
  */
-export type EventType = ClosedEnum<typeof EventType>;
-
-export const PostV2WebhooksDollarAndOperator = {
-  NotEquals: "not_equals",
-} as const;
-export type PostV2WebhooksDollarAndOperator = ClosedEnum<
-  typeof PostV2WebhooksDollarAndOperator
+export type PostV2WebhooksEventTypeRequest = ClosedEnum<
+  typeof PostV2WebhooksEventTypeRequest
 >;
 
-export type DollarAnd2 = {
-  field: string;
-  operator: PostV2WebhooksDollarAndOperator;
-  value: string;
-};
-
-export const DollarAndOperator = {
-  Equals: "equals",
-} as const;
-export type DollarAndOperator = ClosedEnum<typeof DollarAndOperator>;
-
-export type DollarAnd1 = {
-  field: string;
-  operator: DollarAndOperator;
-  value: string;
-};
-
-export type DollarAnd = DollarAnd1 | DollarAnd2;
-
-export type Filter2 = {
-  dollarAnd: Array<DollarAnd1 | DollarAnd2>;
-};
-
-export const DollarOrOperator = {
+export const PostV2WebhooksDollarAndOperatorNotEqualsRequest = {
   NotEquals: "not_equals",
 } as const;
-export type DollarOrOperator = ClosedEnum<typeof DollarOrOperator>;
+export type PostV2WebhooksDollarAndOperatorNotEqualsRequest = ClosedEnum<
+  typeof PostV2WebhooksDollarAndOperatorNotEqualsRequest
+>;
 
-export type DollarOr2 = {
+export type PostV2WebhooksDollarAndNotEqualsRequest = {
   field: string;
-  operator: DollarOrOperator;
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsRequest;
   value: string;
 };
 
-export const Operator = {
+export const PostV2WebhooksDollarAndOperatorEqualsRequest = {
   Equals: "equals",
 } as const;
-export type Operator = ClosedEnum<typeof Operator>;
+export type PostV2WebhooksDollarAndOperatorEqualsRequest = ClosedEnum<
+  typeof PostV2WebhooksDollarAndOperatorEqualsRequest
+>;
 
-export type DollarOr1 = {
+export type PostV2WebhooksDollarAndEqualsRequest = {
   field: string;
-  operator: Operator;
+  operator: PostV2WebhooksDollarAndOperatorEqualsRequest;
   value: string;
 };
 
-export type DollarOr = DollarOr1 | DollarOr2;
+export type PostV2WebhooksDollarAndRequestUnion =
+  | PostV2WebhooksDollarAndEqualsRequest
+  | PostV2WebhooksDollarAndNotEqualsRequest;
 
-export type Filter1 = {
-  dollarOr: Array<DollarOr1 | DollarOr2>;
+export type PostV2WebhooksFilterRequest2 = {
+  dollarAnd: Array<
+    | PostV2WebhooksDollarAndEqualsRequest
+    | PostV2WebhooksDollarAndNotEqualsRequest
+  >;
+};
+
+export const PostV2WebhooksDollarOrOperatorNotEqualsRequest = {
+  NotEquals: "not_equals",
+} as const;
+export type PostV2WebhooksDollarOrOperatorNotEqualsRequest = ClosedEnum<
+  typeof PostV2WebhooksDollarOrOperatorNotEqualsRequest
+>;
+
+export type PostV2WebhooksDollarOrNotEqualsRequest = {
+  field: string;
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsRequest;
+  value: string;
+};
+
+export const PostV2WebhooksDollarOrOperatorEqualsRequest = {
+  Equals: "equals",
+} as const;
+export type PostV2WebhooksDollarOrOperatorEqualsRequest = ClosedEnum<
+  typeof PostV2WebhooksDollarOrOperatorEqualsRequest
+>;
+
+export type PostV2WebhooksDollarOrEqualsRequest = {
+  field: string;
+  operator: PostV2WebhooksDollarOrOperatorEqualsRequest;
+  value: string;
+};
+
+export type PostV2WebhooksDollarOrRequestUnion =
+  | PostV2WebhooksDollarOrEqualsRequest
+  | PostV2WebhooksDollarOrNotEqualsRequest;
+
+export type PostV2WebhooksFilterRequest1 = {
+  dollarOr: Array<
+    PostV2WebhooksDollarOrEqualsRequest | PostV2WebhooksDollarOrNotEqualsRequest
+  >;
 };
 
 /**
  * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
  */
-export type Filter = Filter1 | Filter2;
+export type PostV2WebhooksFilterRequestUnion =
+  | PostV2WebhooksFilterRequest1
+  | PostV2WebhooksFilterRequest2;
 
-export type Subscriptions = {
+export type PostV2WebhooksSubscriptionRequest = {
   /**
    * Type of event the webhook is subscribed to.
    */
-  eventType: EventType;
+  eventType: PostV2WebhooksEventTypeRequest;
   /**
    * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
    */
-  filter: Filter1 | Filter2 | null;
+  filter: PostV2WebhooksFilterRequest1 | PostV2WebhooksFilterRequest2 | null;
 };
 
-export type PostV2WebhooksData = {
+export type PostV2WebhooksDataRequest = {
   /**
    * URL where the webhook events will be delivered to.
    */
@@ -126,17 +145,17 @@ export type PostV2WebhooksData = {
   /**
    * One or more events the webhook is subscribed to.
    */
-  subscriptions: Array<Subscriptions>;
+  subscriptions: Array<PostV2WebhooksSubscriptionRequest>;
 };
 
-export type PostV2WebhooksRequestBody = {
-  data: PostV2WebhooksData;
+export type PostV2WebhooksRequest = {
+  data: PostV2WebhooksDataRequest;
 };
 
 /**
  * Type of event the webhook is subscribed to.
  */
-export const PostV2WebhooksEventType = {
+export const PostV2WebhooksEventTypeResponse = {
   CommentCreated: "comment.created",
   CommentResolved: "comment.resolved",
   CommentUnresolved: "comment.unresolved",
@@ -166,94 +185,100 @@ export const PostV2WebhooksEventType = {
 /**
  * Type of event the webhook is subscribed to.
  */
-export type PostV2WebhooksEventType = ClosedEnum<
-  typeof PostV2WebhooksEventType
+export type PostV2WebhooksEventTypeResponse = ClosedEnum<
+  typeof PostV2WebhooksEventTypeResponse
 >;
 
-export const PostV2WebhooksDollarAndWebhooksResponseOperator = {
+export const PostV2WebhooksDollarAndOperatorNotEqualsResponse = {
   NotEquals: "not_equals",
 } as const;
-export type PostV2WebhooksDollarAndWebhooksResponseOperator = ClosedEnum<
-  typeof PostV2WebhooksDollarAndWebhooksResponseOperator
+export type PostV2WebhooksDollarAndOperatorNotEqualsResponse = ClosedEnum<
+  typeof PostV2WebhooksDollarAndOperatorNotEqualsResponse
 >;
 
-export type PostV2WebhooksDollarAnd2 = {
+export type PostV2WebhooksDollarAndNotEqualsResponse = {
   field: string;
-  operator: PostV2WebhooksDollarAndWebhooksResponseOperator;
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsResponse;
   value: string;
 };
 
-export const PostV2WebhooksDollarAndWebhooksOperator = {
+export const PostV2WebhooksDollarAndOperatorEqualsResponse = {
   Equals: "equals",
 } as const;
-export type PostV2WebhooksDollarAndWebhooksOperator = ClosedEnum<
-  typeof PostV2WebhooksDollarAndWebhooksOperator
+export type PostV2WebhooksDollarAndOperatorEqualsResponse = ClosedEnum<
+  typeof PostV2WebhooksDollarAndOperatorEqualsResponse
 >;
 
-export type PostV2WebhooksDollarAnd1 = {
+export type PostV2WebhooksDollarAndEqualsResponse = {
   field: string;
-  operator: PostV2WebhooksDollarAndWebhooksOperator;
+  operator: PostV2WebhooksDollarAndOperatorEqualsResponse;
   value: string;
 };
 
-export type PostV2WebhooksFilterDollarAnd =
-  | PostV2WebhooksDollarAnd1
-  | PostV2WebhooksDollarAnd2;
+export type PostV2WebhooksDollarAndResponseUnion =
+  | PostV2WebhooksDollarAndEqualsResponse
+  | PostV2WebhooksDollarAndNotEqualsResponse;
 
-export type PostV2WebhooksFilter2 = {
-  dollarAnd: Array<PostV2WebhooksDollarAnd1 | PostV2WebhooksDollarAnd2>;
+export type PostV2WebhooksFilterResponse2 = {
+  dollarAnd: Array<
+    | PostV2WebhooksDollarAndEqualsResponse
+    | PostV2WebhooksDollarAndNotEqualsResponse
+  >;
 };
 
-export const PostV2WebhooksDollarOrWebhooksOperator = {
+export const PostV2WebhooksDollarOrOperatorNotEqualsResponse = {
   NotEquals: "not_equals",
 } as const;
-export type PostV2WebhooksDollarOrWebhooksOperator = ClosedEnum<
-  typeof PostV2WebhooksDollarOrWebhooksOperator
+export type PostV2WebhooksDollarOrOperatorNotEqualsResponse = ClosedEnum<
+  typeof PostV2WebhooksDollarOrOperatorNotEqualsResponse
 >;
 
-export type PostV2WebhooksDollarOr2 = {
+export type PostV2WebhooksDollarOrNotEqualsResponse = {
   field: string;
-  operator: PostV2WebhooksDollarOrWebhooksOperator;
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsResponse;
   value: string;
 };
 
-export const PostV2WebhooksDollarOrOperator = {
+export const PostV2WebhooksDollarOrOperatorEqualsResponse = {
   Equals: "equals",
 } as const;
-export type PostV2WebhooksDollarOrOperator = ClosedEnum<
-  typeof PostV2WebhooksDollarOrOperator
+export type PostV2WebhooksDollarOrOperatorEqualsResponse = ClosedEnum<
+  typeof PostV2WebhooksDollarOrOperatorEqualsResponse
 >;
 
-export type PostV2WebhooksDollarOr1 = {
+export type PostV2WebhooksDollarOrEqualsResponse = {
   field: string;
-  operator: PostV2WebhooksDollarOrOperator;
+  operator: PostV2WebhooksDollarOrOperatorEqualsResponse;
   value: string;
 };
 
-export type PostV2WebhooksFilterDollarOr =
-  | PostV2WebhooksDollarOr1
-  | PostV2WebhooksDollarOr2;
+export type PostV2WebhooksDollarOrResponseUnion =
+  | PostV2WebhooksDollarOrEqualsResponse
+  | PostV2WebhooksDollarOrNotEqualsResponse;
 
-export type PostV2WebhooksFilter1 = {
-  dollarOr: Array<PostV2WebhooksDollarOr1 | PostV2WebhooksDollarOr2>;
+export type PostV2WebhooksFilterResponse1 = {
+  dollarOr: Array<
+    | PostV2WebhooksDollarOrEqualsResponse
+    | PostV2WebhooksDollarOrNotEqualsResponse
+  >;
 };
 
 /**
  * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
  */
-export type PostV2WebhooksFilter =
-  | PostV2WebhooksFilter1
-  | PostV2WebhooksFilter2;
+export type PostV2WebhooksFilterResponseUnion =
+  | PostV2WebhooksFilterResponse1
+  | PostV2WebhooksFilterResponse2;
 
-export type PostV2WebhooksSubscriptions = {
+export type PostV2WebhooksSubscriptionResponse = {
   /**
    * Type of event the webhook is subscribed to.
    */
-  eventType: PostV2WebhooksEventType;
+  eventType: PostV2WebhooksEventTypeResponse;
   /**
    * Filters to determine whether the webhook event should be sent. If null, the filter always passes.
    */
-  filter: PostV2WebhooksFilter1 | PostV2WebhooksFilter2 | null;
+  filter: PostV2WebhooksFilterResponse1 | PostV2WebhooksFilterResponse2 | null;
 };
 
 export type PostV2WebhooksId = {
@@ -280,7 +305,7 @@ export const PostV2WebhooksStatus = {
  */
 export type PostV2WebhooksStatus = ClosedEnum<typeof PostV2WebhooksStatus>;
 
-export type PostV2WebhooksWebhooksData = {
+export type PostV2WebhooksDataResponse = {
   /**
    * URL where the webhook events will be delivered to.
    */
@@ -288,7 +313,7 @@ export type PostV2WebhooksWebhooksData = {
   /**
    * One or more events the webhook is subscribed to.
    */
-  subscriptions: Array<PostV2WebhooksSubscriptions>;
+  subscriptions: Array<PostV2WebhooksSubscriptionResponse>;
   id: PostV2WebhooksId;
   /**
    * The state of the webhook. Webhooks marked as active and degraded will receive events, inactive ones will not. If a webhook remains in the degraded state for 7 days, it will be marked inactive.
@@ -307,76 +332,80 @@ export type PostV2WebhooksWebhooksData = {
 /**
  * Success
  */
-export type PostV2WebhooksResponseBody = {
-  data: PostV2WebhooksWebhooksData;
+export type PostV2WebhooksResponse = {
+  data: PostV2WebhooksDataResponse;
 };
 
 /** @internal */
-export const EventType$inboundSchema: z.ZodNativeEnum<typeof EventType> = z
-  .nativeEnum(EventType);
+export const PostV2WebhooksEventTypeRequest$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2WebhooksEventTypeRequest
+> = z.nativeEnum(PostV2WebhooksEventTypeRequest);
 
 /** @internal */
-export const EventType$outboundSchema: z.ZodNativeEnum<typeof EventType> =
-  EventType$inboundSchema;
+export const PostV2WebhooksEventTypeRequest$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2WebhooksEventTypeRequest
+> = PostV2WebhooksEventTypeRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EventType$ {
-  /** @deprecated use `EventType$inboundSchema` instead. */
-  export const inboundSchema = EventType$inboundSchema;
-  /** @deprecated use `EventType$outboundSchema` instead. */
-  export const outboundSchema = EventType$outboundSchema;
+export namespace PostV2WebhooksEventTypeRequest$ {
+  /** @deprecated use `PostV2WebhooksEventTypeRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksEventTypeRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksEventTypeRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksEventTypeRequest$outboundSchema;
 }
 
 /** @internal */
-export const PostV2WebhooksDollarAndOperator$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksDollarAndOperator
-> = z.nativeEnum(PostV2WebhooksDollarAndOperator);
+export const PostV2WebhooksDollarAndOperatorNotEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorNotEqualsRequest> = z
+    .nativeEnum(PostV2WebhooksDollarAndOperatorNotEqualsRequest);
 
 /** @internal */
-export const PostV2WebhooksDollarAndOperator$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksDollarAndOperator
-> = PostV2WebhooksDollarAndOperator$inboundSchema;
+export const PostV2WebhooksDollarAndOperatorNotEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorNotEqualsRequest> =
+    PostV2WebhooksDollarAndOperatorNotEqualsRequest$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksDollarAndOperator$ {
-  /** @deprecated use `PostV2WebhooksDollarAndOperator$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarAndOperator$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAndOperator$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarAndOperator$outboundSchema;
+export namespace PostV2WebhooksDollarAndOperatorNotEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndOperatorNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorNotEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndOperatorNotEqualsRequest$outboundSchema;
 }
 
 /** @internal */
-export const DollarAnd2$inboundSchema: z.ZodType<
-  DollarAnd2,
+export const PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndNotEqualsRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
   field: z.string(),
-  operator: PostV2WebhooksDollarAndOperator$inboundSchema,
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsRequest$inboundSchema,
   value: z.string(),
 });
 
 /** @internal */
-export type DollarAnd2$Outbound = {
+export type PostV2WebhooksDollarAndNotEqualsRequest$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const DollarAnd2$outboundSchema: z.ZodType<
-  DollarAnd2$Outbound,
+export const PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndNotEqualsRequest$Outbound,
   z.ZodTypeDef,
-  DollarAnd2
+  PostV2WebhooksDollarAndNotEqualsRequest
 > = z.object({
   field: z.string(),
-  operator: PostV2WebhooksDollarAndOperator$outboundSchema,
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsRequest$outboundSchema,
   value: z.string(),
 });
 
@@ -384,186 +413,229 @@ export const DollarAnd2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace DollarAnd2$ {
-  /** @deprecated use `DollarAnd2$inboundSchema` instead. */
-  export const inboundSchema = DollarAnd2$inboundSchema;
-  /** @deprecated use `DollarAnd2$outboundSchema` instead. */
-  export const outboundSchema = DollarAnd2$outboundSchema;
-  /** @deprecated use `DollarAnd2$Outbound` instead. */
-  export type Outbound = DollarAnd2$Outbound;
+export namespace PostV2WebhooksDollarAndNotEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndNotEqualsRequest$Outbound;
 }
 
-export function dollarAnd2ToJSON(dollarAnd2: DollarAnd2): string {
-  return JSON.stringify(DollarAnd2$outboundSchema.parse(dollarAnd2));
-}
-
-export function dollarAnd2FromJSON(
-  jsonString: string,
-): SafeParseResult<DollarAnd2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarAnd2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarAnd2' from JSON`,
-  );
-}
-
-/** @internal */
-export const DollarAndOperator$inboundSchema: z.ZodNativeEnum<
-  typeof DollarAndOperator
-> = z.nativeEnum(DollarAndOperator);
-
-/** @internal */
-export const DollarAndOperator$outboundSchema: z.ZodNativeEnum<
-  typeof DollarAndOperator
-> = DollarAndOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarAndOperator$ {
-  /** @deprecated use `DollarAndOperator$inboundSchema` instead. */
-  export const inboundSchema = DollarAndOperator$inboundSchema;
-  /** @deprecated use `DollarAndOperator$outboundSchema` instead. */
-  export const outboundSchema = DollarAndOperator$outboundSchema;
-}
-
-/** @internal */
-export const DollarAnd1$inboundSchema: z.ZodType<
-  DollarAnd1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: DollarAndOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type DollarAnd1$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const DollarAnd1$outboundSchema: z.ZodType<
-  DollarAnd1$Outbound,
-  z.ZodTypeDef,
-  DollarAnd1
-> = z.object({
-  field: z.string(),
-  operator: DollarAndOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarAnd1$ {
-  /** @deprecated use `DollarAnd1$inboundSchema` instead. */
-  export const inboundSchema = DollarAnd1$inboundSchema;
-  /** @deprecated use `DollarAnd1$outboundSchema` instead. */
-  export const outboundSchema = DollarAnd1$outboundSchema;
-  /** @deprecated use `DollarAnd1$Outbound` instead. */
-  export type Outbound = DollarAnd1$Outbound;
-}
-
-export function dollarAnd1ToJSON(dollarAnd1: DollarAnd1): string {
-  return JSON.stringify(DollarAnd1$outboundSchema.parse(dollarAnd1));
-}
-
-export function dollarAnd1FromJSON(
-  jsonString: string,
-): SafeParseResult<DollarAnd1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarAnd1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarAnd1' from JSON`,
-  );
-}
-
-/** @internal */
-export const DollarAnd$inboundSchema: z.ZodType<
-  DollarAnd,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => DollarAnd1$inboundSchema),
-  z.lazy(() => DollarAnd2$inboundSchema),
-]);
-
-/** @internal */
-export type DollarAnd$Outbound = DollarAnd1$Outbound | DollarAnd2$Outbound;
-
-/** @internal */
-export const DollarAnd$outboundSchema: z.ZodType<
-  DollarAnd$Outbound,
-  z.ZodTypeDef,
-  DollarAnd
-> = z.union([
-  z.lazy(() => DollarAnd1$outboundSchema),
-  z.lazy(() => DollarAnd2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarAnd$ {
-  /** @deprecated use `DollarAnd$inboundSchema` instead. */
-  export const inboundSchema = DollarAnd$inboundSchema;
-  /** @deprecated use `DollarAnd$outboundSchema` instead. */
-  export const outboundSchema = DollarAnd$outboundSchema;
-  /** @deprecated use `DollarAnd$Outbound` instead. */
-  export type Outbound = DollarAnd$Outbound;
-}
-
-export function dollarAndToJSON(dollarAnd: DollarAnd): string {
-  return JSON.stringify(DollarAnd$outboundSchema.parse(dollarAnd));
-}
-
-export function dollarAndFromJSON(
-  jsonString: string,
-): SafeParseResult<DollarAnd, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarAnd$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarAnd' from JSON`,
-  );
-}
-
-/** @internal */
-export const Filter2$inboundSchema: z.ZodType<Filter2, z.ZodTypeDef, unknown> =
-  z.object({
-    $and: z.array(
-      z.union([
-        z.lazy(() => DollarAnd1$inboundSchema),
-        z.lazy(() => DollarAnd2$inboundSchema),
-      ]),
+export function postV2WebhooksDollarAndNotEqualsRequestToJSON(
+  postV2WebhooksDollarAndNotEqualsRequest:
+    PostV2WebhooksDollarAndNotEqualsRequest,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema.parse(
+      postV2WebhooksDollarAndNotEqualsRequest,
     ),
-  }).transform((v) => {
-    return remap$(v, {
-      "$and": "dollarAnd",
-    });
-  });
+  );
+}
+
+export function postV2WebhooksDollarAndNotEqualsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostV2WebhooksDollarAndNotEqualsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2WebhooksDollarAndNotEqualsRequest' from JSON`,
+  );
+}
 
 /** @internal */
-export type Filter2$Outbound = {
-  $and: Array<DollarAnd1$Outbound | DollarAnd2$Outbound>;
+export const PostV2WebhooksDollarAndOperatorEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorEqualsRequest> = z
+    .nativeEnum(PostV2WebhooksDollarAndOperatorEqualsRequest);
+
+/** @internal */
+export const PostV2WebhooksDollarAndOperatorEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorEqualsRequest> =
+    PostV2WebhooksDollarAndOperatorEqualsRequest$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndOperatorEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndOperatorEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndOperatorEqualsRequest$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarAndEqualsRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndEqualsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarAndOperatorEqualsRequest$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarAndEqualsRequest$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
 };
 
 /** @internal */
-export const Filter2$outboundSchema: z.ZodType<
-  Filter2$Outbound,
+export const PostV2WebhooksDollarAndEqualsRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndEqualsRequest$Outbound,
   z.ZodTypeDef,
-  Filter2
+  PostV2WebhooksDollarAndEqualsRequest
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarAndOperatorEqualsRequest$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndEqualsRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndEqualsRequest$Outbound;
+}
+
+export function postV2WebhooksDollarAndEqualsRequestToJSON(
+  postV2WebhooksDollarAndEqualsRequest: PostV2WebhooksDollarAndEqualsRequest,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarAndEqualsRequest$outboundSchema.parse(
+      postV2WebhooksDollarAndEqualsRequest,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarAndEqualsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarAndEqualsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarAndEqualsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarAndEqualsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarAndRequestUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndRequestUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarAndEqualsRequest$inboundSchema),
+  z.lazy(() => PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema),
+]);
+
+/** @internal */
+export type PostV2WebhooksDollarAndRequestUnion$Outbound =
+  | PostV2WebhooksDollarAndEqualsRequest$Outbound
+  | PostV2WebhooksDollarAndNotEqualsRequest$Outbound;
+
+/** @internal */
+export const PostV2WebhooksDollarAndRequestUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndRequestUnion$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarAndRequestUnion
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarAndEqualsRequest$outboundSchema),
+  z.lazy(() => PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndRequestUnion$ {
+  /** @deprecated use `PostV2WebhooksDollarAndRequestUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndRequestUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndRequestUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndRequestUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndRequestUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndRequestUnion$Outbound;
+}
+
+export function postV2WebhooksDollarAndRequestUnionToJSON(
+  postV2WebhooksDollarAndRequestUnion: PostV2WebhooksDollarAndRequestUnion,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarAndRequestUnion$outboundSchema.parse(
+      postV2WebhooksDollarAndRequestUnion,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarAndRequestUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarAndRequestUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarAndRequestUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarAndRequestUnion' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksFilterRequest2$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequest2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  $and: z.array(
+    z.union([
+      z.lazy(() => PostV2WebhooksDollarAndEqualsRequest$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndNotEqualsRequest$inboundSchema),
+    ]),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "$and": "dollarAnd",
+  });
+});
+
+/** @internal */
+export type PostV2WebhooksFilterRequest2$Outbound = {
+  $and: Array<
+    | PostV2WebhooksDollarAndEqualsRequest$Outbound
+    | PostV2WebhooksDollarAndNotEqualsRequest$Outbound
+  >;
+};
+
+/** @internal */
+export const PostV2WebhooksFilterRequest2$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequest2$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksFilterRequest2
 > = z.object({
   dollarAnd: z.array(
     z.union([
-      z.lazy(() => DollarAnd1$outboundSchema),
-      z.lazy(() => DollarAnd2$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndEqualsRequest$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndNotEqualsRequest$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -576,261 +648,308 @@ export const Filter2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter2$ {
-  /** @deprecated use `Filter2$inboundSchema` instead. */
-  export const inboundSchema = Filter2$inboundSchema;
-  /** @deprecated use `Filter2$outboundSchema` instead. */
-  export const outboundSchema = Filter2$outboundSchema;
-  /** @deprecated use `Filter2$Outbound` instead. */
-  export type Outbound = Filter2$Outbound;
+export namespace PostV2WebhooksFilterRequest2$ {
+  /** @deprecated use `PostV2WebhooksFilterRequest2$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterRequest2$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequest2$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksFilterRequest2$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequest2$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterRequest2$Outbound;
 }
 
-export function filter2ToJSON(filter2: Filter2): string {
-  return JSON.stringify(Filter2$outboundSchema.parse(filter2));
-}
-
-export function filter2FromJSON(
-  jsonString: string,
-): SafeParseResult<Filter2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Filter2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter2' from JSON`,
-  );
-}
-
-/** @internal */
-export const DollarOrOperator$inboundSchema: z.ZodNativeEnum<
-  typeof DollarOrOperator
-> = z.nativeEnum(DollarOrOperator);
-
-/** @internal */
-export const DollarOrOperator$outboundSchema: z.ZodNativeEnum<
-  typeof DollarOrOperator
-> = DollarOrOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarOrOperator$ {
-  /** @deprecated use `DollarOrOperator$inboundSchema` instead. */
-  export const inboundSchema = DollarOrOperator$inboundSchema;
-  /** @deprecated use `DollarOrOperator$outboundSchema` instead. */
-  export const outboundSchema = DollarOrOperator$outboundSchema;
-}
-
-/** @internal */
-export const DollarOr2$inboundSchema: z.ZodType<
-  DollarOr2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: DollarOrOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type DollarOr2$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const DollarOr2$outboundSchema: z.ZodType<
-  DollarOr2$Outbound,
-  z.ZodTypeDef,
-  DollarOr2
-> = z.object({
-  field: z.string(),
-  operator: DollarOrOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarOr2$ {
-  /** @deprecated use `DollarOr2$inboundSchema` instead. */
-  export const inboundSchema = DollarOr2$inboundSchema;
-  /** @deprecated use `DollarOr2$outboundSchema` instead. */
-  export const outboundSchema = DollarOr2$outboundSchema;
-  /** @deprecated use `DollarOr2$Outbound` instead. */
-  export type Outbound = DollarOr2$Outbound;
-}
-
-export function dollarOr2ToJSON(dollarOr2: DollarOr2): string {
-  return JSON.stringify(DollarOr2$outboundSchema.parse(dollarOr2));
-}
-
-export function dollarOr2FromJSON(
-  jsonString: string,
-): SafeParseResult<DollarOr2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarOr2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarOr2' from JSON`,
-  );
-}
-
-/** @internal */
-export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> = z
-  .nativeEnum(Operator);
-
-/** @internal */
-export const Operator$outboundSchema: z.ZodNativeEnum<typeof Operator> =
-  Operator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Operator$ {
-  /** @deprecated use `Operator$inboundSchema` instead. */
-  export const inboundSchema = Operator$inboundSchema;
-  /** @deprecated use `Operator$outboundSchema` instead. */
-  export const outboundSchema = Operator$outboundSchema;
-}
-
-/** @internal */
-export const DollarOr1$inboundSchema: z.ZodType<
-  DollarOr1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: Operator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type DollarOr1$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const DollarOr1$outboundSchema: z.ZodType<
-  DollarOr1$Outbound,
-  z.ZodTypeDef,
-  DollarOr1
-> = z.object({
-  field: z.string(),
-  operator: Operator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarOr1$ {
-  /** @deprecated use `DollarOr1$inboundSchema` instead. */
-  export const inboundSchema = DollarOr1$inboundSchema;
-  /** @deprecated use `DollarOr1$outboundSchema` instead. */
-  export const outboundSchema = DollarOr1$outboundSchema;
-  /** @deprecated use `DollarOr1$Outbound` instead. */
-  export type Outbound = DollarOr1$Outbound;
-}
-
-export function dollarOr1ToJSON(dollarOr1: DollarOr1): string {
-  return JSON.stringify(DollarOr1$outboundSchema.parse(dollarOr1));
-}
-
-export function dollarOr1FromJSON(
-  jsonString: string,
-): SafeParseResult<DollarOr1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarOr1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarOr1' from JSON`,
-  );
-}
-
-/** @internal */
-export const DollarOr$inboundSchema: z.ZodType<
-  DollarOr,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => DollarOr1$inboundSchema),
-  z.lazy(() => DollarOr2$inboundSchema),
-]);
-
-/** @internal */
-export type DollarOr$Outbound = DollarOr1$Outbound | DollarOr2$Outbound;
-
-/** @internal */
-export const DollarOr$outboundSchema: z.ZodType<
-  DollarOr$Outbound,
-  z.ZodTypeDef,
-  DollarOr
-> = z.union([
-  z.lazy(() => DollarOr1$outboundSchema),
-  z.lazy(() => DollarOr2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DollarOr$ {
-  /** @deprecated use `DollarOr$inboundSchema` instead. */
-  export const inboundSchema = DollarOr$inboundSchema;
-  /** @deprecated use `DollarOr$outboundSchema` instead. */
-  export const outboundSchema = DollarOr$outboundSchema;
-  /** @deprecated use `DollarOr$Outbound` instead. */
-  export type Outbound = DollarOr$Outbound;
-}
-
-export function dollarOrToJSON(dollarOr: DollarOr): string {
-  return JSON.stringify(DollarOr$outboundSchema.parse(dollarOr));
-}
-
-export function dollarOrFromJSON(
-  jsonString: string,
-): SafeParseResult<DollarOr, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DollarOr$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DollarOr' from JSON`,
-  );
-}
-
-/** @internal */
-export const Filter1$inboundSchema: z.ZodType<Filter1, z.ZodTypeDef, unknown> =
-  z.object({
-    $or: z.array(
-      z.union([
-        z.lazy(() => DollarOr1$inboundSchema),
-        z.lazy(() => DollarOr2$inboundSchema),
-      ]),
+export function postV2WebhooksFilterRequest2ToJSON(
+  postV2WebhooksFilterRequest2: PostV2WebhooksFilterRequest2,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksFilterRequest2$outboundSchema.parse(
+      postV2WebhooksFilterRequest2,
     ),
-  }).transform((v) => {
-    return remap$(v, {
-      "$or": "dollarOr",
-    });
-  });
+  );
+}
+
+export function postV2WebhooksFilterRequest2FromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksFilterRequest2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PostV2WebhooksFilterRequest2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterRequest2' from JSON`,
+  );
+}
 
 /** @internal */
-export type Filter1$Outbound = {
-  $or: Array<DollarOr1$Outbound | DollarOr2$Outbound>;
+export const PostV2WebhooksDollarOrOperatorNotEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorNotEqualsRequest> = z
+    .nativeEnum(PostV2WebhooksDollarOrOperatorNotEqualsRequest);
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorNotEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorNotEqualsRequest> =
+    PostV2WebhooksDollarOrOperatorNotEqualsRequest$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrOperatorNotEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrOperatorNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorNotEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrOperatorNotEqualsRequest$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrNotEqualsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsRequest$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarOrNotEqualsRequest$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
 };
 
 /** @internal */
-export const Filter1$outboundSchema: z.ZodType<
-  Filter1$Outbound,
+export const PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrNotEqualsRequest$Outbound,
   z.ZodTypeDef,
-  Filter1
+  PostV2WebhooksDollarOrNotEqualsRequest
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsRequest$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrNotEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrNotEqualsRequest$Outbound;
+}
+
+export function postV2WebhooksDollarOrNotEqualsRequestToJSON(
+  postV2WebhooksDollarOrNotEqualsRequest:
+    PostV2WebhooksDollarOrNotEqualsRequest,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema.parse(
+      postV2WebhooksDollarOrNotEqualsRequest,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrNotEqualsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarOrNotEqualsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarOrNotEqualsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorEqualsRequest$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorEqualsRequest> = z
+    .nativeEnum(PostV2WebhooksDollarOrOperatorEqualsRequest);
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorEqualsRequest$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorEqualsRequest> =
+    PostV2WebhooksDollarOrOperatorEqualsRequest$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrOperatorEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrOperatorEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrOperatorEqualsRequest$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrEqualsRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrEqualsRequest,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorEqualsRequest$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarOrEqualsRequest$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const PostV2WebhooksDollarOrEqualsRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrEqualsRequest$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarOrEqualsRequest
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorEqualsRequest$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrEqualsRequest$ {
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsRequest$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrEqualsRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrEqualsRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrEqualsRequest$Outbound;
+}
+
+export function postV2WebhooksDollarOrEqualsRequestToJSON(
+  postV2WebhooksDollarOrEqualsRequest: PostV2WebhooksDollarOrEqualsRequest,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrEqualsRequest$outboundSchema.parse(
+      postV2WebhooksDollarOrEqualsRequest,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrEqualsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarOrEqualsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrEqualsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarOrEqualsRequest' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrRequestUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrRequestUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarOrEqualsRequest$inboundSchema),
+  z.lazy(() => PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema),
+]);
+
+/** @internal */
+export type PostV2WebhooksDollarOrRequestUnion$Outbound =
+  | PostV2WebhooksDollarOrEqualsRequest$Outbound
+  | PostV2WebhooksDollarOrNotEqualsRequest$Outbound;
+
+/** @internal */
+export const PostV2WebhooksDollarOrRequestUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrRequestUnion$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarOrRequestUnion
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarOrEqualsRequest$outboundSchema),
+  z.lazy(() => PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrRequestUnion$ {
+  /** @deprecated use `PostV2WebhooksDollarOrRequestUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksDollarOrRequestUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrRequestUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrRequestUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrRequestUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrRequestUnion$Outbound;
+}
+
+export function postV2WebhooksDollarOrRequestUnionToJSON(
+  postV2WebhooksDollarOrRequestUnion: PostV2WebhooksDollarOrRequestUnion,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrRequestUnion$outboundSchema.parse(
+      postV2WebhooksDollarOrRequestUnion,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrRequestUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarOrRequestUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrRequestUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarOrRequestUnion' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksFilterRequest1$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequest1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  $or: z.array(
+    z.union([
+      z.lazy(() => PostV2WebhooksDollarOrEqualsRequest$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrNotEqualsRequest$inboundSchema),
+    ]),
+  ),
+}).transform((v) => {
+  return remap$(v, {
+    "$or": "dollarOr",
+  });
+});
+
+/** @internal */
+export type PostV2WebhooksFilterRequest1$Outbound = {
+  $or: Array<
+    | PostV2WebhooksDollarOrEqualsRequest$Outbound
+    | PostV2WebhooksDollarOrNotEqualsRequest$Outbound
+  >;
+};
+
+/** @internal */
+export const PostV2WebhooksFilterRequest1$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequest1$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksFilterRequest1
 > = z.object({
   dollarOr: z.array(
     z.union([
-      z.lazy(() => DollarOr1$outboundSchema),
-      z.lazy(() => DollarOr2$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrEqualsRequest$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrNotEqualsRequest$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -843,87 +962,104 @@ export const Filter1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter1$ {
-  /** @deprecated use `Filter1$inboundSchema` instead. */
-  export const inboundSchema = Filter1$inboundSchema;
-  /** @deprecated use `Filter1$outboundSchema` instead. */
-  export const outboundSchema = Filter1$outboundSchema;
-  /** @deprecated use `Filter1$Outbound` instead. */
-  export type Outbound = Filter1$Outbound;
+export namespace PostV2WebhooksFilterRequest1$ {
+  /** @deprecated use `PostV2WebhooksFilterRequest1$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterRequest1$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequest1$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksFilterRequest1$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequest1$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterRequest1$Outbound;
 }
 
-export function filter1ToJSON(filter1: Filter1): string {
-  return JSON.stringify(Filter1$outboundSchema.parse(filter1));
+export function postV2WebhooksFilterRequest1ToJSON(
+  postV2WebhooksFilterRequest1: PostV2WebhooksFilterRequest1,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksFilterRequest1$outboundSchema.parse(
+      postV2WebhooksFilterRequest1,
+    ),
+  );
 }
 
-export function filter1FromJSON(
+export function postV2WebhooksFilterRequest1FromJSON(
   jsonString: string,
-): SafeParseResult<Filter1, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksFilterRequest1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Filter1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter1' from JSON`,
+    (x) => PostV2WebhooksFilterRequest1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterRequest1' from JSON`,
   );
 }
 
 /** @internal */
-export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Filter1$inboundSchema),
-    z.lazy(() => Filter2$inboundSchema),
-  ]);
-
-/** @internal */
-export type Filter$Outbound = Filter1$Outbound | Filter2$Outbound;
-
-/** @internal */
-export const Filter$outboundSchema: z.ZodType<
-  Filter$Outbound,
+export const PostV2WebhooksFilterRequestUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequestUnion,
   z.ZodTypeDef,
-  Filter
+  unknown
 > = z.union([
-  z.lazy(() => Filter1$outboundSchema),
-  z.lazy(() => Filter2$outboundSchema),
+  z.lazy(() => PostV2WebhooksFilterRequest1$inboundSchema),
+  z.lazy(() => PostV2WebhooksFilterRequest2$inboundSchema),
+]);
+
+/** @internal */
+export type PostV2WebhooksFilterRequestUnion$Outbound =
+  | PostV2WebhooksFilterRequest1$Outbound
+  | PostV2WebhooksFilterRequest2$Outbound;
+
+/** @internal */
+export const PostV2WebhooksFilterRequestUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterRequestUnion$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksFilterRequestUnion
+> = z.union([
+  z.lazy(() => PostV2WebhooksFilterRequest1$outboundSchema),
+  z.lazy(() => PostV2WebhooksFilterRequest2$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter$ {
-  /** @deprecated use `Filter$inboundSchema` instead. */
-  export const inboundSchema = Filter$inboundSchema;
-  /** @deprecated use `Filter$outboundSchema` instead. */
-  export const outboundSchema = Filter$outboundSchema;
-  /** @deprecated use `Filter$Outbound` instead. */
-  export type Outbound = Filter$Outbound;
+export namespace PostV2WebhooksFilterRequestUnion$ {
+  /** @deprecated use `PostV2WebhooksFilterRequestUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterRequestUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequestUnion$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksFilterRequestUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterRequestUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterRequestUnion$Outbound;
 }
 
-export function filterToJSON(filter: Filter): string {
-  return JSON.stringify(Filter$outboundSchema.parse(filter));
+export function postV2WebhooksFilterRequestUnionToJSON(
+  postV2WebhooksFilterRequestUnion: PostV2WebhooksFilterRequestUnion,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksFilterRequestUnion$outboundSchema.parse(
+      postV2WebhooksFilterRequestUnion,
+    ),
+  );
 }
 
-export function filterFromJSON(
+export function postV2WebhooksFilterRequestUnionFromJSON(
   jsonString: string,
-): SafeParseResult<Filter, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksFilterRequestUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Filter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Filter' from JSON`,
+    (x) => PostV2WebhooksFilterRequestUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterRequestUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const Subscriptions$inboundSchema: z.ZodType<
-  Subscriptions,
+export const PostV2WebhooksSubscriptionRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksSubscriptionRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  event_type: EventType$inboundSchema,
+  event_type: PostV2WebhooksEventTypeRequest$inboundSchema,
   filter: z.nullable(
     z.union([
-      z.lazy(() => Filter1$inboundSchema),
-      z.lazy(() => Filter2$inboundSchema),
+      z.lazy(() => PostV2WebhooksFilterRequest1$inboundSchema),
+      z.lazy(() => PostV2WebhooksFilterRequest2$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -933,22 +1069,25 @@ export const Subscriptions$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Subscriptions$Outbound = {
+export type PostV2WebhooksSubscriptionRequest$Outbound = {
   event_type: string;
-  filter: Filter1$Outbound | Filter2$Outbound | null;
+  filter:
+    | PostV2WebhooksFilterRequest1$Outbound
+    | PostV2WebhooksFilterRequest2$Outbound
+    | null;
 };
 
 /** @internal */
-export const Subscriptions$outboundSchema: z.ZodType<
-  Subscriptions$Outbound,
+export const PostV2WebhooksSubscriptionRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksSubscriptionRequest$Outbound,
   z.ZodTypeDef,
-  Subscriptions
+  PostV2WebhooksSubscriptionRequest
 > = z.object({
-  eventType: EventType$outboundSchema,
+  eventType: PostV2WebhooksEventTypeRequest$outboundSchema,
   filter: z.nullable(
     z.union([
-      z.lazy(() => Filter1$outboundSchema),
-      z.lazy(() => Filter2$outboundSchema),
+      z.lazy(() => PostV2WebhooksFilterRequest1$outboundSchema),
+      z.lazy(() => PostV2WebhooksFilterRequest2$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -961,37 +1100,46 @@ export const Subscriptions$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Subscriptions$ {
-  /** @deprecated use `Subscriptions$inboundSchema` instead. */
-  export const inboundSchema = Subscriptions$inboundSchema;
-  /** @deprecated use `Subscriptions$outboundSchema` instead. */
-  export const outboundSchema = Subscriptions$outboundSchema;
-  /** @deprecated use `Subscriptions$Outbound` instead. */
-  export type Outbound = Subscriptions$Outbound;
+export namespace PostV2WebhooksSubscriptionRequest$ {
+  /** @deprecated use `PostV2WebhooksSubscriptionRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksSubscriptionRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksSubscriptionRequest$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksSubscriptionRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksSubscriptionRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksSubscriptionRequest$Outbound;
 }
 
-export function subscriptionsToJSON(subscriptions: Subscriptions): string {
-  return JSON.stringify(Subscriptions$outboundSchema.parse(subscriptions));
+export function postV2WebhooksSubscriptionRequestToJSON(
+  postV2WebhooksSubscriptionRequest: PostV2WebhooksSubscriptionRequest,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksSubscriptionRequest$outboundSchema.parse(
+      postV2WebhooksSubscriptionRequest,
+    ),
+  );
 }
 
-export function subscriptionsFromJSON(
+export function postV2WebhooksSubscriptionRequestFromJSON(
   jsonString: string,
-): SafeParseResult<Subscriptions, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksSubscriptionRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Subscriptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Subscriptions' from JSON`,
+    (x) => PostV2WebhooksSubscriptionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksSubscriptionRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksData$inboundSchema: z.ZodType<
-  PostV2WebhooksData,
+export const PostV2WebhooksDataRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksDataRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
   target_url: z.string(),
-  subscriptions: z.array(z.lazy(() => Subscriptions$inboundSchema)),
+  subscriptions: z.array(
+    z.lazy(() => PostV2WebhooksSubscriptionRequest$inboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     "target_url": "targetUrl",
@@ -999,19 +1147,21 @@ export const PostV2WebhooksData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2WebhooksData$Outbound = {
+export type PostV2WebhooksDataRequest$Outbound = {
   target_url: string;
-  subscriptions: Array<Subscriptions$Outbound>;
+  subscriptions: Array<PostV2WebhooksSubscriptionRequest$Outbound>;
 };
 
 /** @internal */
-export const PostV2WebhooksData$outboundSchema: z.ZodType<
-  PostV2WebhooksData$Outbound,
+export const PostV2WebhooksDataRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksDataRequest$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksData
+  PostV2WebhooksDataRequest
 > = z.object({
   targetUrl: z.string(),
-  subscriptions: z.array(z.lazy(() => Subscriptions$outboundSchema)),
+  subscriptions: z.array(
+    z.lazy(() => PostV2WebhooksSubscriptionRequest$outboundSchema),
+  ),
 }).transform((v) => {
   return remap$(v, {
     targetUrl: "target_url",
@@ -1022,157 +1172,157 @@ export const PostV2WebhooksData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksData$ {
-  /** @deprecated use `PostV2WebhooksData$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksData$inboundSchema;
-  /** @deprecated use `PostV2WebhooksData$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksData$outboundSchema;
-  /** @deprecated use `PostV2WebhooksData$Outbound` instead. */
-  export type Outbound = PostV2WebhooksData$Outbound;
+export namespace PostV2WebhooksDataRequest$ {
+  /** @deprecated use `PostV2WebhooksDataRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksDataRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDataRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksDataRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDataRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDataRequest$Outbound;
 }
 
-export function postV2WebhooksDataToJSON(
-  postV2WebhooksData: PostV2WebhooksData,
+export function postV2WebhooksDataRequestToJSON(
+  postV2WebhooksDataRequest: PostV2WebhooksDataRequest,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksData$outboundSchema.parse(postV2WebhooksData),
+    PostV2WebhooksDataRequest$outboundSchema.parse(postV2WebhooksDataRequest),
   );
 }
 
-export function postV2WebhooksDataFromJSON(
+export function postV2WebhooksDataRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksData, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksDataRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksData' from JSON`,
+    (x) => PostV2WebhooksDataRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDataRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksRequestBody$inboundSchema: z.ZodType<
-  PostV2WebhooksRequestBody,
+export const PostV2WebhooksRequest$inboundSchema: z.ZodType<
+  PostV2WebhooksRequest,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2WebhooksData$inboundSchema),
+  data: z.lazy(() => PostV2WebhooksDataRequest$inboundSchema),
 });
 
 /** @internal */
-export type PostV2WebhooksRequestBody$Outbound = {
-  data: PostV2WebhooksData$Outbound;
+export type PostV2WebhooksRequest$Outbound = {
+  data: PostV2WebhooksDataRequest$Outbound;
 };
 
 /** @internal */
-export const PostV2WebhooksRequestBody$outboundSchema: z.ZodType<
-  PostV2WebhooksRequestBody$Outbound,
+export const PostV2WebhooksRequest$outboundSchema: z.ZodType<
+  PostV2WebhooksRequest$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksRequestBody
+  PostV2WebhooksRequest
 > = z.object({
-  data: z.lazy(() => PostV2WebhooksData$outboundSchema),
+  data: z.lazy(() => PostV2WebhooksDataRequest$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksRequestBody$ {
-  /** @deprecated use `PostV2WebhooksRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksRequestBody$inboundSchema;
-  /** @deprecated use `PostV2WebhooksRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksRequestBody$outboundSchema;
-  /** @deprecated use `PostV2WebhooksRequestBody$Outbound` instead. */
-  export type Outbound = PostV2WebhooksRequestBody$Outbound;
+export namespace PostV2WebhooksRequest$ {
+  /** @deprecated use `PostV2WebhooksRequest$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksRequest$inboundSchema;
+  /** @deprecated use `PostV2WebhooksRequest$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksRequest$outboundSchema;
+  /** @deprecated use `PostV2WebhooksRequest$Outbound` instead. */
+  export type Outbound = PostV2WebhooksRequest$Outbound;
 }
 
-export function postV2WebhooksRequestBodyToJSON(
-  postV2WebhooksRequestBody: PostV2WebhooksRequestBody,
+export function postV2WebhooksRequestToJSON(
+  postV2WebhooksRequest: PostV2WebhooksRequest,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksRequestBody$outboundSchema.parse(postV2WebhooksRequestBody),
+    PostV2WebhooksRequest$outboundSchema.parse(postV2WebhooksRequest),
   );
 }
 
-export function postV2WebhooksRequestBodyFromJSON(
+export function postV2WebhooksRequestFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksRequestBody, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksRequest, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksRequestBody' from JSON`,
+    (x) => PostV2WebhooksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksRequest' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksEventType$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksEventType
-> = z.nativeEnum(PostV2WebhooksEventType);
+export const PostV2WebhooksEventTypeResponse$inboundSchema: z.ZodNativeEnum<
+  typeof PostV2WebhooksEventTypeResponse
+> = z.nativeEnum(PostV2WebhooksEventTypeResponse);
 
 /** @internal */
-export const PostV2WebhooksEventType$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksEventType
-> = PostV2WebhooksEventType$inboundSchema;
+export const PostV2WebhooksEventTypeResponse$outboundSchema: z.ZodNativeEnum<
+  typeof PostV2WebhooksEventTypeResponse
+> = PostV2WebhooksEventTypeResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksEventType$ {
-  /** @deprecated use `PostV2WebhooksEventType$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksEventType$inboundSchema;
-  /** @deprecated use `PostV2WebhooksEventType$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksEventType$outboundSchema;
+export namespace PostV2WebhooksEventTypeResponse$ {
+  /** @deprecated use `PostV2WebhooksEventTypeResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksEventTypeResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksEventTypeResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksEventTypeResponse$outboundSchema;
 }
 
 /** @internal */
-export const PostV2WebhooksDollarAndWebhooksResponseOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndWebhooksResponseOperator> = z
-    .nativeEnum(PostV2WebhooksDollarAndWebhooksResponseOperator);
+export const PostV2WebhooksDollarAndOperatorNotEqualsResponse$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorNotEqualsResponse> = z
+    .nativeEnum(PostV2WebhooksDollarAndOperatorNotEqualsResponse);
 
 /** @internal */
-export const PostV2WebhooksDollarAndWebhooksResponseOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndWebhooksResponseOperator> =
-    PostV2WebhooksDollarAndWebhooksResponseOperator$inboundSchema;
+export const PostV2WebhooksDollarAndOperatorNotEqualsResponse$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorNotEqualsResponse> =
+    PostV2WebhooksDollarAndOperatorNotEqualsResponse$inboundSchema;
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksDollarAndWebhooksResponseOperator$ {
-  /** @deprecated use `PostV2WebhooksDollarAndWebhooksResponseOperator$inboundSchema` instead. */
+export namespace PostV2WebhooksDollarAndOperatorNotEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2WebhooksDollarAndWebhooksResponseOperator$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAndWebhooksResponseOperator$outboundSchema` instead. */
+    PostV2WebhooksDollarAndOperatorNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2WebhooksDollarAndWebhooksResponseOperator$outboundSchema;
+    PostV2WebhooksDollarAndOperatorNotEqualsResponse$outboundSchema;
 }
 
 /** @internal */
-export const PostV2WebhooksDollarAnd2$inboundSchema: z.ZodType<
-  PostV2WebhooksDollarAnd2,
+export const PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndNotEqualsResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
   field: z.string(),
-  operator: PostV2WebhooksDollarAndWebhooksResponseOperator$inboundSchema,
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsResponse$inboundSchema,
   value: z.string(),
 });
 
 /** @internal */
-export type PostV2WebhooksDollarAnd2$Outbound = {
+export type PostV2WebhooksDollarAndNotEqualsResponse$Outbound = {
   field: string;
   operator: string;
   value: string;
 };
 
 /** @internal */
-export const PostV2WebhooksDollarAnd2$outboundSchema: z.ZodType<
-  PostV2WebhooksDollarAnd2$Outbound,
+export const PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndNotEqualsResponse$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksDollarAnd2
+  PostV2WebhooksDollarAndNotEqualsResponse
 > = z.object({
   field: z.string(),
-  operator: PostV2WebhooksDollarAndWebhooksResponseOperator$outboundSchema,
+  operator: PostV2WebhooksDollarAndOperatorNotEqualsResponse$outboundSchema,
   value: z.string(),
 });
 
@@ -1180,184 +1330,203 @@ export const PostV2WebhooksDollarAnd2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksDollarAnd2$ {
-  /** @deprecated use `PostV2WebhooksDollarAnd2$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarAnd2$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAnd2$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarAnd2$outboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAnd2$Outbound` instead. */
-  export type Outbound = PostV2WebhooksDollarAnd2$Outbound;
-}
-
-export function postV2WebhooksDollarAnd2ToJSON(
-  postV2WebhooksDollarAnd2: PostV2WebhooksDollarAnd2,
-): string {
-  return JSON.stringify(
-    PostV2WebhooksDollarAnd2$outboundSchema.parse(postV2WebhooksDollarAnd2),
-  );
-}
-
-export function postV2WebhooksDollarAnd2FromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2WebhooksDollarAnd2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV2WebhooksDollarAnd2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksDollarAnd2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostV2WebhooksDollarAndWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndWebhooksOperator> = z
-    .nativeEnum(PostV2WebhooksDollarAndWebhooksOperator);
-
-/** @internal */
-export const PostV2WebhooksDollarAndWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndWebhooksOperator> =
-    PostV2WebhooksDollarAndWebhooksOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarAndWebhooksOperator$ {
-  /** @deprecated use `PostV2WebhooksDollarAndWebhooksOperator$inboundSchema` instead. */
+export namespace PostV2WebhooksDollarAndNotEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema` instead. */
   export const inboundSchema =
-    PostV2WebhooksDollarAndWebhooksOperator$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAndWebhooksOperator$outboundSchema` instead. */
+    PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema` instead. */
   export const outboundSchema =
-    PostV2WebhooksDollarAndWebhooksOperator$outboundSchema;
+    PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndNotEqualsResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndNotEqualsResponse$Outbound;
 }
 
-/** @internal */
-export const PostV2WebhooksDollarAnd1$inboundSchema: z.ZodType<
-  PostV2WebhooksDollarAnd1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarAndWebhooksOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type PostV2WebhooksDollarAnd1$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const PostV2WebhooksDollarAnd1$outboundSchema: z.ZodType<
-  PostV2WebhooksDollarAnd1$Outbound,
-  z.ZodTypeDef,
-  PostV2WebhooksDollarAnd1
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarAndWebhooksOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarAnd1$ {
-  /** @deprecated use `PostV2WebhooksDollarAnd1$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarAnd1$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAnd1$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarAnd1$outboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarAnd1$Outbound` instead. */
-  export type Outbound = PostV2WebhooksDollarAnd1$Outbound;
-}
-
-export function postV2WebhooksDollarAnd1ToJSON(
-  postV2WebhooksDollarAnd1: PostV2WebhooksDollarAnd1,
+export function postV2WebhooksDollarAndNotEqualsResponseToJSON(
+  postV2WebhooksDollarAndNotEqualsResponse:
+    PostV2WebhooksDollarAndNotEqualsResponse,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksDollarAnd1$outboundSchema.parse(postV2WebhooksDollarAnd1),
-  );
-}
-
-export function postV2WebhooksDollarAnd1FromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2WebhooksDollarAnd1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV2WebhooksDollarAnd1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksDollarAnd1' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostV2WebhooksFilterDollarAnd$inboundSchema: z.ZodType<
-  PostV2WebhooksFilterDollarAnd,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PostV2WebhooksDollarAnd1$inboundSchema),
-  z.lazy(() => PostV2WebhooksDollarAnd2$inboundSchema),
-]);
-
-/** @internal */
-export type PostV2WebhooksFilterDollarAnd$Outbound =
-  | PostV2WebhooksDollarAnd1$Outbound
-  | PostV2WebhooksDollarAnd2$Outbound;
-
-/** @internal */
-export const PostV2WebhooksFilterDollarAnd$outboundSchema: z.ZodType<
-  PostV2WebhooksFilterDollarAnd$Outbound,
-  z.ZodTypeDef,
-  PostV2WebhooksFilterDollarAnd
-> = z.union([
-  z.lazy(() => PostV2WebhooksDollarAnd1$outboundSchema),
-  z.lazy(() => PostV2WebhooksDollarAnd2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksFilterDollarAnd$ {
-  /** @deprecated use `PostV2WebhooksFilterDollarAnd$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksFilterDollarAnd$inboundSchema;
-  /** @deprecated use `PostV2WebhooksFilterDollarAnd$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksFilterDollarAnd$outboundSchema;
-  /** @deprecated use `PostV2WebhooksFilterDollarAnd$Outbound` instead. */
-  export type Outbound = PostV2WebhooksFilterDollarAnd$Outbound;
-}
-
-export function postV2WebhooksFilterDollarAndToJSON(
-  postV2WebhooksFilterDollarAnd: PostV2WebhooksFilterDollarAnd,
-): string {
-  return JSON.stringify(
-    PostV2WebhooksFilterDollarAnd$outboundSchema.parse(
-      postV2WebhooksFilterDollarAnd,
+    PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema.parse(
+      postV2WebhooksDollarAndNotEqualsResponse,
     ),
   );
 }
 
-export function postV2WebhooksFilterDollarAndFromJSON(
+export function postV2WebhooksDollarAndNotEqualsResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksFilterDollarAnd, SDKValidationError> {
+): SafeParseResult<
+  PostV2WebhooksDollarAndNotEqualsResponse,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksFilterDollarAnd$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksFilterDollarAnd' from JSON`,
+    (x) =>
+      PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2WebhooksDollarAndNotEqualsResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksFilter2$inboundSchema: z.ZodType<
-  PostV2WebhooksFilter2,
+export const PostV2WebhooksDollarAndOperatorEqualsResponse$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorEqualsResponse> = z
+    .nativeEnum(PostV2WebhooksDollarAndOperatorEqualsResponse);
+
+/** @internal */
+export const PostV2WebhooksDollarAndOperatorEqualsResponse$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarAndOperatorEqualsResponse> =
+    PostV2WebhooksDollarAndOperatorEqualsResponse$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndOperatorEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndOperatorEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndOperatorEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndOperatorEqualsResponse$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarAndEqualsResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndEqualsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarAndOperatorEqualsResponse$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarAndEqualsResponse$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const PostV2WebhooksDollarAndEqualsResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndEqualsResponse$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarAndEqualsResponse
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarAndOperatorEqualsResponse$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndEqualsResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndEqualsResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndEqualsResponse$Outbound;
+}
+
+export function postV2WebhooksDollarAndEqualsResponseToJSON(
+  postV2WebhooksDollarAndEqualsResponse: PostV2WebhooksDollarAndEqualsResponse,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarAndEqualsResponse$outboundSchema.parse(
+      postV2WebhooksDollarAndEqualsResponse,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarAndEqualsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarAndEqualsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarAndEqualsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarAndEqualsResponse' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarAndResponseUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndResponseUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarAndEqualsResponse$inboundSchema),
+  z.lazy(() => PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema),
+]);
+
+/** @internal */
+export type PostV2WebhooksDollarAndResponseUnion$Outbound =
+  | PostV2WebhooksDollarAndEqualsResponse$Outbound
+  | PostV2WebhooksDollarAndNotEqualsResponse$Outbound;
+
+/** @internal */
+export const PostV2WebhooksDollarAndResponseUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarAndResponseUnion$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarAndResponseUnion
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarAndEqualsResponse$outboundSchema),
+  z.lazy(() => PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarAndResponseUnion$ {
+  /** @deprecated use `PostV2WebhooksDollarAndResponseUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarAndResponseUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndResponseUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarAndResponseUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarAndResponseUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarAndResponseUnion$Outbound;
+}
+
+export function postV2WebhooksDollarAndResponseUnionToJSON(
+  postV2WebhooksDollarAndResponseUnion: PostV2WebhooksDollarAndResponseUnion,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarAndResponseUnion$outboundSchema.parse(
+      postV2WebhooksDollarAndResponseUnion,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarAndResponseUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarAndResponseUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarAndResponseUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarAndResponseUnion' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksFilterResponse2$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponse2,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $and: z.array(
     z.union([
-      z.lazy(() => PostV2WebhooksDollarAnd1$inboundSchema),
-      z.lazy(() => PostV2WebhooksDollarAnd2$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndEqualsResponse$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndNotEqualsResponse$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1367,22 +1536,23 @@ export const PostV2WebhooksFilter2$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2WebhooksFilter2$Outbound = {
+export type PostV2WebhooksFilterResponse2$Outbound = {
   $and: Array<
-    PostV2WebhooksDollarAnd1$Outbound | PostV2WebhooksDollarAnd2$Outbound
+    | PostV2WebhooksDollarAndEqualsResponse$Outbound
+    | PostV2WebhooksDollarAndNotEqualsResponse$Outbound
   >;
 };
 
 /** @internal */
-export const PostV2WebhooksFilter2$outboundSchema: z.ZodType<
-  PostV2WebhooksFilter2$Outbound,
+export const PostV2WebhooksFilterResponse2$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponse2$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksFilter2
+  PostV2WebhooksFilterResponse2
 > = z.object({
   dollarAnd: z.array(
     z.union([
-      z.lazy(() => PostV2WebhooksDollarAnd1$outboundSchema),
-      z.lazy(() => PostV2WebhooksDollarAnd2$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndEqualsResponse$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarAndNotEqualsResponse$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1395,266 +1565,288 @@ export const PostV2WebhooksFilter2$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksFilter2$ {
-  /** @deprecated use `PostV2WebhooksFilter2$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksFilter2$inboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter2$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksFilter2$outboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter2$Outbound` instead. */
-  export type Outbound = PostV2WebhooksFilter2$Outbound;
+export namespace PostV2WebhooksFilterResponse2$ {
+  /** @deprecated use `PostV2WebhooksFilterResponse2$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterResponse2$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponse2$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksFilterResponse2$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponse2$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterResponse2$Outbound;
 }
 
-export function postV2WebhooksFilter2ToJSON(
-  postV2WebhooksFilter2: PostV2WebhooksFilter2,
+export function postV2WebhooksFilterResponse2ToJSON(
+  postV2WebhooksFilterResponse2: PostV2WebhooksFilterResponse2,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksFilter2$outboundSchema.parse(postV2WebhooksFilter2),
-  );
-}
-
-export function postV2WebhooksFilter2FromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2WebhooksFilter2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV2WebhooksFilter2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksFilter2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostV2WebhooksDollarOrWebhooksOperator$inboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrWebhooksOperator> = z.nativeEnum(
-    PostV2WebhooksDollarOrWebhooksOperator,
-  );
-
-/** @internal */
-export const PostV2WebhooksDollarOrWebhooksOperator$outboundSchema:
-  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrWebhooksOperator> =
-    PostV2WebhooksDollarOrWebhooksOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarOrWebhooksOperator$ {
-  /** @deprecated use `PostV2WebhooksDollarOrWebhooksOperator$inboundSchema` instead. */
-  export const inboundSchema =
-    PostV2WebhooksDollarOrWebhooksOperator$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOrWebhooksOperator$outboundSchema` instead. */
-  export const outboundSchema =
-    PostV2WebhooksDollarOrWebhooksOperator$outboundSchema;
-}
-
-/** @internal */
-export const PostV2WebhooksDollarOr2$inboundSchema: z.ZodType<
-  PostV2WebhooksDollarOr2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarOrWebhooksOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type PostV2WebhooksDollarOr2$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const PostV2WebhooksDollarOr2$outboundSchema: z.ZodType<
-  PostV2WebhooksDollarOr2$Outbound,
-  z.ZodTypeDef,
-  PostV2WebhooksDollarOr2
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarOrWebhooksOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarOr2$ {
-  /** @deprecated use `PostV2WebhooksDollarOr2$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarOr2$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOr2$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarOr2$outboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOr2$Outbound` instead. */
-  export type Outbound = PostV2WebhooksDollarOr2$Outbound;
-}
-
-export function postV2WebhooksDollarOr2ToJSON(
-  postV2WebhooksDollarOr2: PostV2WebhooksDollarOr2,
-): string {
-  return JSON.stringify(
-    PostV2WebhooksDollarOr2$outboundSchema.parse(postV2WebhooksDollarOr2),
-  );
-}
-
-export function postV2WebhooksDollarOr2FromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2WebhooksDollarOr2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV2WebhooksDollarOr2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksDollarOr2' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostV2WebhooksDollarOrOperator$inboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksDollarOrOperator
-> = z.nativeEnum(PostV2WebhooksDollarOrOperator);
-
-/** @internal */
-export const PostV2WebhooksDollarOrOperator$outboundSchema: z.ZodNativeEnum<
-  typeof PostV2WebhooksDollarOrOperator
-> = PostV2WebhooksDollarOrOperator$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarOrOperator$ {
-  /** @deprecated use `PostV2WebhooksDollarOrOperator$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarOrOperator$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOrOperator$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarOrOperator$outboundSchema;
-}
-
-/** @internal */
-export const PostV2WebhooksDollarOr1$inboundSchema: z.ZodType<
-  PostV2WebhooksDollarOr1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarOrOperator$inboundSchema,
-  value: z.string(),
-});
-
-/** @internal */
-export type PostV2WebhooksDollarOr1$Outbound = {
-  field: string;
-  operator: string;
-  value: string;
-};
-
-/** @internal */
-export const PostV2WebhooksDollarOr1$outboundSchema: z.ZodType<
-  PostV2WebhooksDollarOr1$Outbound,
-  z.ZodTypeDef,
-  PostV2WebhooksDollarOr1
-> = z.object({
-  field: z.string(),
-  operator: PostV2WebhooksDollarOrOperator$outboundSchema,
-  value: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksDollarOr1$ {
-  /** @deprecated use `PostV2WebhooksDollarOr1$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksDollarOr1$inboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOr1$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksDollarOr1$outboundSchema;
-  /** @deprecated use `PostV2WebhooksDollarOr1$Outbound` instead. */
-  export type Outbound = PostV2WebhooksDollarOr1$Outbound;
-}
-
-export function postV2WebhooksDollarOr1ToJSON(
-  postV2WebhooksDollarOr1: PostV2WebhooksDollarOr1,
-): string {
-  return JSON.stringify(
-    PostV2WebhooksDollarOr1$outboundSchema.parse(postV2WebhooksDollarOr1),
-  );
-}
-
-export function postV2WebhooksDollarOr1FromJSON(
-  jsonString: string,
-): SafeParseResult<PostV2WebhooksDollarOr1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV2WebhooksDollarOr1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksDollarOr1' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostV2WebhooksFilterDollarOr$inboundSchema: z.ZodType<
-  PostV2WebhooksFilterDollarOr,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => PostV2WebhooksDollarOr1$inboundSchema),
-  z.lazy(() => PostV2WebhooksDollarOr2$inboundSchema),
-]);
-
-/** @internal */
-export type PostV2WebhooksFilterDollarOr$Outbound =
-  | PostV2WebhooksDollarOr1$Outbound
-  | PostV2WebhooksDollarOr2$Outbound;
-
-/** @internal */
-export const PostV2WebhooksFilterDollarOr$outboundSchema: z.ZodType<
-  PostV2WebhooksFilterDollarOr$Outbound,
-  z.ZodTypeDef,
-  PostV2WebhooksFilterDollarOr
-> = z.union([
-  z.lazy(() => PostV2WebhooksDollarOr1$outboundSchema),
-  z.lazy(() => PostV2WebhooksDollarOr2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV2WebhooksFilterDollarOr$ {
-  /** @deprecated use `PostV2WebhooksFilterDollarOr$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksFilterDollarOr$inboundSchema;
-  /** @deprecated use `PostV2WebhooksFilterDollarOr$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksFilterDollarOr$outboundSchema;
-  /** @deprecated use `PostV2WebhooksFilterDollarOr$Outbound` instead. */
-  export type Outbound = PostV2WebhooksFilterDollarOr$Outbound;
-}
-
-export function postV2WebhooksFilterDollarOrToJSON(
-  postV2WebhooksFilterDollarOr: PostV2WebhooksFilterDollarOr,
-): string {
-  return JSON.stringify(
-    PostV2WebhooksFilterDollarOr$outboundSchema.parse(
-      postV2WebhooksFilterDollarOr,
+    PostV2WebhooksFilterResponse2$outboundSchema.parse(
+      postV2WebhooksFilterResponse2,
     ),
   );
 }
 
-export function postV2WebhooksFilterDollarOrFromJSON(
+export function postV2WebhooksFilterResponse2FromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksFilterDollarOr, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksFilterResponse2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksFilterDollarOr$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksFilterDollarOr' from JSON`,
+    (x) => PostV2WebhooksFilterResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterResponse2' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksFilter1$inboundSchema: z.ZodType<
-  PostV2WebhooksFilter1,
+export const PostV2WebhooksDollarOrOperatorNotEqualsResponse$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorNotEqualsResponse> = z
+    .nativeEnum(PostV2WebhooksDollarOrOperatorNotEqualsResponse);
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorNotEqualsResponse$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorNotEqualsResponse> =
+    PostV2WebhooksDollarOrOperatorNotEqualsResponse$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrOperatorNotEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorNotEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrOperatorNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorNotEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrOperatorNotEqualsResponse$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrNotEqualsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsResponse$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarOrNotEqualsResponse$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrNotEqualsResponse$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarOrNotEqualsResponse
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorNotEqualsResponse$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrNotEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrNotEqualsResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrNotEqualsResponse$Outbound;
+}
+
+export function postV2WebhooksDollarOrNotEqualsResponseToJSON(
+  postV2WebhooksDollarOrNotEqualsResponse:
+    PostV2WebhooksDollarOrNotEqualsResponse,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema.parse(
+      postV2WebhooksDollarOrNotEqualsResponse,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrNotEqualsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostV2WebhooksDollarOrNotEqualsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostV2WebhooksDollarOrNotEqualsResponse' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorEqualsResponse$inboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorEqualsResponse> = z
+    .nativeEnum(PostV2WebhooksDollarOrOperatorEqualsResponse);
+
+/** @internal */
+export const PostV2WebhooksDollarOrOperatorEqualsResponse$outboundSchema:
+  z.ZodNativeEnum<typeof PostV2WebhooksDollarOrOperatorEqualsResponse> =
+    PostV2WebhooksDollarOrOperatorEqualsResponse$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrOperatorEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrOperatorEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrOperatorEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrOperatorEqualsResponse$outboundSchema;
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrEqualsResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrEqualsResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorEqualsResponse$inboundSchema,
+  value: z.string(),
+});
+
+/** @internal */
+export type PostV2WebhooksDollarOrEqualsResponse$Outbound = {
+  field: string;
+  operator: string;
+  value: string;
+};
+
+/** @internal */
+export const PostV2WebhooksDollarOrEqualsResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrEqualsResponse$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarOrEqualsResponse
+> = z.object({
+  field: z.string(),
+  operator: PostV2WebhooksDollarOrOperatorEqualsResponse$outboundSchema,
+  value: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrEqualsResponse$ {
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsResponse$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrEqualsResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrEqualsResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrEqualsResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrEqualsResponse$Outbound;
+}
+
+export function postV2WebhooksDollarOrEqualsResponseToJSON(
+  postV2WebhooksDollarOrEqualsResponse: PostV2WebhooksDollarOrEqualsResponse,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrEqualsResponse$outboundSchema.parse(
+      postV2WebhooksDollarOrEqualsResponse,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrEqualsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarOrEqualsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrEqualsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarOrEqualsResponse' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksDollarOrResponseUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrResponseUnion,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarOrEqualsResponse$inboundSchema),
+  z.lazy(() => PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema),
+]);
+
+/** @internal */
+export type PostV2WebhooksDollarOrResponseUnion$Outbound =
+  | PostV2WebhooksDollarOrEqualsResponse$Outbound
+  | PostV2WebhooksDollarOrNotEqualsResponse$Outbound;
+
+/** @internal */
+export const PostV2WebhooksDollarOrResponseUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksDollarOrResponseUnion$Outbound,
+  z.ZodTypeDef,
+  PostV2WebhooksDollarOrResponseUnion
+> = z.union([
+  z.lazy(() => PostV2WebhooksDollarOrEqualsResponse$outboundSchema),
+  z.lazy(() => PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostV2WebhooksDollarOrResponseUnion$ {
+  /** @deprecated use `PostV2WebhooksDollarOrResponseUnion$inboundSchema` instead. */
+  export const inboundSchema =
+    PostV2WebhooksDollarOrResponseUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrResponseUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksDollarOrResponseUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDollarOrResponseUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDollarOrResponseUnion$Outbound;
+}
+
+export function postV2WebhooksDollarOrResponseUnionToJSON(
+  postV2WebhooksDollarOrResponseUnion: PostV2WebhooksDollarOrResponseUnion,
+): string {
+  return JSON.stringify(
+    PostV2WebhooksDollarOrResponseUnion$outboundSchema.parse(
+      postV2WebhooksDollarOrResponseUnion,
+    ),
+  );
+}
+
+export function postV2WebhooksDollarOrResponseUnionFromJSON(
+  jsonString: string,
+): SafeParseResult<PostV2WebhooksDollarOrResponseUnion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostV2WebhooksDollarOrResponseUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDollarOrResponseUnion' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostV2WebhooksFilterResponse1$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponse1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   $or: z.array(
     z.union([
-      z.lazy(() => PostV2WebhooksDollarOr1$inboundSchema),
-      z.lazy(() => PostV2WebhooksDollarOr2$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrEqualsResponse$inboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrNotEqualsResponse$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1664,22 +1856,23 @@ export const PostV2WebhooksFilter1$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2WebhooksFilter1$Outbound = {
+export type PostV2WebhooksFilterResponse1$Outbound = {
   $or: Array<
-    PostV2WebhooksDollarOr1$Outbound | PostV2WebhooksDollarOr2$Outbound
+    | PostV2WebhooksDollarOrEqualsResponse$Outbound
+    | PostV2WebhooksDollarOrNotEqualsResponse$Outbound
   >;
 };
 
 /** @internal */
-export const PostV2WebhooksFilter1$outboundSchema: z.ZodType<
-  PostV2WebhooksFilter1$Outbound,
+export const PostV2WebhooksFilterResponse1$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponse1$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksFilter1
+  PostV2WebhooksFilterResponse1
 > = z.object({
   dollarOr: z.array(
     z.union([
-      z.lazy(() => PostV2WebhooksDollarOr1$outboundSchema),
-      z.lazy(() => PostV2WebhooksDollarOr2$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrEqualsResponse$outboundSchema),
+      z.lazy(() => PostV2WebhooksDollarOrNotEqualsResponse$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1692,100 +1885,105 @@ export const PostV2WebhooksFilter1$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksFilter1$ {
-  /** @deprecated use `PostV2WebhooksFilter1$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksFilter1$inboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter1$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksFilter1$outboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter1$Outbound` instead. */
-  export type Outbound = PostV2WebhooksFilter1$Outbound;
+export namespace PostV2WebhooksFilterResponse1$ {
+  /** @deprecated use `PostV2WebhooksFilterResponse1$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterResponse1$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponse1$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksFilterResponse1$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponse1$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterResponse1$Outbound;
 }
 
-export function postV2WebhooksFilter1ToJSON(
-  postV2WebhooksFilter1: PostV2WebhooksFilter1,
+export function postV2WebhooksFilterResponse1ToJSON(
+  postV2WebhooksFilterResponse1: PostV2WebhooksFilterResponse1,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksFilter1$outboundSchema.parse(postV2WebhooksFilter1),
+    PostV2WebhooksFilterResponse1$outboundSchema.parse(
+      postV2WebhooksFilterResponse1,
+    ),
   );
 }
 
-export function postV2WebhooksFilter1FromJSON(
+export function postV2WebhooksFilterResponse1FromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksFilter1, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksFilterResponse1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksFilter1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksFilter1' from JSON`,
+    (x) => PostV2WebhooksFilterResponse1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterResponse1' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksFilter$inboundSchema: z.ZodType<
-  PostV2WebhooksFilter,
+export const PostV2WebhooksFilterResponseUnion$inboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponseUnion,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PostV2WebhooksFilter1$inboundSchema),
-  z.lazy(() => PostV2WebhooksFilter2$inboundSchema),
+  z.lazy(() => PostV2WebhooksFilterResponse1$inboundSchema),
+  z.lazy(() => PostV2WebhooksFilterResponse2$inboundSchema),
 ]);
 
 /** @internal */
-export type PostV2WebhooksFilter$Outbound =
-  | PostV2WebhooksFilter1$Outbound
-  | PostV2WebhooksFilter2$Outbound;
+export type PostV2WebhooksFilterResponseUnion$Outbound =
+  | PostV2WebhooksFilterResponse1$Outbound
+  | PostV2WebhooksFilterResponse2$Outbound;
 
 /** @internal */
-export const PostV2WebhooksFilter$outboundSchema: z.ZodType<
-  PostV2WebhooksFilter$Outbound,
+export const PostV2WebhooksFilterResponseUnion$outboundSchema: z.ZodType<
+  PostV2WebhooksFilterResponseUnion$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksFilter
+  PostV2WebhooksFilterResponseUnion
 > = z.union([
-  z.lazy(() => PostV2WebhooksFilter1$outboundSchema),
-  z.lazy(() => PostV2WebhooksFilter2$outboundSchema),
+  z.lazy(() => PostV2WebhooksFilterResponse1$outboundSchema),
+  z.lazy(() => PostV2WebhooksFilterResponse2$outboundSchema),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksFilter$ {
-  /** @deprecated use `PostV2WebhooksFilter$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksFilter$inboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksFilter$outboundSchema;
-  /** @deprecated use `PostV2WebhooksFilter$Outbound` instead. */
-  export type Outbound = PostV2WebhooksFilter$Outbound;
+export namespace PostV2WebhooksFilterResponseUnion$ {
+  /** @deprecated use `PostV2WebhooksFilterResponseUnion$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksFilterResponseUnion$inboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponseUnion$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksFilterResponseUnion$outboundSchema;
+  /** @deprecated use `PostV2WebhooksFilterResponseUnion$Outbound` instead. */
+  export type Outbound = PostV2WebhooksFilterResponseUnion$Outbound;
 }
 
-export function postV2WebhooksFilterToJSON(
-  postV2WebhooksFilter: PostV2WebhooksFilter,
+export function postV2WebhooksFilterResponseUnionToJSON(
+  postV2WebhooksFilterResponseUnion: PostV2WebhooksFilterResponseUnion,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksFilter$outboundSchema.parse(postV2WebhooksFilter),
+    PostV2WebhooksFilterResponseUnion$outboundSchema.parse(
+      postV2WebhooksFilterResponseUnion,
+    ),
   );
 }
 
-export function postV2WebhooksFilterFromJSON(
+export function postV2WebhooksFilterResponseUnionFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksFilter, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksFilterResponseUnion, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksFilter' from JSON`,
+    (x) => PostV2WebhooksFilterResponseUnion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksFilterResponseUnion' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksSubscriptions$inboundSchema: z.ZodType<
-  PostV2WebhooksSubscriptions,
+export const PostV2WebhooksSubscriptionResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksSubscriptionResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  event_type: PostV2WebhooksEventType$inboundSchema,
+  event_type: PostV2WebhooksEventTypeResponse$inboundSchema,
   filter: z.nullable(
     z.union([
-      z.lazy(() => PostV2WebhooksFilter1$inboundSchema),
-      z.lazy(() => PostV2WebhooksFilter2$inboundSchema),
+      z.lazy(() => PostV2WebhooksFilterResponse1$inboundSchema),
+      z.lazy(() => PostV2WebhooksFilterResponse2$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1795,25 +1993,25 @@ export const PostV2WebhooksSubscriptions$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2WebhooksSubscriptions$Outbound = {
+export type PostV2WebhooksSubscriptionResponse$Outbound = {
   event_type: string;
   filter:
-    | PostV2WebhooksFilter1$Outbound
-    | PostV2WebhooksFilter2$Outbound
+    | PostV2WebhooksFilterResponse1$Outbound
+    | PostV2WebhooksFilterResponse2$Outbound
     | null;
 };
 
 /** @internal */
-export const PostV2WebhooksSubscriptions$outboundSchema: z.ZodType<
-  PostV2WebhooksSubscriptions$Outbound,
+export const PostV2WebhooksSubscriptionResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksSubscriptionResponse$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksSubscriptions
+  PostV2WebhooksSubscriptionResponse
 > = z.object({
-  eventType: PostV2WebhooksEventType$outboundSchema,
+  eventType: PostV2WebhooksEventTypeResponse$outboundSchema,
   filter: z.nullable(
     z.union([
-      z.lazy(() => PostV2WebhooksFilter1$outboundSchema),
-      z.lazy(() => PostV2WebhooksFilter2$outboundSchema),
+      z.lazy(() => PostV2WebhooksFilterResponse1$outboundSchema),
+      z.lazy(() => PostV2WebhooksFilterResponse2$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1826,32 +2024,34 @@ export const PostV2WebhooksSubscriptions$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksSubscriptions$ {
-  /** @deprecated use `PostV2WebhooksSubscriptions$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksSubscriptions$inboundSchema;
-  /** @deprecated use `PostV2WebhooksSubscriptions$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksSubscriptions$outboundSchema;
-  /** @deprecated use `PostV2WebhooksSubscriptions$Outbound` instead. */
-  export type Outbound = PostV2WebhooksSubscriptions$Outbound;
+export namespace PostV2WebhooksSubscriptionResponse$ {
+  /** @deprecated use `PostV2WebhooksSubscriptionResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksSubscriptionResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksSubscriptionResponse$outboundSchema` instead. */
+  export const outboundSchema =
+    PostV2WebhooksSubscriptionResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksSubscriptionResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksSubscriptionResponse$Outbound;
 }
 
-export function postV2WebhooksSubscriptionsToJSON(
-  postV2WebhooksSubscriptions: PostV2WebhooksSubscriptions,
+export function postV2WebhooksSubscriptionResponseToJSON(
+  postV2WebhooksSubscriptionResponse: PostV2WebhooksSubscriptionResponse,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksSubscriptions$outboundSchema.parse(
-      postV2WebhooksSubscriptions,
+    PostV2WebhooksSubscriptionResponse$outboundSchema.parse(
+      postV2WebhooksSubscriptionResponse,
     ),
   );
 }
 
-export function postV2WebhooksSubscriptionsFromJSON(
+export function postV2WebhooksSubscriptionResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksSubscriptions, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksSubscriptionResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksSubscriptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksSubscriptions' from JSON`,
+    (x) =>
+      PostV2WebhooksSubscriptionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksSubscriptionResponse' from JSON`,
   );
 }
 
@@ -1944,14 +2144,14 @@ export namespace PostV2WebhooksStatus$ {
 }
 
 /** @internal */
-export const PostV2WebhooksWebhooksData$inboundSchema: z.ZodType<
-  PostV2WebhooksWebhooksData,
+export const PostV2WebhooksDataResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksDataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
   target_url: z.string(),
   subscriptions: z.array(
-    z.lazy(() => PostV2WebhooksSubscriptions$inboundSchema),
+    z.lazy(() => PostV2WebhooksSubscriptionResponse$inboundSchema),
   ),
   id: z.lazy(() => PostV2WebhooksId$inboundSchema),
   status: PostV2WebhooksStatus$inboundSchema,
@@ -1965,9 +2165,9 @@ export const PostV2WebhooksWebhooksData$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostV2WebhooksWebhooksData$Outbound = {
+export type PostV2WebhooksDataResponse$Outbound = {
   target_url: string;
-  subscriptions: Array<PostV2WebhooksSubscriptions$Outbound>;
+  subscriptions: Array<PostV2WebhooksSubscriptionResponse$Outbound>;
   id: PostV2WebhooksId$Outbound;
   status: string;
   created_at: string;
@@ -1975,14 +2175,14 @@ export type PostV2WebhooksWebhooksData$Outbound = {
 };
 
 /** @internal */
-export const PostV2WebhooksWebhooksData$outboundSchema: z.ZodType<
-  PostV2WebhooksWebhooksData$Outbound,
+export const PostV2WebhooksDataResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksDataResponse$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksWebhooksData
+  PostV2WebhooksDataResponse
 > = z.object({
   targetUrl: z.string(),
   subscriptions: z.array(
-    z.lazy(() => PostV2WebhooksSubscriptions$outboundSchema),
+    z.lazy(() => PostV2WebhooksSubscriptionResponse$outboundSchema),
   ),
   id: z.lazy(() => PostV2WebhooksId$outboundSchema),
   status: PostV2WebhooksStatus$outboundSchema,
@@ -1999,83 +2199,83 @@ export const PostV2WebhooksWebhooksData$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksWebhooksData$ {
-  /** @deprecated use `PostV2WebhooksWebhooksData$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksWebhooksData$inboundSchema;
-  /** @deprecated use `PostV2WebhooksWebhooksData$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksWebhooksData$outboundSchema;
-  /** @deprecated use `PostV2WebhooksWebhooksData$Outbound` instead. */
-  export type Outbound = PostV2WebhooksWebhooksData$Outbound;
+export namespace PostV2WebhooksDataResponse$ {
+  /** @deprecated use `PostV2WebhooksDataResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksDataResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksDataResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksDataResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksDataResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksDataResponse$Outbound;
 }
 
-export function postV2WebhooksWebhooksDataToJSON(
-  postV2WebhooksWebhooksData: PostV2WebhooksWebhooksData,
+export function postV2WebhooksDataResponseToJSON(
+  postV2WebhooksDataResponse: PostV2WebhooksDataResponse,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksWebhooksData$outboundSchema.parse(postV2WebhooksWebhooksData),
+    PostV2WebhooksDataResponse$outboundSchema.parse(postV2WebhooksDataResponse),
   );
 }
 
-export function postV2WebhooksWebhooksDataFromJSON(
+export function postV2WebhooksDataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksWebhooksData, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksDataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksWebhooksData$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksWebhooksData' from JSON`,
+    (x) => PostV2WebhooksDataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksDataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PostV2WebhooksResponseBody$inboundSchema: z.ZodType<
-  PostV2WebhooksResponseBody,
+export const PostV2WebhooksResponse$inboundSchema: z.ZodType<
+  PostV2WebhooksResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  data: z.lazy(() => PostV2WebhooksWebhooksData$inboundSchema),
+  data: z.lazy(() => PostV2WebhooksDataResponse$inboundSchema),
 });
 
 /** @internal */
-export type PostV2WebhooksResponseBody$Outbound = {
-  data: PostV2WebhooksWebhooksData$Outbound;
+export type PostV2WebhooksResponse$Outbound = {
+  data: PostV2WebhooksDataResponse$Outbound;
 };
 
 /** @internal */
-export const PostV2WebhooksResponseBody$outboundSchema: z.ZodType<
-  PostV2WebhooksResponseBody$Outbound,
+export const PostV2WebhooksResponse$outboundSchema: z.ZodType<
+  PostV2WebhooksResponse$Outbound,
   z.ZodTypeDef,
-  PostV2WebhooksResponseBody
+  PostV2WebhooksResponse
 > = z.object({
-  data: z.lazy(() => PostV2WebhooksWebhooksData$outboundSchema),
+  data: z.lazy(() => PostV2WebhooksDataResponse$outboundSchema),
 });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostV2WebhooksResponseBody$ {
-  /** @deprecated use `PostV2WebhooksResponseBody$inboundSchema` instead. */
-  export const inboundSchema = PostV2WebhooksResponseBody$inboundSchema;
-  /** @deprecated use `PostV2WebhooksResponseBody$outboundSchema` instead. */
-  export const outboundSchema = PostV2WebhooksResponseBody$outboundSchema;
-  /** @deprecated use `PostV2WebhooksResponseBody$Outbound` instead. */
-  export type Outbound = PostV2WebhooksResponseBody$Outbound;
+export namespace PostV2WebhooksResponse$ {
+  /** @deprecated use `PostV2WebhooksResponse$inboundSchema` instead. */
+  export const inboundSchema = PostV2WebhooksResponse$inboundSchema;
+  /** @deprecated use `PostV2WebhooksResponse$outboundSchema` instead. */
+  export const outboundSchema = PostV2WebhooksResponse$outboundSchema;
+  /** @deprecated use `PostV2WebhooksResponse$Outbound` instead. */
+  export type Outbound = PostV2WebhooksResponse$Outbound;
 }
 
-export function postV2WebhooksResponseBodyToJSON(
-  postV2WebhooksResponseBody: PostV2WebhooksResponseBody,
+export function postV2WebhooksResponseToJSON(
+  postV2WebhooksResponse: PostV2WebhooksResponse,
 ): string {
   return JSON.stringify(
-    PostV2WebhooksResponseBody$outboundSchema.parse(postV2WebhooksResponseBody),
+    PostV2WebhooksResponse$outboundSchema.parse(postV2WebhooksResponse),
   );
 }
 
-export function postV2WebhooksResponseBodyFromJSON(
+export function postV2WebhooksResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostV2WebhooksResponseBody, SDKValidationError> {
+): SafeParseResult<PostV2WebhooksResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostV2WebhooksResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV2WebhooksResponseBody' from JSON`,
+    (x) => PostV2WebhooksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostV2WebhooksResponse' from JSON`,
   );
 }

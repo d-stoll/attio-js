@@ -12,15 +12,23 @@ import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import { APIError } from "../models/errors/apierror.js";
 import {
+  DeleteV2WebhooksWebhookIdNotFoundError,
+  DeleteV2WebhooksWebhookIdNotFoundError$inboundSchema,
+} from "../models/errors/getv2objectsobject.js";
+import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  DeleteV2WebhooksWebhookIdRequest,
+  DeleteV2WebhooksWebhookIdRequest$outboundSchema,
+  DeleteV2WebhooksWebhookIdResponse,
+  DeleteV2WebhooksWebhookIdResponse$inboundSchema,
+} from "../models/operations/deletev2webhookswebhookid.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -34,12 +42,12 @@ import { Result } from "../types/fp.js";
  */
 export function webhooksDelete(
   client: AttioCore,
-  request: operations.DeleteV2WebhooksWebhookIdRequest,
+  request: DeleteV2WebhooksWebhookIdRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.DeleteV2WebhooksWebhookIdResponseBody,
-    | errors.DeleteV2WebhooksWebhookIdResponseBody
+    DeleteV2WebhooksWebhookIdResponse,
+    | DeleteV2WebhooksWebhookIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -58,13 +66,13 @@ export function webhooksDelete(
 
 async function $do(
   client: AttioCore,
-  request: operations.DeleteV2WebhooksWebhookIdRequest,
+  request: DeleteV2WebhooksWebhookIdRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.DeleteV2WebhooksWebhookIdResponseBody,
-      | errors.DeleteV2WebhooksWebhookIdResponseBody
+      DeleteV2WebhooksWebhookIdResponse,
+      | DeleteV2WebhooksWebhookIdNotFoundError
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -78,8 +86,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.DeleteV2WebhooksWebhookIdRequest$outboundSchema.parse(value),
+    (value) => DeleteV2WebhooksWebhookIdRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -149,8 +156,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    operations.DeleteV2WebhooksWebhookIdResponseBody,
-    | errors.DeleteV2WebhooksWebhookIdResponseBody
+    DeleteV2WebhooksWebhookIdResponse,
+    | DeleteV2WebhooksWebhookIdNotFoundError
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -159,8 +166,8 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.DeleteV2WebhooksWebhookIdResponseBody$inboundSchema),
-    M.jsonErr(404, errors.DeleteV2WebhooksWebhookIdResponseBody$inboundSchema),
+    M.json(200, DeleteV2WebhooksWebhookIdResponse$inboundSchema),
+    M.jsonErr(404, DeleteV2WebhooksWebhookIdNotFoundError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, { extraFields: responseFields });

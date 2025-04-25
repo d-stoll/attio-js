@@ -19,7 +19,12 @@ import {
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
+import {
+  GetV2TasksRequest,
+  GetV2TasksRequest$outboundSchema,
+  GetV2TasksResponse,
+  GetV2TasksResponse$inboundSchema,
+} from "../models/operations/getv2tasks.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
@@ -33,11 +38,11 @@ import { Result } from "../types/fp.js";
  */
 export function tasksList(
   client: AttioCore,
-  request: operations.GetV2TasksRequest,
+  request: GetV2TasksRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    operations.GetV2TasksResponseBody,
+    GetV2TasksResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -56,12 +61,12 @@ export function tasksList(
 
 async function $do(
   client: AttioCore,
-  request: operations.GetV2TasksRequest,
+  request: GetV2TasksRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      operations.GetV2TasksResponseBody,
+      GetV2TasksResponse,
       | APIError
       | SDKValidationError
       | UnexpectedClientError
@@ -75,7 +80,7 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) => operations.GetV2TasksRequest$outboundSchema.parse(value),
+    (value) => GetV2TasksRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -145,7 +150,7 @@ async function $do(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.GetV2TasksResponseBody,
+    GetV2TasksResponse,
     | APIError
     | SDKValidationError
     | UnexpectedClientError
@@ -154,7 +159,7 @@ async function $do(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.GetV2TasksResponseBody$inboundSchema),
+    M.json(200, GetV2TasksResponse$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response);

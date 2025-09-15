@@ -5,7 +5,7 @@ sources:
         inputs:
             - location: openapi.json
         overlays:
-            - location: .speakeasy\speakeasy-modifications-overlay.yaml
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
         registry:
             location: registry.speakeasyapi.dev/d-stoll/attio-js/attio-api
 targets:

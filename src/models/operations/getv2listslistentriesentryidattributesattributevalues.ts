@@ -2045,30 +2045,39 @@ export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorRefere
   };
 
 export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion =
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataNumber
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataStatus
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRating
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataSelect
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataText
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation;
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp;
 
 /**
  * Success
  */
 export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse = {
   data: Array<
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox
+    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataNumber
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataStatus
@@ -2076,15 +2085,6 @@ export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse = {
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataSelect
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataText
     | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress
-    | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation
   >;
 };
 
@@ -6598,7 +6598,34 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$inbo
     unknown
   > = z.union([
     z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$inboundSchema
+    ),
+    z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$inboundSchema
     ),
     z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$inboundSchema
@@ -6621,54 +6648,27 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$inbo
     z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$inboundSchema
     ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$inboundSchema
-    ),
   ]);
 
 /** @internal */
 export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$Outbound =
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$Outbound
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataNumber$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataStatus$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRating$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataSelect$Outbound
   | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataText$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$Outbound
-  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$Outbound;
+  | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$Outbound;
 
 /** @internal */
 export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$outboundSchema:
@@ -6678,7 +6678,34 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$outb
     GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion
   > = z.union([
     z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$outboundSchema
+    ),
+    z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$outboundSchema
     ),
     z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$outboundSchema
@@ -6700,33 +6727,6 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataUnion$outb
     ),
     z.lazy(() =>
       GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$outboundSchema
     ),
   ]);
 
@@ -6781,7 +6781,34 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$inbou
     data: z.array(
       z.union([
         z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$inboundSchema
+        ),
+        z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$inboundSchema
         ),
         z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$inboundSchema
@@ -6804,33 +6831,6 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$inbou
         z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$inboundSchema
         ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$inboundSchema
-        ),
       ]),
     ),
   });
@@ -6839,7 +6839,16 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$inbou
 export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$Outbound =
   {
     data: Array<
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$Outbound
+      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataNumber$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataStatus$Outbound
@@ -6847,15 +6856,6 @@ export type GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$Outbou
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataSelect$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataText$Outbound
       | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$Outbound
-      | GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$Outbound
     >;
   };
 
@@ -6869,7 +6869,34 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$outbo
     data: z.array(
       z.union([
         z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$outboundSchema
+        ),
+        z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCheckbox$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$outboundSchema
         ),
         z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDate$outboundSchema
@@ -6891,33 +6918,6 @@ export const GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse$outbo
         ),
         z.lazy(() =>
           GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataTimestamp$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataActorReference$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataCurrency$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataDomain$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataRecordReference$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataInteraction$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPersonalName$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataEmailAddress$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ListsListEntriesEntryIdAttributesAttributeValuesDataLocation$outboundSchema
         ),
       ]),
     ),

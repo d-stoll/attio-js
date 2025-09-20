@@ -47,12 +47,14 @@ export type RequestOptions = {
    */
   serverURL?: string | URL;
   /**
+   * @deprecated `fetchOptions` has been flattened into `RequestOptions`.
+   *
    * Sets various request options on the `fetch` call made by an SDK method.
    *
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options|Request}
    */
   fetchOptions?: Omit<RequestInit, "method" | "body">;
-};
+} & Omit<RequestInit, "method" | "body">;
 
 type RequestConfig = {
   method: string;
@@ -63,6 +65,7 @@ type RequestConfig = {
   headers?: HeadersInit;
   security?: SecurityState | null;
   uaHeader?: string;
+  userAgent?: string | undefined;
   timeoutMs?: number;
 };
 
@@ -94,19 +97,21 @@ export class ClientSDK {
     } else {
       this.#hooks = new SDKHooks();
     }
-    this._options = { ...options, hooks: this.#hooks };
-
     const url = serverURLFromOptions(options);
     if (url) {
       url.pathname = url.pathname.replace(/\/+$/, "") + "/";
     }
+
     const { baseURL, client } = this.#hooks.sdkInit({
       baseURL: url,
       client: options.httpClient || new HTTPClient(),
     });
     this._baseURL = baseURL;
     this.#httpClient = client;
-    this.#logger = options.debugLogger;
+
+    this._options = { ...options, hooks: this.#hooks };
+
+    this.#logger = this._options.debugLogger;
     if (!this.#logger && env().ATTIO_DEBUG) {
       this.#logger = console;
     }
@@ -172,7 +177,9 @@ export class ClientSDK {
     cookie = cookie.startsWith("; ") ? cookie.slice(2) : cookie;
     headers.set("cookie", cookie);
 
-    const userHeaders = new Headers(options?.fetchOptions?.headers);
+    const userHeaders = new Headers(
+      options?.headers ?? options?.fetchOptions?.headers,
+    );
     for (const [k, v] of userHeaders) {
       headers.set(k, v);
     }
@@ -180,23 +187,22 @@ export class ClientSDK {
     // Only set user agent header in non-browser-like environments since CORS
     // policy disallows setting it in browsers e.g. Chrome throws an error.
     if (!isBrowserLike) {
-      headers.set(conf.uaHeader ?? "user-agent", SDK_METADATA.userAgent);
+      headers.set(
+        conf.uaHeader ?? "user-agent",
+        conf.userAgent ?? SDK_METADATA.userAgent,
+      );
     }
 
-    let fetchOptions = options?.fetchOptions;
+    const fetchOptions: Omit<RequestInit, "method" | "body"> = {
+      ...options?.fetchOptions,
+      ...options,
+    };
     if (!fetchOptions?.signal && conf.timeoutMs && conf.timeoutMs > 0) {
       const timeoutSignal = AbortSignal.timeout(conf.timeoutMs);
-      if (!fetchOptions) {
-        fetchOptions = { signal: timeoutSignal };
-      } else {
-        fetchOptions.signal = timeoutSignal;
-      }
+      fetchOptions.signal = timeoutSignal;
     }
 
     if (conf.body instanceof ReadableStream) {
-      if (!fetchOptions) {
-        fetchOptions = {};
-      }
       Object.assign(fetchOptions, { duplex: "half" });
     }
 

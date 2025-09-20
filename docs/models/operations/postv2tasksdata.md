@@ -13,19 +13,10 @@ let value: PostV2TasksData = {
   linkedRecords: [
     {
       targetObject: "people",
-      slugOrIdOfMatchingAttribute: [
-        {
-          emailAddress: "alice@app.attio.com",
-        },
-      ],
+      targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     },
   ],
-  assignees: [
-    {
-      referencedActorType: "workspace-member",
-      referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-    },
-  ],
+  assignees: [],
 };
 ```
 

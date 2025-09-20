@@ -9,7 +9,7 @@ let value: PatchV2WebhooksWebhookIdFilterResponse1 = {
   dollarOr: [
     {
       field: "<value>",
-      operator: "not_equals",
+      operator: "equals",
       value: "<value>",
     },
   ],

@@ -5,6 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { AttioError } from "./attioerror.js";
 
 export const NotFoundType = {
   InvalidRequestError: "invalid_request_error",
@@ -29,22 +30,20 @@ export type GetV2ObjectsObjectNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2ObjectsObjectNotFoundError extends Error {
-  statusCode: number;
+export class GetV2ObjectsObjectNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2ObjectsObjectNotFoundErrorData;
 
-  constructor(err: GetV2ObjectsObjectNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2ObjectsObjectNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -75,22 +74,20 @@ export type PostV2ObjectsSlugConflictErrorData = {
 /**
  * Conflict
  */
-export class PostV2ObjectsSlugConflictError extends Error {
-  statusCode: number;
+export class PostV2ObjectsSlugConflictError extends AttioError {
   type: ConflictType;
   code: ConflictCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ObjectsSlugConflictErrorData;
 
-  constructor(err: PostV2ObjectsSlugConflictErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ObjectsSlugConflictErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -111,22 +108,20 @@ export type PatchV2ObjectsObjectSlugConflictErrorData = {
 /**
  * Conflict
  */
-export class PatchV2ObjectsObjectSlugConflictError extends Error {
-  statusCode: number;
+export class PatchV2ObjectsObjectSlugConflictError extends AttioError {
   type: ConflictType;
   code: ConflictCode;
 
   /** The original data that was passed to this error instance. */
   data$: PatchV2ObjectsObjectSlugConflictErrorData;
 
-  constructor(err: PatchV2ObjectsObjectSlugConflictErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PatchV2ObjectsObjectSlugConflictErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -157,22 +152,20 @@ export type PatchV2ObjectsObjectValidationTypeErrorData = {
 /**
  * Bad Request
  */
-export class PatchV2ObjectsObjectValidationTypeError extends Error {
-  statusCode: number;
+export class PatchV2ObjectsObjectValidationTypeError extends AttioError {
   type: BadRequestType;
   code: CodeValidationType;
 
   /** The original data that was passed to this error instance. */
   data$: PatchV2ObjectsObjectValidationTypeErrorData;
 
-  constructor(err: PatchV2ObjectsObjectValidationTypeErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PatchV2ObjectsObjectValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -193,22 +186,22 @@ export type PostV2TargetIdentifierAttributesSlugConflictErrorData = {
 /**
  * Conflict
  */
-export class PostV2TargetIdentifierAttributesSlugConflictError extends Error {
-  statusCode: number;
+export class PostV2TargetIdentifierAttributesSlugConflictError
+  extends AttioError
+{
   type: ConflictType;
   code: ConflictCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2TargetIdentifierAttributesSlugConflictErrorData;
 
-  constructor(err: PostV2TargetIdentifierAttributesSlugConflictErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2TargetIdentifierAttributesSlugConflictErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -229,22 +222,20 @@ export type PostV2TargetIdentifierAttributesNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PostV2TargetIdentifierAttributesNotFoundError extends Error {
-  statusCode: number;
+export class PostV2TargetIdentifierAttributesNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2TargetIdentifierAttributesNotFoundErrorData;
 
-  constructor(err: PostV2TargetIdentifierAttributesNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2TargetIdentifierAttributesNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -265,22 +256,22 @@ export type PostV2TargetIdentifierAttributesValidationTypeErrorData = {
 /**
  * Bad Request
  */
-export class PostV2TargetIdentifierAttributesValidationTypeError extends Error {
-  statusCode: number;
+export class PostV2TargetIdentifierAttributesValidationTypeError
+  extends AttioError
+{
   type: BadRequestType;
   code: CodeValidationType;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2TargetIdentifierAttributesValidationTypeErrorData;
 
-  constructor(err: PostV2TargetIdentifierAttributesValidationTypeErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2TargetIdentifierAttributesValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -302,23 +293,21 @@ export type GetV2TargetIdentifierAttributesAttributeNotFoundErrorData = {
  * Not Found
  */
 export class GetV2TargetIdentifierAttributesAttributeNotFoundError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2TargetIdentifierAttributesAttributeNotFoundErrorData;
 
-  constructor(err: GetV2TargetIdentifierAttributesAttributeNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2TargetIdentifierAttributesAttributeNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -346,22 +335,20 @@ export type SystemEditUnauthorizedErrorData = {
 /**
  * Bad Request
  */
-export class SystemEditUnauthorizedError extends Error {
-  statusCode: number;
+export class SystemEditUnauthorizedError extends AttioError {
   type: BadRequestType;
   code: PatchV2TargetIdentifierAttributesAttributeCode;
 
   /** The original data that was passed to this error instance. */
   data$: SystemEditUnauthorizedErrorData;
 
-  constructor(err: SystemEditUnauthorizedErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: SystemEditUnauthorizedErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -384,9 +371,8 @@ export type PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictErrorDat
  * Conflict
  */
 export class PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: ConflictType;
   code: ConflictCode;
 
@@ -395,14 +381,11 @@ export class PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError
 
   constructor(
     err: PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -426,9 +409,8 @@ export type PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeErrorD
  * Bad Request
  */
 export class PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: BadRequestType;
   code: CodeValidationType;
 
@@ -439,14 +421,11 @@ export class PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError
   constructor(
     err:
       PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -476,9 +455,8 @@ export type PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidReques
  * Bad Request
  */
 export class PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidRequestError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: BadRequestType;
   code: BadRequestCode;
 
@@ -489,14 +467,11 @@ export class PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidReque
   constructor(
     err:
       PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -520,9 +495,8 @@ export type PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictErrorDa
  * Conflict
  */
 export class PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: ConflictType;
   code: ConflictCode;
 
@@ -531,14 +505,11 @@ export class PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError
 
   constructor(
     err: PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -562,9 +533,8 @@ export type PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeError
  * Bad Request
  */
 export class PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: BadRequestType;
   code: CodeValidationType;
 
@@ -575,14 +545,11 @@ export class PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeErro
   constructor(
     err:
       PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -606,9 +573,8 @@ export type PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidReque
  * Bad Request
  */
 export class PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequestError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: BadRequestType;
   code: BadRequestCode;
 
@@ -619,14 +585,11 @@ export class PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequ
   constructor(
     err:
       PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -648,22 +611,20 @@ export type PostV2ObjectsObjectRecordsQueryNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PostV2ObjectsObjectRecordsQueryNotFoundError extends Error {
-  statusCode: number;
+export class PostV2ObjectsObjectRecordsQueryNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ObjectsObjectRecordsQueryNotFoundErrorData;
 
-  constructor(err: PostV2ObjectsObjectRecordsQueryNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ObjectsObjectRecordsQueryNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -691,22 +652,20 @@ export type FilterErrorData = {
 /**
  * Bad Request
  */
-export class FilterError extends Error {
-  statusCode: number;
+export class FilterError extends AttioError {
   type: BadRequestType;
   code: PostV2ObjectsObjectRecordsQueryCode;
 
   /** The original data that was passed to this error instance. */
   data$: FilterErrorData;
 
-  constructor(err: FilterErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: FilterErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -727,22 +686,20 @@ export type PostV2ObjectsObjectRecordsInvalidRequestErrorData = {
 /**
  * Bad Request
  */
-export class PostV2ObjectsObjectRecordsInvalidRequestError extends Error {
-  statusCode: number;
+export class PostV2ObjectsObjectRecordsInvalidRequestError extends AttioError {
   type: BadRequestType;
   code: BadRequestCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ObjectsObjectRecordsInvalidRequestErrorData;
 
-  constructor(err: PostV2ObjectsObjectRecordsInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ObjectsObjectRecordsInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -763,22 +720,20 @@ export type PutV2ObjectsObjectRecordsInvalidRequestErrorData = {
 /**
  * Bad Request
  */
-export class PutV2ObjectsObjectRecordsInvalidRequestError extends Error {
-  statusCode: number;
+export class PutV2ObjectsObjectRecordsInvalidRequestError extends AttioError {
   type: BadRequestType;
   code: BadRequestCode;
 
   /** The original data that was passed to this error instance. */
   data$: PutV2ObjectsObjectRecordsInvalidRequestErrorData;
 
-  constructor(err: PutV2ObjectsObjectRecordsInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PutV2ObjectsObjectRecordsInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -789,7 +744,7 @@ export class PutV2ObjectsObjectRecordsInvalidRequestError extends Error {
 /**
  * Not Found
  */
-export type GetV2ObjectsObjectRecordsRecordIdInvalidRequestErrorData = {
+export type GetV2ObjectsObjectRecordsRecordIdNotFoundErrorData = {
   statusCode: number;
   type: NotFoundType;
   code: NotFoundCode;
@@ -799,28 +754,24 @@ export type GetV2ObjectsObjectRecordsRecordIdInvalidRequestErrorData = {
 /**
  * Not Found
  */
-export class GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
-  extends Error
-{
-  statusCode: number;
+export class GetV2ObjectsObjectRecordsRecordIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
-  data$: GetV2ObjectsObjectRecordsRecordIdInvalidRequestErrorData;
+  data$: GetV2ObjectsObjectRecordsRecordIdNotFoundErrorData;
 
-  constructor(err: GetV2ObjectsObjectRecordsRecordIdInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2ObjectsObjectRecordsRecordIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
-    this.name = "GetV2ObjectsObjectRecordsRecordIdInvalidRequestError";
+    this.name = "GetV2ObjectsObjectRecordsRecordIdNotFoundError";
   }
 }
 
@@ -842,22 +793,20 @@ export type MissingValueErrorData = {
 /**
  * Bad Request
  */
-export class MissingValueError extends Error {
-  statusCode: number;
+export class MissingValueError extends AttioError {
   type: BadRequestType;
   code: CodeMissingValue;
 
   /** The original data that was passed to this error instance. */
   data$: MissingValueErrorData;
 
-  constructor(err: MissingValueErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: MissingValueErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -880,9 +829,8 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidation
  * Bad Request
  */
 export class GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError
-  extends Error
+  extends AttioError
 {
-  statusCode: number;
   type: BadRequestType;
   code: CodeValidationType;
 
@@ -893,14 +841,11 @@ export class GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidatio
   constructor(
     err:
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -922,22 +867,20 @@ export type PostV2ListsNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PostV2ListsNotFoundError extends Error {
-  statusCode: number;
+export class PostV2ListsNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ListsNotFoundErrorData;
 
-  constructor(err: PostV2ListsNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ListsNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -968,22 +911,20 @@ export type BillingErrorData = {
 /**
  * Forbidden
  */
-export class BillingError extends Error {
-  statusCode: number;
+export class BillingError extends AttioError {
   type: PostV2ListsType;
   code: PostV2ListsCode;
 
   /** The original data that was passed to this error instance. */
   data$: BillingErrorData;
 
-  constructor(err: BillingErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: BillingErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1004,22 +945,20 @@ export type PostV2ListsInvalidRequestErrorData = {
 /**
  * Bad Request
  */
-export class PostV2ListsInvalidRequestError extends Error {
-  statusCode: number;
+export class PostV2ListsInvalidRequestError extends AttioError {
   type: BadRequestType;
   code: BadRequestCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ListsInvalidRequestErrorData;
 
-  constructor(err: PostV2ListsInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ListsInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1040,22 +979,20 @@ export type GetV2ListsListNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2ListsListNotFoundError extends Error {
-  statusCode: number;
+export class GetV2ListsListNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2ListsListNotFoundErrorData;
 
-  constructor(err: GetV2ListsListNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2ListsListNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1076,22 +1013,20 @@ export type PostV2ListsListEntriesNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PostV2ListsListEntriesNotFoundError extends Error {
-  statusCode: number;
+export class PostV2ListsListEntriesNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ListsListEntriesNotFoundErrorData;
 
-  constructor(err: PostV2ListsListEntriesNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ListsListEntriesNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1112,22 +1047,20 @@ export type PostV2ListsListEntriesInvalidRequestErrorData = {
 /**
  * Bad Request
  */
-export class PostV2ListsListEntriesInvalidRequestError extends Error {
-  statusCode: number;
+export class PostV2ListsListEntriesInvalidRequestError extends AttioError {
   type: BadRequestType;
   code: BadRequestCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2ListsListEntriesInvalidRequestErrorData;
 
-  constructor(err: PostV2ListsListEntriesInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2ListsListEntriesInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1148,22 +1081,20 @@ export type PutV2ListsListEntriesNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PutV2ListsListEntriesNotFoundError extends Error {
-  statusCode: number;
+export class PutV2ListsListEntriesNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PutV2ListsListEntriesNotFoundErrorData;
 
-  constructor(err: PutV2ListsListEntriesNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PutV2ListsListEntriesNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1191,22 +1122,20 @@ export type MultipleMatchResultsErrorData = {
 /**
  * Bad Request
  */
-export class MultipleMatchResultsError extends Error {
-  statusCode: number;
+export class MultipleMatchResultsError extends AttioError {
   type: BadRequestType;
   code: PutV2ListsListEntriesCode;
 
   /** The original data that was passed to this error instance. */
   data$: MultipleMatchResultsErrorData;
 
-  constructor(err: MultipleMatchResultsErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: MultipleMatchResultsErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1232,22 +1161,20 @@ export type ImmutableValueErrorData = {
 /**
  * Bad Request
  */
-export class ImmutableValueError extends Error {
-  statusCode: number;
+export class ImmutableValueError extends AttioError {
   type: BadRequestType;
   code: CodeImmutableValue;
 
   /** The original data that was passed to this error instance. */
   data$: ImmutableValueErrorData;
 
-  constructor(err: ImmutableValueErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: ImmutableValueErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1258,7 +1185,7 @@ export class ImmutableValueError extends Error {
 /**
  * Not Found
  */
-export type GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestErrorData = {
+export type GetV2WorkspaceMembersWorkspaceMemberIdNotFoundErrorData = {
   statusCode: number;
   type: NotFoundType;
   code: NotFoundCode;
@@ -1268,30 +1195,26 @@ export type GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestErrorData = {
 /**
  * Not Found
  */
-export class GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
-  extends Error
+export class GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError
+  extends AttioError
 {
-  statusCode: number;
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
-  data$: GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestErrorData;
+  data$: GetV2WorkspaceMembersWorkspaceMemberIdNotFoundErrorData;
 
   constructor(
-    err: GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestErrorData,
+    err: GetV2WorkspaceMembersWorkspaceMemberIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
   ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
-    this.name = "GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError";
+    this.name = "GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError";
   }
 }
 
@@ -1308,22 +1231,20 @@ export type GetV2NotesNoteIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2NotesNoteIdNotFoundError extends Error {
-  statusCode: number;
+export class GetV2NotesNoteIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2NotesNoteIdNotFoundErrorData;
 
-  constructor(err: GetV2NotesNoteIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2NotesNoteIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1344,22 +1265,20 @@ export type PostV2TasksValidationTypeErrorData = {
 /**
  * Bad Request
  */
-export class PostV2TasksValidationTypeError extends Error {
-  statusCode: number;
+export class PostV2TasksValidationTypeError extends AttioError {
   type: BadRequestType;
   code: CodeValidationType;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2TasksValidationTypeErrorData;
 
-  constructor(err: PostV2TasksValidationTypeErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2TasksValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1380,22 +1299,20 @@ export type GetV2TasksTaskIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2TasksTaskIdNotFoundError extends Error {
-  statusCode: number;
+export class GetV2TasksTaskIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2TasksTaskIdNotFoundErrorData;
 
-  constructor(err: GetV2TasksTaskIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2TasksTaskIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1416,22 +1333,20 @@ export type PatchV2TasksTaskIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class PatchV2TasksTaskIdNotFoundError extends Error {
-  statusCode: number;
+export class PatchV2TasksTaskIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: PatchV2TasksTaskIdNotFoundErrorData;
 
-  constructor(err: PatchV2TasksTaskIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PatchV2TasksTaskIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1452,22 +1367,20 @@ export type GetV2ThreadsThreadIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2ThreadsThreadIdNotFoundError extends Error {
-  statusCode: number;
+export class GetV2ThreadsThreadIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2ThreadsThreadIdNotFoundErrorData;
 
-  constructor(err: GetV2ThreadsThreadIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2ThreadsThreadIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1488,22 +1401,20 @@ export type PostV2CommentsInvalidRequestErrorData = {
 /**
  * Bad Request
  */
-export class PostV2CommentsInvalidRequestError extends Error {
-  statusCode: number;
+export class PostV2CommentsInvalidRequestError extends AttioError {
   type: BadRequestType;
   code: BadRequestCode;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2CommentsInvalidRequestErrorData;
 
-  constructor(err: PostV2CommentsInvalidRequestErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2CommentsInvalidRequestErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1524,22 +1435,20 @@ export type GetV2CommentsCommentIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2CommentsCommentIdNotFoundError extends Error {
-  statusCode: number;
+export class GetV2CommentsCommentIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2CommentsCommentIdNotFoundErrorData;
 
-  constructor(err: GetV2CommentsCommentIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2CommentsCommentIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1560,22 +1469,20 @@ export type DeleteV2CommentsCommentIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class DeleteV2CommentsCommentIdNotFoundError extends Error {
-  statusCode: number;
+export class DeleteV2CommentsCommentIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: DeleteV2CommentsCommentIdNotFoundErrorData;
 
-  constructor(err: DeleteV2CommentsCommentIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: DeleteV2CommentsCommentIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1596,22 +1503,20 @@ export type PostV2WebhooksValidationTypeErrorData = {
 /**
  * Bad Request
  */
-export class PostV2WebhooksValidationTypeError extends Error {
-  statusCode: number;
+export class PostV2WebhooksValidationTypeError extends AttioError {
   type: BadRequestType;
   code: CodeValidationType;
 
   /** The original data that was passed to this error instance. */
   data$: PostV2WebhooksValidationTypeErrorData;
 
-  constructor(err: PostV2WebhooksValidationTypeErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: PostV2WebhooksValidationTypeErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1632,22 +1537,20 @@ export type GetV2WebhooksWebhookIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class GetV2WebhooksWebhookIdNotFoundError extends Error {
-  statusCode: number;
+export class GetV2WebhooksWebhookIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: GetV2WebhooksWebhookIdNotFoundErrorData;
 
-  constructor(err: GetV2WebhooksWebhookIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: GetV2WebhooksWebhookIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1668,22 +1571,20 @@ export type DeleteV2WebhooksWebhookIdNotFoundErrorData = {
 /**
  * Not Found
  */
-export class DeleteV2WebhooksWebhookIdNotFoundError extends Error {
-  statusCode: number;
+export class DeleteV2WebhooksWebhookIdNotFoundError extends AttioError {
   type: NotFoundType;
   code: NotFoundCode;
 
   /** The original data that was passed to this error instance. */
   data$: DeleteV2WebhooksWebhookIdNotFoundErrorData;
 
-  constructor(err: DeleteV2WebhooksWebhookIdNotFoundErrorData) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message);
+  constructor(
+    err: DeleteV2WebhooksWebhookIdNotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
     this.data$ = err;
-
-    this.statusCode = err.statusCode;
     this.type = err.type;
     this.code = err.code;
 
@@ -1739,13 +1640,20 @@ export const GetV2ObjectsObjectNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2ObjectsObjectNotFoundError(remapped);
+    return new GetV2ObjectsObjectNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -1837,13 +1745,20 @@ export const PostV2ObjectsSlugConflictError$inboundSchema: z.ZodType<
   type: ConflictType$inboundSchema,
   code: ConflictCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2ObjectsSlugConflictError(remapped);
+    return new PostV2ObjectsSlugConflictError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -1897,13 +1812,20 @@ export const PatchV2ObjectsObjectSlugConflictError$inboundSchema: z.ZodType<
   type: ConflictType$inboundSchema,
   code: ConflictCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PatchV2ObjectsObjectSlugConflictError(remapped);
+    return new PatchV2ObjectsObjectSlugConflictError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -2001,13 +1923,20 @@ export const PatchV2ObjectsObjectValidationTypeError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: CodeValidationType$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PatchV2ObjectsObjectValidationTypeError(remapped);
+    return new PatchV2ObjectsObjectValidationTypeError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -2064,13 +1993,20 @@ export const PostV2TargetIdentifierAttributesSlugConflictError$inboundSchema:
     type: ConflictType$inboundSchema,
     code: ConflictCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PostV2TargetIdentifierAttributesSlugConflictError(remapped);
+      return new PostV2TargetIdentifierAttributesSlugConflictError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -2129,13 +2065,20 @@ export const PostV2TargetIdentifierAttributesNotFoundError$inboundSchema:
     type: NotFoundType$inboundSchema,
     code: NotFoundCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PostV2TargetIdentifierAttributesNotFoundError(remapped);
+      return new PostV2TargetIdentifierAttributesNotFoundError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -2193,13 +2136,20 @@ export const PostV2TargetIdentifierAttributesValidationTypeError$inboundSchema:
     type: BadRequestType$inboundSchema,
     code: CodeValidationType$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PostV2TargetIdentifierAttributesValidationTypeError(remapped);
+      return new PostV2TargetIdentifierAttributesValidationTypeError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -2258,6 +2208,9 @@ export const GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema
     type: NotFoundType$inboundSchema,
     code: NotFoundCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2266,6 +2219,7 @@ export const GetV2TargetIdentifierAttributesAttributeNotFoundError$inboundSchema
 
       return new GetV2TargetIdentifierAttributesAttributeNotFoundError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2347,13 +2301,20 @@ export const SystemEditUnauthorizedError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: PatchV2TargetIdentifierAttributesAttributeCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new SystemEditUnauthorizedError(remapped);
+    return new SystemEditUnauthorizedError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -2408,6 +2369,9 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError$i
     type: ConflictType$inboundSchema,
     code: ConflictCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2416,6 +2380,7 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError$i
 
       return new PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2478,6 +2443,9 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError
     type: BadRequestType$inboundSchema,
     code: CodeValidationType$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2486,6 +2454,7 @@ export const PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError
 
       return new PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2569,6 +2538,9 @@ export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidReque
     type: BadRequestType$inboundSchema,
     code: BadRequestCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2577,6 +2549,7 @@ export const PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidReque
 
       return new PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidRequestError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2639,6 +2612,9 @@ export const PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError$
     type: ConflictType$inboundSchema,
     code: ConflictCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2647,6 +2623,7 @@ export const PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError$
 
       return new PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2709,6 +2686,9 @@ export const PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeErro
     type: BadRequestType$inboundSchema,
     code: CodeValidationType$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2717,6 +2697,7 @@ export const PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeErro
 
       return new PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2779,6 +2760,9 @@ export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequ
     type: BadRequestType$inboundSchema,
     code: BadRequestCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -2787,6 +2771,7 @@ export const PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequ
 
       return new PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequestError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -2849,13 +2834,20 @@ export const PostV2ObjectsObjectRecordsQueryNotFoundError$inboundSchema:
     type: NotFoundType$inboundSchema,
     code: NotFoundCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PostV2ObjectsObjectRecordsQueryNotFoundError(remapped);
+      return new PostV2ObjectsObjectRecordsQueryNotFoundError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -2935,13 +2927,20 @@ export const FilterError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: PostV2ObjectsObjectRecordsQueryCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new FilterError(remapped);
+    return new FilterError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -2996,13 +2995,20 @@ export const PostV2ObjectsObjectRecordsInvalidRequestError$inboundSchema:
     type: BadRequestType$inboundSchema,
     code: BadRequestCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PostV2ObjectsObjectRecordsInvalidRequestError(remapped);
+      return new PostV2ObjectsObjectRecordsInvalidRequestError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -3060,13 +3066,20 @@ export const PutV2ObjectsObjectRecordsInvalidRequestError$inboundSchema:
     type: BadRequestType$inboundSchema,
     code: BadRequestCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new PutV2ObjectsObjectRecordsInvalidRequestError(remapped);
+      return new PutV2ObjectsObjectRecordsInvalidRequestError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
@@ -3114,9 +3127,9 @@ export namespace PutV2ObjectsObjectRecordsInvalidRequestError$ {
 }
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdNotFoundError$inboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError,
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -3124,17 +3137,24 @@ export const GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema:
     type: NotFoundType$inboundSchema,
     code: NotFoundCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new GetV2ObjectsObjectRecordsRecordIdInvalidRequestError(remapped);
+      return new GetV2ObjectsObjectRecordsRecordIdNotFoundError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
-export type GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$Outbound = {
+export type GetV2ObjectsObjectRecordsRecordIdNotFoundError$Outbound = {
   status_code: number;
   type: string;
   code: string;
@@ -3142,12 +3162,12 @@ export type GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$Outbound = {
 };
 
 /** @internal */
-export const GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$outboundSchema:
+export const GetV2ObjectsObjectRecordsRecordIdNotFoundError$outboundSchema:
   z.ZodType<
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$Outbound,
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError$Outbound,
     z.ZodTypeDef,
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
-  > = z.instanceof(GetV2ObjectsObjectRecordsRecordIdInvalidRequestError)
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError
+  > = z.instanceof(GetV2ObjectsObjectRecordsRecordIdNotFoundError)
     .transform(v => v.data$)
     .pipe(
       z.object({
@@ -3166,16 +3186,16 @@ export const GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$outboundSchema
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$ {
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema` instead. */
+export namespace GetV2ObjectsObjectRecordsRecordIdNotFoundError$ {
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdNotFoundError$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$inboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$outboundSchema` instead. */
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError$inboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdNotFoundError$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$outboundSchema;
-  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$Outbound` instead. */
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError$outboundSchema;
+  /** @deprecated use `GetV2ObjectsObjectRecordsRecordIdNotFoundError$Outbound` instead. */
   export type Outbound =
-    GetV2ObjectsObjectRecordsRecordIdInvalidRequestError$Outbound;
+    GetV2ObjectsObjectRecordsRecordIdNotFoundError$Outbound;
 }
 
 /** @internal */
@@ -3209,13 +3229,20 @@ export const MissingValueError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: CodeMissingValue$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new MissingValueError(remapped);
+    return new MissingValueError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3270,6 +3297,9 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidatio
     type: BadRequestType$inboundSchema,
     code: CodeValidationType$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
@@ -3278,6 +3308,7 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidatio
 
       return new GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError(
         remapped,
+        { request: v.request$, response: v.response$, body: v.body$ },
       );
     });
 
@@ -3339,13 +3370,20 @@ export const PostV2ListsNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2ListsNotFoundError(remapped);
+    return new PostV2ListsNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3441,13 +3479,20 @@ export const BillingError$inboundSchema: z.ZodType<
   type: PostV2ListsType$inboundSchema,
   code: PostV2ListsCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new BillingError(remapped);
+    return new BillingError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3501,13 +3546,20 @@ export const PostV2ListsInvalidRequestError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: BadRequestCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2ListsInvalidRequestError(remapped);
+    return new PostV2ListsInvalidRequestError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3561,13 +3613,20 @@ export const GetV2ListsListNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2ListsListNotFoundError(remapped);
+    return new GetV2ListsListNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3621,13 +3680,20 @@ export const PostV2ListsListEntriesNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2ListsListEntriesNotFoundError(remapped);
+    return new PostV2ListsListEntriesNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3683,13 +3749,20 @@ export const PostV2ListsListEntriesInvalidRequestError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: BadRequestCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2ListsListEntriesInvalidRequestError(remapped);
+    return new PostV2ListsListEntriesInvalidRequestError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3746,13 +3819,20 @@ export const PutV2ListsListEntriesNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PutV2ListsListEntriesNotFoundError(remapped);
+    return new PutV2ListsListEntriesNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3828,13 +3908,20 @@ export const MultipleMatchResultsError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: PutV2ListsListEntriesCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new MultipleMatchResultsError(remapped);
+    return new MultipleMatchResultsError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3909,13 +3996,20 @@ export const ImmutableValueError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: CodeImmutableValue$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new ImmutableValueError(remapped);
+    return new ImmutableValueError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -3960,9 +4054,9 @@ export namespace ImmutableValueError$ {
 }
 
 /** @internal */
-export const GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSchema:
+export const GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$inboundSchema:
   z.ZodType<
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError,
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError,
     z.ZodTypeDef,
     unknown
   > = z.object({
@@ -3970,33 +4064,37 @@ export const GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSc
     type: NotFoundType$inboundSchema,
     code: NotFoundCode$inboundSchema,
     message: z.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
   })
     .transform((v) => {
       const remapped = remap$(v, {
         "status_code": "statusCode",
       });
 
-      return new GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError(
-        remapped,
-      );
+      return new GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError(remapped, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
     });
 
 /** @internal */
-export type GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$Outbound =
-  {
-    status_code: number;
-    type: string;
-    code: string;
-    message: string;
-  };
+export type GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$Outbound = {
+  status_code: number;
+  type: string;
+  code: string;
+  message: string;
+};
 
 /** @internal */
-export const GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$outboundSchema:
+export const GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$outboundSchema:
   z.ZodType<
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$Outbound,
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$Outbound,
     z.ZodTypeDef,
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
-  > = z.instanceof(GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError)
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError
+  > = z.instanceof(GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError)
     .transform(v => v.data$)
     .pipe(
       z.object({
@@ -4015,16 +4113,16 @@ export const GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$outboundS
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$ {
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSchema` instead. */
+export namespace GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$ {
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$inboundSchema` instead. */
   export const inboundSchema =
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$inboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$outboundSchema` instead. */
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$inboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$outboundSchema` instead. */
   export const outboundSchema =
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$outboundSchema;
-  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$Outbound` instead. */
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$outboundSchema;
+  /** @deprecated use `GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$Outbound` instead. */
   export type Outbound =
-    GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError$Outbound;
+    GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError$Outbound;
 }
 
 /** @internal */
@@ -4037,13 +4135,20 @@ export const GetV2NotesNoteIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2NotesNoteIdNotFoundError(remapped);
+    return new GetV2NotesNoteIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4097,13 +4202,20 @@ export const PostV2TasksValidationTypeError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: CodeValidationType$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2TasksValidationTypeError(remapped);
+    return new PostV2TasksValidationTypeError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4157,13 +4269,20 @@ export const GetV2TasksTaskIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2TasksTaskIdNotFoundError(remapped);
+    return new GetV2TasksTaskIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4217,13 +4336,20 @@ export const PatchV2TasksTaskIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PatchV2TasksTaskIdNotFoundError(remapped);
+    return new PatchV2TasksTaskIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4277,13 +4403,20 @@ export const GetV2ThreadsThreadIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2ThreadsThreadIdNotFoundError(remapped);
+    return new GetV2ThreadsThreadIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4338,9 +4471,16 @@ export const PostV2CommentsInvalidRequestError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: BadRequestCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
-    return new PostV2CommentsInvalidRequestError(v);
+    return new PostV2CommentsInvalidRequestError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4389,13 +4529,20 @@ export const GetV2CommentsCommentIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2CommentsCommentIdNotFoundError(remapped);
+    return new GetV2CommentsCommentIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4451,13 +4598,20 @@ export const DeleteV2CommentsCommentIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new DeleteV2CommentsCommentIdNotFoundError(remapped);
+    return new DeleteV2CommentsCommentIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4513,13 +4667,20 @@ export const PostV2WebhooksValidationTypeError$inboundSchema: z.ZodType<
   type: BadRequestType$inboundSchema,
   code: CodeValidationType$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new PostV2WebhooksValidationTypeError(remapped);
+    return new PostV2WebhooksValidationTypeError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4574,13 +4735,20 @@ export const GetV2WebhooksWebhookIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new GetV2WebhooksWebhookIdNotFoundError(remapped);
+    return new GetV2WebhooksWebhookIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */
@@ -4636,13 +4804,20 @@ export const DeleteV2WebhooksWebhookIdNotFoundError$inboundSchema: z.ZodType<
   type: NotFoundType$inboundSchema,
   code: NotFoundCode$inboundSchema,
   message: z.string(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
 })
   .transform((v) => {
     const remapped = remap$(v, {
       "status_code": "statusCode",
     });
 
-    return new DeleteV2WebhooksWebhookIdNotFoundError(remapped);
+    return new DeleteV2WebhooksWebhookIdNotFoundError(remapped, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
   });
 
 /** @internal */

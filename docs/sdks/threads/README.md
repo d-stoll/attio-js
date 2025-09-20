@@ -22,6 +22,7 @@ Required scopes: `comment:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/threads" method="get" path="/v2/threads" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -39,7 +40,6 @@ async function run() {
     offset: 5,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -69,15 +69,12 @@ async function run() {
     limit: 10,
     offset: 5,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("threadsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -114,6 +111,7 @@ Required scopes: `comment:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/threads/{thread_id}" method="get" path="/v2/threads/{thread_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -126,7 +124,6 @@ async function run() {
     threadId: "a649e4d9-435c-43fb-83ba-847b4876f27a",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -151,15 +148,12 @@ async function run() {
   const res = await threadsGet(attio, {
     threadId: "a649e4d9-435c-43fb-83ba-847b4876f27a",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("threadsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -8,7 +8,9 @@ import { InputValue8 } from "attio-js/models/components/inputvalueunion.js";
 let value: InputValue8 = {
   targetObject: "people",
   slugOrIdOfMatchingAttribute: [
-    {},
+    {
+      domain: "app.attio.com",
+    },
   ],
 };
 ```

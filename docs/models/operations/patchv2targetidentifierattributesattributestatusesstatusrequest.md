@@ -13,6 +13,7 @@ let value: PatchV2TargetIdentifierAttributesAttributeStatusesStatusRequest = {
   requestBody: {
     data: {
       title: "In Progress",
+      celebrationEnabled: true,
       targetTimeInStatus: "P0Y0M1DT0H0M0S",
       isArchived: false,
     },

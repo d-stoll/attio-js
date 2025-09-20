@@ -15,6 +15,7 @@ Required scopes: `list_entry:read`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/lists/{list}/entries/{entry_id}/attributes/{attribute}/values" method="get" path="/v2/lists/{list}/entries/{entry_id}/attributes/{attribute}/values" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -27,11 +28,11 @@ async function run() {
     list: "enterprise_sales",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showHistoric: true,
     limit: 10,
     offset: 5,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -57,18 +58,16 @@ async function run() {
     list: "enterprise_sales",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showHistoric: true,
     limit: 10,
     offset: 5,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesAttributesValuesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -16,6 +16,7 @@ Required scopes: `user_management:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/workspace_members" method="get" path="/v2/workspace_members" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -26,7 +27,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.workspaceMembers.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -49,15 +49,12 @@ const attio = new AttioCore({
 
 async function run() {
   const res = await workspaceMembersList(attio);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("workspaceMembersList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -89,6 +86,7 @@ Required scopes: `user_management:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/workspace_members/{workspace_member_id}" method="get" path="/v2/workspace_members/{workspace_member_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -101,7 +99,6 @@ async function run() {
     workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -126,15 +123,12 @@ async function run() {
   const res = await workspaceMembersGet(attio, {
     workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("workspaceMembersGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -155,7 +149,7 @@ run();
 
 ### Errors
 
-| Error Type                                                       | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| errors.GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError | 404                                                              | application/json                                                 |
-| errors.APIError                                                  | 4XX, 5XX                                                         | \*/\*                                                            |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| errors.GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError | 404                                                        | application/json                                           |
+| errors.APIError                                            | 4XX, 5XX                                                   | \*/\*                                                      |

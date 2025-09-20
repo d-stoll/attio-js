@@ -9,6 +9,7 @@ let value: GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesRequest = {
   object: "people",
   recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+  showHistoric: true,
   limit: 10,
   offset: 5,
 };

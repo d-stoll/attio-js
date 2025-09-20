@@ -14,6 +14,8 @@ let value: GetV2ObjectsObjectRecordsRecordIdData = {
   createdAt: "2022-11-21T13:22:49.061281000Z",
   values: {
     "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
   },
 };
 ```

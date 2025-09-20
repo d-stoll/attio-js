@@ -31,7 +31,7 @@ export const Iss = {
  */
 export type Iss = ClosedEnum<typeof Iss>;
 
-export type Bearer = {
+export type AttioCom = {
   /**
    * Whether the token is currently active and usable.
    */
@@ -97,7 +97,7 @@ export type ResponseBody = {
 /**
  * Success
  */
-export type GetV2SelfResponse = ResponseBody | Bearer;
+export type GetV2SelfResponse = AttioCom | ResponseBody;
 
 /** @internal */
 export const TokenType$inboundSchema: z.ZodNativeEnum<typeof TokenType> = z
@@ -137,36 +137,39 @@ export namespace Iss$ {
 }
 
 /** @internal */
-export const Bearer$inboundSchema: z.ZodType<Bearer, z.ZodTypeDef, unknown> = z
-  .object({
-    active: z.boolean(),
-    scope: z.string(),
-    client_id: z.string(),
-    token_type: TokenType$inboundSchema,
-    exp: z.nullable(z.number()),
-    iat: z.number(),
-    sub: z.string(),
-    aud: z.string(),
-    iss: Iss$inboundSchema,
-    authorized_by_workspace_member_id: z.nullable(z.string()),
-    workspace_id: z.string(),
-    workspace_name: z.string(),
-    workspace_slug: z.string(),
-    workspace_logo_url: z.nullable(z.string()),
-  }).transform((v) => {
-    return remap$(v, {
-      "client_id": "clientId",
-      "token_type": "tokenType",
-      "authorized_by_workspace_member_id": "authorizedByWorkspaceMemberId",
-      "workspace_id": "workspaceId",
-      "workspace_name": "workspaceName",
-      "workspace_slug": "workspaceSlug",
-      "workspace_logo_url": "workspaceLogoUrl",
-    });
+export const AttioCom$inboundSchema: z.ZodType<
+  AttioCom,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  active: z.boolean(),
+  scope: z.string(),
+  client_id: z.string(),
+  token_type: TokenType$inboundSchema,
+  exp: z.nullable(z.number()),
+  iat: z.number(),
+  sub: z.string(),
+  aud: z.string(),
+  iss: Iss$inboundSchema,
+  authorized_by_workspace_member_id: z.nullable(z.string()),
+  workspace_id: z.string(),
+  workspace_name: z.string(),
+  workspace_slug: z.string(),
+  workspace_logo_url: z.nullable(z.string()),
+}).transform((v) => {
+  return remap$(v, {
+    "client_id": "clientId",
+    "token_type": "tokenType",
+    "authorized_by_workspace_member_id": "authorizedByWorkspaceMemberId",
+    "workspace_id": "workspaceId",
+    "workspace_name": "workspaceName",
+    "workspace_slug": "workspaceSlug",
+    "workspace_logo_url": "workspaceLogoUrl",
   });
+});
 
 /** @internal */
-export type Bearer$Outbound = {
+export type AttioCom$Outbound = {
   active: boolean;
   scope: string;
   client_id: string;
@@ -184,10 +187,10 @@ export type Bearer$Outbound = {
 };
 
 /** @internal */
-export const Bearer$outboundSchema: z.ZodType<
-  Bearer$Outbound,
+export const AttioCom$outboundSchema: z.ZodType<
+  AttioCom$Outbound,
   z.ZodTypeDef,
-  Bearer
+  AttioCom
 > = z.object({
   active: z.boolean(),
   scope: z.string(),
@@ -219,26 +222,26 @@ export const Bearer$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Bearer$ {
-  /** @deprecated use `Bearer$inboundSchema` instead. */
-  export const inboundSchema = Bearer$inboundSchema;
-  /** @deprecated use `Bearer$outboundSchema` instead. */
-  export const outboundSchema = Bearer$outboundSchema;
-  /** @deprecated use `Bearer$Outbound` instead. */
-  export type Outbound = Bearer$Outbound;
+export namespace AttioCom$ {
+  /** @deprecated use `AttioCom$inboundSchema` instead. */
+  export const inboundSchema = AttioCom$inboundSchema;
+  /** @deprecated use `AttioCom$outboundSchema` instead. */
+  export const outboundSchema = AttioCom$outboundSchema;
+  /** @deprecated use `AttioCom$Outbound` instead. */
+  export type Outbound = AttioCom$Outbound;
 }
 
-export function bearerToJSON(bearer: Bearer): string {
-  return JSON.stringify(Bearer$outboundSchema.parse(bearer));
+export function attioComToJSON(attioCom: AttioCom): string {
+  return JSON.stringify(AttioCom$outboundSchema.parse(attioCom));
 }
 
-export function bearerFromJSON(
+export function attioComFromJSON(
   jsonString: string,
-): SafeParseResult<Bearer, SDKValidationError> {
+): SafeParseResult<AttioCom, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Bearer$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Bearer' from JSON`,
+    (x) => AttioCom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AttioCom' from JSON`,
   );
 }
 
@@ -298,14 +301,14 @@ export const GetV2SelfResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => AttioCom$inboundSchema),
   z.lazy(() => ResponseBody$inboundSchema),
-  z.lazy(() => Bearer$inboundSchema),
 ]);
 
 /** @internal */
 export type GetV2SelfResponse$Outbound =
-  | ResponseBody$Outbound
-  | Bearer$Outbound;
+  | AttioCom$Outbound
+  | ResponseBody$Outbound;
 
 /** @internal */
 export const GetV2SelfResponse$outboundSchema: z.ZodType<
@@ -313,8 +316,8 @@ export const GetV2SelfResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetV2SelfResponse
 > = z.union([
+  z.lazy(() => AttioCom$outboundSchema),
   z.lazy(() => ResponseBody$outboundSchema),
-  z.lazy(() => Bearer$outboundSchema),
 ]);
 
 /**

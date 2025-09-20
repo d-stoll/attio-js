@@ -21,6 +21,7 @@ Required scopes: `task:read`, `object_configuration:read`, `record_permission:re
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/tasks" method="get" path="/v2/tasks" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -35,11 +36,10 @@ async function run() {
     sort: "created_at:desc",
     linkedObject: "people",
     linkedRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-    assignee: "alice@attio.com",
+    assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
     isCompleted: true,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -67,18 +67,15 @@ async function run() {
     sort: "created_at:desc",
     linkedObject: "people",
     linkedRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-    assignee: "alice@attio.com",
+    assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
     isCompleted: true,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -113,6 +110,7 @@ Required scopes: `task:read-write`, `object_configuration:read`, `record_permiss
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/tasks" method="post" path="/v2/tasks" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -127,21 +125,11 @@ async function run() {
       format: "plaintext",
       deadlineAt: "2023-01-01T15:00:00.000000000Z",
       isCompleted: false,
-      linkedRecords: [
-        {
-          targetObject: "people",
-          slugOrIdOfMatchingAttribute: [
-            {
-              domain: "app.attio.com",
-            },
-          ],
-        },
-      ],
+      linkedRecords: [],
       assignees: [],
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -169,28 +157,16 @@ async function run() {
       format: "plaintext",
       deadlineAt: "2023-01-01T15:00:00.000000000Z",
       isCompleted: false,
-      linkedRecords: [
-        {
-          targetObject: "people",
-          slugOrIdOfMatchingAttribute: [
-            {
-              domain: "app.attio.com",
-            },
-          ],
-        },
-      ],
+      linkedRecords: [],
       assignees: [],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -225,6 +201,7 @@ Required scopes: `task:read`, `object_configuration:read`, `record_permission:re
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/tasks/{task_id}" method="get" path="/v2/tasks/{task_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -237,7 +214,6 @@ async function run() {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -262,15 +238,12 @@ async function run() {
   const res = await tasksGet(attio, {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -304,6 +277,7 @@ Required scopes: `task:read-write`, `object_configuration:read`, `record_permiss
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/tasks/{task_id}" method="patch" path="/v2/tasks/{task_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -321,41 +295,18 @@ async function run() {
         linkedRecords: [
           {
             targetObject: "people",
-            slugOrIdOfMatchingAttribute: [
-              {},
-              {
-                value: 17224912,
-              },
-              {},
-            ],
-          },
-          {
-            targetObject: "people",
-            targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-          },
-          {
-            targetObject: "people",
-            targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
+            slugOrIdOfMatchingAttribute: [],
           },
         ],
         assignees: [
           {
             workspaceMemberEmailAddress: "alice@attio.com",
           },
-          {
-            referencedActorType: "workspace-member",
-            referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          },
-          {
-            referencedActorType: "workspace-member",
-            referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          },
         ],
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -386,48 +337,23 @@ async function run() {
         linkedRecords: [
           {
             targetObject: "people",
-            slugOrIdOfMatchingAttribute: [
-              {},
-              {
-                value: 17224912,
-              },
-              {},
-            ],
-          },
-          {
-            targetObject: "people",
-            targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
-          },
-          {
-            targetObject: "people",
-            targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
+            slugOrIdOfMatchingAttribute: [],
           },
         ],
         assignees: [
           {
             workspaceMemberEmailAddress: "alice@attio.com",
           },
-          {
-            referencedActorType: "workspace-member",
-            referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          },
-          {
-            referencedActorType: "workspace-member",
-            referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          },
         ],
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -462,6 +388,7 @@ Required scopes: `task:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/tasks/{task_id}" method="delete" path="/v2/tasks/{task_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -474,7 +401,6 @@ async function run() {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -499,15 +425,12 @@ async function run() {
   const res = await tasksDelete(attio, {
     taskId: "649e34f4-c39a-4f4d-99ef-48a36bef8f04",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("tasksDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

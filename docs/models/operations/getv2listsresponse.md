@@ -20,12 +20,7 @@ let value: GetV2ListsResponse = {
         "people",
       ],
       workspaceAccess: "read-and-write",
-      workspaceMemberAccess: [
-        {
-          workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          level: "read-and-write",
-        },
-      ],
+      workspaceMemberAccess: [],
       createdByActor: {
         id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
         type: "workspace-member",

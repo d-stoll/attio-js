@@ -9,13 +9,7 @@ Filters to determine whether the webhook event should be sent. If null, the filt
 
 ```typescript
 const value: operations.PatchV2WebhooksWebhookIdFilterRequest1 = {
-  dollarOr: [
-    {
-      field: "<value>",
-      operator: "equals",
-      value: "<value>",
-    },
-  ],
+  dollarOr: [],
 };
 ```
 

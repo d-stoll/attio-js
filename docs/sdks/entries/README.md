@@ -23,6 +23,7 @@ Required scopes: `list_entry:read`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/lists/{list}/entries/query" method="post" path="/v2/lists/{list}/entries/query" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -49,7 +50,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -88,15 +88,12 @@ async function run() {
       offset: 0,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesQuery failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -130,6 +127,7 @@ Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/lists/{list}/entries" method="post" path="/v2/lists/{list}/entries" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -155,7 +153,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -193,15 +190,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -236,6 +230,7 @@ Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/v2/lists/{list}/entries" method="put" path="/v2/lists/{list}/entries" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -261,7 +256,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -299,15 +293,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesAssert failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -342,6 +333,7 @@ Required scopes: `list_entry:read`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/lists/{list}/entries/{entry_id}" method="get" path="/v2/lists/{list}/entries/{entry_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -355,7 +347,6 @@ async function run() {
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -381,15 +372,12 @@ async function run() {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesGetEntry failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -423,6 +411,7 @@ Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/lists/{list}/entries/{entry_id}" method="patch" path="/v2/lists/{list}/entries/{entry_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -447,7 +436,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -484,15 +472,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -527,6 +512,7 @@ Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/v2/lists/{list}/entries/{entry_id}" method="put" path="/v2/lists/{list}/entries/{entry_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -551,7 +537,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -588,15 +573,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesOverwrite failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -631,6 +613,7 @@ Required scopes: `list_entry:read-write`, `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/lists/{list}/entries/{entry_id}" method="delete" path="/v2/lists/{list}/entries/{entry_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -644,7 +627,6 @@ async function run() {
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -670,15 +652,12 @@ async function run() {
     list: "enterprise_sales",
     entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("entriesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

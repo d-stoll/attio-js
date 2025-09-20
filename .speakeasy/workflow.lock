@@ -1,20 +1,21 @@
-speakeasyVersion: 1.540.0
+speakeasyVersion: 1.621.1
 sources:
     Attio API:
         sourceNamespace: attio-api
-        sourceRevisionDigest: sha256:58832b6cbee69ecf835d72c2ce8309543e9f073301cccde28ae267a6f324baaf
-        sourceBlobDigest: sha256:d6237f244f2785345dbed4b35b181576fce2071b6322047d0ef0ac5102ff6873
+        sourceRevisionDigest: sha256:d459247358b02a49f0153a82820763a5a9213a971d1b002fc19ea7e5e102d7a5
+        sourceBlobDigest: sha256:f437dbc733e11b1f06455f4d10fcb0fedb729206e09d3ab73e41e183656eaa94
         tags:
             - latest
+            - speakeasy-sdk-regen-1757982066
             - 2.0.0
 targets:
     attio:
         source: Attio API
         sourceNamespace: attio-api
-        sourceRevisionDigest: sha256:58832b6cbee69ecf835d72c2ce8309543e9f073301cccde28ae267a6f324baaf
-        sourceBlobDigest: sha256:d6237f244f2785345dbed4b35b181576fce2071b6322047d0ef0ac5102ff6873
+        sourceRevisionDigest: sha256:d459247358b02a49f0153a82820763a5a9213a971d1b002fc19ea7e5e102d7a5
+        sourceBlobDigest: sha256:f437dbc733e11b1f06455f4d10fcb0fedb729206e09d3ab73e41e183656eaa94
         codeSamplesNamespace: attio-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:32594c7559d8296ec4192ae3c3d65ff36260f66041632be43eab45f199c9056a
+        codeSamplesRevisionDigest: sha256:895e0dc494a4611037e05803d17154cf1edc1e923229df77d4370e83286280f7
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -23,7 +24,7 @@ workflow:
             inputs:
                 - location: openapi.json
             overlays:
-                - location: .speakeasy\speakeasy-modifications-overlay.yaml
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
             registry:
                 location: registry.speakeasyapi.dev/d-stoll/attio-js/attio-api
     targets:

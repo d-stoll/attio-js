@@ -20,6 +20,7 @@ Required scopes: `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/lists" method="get" path="/v2/lists" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -30,7 +31,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.lists.listAll();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -53,15 +53,12 @@ const attio = new AttioCore({
 
 async function run() {
   const res = await listsListAll(attio);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("listsListAll failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -99,6 +96,7 @@ Required scopes: `list_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/lists" method="post" path="/v2/lists" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -118,19 +116,10 @@ async function run() {
           workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
           level: "read-and-write",
         },
-        {
-          workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          level: "read-and-write",
-        },
-        {
-          workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          level: "read-and-write",
-        },
       ],
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -163,26 +152,15 @@ async function run() {
           workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
           level: "read-and-write",
         },
-        {
-          workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          level: "read-and-write",
-        },
-        {
-          workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-          level: "read-and-write",
-        },
       ],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("listsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -218,6 +196,7 @@ Required scopes: `list_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/lists/{list}" method="get" path="/v2/lists/{list}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -230,7 +209,6 @@ async function run() {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -255,15 +233,12 @@ async function run() {
   const res = await listsGet(attio, {
     list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("listsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -297,6 +272,7 @@ Required scopes: `list_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/lists/{list}" method="patch" path="/v2/lists/{list}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -322,7 +298,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -360,15 +335,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("listsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

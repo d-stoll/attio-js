@@ -13,16 +13,14 @@ let value: PatchV2TasksTaskIdData = {
       targetObject: "people",
       slugOrIdOfMatchingAttribute: [
         {
-          originalPhoneNumber: "07234172834",
-          countryCode: "GB",
+          value: 17224912,
         },
       ],
     },
   ],
   assignees: [
     {
-      referencedActorType: "workspace-member",
-      referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
+      workspaceMemberEmailAddress: "alice@attio.com",
     },
   ],
 };

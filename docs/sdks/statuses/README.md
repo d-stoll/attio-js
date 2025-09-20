@@ -16,6 +16,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/{target}/{identifier}/attributes/{attribute}/statuses" method="post" path="/v2/{target}/{identifier}/attributes/{attribute}/statuses" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -31,12 +32,12 @@ async function run() {
     requestBody: {
       data: {
         title: "In Progress",
+        celebrationEnabled: true,
         targetTimeInStatus: "P0Y0M1DT0H0M0S",
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -65,19 +66,17 @@ async function run() {
     requestBody: {
       data: {
         title: "In Progress",
+        celebrationEnabled: true,
         targetTimeInStatus: "P0Y0M1DT0H0M0S",
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesStatusesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -113,6 +112,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/{target}/{identifier}/attributes/{attribute}/statuses/{status}" method="patch" path="/v2/{target}/{identifier}/attributes/{attribute}/statuses/{status}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -129,13 +129,13 @@ async function run() {
     requestBody: {
       data: {
         title: "In Progress",
+        celebrationEnabled: true,
         targetTimeInStatus: "P0Y0M1DT0H0M0S",
         isArchived: false,
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -165,20 +165,18 @@ async function run() {
     requestBody: {
       data: {
         title: "In Progress",
+        celebrationEnabled: true,
         targetTimeInStatus: "P0Y0M1DT0H0M0S",
         isArchived: false,
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesStatusesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

@@ -16,15 +16,15 @@ let value: PostV2TasksRequest = {
         targetObject: "people",
         slugOrIdOfMatchingAttribute: [
           {
-            originalPhoneNumber: "07234172834",
-            countryCode: "GB",
+            emailAddress: "alice@app.attio.com",
           },
         ],
       },
     ],
     assignees: [
       {
-        workspaceMemberEmailAddress: "alice@attio.com",
+        referencedActorType: "workspace-member",
+        referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
       },
     ],
   },

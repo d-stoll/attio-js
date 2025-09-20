@@ -7,6 +7,7 @@ import { PatchV2TargetIdentifierAttributesAttributeStatusesStatusData } from "at
 
 let value: PatchV2TargetIdentifierAttributesAttributeStatusesStatusData = {
   title: "In Progress",
+  celebrationEnabled: true,
   targetTimeInStatus: "P0Y0M1DT0H0M0S",
   isArchived: false,
 };

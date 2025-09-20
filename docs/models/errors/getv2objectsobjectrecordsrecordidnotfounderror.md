@@ -1,11 +1,11 @@
-# GetV2ObjectsObjectRecordsRecordIdInvalidRequestError
+# GetV2ObjectsObjectRecordsRecordIdNotFoundError
 
 Not Found
 
 ## Example Usage
 
 ```typescript
-import { GetV2ObjectsObjectRecordsRecordIdInvalidRequestError } from "attio-js/models/errors/getv2objectsobject.js";
+import { GetV2ObjectsObjectRecordsRecordIdNotFoundError } from "attio-js/models/errors/getv2objectsobject.js";
 
 // No examples available for this model
 ```

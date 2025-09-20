@@ -14,12 +14,13 @@ let value: PatchV2TasksTaskIdRequest = {
       linkedRecords: [
         {
           targetObject: "people",
-          targetRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
+          slugOrIdOfMatchingAttribute: [],
         },
       ],
       assignees: [
         {
-          workspaceMemberEmailAddress: "alice@attio.com",
+          referencedActorType: "workspace-member",
+          referencedActorId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
         },
       ],
     },

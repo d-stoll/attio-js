@@ -25,10 +25,7 @@ let value: PostV2TargetIdentifierAttributesResponse = {
     isMultiselect: false,
     isDefaultValueEnabled: false,
     isArchived: false,
-    defaultValue: {
-      type: "dynamic",
-      template: "current-user",
-    },
+    defaultValue: null,
     relationship: null,
     createdAt: "2021-11-21T13:22:49.061Z",
     config: {

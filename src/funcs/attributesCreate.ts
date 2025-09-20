@@ -10,7 +10,7 @@ import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
-import { APIError } from "../models/errors/apierror.js";
+import { AttioError } from "../models/errors/attioerror.js";
 import {
   PostV2TargetIdentifierAttributesNotFoundError,
   PostV2TargetIdentifierAttributesNotFoundError$inboundSchema,
@@ -26,6 +26,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
 import {
   PostV2TargetIdentifierAttributesRequest,
@@ -56,13 +57,14 @@ export function attributesCreate(
     | PostV2TargetIdentifierAttributesValidationTypeError
     | PostV2TargetIdentifierAttributesNotFoundError
     | PostV2TargetIdentifierAttributesSlugConflictError
-    | APIError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | AttioError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >
 > {
   return new APIPromise($do(
@@ -83,13 +85,14 @@ async function $do(
       | PostV2TargetIdentifierAttributesValidationTypeError
       | PostV2TargetIdentifierAttributesNotFoundError
       | PostV2TargetIdentifierAttributesSlugConflictError
-      | APIError
-      | SDKValidationError
-      | UnexpectedClientError
-      | InvalidRequestError
+      | AttioError
+      | ResponseValidationError
+      | ConnectionError
       | RequestAbortedError
       | RequestTimeoutError
-      | ConnectionError
+      | InvalidRequestError
+      | UnexpectedClientError
+      | SDKValidationError
     >,
     APICall,
   ]
@@ -129,6 +132,7 @@ async function $do(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    options: client._options,
     baseURL: options?.serverURL ?? client._baseURL ?? "",
     operationID: "post_/v2/{target}/{identifier}/attributes",
     oAuth2Scopes: [],
@@ -149,6 +153,7 @@ async function $do(
     path: path,
     headers: headers,
     body: body,
+    userAgent: client._options.userAgent,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
@@ -176,13 +181,14 @@ async function $do(
     | PostV2TargetIdentifierAttributesValidationTypeError
     | PostV2TargetIdentifierAttributesNotFoundError
     | PostV2TargetIdentifierAttributesSlugConflictError
-    | APIError
-    | SDKValidationError
-    | UnexpectedClientError
-    | InvalidRequestError
+    | AttioError
+    | ResponseValidationError
+    | ConnectionError
     | RequestAbortedError
     | RequestTimeoutError
-    | ConnectionError
+    | InvalidRequestError
+    | UnexpectedClientError
+    | SDKValidationError
   >(
     M.json(200, PostV2TargetIdentifierAttributesResponse$inboundSchema),
     M.jsonErr(
@@ -196,7 +202,7 @@ async function $do(
     ),
     M.fail("4XX"),
     M.fail("5XX"),
-  )(response, { extraFields: responseFields });
+  )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
   }

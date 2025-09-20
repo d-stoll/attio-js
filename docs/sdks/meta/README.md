@@ -15,6 +15,7 @@ Identify the current access token, the workspace it is linked to, and any permis
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/self" method="get" path="/v2/self" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -25,7 +26,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.meta.identify();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -48,15 +48,12 @@ const attio = new AttioCore({
 
 async function run() {
   const res = await metaIdentify(attio);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("metaIdentify failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

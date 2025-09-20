@@ -19,8 +19,7 @@ const value: operations.PostV2TasksLinkedRecord2 = {
   targetObject: "people",
   slugOrIdOfMatchingAttribute: [
     {
-      originalPhoneNumber: "07234172834",
-      countryCode: "GB",
+      emailAddress: "alice@app.attio.com",
     },
   ],
 };

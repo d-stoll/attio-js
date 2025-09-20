@@ -7,11 +7,7 @@ import { PostV2TasksLinkedRecord2 } from "attio-js/models/operations/postv2tasks
 
 let value: PostV2TasksLinkedRecord2 = {
   targetObject: "people",
-  slugOrIdOfMatchingAttribute: [
-    {
-      domain: "app.attio.com",
-    },
-  ],
+  slugOrIdOfMatchingAttribute: [],
 };
 ```
 

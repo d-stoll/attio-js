@@ -326,8 +326,8 @@ export type PostV2TasksSlugOrIdOfMatchingAttributeUnion =
   | PostV2TasksSlugOrIdOfMatchingAttribute1
   | PostV2TasksSlugOrIdOfMatchingAttribute2
   | PostV2TasksSlugOrIdOfMatchingAttribute3
-  | PostV2TasksSlugOrIdOfMatchingAttribute5
-  | PostV2TasksSlugOrIdOfMatchingAttribute4;
+  | PostV2TasksSlugOrIdOfMatchingAttribute4
+  | PostV2TasksSlugOrIdOfMatchingAttribute5;
 
 export type PostV2TasksLinkedRecord2 = {
   /**
@@ -341,8 +341,8 @@ export type PostV2TasksLinkedRecord2 = {
     | PostV2TasksSlugOrIdOfMatchingAttribute1
     | PostV2TasksSlugOrIdOfMatchingAttribute2
     | PostV2TasksSlugOrIdOfMatchingAttribute3
-    | PostV2TasksSlugOrIdOfMatchingAttribute5
     | PostV2TasksSlugOrIdOfMatchingAttribute4
+    | PostV2TasksSlugOrIdOfMatchingAttribute5
   >;
 };
 
@@ -393,8 +393,8 @@ export type PostV2TasksAssigneeWorkspaceMember = {
 };
 
 export type PostV2TasksAssigneeUnion =
-  | PostV2TasksAssignee
-  | PostV2TasksAssigneeWorkspaceMember;
+  | PostV2TasksAssigneeWorkspaceMember
+  | PostV2TasksAssignee;
 
 export type PostV2TasksData = {
   /**
@@ -420,7 +420,7 @@ export type PostV2TasksData = {
   /**
    * Workspace members assigned to this task.
    */
-  assignees: Array<PostV2TasksAssignee | PostV2TasksAssigneeWorkspaceMember>;
+  assignees: Array<PostV2TasksAssigneeWorkspaceMember | PostV2TasksAssignee>;
 };
 
 export type PostV2TasksRequest = {
@@ -832,8 +832,8 @@ export const PostV2TasksSlugOrIdOfMatchingAttributeUnion$inboundSchema:
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema),
-    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
   ]);
 
 /** @internal */
@@ -841,8 +841,8 @@ export type PostV2TasksSlugOrIdOfMatchingAttributeUnion$Outbound =
   | PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound
   | PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound
   | PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound
-  | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound
-  | PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound;
+  | PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound
+  | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound;
 
 /** @internal */
 export const PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema:
@@ -854,8 +854,8 @@ export const PostV2TasksSlugOrIdOfMatchingAttributeUnion$outboundSchema:
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema),
-    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
     z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema),
+    z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
   ]);
 
 /**
@@ -912,8 +912,8 @@ export const PostV2TasksLinkedRecord2$inboundSchema: z.ZodType<
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$inboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$inboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$inboundSchema),
-      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$inboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -930,8 +930,8 @@ export type PostV2TasksLinkedRecord2$Outbound = {
     | PostV2TasksSlugOrIdOfMatchingAttribute1$Outbound
     | PostV2TasksSlugOrIdOfMatchingAttribute2$Outbound
     | PostV2TasksSlugOrIdOfMatchingAttribute3$Outbound
-    | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound
     | PostV2TasksSlugOrIdOfMatchingAttribute4$Outbound
+    | PostV2TasksSlugOrIdOfMatchingAttribute5$Outbound
   >;
 };
 
@@ -947,8 +947,8 @@ export const PostV2TasksLinkedRecord2$outboundSchema: z.ZodType<
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute1$outboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute2$outboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute3$outboundSchema),
-      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
       z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute4$outboundSchema),
+      z.lazy(() => PostV2TasksSlugOrIdOfMatchingAttribute5$outboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1274,14 +1274,14 @@ export const PostV2TasksAssigneeUnion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PostV2TasksAssignee$inboundSchema),
   z.lazy(() => PostV2TasksAssigneeWorkspaceMember$inboundSchema),
+  z.lazy(() => PostV2TasksAssignee$inboundSchema),
 ]);
 
 /** @internal */
 export type PostV2TasksAssigneeUnion$Outbound =
-  | PostV2TasksAssignee$Outbound
-  | PostV2TasksAssigneeWorkspaceMember$Outbound;
+  | PostV2TasksAssigneeWorkspaceMember$Outbound
+  | PostV2TasksAssignee$Outbound;
 
 /** @internal */
 export const PostV2TasksAssigneeUnion$outboundSchema: z.ZodType<
@@ -1289,8 +1289,8 @@ export const PostV2TasksAssigneeUnion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV2TasksAssigneeUnion
 > = z.union([
-  z.lazy(() => PostV2TasksAssignee$outboundSchema),
   z.lazy(() => PostV2TasksAssigneeWorkspaceMember$outboundSchema),
+  z.lazy(() => PostV2TasksAssignee$outboundSchema),
 ]);
 
 /**
@@ -1342,8 +1342,8 @@ export const PostV2TasksData$inboundSchema: z.ZodType<
   ),
   assignees: z.array(
     z.union([
-      z.lazy(() => PostV2TasksAssignee$inboundSchema),
       z.lazy(() => PostV2TasksAssigneeWorkspaceMember$inboundSchema),
+      z.lazy(() => PostV2TasksAssignee$inboundSchema),
     ]),
   ),
 }).transform((v) => {
@@ -1364,7 +1364,7 @@ export type PostV2TasksData$Outbound = {
     PostV2TasksLinkedRecord1$Outbound | PostV2TasksLinkedRecord2$Outbound
   >;
   assignees: Array<
-    PostV2TasksAssignee$Outbound | PostV2TasksAssigneeWorkspaceMember$Outbound
+    PostV2TasksAssigneeWorkspaceMember$Outbound | PostV2TasksAssignee$Outbound
   >;
 };
 
@@ -1386,8 +1386,8 @@ export const PostV2TasksData$outboundSchema: z.ZodType<
   ),
   assignees: z.array(
     z.union([
-      z.lazy(() => PostV2TasksAssignee$outboundSchema),
       z.lazy(() => PostV2TasksAssigneeWorkspaceMember$outboundSchema),
+      z.lazy(() => PostV2TasksAssignee$outboundSchema),
     ]),
   ),
 }).transform((v) => {

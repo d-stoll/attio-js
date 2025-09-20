@@ -3,30 +3,32 @@ id: c1a4b046-39ca-4313-8a41-b11a2e19ef9c
 management:
   docChecksum: 3a151204a8b049335a929c6301361686
   docVersion: 2.0.0
-  speakeasyVersion: 1.540.0
-  generationVersion: 2.593.3
-  releaseVersion: 0.1.1
-  configChecksum: 7502695fd6f4d730f1275f340698ecfb
+  speakeasyVersion: 1.621.1
+  generationVersion: 2.708.2
+  releaseVersion: 0.2.0
+  configChecksum: c8faed1031ba7fe71bc6e337891413eb
+  repoURL: https://github.com/d-stoll/attio-js.git
+  installationURL: https://github.com/d-stoll/attio-js
   published: true
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.11
-    core: 3.21.6
+    constsAndDefaults: 0.1.12
+    core: 3.21.23
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
-    globalSecurity: 2.82.13
+    globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
+    globalServerURLs: 2.82.5
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.2.0
-    unions: 2.85.8
+    sdkHooks: 0.3.0
+    unions: 2.85.11
 generatedFiles:
   - .gitattributes
   - .npmignore
@@ -183,12 +185,12 @@ generatedFiles:
   - docs/models/errors/getv2notesnoteidnotfounderror.md
   - docs/models/errors/getv2objectsobjectnotfounderror.md
   - docs/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesvalidationtypeerror.md
-  - docs/models/errors/getv2objectsobjectrecordsrecordidinvalidrequesterror.md
+  - docs/models/errors/getv2objectsobjectrecordsrecordidnotfounderror.md
   - docs/models/errors/getv2targetidentifierattributesattributenotfounderror.md
   - docs/models/errors/getv2taskstaskidnotfounderror.md
   - docs/models/errors/getv2threadsthreadidnotfounderror.md
   - docs/models/errors/getv2webhookswebhookidnotfounderror.md
-  - docs/models/errors/getv2workspacemembersworkspacememberidinvalidrequesterror.md
+  - docs/models/errors/getv2workspacemembersworkspacememberidnotfounderror.md
   - docs/models/errors/immutablevalueerror.md
   - docs/models/errors/missingvalueerror.md
   - docs/models/errors/multiplematchresultserror.md
@@ -224,10 +226,10 @@ generatedFiles:
   - docs/models/errors/putv2listslistentriesnotfounderror.md
   - docs/models/errors/putv2objectsobjectrecordsinvalidrequesterror.md
   - docs/models/errors/systemeditunauthorizederror.md
+  - docs/models/operations/attiocom.md
   - docs/models/operations/author1.md
   - docs/models/operations/author2.md
   - docs/models/operations/author3.md
-  - docs/models/operations/bearer.md
   - docs/models/operations/deletev2commentscommentidrequest.md
   - docs/models/operations/deletev2commentscommentidresponse.md
   - docs/models/operations/deletev2listslistentriesentryidrequest.md
@@ -765,7 +767,6 @@ generatedFiles:
   - docs/sdks/attributes/README.md
   - docs/sdks/comments/README.md
   - docs/sdks/entries/README.md
-  - docs/sdks/entriesattributes/README.md
   - docs/sdks/lists/README.md
   - docs/sdks/meta/README.md
   - docs/sdks/notes/README.md
@@ -778,6 +779,10 @@ generatedFiles:
   - docs/sdks/webhooks/README.md
   - docs/sdks/workspacemembers/README.md
   - eslint.config.mjs
+  - examples/.env.template
+  - examples/README.md
+  - examples/objectsList.example.ts
+  - examples/package.json
   - jsr.json
   - package.json
   - src/core.ts
@@ -871,8 +876,10 @@ generatedFiles:
   - src/models/components/thread.ts
   - src/models/components/workspacemember.ts
   - src/models/errors/apierror.ts
+  - src/models/errors/attioerror.ts
   - src/models/errors/getv2objectsobject.ts
   - src/models/errors/httpclienterrors.ts
+  - src/models/errors/responsevalidationerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/models/operations/deletev2commentscommentid.ts
   - src/models/operations/deletev2listslistentriesentryid.ts
@@ -961,7 +968,7 @@ examples:
     speakeasy-default-get-/v2-/objects:
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "api_slug": "people", "singular_noun": "Person", "plural_noun": "People", "created_at": "2022-11-21T13:22:49.061281000Z"}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "api_slug": "people", "singular_noun": "Person", "plural_noun": "People", "created_at": "2022-11-21T13:22:49.061281000Z"}]}
+          application/json: {"data": []}
   post_/v2/objects:
     speakeasy-default-post-/v2-/objects:
       requestBody:
@@ -970,7 +977,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "api_slug": "people", "singular_noun": "Person", "plural_noun": "People", "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "409":
-          application/json: {"status_code": 8127.98, "type": "invalid_request_error", "code": "slug_conflict", "message": "Failed to create object. Please ensure your api_slug and names are unique."}
+          application/json: {"status_code": 8820.36, "type": "invalid_request_error", "code": "slug_conflict", "message": "Failed to create object. Please ensure your api_slug and names are unique."}
   get_/v2/objects/{object}:
     speakeasy-default-get-/v2-/objects/{object}:
       parameters:
@@ -980,7 +987,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "api_slug": "people", "singular_noun": "Person", "plural_noun": "People", "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 1651.41, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 2915.25, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   patch_/v2/objects/{object}:
     speakeasy-default-patch-/v2-/objects/{object}:
       parameters:
@@ -992,11 +999,11 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "api_slug": "people", "singular_noun": "Person", "plural_noun": "People", "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "400":
-          application/json: {"status_code": 1593.63, "type": "invalid_request_error", "code": "validation_type", "message": "You passed an empty payload. Please ensure you are updating at least one property in your request."}
+          application/json: {"status_code": 923.52, "type": "invalid_request_error", "code": "validation_type", "message": "You passed an empty payload. Please ensure you are updating at least one property in your request."}
         "404":
-          application/json: {"status_code": 9693.24, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 3301.25, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
         "409":
-          application/json: {"status_code": 5020.21, "type": "invalid_request_error", "code": "slug_conflict", "message": "Failed to update object. Please ensure api_slug is unique."}
+          application/json: {"status_code": 9443.64, "type": "invalid_request_error", "code": "slug_conflict", "message": "Failed to update object. Please ensure api_slug is unique."}
   get_/v2/{target}/{identifier}/attributes:
     speakeasy-default-get-/v2-/{target}/{identifier}/attributes:
       parameters:
@@ -1017,16 +1024,16 @@ examples:
           target: "lists"
           identifier: "97052eb9-e65e-443f-a297-f2d9a4a7f795"
       requestBody:
-        application/json: {"data": {"title": "Your Attribute", "description": "Lorem ipsum", "api_slug": "my-attribute", "type": "text", "is_required": true, "is_unique": true, "is_multiselect": true, "default_value": {"type": "static", "template": [{"value": 42}]}, "config": {"currency": {"default_currency_code": "USD", "display_type": "symbol"}, "record_reference": {"allowed_objects": ["people"]}}}}
+        application/json: {"data": {"title": "Your Attribute", "description": "Lorem ipsum", "api_slug": "my-attribute", "type": "text", "is_required": true, "is_unique": true, "is_multiselect": true, "default_value": {"type": "static", "template": [{"value": 5}]}, "config": {"currency": {"default_currency_code": "USD", "display_type": "symbol"}, "record_reference": {"allowed_objects": ["people"]}}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "A rating attribute", "api_slug": "my-rating", "type": "text", "is_system_attribute": true, "is_writable": true, "is_required": true, "is_unique": true, "is_multiselect": true, "is_default_value_enabled": true, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2022-11-21T13:22:49.061281000Z", "config": {"currency": {"default_currency_code": "USD", "display_type": "code"}, "record_reference": {"allowed_object_ids": null}}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "Rating of the record out of 5", "api_slug": "Rating", "type": "rating", "is_system_attribute": false, "is_writable": true, "is_required": false, "is_unique": false, "is_multiselect": false, "is_default_value_enabled": false, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2021-11-21T13:22:49.061Z", "config": {"currency": {"default_currency_code": null, "display_type": null}, "record_reference": {"allowed_object_ids": null}}}}
         "400":
-          application/json: {"status_code": 8307.93, "type": "invalid_request_error", "code": "validation_type", "message": "Could not find an object with slug \"people\" for default value."}
+          application/json: {"status_code": 599.49, "type": "invalid_request_error", "code": "validation_type", "message": "Could not find an object with slug \"people\" for default value."}
         "404":
-          application/json: {"status_code": 7727.83, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"33ebdbe9-e529-47c9-b894-0ba25e9c15c0\" not found."}
+          application/json: {"status_code": 406.42, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"33ebdbe9-e529-47c9-b894-0ba25e9c15c0\" not found."}
         "409":
-          application/json: {"status_code": 4050.21, "type": "invalid_request_error", "code": "slug_conflict", "message": "An attribute with the same API slug already exists on this list. Please choose a different API slug."}
+          application/json: {"status_code": 5729.99, "type": "invalid_request_error", "code": "slug_conflict", "message": "An attribute with the same API slug already exists on this list. Please choose a different API slug."}
   get_/v2/{target}/{identifier}/attributes/{attribute}:
     speakeasy-default-get-/v2-/{target}/{identifier}/attributes/{attribute}:
       parameters:
@@ -1036,9 +1043,9 @@ examples:
           attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "A rating attribute", "api_slug": "my-rating", "type": "text", "is_system_attribute": true, "is_writable": true, "is_required": true, "is_unique": true, "is_multiselect": true, "is_default_value_enabled": true, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2022-11-21T13:22:49.061281000Z", "config": {"currency": {"default_currency_code": "USD", "display_type": "code"}, "record_reference": {"allowed_object_ids": null}}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "Rating of the record out of 5", "api_slug": "Rating", "type": "rating", "is_system_attribute": false, "is_writable": true, "is_required": false, "is_unique": false, "is_multiselect": false, "is_default_value_enabled": false, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2021-11-21T13:22:49.061Z", "config": {"currency": {"default_currency_code": null, "display_type": null}, "record_reference": {"allowed_object_ids": null}}}}
         "404":
-          application/json: {"status_code": 3483.19, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 2566.04, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
   patch_/v2/{target}/{identifier}/attributes/{attribute}:
     speakeasy-default-patch-/v2-/{target}/{identifier}/attributes/{attribute}:
       parameters:
@@ -1047,14 +1054,14 @@ examples:
           identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
           attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96"
       requestBody:
-        application/json: {"data": {"title": "Your Attribute", "description": "Lorem ipsum", "api_slug": "my-attribute", "is_required": true, "is_unique": true, "default_value": {"type": "static", "template": [{"value": 42}]}, "config": {"currency": {"default_currency_code": "USD", "display_type": "symbol"}, "record_reference": {"allowed_objects": ["people"]}}, "is_archived": false}}
+        application/json: {"data": {"title": "Your Attribute", "description": "Lorem ipsum", "api_slug": "my-attribute", "is_required": true, "is_unique": true, "default_value": {"type": "static", "template": [{"value": 5}]}, "config": {"currency": {"default_currency_code": "USD", "display_type": "symbol"}, "record_reference": {"allowed_objects": ["people"]}}, "is_archived": false}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "A rating attribute", "api_slug": "my-rating", "type": "text", "is_system_attribute": true, "is_writable": true, "is_required": true, "is_unique": true, "is_multiselect": true, "is_default_value_enabled": true, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2022-11-21T13:22:49.061281000Z", "config": {"currency": {"default_currency_code": "USD", "display_type": "code"}, "record_reference": {"allowed_object_ids": null}}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96"}, "title": "Rating", "description": "Rating of the record out of 5", "api_slug": "Rating", "type": "rating", "is_system_attribute": false, "is_writable": true, "is_required": false, "is_unique": false, "is_multiselect": false, "is_default_value_enabled": false, "is_archived": false, "default_value": null, "relationship": null, "created_at": "2021-11-21T13:22:49.061Z", "config": {"currency": {"default_currency_code": null, "display_type": null}, "record_reference": {"allowed_object_ids": null}}}}
         "400":
-          application/json: {"status_code": 9127.65, "type": "invalid_request_error", "code": "system_edit_unauthorized", "message": "Cannot update a System attribute."}
+          application/json: {"status_code": 1764.36, "type": "invalid_request_error", "code": "system_edit_unauthorized", "message": "Cannot update a System attribute."}
         "404":
-          application/json: {"status_code": 5433.68, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 3202.3, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
   get_/v2/{target}/{identifier}/attributes/{attribute}/options:
     speakeasy-default-get-/v2-/{target}/{identifier}/attributes/{attribute}/options:
       parameters:
@@ -1066,9 +1073,9 @@ examples:
           show_archived: true
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}]}
+          application/json: {"data": []}
         "404":
-          application/json: {"status_code": 7858.57, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 7558.51, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
   post_/v2/{target}/{identifier}/attributes/{attribute}/options:
     speakeasy-default-post-/v2-/{target}/{identifier}/attributes/{attribute}/options:
       parameters:
@@ -1082,11 +1089,11 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}}
         "400":
-          application/json: {"status_code": 4777, "type": "invalid_request_error", "code": "validation_type", "message": "This attribute is not a select attribute."}
+          application/json: {"status_code": 3005.86, "type": "invalid_request_error", "code": "validation_type", "message": "This attribute is not a select attribute."}
         "404":
-          application/json: {"status_code": 3592.91, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 7277.88, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
         "409":
-          application/json: {"status_code": 3994.55, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another select option with the title \"Medium\"."}
+          application/json: {"status_code": 284.22, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another select option with the title \"Medium\"."}
   patch_/v2/{target}/{identifier}/attributes/{attribute}/options/{option}:
     speakeasy-default-patch-/v2-/{target}/{identifier}/attributes/{attribute}/options/{option}:
       parameters:
@@ -1101,11 +1108,11 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "option_id": "08c2c59a-c18e-40c6-8dc4-95415313b2ea"}, "title": "Medium", "is_archived": false}}
         "400":
-          application/json: {"status_code": 961.62, "type": "invalid_request_error", "code": "value_not_found", "message": "Cannot find select attribute with select option title \"Medium\"."}
+          application/json: {"status_code": 9471.33, "type": "invalid_request_error", "code": "value_not_found", "message": "Cannot find select attribute with select option title \"Medium\"."}
         "404":
-          application/json: {"status_code": 626.64, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 3832.97, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
         "409":
-          application/json: {"status_code": 5372.97, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another select option with the title \"Medium\"."}
+          application/json: {"status_code": 1087.32, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another select option with the title \"Medium\"."}
   get_/v2/{target}/{identifier}/attributes/{attribute}/statuses:
     speakeasy-default-get-/v2-/{target}/{identifier}/attributes/{attribute}/statuses:
       parameters:
@@ -1117,9 +1124,9 @@ examples:
           show_archived: true
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}]}
+          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}]}
         "404":
-          application/json: {"status_code": 2076.29, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 6151.13, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
   post_/v2/{target}/{identifier}/attributes/{attribute}/statuses:
     speakeasy-default-post-/v2-/{target}/{identifier}/attributes/{attribute}/statuses:
       parameters:
@@ -1133,11 +1140,11 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}}
         "400":
-          application/json: {"status_code": 2760.55, "type": "invalid_request_error", "code": "validation_type", "message": "This attribute is not a status attribute."}
+          application/json: {"status_code": 1632.39, "type": "invalid_request_error", "code": "validation_type", "message": "This attribute is not a status attribute."}
         "404":
-          application/json: {"status_code": 7147.11, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 4532.77, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
         "409":
-          application/json: {"status_code": 7397.41, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another status with the title \"In Progress\"."}
+          application/json: {"status_code": 2373.61, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another status with the title \"In Progress\"."}
   patch_/v2/{target}/{identifier}/attributes/{attribute}/statuses/{status}:
     speakeasy-default-patch-/v2-/{target}/{identifier}/attributes/{attribute}/statuses/{status}:
       parameters:
@@ -1152,11 +1159,11 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "attribute_id": "41252299-f8c7-4b5e-99c9-4ff8321d2f96", "status_id": "11f07f01-c10f-4e05-a522-33e050bc52ee"}, "title": "In Progress", "is_archived": false, "celebration_enabled": false, "target_time_in_status": "P0Y0M1DT0H0M0S"}}
         "400":
-          application/json: {"status_code": 8323.63, "type": "invalid_request_error", "code": "value_not_found", "message": "Cannot find status attribute with status option title \"Medium\"."}
+          application/json: {"status_code": 2396.94, "type": "invalid_request_error", "code": "missing_value", "message": "Cannot find status attribute with status option title \"Medium\"."}
         "404":
-          application/json: {"status_code": 5583.68, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 2532.31, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
         "409":
-          application/json: {"status_code": 9454.86, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another status with the title \"In Progress\"."}
+          application/json: {"status_code": 30.46, "type": "invalid_request_error", "code": "slug_conflict", "message": "There is already another status with the title \"In Progress\"."}
   post_/v2/objects/{object}/records/query:
     speakeasy-default-post-/v2-/objects/{object}/records/query:
       parameters:
@@ -1168,9 +1175,9 @@ examples:
         "200":
           application/json: {"data": []}
         "400":
-          application/json: {"status_code": 2659.55, "type": "invalid_request_error", "code": "filter_error", "message": "Error in filter."}
+          application/json: {"status_code": 8118.12, "type": "invalid_request_error", "code": "filter_error", "message": "Error in filter."}
         "404":
-          application/json: {"status_code": 2119.14, "type": "invalid_request_error", "code": "not_found", "message": "The referenced object was not found."}
+          application/json: {"status_code": 5206.45, "type": "invalid_request_error", "code": "not_found", "message": "The referenced object was not found."}
   post_/v2/objects/{object}/records:
     speakeasy-default-post-/v2-/objects/{object}/records:
       parameters:
@@ -1180,11 +1187,11 @@ examples:
         application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}}
         "400":
-          application/json: {"status_code": 1181.8, "type": "invalid_request_error", "code": "value_not_found", "message": "Cannot find select attribute with select option title \"In Progress\"."}
+          application/json: {"status_code": 3428.39, "type": "invalid_request_error", "code": "missing_value", "message": "Cannot find select attribute with select option title \"In Progress\"."}
         "404":
-          application/json: {"status_code": 8649.92, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 7529.58, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   put_/v2/objects/{object}/records:
     speakeasy-default-put-/v2-/objects/{object}/records:
       parameters:
@@ -1196,11 +1203,11 @@ examples:
         application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": "<value>", "key1": "<value>"}}}
         "400":
-          application/json: {"status_code": 9187.48, "type": "invalid_request_error", "code": "value_not_found", "message": "No attribute was found for matching_attribute slug/ID \"my-attribute\"."}
+          application/json: {"status_code": 4708.9, "type": "invalid_request_error", "code": "missing_value", "message": "No attribute was found for matching_attribute slug/ID \"my-attribute\"."}
         "404":
-          application/json: {"status_code": 1313.06, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 4746.33, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   get_/v2/objects/{object}/records/{record_id}:
     speakeasy-default-get-/v2-/objects/{object}/records/{record-id}:
       parameters:
@@ -1211,7 +1218,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
         "404":
-          application/json: {"status_code": 5169.37, "type": "invalid_request_error", "code": "not_found", "message": "Record with ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
+          application/json: {"status_code": 5268.27, "type": "invalid_request_error", "code": "not_found", "message": "Record with ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
   patch_/v2/objects/{object}/records/{record_id}:
     speakeasy-default-patch-/v2-/objects/{object}/records/{record-id}:
       parameters:
@@ -1222,11 +1229,11 @@ examples:
         application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": "<value>"}}}
         "400":
-          application/json: {"status_code": 9178.72, "type": "invalid_request_error", "code": "missing_value", "message": "Required value for attribute with ID \"41252299-f8c7-4b5e-99c9-4ff8321d2f96\" was not provided."}
+          application/json: {"status_code": 4971.22, "type": "invalid_request_error", "code": "missing_value", "message": "Required value for attribute with ID \"41252299-f8c7-4b5e-99c9-4ff8321d2f96\" was not provided."}
         "404":
-          application/json: {"status_code": 7540.88, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 8004.04, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   put_/v2/objects/{object}/records/{record_id}:
     speakeasy-default-put-/v2-/objects/{object}/records/{record-id}:
       parameters:
@@ -1237,11 +1244,11 @@ examples:
         application/json: {"data": {"values": {"41252299-f8c7-4b5e-99c9-4ff8321d2f96": "Text value", "multiselect_attribute": ["Select option 1", "Select option 2"]}}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {}}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795", "record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b"}, "created_at": "2022-11-21T13:22:49.061281000Z", "values": {"key": "<value>", "key1": "<value>"}}}
         "400":
-          application/json: {"status_code": 2122.54, "type": "invalid_request_error", "code": "missing_value", "message": "Required value for attribute with ID \"41252299-f8c7-4b5e-99c9-4ff8321d2f96\" was not provided."}
+          application/json: {"status_code": 346.94, "type": "invalid_request_error", "code": "missing_value", "message": "Required value for attribute with ID \"41252299-f8c7-4b5e-99c9-4ff8321d2f96\" was not provided."}
         "404":
-          application/json: {"status_code": 5149.46, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 6093.36, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   delete_/v2/objects/{object}/records/{record_id}:
     speakeasy-default-delete-/v2-/objects/{object}/records/{record-id}:
       parameters:
@@ -1252,7 +1259,7 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 1590.57, "type": "invalid_request_error", "code": "not_found", "message": "Record with ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
+          application/json: {"status_code": 9519.27, "type": "invalid_request_error", "code": "not_found", "message": "Record with ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
   get_/v2/objects/{object}/records/{record_id}/attributes/{attribute}/values:
     speakeasy-default-get-/v2-/objects/{object}/records/{record-id}/attributes/{attribute}/values:
       parameters:
@@ -1266,11 +1273,11 @@ examples:
           offset: 5
       responses:
         "200":
-          application/json: {"data": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "attribute_type": "actor-reference"}]}
+          application/json: {"data": []}
         "400":
-          application/json: {"status_code": 8970.69, "type": "invalid_request_error", "code": "validation_type", "message": "Cannot set show_historic param to true when querying a non-historic attribute."}
+          application/json: {"status_code": 7574.1, "type": "invalid_request_error", "code": "validation_type", "message": "Cannot set show_historic param to true when querying a non-historic attribute."}
         "404":
-          application/json: {"status_code": 1034.54, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
+          application/json: {"status_code": 1615.64, "type": "invalid_request_error", "code": "not_found", "message": "Attribute with slug/ID \"my-attribute\" not found."}
   get_/v2/objects/{object}/records/{record_id}/entries:
     speakeasy-default-get-/v2-/objects/{object}/records/{record-id}/entries:
       parameters:
@@ -1282,25 +1289,25 @@ examples:
           offset: 5
       responses:
         "200":
-          application/json: {"data": [{"list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "list_api_slug": "hiring-engineering", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "created_at": "2022-11-21T13:22:49.061281000Z"}, {"list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "list_api_slug": "hiring-engineering", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "created_at": "2022-11-21T13:22:49.061281000Z"}]}
+          application/json: {"data": [{"list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "list_api_slug": "hiring-engineering", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "created_at": "2022-11-21T13:22:49.061281000Z"}]}
   get_/v2/lists:
     speakeasy-default-get-/v2-/lists:
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}]}
+          application/json: {"data": []}
   post_/v2/lists:
     speakeasy-default-post-/v2-/lists:
       requestBody:
-        application/json: {"data": {"name": "Enterprise Sales", "api_slug": "enterprise_sales", "parent_object": "people", "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}]}}
+        application/json: {"data": {"name": "Enterprise Sales", "api_slug": "enterprise_sales", "parent_object": "people", "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}]}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "400":
-          application/json: {"status_code": 4247, "type": "invalid_request_error", "code": "value_not_found", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
+          application/json: {"status_code": 2914.3, "type": "invalid_request_error", "code": "value_not_found", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
         "403":
-          application/json: {"status_code": 2484.63, "type": "auth_error", "code": "billing_error", "message": "You attempted to create a List using permissions features that are not currently supported on your plan. Please upgrade, contact sales, or try a different access configuration for your list."}
+          application/json: {"status_code": 3749.36, "type": "auth_error", "code": "billing_error", "message": "You attempted to create a List using permissions features that are not currently supported on your plan. Please upgrade, contact sales, or try a different access configuration for your list."}
         "404":
-          application/json: {"status_code": 1547.23, "type": "invalid_request_error", "code": "not_found", "message": "Parent object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 1691.65, "type": "invalid_request_error", "code": "not_found", "message": "Parent object with slug/ID \"people\" not found."}
   get_/v2/lists/{list}:
     speakeasy-default-get-/v2-/lists/{list}:
       parameters:
@@ -1308,9 +1315,9 @@ examples:
           list: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 1967.91, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 6434.75, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   patch_/v2/lists/{list}:
     speakeasy-default-patch-/v2-/lists/{list}:
       parameters:
@@ -1320,11 +1327,11 @@ examples:
         application/json: {"data": {"name": "Enterprise Sales", "api_slug": "enterprise_sales", "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}]}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}, {"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "api_slug": "hiring-engineering", "name": "Hiring Engineering", "parent_object": ["people"], "workspace_access": "read-and-write", "workspace_member_access": [{"workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "level": "read-and-write"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "400":
-          application/json: {"status_code": 5979.22, "type": "invalid_request_error", "code": "value_not_found", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
+          application/json: {"status_code": 7353.13, "type": "invalid_request_error", "code": "missing_value", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
         "404":
-          application/json: {"status_code": 6948.24, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 7631.56, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   post_/v2/lists/{list}/entries/query:
     speakeasy-default-post-/v2-/lists/{list}/entries/query:
       parameters:
@@ -1334,9 +1341,9 @@ examples:
         application/json: {"filter": {"name": "Ada Lovelace"}, "sorts": [{"direction": "asc", "attribute": "name", "field": "last_name"}], "limit": 500, "offset": 0}
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}]}
+          application/json: {"data": []}
         "404":
-          application/json: {"status_code": 8611.36, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 6644.11, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   post_/v2/lists/{list}/entries:
     speakeasy-default-post-/v2-/lists/{list}/entries:
       parameters:
@@ -1348,9 +1355,9 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
-          application/json: {"status_code": 88.86, "type": "invalid_request_error", "code": "value_not_found", "message": "Parent record with slug/ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
+          application/json: {"status_code": 2059.96, "type": "invalid_request_error", "code": "value_not_found", "message": "Parent record with slug/ID \"891dcbfc-9141-415d-9b2a-2238a6cc012d\" not found."}
         "404":
-          application/json: {"status_code": 8180.08, "type": "invalid_request_error", "code": "not_found", "message": "Could not find list with slug/ID \"enterprise_sales\"."}
+          application/json: {"status_code": 4917.78, "type": "invalid_request_error", "code": "not_found", "message": "Could not find list with slug/ID \"enterprise_sales\"."}
   put_/v2/lists/{list}/entries:
     speakeasy-default-put-/v2-/lists/{list}/entries:
       parameters:
@@ -1362,9 +1369,9 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
-          application/json: {"status_code": 2809.08, "type": "invalid_request_error", "code": "multiple_match_results", "message": "Multiple entries were founds for the given parent record. Please remove duplicates or use the update or create entry endpoints instead."}
+          application/json: {"status_code": 9405.84, "type": "invalid_request_error", "code": "multiple_match_results", "message": "Multiple entries were founds for the given parent record. Please remove duplicates or use the update or create entry endpoints instead."}
         "404":
-          application/json: {"status_code": 3061.56, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"33ebdbe9-e529-47c9-b894-0ba25e9c15c0\" was not found."}
+          application/json: {"status_code": 7080.19, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"33ebdbe9-e529-47c9-b894-0ba25e9c15c0\" was not found."}
   get_/v2/lists/{list}/entries/{entry_id}:
     speakeasy-default-get-/v2-/lists/{list}/entries/{entry-id}:
       parameters:
@@ -1375,7 +1382,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "404":
-          application/json: {"status_code": 131.91, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 3203.99, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   patch_/v2/lists/{list}/entries/{entry_id}:
     speakeasy-default-patch-/v2-/lists/{list}/entries/{entry-id}:
       parameters:
@@ -1388,9 +1395,9 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
-          application/json: {"status_code": 2136.2, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
+          application/json: {"status_code": 4922.1, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":
-          application/json: {"status_code": 7179.14, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 4421.59, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   put_/v2/lists/{list}/entries/{entry_id}:
     speakeasy-default-put-/v2-/lists/{list}/entries/{entry-id}:
       parameters:
@@ -1403,9 +1410,9 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0", "entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156"}, "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "parent_object": "people", "created_at": "2022-11-21T13:22:49.061281000Z", "entry_values": {}}}
         "400":
-          application/json: {"status_code": 7486.01, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
+          application/json: {"status_code": 5570.45, "type": "invalid_request_error", "code": "immutable_value", "message": "The parent record for a list entry cannot be updated once created."}
         "404":
-          application/json: {"status_code": 8103.28, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 8519.37, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   delete_/v2/lists/{list}/entries/{entry_id}:
     speakeasy-default-delete-/v2-/lists/{list}/entries/{entry-id}:
       parameters:
@@ -1416,7 +1423,7 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 7918.85, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 4625.13, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   get_/v2/lists/{list}/entries/{entry_id}/attributes/{attribute}/values:
     speakeasy-default-get-/v2-/lists/{list}/entries/{entry-id}/attributes/{attribute}/values:
       parameters:
@@ -1430,16 +1437,16 @@ examples:
           offset: 5
       responses:
         "200":
-          application/json: {"data": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "currency_value": 99, "currency_code": "USD", "attribute_type": "currency"}, {"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "line_1": "1 Infinite Loop", "line_2": "Block 1", "line_3": "Hilldrop Estate", "line_4": "Westborough", "locality": "Cupertino", "region": "CA", "postcode": "95014", "country_code": "US", "latitude": "37.331741", "longitude": "-122.030333", "attribute_type": "location"}]}
+          application/json: {"data": [{"active_from": "2023-01-01T15:00:00.000000000Z", "active_until": "2023-01-01T15:00:00.000000000Z", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "attribute_type": "text"}]}
         "400":
-          application/json: {"status_code": 3388.67, "type": "invalid_request_error", "code": "validation_type", "message": "Cannot set show_historic param to true when querying a non-historic attribute."}
+          application/json: {"status_code": 8496.34, "type": "invalid_request_error", "code": "validation_type", "message": "Cannot set show_historic param to true when querying a non-historic attribute."}
         "404":
-          application/json: {"status_code": 4523.92, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
+          application/json: {"status_code": 6577.42, "type": "invalid_request_error", "code": "not_found", "message": "List with slug/ID \"enterprise_sales\" not found."}
   get_/v2/workspace_members:
     speakeasy-default-get-/v2-/workspace-members:
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}, "first_name": "Susan", "last_name": "Kare", "avatar_url": "https://lh3.googleusercontent.com/a/ABdFTp7z6OgAW9EqZx78wTqPfWClGCJCZXFjQfBG7rd9=s96-c", "email_address": "susan.kare@apple.com", "created_at": "2022-11-21T13:22:49.061281000Z", "access_level": "member"}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}, "first_name": "Susan", "last_name": "Kare", "avatar_url": "https://lh3.googleusercontent.com/a/ABdFTp7z6OgAW9EqZx78wTqPfWClGCJCZXFjQfBG7rd9=s96-c", "email_address": "susan.kare@apple.com", "created_at": "2022-11-21T13:22:49.061281000Z", "access_level": "member"}]}
+          application/json: {"data": []}
   get_/v2/workspace_members/{workspace_member_id}:
     speakeasy-default-get-/v2-/workspace-members/{workspace-member-id}:
       parameters:
@@ -1449,7 +1456,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "workspace_member_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}, "first_name": "Susan", "last_name": "Kare", "avatar_url": "https://lh3.googleusercontent.com/a/ABdFTp7z6OgAW9EqZx78wTqPfWClGCJCZXFjQfBG7rd9=s96-c", "email_address": "susan.kare@apple.com", "created_at": "2022-11-21T13:22:49.061281000Z", "access_level": "member"}}
         "404":
-          application/json: {"status_code": 244.06, "type": "invalid_request_error", "code": "not_found", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
+          application/json: {"status_code": 5177.34, "type": "invalid_request_error", "code": "not_found", "message": "Workspace member with ID \"50cf242c-7fa3-4cad-87d0-75b1af71c57b\" not found."}
   get_/v2/notes:
     speakeasy-default-get-/v2-/notes:
       parameters:
@@ -1460,9 +1467,9 @@ examples:
           parent_record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "note_id": "ff3f3bd4-40f4-4f80-8187-cd02385af424"}, "parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "content_plaintext": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "content_markdown": "# Introduction\nDate and time of the call\nParticipants\nPurpose of the call\n\n## Customer Background\n- Company overview (industry, size, location)\n- Key business challenges\n- Current software solutions (if any) and pain points", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}]}
+          application/json: {"data": []}
         "404":
-          application/json: {"status_code": 2285, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 8566.06, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   post_/v2/notes:
     speakeasy-default-post-/v2-/notes:
       requestBody:
@@ -1471,7 +1478,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "note_id": "ff3f3bd4-40f4-4f80-8187-cd02385af424"}, "parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "content_plaintext": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "content_markdown": "# Introduction\nDate and time of the call\nParticipants\nPurpose of the call\n\n## Customer Background\n- Company overview (industry, size, location)\n- Key business challenges\n- Current software solutions (if any) and pain points", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 7451.86, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 3703.19, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   get_/v2/notes/{note_id}:
     speakeasy-default-get-/v2-/notes/{note-id}:
       parameters:
@@ -1481,7 +1488,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "note_id": "ff3f3bd4-40f4-4f80-8187-cd02385af424"}, "parent_object": "people", "parent_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d", "title": "Initial Prospecting Call Summary", "content_plaintext": "Introduction\nDate and time of the call\nParticipants\nPurpose of the call\nCustomer Background\nCompany overview (industry, size, location)\nKey business challenges\nCurrent software solutions (if any) and pain points", "content_markdown": "# Introduction\nDate and time of the call\nParticipants\nPurpose of the call\n\n## Customer Background\n- Company overview (industry, size, location)\n- Key business challenges\n- Current software solutions (if any) and pain points", "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 8165.73, "type": "invalid_request_error", "code": "not_found", "message": "Note with ID \"ff3f3bd4-40f4-4f80-8187-cd02385af424\" was not found."}
+          application/json: {"status_code": 5.15, "type": "invalid_request_error", "code": "not_found", "message": "Note with ID \"ff3f3bd4-40f4-4f80-8187-cd02385af424\" was not found."}
   delete_/v2/notes/{note_id}:
     speakeasy-default-delete-/v2-/notes/{note-id}:
       parameters:
@@ -1491,7 +1498,7 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 8764.06, "type": "invalid_request_error", "code": "not_found", "message": "Note with ID \"ff3f3bd4-40f4-4f80-8187-cd02385af424\" was not found."}
+          application/json: {"status_code": 3032.39, "type": "invalid_request_error", "code": "not_found", "message": "Note with ID \"ff3f3bd4-40f4-4f80-8187-cd02385af424\" was not found."}
   get_/v2/tasks:
     speakeasy-default-get-/v2-/tasks:
       parameters:
@@ -1501,22 +1508,22 @@ examples:
           sort: "created_at:desc"
           linked_object: "people"
           linked_record_id: "891dcbfc-9141-415d-9b2a-2238a6cc012d"
-          assignee: "alice@attio.com"
+          assignee: "50cf242c-7fa3-4cad-87d0-75b1af71c57b"
           is_completed: true
       responses:
         "200":
-          application/json: {"data": []}
+          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [], "assignees": [], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}]}
   post_/v2/tasks:
     speakeasy-default-post-/v2-/tasks:
       requestBody:
-        application/json: {"data": {"content": "Follow up on current software solutions", "format": "plaintext", "deadline_at": "2023-01-01T15:00:00.000000000Z", "is_completed": false, "linked_records": [{"target_object": "people", "[slug_or_id_of_matching_attribute]": [{"domain": "app.attio.com"}]}], "assignees": []}}
+        application/json: {"data": {"content": "Follow up on current software solutions", "format": "plaintext", "deadline_at": "2023-01-01T15:00:00.000000000Z", "is_completed": false, "linked_records": [], "assignees": []}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [{"target_object_id": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}, {"target_object_id": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}], "assignees": [], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [], "assignees": [{"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "400":
-          application/json: {"status_code": 9269.7, "type": "invalid_request_error", "code": "validation_type", "message": "Only standard or custom object records can be linked to."}
+          application/json: {"status_code": 2343.23, "type": "invalid_request_error", "code": "validation_type", "message": "Only standard or custom object records can be linked to."}
         "404":
-          application/json: {"status_code": 1023.18, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
+          application/json: {"status_code": 2239.84, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"people\" not found."}
   get_/v2/tasks/{task_id}:
     speakeasy-default-get-/v2-/tasks/{task-id}:
       parameters:
@@ -1524,23 +1531,23 @@ examples:
           task_id: "649e34f4-c39a-4f4d-99ef-48a36bef8f04"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [{"target_object_id": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}, {"target_object_id": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}], "assignees": [{"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [], "assignees": [{"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 9595.28, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Task with ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\"."}
+          application/json: {"status_code": 1278.3, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Task with ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\"."}
   patch_/v2/tasks/{task_id}:
     speakeasy-default-patch-/v2-/tasks/{task-id}:
       parameters:
         path:
           task_id: "649e34f4-c39a-4f4d-99ef-48a36bef8f04"
       requestBody:
-        application/json: {"data": {"deadline_at": "2023-01-01T15:00:00.000000000Z", "is_completed": false, "linked_records": [{"target_object": "people", "[slug_or_id_of_matching_attribute]": [{}, {"value": 17224912}, {}]}, {"target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}, {"target_object": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}], "assignees": [{"workspace_member_email_address": "alice@attio.com"}, {"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}, {"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}]}}
+        application/json: {"data": {"deadline_at": "2023-01-01T15:00:00.000000000Z", "is_completed": false, "linked_records": [{"target_object": "people", "[slug_or_id_of_matching_attribute]": []}], "assignees": [{"workspace_member_email_address": "alice@attio.com"}]}}
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [{"target_object_id": "people", "target_record_id": "891dcbfc-9141-415d-9b2a-2238a6cc012d"}], "assignees": [{"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}, {"referenced_actor_type": "workspace-member", "referenced_actor_id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b"}], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "task_id": "649e34f4-c39a-4f4d-99ef-48a36bef8f04"}, "content_plaintext": "Follow up on current software solutions", "deadline_at": "2023-01-01", "is_completed": false, "linked_records": [], "assignees": [], "created_by_actor": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2022-11-21T13:22:49.061281000Z"}}
         "400":
-          application/json: {"status_code": 7230.59, "type": "invalid_request_error", "code": "validation_type", "message": "Only standard or custom object records can be linked to."}
+          application/json: {"status_code": 8197.04, "type": "invalid_request_error", "code": "validation_type", "message": "Only standard or custom object records can be linked to."}
         "404":
-          application/json: {"status_code": 3484.47, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\" not found."}
+          application/json: {"status_code": 1321.68, "type": "invalid_request_error", "code": "not_found", "message": "Object with slug/ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\" not found."}
   delete_/v2/tasks/{task_id}:
     speakeasy-default-delete-/v2-/tasks/{task-id}:
       parameters:
@@ -1550,7 +1557,7 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 1804.85, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Task with ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\"."}
+          application/json: {"status_code": 2649.79, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Task with ID \"649e34f4-c39a-4f4d-99ef-48a36bef8f04\"."}
   get_/v2/threads:
     speakeasy-default-get-/v2-/threads:
       parameters:
@@ -1563,7 +1570,7 @@ examples:
           offset: 5
       responses:
         "200":
-          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "thread_id": "a649e4d9-435c-43fb-83ba-847b4876f27a"}, "comments": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}], "created_at": "2023-01-01T15:00:00.000000000Z"}]}
+          application/json: {"data": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "thread_id": "a649e4d9-435c-43fb-83ba-847b4876f27a"}, "comments": [], "created_at": "2023-01-01T15:00:00.000000000Z"}]}
   get_/v2/threads/{thread_id}:
     speakeasy-default-get-/v2-/threads/{thread-id}:
       parameters:
@@ -1571,9 +1578,9 @@ examples:
           thread_id: "a649e4d9-435c-43fb-83ba-847b4876f27a"
       responses:
         "200":
-          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "thread_id": "a649e4d9-435c-43fb-83ba-847b4876f27a"}, "comments": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}, {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}], "created_at": "2023-01-01T15:00:00.000000000Z"}}
+          application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "thread_id": "a649e4d9-435c-43fb-83ba-847b4876f27a"}, "comments": [{"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}], "created_at": "2023-01-01T15:00:00.000000000Z"}}
         "404":
-          application/json: {"status_code": 5528.78, "type": "invalid_request_error", "code": "not_found", "message": "Thread with ID \"a649e4d9-435c-43fb-83ba-847b4876f27a\" was not found."}
+          application/json: {"status_code": 2472.04, "type": "invalid_request_error", "code": "not_found", "message": "Thread with ID \"a649e4d9-435c-43fb-83ba-847b4876f27a\" was not found."}
   post_/v2/comments:
     speakeasy-default-post-/v2-/comments:
       requestBody:
@@ -1582,7 +1589,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}}
         "400":
-          application/json: {"statusCode": 8543.01, "type": "invalid_request_error", "code": "value_not_found", "message": "The referenced Thread could not be found, it might have been deleted."}
+          application/json: {"statusCode": 7026.69, "type": "invalid_request_error", "code": "missing_value", "message": "The referenced Thread could not be found, it might have been deleted."}
   get_/v2/comments/{comment_id}:
     speakeasy-default-get-/v2-/comments/{comment-id}:
       parameters:
@@ -1592,7 +1599,7 @@ examples:
         "200":
           application/json: {"data": {"id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "comment_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2"}, "thread_id": "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2", "content_plaintext": "Let's go ahead and close this deal, alice@attio.com.", "entry": {"entry_id": "2e6e29ea-c4e0-4f44-842d-78a891f8c156", "list_id": "33ebdbe9-e529-47c9-b894-0ba25e9c15c0"}, "record": {"record_id": "bf071e1f-6035-429d-b874-d83ea64ea13b", "object_id": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}, "resolved_at": "2023-01-01T15:00:00.000000000Z", "resolved_by": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}, "created_at": "2023-01-01T15:00:00.000000000Z", "author": {"id": "50cf242c-7fa3-4cad-87d0-75b1af71c57b", "type": "workspace-member"}}}
         "404":
-          application/json: {"status_code": 2335.24, "type": "invalid_request_error", "code": "not_found", "message": "Comment with ID \"aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2\" was not found."}
+          application/json: {"status_code": 2617.35, "type": "invalid_request_error", "code": "not_found", "message": "Comment with ID \"aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2\" was not found."}
   delete_/v2/comments/{comment_id}:
     speakeasy-default-delete-/v2-/comments/{comment-id}:
       parameters:
@@ -1602,7 +1609,7 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 5571.99, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Comment with ID \"aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2\"."}
+          application/json: {"status_code": 823.64, "type": "invalid_request_error", "code": "not_found", "message": "Could not find Comment with ID \"aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2\"."}
   get_/v2/webhooks:
     speakeasy-default-get-/v2-/webhooks:
       parameters:
@@ -1611,16 +1618,16 @@ examples:
           offset: 5
       responses:
         "200":
-          application/json: {"data": [{"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}, {"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}]}
+          application/json: {"data": [{"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}]}
   post_/v2/webhooks:
     speakeasy-default-post-/v2-/webhooks:
       requestBody:
         application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": []}}
       responses:
         "200":
-          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}, {"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z", "secret": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"}}
+          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z", "secret": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb"}}
         "400":
-          application/json: {"status_code": 2754.94, "type": "invalid_request_error", "code": "validation_type", "message": "Related list not found"}
+          application/json: {"status_code": 2063.3, "type": "invalid_request_error", "code": "validation_type", "message": "Related list not found"}
   get_/v2/webhooks/{webhook_id}:
     speakeasy-default-get-/v2-/webhooks/{webhook-id}:
       parameters:
@@ -1628,21 +1635,21 @@ examples:
           webhook_id: "23e42eaf-323a-41da-b5bb-fd67eebda553"
       responses:
         "200":
-          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}}
+          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 4600.72, "type": "invalid_request_error", "code": "not_found", "message": "Webhook with ID \"23e42eaf-323a-41da-b5bb-fd67eebda553\" was not found."}
+          application/json: {"status_code": 6170.81, "type": "invalid_request_error", "code": "not_found", "message": "Webhook with ID \"23e42eaf-323a-41da-b5bb-fd67eebda553\" was not found."}
   patch_/v2/webhooks/{webhook_id}:
     speakeasy-default-patch-/v2-/webhooks/{webhook-id}:
       parameters:
         path:
           webhook_id: "23e42eaf-323a-41da-b5bb-fd67eebda553"
       requestBody:
-        application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}, {"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}]}}
+        application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}]}}
       responses:
         "200":
-          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [{"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}, {"event_type": "note.created", "filter": {"$and": [{"field": "parent_object_id", "operator": "equals", "value": "97052eb9-e65e-443f-a297-f2d9a4a7f795"}]}}], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}}
+          application/json: {"data": {"target_url": "https://example.com/webhook", "subscriptions": [], "id": {"workspace_id": "14beef7a-99f7-4534-a87e-70b564330a4c", "webhook_id": "23e42eaf-323a-41da-b5bb-fd67eebda553"}, "status": "active", "created_at": "2023-04-27T13:22:49.061281000Z"}}
         "404":
-          application/json: {"status_code": 359.19, "type": "invalid_request_error", "code": "not_found", "message": "Webhook with ID \"23e42eaf-323a-41da-b5bb-fd67eebda553\" was not found."}
+          application/json: {"status_code": 4442.81, "type": "invalid_request_error", "code": "not_found", "message": "Webhook with ID \"23e42eaf-323a-41da-b5bb-fd67eebda553\" was not found."}
   delete_/v2/webhooks/{webhook_id}:
     speakeasy-default-delete-/v2-/webhooks/{webhook-id}:
       parameters:
@@ -1652,11 +1659,11 @@ examples:
         "200":
           application/json: {}
         "404":
-          application/json: {"status_code": 1723.41, "type": "invalid_request_error", "code": "not_found", "message": "Webhook not found"}
+          application/json: {"status_code": 3035.44, "type": "invalid_request_error", "code": "not_found", "message": "Webhook not found"}
   get_/v2/self:
     speakeasy-default-get-/v2-/self:
       responses:
         "200":
-          application/json: {"active": false}
-examplesVersion: 1.0.1
+          application/json: {"active": true}
+examplesVersion: 1.0.2
 generatedTests: {}

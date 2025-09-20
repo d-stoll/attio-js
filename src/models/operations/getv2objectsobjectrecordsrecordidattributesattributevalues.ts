@@ -2055,23 +2055,23 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorR
   };
 
 export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion =
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation;
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp;
 
 /**
  * Success
@@ -2079,7 +2079,16 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion 
 export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse =
   {
     data: Array<
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus
@@ -2087,15 +2096,6 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse =
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation
     >;
   };
 
@@ -6631,7 +6631,34 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
     unknown
   > = z.union([
     z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
+    ),
+    z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
     ),
     z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema
@@ -6654,54 +6681,27 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
     z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema
     ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
-    ),
   ]);
 
 /** @internal */
 export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$Outbound =
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRating$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound
   | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
-  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound;
+  | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound;
 
 /** @internal */
 export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion$outboundSchema:
@@ -6711,7 +6711,34 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
     GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
   > = z.union([
     z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
+    ),
+    z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema
+    ),
+    z.lazy(() =>
+      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
     ),
     z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema
@@ -6733,33 +6760,6 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataUnion
     ),
     z.lazy(() =>
       GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
-    ),
-    z.lazy(() =>
-      GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
     ),
   ]);
 
@@ -6816,7 +6816,34 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$
     data: z.array(
       z.union([
         z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
+        ),
+        z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$inboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
         ),
         z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$inboundSchema
@@ -6839,33 +6866,6 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$
         z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$inboundSchema
         ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$inboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$inboundSchema
-        ),
       ]),
     ),
   });
@@ -6874,7 +6874,16 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$
 export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$Outbound =
   {
     data: Array<
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$Outbound
+      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataNumber$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataStatus$Outbound
@@ -6882,15 +6891,6 @@ export type GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$O
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataSelect$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataText$Outbound
       | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$Outbound
-      | GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$Outbound
     >;
   };
 
@@ -6904,7 +6904,34 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$
     data: z.array(
       z.union([
         z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
+        ),
+        z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCheckbox$outboundSchema
+        ),
+        z.lazy(() =>
+          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
         ),
         z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDate$outboundSchema
@@ -6926,33 +6953,6 @@ export const GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesResponse$
         ),
         z.lazy(() =>
           GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataTimestamp$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataActorReference$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataCurrency$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataDomain$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataRecordReference$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataInteraction$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPersonalName$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataPhoneNumber$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataEmailAddress$outboundSchema
-        ),
-        z.lazy(() =>
-          GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesDataLocation$outboundSchema
         ),
       ]),
     ),

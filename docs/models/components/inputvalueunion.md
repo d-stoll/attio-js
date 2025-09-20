@@ -76,11 +76,7 @@ const value: components.InputValue7 = {
 ```typescript
 const value: components.InputValue8 = {
   targetObject: "people",
-  slugOrIdOfMatchingAttribute: [
-    {
-      value: 17224912,
-    },
-  ],
+  slugOrIdOfMatchingAttribute: [],
 };
 ```
 

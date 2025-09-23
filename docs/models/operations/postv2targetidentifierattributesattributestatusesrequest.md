@@ -12,6 +12,7 @@ let value: PostV2TargetIdentifierAttributesAttributeStatusesRequest = {
   requestBody: {
     data: {
       title: "In Progress",
+      celebrationEnabled: true,
       targetTimeInStatus: "P0Y0M1DT0H0M0S",
     },
   },

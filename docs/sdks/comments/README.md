@@ -23,6 +23,7 @@ Required scopes: `comment:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/comments" method="post" path="/v2/comments" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -47,7 +48,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -84,15 +84,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("commentsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -130,6 +127,7 @@ Required scopes: `comment:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/comments/{comment_id}" method="get" path="/v2/comments/{comment_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -142,7 +140,6 @@ async function run() {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -167,15 +164,12 @@ async function run() {
   const res = await commentsGet(attio, {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("commentsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -209,6 +203,7 @@ Required scopes: `comment:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/comments/{comment_id}" method="delete" path="/v2/comments/{comment_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -221,7 +216,6 @@ async function run() {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -246,15 +240,12 @@ async function run() {
   const res = await commentsDelete(attio, {
     commentId: "aa1dc1d9-93ac-4c6c-987e-16b6eea9aab2",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("commentsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

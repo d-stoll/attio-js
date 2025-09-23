@@ -11,7 +11,7 @@ let value: PostV2ListsListEntriesQuerySort2 = {
   direction: "asc",
   path: [
     [
-      "/opt/share",
+      "/etc/ppp",
     ],
   ],
 };

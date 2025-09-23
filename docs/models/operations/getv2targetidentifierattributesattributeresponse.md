@@ -25,15 +25,7 @@ let value: GetV2TargetIdentifierAttributesAttributeResponse = {
     isMultiselect: false,
     isDefaultValueEnabled: false,
     isArchived: false,
-    defaultValue: {
-      type: "static",
-      template: [
-        {
-          value: "Some default text",
-          attributeType: "text",
-        },
-      ],
-    },
+    defaultValue: null,
     relationship: null,
     createdAt: "2021-11-21T13:22:49.061Z",
     config: {

@@ -1,25 +1,25 @@
-# Bearer
+# AttioCom
 
 ## Example Usage
 
 ```typescript
-import { Bearer } from "attio-js/models/operations/getv2self.js";
+import { AttioCom } from "attio-js/models/operations/getv2self.js";
 
-let value: Bearer = {
+let value: AttioCom = {
   active: false,
   scope: "<value>",
   clientId: "<id>",
   tokenType: "Bearer",
-  exp: 8372.17,
-  iat: 9701.78,
-  sub: "3a422077-1297-4444-92a7-38cea12c1fbc",
+  exp: 2840.47,
+  iat: 7160.48,
+  sub: "e62ad58d-f815-4dde-b855-af4c6ce52a9f",
   aud: "<value>",
   iss: "attio.com",
-  authorizedByWorkspaceMemberId: "0a99c8d3-9dd1-4fa3-89a7-8c04964d82a6",
-  workspaceId: "32a06ed1-c2e7-45fd-a6f7-b0f8a10821ce",
+  authorizedByWorkspaceMemberId: "0807272f-feeb-4d8b-a9df-b37aafb6a122",
+  workspaceId: "d73f441c-f38e-45ad-a535-cb08f6fbd353",
   workspaceName: "<value>",
   workspaceSlug: "<value>",
-  workspaceLogoUrl: "https://glass-sightseeing.name/",
+  workspaceLogoUrl: "https://poor-space.net",
 };
 ```
 

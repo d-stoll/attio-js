@@ -1140,7 +1140,16 @@ export type OutputValueActorReference = {
  * A union of possible value types, as returned in response bodies.
  */
 export type OutputValue =
+  | OutputValueLocation
+  | OutputValueEmailAddress
+  | OutputValueInteraction
+  | OutputValuePersonalName
+  | OutputValuePhoneNumber
+  | OutputValueActorReference
+  | OutputValueDomain
+  | OutputValueRecordReference
   | OutputValueCheckbox
+  | OutputValueCurrency
   | OutputValueDate
   | OutputValueNumber
   | OutputValueStatus1
@@ -1149,16 +1158,7 @@ export type OutputValue =
   | OutputValueSelect1
   | OutputValueSelect2
   | OutputValueText
-  | OutputValueTimestamp
-  | OutputValueActorReference
-  | OutputValueCurrency
-  | OutputValueDomain
-  | OutputValueRecordReference
-  | OutputValueInteraction
-  | OutputValuePersonalName
-  | OutputValuePhoneNumber
-  | OutputValueEmailAddress
-  | OutputValueLocation;
+  | OutputValueTimestamp;
 
 /** @internal */
 export const AttributeTypeTimestamp$inboundSchema: z.ZodNativeEnum<
@@ -3100,7 +3100,16 @@ export const OutputValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
+  z.lazy(() => OutputValueLocation$inboundSchema),
+  z.lazy(() => OutputValueEmailAddress$inboundSchema),
+  z.lazy(() => OutputValueInteraction$inboundSchema),
+  z.lazy(() => OutputValuePersonalName$inboundSchema),
+  z.lazy(() => OutputValuePhoneNumber$inboundSchema),
+  z.lazy(() => OutputValueActorReference$inboundSchema),
+  z.lazy(() => OutputValueDomain$inboundSchema),
+  z.lazy(() => OutputValueRecordReference$inboundSchema),
   z.lazy(() => OutputValueCheckbox$inboundSchema),
+  z.lazy(() => OutputValueCurrency$inboundSchema),
   z.lazy(() => OutputValueDate$inboundSchema),
   z.lazy(() => OutputValueNumber$inboundSchema),
   z.lazy(() => OutputValueStatus1$inboundSchema),
@@ -3110,20 +3119,20 @@ export const OutputValue$inboundSchema: z.ZodType<
   z.lazy(() => OutputValueSelect2$inboundSchema),
   z.lazy(() => OutputValueText$inboundSchema),
   z.lazy(() => OutputValueTimestamp$inboundSchema),
-  z.lazy(() => OutputValueActorReference$inboundSchema),
-  z.lazy(() => OutputValueCurrency$inboundSchema),
-  z.lazy(() => OutputValueDomain$inboundSchema),
-  z.lazy(() => OutputValueRecordReference$inboundSchema),
-  z.lazy(() => OutputValueInteraction$inboundSchema),
-  z.lazy(() => OutputValuePersonalName$inboundSchema),
-  z.lazy(() => OutputValuePhoneNumber$inboundSchema),
-  z.lazy(() => OutputValueEmailAddress$inboundSchema),
-  z.lazy(() => OutputValueLocation$inboundSchema),
 ]);
 
 /** @internal */
 export type OutputValue$Outbound =
+  | OutputValueLocation$Outbound
+  | OutputValueEmailAddress$Outbound
+  | OutputValueInteraction$Outbound
+  | OutputValuePersonalName$Outbound
+  | OutputValuePhoneNumber$Outbound
+  | OutputValueActorReference$Outbound
+  | OutputValueDomain$Outbound
+  | OutputValueRecordReference$Outbound
   | OutputValueCheckbox$Outbound
+  | OutputValueCurrency$Outbound
   | OutputValueDate$Outbound
   | OutputValueNumber$Outbound
   | OutputValueStatus1$Outbound
@@ -3132,16 +3141,7 @@ export type OutputValue$Outbound =
   | OutputValueSelect1$Outbound
   | OutputValueSelect2$Outbound
   | OutputValueText$Outbound
-  | OutputValueTimestamp$Outbound
-  | OutputValueActorReference$Outbound
-  | OutputValueCurrency$Outbound
-  | OutputValueDomain$Outbound
-  | OutputValueRecordReference$Outbound
-  | OutputValueInteraction$Outbound
-  | OutputValuePersonalName$Outbound
-  | OutputValuePhoneNumber$Outbound
-  | OutputValueEmailAddress$Outbound
-  | OutputValueLocation$Outbound;
+  | OutputValueTimestamp$Outbound;
 
 /** @internal */
 export const OutputValue$outboundSchema: z.ZodType<
@@ -3149,7 +3149,16 @@ export const OutputValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   OutputValue
 > = z.union([
+  z.lazy(() => OutputValueLocation$outboundSchema),
+  z.lazy(() => OutputValueEmailAddress$outboundSchema),
+  z.lazy(() => OutputValueInteraction$outboundSchema),
+  z.lazy(() => OutputValuePersonalName$outboundSchema),
+  z.lazy(() => OutputValuePhoneNumber$outboundSchema),
+  z.lazy(() => OutputValueActorReference$outboundSchema),
+  z.lazy(() => OutputValueDomain$outboundSchema),
+  z.lazy(() => OutputValueRecordReference$outboundSchema),
   z.lazy(() => OutputValueCheckbox$outboundSchema),
+  z.lazy(() => OutputValueCurrency$outboundSchema),
   z.lazy(() => OutputValueDate$outboundSchema),
   z.lazy(() => OutputValueNumber$outboundSchema),
   z.lazy(() => OutputValueStatus1$outboundSchema),
@@ -3159,15 +3168,6 @@ export const OutputValue$outboundSchema: z.ZodType<
   z.lazy(() => OutputValueSelect2$outboundSchema),
   z.lazy(() => OutputValueText$outboundSchema),
   z.lazy(() => OutputValueTimestamp$outboundSchema),
-  z.lazy(() => OutputValueActorReference$outboundSchema),
-  z.lazy(() => OutputValueCurrency$outboundSchema),
-  z.lazy(() => OutputValueDomain$outboundSchema),
-  z.lazy(() => OutputValueRecordReference$outboundSchema),
-  z.lazy(() => OutputValueInteraction$outboundSchema),
-  z.lazy(() => OutputValuePersonalName$outboundSchema),
-  z.lazy(() => OutputValuePhoneNumber$outboundSchema),
-  z.lazy(() => OutputValueEmailAddress$outboundSchema),
-  z.lazy(() => OutputValueLocation$outboundSchema),
 ]);
 
 /**

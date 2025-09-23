@@ -20,6 +20,7 @@ Required scopes: `note:read`, `object_configuration:read`, `record_permission:re
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/notes" method="get" path="/v2/notes" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -35,7 +36,6 @@ async function run() {
     parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -63,15 +63,12 @@ async function run() {
     parentObject: "people",
     parentRecordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("notesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -105,6 +102,7 @@ Required scopes: `note:read-write`, `object_configuration:read`, `record_permiss
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/notes" method="post" path="/v2/notes" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -131,7 +129,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -170,15 +167,12 @@ async function run() {
       createdAt: "2023-01-01T15:00:00.000000000Z",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("notesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -212,6 +206,7 @@ Required scopes: `note:read`, `object_configuration:read`, `record_permission:re
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/notes/{note_id}" method="get" path="/v2/notes/{note_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -224,7 +219,6 @@ async function run() {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -249,15 +243,12 @@ async function run() {
   const res = await notesGet(attio, {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("notesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -291,6 +282,7 @@ Required scopes: `note:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/notes/{note_id}" method="delete" path="/v2/notes/{note_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -303,7 +295,6 @@ async function run() {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -328,15 +319,12 @@ async function run() {
   const res = await notesDelete(attio, {
     noteId: "ff3f3bd4-40f4-4f80-8187-cd02385af424",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("notesDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

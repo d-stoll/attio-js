@@ -20,6 +20,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/objects" method="get" path="/v2/objects" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -30,7 +31,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.objects.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -53,15 +53,12 @@ const attio = new AttioCore({
 
 async function run() {
   const res = await objectsList(attio);
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("objectsList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -93,6 +90,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/objects" method="post" path="/v2/objects" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -109,7 +107,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -138,15 +135,12 @@ async function run() {
       pluralNoun: "People",
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("objectsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -180,6 +174,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/objects/{object}" method="get" path="/v2/objects/{object}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -192,7 +187,6 @@ async function run() {
     object: "people",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -217,15 +211,12 @@ async function run() {
   const res = await objectsGet(attio, {
     object: "people",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("objectsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -259,6 +250,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/objects/{object}" method="patch" path="/v2/objects/{object}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -278,7 +270,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -310,15 +301,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("objectsPartialUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

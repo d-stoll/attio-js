@@ -12,11 +12,7 @@ let value: PatchV2TasksTaskIdRequestBody = {
     linkedRecords: [
       {
         targetObject: "people",
-        slugOrIdOfMatchingAttribute: [
-          {
-            emailAddress: "alice@app.attio.com",
-          },
-        ],
+        slugOrIdOfMatchingAttribute: [],
       },
     ],
     assignees: [

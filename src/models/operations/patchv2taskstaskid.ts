@@ -317,8 +317,8 @@ export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion =
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3
-  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
-  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4;
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5;
 
 export type PatchV2TasksTaskIdLinkedRecord2 = {
   /**
@@ -332,8 +332,8 @@ export type PatchV2TasksTaskIdLinkedRecord2 = {
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3
-    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5
   >;
 };
 
@@ -384,8 +384,8 @@ export type PatchV2TasksTaskIdAssigneeWorkspaceMember = {
 };
 
 export type PatchV2TasksTaskIdAssigneeUnion =
-  | PatchV2TasksTaskIdAssignee
-  | PatchV2TasksTaskIdAssigneeWorkspaceMember;
+  | PatchV2TasksTaskIdAssigneeWorkspaceMember
+  | PatchV2TasksTaskIdAssignee;
 
 export type PatchV2TasksTaskIdData = {
   /**
@@ -407,7 +407,7 @@ export type PatchV2TasksTaskIdData = {
    */
   assignees?:
     | Array<
-      PatchV2TasksTaskIdAssignee | PatchV2TasksTaskIdAssigneeWorkspaceMember
+      PatchV2TasksTaskIdAssigneeWorkspaceMember | PatchV2TasksTaskIdAssignee
     >
     | undefined;
 };
@@ -822,8 +822,8 @@ export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$inboundSchema:
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$inboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$inboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema),
-    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema),
   ]);
 
 /** @internal */
@@ -831,8 +831,8 @@ export type PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$Outbound =
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$Outbound
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$Outbound
   | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound
-  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound
-  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound;
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound
+  | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound;
 
 /** @internal */
 export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema:
@@ -844,8 +844,8 @@ export const PatchV2TasksTaskIdSlugOrIdOfMatchingAttributeUnion$outboundSchema:
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$outboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$outboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema),
-    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema),
     z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema),
+    z.lazy(() => PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema),
   ]);
 
 /**
@@ -910,10 +910,10 @@ export const PatchV2TasksTaskIdLinkedRecord2$inboundSchema: z.ZodType<
         PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$inboundSchema
       ),
       z.lazy(() =>
-        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema
       ),
       z.lazy(() =>
-        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$inboundSchema
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$inboundSchema
       ),
     ]),
   ),
@@ -931,8 +931,8 @@ export type PatchV2TasksTaskIdLinkedRecord2$Outbound = {
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute1$Outbound
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute2$Outbound
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$Outbound
-    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound
     | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$Outbound
+    | PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$Outbound
   >;
 };
 
@@ -955,10 +955,10 @@ export const PatchV2TasksTaskIdLinkedRecord2$outboundSchema: z.ZodType<
         PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute3$outboundSchema
       ),
       z.lazy(() =>
-        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema
       ),
       z.lazy(() =>
-        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute4$outboundSchema
+        PatchV2TasksTaskIdSlugOrIdOfMatchingAttribute5$outboundSchema
       ),
     ]),
   ),
@@ -1303,14 +1303,14 @@ export const PatchV2TasksTaskIdAssigneeUnion$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
   z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
 ]);
 
 /** @internal */
 export type PatchV2TasksTaskIdAssigneeUnion$Outbound =
-  | PatchV2TasksTaskIdAssignee$Outbound
-  | PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound;
+  | PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound
+  | PatchV2TasksTaskIdAssignee$Outbound;
 
 /** @internal */
 export const PatchV2TasksTaskIdAssigneeUnion$outboundSchema: z.ZodType<
@@ -1318,8 +1318,8 @@ export const PatchV2TasksTaskIdAssigneeUnion$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PatchV2TasksTaskIdAssigneeUnion
 > = z.union([
-  z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
   z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema),
+  z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
 ]);
 
 /**
@@ -1371,8 +1371,8 @@ export const PatchV2TasksTaskIdData$inboundSchema: z.ZodType<
   ).optional(),
   assignees: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
       z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$inboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssignee$inboundSchema),
     ]),
   ).optional(),
 }).transform((v) => {
@@ -1395,8 +1395,8 @@ export type PatchV2TasksTaskIdData$Outbound = {
     | undefined;
   assignees?:
     | Array<
-      | PatchV2TasksTaskIdAssignee$Outbound
       | PatchV2TasksTaskIdAssigneeWorkspaceMember$Outbound
+      | PatchV2TasksTaskIdAssignee$Outbound
     >
     | undefined;
 };
@@ -1417,8 +1417,8 @@ export const PatchV2TasksTaskIdData$outboundSchema: z.ZodType<
   ).optional(),
   assignees: z.array(
     z.union([
-      z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
       z.lazy(() => PatchV2TasksTaskIdAssigneeWorkspaceMember$outboundSchema),
+      z.lazy(() => PatchV2TasksTaskIdAssignee$outboundSchema),
     ]),
   ).optional(),
 }).transform((v) => {

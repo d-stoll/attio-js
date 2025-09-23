@@ -1,11 +1,11 @@
-# GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError
+# GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError
 
 Not Found
 
 ## Example Usage
 
 ```typescript
-import { GetV2WorkspaceMembersWorkspaceMemberIdInvalidRequestError } from "attio-js/models/errors/getv2objectsobject.js";
+import { GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError } from "attio-js/models/errors/getv2objectsobject.js";
 
 // No examples available for this model
 ```

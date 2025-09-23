@@ -10,12 +10,7 @@ let value: PostV2ListsData = {
   apiSlug: "enterprise_sales",
   parentObject: "people",
   workspaceAccess: "read-and-write",
-  workspaceMemberAccess: [
-    {
-      workspaceMemberId: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
-      level: "read-and-write",
-    },
-  ],
+  workspaceMemberAccess: [],
 };
 ```
 

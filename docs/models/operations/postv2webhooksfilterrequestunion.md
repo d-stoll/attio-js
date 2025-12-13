@@ -12,7 +12,7 @@ const value: operations.PostV2WebhooksFilterRequest1 = {
   dollarOr: [
     {
       field: "<value>",
-      operator: "not_equals",
+      operator: "equals",
       value: "<value>",
     },
   ],

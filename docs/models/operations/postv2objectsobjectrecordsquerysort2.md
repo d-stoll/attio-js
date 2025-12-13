@@ -11,7 +11,13 @@ let value: PostV2ObjectsObjectRecordsQuerySort2 = {
   direction: "desc",
   path: [
     [
-      "/usr",
+      "/var/mail",
+      "/dev",
+    ],
+    [
+      "/etc",
+      "/usr/bin",
+      "/usr/local/src",
     ],
   ],
 };

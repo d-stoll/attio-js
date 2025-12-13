@@ -1,5 +1,4 @@
 # Attributes
-(*attributes*)
 
 ## Overview
 
@@ -24,6 +23,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/{target}/{identifier}/attributes" method="get" path="/v2/{target}/{identifier}/attributes" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -40,7 +40,6 @@ async function run() {
     showArchived: true,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -69,15 +68,12 @@ async function run() {
     offset: 5,
     showArchived: true,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -112,6 +108,7 @@ To create an attribute on a list, you must also have the `list_configuration:rea
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/{target}/{identifier}/attributes" method="post" path="/v2/{target}/{identifier}/attributes" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -136,7 +133,7 @@ async function run() {
           type: "static",
           template: [
             {
-              value: 42,
+              value: 5,
             },
           ],
         },
@@ -155,7 +152,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -193,7 +189,7 @@ async function run() {
           type: "static",
           template: [
             {
-              value: 42,
+              value: 5,
             },
           ],
         },
@@ -211,15 +207,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -255,6 +248,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/{target}/{identifier}/attributes/{attribute}" method="get" path="/v2/{target}/{identifier}/attributes/{attribute}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -269,7 +263,6 @@ async function run() {
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -296,15 +289,12 @@ async function run() {
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -338,6 +328,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/{target}/{identifier}/attributes/{attribute}" method="patch" path="/v2/{target}/{identifier}/attributes/{attribute}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -361,7 +352,7 @@ async function run() {
           type: "static",
           template: [
             {
-              value: 42,
+              value: 5,
             },
           ],
         },
@@ -381,7 +372,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -418,7 +408,7 @@ async function run() {
           type: "static",
           template: [
             {
-              value: 42,
+              value: 5,
             },
           ],
         },
@@ -437,15 +427,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -480,6 +467,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/{target}/{identifier}/attributes/{attribute}/options" method="get" path="/v2/{target}/{identifier}/attributes/{attribute}/options" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -495,7 +483,6 @@ async function run() {
     showArchived: true,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -523,15 +510,12 @@ async function run() {
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
     showArchived: true,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesListSelectOptions failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -565,6 +549,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/{target}/{identifier}/attributes/{attribute}/options" method="post" path="/v2/{target}/{identifier}/attributes/{attribute}/options" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -584,7 +569,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -616,15 +600,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesCreateSelectOption failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -660,6 +641,7 @@ Required scopes: `object_configuration:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/{target}/{identifier}/attributes/{attribute}/options/{option}" method="patch" path="/v2/{target}/{identifier}/attributes/{attribute}/options/{option}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -681,7 +663,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -715,15 +696,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesUpdateOption failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -759,6 +737,7 @@ Required scopes: `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/{target}/{identifier}/attributes/{attribute}/statuses" method="get" path="/v2/{target}/{identifier}/attributes/{attribute}/statuses" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -771,9 +750,9 @@ async function run() {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showArchived: true,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -799,16 +778,14 @@ async function run() {
     target: "lists",
     identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showArchived: true,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("attributesListStatuses failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

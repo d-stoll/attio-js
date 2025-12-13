@@ -1,5 +1,4 @@
 # Records
-(*records*)
 
 ## Overview
 
@@ -25,6 +24,7 @@ Required scopes: `record_permission:read`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/objects/{object}/records/query" method="post" path="/v2/objects/{object}/records/query" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -51,7 +51,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -90,15 +89,12 @@ async function run() {
       offset: 0,
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsQuery failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -133,6 +129,7 @@ Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/objects/{object}/records" method="post" path="/v2/objects/{object}/records" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -156,7 +153,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -192,15 +188,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -237,6 +230,7 @@ Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/v2/objects/{object}/records" method="put" path="/v2/objects/{object}/records" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -261,7 +255,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -298,15 +291,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsAssert failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -341,6 +331,7 @@ Required scopes: `record_permission:read`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/objects/{object}/records/{record_id}" method="get" path="/v2/objects/{object}/records/{record_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -354,7 +345,6 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -380,15 +370,12 @@ async function run() {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -409,10 +396,10 @@ run();
 
 ### Errors
 
-| Error Type                                                  | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| errors.GetV2ObjectsObjectRecordsRecordIdInvalidRequestError | 404                                                         | application/json                                            |
-| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.GetV2ObjectsObjectRecordsRecordIdNotFoundError | 404                                                   | application/json                                      |
+| errors.APIError                                       | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## partialUpdate
 
@@ -422,6 +409,7 @@ Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/objects/{object}/records/{record_id}" method="patch" path="/v2/objects/{object}/records/{record_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -446,7 +434,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -483,15 +470,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsPartialUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -526,6 +510,7 @@ Required scopes: `record_permission:read-write`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/v2/objects/{object}/records/{record_id}" method="put" path="/v2/objects/{object}/records/{record_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -550,7 +535,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -587,15 +571,12 @@ async function run() {
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -630,6 +611,7 @@ Required scopes: `object_configuration:read`, `record_permission:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/objects/{object}/records/{record_id}" method="delete" path="/v2/objects/{object}/records/{record_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -643,7 +625,6 @@ async function run() {
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -669,15 +650,12 @@ async function run() {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -698,10 +676,10 @@ run();
 
 ### Errors
 
-| Error Type                                                  | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| errors.GetV2ObjectsObjectRecordsRecordIdInvalidRequestError | 404                                                         | application/json                                            |
-| errors.APIError                                             | 4XX, 5XX                                                    | \*/\*                                                       |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.GetV2ObjectsObjectRecordsRecordIdNotFoundError | 404                                                   | application/json                                      |
+| errors.APIError                                       | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## listAttributeValues
 
@@ -711,6 +689,7 @@ Required scopes: `record_permission:read`, `object_configuration:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/objects/{object}/records/{record_id}/attributes/{attribute}/values" method="get" path="/v2/objects/{object}/records/{record_id}/attributes/{attribute}/values" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -723,11 +702,11 @@ async function run() {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showHistoric: true,
     limit: 10,
     offset: 5,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -753,18 +732,16 @@ async function run() {
     object: "people",
     recordId: "891dcbfc-9141-415d-9b2a-2238a6cc012d",
     attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+    showHistoric: true,
     limit: 10,
     offset: 5,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsListAttributeValues failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -799,6 +776,7 @@ Required scopes: `record_permission:read`, `object_configuration:read`, `list_en
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/objects/{object}/records/{record_id}/entries" method="get" path="/v2/objects/{object}/records/{record_id}/entries" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -814,7 +792,6 @@ async function run() {
     offset: 5,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -842,15 +819,12 @@ async function run() {
     limit: 10,
     offset: 5,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("recordsListEntries failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

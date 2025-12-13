@@ -16,9 +16,9 @@ let value: GetV2ListsListEntriesEntryIdAttributesAttributeValuesResponse = {
         id: "50cf242c-7fa3-4cad-87d0-75b1af71c57b",
         type: "workspace-member",
       },
-      value:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      attributeType: "text",
+      domain: "app.attio.com",
+      rootDomain: "attio.com",
+      attributeType: "domain",
     },
   ],
 };

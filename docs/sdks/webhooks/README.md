@@ -1,5 +1,4 @@
 # Webhooks
-(*webhooks*)
 
 ## Overview
 
@@ -21,6 +20,7 @@ Required scopes: `webhook:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/webhooks" method="get" path="/v2/webhooks" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -34,7 +34,6 @@ async function run() {
     offset: 5,
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -60,15 +59,12 @@ async function run() {
     limit: 10,
     offset: 5,
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksList failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -101,6 +97,7 @@ Required scopes: `webhook:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v2/webhooks" method="post" path="/v2/webhooks" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -116,7 +113,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -144,15 +140,12 @@ async function run() {
       subscriptions: [],
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksCreate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -186,6 +179,7 @@ Required scopes: `webhook:read`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/v2/webhooks/{webhook_id}" method="get" path="/v2/webhooks/{webhook_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -198,7 +192,6 @@ async function run() {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -223,15 +216,12 @@ async function run() {
   const res = await webhooksGet(attio, {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksGet failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -265,6 +255,7 @@ Required scopes: `webhook:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="patch_/v2/webhooks/{webhook_id}" method="patch" path="/v2/webhooks/{webhook_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -291,24 +282,11 @@ async function run() {
               ],
             },
           },
-          {
-            eventType: "note.created",
-            filter: {
-              dollarAnd: [
-                {
-                  field: "parent_object_id",
-                  operator: "equals",
-                  value: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
-                },
-              ],
-            },
-          },
         ],
       },
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -348,31 +326,16 @@ async function run() {
               ],
             },
           },
-          {
-            eventType: "note.created",
-            filter: {
-              dollarAnd: [
-                {
-                  field: "parent_object_id",
-                  operator: "equals",
-                  value: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
-                },
-              ],
-            },
-          },
         ],
       },
     },
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksPartialUpdate failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();
@@ -406,6 +369,7 @@ Required scopes: `webhook:read-write`.
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="delete_/v2/webhooks/{webhook_id}" method="delete" path="/v2/webhooks/{webhook_id}" -->
 ```typescript
 import { Attio } from "attio-js";
 
@@ -418,7 +382,6 @@ async function run() {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -443,15 +406,12 @@ async function run() {
   const res = await webhooksDelete(attio, {
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",
   });
-
-  if (!res.ok) {
-    throw res.error;
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("webhooksDelete failed:", res.error);
   }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
 }
 
 run();

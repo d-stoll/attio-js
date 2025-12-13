@@ -9,6 +9,7 @@ let value: GetV2ListsListEntriesEntryIdAttributesAttributeValuesRequest = {
   list: "enterprise_sales",
   entryId: "2e6e29ea-c4e0-4f44-842d-78a891f8c156",
   attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+  showHistoric: true,
   limit: 10,
   offset: 5,
 };

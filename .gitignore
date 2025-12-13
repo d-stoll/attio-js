@@ -1,3 +1,9 @@
+/examples/node_modules
+**/.speakeasy/temp/
+**/.speakeasy/logs/
+.env
+.env.local
+.env.*.local
 .speakeasy/temp/
 .DS_Store
 /models

@@ -13,24 +13,24 @@ const value: operations.ResponseBody = {
 };
 ```
 
-### `operations.Bearer`
+### `operations.AttioCom`
 
 ```typescript
-const value: operations.Bearer = {
+const value: operations.AttioCom = {
   active: false,
   scope: "<value>",
   clientId: "<id>",
   tokenType: "Bearer",
-  exp: 3243.57,
-  iat: 1003.3,
-  sub: "ebb9473b-6c68-40f9-ae1b-e669a8129a5a",
+  exp: 2840.47,
+  iat: 7160.48,
+  sub: "e62ad58d-f815-4dde-b855-af4c6ce52a9f",
   aud: "<value>",
   iss: "attio.com",
-  authorizedByWorkspaceMemberId: "8528de17-4a7c-4442-a752-9e53b6e7b74f",
-  workspaceId: "2f923203-e096-4b9b-9be9-d6c7c54ca1f9",
+  authorizedByWorkspaceMemberId: "0807272f-feeb-4d8b-a9df-b37aafb6a122",
+  workspaceId: "d73f441c-f38e-45ad-a535-cb08f6fbd353",
   workspaceName: "<value>",
   workspaceSlug: "<value>",
-  workspaceLogoUrl: "https://gloomy-knuckle.com/",
+  workspaceLogoUrl: "https://poor-space.net",
 };
 ```
 

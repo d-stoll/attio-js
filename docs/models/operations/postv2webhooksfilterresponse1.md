@@ -6,13 +6,7 @@
 import { PostV2WebhooksFilterResponse1 } from "attio-js/models/operations/postv2webhooks.js";
 
 let value: PostV2WebhooksFilterResponse1 = {
-  dollarOr: [
-    {
-      field: "<value>",
-      operator: "equals",
-      value: "<value>",
-    },
-  ],
+  dollarOr: [],
 };
 ```
 

@@ -6,13 +6,7 @@
 import { PatchV2WebhooksWebhookIdFilterRequest1 } from "attio-js/models/operations/patchv2webhookswebhookid.js";
 
 let value: PatchV2WebhooksWebhookIdFilterRequest1 = {
-  dollarOr: [
-    {
-      field: "<value>",
-      operator: "equals",
-      value: "<value>",
-    },
-  ],
+  dollarOr: [],
 };
 ```
 

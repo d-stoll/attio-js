@@ -9,6 +9,7 @@ let value: GetV2TargetIdentifierAttributesAttributeStatusesRequest = {
   target: "lists",
   identifier: "33ebdbe9-e529-47c9-b894-0ba25e9c15c0",
   attribute: "41252299-f8c7-4b5e-99c9-4ff8321d2f96",
+  showArchived: true,
 };
 ```
 

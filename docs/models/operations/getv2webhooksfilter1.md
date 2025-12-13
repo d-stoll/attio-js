@@ -9,7 +9,7 @@ let value: GetV2WebhooksFilter1 = {
   dollarOr: [
     {
       field: "<value>",
-      operator: "not_equals",
+      operator: "equals",
       value: "<value>",
     },
   ],

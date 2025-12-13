@@ -13,7 +13,7 @@ let value: DefaultValueDynamic = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      | Example                                                          |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `type`                                                           | [components.TypeDynamic](../../models/components/typedynamic.md) | :heavy_check_mark:                                               | N/A                                                              | dynamic                                                          |
-| `template`                                                       | *any*                                                            | :heavy_check_mark:                                               | N/A                                                              |                                                                  |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *"dynamic"*        | :heavy_check_mark: | N/A                | dynamic            |
+| `template`         | *any*              | :heavy_check_mark: | N/A                |                    |

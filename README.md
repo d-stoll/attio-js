@@ -55,10 +55,7 @@ bun add attio-js
 ### Yarn
 
 ```bash
-yarn add attio-js zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add attio-js
 ```
 
 > [!NOTE]
@@ -86,7 +83,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.objects.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -117,7 +113,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.objects.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -132,8 +127,7 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-
-### [attributes](docs/sdks/attributes/README.md)
+### [Attributes](docs/sdks/attributes/README.md)
 
 * [list](docs/sdks/attributes/README.md#list) - List attributes
 * [create](docs/sdks/attributes/README.md#create) - Create an attribute
@@ -144,18 +138,18 @@ run();
 * [updateOption](docs/sdks/attributes/README.md#updateoption) - Update a select option
 * [listStatuses](docs/sdks/attributes/README.md#liststatuses) - List statuses
 
-#### [attributes.statuses](docs/sdks/statuses/README.md)
+### [Attributes.Statuses](docs/sdks/statuses/README.md)
 
 * [create](docs/sdks/statuses/README.md#create) - Create a status
 * [update](docs/sdks/statuses/README.md#update) - Update a status
 
-### [comments](docs/sdks/comments/README.md)
+### [Comments](docs/sdks/comments/README.md)
 
 * [create](docs/sdks/comments/README.md#create) - Create a comment
 * [get](docs/sdks/comments/README.md#get) - Get a comment
 * [delete](docs/sdks/comments/README.md#delete) - Delete a comment
 
-### [entries](docs/sdks/entries/README.md)
+### [Entries](docs/sdks/entries/README.md)
 
 * [query](docs/sdks/entries/README.md#query) - List entries
 * [create](docs/sdks/entries/README.md#create) - Create an entry (add record to list)
@@ -165,39 +159,36 @@ run();
 * [overwrite](docs/sdks/entries/README.md#overwrite) - Update a list entry (overwrite multiselect values)
 * [delete](docs/sdks/entries/README.md#delete) - Delete a list entry
 
-#### [entries.attributes](docs/sdks/entriesattributes/README.md)
-
-
-#### [entries.attributes.values](docs/sdks/values/README.md)
+### [Entries.Attributes.Values](docs/sdks/values/README.md)
 
 * [list](docs/sdks/values/README.md#list) - List attribute values for a list entry
 
-### [lists](docs/sdks/lists/README.md)
+### [Lists](docs/sdks/lists/README.md)
 
 * [listAll](docs/sdks/lists/README.md#listall) - List all lists
 * [create](docs/sdks/lists/README.md#create) - Create a list
 * [get](docs/sdks/lists/README.md#get) - Get a list
 * [update](docs/sdks/lists/README.md#update) - Update a list
 
-### [meta](docs/sdks/meta/README.md)
+### [Meta](docs/sdks/meta/README.md)
 
 * [identify](docs/sdks/meta/README.md#identify) - Identify
 
-### [notes](docs/sdks/notes/README.md)
+### [Notes](docs/sdks/notes/README.md)
 
 * [list](docs/sdks/notes/README.md#list) - List notes
 * [create](docs/sdks/notes/README.md#create) - Create a note
 * [get](docs/sdks/notes/README.md#get) - Get a note
 * [delete](docs/sdks/notes/README.md#delete) - Delete a note
 
-### [objects](docs/sdks/objects/README.md)
+### [Objects](docs/sdks/objects/README.md)
 
 * [list](docs/sdks/objects/README.md#list) - List objects
 * [create](docs/sdks/objects/README.md#create) - Create an object
 * [get](docs/sdks/objects/README.md#get) - Get an object
 * [partialUpdate](docs/sdks/objects/README.md#partialupdate) - Update an object
 
-### [records](docs/sdks/records/README.md)
+### [Records](docs/sdks/records/README.md)
 
 * [query](docs/sdks/records/README.md#query) - List records
 * [create](docs/sdks/records/README.md#create) - Create a record
@@ -209,7 +200,7 @@ run();
 * [listAttributeValues](docs/sdks/records/README.md#listattributevalues) - List record attribute values
 * [listEntries](docs/sdks/records/README.md#listentries) - List record entries
 
-### [tasks](docs/sdks/tasks/README.md)
+### [Tasks](docs/sdks/tasks/README.md)
 
 * [list](docs/sdks/tasks/README.md#list) - List tasks
 * [create](docs/sdks/tasks/README.md#create) - Create a task
@@ -217,12 +208,12 @@ run();
 * [update](docs/sdks/tasks/README.md#update) - Update a task
 * [delete](docs/sdks/tasks/README.md#delete) - Delete a task
 
-### [threads](docs/sdks/threads/README.md)
+### [Threads](docs/sdks/threads/README.md)
 
 * [list](docs/sdks/threads/README.md#list) - List threads
 * [get](docs/sdks/threads/README.md#get) - Get a thread
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [list](docs/sdks/webhooks/README.md#list) - List webhooks
 * [create](docs/sdks/webhooks/README.md#create) - Create a webhook
@@ -230,7 +221,7 @@ run();
 * [partialUpdate](docs/sdks/webhooks/README.md#partialupdate) - Update a webhook
 * [delete](docs/sdks/webhooks/README.md#delete) - Delete a webhook
 
-### [workspaceMembers](docs/sdks/workspacemembers/README.md)
+### [WorkspaceMembers](docs/sdks/workspacemembers/README.md)
 
 * [list](docs/sdks/workspacemembers/README.md#list) - List workspace members
 * [get](docs/sdks/workspacemembers/README.md#get) - Get a workspace member
@@ -341,7 +332,6 @@ async function run() {
     },
   });
 
-  // Handle the result
   console.log(result);
 }
 
@@ -370,7 +360,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.objects.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -382,28 +371,30 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Some methods specify known errors which can be thrown. All the known errors are enumerated in the `models/errors/errors.ts` module. The known errors for a method are documented under the *Errors* tables in SDK docs. For example, the `create` method may throw the following errors:
+[`AttioError`](./src/models/errors/attioerror.ts) is the base class for all HTTP error responses. It has the following properties:
 
-| Error Type                            | Status Code | Content Type     |
-| ------------------------------------- | ----------- | ---------------- |
-| errors.PostV2ObjectsSlugConflictError | 409         | application/json |
-| errors.APIError                       | 4XX, 5XX    | \*/\*            |
+| Property            | Type       | Description                                                                             |
+| ------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| `error.message`     | `string`   | Error message                                                                           |
+| `error.statusCode`  | `number`   | HTTP response status code eg `404`                                                      |
+| `error.headers`     | `Headers`  | HTTP response headers                                                                   |
+| `error.body`        | `string`   | HTTP body. Can be empty string if no body is returned.                                  |
+| `error.rawResponse` | `Response` | Raw HTTP response                                                                       |
+| `error.data$`       |            | Optional. Some errors may contain structured data. [See Error Classes](#error-classes). |
 
-If the method throws an error and it is not captured by the known errors, it will default to throwing a `APIError`.
-
+### Example
 ```typescript
 import { Attio } from "attio-js";
+import { AttioError } from "attio-js/models/errors/attioerror.js.js";
 import { PostV2ObjectsSlugConflictError } from "attio-js/models/errors/getv2objectsobject.js";
-import { SDKValidationError } from "attio-js/models/errors/sdkvalidationerror.js";
 
 const attio = new Attio({
   apiKey: process.env["ATTIO_API_KEY"] ?? "",
 });
 
 async function run() {
-  let result;
   try {
-    result = await attio.objects.create({
+    const result = await attio.objects.create({
       data: {
         apiSlug: "people",
         singularNoun: "Person",
@@ -411,26 +402,21 @@ async function run() {
       },
     });
 
-    // Handle the result
     console.log(result);
-  } catch (err) {
-    switch (true) {
-      // The server response does not match the expected SDK schema
-      case (err instanceof SDKValidationError): {
-        // Pretty-print will provide a human-readable multi-line error message
-        console.error(err.pretty());
-        // Raw value may also be inspected
-        console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof PostV2ObjectsSlugConflictError): {
-        // Handle err.data$: PostV2ObjectsSlugConflictErrorData
-        console.error(err);
-        return;
-      }
-      default: {
-        // Other errors such as network errors, see HTTPClientErrors for more details
-        throw err;
+  } catch (error) {
+    // The base class for HTTP error responses
+    if (error instanceof AttioError) {
+      console.log(error.message);
+      console.log(error.statusCode);
+      console.log(error.body);
+      console.log(error.headers);
+
+      // Depending on the method different errors may be thrown
+      if (error instanceof PostV2ObjectsSlugConflictError) {
+        console.log(error.data$.statusCode); // number
+        console.log(error.data$.type); // errors.ConflictType
+        console.log(error.data$.code); // errors.ConflictCode
+        console.log(error.data$.message); // string
       }
     }
   }
@@ -440,17 +426,71 @@ run();
 
 ```
 
-Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted multi-line string since validation errors can list many issues and the plain error string may be difficult read when debugging.
+### Error Classes
+**Primary error:**
+* [`AttioError`](./src/models/errors/attioerror.ts): The base class for HTTP error responses.
 
-In some rare cases, the SDK can fail to get a response from the server or even make the request due to unexpected circumstances such as network conditions. These types of errors are captured in the `models/errors/httpclienterrors.ts` module:
+<details><summary>Less common errors (49)</summary>
 
-| HTTP Client Error                                    | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
-| RequestAbortedError                                  | HTTP request was aborted by the client               |
-| RequestTimeoutError                                  | HTTP request timed out due to an AbortSignal signal  |
-| ConnectionError                                      | HTTP client was unable to make a request to a server |
-| InvalidRequestError                                  | Any input used to create a request is invalid        |
-| UnexpectedClientError                                | Unrecognised or unexpected error                     |
+<br />
+
+**Network errors:**
+* [`ConnectionError`](./src/models/errors/httpclienterrors.ts): HTTP client was unable to make a request to a server.
+* [`RequestTimeoutError`](./src/models/errors/httpclienterrors.ts): HTTP request timed out due to an AbortSignal signal.
+* [`RequestAbortedError`](./src/models/errors/httpclienterrors.ts): HTTP request was aborted by the client.
+* [`InvalidRequestError`](./src/models/errors/httpclienterrors.ts): Any input used to create a request is invalid.
+* [`UnexpectedClientError`](./src/models/errors/httpclienterrors.ts): Unrecognised or unexpected error.
+
+
+**Inherit from [`AttioError`](./src/models/errors/attioerror.ts)**:
+* [`GetV2ObjectsObjectNotFoundError`](./src/models/errors/getv2objectsobjectnotfounderror.ts): Not Found. Status code `404`. Applicable to 9 of 57 methods.*
+* [`GetV2TargetIdentifierAttributesAttributeNotFoundError`](./src/models/errors/getv2targetidentifierattributesattributenotfounderror.ts): Not Found. Status code `404`. Applicable to 9 of 57 methods.*
+* [`GetV2ListsListNotFoundError`](./src/models/errors/getv2listslistnotfounderror.ts): Not Found. Status code `404`. Applicable to 8 of 57 methods.*
+* [`MissingValueError`](./src/models/errors/missingvalueerror.ts): Bad Request. Status code `400`. Applicable to 2 of 57 methods.*
+* [`GetV2ObjectsObjectRecordsRecordIdAttributesAttributeValuesValidationTypeError`](./src/models/errors/getv2objectsobjectrecordsrecordidattributesattributevaluesvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 2 of 57 methods.*
+* [`PostV2ListsInvalidRequestError`](./src/models/errors/postv2listsinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 2 of 57 methods.*
+* [`ImmutableValueError`](./src/models/errors/immutablevalueerror.ts): Bad Request. Status code `400`. Applicable to 2 of 57 methods.*
+* [`PostV2TasksValidationTypeError`](./src/models/errors/postv2tasksvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 2 of 57 methods.*
+* [`GetV2ObjectsObjectRecordsRecordIdNotFoundError`](./src/models/errors/getv2objectsobjectrecordsrecordidnotfounderror.ts): Not Found. Status code `404`. Applicable to 2 of 57 methods.*
+* [`GetV2NotesNoteIdNotFoundError`](./src/models/errors/getv2notesnoteidnotfounderror.ts): Not Found. Status code `404`. Applicable to 2 of 57 methods.*
+* [`GetV2TasksTaskIdNotFoundError`](./src/models/errors/getv2taskstaskidnotfounderror.ts): Not Found. Status code `404`. Applicable to 2 of 57 methods.*
+* [`GetV2WebhooksWebhookIdNotFoundError`](./src/models/errors/getv2webhookswebhookidnotfounderror.ts): Not Found. Status code `404`. Applicable to 2 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesAttributeOptionsSlugConflictError`](./src/models/errors/postv2targetidentifierattributesattributeoptionsslugconflicterror.ts): Conflict. Status code `409`. Applicable to 2 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesAttributeStatusesSlugConflictError`](./src/models/errors/postv2targetidentifierattributesattributestatusesslugconflicterror.ts): Conflict. Status code `409`. Applicable to 2 of 57 methods.*
+* [`PatchV2ObjectsObjectValidationTypeError`](./src/models/errors/patchv2objectsobjectvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesValidationTypeError`](./src/models/errors/postv2targetidentifierattributesvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`SystemEditUnauthorizedError`](./src/models/errors/systemeditunauthorizederror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesAttributeOptionsValidationTypeError`](./src/models/errors/postv2targetidentifierattributesattributeoptionsvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PatchV2TargetIdentifierAttributesAttributeOptionsOptionInvalidRequestError`](./src/models/errors/patchv2targetidentifierattributesattributeoptionsoptioninvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`FilterError`](./src/models/errors/filtererror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2ObjectsObjectRecordsInvalidRequestError`](./src/models/errors/postv2objectsobjectrecordsinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PutV2ObjectsObjectRecordsInvalidRequestError`](./src/models/errors/putv2objectsobjectrecordsinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2ListsListEntriesInvalidRequestError`](./src/models/errors/postv2listslistentriesinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`MultipleMatchResultsError`](./src/models/errors/multiplematchresultserror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2CommentsInvalidRequestError`](./src/models/errors/postv2commentsinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2WebhooksValidationTypeError`](./src/models/errors/postv2webhooksvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesAttributeStatusesValidationTypeError`](./src/models/errors/postv2targetidentifierattributesattributestatusesvalidationtypeerror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`PatchV2TargetIdentifierAttributesAttributeStatusesStatusInvalidRequestError`](./src/models/errors/patchv2targetidentifierattributesattributestatusesstatusinvalidrequesterror.ts): Bad Request. Status code `400`. Applicable to 1 of 57 methods.*
+* [`BillingError`](./src/models/errors/billingerror.ts): Forbidden. Status code `403`. Applicable to 1 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesNotFoundError`](./src/models/errors/postv2targetidentifierattributesnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PostV2ObjectsObjectRecordsQueryNotFoundError`](./src/models/errors/postv2objectsobjectrecordsquerynotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PostV2ListsNotFoundError`](./src/models/errors/postv2listsnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PostV2ListsListEntriesNotFoundError`](./src/models/errors/postv2listslistentriesnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PutV2ListsListEntriesNotFoundError`](./src/models/errors/putv2listslistentriesnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`GetV2WorkspaceMembersWorkspaceMemberIdNotFoundError`](./src/models/errors/getv2workspacemembersworkspacememberidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PatchV2TasksTaskIdNotFoundError`](./src/models/errors/patchv2taskstaskidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`GetV2ThreadsThreadIdNotFoundError`](./src/models/errors/getv2threadsthreadidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`GetV2CommentsCommentIdNotFoundError`](./src/models/errors/getv2commentscommentidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`DeleteV2CommentsCommentIdNotFoundError`](./src/models/errors/deletev2commentscommentidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`DeleteV2WebhooksWebhookIdNotFoundError`](./src/models/errors/deletev2webhookswebhookidnotfounderror.ts): Not Found. Status code `404`. Applicable to 1 of 57 methods.*
+* [`PostV2ObjectsSlugConflictError`](./src/models/errors/postv2objectsslugconflicterror.ts): Conflict. Status code `409`. Applicable to 1 of 57 methods.*
+* [`PatchV2ObjectsObjectSlugConflictError`](./src/models/errors/patchv2objectsobjectslugconflicterror.ts): Conflict. Status code `409`. Applicable to 1 of 57 methods.*
+* [`PostV2TargetIdentifierAttributesSlugConflictError`](./src/models/errors/postv2targetidentifierattributesslugconflicterror.ts): Conflict. Status code `409`. Applicable to 1 of 57 methods.*
+* [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
+
+</details>
+
+\* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -470,7 +510,6 @@ const attio = new Attio({
 async function run() {
   const result = await attio.objects.list();
 
-  // Handle the result
   console.log(result);
 }
 
@@ -524,7 +563,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Attio({ httpClient });
+const sdk = new Attio({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 

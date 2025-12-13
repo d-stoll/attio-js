@@ -7,6 +7,7 @@ import { PostV2TargetIdentifierAttributesAttributeStatusesData } from "attio-js/
 
 let value: PostV2TargetIdentifierAttributesAttributeStatusesData = {
   title: "In Progress",
+  celebrationEnabled: true,
   targetTimeInStatus: "P0Y0M1DT0H0M0S",
 };
 ```

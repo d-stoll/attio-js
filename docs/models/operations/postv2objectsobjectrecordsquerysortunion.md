@@ -16,10 +16,16 @@ const value: operations.PostV2ObjectsObjectRecordsQuerySort1 = {
 
 ```typescript
 const value: operations.PostV2ObjectsObjectRecordsQuerySort2 = {
-  direction: "asc",
+  direction: "desc",
   path: [
     [
-      "/usr/libdata",
+      "/var/mail",
+      "/dev",
+    ],
+    [
+      "/etc",
+      "/usr/bin",
+      "/usr/local/src",
     ],
   ],
 };

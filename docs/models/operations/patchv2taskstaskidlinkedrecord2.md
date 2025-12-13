@@ -9,8 +9,7 @@ let value: PatchV2TasksTaskIdLinkedRecord2 = {
   targetObject: "people",
   slugOrIdOfMatchingAttribute: [
     {
-      originalPhoneNumber: "07234172834",
-      countryCode: "GB",
+      domain: "app.attio.com",
     },
   ],
 };

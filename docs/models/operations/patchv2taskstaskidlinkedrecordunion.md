@@ -17,11 +17,7 @@ const value: operations.PatchV2TasksTaskIdLinkedRecord1 = {
 ```typescript
 const value: operations.PatchV2TasksTaskIdLinkedRecord2 = {
   targetObject: "people",
-  slugOrIdOfMatchingAttribute: [
-    {
-      domain: "app.attio.com",
-    },
-  ],
+  slugOrIdOfMatchingAttribute: [],
 };
 ```
 

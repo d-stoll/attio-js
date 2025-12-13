@@ -7,20 +7,7 @@ import { PostV2WebhooksDataResponse } from "attio-js/models/operations/postv2web
 
 let value: PostV2WebhooksDataResponse = {
   targetUrl: "https://example.com/webhook",
-  subscriptions: [
-    {
-      eventType: "note.created",
-      filter: {
-        dollarAnd: [
-          {
-            field: "parent_object_id",
-            operator: "equals",
-            value: "97052eb9-e65e-443f-a297-f2d9a4a7f795",
-          },
-        ],
-      },
-    },
-  ],
+  subscriptions: [],
   id: {
     workspaceId: "14beef7a-99f7-4534-a87e-70b564330a4c",
     webhookId: "23e42eaf-323a-41da-b5bb-fd67eebda553",

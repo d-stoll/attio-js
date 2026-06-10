@@ -30,6 +30,10 @@
     "type": "git",
     "url": "https://github.com/d-stoll/attio-js.git"
   },
+  "bugs": {
+    "url": "https://github.com/d-stoll/attio-js/issues"
+  },
+  "homepage": "https://github.com/d-stoll/attio-js#readme",
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tshy",
